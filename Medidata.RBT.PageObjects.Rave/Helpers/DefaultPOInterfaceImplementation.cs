@@ -61,19 +61,15 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			IWebElement found = null;
 			foundOnPage = 0;
-			try{
-				do
-				{
-					foundOnPage++;
-					found = searchFunc();
-					if (found != null)
-						break;
+			do
+			{
+				foundOnPage++;
+				found = searchFunc();
+				if (found != null)
+					break;
 
-				}
-				while (page.GoNextPage(areaIdentifier));
 			}
-			catch{
-			}
+			while (page.GoNextPage(areaIdentifier));
 
 			return found;
 		

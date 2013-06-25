@@ -672,9 +672,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I sign the form with username ""([^""]*)""")]
         public void ISignTheFormWithUsername____(string userName)
         {
-            User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(
-                userName, () => new User(userName));
-            new SignatureBox().Sign(user.UniqueName, user.Password);
+            new SignatureBox().Sign(SeedingContext.GetExistingFeatureObjectOrMakeNew(userName, () => new User(userName)));
         }
 
         /// <summary>
@@ -727,7 +725,7 @@ namespace Medidata.RBT.Features.Rave
         {
             var controlType = ControlType.DynamicSearchList;
 
-            RavePageBase page = null;
+            CRFPage page = null;
 
             if (CurrentPage is CRFPage)
             {
@@ -738,7 +736,7 @@ namespace Medidata.RBT.Features.Rave
                 throw new Exception(String.Format("Method IClickDropButtonOnDynamicSearchList____InLogLine____(string fieldName, int lineNum) is not implemented for page {0}", CurrentPage.GetType().Name));
             }
 
-            IEDCFieldControl fieldControl = page.FindLandscapeLogField(fieldName, lineNum, controlType);
+            LandscapeLogField fieldControl = page.FindLandscapeLogField(fieldName, lineNum, controlType);
             fieldControl.Click();
         }
 
@@ -752,8 +750,8 @@ namespace Medidata.RBT.Features.Rave
             if (CurrentPage is CRFPage)
             {
                 CRFPage page = CurrentPage.As<CRFPage>();
-                IEDCFieldControl fieldControl = page.FindField(fieldName);
-                fieldControl.FieldControlContainer.TryFindElementBy(By.ClassName("SearchList_DropButton")).Click();
+                BaseEDCFieldControl fieldControl = (BaseEDCFieldControl)page.FindField(fieldName);
+                fieldControl.FieldDataSpecific.TryFindElementBy(By.ClassName("SearchList_DropButton")).Click();
             }
             else
             {
@@ -766,13 +764,13 @@ namespace Medidata.RBT.Features.Rave
         /// </summary>
         /// <param name="fieldName"></param>
         /// <param name="lineNum"></param>
-        [Then(@"I should see dynamic search list ""([^""]*)"" in log line ([^""]*) open")]
+        [StepDefinition(@"I should see dynamic search list ""([^""]*)"" in log line ([^""]*) open")]
         public void ThenIShouldSeeDynamicSearchList____InLogLine____Open(string fieldName, int lineNum)
         {
             bool result = false;
             var controlType = ControlType.DynamicSearchList;
 
-            RavePageBase page = null;
+            CRFPage page = null;
 
             if (CurrentPage is CRFPage)
             {
@@ -783,7 +781,7 @@ namespace Medidata.RBT.Features.Rave
                 throw new Exception(String.Format("Method ThenIShouldSeeDynamicSearchList____InLogLine____Open(string fieldName, int lineNum) is not implemented for page {0}", CurrentPage.GetType().Name));
             }
 
-            IEDCFieldControl fieldControl = page.FindLandscapeLogField(fieldName, lineNum, controlType);
+            LandscapeLogField fieldControl = page.FindLandscapeLogField(fieldName, lineNum, controlType);
 
             result = fieldControl.IsDroppedDown();
             Assert.IsTrue(result, String.Format("The dynamic search list {0} in log line {1} has not been opened", fieldName, lineNum));
@@ -793,7 +791,7 @@ namespace Medidata.RBT.Features.Rave
         /// Verifies that dynamic search list is open on a standard field
         /// </summary>
         /// <param name="fieldName"></param>
-        [Then(@"I should see dynamic search list ""([^""]*)"" open")]
+        [StepDefinition(@"I should see dynamic search list ""([^""]*)"" open")]
         public void ThenIShouldSeeDynamicSearchList____Open(string fieldName)
         {
             bool result = false;
@@ -801,8 +799,8 @@ namespace Medidata.RBT.Features.Rave
             if (CurrentPage is CRFPage)
             {
                 CRFPage page = CurrentPage.As<CRFPage>();
-                IEDCFieldControl fieldControl = page.FindField(fieldName);
-                result = fieldControl.FieldControlContainer.TryFindElementBy(By.ClassName("SearchList_PickListBox")).Displayed;
+                BaseEDCFieldControl fieldControl = (BaseEDCFieldControl)page.FindField(fieldName);
+                result = fieldControl.FieldDataSpecific.TryFindElementBy(By.ClassName("SearchList_PickListBox")).Displayed;
             }
             else
             {

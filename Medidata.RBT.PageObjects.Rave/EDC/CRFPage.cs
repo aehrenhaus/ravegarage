@@ -234,12 +234,12 @@ namespace Medidata.RBT.PageObjects.Rave
             return new LandscapeLogField(this, recordNumber);
         }
 
-        public IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex) 
+        public IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex)
         {
-            return new LandscapeLogField(this, 
+            return new LandscapeLogField(this,
                 fieldName, rowIndex);
         }
-        public override IEDCFieldControl FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
+        public LandscapeLogField FindLandscapeLogField(string fieldName, int rowIndex, ControlType controlType = ControlType.Default)
         {
             switch (controlType)
             {
@@ -250,7 +250,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 //case ControlType.Datetime:
                 //case ControlType.RadioButton:
                 //case ControlType.RadioButtonVertical:
-                case ControlType.DropDownList:
+                case ControlType.DropDown:
                 case ControlType.DynamicSearchList:
                     return new LandscapeLogField(this, fieldName, rowIndex, controlType);
                 default:
@@ -259,7 +259,7 @@ namespace Medidata.RBT.PageObjects.Rave
         }
         public IEDCFieldControl FindPortraitLogField(string fieldName)
         {
-            return new PortraitLogField(this, 
+            return new PortraitLogField(this,
                 fieldName);
         }
 
@@ -274,39 +274,30 @@ namespace Medidata.RBT.PageObjects.Rave
             return currentElement.GetAttribute("ID") == element.GetAttribute("ID");
         }
 
-
-        public bool CanFindQuery(QuerySearchModel filter)
+        public bool CanFindMarking(ResponseSearchModel filter, MarkingType responseType)
         {
             IWebElement queryContainer = null;
-			//finding the field should not be put in try catch
-			var field = FindField(filter.Field);
-            try
-            {
-				queryContainer = field.FindQuery(filter);
-            }
-            catch
-            {
-            }
+            IEDCFieldControl field = FindField(filter.Field);
+            queryContainer = field.FindResponse(filter, responseType);
+
             return queryContainer != null;
-
         }
-
 
         public CRFPage AnswerQuery(string message, string fieldName, string answer)
         {
-            FindField(fieldName).AnswerQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName, Answer = answer });
+            FindField(fieldName).AnswerQuery(new QuerySearchModel { Message = message, Field = fieldName, Answer = answer });
             return this;
         }
 
         public CRFPage CloseQuery(string message, string fieldName)
         {
-            FindField(fieldName).CloseQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName });
+            FindField(fieldName).CloseQuery(new QuerySearchModel { Message = message, Field = fieldName });
             return this;
         }
 
         public CRFPage CancelQuery(string message, string fieldName)
         {
-            FindField(fieldName).CancelQuery(new QuerySearchModel { QueryMessage = message, Field = fieldName });
+            FindField(fieldName).CancelQuery(new QuerySearchModel { Message = message, Field = fieldName });
             return this;
         }
 
@@ -369,13 +360,14 @@ namespace Medidata.RBT.PageObjects.Rave
 		}
 
         /// <summary>
-        /// Place stickes against fields on the page
+        /// Place markings against fields on the page
         /// </summary>
-        /// <param name="stickies">The stickies to place</param>
-        public void PlaceStickies(List<StickyModel> stickies)
+        /// <param name="markings">The markings to place</param>
+        /// <param name="markingType">The type of markings to place</param>
+        public void PlaceMarkings(List<MarkingModel> markings, MarkingType markingType)
         {
-            foreach (StickyModel sticky in stickies)
-                PlaceSticky(sticky.Field, sticky.Responder, sticky.Text);
+            foreach (MarkingModel marking in markings)
+                PlaceMarking(marking, markingType);
         }
 
         /// <summary>
@@ -384,33 +376,10 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="fieldName">The name of the field to place the sticky against</param>
         /// <param name="responder">Who should respond to the sticky</param>
         /// <param name="text">The text of the sticky</param>
-        public void PlaceSticky(string fieldName, string responder, string text)
+        public void PlaceMarking(MarkingModel marking, MarkingType markingType)
         {
-            IEDCFieldControl fieldControl = FindField(fieldName);
-            fieldControl.PlaceSticky(responder, text);
-        }
-
-        /// <summary>
-        /// Add Protocol Deviations on the fields on the page
-        /// </summary>
-        /// <param name="pds">Protocol Deviations to add</param>
-        public void AddProtocolDeviations(List<ProtocolDeviationModel> pds)
-        {
-            foreach (ProtocolDeviationModel pd in pds)
-                AddProtocolDeviation(pd.Field, pd.Class, pd.Code, pd.Text, pd.Record);
-        }
-
-        /// <summary>
-        /// Add a Protocol Deviation on the field
-        /// </summary>
-        /// <param name="fieldName">The field the Protocol Deviation to create on</param>
-        /// <param name="pdClass">Protocol Deviation Class value</param>
-        /// <param name="pdCode">Protocol Deviation Code value</param>
-        /// <param name="text">The text of the Protocol Deviation</param>
-        public void AddProtocolDeviation(string fieldName, string pdClass, string pdCode, string text, int? record)
-        {
-            IEDCFieldControl fieldControl = record == null ? FindField(fieldName) : FindField(fieldName, "Field", record);
-            fieldControl.AddProtocolDeviation(pdClass, pdCode, text);
+            IEDCFieldControl fieldControl = FindField(marking.Field, record: marking.Record);
+            fieldControl.PlaceMarking(marking.Responder, marking.Text, markingType, marking.Class, marking.Code);
         }
 
         /// <summary>

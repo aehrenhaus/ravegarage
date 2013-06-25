@@ -72,116 +72,116 @@ so that I can minimize the number of pages generated in the PDF if I choose to d
 #  And I select Form "Adverse Events1"
 #  And I enter data in CRF and save
 #    |Field                            |Data                     |Control Type     |
-#    |Were there any adverse events?   |Yes                      |dropdownlist     |
+#    |Were there any adverse events?   |Yes                      |Dropdown         |
 #    |Adverse Event Description        |Head Ache                |longtext         |
 #    |Start Date                       |01 Jan 2012              |datetime         |
 #	 |Stop Date                        |05 Jan 2012              |datetime         |
-#	 |Continuing?                      |Yes                      |dropdownlist     |
-#    |Serious adverse event?           |No                       |dropdownlist     |
-#	 |Related to study drug?	       |Yes                      |dropdownlist     |
-#    |Action taken (1)                 |None Taken	             |dropdownlist     |
-#    |Action taken (2)                 |Medication               |dropdownlist     |
-#	 |Action taken (3)                 |Discontinued Study Drug  |dropdownlist     |
-#	 |Action taken (4)                 |None Taken               |dropdownlist     |
-#    |Action taken (5)                 |None Taken               |dropdownlist     |
-#	 |Action taken (6)                 |None Taken               |dropdownlist     |
-#    |Action taken (7)                 |None Taken               |dropdownlist     |
-#    |Action taken (8)                 |None Taken               |dropdownlist     |
+#	 |Continuing?                      |Yes                      |Dropdown         |
+#    |Serious adverse event?           |No                       |Dropdown         |
+#	 |Related to study drug?	       |Yes                      |Dropdown         |
+#    |Action taken (1)                 |None Taken	             |Dropdown         |
+#    |Action taken (2)                 |Medication               |Dropdown         |
+#	 |Action taken (3)                 |Discontinued Study Drug  |Dropdown         |
+#	 |Action taken (4)                 |None Taken               |Dropdown         |
+#    |Action taken (5)                 |None Taken               |Dropdown         |
+#	 |Action taken (6)                 |None Taken               |Dropdown         |
+#    |Action taken (7)                 |None Taken               |Dropdown         |
+#    |Action taken (8)                 |None Taken               |Dropdown         |
 #	 |Duration	                       |5                        |text             |
 #  And I select Form "Adverse Events2"
 #  And I enter data in CRF and save
 #    |Field                            |Data                     |Control Type     |
-#    |Were there any adverse events?   |Yes                      |dropdownlist     |
+#    |Were there any adverse events?   |Yes                      |Dropdown         |
 #    |Adverse Event Description        |Migrane                  |longtext         |
 #    |Start Date                       |01 Feb 2012              |datetime         |
 #	 |Stop Date                        |08 Feb 2012              |datetime         |
-#	 |Continuing?                      |Yes                      |dropdownlist     |
-#    |Serious adverse event?           |Yes                      |dropdownlist     |
-#	 |Related to study drug?	       |Yes                      |dropdownlist     |
-#    |Action taken (1)                 |None Taken	             |dropdownlist     |
-#    |Action taken (2)                 |Medication               |dropdownlist     |
-#	 |Action taken (3)                 |None Taken               |dropdownlist     |
-#	 |Action taken (4)                 |None Taken               |dropdownlist     |
-#    |Action taken (5)                 |None Taken               |dropdownlist     |
-#	 |Action taken (6)                 |None Taken	             |dropdownlist     |
-#    |Action taken (7)                 |Medication               |dropdownlist     |
-#    |Action taken (8)                 |Discontinued Study Drug  |dropdownlist     |
+#	 |Continuing?                      |Yes                      |Dropdown         |
+#    |Serious adverse event?           |Yes                      |Dropdown         |
+#	 |Related to study drug?	       |Yes                      |Dropdown         |
+#    |Action taken (1)                 |None Taken	             |Dropdown         |
+#    |Action taken (2)                 |Medication               |Dropdown         |
+#	 |Action taken (3)                 |None Taken               |Dropdown         |
+#	 |Action taken (4)                 |None Taken               |Dropdown         |
+#    |Action taken (5)                 |None Taken               |Dropdown         |
+#	 |Action taken (6)                 |None Taken	             |Dropdown         |
+#    |Action taken (7)                 |Medication               |Dropdown         |
+#    |Action taken (8)                 |Discontinued Study Drug  |Dropdown         |
 #	 |Duration	                       |8                        |text             |
 #  And I select Form "Medical History1"
 #  And I enter data in CRF and save
 #    |Field         |Data          |Control Type |
 #    |Visit Date:   |01 Jan 2012   |datetime     |
 #    |Gender        |Female        |radiobutton  |
-#    |Body System:  |HEENT         |dropdownlist |
-#	 |Result:       |Normal        |dropdownlist |
+#    |Body System:  |HEENT         |Dropdown     |
+#	 |Result:       |Normal        |Dropdown     |
 #	 |Description:  |TestA         |longtext     |
 #  And I select Form "Medical History2"
 #  And I enter data in CRF and save
 #    |Field         |Data          |Control Type |
 #    |Visit Date:   |01 Jan 2012   |datetime     |
 #    |Gender        |Male          |radiobutton  |
-#	 |Result:       |Abnormal      |dropdownlist |
+#	 |Result:       |Abnormal      |Dropdown     |
 #	 |Description:  |Test1         |longtext     |
 #	 |Visit Date:   |02 Jan 2012   |datetime     |
 #    |Gender        |Female        |radiobutton  |
-#	 |Result:       |Normal        |dropdownlist |
+#	 |Result:       |Normal        |Dropdown     |
 #	 |Description:  |Test2         |longtext     |
 #	 |Visit Date:   |03 Jan 2012   |datetime     |
 #    |Gender        |Male          |radiobutton  |
-#	 |Result:       |Abnormal      |dropdownlist |
+#	 |Result:       |Abnormal      |Dropdown     |
 #	 |Description:  |Test3         |longtext     |
 #	 |Visit Date:   |04 Jan 2012   |datetime     |
 #    |Gender        |Female        |radiobutton  |
-#	 |Result:       |Normal        |dropdownlist |
+#	 |Result:       |Normal        |Dropdown     |
 #	 |Description:  |Test4         |longtext     |
 #	 |Visit Date:   |05 Jan 2012   |datetime     |
 #    |Gender        |Male          |radiobutton  |
-#	 |Result:       |Abnormal      |dropdownlist |
+#	 |Result:       |Abnormal      |Dropdown     |
 #	 |Description:  |Test5         |longtext     |
 #	 |Visit Date:   |01 Feb 2012   |datetime     |
 #    |Gender        |Female        |radiobutton  |
-#	 |Result:       |Abnormal      |dropdownlist |
+#	 |Result:       |Abnormal      |Dropdown     |
 #	 |Description:  |Test6         |longtext     |
 #	 |Visit Date:   |02 Feb 2012   |datetime     |
 #    |Gender        |Male          |radiobutton  |
-#	 |Result:       |Normal        |dropdownlist |
+#	 |Result:       |Normal        |Dropdown     |
 #	 |Description:  |Test7         |longtext     |
 #	 |Visit Date:   |03 Feb 2012   |datetime     |
 #    |Gender        |Female        |radiobutton  |
-#	 |Result:       |Normal        |dropdownlist |
+#	 |Result:       |Normal        |Dropdown     |
 #	 |Description:  |Test8         |longtext     |
 #	 |Visit Date:   |04 Feb 2012   |datetime     |
 #    |Gender        |Male          |radiobutton  |
-#	 |Result:       |Abnormal      |dropdownlist |
+#	 |Result:       |Abnormal      |Dropdown     |
 #	 |Description:  |Test9         |longtext     |
 #    |Visit Date:   |05 Feb 2012   |datetime     |
 #    |Gender        |Male          |radiobutton  |
-#	 |Result:       |Normal        |dropdownlist |
+#	 |Result:       |Normal        |Dropdown     |
 #	 |Description:  |Test10        |longtext     |
 #	 |Visit Date:   |06 Feb 2012   |datetime     |
 #    |Gender        |Female        |radiobutton  |
-#	 |Result:       |Abnormal      |dropdownlist |
+#	 |Result:       |Abnormal      |Dropdown     |
 #	 |Description:  |Test11        |longtext     |
 #	 |Visit Date:   |07 Feb 2012   |datetime     |
 #    |Gender        |Male          |radiobutton  |
-#	 |Result:       |Normal        |dropdownlist |
+#	 |Result:       |Normal        |Dropdown     |
 #	 |Description:  |Test12        |longtext     |
 #	 |Visit Date:   |08 Feb 2012   |datetime     |
 #    |Gender        |Male          |radiobutton  |
-#	 |Result:       |Abnormal      |dropdownlist |
+#	 |Result:       |Abnormal      |Dropdown     |
 #	 |Description:  |Test13        |longtext     |
 #	 |Visit Date:   |09 Feb 2012   |datetime     |
 #    |Gender        |Female        |radiobutton  |
-#	 |Result:       |Normal        |dropdownlist |
+#	 |Result:       |Normal        |Dropdown     |
 #	 |Description:  |Test14        |longtext     |
 #	 |Visit Date:   |10 Feb 2012   |datetime     |
 #    |Gender        |Male          |radiobutton  |
-#	 |Result:       |Normal        |dropdownlist |
+#	 |Result:       |Normal        |Dropdown     |
 #	 |Description:  |Test15        |longtext     |
 #	 |Visit Date:   |11 Feb 2012   |datetime     |
 #    |Gender        |Male          |radiobutton  |
 #	 |Body System:  |Migrane       |text         |
-#	 |Result:       |Abnormal      |dropdownlist |
+#	 |Result:       |Abnormal      |Dropdown     |
 #	 |Description:  |Test16        |longtext     |
 #  And I verify data on Fields in CRF
 #	 |Field         |Data                             |

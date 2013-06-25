@@ -60,6 +60,9 @@ Given xml draft "PDF_Font_Study_Draft_1.xml" is Uploaded
 Given following Project assignments exist
 | User         | Project        | Environment | Role         | Site     | SecurityRole          |
 | SUPER USER 1 | PDF Font Study | Live: Prod  | SUPER ROLE 1 | Site_001 | Project Admin Default |
+Given following Global Configurations exist
+| Name                         |
+| US12175_DT8545_Configuration |
 Given I publish and push eCRF "PDF_Font_Study_Draft_1.xml" to "Version 1"
 And I navigate to "Home"
 
@@ -101,6 +104,8 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
 | Data |
 | <    |
@@ -142,6 +147,8 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
 | Data |
 | <    |
@@ -183,6 +190,8 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
 | Data |
 | <    |
@@ -225,6 +234,8 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
 | Data |
 | <    |
@@ -267,6 +278,8 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
 | Data |
 | <    |
@@ -288,8 +301,8 @@ And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 01 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br Field&le &ge              | &le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -306,8 +319,8 @@ And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 02 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata2&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gebbbbbbbbbb456&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -325,8 +338,8 @@ And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 03 25 1995                                                         |                                                 | DateTime             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata3&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gecccccccccc789&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | Long Text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | Long Text            |
 | Long Text Field                                      | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] |                                                 | Long Text            |
@@ -377,6 +390,8 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
 | Data |
 | <    |
@@ -399,8 +414,8 @@ And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 01 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br Field&le &ge              | &le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -412,13 +427,13 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | < < > > ≤ ≥ •DD1&le &ge                                            |                                                 | RadioButton Vertical |
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 02 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata2&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gebbbbbbbbbb456&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -430,14 +445,14 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 03 25 1995                                                         |                                                 | DateTime             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata3&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gecccccccccc789&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | Long Text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | Long Text            |
 | Long Text Field                                      | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] |                                                 | Long Text            |
@@ -448,7 +463,7 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
@@ -488,12 +503,15 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
 | Data |
 | <    |
 | >    |
 
-@release_2012.1.0
+@release_2013.2.0
+@MCC-59855
 @PB_US12175_DT8545_H
 @Validation
 Scenario: PB_US12175_DT8545_H A data-populated PDF that is generated should properly display special characters
@@ -501,6 +519,7 @@ An annotated Data PDF that is generated should properly display special characte
 This should be tested for each possible font combination (english & Japanese fonts)
 This should be tested with all 4 forms
 Carriage return should display correctly on the data PDF when Bold font is used in Field Label.
+Data PDF Generation should complete successfully with angle brackets < > on Markings.
 
 And I create a Subject
  | Field      | Data               | Control Type |
@@ -510,8 +529,8 @@ And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 01 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br Field&le &ge              | &le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -523,13 +542,44 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | < < > > ≤ ≥ •DD1&le &ge                                            |                                                 | RadioButton Vertical |
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+And I add queries
+| Field                               | Responder       | Text    |
+| &le &ge\br Text\rField< < > > ≤ ≥ • | Marking Group 1 | <Query> |
+And I click button "Save"
+And I verify Requires Response Query with message "<Query>" is displayed on Field "&le &ge\br Text\rField< < > > ≤ ≥ •"
+And I cancel the Query "<Query>" on Field "&le &ge\br Text\rField< < > > ≤ ≥ •"
+And I click button "Save"
+And I verify Query with message "<Query>" is not displayed on Field "&le &ge\br Text\rField< < > > ≤ ≥ •"
+And I add queries
+| Field                               | Responder       | Text    |
+| &le &ge\br Text\rField< < > > ≤ ≥ • | Marking Group 1 | <Query> |
+And I click button "Save"
+And I verify Requires Response Query with message "<Query>" is displayed on Field "&le &ge\br Text\rField< < > > ≤ ≥ •"
+And I add stickies
+| Field           | Responder       | Text     |
+| Long Text Field | Marking Group 1 | <Sticky> |
+And I click button "Save"
+And I verify Sticky with message "<Sticky>" is displayed on Field "Long Text Field"
+And I add protocol deviations
+| Field                               | Text | Code | Class |
+| < < > > ≤ ≥ •\br Date\rField&le &ge | <PD> | A    | 10    |
+And I click button "Save"
+And I verify Protocol Deviation with message "<PD>" is displayed on Field "< < > > ≤ ≥ •\br Date\rField&le &ge"
+And I click audit on Field "< < > > ≤ ≥ •\br DropDown\rField1&le &ge"
+And I add comment "<Comment>"
+And I verify Comment with message "<Comment>" is displayed on Field "< < > > ≤ ≥ •\br DropDown\rField1&le &ge"
+And I select link "S{Var(num1)}" in "Header"
+And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
+And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
+And I enter data in CRF and save
+| Field                                    | Data         | Control Type |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge | SUPER USER 1 | Signature    |
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 02 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata2&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gebbbbbbbbbb456&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -541,14 +591,43 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+And I click button "Save"
+And I open log line 1
+And I add queries
+| Field                                    | Responder       | Text    |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge | Marking Group 1 | <Query> |
+And I click button "Save"
+And I open log line 1
+And I verify Requires Response Query with message "<Query>" is displayed on Field "< < > > ≤ ≥ •\br DropDown\rField2&le &ge"
+And I add stickies
+| Field                                    | Responder       | Text     |
+| Long\rText< < > > ≤ ≥ •\br  Field&le &ge | Marking Group 1 | <Sticky> |
+And I click button "Save"
+And I open log line 1
+And I verify Sticky with message "<Sticky>" is displayed on Field "Long\rText< < > > ≤ ≥ •\br  Field&le &ge"
+And I add protocol deviations
+| Field           | Text | Code | Class |
+| Long Text Field | <PD> | A    | 10    |
+And I click button "Save"
+And I open log line 1
+And I verify Protocol Deviation with message "<PD>" is displayed on Field "Long Text Field"
+And I click audit on Field "< < > > ≤ ≥ •\br Text\rField1&le &ge"
+And I add comment "<Comment>"
+And I open log line 1
+And I verify Comment with message "<Comment>" is displayed on Field "< < > > ≤ ≥ •\br Text\rField1&le &ge"
+And I select link "S{Var(num1)}" in "Header"
+And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
+And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
+And I enter data in CRF and save
+| Field                                    | Data         | Control Type |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge | SUPER USER 1 | Signature    |
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 03 25 1995                                                         |                                                 | DateTime             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata3&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gecccccccccc789&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | Long Text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | Long Text            |
 | Long Text Field                                      | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] |                                                 | Long Text            |
@@ -559,18 +638,84 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+And I open log line 1
+And I add queries
+| Field                                | Responder       | Text    |
+| < < > > ≤ ≥ •\br Text\rField2&le &ge | Marking Group 1 | <Query> |
+And I click button "Save"
+And I open log line 1
+And I verify Requires Response Query with message "<Query>" is displayed on Field "< < > > ≤ ≥ •\br Text\rField2&le &ge"
+And I add stickies
+| Field                              | Responder       | Text     |
+| < < > > ≤ ≥ •\br DSL\rField&le &ge | Marking Group 1 | <Sticky> |
+And I click button "Save"
+And I open log line 1
+And I verify Sticky with message "<Sticky>" is displayed on Field "< < > > ≤ ≥ •\br DSL\rField&le &ge"
+And I add protocol deviations
+| Field                                        | Text | Code | Class |
+| &le &ge\br  Radio Button\rField< < > > ≤ ≥ • | <PD> | A    | 10    |
+And I click button "Save"
+And I open log line 1
+And I verify Protocol Deviation with message "<PD>" is displayed on Field "&le &ge\br  Radio Button\rField< < > > ≤ ≥ •"
+And I click audit on Field "< < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge"
+And I add comment "<Comment>"
+And I open log line 1
+And I verify Comment with message "<Comment>" is displayed on Field "< < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge"
+And I select link "S{Var(num1)}" in "Header"
+And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
+And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
+And I enter data in CRF and save
+| Field                                    | Data         | Control Type |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge | SUPER USER 1 | Signature    |
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
 | LongText1 | [cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
 | LongText2 | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] | Long Text    |
+And I add queries
+| Field     | Responder       | Text    |
+| LongText1 | Marking Group 1 | <Query> |
+And I click button "Save"
+And I verify Requires Response Query with message "<Query>" is displayed on Field "LongText1"
+And I add stickies
+| Field     | Responder       | Text     |
+| LongText1 | Marking Group 1 | <Sticky> |
+And I click button "Save"
+And I verify Sticky with message "<Sticky>" is displayed on Field "LongText1"
+And I add protocol deviations
+| Field     | Text | Code | Class |
+| LongText2 | <PD> | A    | 10    |
+And I click button "Save"
+And I verify Protocol Deviation with message "<PD>" is displayed on Field "LongText2"
+And I click audit on Field "LongText2"
+And I add comment "<Comment>"
+And I verify Comment with message "<Comment>" is displayed on Field "LongText2"
+And I select link "S{Var(num1)}" in "Header"
+And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
 And I select link "< < > > ≤ ≥ •\brPDF Lab Form &le &ge"
 And I select Lab "&le&geLab&lt &lt; &gt &gt; &le; &ge;"
 And I enter data in CRF and save
 | Field                            | Data | Control Type |
 | &le&ge\brWBC< < > > ≤ ≥•         | 20   | textbox      |
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
+And I add queries
+| Field                    | Responder       | Text    |
+| &le&ge\brWBC< < > > ≤ ≥• | Marking Group 1 | <Query> |
+And I click button "Save"
+And I verify Requires Response Query with message "<Query>" is displayed on Field "&le&ge\brWBC< < > > ≤ ≥•"
+And I add stickies
+| Field                    | Responder       | Text     |
+| &le&ge\brWBC< < > > ≤ ≥• | Marking Group 1 | <Sticky> |
+And I click button "Save"
+And I verify Sticky with message "<Sticky>" is displayed on Field "&le&ge\brWBC< < > > ≤ ≥•"
+ And I add protocol deviations
+| Field                            | Text | Code | Class |
+| < < > > ≤ ≥•\brNEUTROPHILS&le&ge | <PD> | A    | 10    |
+And I click button "Save"
+And I verify Protocol Deviation with message "<PD>" is displayed on Field "< < > > ≤ ≥•\brNEUTROPHILS&le&ge"
+And I click audit on Field "< < > > ≤ ≥•\brNEUTROPHILS&le&ge"
+And I add comment "<Comment>"
+And I verify Comment with message "<Comment>" is displayed on Field "< < > > ≤ ≥•\brNEUTROPHILS&le&ge"
 And I navigate to "PDF Generator" module
 When I create Data PDF
 | Name                        | Profile     | Study          | Role         | Locale  | Site Groups | Sites    | Subjects     |
@@ -599,10 +744,16 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
-| Data |
-| <    |
-| >    |
+| Data      |
+| <         |
+| >         |
+| <Query>   |
+| <PD>      |
+| <Comment> |
+| <Sticky>  |
 
 @release_2012.1.0
 @PB_US12175_DT8545_I
@@ -620,8 +771,8 @@ And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 01 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br Field&le &ge              | &le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -633,13 +784,13 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | < < > > ≤ ≥ •DD1&le &ge                                            |                                                 | RadioButton Vertical |
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 02 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata2&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gebbbbbbbbbb456&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -651,14 +802,14 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 03 25 1995                                                         |                                                 | DateTime             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata3&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gecccccccccc789&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | Long Text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | Long Text            |
 | Long Text Field                                      | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] |                                                 | Long Text            |
@@ -669,7 +820,7 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
@@ -709,6 +860,8 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
 | Data |
 | <    |
@@ -730,8 +883,8 @@ And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 01 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br Field&le &ge              | &le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -743,13 +896,13 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | < < > > ≤ ≥ •DD1&le &ge                                            |                                                 | RadioButton Vertical |
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 02 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata2&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gebbbbbbbbbb456&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -761,14 +914,14 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 03 25 1995                                                         |                                                 | DateTime             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata3&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gecccccccccc789&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | Long Text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | Long Text            |
 | Long Text Field                                      | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] |                                                 | Long Text            |
@@ -779,7 +932,7 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
@@ -819,6 +972,8 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
 | Data |
 | <    |
@@ -839,8 +994,8 @@ And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 01 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata1&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br Field&le &ge              | &le &geaaaaaaaaaa123&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -852,13 +1007,13 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | < < > > ≤ ≥ •DD1&le &ge                                            |                                                 | RadioButton Vertical |
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 02 25 1995                                                         |                                                 | DateTime             |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata2&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gebbbbbbbbbb456&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | long text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | long text            |
@@ -870,14 +1025,14 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
 | < < > > ≤ ≥ •\br Date\rField&le &ge                  | 03 25 1995                                                         |                                                 | DateTime             |
 | &le &ge\br Text\rField< < > > ≤ ≥ •                  | &le &gedata3&lt &lt; &gt &gt; &le; &ge;<li></li>                   |                                                 | textbox              |
-| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | DropDownList         |
-| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | DropDownList         |
+| < < > > ≤ ≥ •\br DropDown\rField1&le &ge             | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Dropdown             |
+| < < > > ≤ ≥ •\br DropDown\rField2&le &ge             | <>≤ ≥DD2                                                           |                                                 | Dropdown             |
 | Long\rText< < > > ≤ ≥ •\br  Field&le &ge             | &le &gecccccccccc789&lt &lt; &gt &gt; &le; &ge;<li></li>           |                                                 | Long Text            |
 | \bLongText Field\\/b                                 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                   |                                                 | Long Text            |
 | Long Text Field                                      | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] |                                                 | Long Text            |
@@ -888,7 +1043,7 @@ And I enter data in CRF and save
 | < < > > ≤ ≥ •\br Radio Button Vertical\rField&le &ge | <>≤ ≥DD2                                                           |                                                 | RadioButton Vertical |
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
-| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                         | Signature            |
+| < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
@@ -928,6 +1083,8 @@ Then I verify the PDF text does not contain
 | <b>                   |
 | Test1=Test2=Test3=    |
 | Test1==Test2==Test3== |
+| ==                    |
+| ?                     |
 And I verify the PDF text contains
 | Data |
 | <    |

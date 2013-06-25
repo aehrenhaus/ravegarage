@@ -127,7 +127,7 @@ Scenario: PB_US10242_DT13576_02 As an EDC user, when I have an edit check associ
   And I select Form "Medical History"
   And I enter data in CRF and save
     | Field                                                                        | Data | Control Type |
-    | Does the subject have a known history of an abnormality, disease or surgery? | No   | dropdownlist |
+    | Does the subject have a known history of an abnormality, disease or surgery? | No   | Dropdown     |
   And I verify data on Fields in CRF
 	| Field                                                                        | Data | Status Icon |
 	| Does the subject have a known history of an abnormality, disease or surgery? | No   | Complete    |
@@ -143,7 +143,7 @@ Scenario: PB_US10242_DT13576_02 As an EDC user, when I have an edit check associ
   And I select Form "Medical History" 
   And I enter data in CRF and save
     | Field                                                                        | Data | Control Type |
-    | Does the subject have a known history of an abnormality, disease or surgery? | Yes  | dropdownlist |
+    | Does the subject have a known history of an abnormality, disease or surgery? | Yes  | Dropdown     |
   And I verify data on Fields in CRF
 	| Field                                                                        | Data | Status Icon        |
 	| Does the subject have a known history of an abnormality, disease or surgery? | Yes  | Requires Signature |
@@ -169,7 +169,7 @@ Scenario: PB_US10242_DT13576_02 As an EDC user, when I have an edit check associ
   And I select Form "Medical History" 
   And I enter data in CRF and save
     | Field                                                                        | Data | Control Type |
-    | Does the subject have a known history of an abnormality, disease or surgery? | No   | dropdownlist |
+    | Does the subject have a known history of an abnormality, disease or surgery? | No   | Dropdown     |
   And I verify data on Fields in CRF
 	| Field                                                                        | Data | Status Icon |
 	| Does the subject have a known history of an abnormality, disease or surgery? | No   | Complete    |
@@ -290,10 +290,10 @@ Scenario: PB_US10242_DT13576_04 As an EDC user, when I have an edit check that s
   And I select link "SUB {Var(num1)}"
   And I select Form "AE"
   And I enter data in CRF and save
-    |Field                  |Data             |Control Type    |
-    |Was there any AE's?    |Yes              |dropdownlist    |
-    |Start Date             |05 Jan 2012      |datetime        |
-	|Stop Date              |25 Jan 2012      |datetime        |
+    | Field               | Data        | Control Type |
+    | Was there any AE's? | Yes         | Dropdown     |
+    | Start Date          | 05 Jan 2012 | datetime     |
+    | Stop Date           | 25 Jan 2012 | datetime     |
   And I verify data on Fields in CRF
 	| Field               | Data        | Status Icon        |
 	| Was there any AE's? | Yes         | Requires Signature |

@@ -73,28 +73,18 @@ namespace Medidata.RBT.PageObjects.Rave
             if (nameTD == null)
                 throw new Exception("Can't find field area:" + fieldName);
 
-            //Get the web element containing the content of the field.
-            IWebElement contentElement = GetContentElement(fieldType, nameTD, record);
-
             BaseEDCFieldControl field = null;
             if (fieldType == FieldType.Lab)
             {
-                field = new LabFieldControl(Page, nameTD.Element, contentElement)
-                {
-                    FieldName = fieldName
-                };
+                field = new LabFieldControl(Page, nameTD.Element, fieldName);
             }
             else
             {
-                field = new NonLabFieldControl(Page, nameTD.Element, contentElement)
-                {
-                    FieldName = fieldName
-                };
+                //Get the web element containing the content of the field.
+                IWebElement contentElement = GetContentElement(fieldType, nameTD, record);
+                field = new NonLabFieldControl(Page, nameTD.Element, contentElement, fieldName);
             }
-            if (field != null)
-                return field;
-
-            throw new Exception("Can't find field area:" + fieldName);
+            return field;
         }
 
         /// <summary>
@@ -109,11 +99,28 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>All of the TDs on a page which may contain the field name</returns>
         private SearchableTDs GetSearchableTDs(IPage currentPage, bool wait)
         {
+            //If the lab header row is present, wait for lab elements, if it is not, wait for portrait elements
+            IWebElement labHeaderRow = currentPage.Browser
+                .TryFindElementByXPath("*//table/tbody/tr/td[text() = 'Range Status']/../td[text() = 'Unit']/../td[text() = 'Range']", false);
+
+            ReadOnlyCollection<IWebElement> portraitSearchableTDs;
+            ReadOnlyCollection<IWebElement> labSearchableTDs;
             //Use TryFindElementsWithTextBy instead of TryFindElementsBy when doing the first search to guarantee that the objects have loaded
             //Once we are sure they have loaded, we can do non wait searches for the other TDs
-            ReadOnlyCollection<IWebElement> portraitSearchableTDs = currentPage.Browser.TryFindElementsWithTextBy(By.XPath("//td[@class='crf_rowLeftSide']"));
+            if (labHeaderRow == null)
+            {
+                portraitSearchableTDs = currentPage.Browser.TryFindElementsWithTextBy(By.XPath("//td[@class='crf_rowLeftSide']"), isWait: wait);
+                labSearchableTDs = currentPage.Browser
+                    .TryFindElementsBy(By.XPath("//tr[@class='evenRow' or @class='oddRow' or @class='oddWarning' or @class='evenWarning']/td[2]"), isWait: false);
+            }
+            else
+            {
+                labSearchableTDs = currentPage.Browser
+                    .TryFindElementsWithTextBy(By.XPath("//tr[@class='evenRow' or @class='oddRow' or @class='oddWarning' or @class='evenWarning']/td[2]"), isWait: wait);
+                portraitSearchableTDs = currentPage.Browser.TryFindElementsBy(By.XPath("//td[@class='crf_rowLeftSide']"), isWait: false);
+            }
+
             ReadOnlyCollection<IWebElement> landscapeSearchableTDs = currentPage.Browser.TryFindElementsBy(By.XPath("//tr[@class='breaker']/td"), isWait: false);
-            ReadOnlyCollection<IWebElement> labSearchableTDs = currentPage.Browser.TryFindElementsBy(By.XPath("//tr[@class='evenRow' or @class='oddRow' or @class='oddWarning' or @class='evenWarning']/td[2]"), isWait: false);
             
 
             return new SearchableTDs()
@@ -173,6 +180,11 @@ namespace Medidata.RBT.PageObjects.Rave
                     StringSplitOptions.None)[0]
                 .Trim();
 
+            //If there is an open response (Query, Sticky, or Protocol Deviation) against the field,
+            //the field name ends with \br\br we need to remove these additional characters
+            if (escFieldString.EndsWith("\br\br"))
+                escFieldString = escFieldString.Substring(0, escFieldString.Length - 4);
+
             return escFieldString;
         }
 
@@ -225,8 +237,7 @@ namespace Medidata.RBT.PageObjects.Rave
             else
             {
                 //Get the last log row
-                //Subtract by two because array is zero-indexed and the last row is "Add a new Log Line" row
-                tableRow = tableRows[tableRows.Count - 2];
+                tableRow = tableRows.Where(x => !x.Text.ToLower().Contains("add a new log line") && !x.Text.ToLower().Contains("open query")).Last();
             }
 
             return tableRow.TryFindElementBy(By.XPath("td[" + (nameTD.Index + 1) + "]")); //Need to add 1 to translate 0 index to 1 index
@@ -250,10 +261,6 @@ namespace Medidata.RBT.PageObjects.Rave
                     break;
                 case FieldType.Landscape:
                     contentElement = GetLandscapeContentElement(nameTD, record);
-                    break;
-                case FieldType.Lab:
-                    IWebElement elementTR = nameTD.Element.Parent();
-                    contentElement = elementTR.TryFindElementBy(By.XPath("following-sibling::tr"));
                     break;
             }
 

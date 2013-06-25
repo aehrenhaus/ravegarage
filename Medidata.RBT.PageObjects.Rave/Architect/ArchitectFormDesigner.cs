@@ -392,7 +392,7 @@ namespace Medidata.RBT.PageObjects.Rave
                             SetFieldText(fm.Field, fm.Data);
                             break;
                         }
-                    case ControlType.DropDownList:
+                    case ControlType.DropDown:
                         {
                             ChooseFromDropdown(fm.Field, fm.Data);
                             break;

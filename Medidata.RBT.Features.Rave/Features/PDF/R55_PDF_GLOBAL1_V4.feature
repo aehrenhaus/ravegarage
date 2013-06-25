@@ -90,7 +90,7 @@ And I enter data in CRF and save
 | REVIEW | Male         |                | dropdown     |
 | SIGN   | SUPER USER 1 |                | Signature    |
 #Step 4
-And I place stickies
+And I add stickies
 | Field  | Responder | Text                |
 | STICKY | Site      | StickyTextStandard1 |
 And I edit checkboxes for fields
@@ -122,7 +122,7 @@ And I enter data in CRF and save
 | SIGN   | SUPER USER 1 |                | Signature    |
 #Step 7
 And I open log line 2
-And I place stickies
+And I add stickies
 | Field  | Responder | Text           |
 | Sticky | Site      | StickyTextLog2 |
 And I edit checkboxes for fields
@@ -132,7 +132,7 @@ Then I click button "Save"
 And I take a screenshot
 #Step 8
 And I open log line 1
-And I place stickies
+And I add stickies
 | Field  | Responder | Text           |
 | Sticky | Site      | StickyTextLog1 |
 And I edit checkboxes for fields
@@ -152,7 +152,7 @@ And I enter data in CRF and save
 | REVIEW | Male         |                | dropdown     |
 | SIGN   | SUPER USER 1 |                | Signature    |
 #Step 11
-And I place stickies
+And I add stickies
 | Field  | Responder | Text                  |
 | STICKY | Site      | StickyTextScreening1a |
 And I edit checkboxes for fields
@@ -178,7 +178,7 @@ And I enter data in CRF and save
 | SIGN   | SUPER USER 1 |                | Signature    |
 #Step 14
 And I open log line 1
-And I place stickies
+And I add stickies
 | Field  | Responder | Text                     |
 | Sticky | Site      | StickyTextScreeningLog1a |
 And I edit checkboxes for fields
@@ -188,7 +188,7 @@ Then I click button "Save"
 And I take a screenshot
 #Step 15
 And I open log line 2
-And I place stickies
+And I add stickies
 | Field  | Responder | Text                     |
 | Sticky | Site      | StickyTextScreeningLog2a |
 And I edit checkboxes for fields

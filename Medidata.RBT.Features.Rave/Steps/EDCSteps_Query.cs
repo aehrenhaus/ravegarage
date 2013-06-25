@@ -8,6 +8,7 @@ using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 
 namespace Medidata.RBT.Features.Rave
@@ -28,7 +29,7 @@ namespace Medidata.RBT.Features.Rave
 		public void IVerifyQueryIsNotDisplayedOnLogline____(int logLine, Table table)
 		{
 			var filter = table.CreateInstance<QuerySearchModel>();
-			bool canFind =CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQuery( filter);
+			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindMarking(filter, MarkingType.Query);
 			Assert.IsFalse(canFind, "Query exists");
 		}
 
@@ -41,7 +42,7 @@ namespace Medidata.RBT.Features.Rave
 		public void IVerifyQueryIsDisplayedOnLogline____(int logLine, Table table)
 		{
 			var filter = table.CreateInstance<QuerySearchModel>();
-			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQuery(filter);
+            bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindMarking(filter, MarkingType.Query);
 			Assert.IsTrue(canFind, "Query doesn't exist");
 		}
 
@@ -56,7 +57,7 @@ namespace Medidata.RBT.Features.Rave
             var filters = table.CreateSet<QuerySearchModel>();
             foreach (var filter in filters)
             {
-                canFind = CurrentPage.As<CRFPage>().CanFindQuery(filter);
+                canFind = CurrentPage.As<CRFPage>().CanFindMarking(filter, MarkingType.Query);
             }
             Assert.IsFalse(canFind, "One or More Queries exist");
 		}
@@ -71,7 +72,7 @@ namespace Medidata.RBT.Features.Rave
             var filters = table.CreateSet<QuerySearchModel>();
             foreach (var filter in filters)
             {
-                Assert.IsTrue(CurrentPage.As<CRFPage>().CanFindQuery(filter), 
+                Assert.IsTrue(CurrentPage.As<CRFPage>().CanFindMarking(filter, MarkingType.Query), 
                     "One or More Queries do not exist");
             }
 		}
@@ -87,7 +88,7 @@ namespace Medidata.RBT.Features.Rave
 		public void IVerifyField____HasNoQuery(string fieldNames)
 		{
 			var filter = new QuerySearchModel { Field = fieldNames };
-			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(filter);
+            bool canFind = CurrentPage.As<CRFPage>().CanFindMarking(filter, MarkingType.Query);
 			Assert.IsFalse(canFind, "Queries found");
 		}
 
@@ -100,7 +101,7 @@ namespace Medidata.RBT.Features.Rave
 		public void IVerifyField____HasNoQuery(string fieldNames, int logline)
 		{
 			var filter = new QuerySearchModel { Field = fieldNames };
-			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logline).CanFindQuery(filter);
+            bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logline).CanFindMarking(filter, MarkingType.Query);
 			Assert.IsFalse(canFind, "Queries found");
 		}	
 
@@ -117,8 +118,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)"" on log line (\d+)")]
 		public void IVerifyQueryWithMesage____IsNotDisplayedOnField____OnLogline____(string message, string fieldNames, int logLine)
 		{
-			var filter = new QuerySearchModel { Field = fieldNames, QueryMessage = message };
-			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQuery(filter);
+            var filter = new QuerySearchModel { Field = fieldNames, Message = message };
+            bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindMarking(filter, MarkingType.Query);
 			Assert.IsFalse(canFind, "Can find query");
 		}
 
@@ -131,8 +132,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is displayed on Field ""([^""]*)"" on log line (\d+)")]
 		public void IVerifyQueryWithMesage____IsDisplayedOnField____OnLogline____(string message, string fieldNames, int logLine)
 		{
-			var filter = new QuerySearchModel { Field = fieldNames, QueryMessage = message };
-			bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindQuery(filter);
+            var filter = new QuerySearchModel { Field = fieldNames, Message = message };
+            bool canFind = CurrentPage.As<CRFPage>().OpenLogline(logLine).CanFindMarking(filter, MarkingType.Query);
 			Assert.IsTrue(canFind, "Can't find query");
 		}
 
@@ -145,8 +146,8 @@ namespace Medidata.RBT.Features.Rave
 		public void IVerifyQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
 		{
 			var page = CurrentPage.As<CRFPage>();
-			var filter = new QuerySearchModel { Field = fieldNames, QueryMessage = message };
-			bool canFind = page.CanFindQuery(filter);
+            var filter = new QuerySearchModel { Field = fieldNames, Message = message };
+            bool canFind = page.CanFindMarking(filter, MarkingType.Query);
 			Assert.IsTrue(canFind, "Can't find query");
 		}
 
@@ -158,8 +159,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Query with message ""([^""]*)"" is not displayed on Field ""([^""]*)""")]
 		public void IVerifyQueryWithMessage____IsNotDisplayedOnField____(string message, string fieldNames)
 		{
-			var filter = new QuerySearchModel { Field = fieldNames, QueryMessage = message };
-			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(filter);
+            var filter = new QuerySearchModel { Field = fieldNames, Message = message };
+            bool canFind = CurrentPage.As<CRFPage>().CanFindMarking(filter, MarkingType.Query);
 			Assert.IsFalse(canFind, "Can find query");
 		}
 
@@ -171,8 +172,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Requires Response Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void IVerifyRequiresResponseQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
 		{
-			var filter = new QuerySearchModel { Field = fieldNames, QueryMessage = message,Response =true };
-			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(filter);
+            var filter = new QuerySearchModel { Field = fieldNames, Message = message, Response = true };
+            bool canFind = CurrentPage.As<CRFPage>().CanFindMarking(filter, MarkingType.Query);
 			Assert.IsTrue(canFind, "Can't find Requres Response query");
 		}
 
@@ -184,8 +185,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Not Requires Response Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void IVerifyNotRequiresResponseQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
         {
-			var filter = new QuerySearchModel { Field = fieldNames, QueryMessage = message, Response = false };
-			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(filter);
+            var filter = new QuerySearchModel { Field = fieldNames, Message = message, Response = false };
+            bool canFind = CurrentPage.As<CRFPage>().CanFindMarking(filter, MarkingType.Query);
             Assert.IsTrue(canFind, "Can't find Not Requires Response query");
         }
 
@@ -197,8 +198,8 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify closed Query with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
 		public void IVerifyClosedQueryWithMessage____IsDisplayedOnField____(string message, string fieldNames)
 		{
-			var filter = new QuerySearchModel { Field = fieldNames, QueryMessage = message ,Closed = true};
-			bool canFind = CurrentPage.As<CRFPage>().CanFindQuery(filter);
+            var filter = new QuerySearchModel { Field = fieldNames, Message = message, Closed = true };
+            bool canFind = CurrentPage.As<CRFPage>().CanFindMarking(filter, MarkingType.Query);
 			Assert.IsTrue(canFind, "Can't find closed query");
 		}
 		#endregion
@@ -261,7 +262,7 @@ namespace Medidata.RBT.Features.Rave
 		public void IAnswerTheQuery(Table table)
 		{
 			var model = table.CreateInstance<QuerySearchModel>();
-			CurrentPage.As<CRFPage>().AnswerQuery(model.QueryMessage, model.Field, model.Answer);
+            CurrentPage.As<CRFPage>().AnswerQuery(model.Message, model.Field, model.Answer);
 		}
 
         /// <summary>
@@ -311,5 +312,18 @@ namespace Medidata.RBT.Features.Rave
 		}
 
 		#endregion
-	}
+
+        #region Open query
+        /// <summary>
+        /// Place a sticky against a field
+        /// </summary>
+        /// <param name="table">The field information to place the sticky against and the sticky information</param>
+        [StepDefinition(@"I add queries")]
+        public void ThenIPlaceQueries(Table table)
+        {
+            List<MarkingModel> queryInfo = table.CreateSet<MarkingModel>().ToList();
+            CurrentPage.As<CRFPage>().PlaceMarkings(queryInfo, MarkingType.Query);
+        }
+        #endregion
+    }
 }

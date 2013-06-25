@@ -11,7 +11,7 @@ namespace Medidata.RBT.PageObjects.Rave
 	/// </summary>
 	public enum ControlType
 	{
-		Default,//must be the first one. This option is for those unknow type of control
+		Default,//must be the first one. This option is for unknown control types
 
 		[Description("checkbox"), Suffix("CRFControlC")]
 		CheckBox,
@@ -19,8 +19,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		[Description("datetime"), Suffix("")]
 		Datetime,
 
-		[Description("dropdown"), Suffix("DD")]
-		DropDownList,
+        [Description("dropdown"), Suffix("DD")]
+		DropDown,
 
         [Description("dynamic search list"), Suffix("C_CRFSL")]
 		DynamicSearchList,

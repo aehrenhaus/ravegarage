@@ -34,7 +34,7 @@ Given I select Form "Standard Form"
 	#	|Row	|Field		|VarOID		|Format					|Dictionary		|Unit Dictionary	|Field Name		|Field OID		|Active		|Is Visible Field 	|Field Label	|Control Type			|Default Value 	|Field Help Text	|
 	#	|1		|Field 1	|VAROID1	|$25					|				| 					|VAROID1		|VAROID1		|true		|true				|Field Label 1 	|Text					|				|					|
 	#	|2		|Field 2	|VAROID2	|dd mm yyyy hh:nn:ss	|				| 					|VAROID2		|VAROID2		|true		|true				|Field Label 2 	|DateTime				|				|Help				|
-	#	|3		|Field 3	|VAROID3	|$1						|Dictionary 1	| 					|VAROID3		|VAROID3		|true		|true				|Field Label 3 	|DropDownList			|				|					|
+	#	|3		|Field 3	|VAROID3	|$1						|Dictionary 1	| 					|VAROID3		|VAROID3		|true		|true				|Field Label 3 	|Dropdown   			|				|					|
 	#	|4		|Field 4	|VAROID4	|$10					|				| 					|VAROID4		|VAROID4		|true		|true				|Field Label 4 	|Dynamic SearchList		|				|					|
 	#	|5		|Field 5	|VAROID5	|$200					|				| 					|VAROID5		|VAROID5		|true		|true				|Field Label 5 	|File Upload			|				|					|
 	#	|6		|Field 6	|VAROID6	|$250					|				| 					|VAROID6		|VAROID6		|true		|true				|Field Label 6 	|LongText				|				|					|

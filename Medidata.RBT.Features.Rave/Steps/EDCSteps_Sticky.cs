@@ -22,11 +22,25 @@ namespace Medidata.RBT.Features.Rave
         /// Place a sticky against a field
         /// </summary>
         /// <param name="table">The field information to place the sticky against and the sticky information</param>
-        [StepDefinition(@"I place stickies")]
-        public void ThenIPlaceStickies(Table table)
+        [StepDefinition(@"I add stickies")]
+        public void ThenIAddStickies(Table table)
         {
-            List<StickyModel> stickyInfo = table.CreateSet<StickyModel>().ToList();
-            CurrentPage.As<CRFPage>().PlaceStickies(stickyInfo);
+            List<MarkingModel> stickyInfo = table.CreateSet<MarkingModel>().ToList();
+            CurrentPage.As<CRFPage>().PlaceMarkings(stickyInfo, MarkingType.Sticky);
+        }
+
+        /// <summary>
+        /// Verify sticky is placed on field
+        /// </summary>
+        /// <param name="message">The message the sticky displays</param>
+        /// <param name="fieldName">The name of the field which contains the sticky</param>
+        [StepDefinition(@"I verify Sticky with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
+        public void IVerifyStickyWithMessage____IsDisplayedOnField____(string message, string fieldName)
+        {
+            var page = CurrentPage.As<CRFPage>();
+            var filter = new ResponseSearchModel { Field = fieldName, Message = message };
+            bool canFind = page.CanFindMarking(filter, MarkingType.Sticky);
+            Assert.IsTrue(canFind, "Can't find sticky!");
         }
 	}
 }

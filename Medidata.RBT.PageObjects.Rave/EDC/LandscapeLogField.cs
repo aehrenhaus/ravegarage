@@ -5,9 +5,13 @@ using System.Text;
 using OpenQA.Selenium;
 using System.Text.RegularExpressions;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
+    //TODO: Remove this class and roll it into BaseEDCFieldControl
+    //Anything that you want to add to this class will be better suited in NonLabFieldControl
+    [Obsolete]
     public class LandscapeLogField
         : BaseEDCFieldControl
     {
@@ -19,6 +23,13 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region Properties
         public IWebElement RecordRow { get; set; }
+        public override IEnumerable<IWebElement> ResponseTables
+        {
+            get
+            {
+                throw new NotSupportedException();
+            }
+        }
         #endregion
 
         #region CONSTRUCTORS
@@ -78,7 +89,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.RadioButton:
                 case ControlType.RadioButtonVertical:
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
-                case ControlType.DropDownList:
+                case ControlType.DropDown:
                 case ControlType.DynamicSearchList:
                     IWebElement topRowCell = this.Page.Browser.TryFindElementBy(
                         By.XPath("//tr[@class='breaker']//td//*[contains(text(),'" + fieldName + "')]"));
@@ -169,7 +180,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             return result;
         }
-        public override void Click()
+        public void Click()
         {
             string prefix = String.Empty;
             if (this.Page is DDEPage)
@@ -189,7 +200,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.Datetime:
                 case ControlType.RadioButton:
                 case ControlType.RadioButtonVertical:
-                case ControlType.DropDownList:
+                case ControlType.DropDown:
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
                     string contolId = String.Format("_ctl0_Content_{0}_log_log_CF{1}_{2}_C_CRFSL", prefix, m_columnId.ToString(), m_rowId.ToString()); 
@@ -200,7 +211,7 @@ namespace Medidata.RBT.PageObjects.Rave
                     throw new NotImplementedException("Unknown control type:" + m_controlType);
             }
         }
-		public override bool IsDroppedDown()
+		public bool IsDroppedDown()
         {
             string prefix = String.Empty;
             if (this.Page is DDEPage)
@@ -221,7 +232,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.RadioButton:
                 case ControlType.RadioButtonVertical:
                     throw new NotSupportedException("Not supported control type:" + m_controlType);
-                case ControlType.DropDownList:
+                case ControlType.DropDown:
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
                 case ControlType.DynamicSearchList:
                     string contolId = String.Format("_ctl0_Content_{0}_log_log_CF{1}_{2}_C_CRFSL_PickListBox", prefix, m_columnId.ToString(), m_rowId.ToString()); 
@@ -247,7 +258,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.RadioButton:
                 case ControlType.RadioButtonVertical:
                     throw new NotImplementedException("Not implemented yet for :" + m_controlType);
-                case ControlType.DropDownList:
+                case ControlType.DropDown:
                     tableCell = this.Page.Browser.TryFindElementByPartialID("_ctl0_Content_R_log_log_CF" + m_columnId.ToString() + "_" + m_rowId.ToString());
                     tableCell.EnhanceAs<Dropdown>().SelectByText(text);
                     break;
@@ -263,18 +274,6 @@ namespace Medidata.RBT.PageObjects.Rave
         
         }
         public override bool HasDataEntered(string text) { throw new NotImplementedException(); }
-        public override OpenQA.Selenium.IWebElement FindQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public override void PlaceSticky(string responder, string text)
-        {
-            throw new NotImplementedException();
-        }
-        public override void AddProtocolDeviation(string pdClass, string pdCode, string text)
-        {
-            throw new NotImplementedException();
-        }
-        public override void AnswerQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public override void CloseQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
-        public override void CancelQuery(QuerySearchModel filter) { throw new NotImplementedException(); }
         public override void Check(string checkName) { throw new NotImplementedException(); }
         public override void Uncheck(string checkName) { throw new NotImplementedException(); }
 

@@ -235,19 +235,22 @@ namespace Medidata.RBT.SeleniumExtension
         /// <param name="by">What elements we are looking for</param>
         /// <param name="timeOutSecond">How long should we wait when searching</param>
         /// <returns>All of the elements matching the parameters that contain some text</returns>
-        public static ReadOnlyCollection<IWebElement> TryFindElementsWithTextBy(this ISearchContext context, By by, int? timeOutSecond = null)
+        public static ReadOnlyCollection<IWebElement> TryFindElementsWithTextBy(this ISearchContext context, By by, bool? isWait = null, int? timeOutSecond = null)
         {
             ReadOnlyCollection<IWebElement> eles = null;
             timeOutSecond = timeOutSecond ?? SeleniumConfiguration.Default.WaitElementTimeout;
 
             try
             {
-                eles = waitForElements(context, drv =>
-                {
-                    ReadOnlyCollection<IWebElement> elementsOnPage = new ReadOnlyCollection<IWebElement>(context.FindElements(by).Where(x => !String.IsNullOrEmpty(x.Text.Trim())).ToList());
-                    return elementsOnPage.Count() > 0 ? elementsOnPage : null;
-                }, null, timeOutSecond: (int?)Math.Round(timeOutSecond.Value * 1.2)); 
-                //Multiply by 1.2 to increase the wait time by 20% to avoid intermittent issues finding EDC fields
+                if (isWait.Value)
+                    eles = waitForElements(context, drv =>
+                    {
+                        ReadOnlyCollection<IWebElement> elementsOnPage = new ReadOnlyCollection<IWebElement>(context.FindElements(by).Where(x => !String.IsNullOrEmpty(x.Text.Trim())).ToList());
+                        return elementsOnPage.Count() > 0 ? elementsOnPage : null;
+                    }, null, timeOutSecond: (int?)Math.Round(timeOutSecond.Value * 1.2)); 
+                    //Multiply by 1.2 to increase the wait time by 20% to avoid intermittent issues finding EDC fields
+                else
+                    eles = new ReadOnlyCollection<IWebElement>(context.FindElements(by).Where(x => !String.IsNullOrEmpty(x.Text.Trim())).ToList());
             }
             catch
             {

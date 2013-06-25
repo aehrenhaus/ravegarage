@@ -8,42 +8,61 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using OpenQA.Selenium.Support.UI;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class NonLabFieldControl : BaseEDCFieldControl
 	{
+        public override IEnumerable<IWebElement> ResponseTables
+        {
+            get
+            {
+                return NameElement.FindElements(By.XPath(".//td[@class='crf_preText']/table"));
+            }
+        }
+
         /// <summary>
         /// Create a NonLabFieldControl which will contain the information about any non-lab field
         /// </summary>
         /// <param name="page">The current page</param>
-        /// <param name="LeftSideOrTopTD">The TD containing the field name</param>
-        /// <param name="RightSideOrBottomTD">The TD containing the field data</param>
-		public NonLabFieldControl(IPage page, IWebElement LeftSideOrTopTD, IWebElement RightSideOrBottomTD)
+        /// <param name="leftSideOrTopTD">The TD containing the field name</param>
+        /// <param name="rightSideOrBottomTD">The TD containing the field data</param>
+		public NonLabFieldControl(IPage page, IWebElement leftSideOrTopTD, IWebElement rightSideOrBottomTD, string fieldName)
 			: base(page)
 		{
-			this.FieldInformationTD = LeftSideOrTopTD.EnhanceAs<EnhancedElement>();
-			this.FieldDataTD = RightSideOrBottomTD.EnhanceAs<EnhancedElement>();
-            this.FieldControlContainer = RightSideOrBottomTD.GetAttribute("style").Contains("padding-left:4px;") ?
-                RightSideOrBottomTD : RightSideOrBottomTD.TryFindElementBy(By.XPath(".//td[@style='padding-left:4px;']"), false);
-
-			FieldName = "";
+            IWebElement rightSideOrBottomTR = rightSideOrBottomTD.Parent();
+			NameElement = leftSideOrTopTD.EnhanceAs<EnhancedElement>();
+			FieldDataGeneric = rightSideOrBottomTR.EnhanceAs<EnhancedElement>();
+            FieldDataSpecific = rightSideOrBottomTD.GetAttribute("style").Contains("padding-left:4px;") ?
+                rightSideOrBottomTD.EnhanceAs<EnhancedElement>()
+                : rightSideOrBottomTD.TryFindElementBy(By.XPath(".//td[@style='padding-left:4px;']"), isWait: false).EnhanceAs<EnhancedElement>();
+            FieldName = fieldName;
+            QueryArea = FindQueryArea(rightSideOrBottomTR);
 		}
+        #region IEDCFieldControl
 
-		private EnhancedElement FieldInformationTD;
-		private EnhancedElement FieldDataTD;
-
-		public string FieldName { get; set; }
-	
-		#region IEDCFieldControl
+        private EnhancedElement FindQueryArea(IWebElement rightSideOrBottomTR)
+        {
+            if(rightSideOrBottomTR.Text.Contains("Open Query"))
+                return rightSideOrBottomTR.EnhanceAs<EnhancedElement>();
+            else
+            {
+                //If the field is a landscape form, it is possible that the OpenQuery row is the next row, checking for that case
+                IWebElement possibleNextRowContainsQuery = rightSideOrBottomTR.TryFindElementBy(By.XPath("following-sibling::tr"), isWait: false);
+                if(possibleNextRowContainsQuery != null)
+                    return possibleNextRowContainsQuery.EnhanceAs<EnhancedElement>();
+            }
+            return null;
+        }
 
 		public override AuditsPage ClickAudit(bool isRecord = false)
 		{
             IWebElement auditButton = null;
             if(isRecord)
-                auditButton = FieldDataTD.Parent().TryFindElementByPartialID("DataStatusHyperlink");
+                auditButton = FieldDataGeneric.TryFindElementByPartialID("DataStatusHyperlink");
             else
-                auditButton = FieldDataTD.TryFindElementByPartialID("DataStatusHyperlink");
+                auditButton = FieldDataGeneric.TryFindElementByPartialID("DataStatusHyperlink");
 			auditButton.Click();
 			return new AuditsPage();
 		}
@@ -58,7 +77,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (partialID.Length > 0)
             {     
-                Checkbox checkbox = FieldDataTD.CheckboxByID(partialID);
+                Checkbox checkbox = FieldDataGeneric.CheckboxByID(partialID);
                 checkbox.Check();
             }
         }
@@ -73,27 +92,9 @@ namespace Medidata.RBT.PageObjects.Rave
 
             if (partialID.Length > 0)
             {
-                Checkbox checkbox = FieldDataTD.CheckboxByID(partialID);
+                Checkbox checkbox = FieldDataGeneric.CheckboxByID(partialID);
                 checkbox.Uncheck();
             }
-        }
-
-        /// <summary>
-        /// Returns in verification checkbox is enabled or disabled
-        /// </summary>
-        /// <returns></returns>
-        public override bool IsVerificationRequired()
-        {
-            return (FieldDataTD.CheckboxByID("VerifyBox") as Checkbox).Enabled;
-        }
-
-        /// <summary>
-        /// Returns if review checkbox is enabled or disabled
-        /// </summary>
-        /// <returns>True if review checkbox is there, False if it is not there.</returns>
-        public override bool IsReviewRequired()
-        {
-            return FieldDataTD.CheckboxByID("ReviewGroupBox").EnhanceAs<Checkbox>().Enabled;
         }
 
         /// <summary>
@@ -103,160 +104,8 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>True if inactive, false if active</returns>
         public override bool IsInactive(string text = "")
         {
-            IWebElement strikeoutElement = FieldDataTD.TryFindElementBy(By.XPath("//s"));
+            IWebElement strikeoutElement = FieldDataGeneric.TryFindElementBy(By.XPath("//s"));
             return !(strikeoutElement == null);
-        }
-
-        /// <summary>
-        /// Check the review checkbox next to the field
-        /// </summary>
-        public override void CheckReview()
-        {
-            FieldDataTD.CheckboxByID("ReviewGroupBox").EnhanceAs<Checkbox>().Check();
-        }
-
-		public override IWebElement FindQuery(QuerySearchModel filter)
-		{
-
-			var queryTables = FieldInformationTD.FindElements(
-					By.XPath(".//td[@class='crf_preText']/table"));
-			
-			IWebElement queryTable = null;
-			foreach (var tmpQueryTable in queryTables)
-			{
-                //If the filter has a specific QueryMessage, 
-                //the existence of that message becomes a required condition
-				if (filter.QueryMessage != null
-                    && !tmpQueryTable.Text.Contains(filter.QueryMessage))
-					continue;
-
-				var hasDropdown = tmpQueryTable.Dropdowns().Count == 1;
-				var hasCancelCheck = tmpQueryTable.Checkboxes().Count == 1;
-				var hasReplyTextbox = tmpQueryTable.Textboxes().Count == 1;
-
-
-				if (filter.Closed != null)
-				{
-					bool actualClosed = !hasDropdown && !hasCancelCheck && !hasReplyTextbox;
-					if (filter.Closed == true && !actualClosed)
-						continue;
-					if (filter.Closed == false && actualClosed)
-						continue;
-				}
-
-
-				if (filter.Response != null)
-				{
-					bool actualRequireResponse = hasReplyTextbox;
-					if (filter.Response == true && !actualRequireResponse)
-						continue;
-					if (filter.Response == false && actualRequireResponse)
-						continue;
-				}
-
-				//having the dropdown means requires manual close
-				if (filter.ManualClose != null)
-				{
-					bool actualRequireClose = hasDropdown;
-					if (filter.ManualClose == true && !actualRequireClose)
-						continue;
-					if (filter.ManualClose == false && actualRequireClose)
-						continue;
-				}
-
-				var answerTD = tmpQueryTable.TryFindElementBy(By.XPath("./tbody/tr[2]/td[2]"), isWait: false);
-
-				if (filter.Answered != null)
-				{
-					if (filter.Answered == true && (answerTD == null || String.IsNullOrEmpty(answerTD.Text)))
-						continue;
-
-					if (filter.Answered == false)
-						if (answerTD != null && answerTD.Text.Trim() != "")
-							continue;
-				}
-
-
-				if (filter.Answer != null)
-				{
-					if (!(answerTD != null && answerTD.Text.Trim() == filter.Answer))
-						continue;
-				}
-
-				queryTable = tmpQueryTable;
-			}
-
-			return queryTable;
-	
-		}
-
-		public override void AnswerQuery(QuerySearchModel filter)
-		{
-			string answer = filter.Answer;
-			filter.Answer = null;
-			FindQuery(filter).Textboxes()[0].SetText(answer);
-		}
-
-		public override void CloseQuery(QuerySearchModel filter)
-		{
-			FindQuery(filter).Dropdowns()[0].SelectByText("Close Query");
-		}
-
-
-		public override void CancelQuery(QuerySearchModel filter)
-		{
-			FindQuery(filter).Checkboxes()[0].Check();
-		}
-
-        public override void PlaceSticky(string responder, string text)
-        {
-            IWebElement markingButton = FieldDataTD.TryFindElementByPartialID("MarkingButton");
-            markingButton.Click();
-
-            RefreshControl();
-            FieldInformationTD.TryFindElementsBy(By.XPath(".//select"))[0].EnhanceAs<Dropdown>().SelectByText("Place Sticky");
-            RefreshControl();
-            FieldInformationTD.TryFindElementsBy(By.XPath(".//select"))[1].EnhanceAs<Dropdown>().SelectByText(responder);
-            RefreshControl();
-            FieldInformationTD.TryFindElementBy(By.XPath(".//textarea")).EnhanceAs<Textbox>().SetText(text);
-        }
-
-        /// <summary>
-        /// Add a Protocol Deviation
-        /// </summary>
-        /// <param name="pdClass">Protocol Deviation class</param>
-        /// <param name="pdCode">Protocol Deviation code</param>
-        /// <param name="text">Protocol Deviation text</param>
-        public override void AddProtocolDeviation(string pdClass, string pdCode, string text)
-        {
-            if (FieldDataTD.Class != string.Empty)
-            {
-                IWebElement markingButton = FieldDataTD.TryFindElementByPartialID("MarkingButton");
-                markingButton.Click();
-                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[0].EnhanceAs<Dropdown>().SelectByText("Protocol Deviation");
-                Page.Browser.TryFindElementBy(By.XPath(".//textarea")).EnhanceAs<Textbox>().SetText(text);
-                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[1].EnhanceAs<Dropdown>().SelectByText(pdCode);
-                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[2].EnhanceAs<Dropdown>().SelectByText(pdClass);
-             }
-            else
-            {
-                IWebElement markingLoglineButton = FieldDataTD.Ancestor("tbody").Children()[1].TryFindElementByPartialID("MarkingButton");
-                markingLoglineButton.Click();
-                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[1].EnhanceAs<Dropdown>().SelectByText("Protocol Deviation");
-                Page.Browser.TryFindElementBy(By.XPath(".//textarea")).EnhanceAs<Textbox>().SetText(text);
-                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[2].EnhanceAs<Dropdown>().SelectByText(pdCode);
-                Page.Browser.TryFindElementsBy(By.XPath(".//select"))[3].EnhanceAs<Dropdown>().SelectByText(pdClass);
-            }
-        }
-
-        /// <summary>
-        /// Refresh the control on a page after a change has been made to invalidate it.
-        /// </summary>
-        public override void RefreshControl()
-        {
-            NonLabFieldControl nonLabFieldControl = (NonLabFieldControl)Page.As<CRFPage>().FindField(FieldName + "\br\br");
-            FieldInformationTD = nonLabFieldControl.FieldInformationTD;
-            FieldDataTD = nonLabFieldControl.FieldDataTD;
         }
 		#endregion
 

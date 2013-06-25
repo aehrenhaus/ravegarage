@@ -8,95 +8,29 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using OpenQA.Selenium.Support.UI;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
     public class LabFieldControl : BaseEDCFieldControl
 	{
-		public LabFieldControl(IPage page, IWebElement MainTD, IWebElement queriesTR)
+        public override IEnumerable<IWebElement> ResponseTables
+        {
+            get
+            {
+                return QueryArea.FindElements(By.XPath("./td[2]/table"));
+            }
+        }
+
+		public LabFieldControl(IPage page, IWebElement mainTD, string fieldName)
 			: base(page)
 		{
-			this.MainTD = MainTD.EnhanceAs<EnhancedElement>();
-            this.QueriesTR = queriesTR.EnhanceAs<EnhancedElement>();
-			this.FieldControlContainer = MainTD.Parent();
-		}
-
-		/// <summary>
-		/// This is the TD that has class 'crf_rowLeftSide'
-		/// </summary>
-		private EnhancedElement MainTD;
-		private EnhancedElement QueriesTR;
-
-        public string FieldName { get; set; }
-
-		public override IWebElement FindQuery(QuerySearchModel filter)
-		{
-		
-			//each table is a query
-			var queryTables = QueriesTR.FindElements(By.XPath("./td[2]/table"));
-			IWebElement queryTable = null;
-
-			foreach (var tmpQueryTable in queryTables)
-			{
-				if (filter.QueryMessage != null && tmpQueryTable.Text.LastIndexOf(filter.QueryMessage) == -1)
-					continue;
-
-				var hasDropdown = tmpQueryTable.Dropdowns().Count == 1;
-				var hasCancelCheck = tmpQueryTable.Checkboxes().Count == 1;
-				var hasReplyTextbox = tmpQueryTable.Textboxes().Count == 1;
-
-
-				if (filter.Closed != null)
-				{
-					bool actualClosed = !hasDropdown && !hasCancelCheck && !hasReplyTextbox;
-					if (filter.Closed == true && !actualClosed)
-						continue;
-					if (filter.Closed == false && actualClosed)
-						continue;
-				}
-
-
-				if (filter.Response != null)
-				{
-					bool actualRequireResponse = hasReplyTextbox;
-					if (filter.Response == true && !actualRequireResponse)
-						continue;
-					if (filter.Response == false && actualRequireResponse)
-						continue;
-				}
-
-				//having the dropdown means requires manual close
-				if (filter.ManualClose != null)
-				{
-					bool actualRequireClose = hasDropdown;
-					if (filter.ManualClose == true && !actualRequireClose)
-						continue;
-					if (filter.ManualClose == false && actualRequireClose)
-						continue;
-				}
-
-				var answerTD = tmpQueryTable.TryFindElementBy(By.XPath("./tbody/tr[2]/td[2]"));
-
-				if (filter.Answered != null)
-				{
-					if (filter.Answered == true && answerTD.Text.Trim() == "")
-						continue;
-
-					if (filter.Answered == false)
-						if (answerTD != null && answerTD.Text.Trim() != "")
-							continue;
-				}
-
-
-				if (filter.Answer != null)
-				{
-					if (!(answerTD != null && answerTD.Text.Trim() == filter.Answer))
-						continue;
-				}
-
-				queryTable = tmpQueryTable;
-			}
-			return queryTable;
+            IWebElement mainTR = mainTD.Parent();
+			NameElement = mainTD.EnhanceAs<EnhancedElement>();
+            FieldDataSpecific = mainTR.EnhanceAs<EnhancedElement>();
+            QueryArea = mainTR.TryFindElementBy(By.XPath("following-sibling::tr")).EnhanceAs<EnhancedElement>();
+            FieldDataGeneric = mainTR.EnhanceAs<EnhancedElement>();
+            FieldName = fieldName;
 		}
 
         /// <summary>
@@ -120,12 +54,12 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>The td element associated with the text passed in</returns>
         private IWebElement GetTDElement(string text)
         {
-            IWebElement logTable = FieldControlContainer.Parent().Parent().Parent().Parent().FindElement(By.Id("log"));
+            IWebElement logTable = FieldDataSpecific.Parent().Parent().Parent().Parent().FindElement(By.Id("log"));
             List<IWebElement> trs = logTable.FindElements(By.XPath("tbody/tr")).ToList();
             List<IWebElement> topRowTds = trs.FirstOrDefault().FindElements(By.XPath("td")).ToList();
             int tableCellColumn;
             for (tableCellColumn = 0; tableCellColumn < topRowTds.Count(); tableCellColumn++)
-                if (topRowTds[tableCellColumn].Text == FieldControlContainer.Text)
+                if (topRowTds[tableCellColumn].Text == FieldDataSpecific.Text)
                     break;
 
             foreach (IWebElement tr in trs)
@@ -151,11 +85,11 @@ namespace Medidata.RBT.PageObjects.Rave
 
         internal bool VerifyData(LabRangeModel field)
         {
-            return VerifyData(MainTD, field.Data, "Data") &&
-                VerifyData(MainTD, field.Unit, "Unit") &&
-                VerifyData(MainTD, field.RangeStatus, "RangeStatus") &&
-                VerifyData(MainTD, field.StatusIcon, "StatusIcon") &&
-                VerifyData(MainTD, field.Range, "Range");
+            return VerifyData(NameElement, field.Data, "Data") &&
+                VerifyData(NameElement, field.Unit, "Unit") &&
+                VerifyData(NameElement, field.RangeStatus, "RangeStatus") &&
+                VerifyData(NameElement, field.StatusIcon, "StatusIcon") &&
+                VerifyData(NameElement, field.Range, "Range");
         }
 
         private bool VerifyData(EnhancedElement MainTD, string text, string verificationType)
@@ -182,23 +116,23 @@ namespace Medidata.RBT.PageObjects.Rave
             }
 			
             // unique condition when Unit select dropdown is visible and throws off the data verification.
-			if (verificationType.Equals("Unit") && FieldControlContainer.FindElements(By.TagName("select")).Count > 0 && text.Trim().Equals(""))
+			if (verificationType.Equals("Unit") && FieldDataSpecific.FindElements(By.TagName("select")).Count > 0 && text.Trim().Equals(""))
                 return true;
 
-			var el = FieldControlContainer.FindElements(By.XPath("./td"))[elementIndex];
+			var el = FieldDataSpecific.FindElements(By.XPath("./td"))[elementIndex];
             return (el.Text.Trim().Equals(text.Trim()));
         }
 
         private bool VerifyRangeStatus(EnhancedElement MainTD, string statusText)
         {
             if (statusText.Equals(""))
-                return !(FieldControlContainer.FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains("/Img/") && (FieldControlContainer.FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains(".gif")));
-            return FieldControlContainer.FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains(StatusIconPathLookup(statusText));
+                return !(FieldDataSpecific.FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains("/Img/") && (FieldDataSpecific.FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains(".gif")));
+            return FieldDataSpecific.FindElements(By.XPath("./td"))[4].GetInnerHtml().Contains(StatusIconPathLookup(statusText));
         }
 
         private bool VerifyStatus(EnhancedElement MainTD, string statusText)
         {
-            return FieldControlContainer.FindElements(By.XPath("./td"))[7].GetInnerHtml().Contains(StatusIconPathLookup(statusText));
+            return FieldDataSpecific.FindElements(By.XPath("./td"))[7].GetInnerHtml().Contains(StatusIconPathLookup(statusText));
         }
 
     }

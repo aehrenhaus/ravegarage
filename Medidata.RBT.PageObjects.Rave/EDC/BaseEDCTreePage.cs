@@ -24,7 +24,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			return TR;
 		}
 
-		public BaseEDCPage ClickModify()
+        public BaseEDCPage ClickModify()
 		{
 			IWebElement editButton = Browser.TryFindElementByPartialID("header_SG_PencilButton");
 			if (editButton == null)

@@ -5,10 +5,9 @@ using System.Text;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class QueryCancelModel
+    public class ResponseSearchModel
 	{
-		public string Field { set; get; }
-		public string QueryMessage { set; get; }
-
+        public string Field { set; get; }
+		public string Message { set; get; }
 	}
 }

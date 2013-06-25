@@ -41,11 +41,11 @@ And I take a screenshot
 And I select Form "ELIGMIXEDPORT"
 And I take a screenshot
 When I enter data in CRF
-  | Field    | Data                          | Control Type  |
-  |CRITNUM   |Carfilzomib and dexamethasone  |dropdownlist   |
-  |ELCRITYN  |Adverse Event	                 |radiobutton    |
-  |ELIGAM2   |QD X 2                         |dropdownlist   |     	
-  |ELPRCOL   |Original	                     |dropdownlist   |
+  | Field    | Data                          | Control Type |
+  | CRITNUM  | Carfilzomib and dexamethasone | Dropdown     |
+  | ELCRITYN | Adverse Event                 | radiobutton  |
+  | ELIGAM2  | QD X 2                        | Dropdown     |
+  | ELPRCOL  | Original                      | Dropdown     |
 And I take a screenshot
 When I click drop button on dynamic search list "COHORT"
 And I wait for 3 seconds
@@ -77,10 +77,10 @@ And I select Form "ELIGMIXEDLAND"
 And I take a screenshot
 When I enter data in CRF
   | Field     | Data                      | Control Type |
-  | CRITNUM2  | Velcade and dexamethasone | dropdownlist |
+  | CRITNUM2  | Velcade and dexamethasone | Dropdown     |
   | ELCRITYN2 | Death                     | radiobutton  |
-  | ELIGAM3   | QD X 5                    | dropdownlist |
-  | ELPRCOL2  | Amendment 1               | dropdownlist |
+  | ELIGAM3   | QD X 5                    | Dropdown     |
+  | ELPRCOL2  | Amendment 1               | Dropdown     |
 And I take a screenshot
 When I click drop button on dynamic search list "COHORT2"
 And I wait for 3 seconds
@@ -111,11 +111,11 @@ And I take a screenshot
 And I select Form "ELIGLOGPORT"
 And I take a screenshot
 When I enter data in CRF
-  | Field     | Data                          | Control Type  |
-  |CRITNUM3   |Carfilzomib and dexamethasone  |dropdownlist   |
-  |ELCRITYN3  |Lost to Follow-up	          |radiobutton    |
-  |ELIGAM4    |QD X 2                         |dropdownlist   |     	
-  |ELPRCOL3   |Amendment 2	                  |dropdownlist   |
+  | Field     | Data                          | Control Type |
+  | CRITNUM3  | Carfilzomib and dexamethasone | Dropdown     |
+  | ELCRITYN3 | Lost to Follow-up             | radiobutton  |
+  | ELIGAM4   | QD X 2                        | Dropdown     |
+  | ELPRCOL3  | Amendment 2                   | Dropdown     |
 And I take a screenshot
 When I click drop button on dynamic search list "COHORT3"
 And I wait for 3 seconds
@@ -148,11 +148,11 @@ And I take a screenshot
 # below is wrong!
 When I open log line 1
 And I enter data in CRF
-  | Field     | Data                         | Control Type  |
-  |CRITNUM4   |Velcade and dexamethasone     |dropdownlist   |
-  |ELCRITYN4  |Patient withdrew consent	     |radiobutton    |
-  |ELIGAM5    |QD X 5                        |dropdownlist   |     	
-  |ELPRCOL4   |Amendment 2	                 |dropdownlist   |
+  | Field     | Data                      | Control Type |
+  | CRITNUM4  | Velcade and dexamethasone | Dropdown     |
+  | ELCRITYN4 | Patient withdrew consent  | radiobutton  |
+  | ELIGAM5   | QD X 5                    | Dropdown     |
+  | ELPRCOL4  | Amendment 2               | Dropdown     |
 And I take a screenshot
 When I click drop button on dynamic search list "COHORT4" in log line 1
 And I wait for 3 seconds
@@ -183,11 +183,11 @@ And I take a screenshot
 And I select Form "ELIGSTANDARD"
 And I take a screenshot
 When I enter data in CRF
-  | Field     | Data                          | Control Type  |
-  |CRITNUM5   |Carfilzomib and dexamethasone  |dropdownlist   |
-  |ELCRITYN5  |Other	                      |radiobutton    |
-  |ELIGAM6    |QD X 2                         |dropdownlist   |     	
-  |ELPRCOL5   |Amendment 1	                  |dropdownlist   |
+  | Field     | Data                          | Control Type |
+  | CRITNUM5  | Carfilzomib and dexamethasone | Dropdown     |
+  | ELCRITYN5 | Other                         | radiobutton  |
+  | ELIGAM6   | QD X 2                        | Dropdown     |
+  | ELPRCOL5  | Amendment 1                   | Dropdown     |
 And I take a screenshot
 When I click drop button on dynamic search list "COHORT5"
 And I wait for 3 seconds
