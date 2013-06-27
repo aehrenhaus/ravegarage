@@ -17,6 +17,7 @@ using System.Drawing;
 using Medidata.RBT.PageObjects.Rave.Audits;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Text.RegularExpressions;
+using Medidata.RBT.Utilities.PDF;
 
 namespace Medidata.RBT.Utilities
 {
@@ -81,7 +82,7 @@ namespace Medidata.RBT.Utilities
         /// <returns>True if it is matches the expected version and exists in the bottom left of the page, false if not</returns>
         public bool VerifyCRFVersion(BaseEnhancedPDFPage page, string crfVersion)
         {
-            return BasePDFManagement.Instance.TextExistsInArea(page, crfVersion, "BottomLeft");
+			return BasePDFManagement.Instance.TextExistsInArea(page, crfVersion, PdfSearchArea.BottomLeft);
         }
 
         /// <summary>
@@ -92,7 +93,7 @@ namespace Medidata.RBT.Utilities
         /// <returns>True if it is matches the expected page number and exists in the bottom right of the page, false if not</returns>
         public bool VerifyPageNumber(BaseEnhancedPDFPage page, string pageNumber)
         {
-            return BasePDFManagement.Instance.TextExistsInArea(page, pageNumber, "BottomRight");
+            return BasePDFManagement.Instance.TextExistsInArea(page, pageNumber, PdfSearchArea.BottomRight);
         }
 
         /// <summary>
