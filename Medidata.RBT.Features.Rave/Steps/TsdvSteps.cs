@@ -223,6 +223,16 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Select button "Publish Draft" with check "Run Retrospective"
+        /// </summary>
+        [StepDefinition(@"I select button ""Publish Draft"" with check ""Run Retrospective""")]
+        public void PublishDraftWithRunRetrospective()
+        {
+            CurrentPage = CurrentPage.As<CustomTierDraftPage>().PublishDraftWithRunRetrospective();
+        }
+
+
+        /// <summary>
         /// Is the verify custom tier included field.
         /// </summary>
         /// <param name="table">The table.</param>

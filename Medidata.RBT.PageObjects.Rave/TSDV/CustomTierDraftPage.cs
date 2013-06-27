@@ -24,6 +24,20 @@ namespace Medidata.RBT.PageObjects.Rave
             }
         }
 
+
+        /// <summary>
+        /// Publish draft with run retrospective option
+        /// </summary>
+        /// <returns>self</returns>
+        public IPage PublishDraftWithRunRetrospective()
+        {
+            Browser.FindElementById("RunRetro").Click();
+            Browser.TryFindElementByPartialID("_PublishDraft").Click();
+            Browser.WaitForDocumentLoad();
+            return this;
+        }
+
+
         /// <summary>
         /// Creat a new draft with specified tier name and decription
         /// </summary>
