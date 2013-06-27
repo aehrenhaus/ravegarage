@@ -139,7 +139,7 @@
     <Compile Include="EDC\ITaskSummaryContainer.cs" />
     <Compile Include="EDC\LandscapeLogField.cs" />
     <Compile Include="EDC\Models\CodeDataPointModel.cs" />
-    <Compile Include="EDC\NonLabDataPageControl.cs" />
+    <Compile Include="EDC\DataPageControl.cs" />
     <Compile Include="EDC\LabDataPageControl.cs" />
     <Compile Include="EDC\NonLabFieldControl.cs" />
     <Compile Include="EDC\LabFieldControl.cs" />

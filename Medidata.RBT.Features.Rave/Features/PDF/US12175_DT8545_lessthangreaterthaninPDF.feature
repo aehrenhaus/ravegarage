@@ -188,6 +188,7 @@ And I verify the PDF text contains
 | <    |
 | >    |
 
+@ignore
 @release_2012.1.0
 @PB_US12175_DT8545_D
 @Validation
@@ -229,6 +230,7 @@ And I verify the PDF text contains
 | <    |
 | >    |
 
+@ignore
 @release_2012.1.0
 @PB_US12175_DT8545_E
 @Validation

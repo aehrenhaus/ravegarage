@@ -16,7 +16,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{66B536D7-0359-4A66-B87B-FF4FFF73165B}"
 	ProjectSection(SolutionItems) = preProject
 		Default.testsettings = Default.testsettings
-		Medidata.RBT3.vsmdi = Medidata.RBT3.vsmdi
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.Features.BatchUploader", "Medidata.RBT.Features.BatchUploader\Medidata.RBT.Features.BatchUploader.csproj", "{4D026E02-6851-468B-88AB-DFF5F772E45C}"
@@ -66,9 +65,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMedidataIDtoUUID", "..\Medidata.Rave.Integration\iMedidataIDtoUUID\iMedidataIDtoUUID.csproj", "{04425E41-1A80-4664-9B3F-2F22B4CE70F7}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = Medidata.RBT3.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CruiseControl|Any CPU = CruiseControl|Any CPU
 		CruiseControl|Mixed Platforms = CruiseControl|Mixed Platforms
