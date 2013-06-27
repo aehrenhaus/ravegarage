@@ -33,6 +33,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             Browser.FindElementById("RunRetro").Click();
             Browser.TryFindElementByPartialID("_PublishDraft").Click();
+            Browser.WaitForDocumentLoad();
             return this;
         }
 
