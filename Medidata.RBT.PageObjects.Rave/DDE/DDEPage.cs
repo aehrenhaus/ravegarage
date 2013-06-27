@@ -78,7 +78,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public IEDCFieldControl FindField(string fieldName)
 		{
-			return new NonLabDataPageControl(this).FindField(fieldName);
+			return new DataPageControl(this).FindField(fieldName);
 		}
 	
 

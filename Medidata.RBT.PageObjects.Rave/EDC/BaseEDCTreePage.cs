@@ -35,7 +35,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public BaseEDCPage FillDataPoints(IEnumerable<FieldModel> fields)
 		{
-            WaitForPageLoads();
 			foreach (var field in fields)
 				FindField(field.Field).EnterData(field.Data, EnumHelper.GetEnumByDescription<ControlType>(field.ControlType), field.AdditionalData);
 

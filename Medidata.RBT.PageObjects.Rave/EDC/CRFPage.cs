@@ -113,23 +113,6 @@ namespace Medidata.RBT.PageObjects.Rave
             return this.FindField(fieldName).ClickAudit();
         }
 
-        public bool IsLabForm
-        {
-            get
-            {
-                if (URL.Equals("Modules/EDC/PrimaryRecordPage.aspx"))
-                    return false;
-
-                //A lab form must contain a row with Range Status, Unit, and Range.
-                //We cannot use the lab dropdown as an indicator, because this is removed on an inactive page
-                IWebElement labHeaderRow = Context.Browser.TryFindElementByXPath("*//table/tbody/tr/td[text() = 'Range Status']/../td[text() = 'Unit']/../td[text() = 'Range']", false);
-                if (labHeaderRow == null)
-                    return false;
-                else
-                    return true;
-            }
-        }
-
         /// <summary>
         /// If this form a mixed form, returns true, otherwise returns false.
         /// </summary>
@@ -188,21 +171,11 @@ namespace Medidata.RBT.PageObjects.Rave
         public IEDCFieldControl FindField(string fieldName, string attribute = "Field", int? record = null)
         {
             if (attribute.Equals("Field"))
-            {
-                if (IsLabForm)
-                    return new LabDataPageControl(this).FindField(fieldName);
-                else
-                    return new NonLabDataPageControl(this).FindField(fieldName, record);
-            }
+                return new DataPageControl(this).FindField(fieldName, record);
             else if (attribute.Equals("Unit"))
-            {
-                if (IsLabForm)
-                    return new LabDataPageControl(this).FindUnitDropdown(fieldName);
-            }
+                return new LabDataPageControl(this).FindUnitDropdown(fieldName);
             else
                 throw new NotImplementedException("FindField method in CRFPage.cs doesn't support attribute: " + attribute);
-
-            return null;
         }
 
         /// <summary>
