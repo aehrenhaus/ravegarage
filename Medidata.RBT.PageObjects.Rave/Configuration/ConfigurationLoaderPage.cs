@@ -124,6 +124,21 @@ namespace Medidata.RBT.PageObjects.Rave.Configuration
                 return exist;
             }
 
+            if (identifier.Equals("Non-Conformant icon for ProtocolDeviations", StringComparison.InvariantCultureIgnoreCase))
+            {
+                bool exist = Browser.TryFindElementById("_ctl0_Content_Label_ProtocolDeviations").Parent().Parent().Children()[0].ImageBySrc("dp_nc.gif", false).GetCssValue("display") != "none";
+                return exist;
+            }
+
+            if (areaIdentifier.Equals("ProtocolDeviations errors", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var triangle = Browser.TryFindElementById("_ctl0_Content_Label_ProtocolDeviations").Parent().Parent().Children()[2];
+                if (triangle.Children()[0].Children()[0].GetAttribute("src").Contains("arrow_right.gif"))
+                    triangle.ImageBySrc("arrow_right.gif").Click();
+                var eleMessage = triangle.Parent().Parent().Children()[1];
+                return eleMessage.Text.Contains(identifier);
+            }
+
 			return false;
 		}
 
