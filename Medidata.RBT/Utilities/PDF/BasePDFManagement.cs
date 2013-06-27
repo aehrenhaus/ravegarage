@@ -17,6 +17,7 @@ using O2S.Components.PDF4NET.Converters;
 using System.Text.RegularExpressions;
 using Medidata.RBT.GenericModels;
 using System.Collections;
+using Medidata.RBT.Utilities.PDF;
 
 namespace Medidata.RBT.Utilities
 {
@@ -571,30 +572,42 @@ namespace Medidata.RBT.Utilities
         /// </summary>
         /// <param name="page">The page to verify</param>
         /// <param name="textToSearchFor">The text to search for</param>
-        /// <param name="areaToSearch">The area of the page to search</param>
+        /// <param name="pdfSearchArea">The area of the page to search</param>
         /// <returns></returns>
-        public bool TextExistsInArea(BaseEnhancedPDFPage page, string textToSearchFor, string areaToSearch)
+        public bool TextExistsInArea(BaseEnhancedPDFPage page, string textToSearchFor, PdfSearchArea pdfSearchArea)
         {
+			bool textResultOverlaps = false;
             PDFSearchTextResultCollection matchingTextOnPage = page.BasePage.SearchText(textToSearchFor);
-            bool textResultOverlaps = false;
+			//NOTE : The above code will assign null to matchingTextOnPage if page.BasePage.SearchText(<input>) yields no results.
+			//That will cause an null reference exception - we want to return false.
+			if (matchingTextOnPage != null)
+				return textResultOverlaps;
 
             Rectangle? pageArea = null;
-            if (areaToSearch.Equals("BottomRight"))
-                pageArea = page.BottomRightOfPage;
-            if (areaToSearch.Equals("BottomLeft"))
-                pageArea = page.BottomLeftOfPage;
+			switch (pdfSearchArea)
+			{
+				case PdfSearchArea.BottomRight:
+					pageArea = page.BottomRightOfPage;
+					break;
+				case PdfSearchArea.BottomLeft:
+					pageArea = page.BottomLeftOfPage;
+					break;
+			}
 
-            foreach (PDFSearchTextResult pdfSearchTextResult in matchingTextOnPage)
-            {
-                foreach (PDFTextRun textMatch in pdfSearchTextResult.TextRuns)
-                {
-                    if (BasePDFManagement.Instance.AreasOverlap(pageArea.Value, textMatch.PDFBounds))
-                    {
-                        textResultOverlaps = true;
-                        break;
-                    }
-                }
-            }
+			if (!pageArea.HasValue)
+				return textResultOverlaps;
+
+			foreach (PDFSearchTextResult pdfSearchTextResult in matchingTextOnPage)
+			{
+				foreach (PDFTextRun textMatch in pdfSearchTextResult.TextRuns)
+				{
+					if (textResultOverlaps = BasePDFManagement.Instance.AreasOverlap(pageArea.Value, textMatch.PDFBounds))
+						break;
+				}
+
+				if (textResultOverlaps)
+					break;
+			}
 
             return textResultOverlaps;
         }

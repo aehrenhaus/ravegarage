@@ -141,6 +141,7 @@
     <Compile Include="SharedObjects\TemporalID.cs" />
     <Compile Include="Utilities\PDF\PDFLocale.cs" />
     <Compile Include="Utilities\PDF\BasePDFManagement.cs" />
+    <Compile Include="Utilities\PDF\PdfSearchArea.cs" />
     <Compile Include="WebTestContext.cs" />
   </ItemGroup>
   <ItemGroup>
