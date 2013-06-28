@@ -111,7 +111,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             //Use TryFindElementsWithTextBy instead of TryFindElementsBy when doing the first search to guarantee that the objects have loaded
             //Once we are sure they have loaded, we can do non wait searches for the other TDs
-            ReadOnlyCollection<IWebElement> portraitSearchableTDs = currentPage.Browser.TryFindElementsWithTextBy(By.XPath("//td[@class='crf_rowLeftSide']"), isWait: wait);
+            ReadOnlyCollection<IWebElement> portraitSearchableTDs = currentPage.Browser.TryFindElementsWithTextBy(By.XPath("//td[@class='crf_rowLeftSide']"));
             ReadOnlyCollection<IWebElement> landscapeSearchableTDs = currentPage.Browser.TryFindElementsBy(By.XPath("//tr[@class='breaker']/td"), isWait: false);
             ReadOnlyCollection<IWebElement> labSearchableTDs = currentPage.Browser.TryFindElementsBy(By.XPath("//tr[@class='evenRow' or @class='oddRow' or @class='oddWarning' or @class='evenWarning']/td[2]"), isWait: false);
             
