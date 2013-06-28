@@ -198,6 +198,14 @@ namespace Medidata.RBT.SeleniumExtension
 			return ele;
 		}
 
+        /// <summary>
+        /// Try and find elements
+        /// </summary>
+        /// <param name="context">The context where the search takes place</param>
+        /// <param name="by">What elements we are looking for</param>
+        /// <param name="isWait">Should we wait when searching</param>
+        /// <param name="timeOutSecond">How long should we wait when searching</param>
+        /// <returns>All of the elements matching the parameters</returns>
         public static ReadOnlyCollection<IWebElement> TryFindElementsBy(this ISearchContext context, By by, bool? isWait = null, int? timeOutSecond = null)
         {
             ReadOnlyCollection<IWebElement> eles = null;
@@ -209,7 +217,7 @@ namespace Medidata.RBT.SeleniumExtension
                 if (isWait.Value)
                     eles = waitForElements(context, drv => {
                         ReadOnlyCollection<IWebElement> elementsOnPage = context.FindElements(by);
-                        return (elementsOnPage.Count > 0) ? elementsOnPage : null;
+                        return elementsOnPage.Count > 0 ? elementsOnPage : null;
                     }, null, timeOutSecond);
                 else
                     eles = context.FindElements(by);
@@ -219,6 +227,32 @@ namespace Medidata.RBT.SeleniumExtension
             }
             return (ReadOnlyCollection<IWebElement>)eles;
         }
+
+        /// <summary>
+        /// Works like TryFindElementsBy, but only return elements with text in them
+        /// </summary>
+        /// <param name="context">The context where the search takes place</param>
+        /// <param name="by">What elements we are looking for</param>
+        /// <param name="timeOutSecond">How long should we wait when searching</param>
+        /// <returns>All of the elements matching the parameters that contain some text</returns>
+        public static ReadOnlyCollection<IWebElement> TryFindElementsWithTextBy(this ISearchContext context, By by, int? timeOutSecond = null)
+        {
+            ReadOnlyCollection<IWebElement> eles = null;
+
+            try
+            {
+                eles = waitForElements(context, drv =>
+                {
+                    ReadOnlyCollection<IWebElement> elementsOnPage = new ReadOnlyCollection<IWebElement>(context.FindElements(by).Where(x => !String.IsNullOrEmpty(x.Text.Trim())).ToList());
+                    return elementsOnPage.Count() > 0 ? elementsOnPage : null;
+                }, null, timeOutSecond);
+            }
+            catch
+            {
+            }
+            return (ReadOnlyCollection<IWebElement>)eles;
+        }
+
 
 		public static IWebElement TryFindElementByLinkText(this RemoteWebDriver context, string LinkText, bool? isWait = null, int? timeOutSecond = null)
 		{
