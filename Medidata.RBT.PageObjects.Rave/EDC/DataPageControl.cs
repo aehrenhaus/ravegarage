@@ -109,11 +109,18 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <returns>All of the TDs on a page which may contain the field name</returns>
         private SearchableTDs GetSearchableTDs(IPage currentPage, bool wait)
         {
+            //Use TryFindElementsWithTextBy instead of TryFindElementsBy when doing the first search to guarantee that the objects have loaded
+            //Once we are sure they have loaded, we can do non wait searches for the other TDs
+            ReadOnlyCollection<IWebElement> portraitSearchableTDs = currentPage.Browser.TryFindElementsWithTextBy(By.XPath("//td[@class='crf_rowLeftSide']"), isWait: wait);
+            ReadOnlyCollection<IWebElement> landscapeSearchableTDs = currentPage.Browser.TryFindElementsBy(By.XPath("//tr[@class='breaker']/td"), isWait: false);
+            ReadOnlyCollection<IWebElement> labSearchableTDs = currentPage.Browser.TryFindElementsBy(By.XPath("//tr[@class='evenRow' or @class='oddRow' or @class='oddWarning' or @class='evenWarning']/td[2]"), isWait: false);
+            
+
             return new SearchableTDs()
             {
-                PortraitSearchableTDs = new List<IWebElement>(currentPage.Browser.TryFindElementsBy(By.XPath("//td[@class='crf_rowLeftSide']"), wait)),
-                LandscapeSearchableTDs = new List<IWebElement>(currentPage.Browser.TryFindElementsBy(By.XPath("//tr[@class='breaker']/td"), wait)),
-                LabSearchableTDs = new List<IWebElement>(currentPage.Browser.TryFindElementsBy(By.XPath("//tr[@class='evenRow' or @class='oddRow' or @class='oddWarning' or @class='evenWarning']/td[2]"), wait)),
+                PortraitSearchableTDs = portraitSearchableTDs != null ? new List<IWebElement>(portraitSearchableTDs) : new List<IWebElement>(),
+                LandscapeSearchableTDs = landscapeSearchableTDs != null ? new List<IWebElement>(landscapeSearchableTDs) : new List<IWebElement>(),
+                LabSearchableTDs = labSearchableTDs != null ? new List<IWebElement>(labSearchableTDs) : new List<IWebElement>(),
             };
         }
 

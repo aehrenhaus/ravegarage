@@ -164,11 +164,11 @@ namespace Medidata.RBT.PageObjects.Rave
 						continue;
 				}
 
-				var answerTD = tmpQueryTable.TryFindElementBy(By.XPath("./tbody/tr[2]/td[2]"));
+				var answerTD = tmpQueryTable.TryFindElementBy(By.XPath("./tbody/tr[2]/td[2]"), isWait: false);
 
 				if (filter.Answered != null)
 				{
-					if (filter.Answered == true && answerTD.Text.Trim() == "")
+					if (filter.Answered == true && (answerTD == null || String.IsNullOrEmpty(answerTD.Text)))
 						continue;
 
 					if (filter.Answered == false)
