@@ -99,8 +99,14 @@ namespace Medidata.RBT
 		/// <param name="predicate">Predicate to validate the result of action argument. Cannot be null.</param>
 		/// <param name="window">TimeSpan window durring which a call to action delegate is repeatedly attempted.</param>
 		/// <returns>Value returned by action delegate.</returns>
-		public static T SafeCall<T>(Func<T> action, Func<T, bool> predicate, TimeSpan window)
+		public static T SafeCall<T>(Func<T> action, Func<T, bool> predicate, TimeSpan window, int waitDeltaMillieconds = 0)
 		{
+			if (waitDeltaMillieconds >= window.Milliseconds)
+				throw new System.ArgumentOutOfRangeException(
+					string.Format("waitDeltaMillieconds [{0}] must be less then window.Milliseconds [{1}]", 
+						waitDeltaMillieconds, 
+						window.Milliseconds));
+			
 			T result;
 
 			do
@@ -108,7 +114,8 @@ namespace Medidata.RBT
 				var start = DateTime.Now.Ticks;
 
 				result = action();
-				Thread.Sleep(window.Milliseconds / 10);
+				if (waitDeltaMillieconds > 0)
+					Thread.Sleep(waitDeltaMillieconds);
 
 				var end = DateTime.Now.Ticks;
 
