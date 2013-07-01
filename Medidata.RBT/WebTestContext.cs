@@ -250,14 +250,47 @@ namespace Medidata.RBT
 				switch (RBTConfiguration.Default.BrowserName.ToLower())
 				{
 					case "firefox":
-						FirefoxProfile p = new FirefoxProfile();
-						FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
-						p.SetPreference("browser.download.folderList", 2);
-						p.SetPreference("browser.download.manager.showWhenStarting", false);
-						p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath.ToUpper());
-						p.SetPreference("browser.helperApps.neverAsk.saveToDisk", RBTConfiguration.Default.AutoSaveMimeTypes);
+						const int maxAttempts = 5;	//Number of times to try to create the FirefoxDriver without WebDriverException being thrown.
+						
+						_webdriver = Misc.SafeCall(() =>
+						{
+							FirefoxDriver result = null;
+							try
+							{
+								FirefoxProfile p = new FirefoxProfile();
+								FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
+								p.SetPreference("browser.download.folderList", 2);
+								p.SetPreference("browser.download.manager.showWhenStarting", false);
+								p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath.ToUpper());
+								p.SetPreference("browser.helperApps.neverAsk.saveToDisk", RBTConfiguration.Default.AutoSaveMimeTypes);
 
-						_webdriver = new FirefoxDriver(bin, p, TimeSpan.FromMinutes(2));
+								result = new FirefoxDriver(bin, p, TimeSpan.FromMinutes(2));
+							}
+							catch (WebDriverException wdex)
+							{
+								Console.WriteLine("-> WebTestContext.OpenBrowser failed while attempting to instantiate FirefoxDriver");
+								Console.WriteLine(string.Format("-> WebDriverException was : {0}", wdex.Message));
+								if (result != null)
+								{
+									Console.WriteLine("-> WebTestContext.OpenBrowser -> result was not null -> attempting call result.Quit()");
+									result.Quit();
+								}
+								else
+								{
+									Console.WriteLine("-> WebTestContext.OpenBrowser -> result was null");
+								}
+
+								result = null;
+							}
+
+							return result;
+						},
+						(driver) => driver != null,
+						maxAttempts);
+
+						if (_webdriver == null)
+							throw new WebDriverException(string.Format("-> WebTestContext.OpenBrowser -> Unable to create FirefoxDriver instance after [{0}] attempts", maxAttempts));
+
 						break;
 
 
