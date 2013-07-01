@@ -69,6 +69,62 @@ namespace Medidata.RBT
 			return extractedFilePaths;
 		}
 
+		/// <summary>
+		/// Calls Func&lt;T&gt; action N times, where N is given by tries parameter, or untill Func&lt;T, bool&gt; predicate returns true.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="action">Action to be performed. Cannot be null.</param>
+		/// <param name="predicate">Predicate to validate the result of action argument. Cannot be null.</param>
+		/// <param name="tries">Number of tries to attempt to call action delegate.</param>
+		/// <returns>Value returned by action delegate.</returns>
+		public static T SafeCall<T>(Func<T> action, Func<T, bool> predicate, uint tries = 1)
+		{
+			T result;
 
+			do
+			{
+				result = action();
+				tries--;
+			}
+			while (!predicate(result) && tries > 0);
+
+			return result;
+		}
+
+		/// <summary>
+		/// Calls Func&lt;T&gt; action within a timespan window or untill Func&lt;T, bool&gt; predicate returns true.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="action">Action to be performed. Cannot be null.</param>
+		/// <param name="predicate">Predicate to validate the result of action argument. Cannot be null.</param>
+		/// <param name="window">TimeSpan window durring which a call to action delegate is repeatedly attempted.</param>
+		/// <returns>Value returned by action delegate.</returns>
+		public static T SafeCall<T>(Func<T> action, Func<T, bool> predicate, TimeSpan window, int waitDeltaMillieconds = 0)
+		{
+			if (waitDeltaMillieconds >= window.Milliseconds)
+				throw new System.ArgumentOutOfRangeException(
+					string.Format("waitDeltaMillieconds [{0}] must be less then window.Milliseconds [{1}]", 
+						waitDeltaMillieconds, 
+						window.Milliseconds));
+			
+			T result;
+
+			do
+			{
+				var start = DateTime.Now.Ticks;
+
+				result = action();
+				if (waitDeltaMillieconds > 0)
+					Thread.Sleep(waitDeltaMillieconds);
+
+				var end = DateTime.Now.Ticks;
+
+				var delta = TimeSpan.FromTicks(end - start);
+				window = window - delta;
+			}
+			while (!predicate(result) && window.Milliseconds > 0);
+
+			return result;
+		}
 	}
 }

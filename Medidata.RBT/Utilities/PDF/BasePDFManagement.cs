@@ -273,15 +273,9 @@ namespace Medidata.RBT.Utilities
         /// <returns>returns the extracted type derived from ICollection</returns>
         private T1 ExtractGenericObject<T1>(Func<T1> extractor, int timeoutSeconds = 10) where T1 : ICollection
         {
-            T1 result;
-
-            for (result = extractor(); (result == null || result.Count < 1) && timeoutSeconds > 0; timeoutSeconds--)
-            {
-                System.Threading.Thread.Sleep(1000);
-                result = extractor();
-            }
-            
-            return result;
+			return Misc.SafeCall(extractor,
+				(col) => col != null && col.Count > 0,
+				TimeSpan.FromSeconds(10), 1000);
         }
 
         /// <summary>
