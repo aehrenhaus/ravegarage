@@ -238,6 +238,7 @@ namespace Medidata.RBT.SeleniumExtension
         public static ReadOnlyCollection<IWebElement> TryFindElementsWithTextBy(this ISearchContext context, By by, int? timeOutSecond = null)
         {
             ReadOnlyCollection<IWebElement> eles = null;
+            timeOutSecond = timeOutSecond ?? SeleniumConfiguration.Default.WaitElementTimeout;
 
             try
             {
@@ -245,7 +246,8 @@ namespace Medidata.RBT.SeleniumExtension
                 {
                     ReadOnlyCollection<IWebElement> elementsOnPage = new ReadOnlyCollection<IWebElement>(context.FindElements(by).Where(x => !String.IsNullOrEmpty(x.Text.Trim())).ToList());
                     return elementsOnPage.Count() > 0 ? elementsOnPage : null;
-                }, null, timeOutSecond);
+                }, null, timeOutSecond: (int?)Math.Round(timeOutSecond.Value * 1.2)); 
+                //Multiply by 1.2 to increase the wait time by 20% to avoid intermittent issues finding EDC fields
             }
             catch
             {
