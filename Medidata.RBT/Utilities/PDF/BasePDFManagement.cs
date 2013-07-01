@@ -580,8 +580,13 @@ namespace Medidata.RBT.Utilities
             PDFSearchTextResultCollection matchingTextOnPage = page.BasePage.SearchText(textToSearchFor);
 			//NOTE : The above code will assign null to matchingTextOnPage if page.BasePage.SearchText(<input>) yields no results.
 			//That will cause an null reference exception - we want to return false.
-			if (matchingTextOnPage != null)
+			if (matchingTextOnPage == null)
+			{
+				//NOTE : This is for debugging purposes to allow us to track down what is causing intermittent SearchText() failures.
+				Console.WriteLine(string.Format("-> BasePDFManagement.TextExistsInArea -> page.BasePage.SearchText({0}) -> returned null", textToSearchFor));
+				Console.WriteLine(string.Format("-> BasePDFManagement.TextExistsInArea -> page.Text -> {0}", page.Text));
 				return textResultOverlaps;
+			}
 
             Rectangle? pageArea = null;
 			switch (pdfSearchArea)
