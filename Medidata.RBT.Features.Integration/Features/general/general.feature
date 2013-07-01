@@ -22,6 +22,7 @@ Background:
 		|{iMedidata User 7}			|iMedidata User 7 PIN}		|{iMedidata User 7 Password}		|{iMedidataUser 7 ID}			|{iMedidata  User7 Email}		|
 		|{iMedidata Base User}		|iMedidata Base User PIN}	|{iMedidata Base User Password}		|{iMedidata Base User ID}		|{iMedidata Base User Email}	|
 		|{New User}					|							|{New User Password}				|{New User ID}					|{New User Email}				|
+	
 	And there exists a Rave user "<Rave User>" with username "<Rave User Name>" and password "<Rave Password>"
 		|Rave User		|Rave User Name		|Rave Password		|
 		|{Rave User 1}	|{Rave User Name 1}	|{Rave Password 1}	|
@@ -91,13 +92,13 @@ Scenario Outline: If an attribute in an object is copied over to Rave, and the a
 	And I have an assignment to the iMedidata Study  "<Study A>" for the App  "<Modules App>" with Role "<Modules Role 1>"
 	And my Locale is set to "<Eng>"
 	And I follow link "Account Details"
-	And I update First Name with different character set "てすとテスト試験テスト"
-	And I update Last Name with different character set "てすとテスト試験テスト"
-	And I update Title with different character set "てすとテスト試験テスト"
+	And I update First Name with different character set "???????????"
+	And I update Last Name with different character set "???????????"
+	And I update Title with different character set "???????????"
 	And I save my changes 
-	And I should see Last Name is "てすとテスト試験テスト"
-	And I should see First Name is "てすとテスト試験テスト"
-	And I should see Title is "てすとテスト試験テスト"
+	And I should see Last Name is "???????????"
+	And I should see First Name is "???????????"
+	And I should see Title is "???????????"
 	And I take screenshot
 	And I navigate to Home page
 	And I follow "<Modules App>" link for Study "<Study A>"
@@ -105,15 +106,15 @@ Scenario Outline: If an attribute in an object is copied over to Rave, and the a
 	And I see First Name, Last Name and Title are displayed in different character set on top right hand sIDe of the page
 	And I take screenshot
 	When I select My Profile link
-	Then I should see Last Name with different character set "てすとテスト試験テスト"
-	And I should see First Name with different character set "てすとテスト試験テスト"
-	And I should see Title with different character set "てすとテスト試験テスト"
+	Then I should see Last Name with different character set "???????????"
+	And I should see First Name with different character set "???????????"
+	And I should see Title with different character set "???????????"
 	And I take screenshot 
 	And I follow the link "User Administration"
 	And I navigate to the User Details page for iMedidata user "<iMedidata User 1 ID>"
-	And I should see Last Name with different character set "てすとテスト試験テスト"
-	And I should see First Name with different character set "てすとテスト試験テスト"
-	And I should see Title with different character set "てすとテスト試験テスト"
+	And I should see Last Name with different character set "???????????"
+	And I should see First Name with different character set "???????????"
+	And I should see Title with different character set "???????????"
 	And I should see my Language is set to "<English>"
 	And I take a screenshot
 
@@ -133,7 +134,7 @@ Scenario Outline: If an attribute in an object is copied over to Rave, and a com
     And the Rave User  "<Rave User 1>" has a Password "<Rave Password 1>"
     And there is a Rave Study  "<STUDY B>"
     And there is a Rave Site "<SITE B>" with site number "<TEST123>"
-    And my iMedidata User First Name is "<First Name 1>" "<Last Name 1>"
+    And my iMedidata User First Name is "<First Name 1>"
     And my iMedidata User Last Name is "<Last Name 1>"
     And my iMedidata username is "<iMedidata user 1 ID>"
     And my Email is "<iMedidata User 1 Email>"
@@ -142,7 +143,7 @@ Scenario Outline: If an attribute in an object is copied over to Rave, and a com
     And there is an iMedidata Site "<site b>" with site number "<test123>"
     And I have an assignment to the iMedidata Study "<study b>" for App  "<EDC App>" with one Role "<EDC Role 1>" for App  "<Modules App>" with Role "<Modules Role 1>"
     And I am on the iMedidata Home page
-	And I follow a "<EDC App>" link for the iMedidata Study "<study b>" 
+	And I follow an "<EDC App>" link for the iMedidata Study "<study b>" 
     And I am on Rave Connection page
     And I enter "<Rave User 1>" password 
     When I select "Link Account" button 
@@ -153,9 +154,10 @@ Scenario Outline: If an attribute in an object is copied over to Rave, and a com
     And I see the site number "<test123>" for the Site with name "<site b>"
     And I see Source as iMedidata
     And I take a screenshot
-    And I navigate to the User Details page in the User Administration module
+    And I navigate to the User Administration module
     And I search for the "<iMedidata user 1 ID>" iMedidata user name
     And I see the username as "<iMedidata User 1 ID>"
+    And I navigate to the User Details page
     And I see Authenticator:iMedidata on User Details page
     And I see the Email is "<iMedidata User 1 Email>"
     And I take a screenshot
@@ -165,7 +167,7 @@ Scenario Outline: If an attribute in an object is copied over to Rave, and a com
     And I take a screenshot
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.6.1.3-04
 @Validation
 Scenario Outline: If an attribute in an object is copied over to Rave, and the attribute is not required or unique for that object, and the text in the attribute
@@ -285,7 +287,7 @@ Examples:
 @Rave 564 Patch 13
 @PB2.7.2.1-01
 @Validation
-Scenario Outline: Rave will display a message “These settings will not apply to iMedidata users or users that access Rave directly from a portal” on the Core Configuration Settings page.
+Scenario Outline: Rave will display a message �These settings will not apply to iMedidata users or users that access Rave directly from a portal� on the Core Configuration Settings page.
 
 
     Given I am an iMedidata User
@@ -298,7 +300,7 @@ Scenario Outline: Rave will display a message “These settings will not apply t
 	And I am in Rave
 	And I navigate to the "Configuration" module
 	When I navigate to the "Other Settings"
-	Then I should see the “These settings will not apply to iMedidata users or users that access Rave directly from a portal” message
+	Then I should see the �These settings will not apply to iMedidata users or users that access Rave directly from a portal� message
 	And I take a screenshot
 
 
@@ -306,7 +308,7 @@ Scenario Outline: Rave will display a message “These settings will not apply t
 @Rave 564 Patch 13
 @PB2.7.1.1-01
 @Validation
-Scenario: If the user is an iMedidata user, then the system will display a message “(courses taken on iMedidata are not shown)” on the User Details page. 
+Scenario: If the user is an iMedidata user, then the system will display a message �(courses taken on iMedidata are not shown)� on the User Details page. 
 
     Given I am an iMedidata User
     And I am logged in
@@ -383,22 +385,22 @@ Scenario: For both iMedidata and Rave-managed users, if a course is assigned to 
 	And I have assigned to the Study
 	And I have eLearning course created
 	And I have eLearning course assigned to the "<Study A>" and Role "<EDC Role 1>"
-	When I navigate to Rave Sudy Home page
+	When I navigate to Rave Study Home page
 	Then I see the "<Study A>" with (eLearning Required) text
 	And I take a screenshot
-	And I click on "<Study A>" link
+	And I click on button "Start"
 	And I see eLearning Courses section
 	And I take a screenshot
 	And I log out 
 	And I log in to iMedidata as New User "<iMedidata User 1 ID>"
-    And I have an assignment to a iMedidata Study "<Study A>" for EDC App "<EDC App>" with Role "<EDC Role 1>"
-	And I have an assignment to a Study "<Study A>"  for Modules App "<Modules App>" with Role "<Modules Role 1>"
+    And I have an assignment to iMedidata Study "<Study A>" for EDC App "<EDC App>" with Role "<EDC Role 1>"
+	And I have an assignment to Study "<Study A>"  for Modules App "<Modules App>" with Role "<Modules Role 1>"
 	And I have eLearning course assigned to the "<Study A>" in Rave
-	And I follow a "<Modules App>" link
+	And I follow Modules App "<Modules App>" link
     And I am on Rave Study "<Study A>" page
 	And I see the "<Study A>" with (eLearning Required) text
 	And I take a screenshot
-	And I click on "<Study A>" link
+	And I click on button "Start"
 	And I see eLearning Courses section
 	And I take a screenshot
 
@@ -428,7 +430,7 @@ Scenario: For both iMedidata and Rave-managed users, if a course is assigned to 
 	And I take a screenshot
 	And I log out 
 #iMedidata
-	And I log in into iMedidata as invated New User "<iMedidata User 1 ID>"
+	And I log in into iMedidata as invited New User "<iMedidata User 1 ID>"
 	And I accepted the invitation
 	And there is iMedidata Study "<Study A>" linked to Rave Study "<Study A>"
 	And there is iMedidata Site "<Site A>" linked to Rave Site "<Site A>"
@@ -439,15 +441,18 @@ Scenario: For both iMedidata and Rave-managed users, if a course is assigned to 
     And I am on Rave "eLearning Home" page
 	And I see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC.
     	For more help accessing eLearning courses, click on the Rave Help link above'
-	And I take a screenshot
-	
+	 And I take a screenshot
+
+
+
+
 
 @Rave 564 Patch 13
 @PB2.7.1.4-01
 @Validation
-Scenario: Beneath Add Course link in eLearning page of the Configuration module in Rave, a message will be displayed “Please add
+Scenario: Beneath Add Course link in eLearning page of the Configuration module in Rave, a message will be displayed �Please add
             and assign eLearning courses on iMedidata for users that are accessing Rave through iMedidata. If you have any questions please
-			contact your system administrator.” 
+			contact your system administrator.� 
 
 	Given I am an iMedidata User
     And I am logged in
@@ -462,14 +467,14 @@ Scenario: Beneath Add Course link in eLearning page of the Configuration module 
 	And I am in Rave
 	And I navigate to Configuration module
 	When I navigate to the eLearning page
-	Then I see the message “Please add and assign eLearning courses on iMedidata for users that are accessing Rave through iMedidata. If you have any questions please contact your system administrator.” 
+	Then I see the message �Please add and assign eLearning courses on iMedidata for users that are accessing Rave through iMedidata. If you have any questions please contact your system administrator.� 
 	And I take a screenshot
 
 
 @Rave 564 Patch 13
 @PB2.7.5.2-01
 @Validation
-Scenario: When ‘End User License Agreement’ checkbox is checked in Configuration and the iMedidata-managed user enters Rave from iMedidata
+Scenario: When �End User License Agreement� checkbox is checked in Configuration and the iMedidata-managed user enters Rave from iMedidata
                  for the first time, then the system will display End User License Agreement page.
 
 	Given I am an iMedidata User
@@ -490,7 +495,7 @@ Scenario: When ‘End User License Agreement’ checkbox is checked in Configura
 @Rave 564 Patch 13
 @PB2.7.5.3-01
 @Validation
-Scenario: If the iMedidata managed user selects the checkbox and clicks “Continue” button on End User License Agreement page,
+Scenario: If the iMedidata managed user selects the checkbox and clicks �Continue� button on End User License Agreement page,
              then the system will take the user to relevant study with relevant role.
 
 	Given I am an iMedidata User
@@ -504,14 +509,14 @@ Scenario: If the iMedidata managed user selects the checkbox and clicks “Conti
 	And I follow a "<Modules App>" link for the first time
 	And I see End User License Agreement page
 	When I check the checkbox 
-	And I follow “Continue” button on End User License Agreement page
+	And I follow �Continue� button on End User License Agreement page
 	Then I should be on Rave "<Study A>" home page
 	And I take a screenshot
 
 @Rave 564 Patch 13
 @PB2.7.5.4-01
 @Validation
-Scenario: If the iMedidata-managed user clicks “Cancel” button on End User License Agreement page,
+Scenario: If the iMedidata-managed user clicks �Cancel� button on End User License Agreement page,
             then the system will take the user to the iMedidata login page.
 
 	Given I am an iMedidata User
@@ -525,7 +530,7 @@ Scenario: If the iMedidata-managed user clicks “Cancel” button on End User L
 	And I have an assignment to the iMedidata Study  "<Study A>" for the App  "<Modules App>" with Role "<Modules Role 1>"
 	And I follow a "<Modules App>" link for the first time
 	And I see End User License Agreement page
-	When I select “Cancel” button on End User License Agreement page
+	When I select �Cancel� button on End User License Agreement page
 	Then I should be on iMedidata Login page
 	And I take a screenshot
 
@@ -551,7 +556,7 @@ Examples:
 	Then UUID is displayed for each object
 	And I take a screenshot
 	Examples: 
-	|SQL Query | Expected Result |
+	|SQL Query 																			  | Expected Result |
 	| SELECT top 1 UUID as 'User UUID' from Users                                         | UUID |
 	| SELECT top 1 UUID as 'Study UUID' from Studies                                      | UUID |
 	| SELECT top 1 UUID as 'Project UUID' from Projects                                   | UUID |
@@ -569,8 +574,8 @@ Examples:
 @Rave 564 Patch 13
 @PB2.7.5.8-01
 @Validation
-Scenario: Rave will not update external user’s information through the User Loader. Rave will display a message on Upload Users page
- “iMedidata users have not been updated. Modify user information in iMedidata: [USERNAME].”
+Scenario: Rave will not update external user�s information through the User Loader. Rave will display a message on Upload Users page
+ �iMedidata users have not been updated. Modify user information in iMedidata: [USERNAME].�
 
 
     Given I am an iMedidata User
@@ -584,6 +589,7 @@ Scenario: Rave will not update external user’s information through the User Lo
 	And "End User License Agreement" checkbox is not checked in Configuration
 	And I have an assignment to the iMedidata Study  "<Study A>" for the App  "<EDC App>" with Role "<EDC Role 1>"
 	And I have an assignment to the iMedidata Study  "<Study A>" for the App  "<Modules App>" with Role "<Modules Role 1>"
+	And I have accept the invitation as Study Owner
 	And I follow a "<Modules App>" link for the first time
 	And I am on Rave Study Site page
 	And I navigate to Rave Home page
@@ -591,20 +597,20 @@ Scenario: Rave will not update external user’s information through the User Lo
 	And I select "iMedidata" from the Authenticator dropdown
 	And I select "Download" link
 	And I save User.zip file on local drive
-	And I update "Users.xls" with changes for the iMedidata userm "<iMedidata User 1 ID>"
+	And I update "Users.xls" with changes for the iMedidata user "<iMedidata User 1 ID>"
 	And I Save changes
 	And I navigate back to User Administration module
 	And I select "Upload Users" link from the User Admin Items section
 	And I enter updated Users.xls file into the "Select File" field
 	And I click on Upload button
 	When the transaction completed
-	Then I see the messsage “iMedidata users have not been updated. Modify user information in iMedidata: [USERNAME].” on Upload Users page
+	Then I see the messsage �iMedidata users have not been updated. Modify user information in iMedidata: [USERNAME].� on Upload Users page
 	And I take a screenshot
 
 @Rave 564 Patch 13
 @PB2.5.9.32-01
 @Validation
-Scenario: Rave will provIDe all Roles to iMedidata as Study Roles for the Rave EDC App on iMedidata.
+ Scenario: Rave will provide all Roles to iMedidata as Study Roles for the Rave EDC App on iMedidata.
 
     Given I am an iMedidata User
 	And I am the Study Group Owner
@@ -619,26 +625,24 @@ Scenario: Rave will provIDe all Roles to iMedidata as Study Roles for the Rave E
 	And I have an assignment to the iMedidata Study  "<Study A>" for the App  "<Modules App>" with Role "<Modules Role 1>"
 	And I am on Manage Study page
 	And I navigate and select "Users" Tab
-	When I select assignment link into the  "Apps and Roles" column
-	Then I see Change Role dialog
+	And I select assignment link into the  "Apps and Roles" column
+	And I see Change Role dialog
+	And I take a screenshot 
 	And I see the all Study Roles for the Rave EDC App listed into the dropdown
 	And I take a screenshot 
 	And I go back to iMedidata Home page
 	And I follow a "<Modules App>" link
 	And I am on Rave Study Site page
 	And I navigate to Rave Home page
-	And I navigate User Administration Module
-	And I navigate to the User Details page for the user "<iMedidata User 1 ID>"
-	And I select Assign to Study link
-	When I expand the "Select Role" dropdown
-	Then I see the all Study Roles for the Rave listed into the dropdown
-	And I verify that Study Roles listed in iMedidata matches with the Study Roles listed in Rave
+	When And I navigate to Configuration Module
+	Then I see the EDC Roles for the Rave
+	And I verify that EDC Roles listed in iMedidata matches with the EDC Roles listed in Rave
 	And I take a screenshot 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.9.33-01
 @Validation
-Scenario: Rave will provIDe only the Roles that have action Entry checked on the Role Actions page in Rave as Site Roles
+Scenario: Rave will provide ALL Roles that have action Entry checked on the Role Actions page in Rave as Site Roles
              for the Rave EDC App on iMedidata.
 
 	Given I am an iMedidata User
@@ -652,13 +656,13 @@ Scenario: Rave will provIDe only the Roles that have action Entry checked on the
 	And "End User License Agreement" checkbox is not checked in Configuration
 	And I have an assignment to the iMedidata Study  "<Study A>" for the App  "<EDC App>" with Role "<EDC Role 1>"
 	And I have an assignment to the iMedidata Study  "<Study A>" for the App  "<Modules App>" with Role "<Modules Role 1>"
-	And there is a "<EDC Role 4 No Entry>" that  has action Entry not checked on the Role Actions page in Rave
+	And there is an "<EDC Role 4 No Entry>" that  has action Entry not checked on the Role Actions page in Rave
 	And I am on Manage Study page
-	And I navigate and select "Users" Tabe
+	And I navigate and select "Users" Tab
 	When I select assignment link into the  "Apps and Roles" column
 	Then I see Change Role dialog
-	And I see only the Roles that have action Entry checked on the Role Actions page in Rave
-	And I do not see "<EDC Role 4 No Entry>" role in the list
+	And I see the Roles that have action Entry checked on the Role Actions page in Rave
+	And I see "<EDC Role 4 No Entry>" role in the list
 	And I take a screenshot
 
 @Rave 564 Patch 13
@@ -728,10 +732,10 @@ Scenario: The following message displays in Rave when there is a large amount of
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.9.33-05
 @Validation	
-Scenario: Study-Site assignments should not be sent if parent StudyInvitation was not accepted and Study-Site assignments should be sent if parent StudyInvitation is accepted.
+Scenario: Study-Site assignments should not be sent if parent Study Invitation was not accepted and Study-Site assignments should be sent if parent Study Invitation is accepted.
   
   Given I am a iMedidata User "<iMedidata User 1 ID>"
   And there is a Study named "<Study A>"
@@ -739,12 +743,13 @@ Scenario: Study-Site assignments should not be sent if parent StudyInvitation wa
   And I have assignment to Study "<Study A>" with App "<EDC App>" Role "<EDC Role 1>" App "<Modules App>" with Role "<Modules role 1>"
   And a user exists with User name "<iMedidata user 2 ID>" with email "<iMedidata User 2 Email>"
   And the Site "<Site A1>" is in the Study named "<Study A>" with Site Number "<1873434>"
-  And I invite user "<iMedidata User 2 ID>" for App "<EDC App>" with Role "<EDC Role 1>" for app "<modules app>" with Role "<Modules Role 1>"
+  And I invite user "<iMedidata User 2 ID>" to Study "<Study A>" with Site "<Site A1>" with App "<EDC App>" with Role "<EDC Role 1>" for app "<modules app>" with Role "<Modules Role 1>"
   And the user "<iMedidata User 2 ID>" has not accepted the invitation to the study "<Study A>"
   And I navigate to Rave by following "<EDC App>" for "<Study A>"
   And I navigate to User Details page for "<iMedidata User 2 ID>"
   And I should see "<Study A>" is not listed in the Studies pane
-  And the User has accepted the invitation to the "<Study A>"
+  And I take a screenshot
+  And User "<iMedidata User 2 ID>" accepts the invitation to "<Study A>"
   When I navigate to User Details page for "<iMedidata User 2 ID>"
   Then I should see "<Study A>" listed in the Studies Pane
   And I take a screenshot
@@ -753,9 +758,9 @@ Scenario: Study-Site assignments should not be sent if parent StudyInvitation wa
 @Rave 564 Patch 13
 @PB2.5.9.33-06
 @Validation
-  Scenario: When user is invited to study for one app, and gets re-invited to a second app then the user should be assigned to the second app appropriately.
+  Scenario: When a user is invited to a study with one app, and gets re-invited to a second app then the user should be assigned to the second app appropriately.
   
-    Given I am a iMedidata User "<iMedidata User 1 ID>"
+    Given I am an iMedidata User "<iMedidata User 1 ID>"
 	And I am connected to Rave
     And there is a study "<Study A>"
     And I have an assignment to only "<Study A> with app "<EDC App>" with Role "<EDC Role 1>"
@@ -763,7 +768,7 @@ Scenario: Study-Site assignments should not be sent if parent StudyInvitation wa
 	And I should be on Rave "<Study A>" home page
 	And I take a screenshot
     And I log out 
-	And I log in Rave User "<Rave User Name 1>" with access to User Adminstration
+	And I log in as Rave User "<Rave User Name 1>" with access to User Adminstration
 	And I navigate to User Details page for User "<iMedidata User 1 ID>"
 	And I should see User Group associated is "<iMedidata EDC>"
     And I take a screenshot
@@ -787,7 +792,7 @@ Scenario: Study-Site assignments should not be sent if parent StudyInvitation wa
 @Validation
   Scenario: When user is invited to a study for one app, and gets re-invited to same app but with different role then the changed role should be assigned to the user appropriately.
 
-	Given I am a iMedidata User "<iMedidata User 1 ID>"
+	Given I am an iMedidata User "<iMedidata User 1 ID>"
 	And I am connected to Rave
     And there is a study "<Study A>"
     And I have an assignment to only "<Study A> with app "<EDC App>" with Role "<EDC Role 1>" App "<Modules App>" with Role "<Modules Role 1>"
@@ -809,12 +814,12 @@ Scenario: Study-Site assignments should not be sent if parent StudyInvitation wa
 	And I should see Role "<EDC Role 2>" is assigned to the User for Study "<study A>"
     And I take a screenshot
 	
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.9.33-08
 @Validation
 Scenario:  When user's invitation is updated with new app/role assignment that blocks them from accessing study then a DELETE invitation message should be generated.
    
-    Given I am a iMedidata user "<iMedidata User 1 ID>"
+    Given I am an iMedidata user "<iMedidata User 1 ID>"
     And I am logged in
     And there is a Course named "<My Course>" with Course File that has a Locale of "eng"
     And there is a study "<Study A>" in iMedidata
@@ -827,18 +832,17 @@ Scenario:  When user's invitation is updated with new app/role assignment that b
 	And I navigate to User Details page for User "<iMedidata user 2 ID>"
 	And I should see "<EDC Role 1>" assigned to User for Study "<Study A>"
 	And the Active Check box is checked
+	And I take a screenshot
 	And I navigate to iMedidata
 	And I navigate to Manage Study "<Study A>" Page
 	And I invite the User "<iMedidata User 2 ID>" for App "<modules App>" with Role "<Modules Role 1>" for Study "<Study A>"
     And I navigate to Rave by following App "<EDC App>" for Study "<Study A>"
 	And I search for User "<iMedidata User 2 ID>" with Authenticator "iMedidata"
-	And I should see no search results
-	And I check "Include Inactive Records" Check box
-	And I search
+	And I should see search results
 	And I should see User "<iMedidata User 2 ID>" for "<EDC Role 1>"
 	When I navigate to User Details page for User "<iMedidata user 2 ID>"
 	Then I should not see Study "<Study A>" assigned to Study in Studies Pane
-	And the Active Check box is Unchecked
+	And the Active Check box is checked
     And I take a screenshot
 	And I log out
 	And I log in as User "<iMedidata User 2 ID>" to iMedidata
@@ -846,7 +850,7 @@ Scenario:  When user's invitation is updated with new app/role assignment that b
 	And I take a screenshot
    
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.9.33-09
 @Validation
 Scenario: When user's role is switched to role that blocks them from study then a DELETE invitation message should be generated
@@ -869,9 +873,7 @@ Scenario: When user's role is switched to role that blocks them from study then 
 	And I Change Role for the User "<iMedidata User 2 ID>" for App "<EDC App>" with Role "<EDC Role 2>" for Study "<Study A>"
     And I navigate to Rave by following App "<EDC App>" for Study "<Study A>"
 	And I search for User "<iMedidata User 2 ID>" with Authenticator "iMedidata"
-	And I should see no search results
-	And I check "Include Inactive Records" Check box
-	And I search
+	And I should see search results
 	And I should see User "<iMedidata User 2 ID>" for "<EDC Role 1>"
 	When I navigate to User Details page for User "<iMedidata user 2 ID>"
 	Then I should not see Study "<Study A>" assigned to Study in Studies Pane
@@ -883,12 +885,12 @@ Scenario: When user's role is switched to role that blocks them from study then 
 	And I take a screenshot
    
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.9.33-10
 @Validation
 Scenario:  When user's invitation is updated with new app/role assignment that unblocks them from accessing study then a PUT invitation message should be generated
       
-    Given I am a iMedidata user "<iMedidata User 1 ID>"
+    Given I am an iMedidata user "<iMedidata User 1 ID>"
     And I am logged in
     And there is a Course named "<My Course>" with Course File that has a Locale of "eng"
     And there is a study "<Study A>" in iMedidata
@@ -899,19 +901,16 @@ Scenario:  When user's invitation is updated with new app/role assignment that u
 	And "<iMedidata User 2 ID>" has accepted the invitation to Study "<Study A>
 	And I navigate to Rave by following App "<EDC App>" for Study "<Study A>"
 	And I navigate to User Adminstration
-	And I search for "<iMedidata User 2 ID>" with "Include Inactive Records" checked
-	And I should see User "<iMedidata User 2 ID>" for "<EDC Role 1>"
-	And I navigate to User Details page for User "<iMedidata user 2 ID>"
-	And I should not see Study "<Study A>" assigned to Study in Studies Pane
-	And the Active Check box is Unchecked
+	And I search for "<iMedidata User 2 ID>" with Authenticator "iMedidata" with "Include Inactive Records" checked
+	And I should see no User "<iMedidata User 2 ID>" with "<EDC Role 1>"
 	And I take a screenshot
 	And I navigate to iMedidata
 	And I navigate to Manage Study "<Study A>" Page
-	And I invite the User "<iMedidata User 2 ID>" for App "<EDC App>" with Role "<EDC Role 2>" for Study "<Study A>"
+	And I change the role for User "<iMedidata User 2 ID>" to App "<EDC App>" Role "<EDC Role 2>" for Study "<Study A>"
     And I navigate to Rave by following App "<EDC App>" for Study "<Study A>"
 	When I search for User "<iMedidata User 2 ID>" with Authenticator "iMedidata"
 	Then I should see "<iMedidata User 2 ID>" with Role "<EDC Role 2>"
-	And I should see Study "<Study A>" assigned to Study in Studies Pane
+	And I should see Study "<Study A>" assigned to User "<iMedidata user 2 ID>" in Studies Pane
 	And the Active Check box is Checked
     And I take a screenshot
 	And I log out
@@ -926,7 +925,6 @@ Scenario:  When user's invitation is updated with new app/role assignment that u
 @PB2.5.9.33-11
 @Validation
 Scenario: When a user's site assignments are updated through assign sites page and user hasn't accepted parent study invitation then no study_site_assignment message should be generated
-
 
 	Given I am a iMedidata User "<iMedidata User 1 ID>"
 	And I am connected to Rave
@@ -959,7 +957,7 @@ Scenario: When a user's site assignments are updated through assign sites page a
 Scenario: When a user's site assignments are updated through invitation details and user hasn't accepted parent study invitation then no update study_site_assignment message should be generated
 
 
-	Given I am a iMedidata User "<iMedidata User 1 ID>"
+	Given I am an iMedidata User "<iMedidata User 1 ID>"
 	And I am connected to Rave
     And there is a study "<Study A>"
     And I have an assignment to only "<Study A> with app "<EDC App>" with Role "<EDC Role 1>" App "<Modules App>" with Role "<Modules Role 1>"
@@ -987,11 +985,11 @@ Scenario: When a user's site assignments are updated through invitation details 
 Scenario Outline: When a user accepts an invitation but has blocking elearning courses then no post invitation message should be created
   
  
-	Given I am a iMedidata User "<iMedidata User 1 ID>"
+	Given I am an iMedidata User "<iMedidata User 1 ID>"
 	And I am connected to Rave
-    And there is a "<Entity>"
+    And there is an "<Entity>"
     And I have an assignment to "<Entity>" with app "<EDC App>" with Role "<EDC Role 1>" App "<Modules App>" with Role "<Modules Role 1>"
-	And I completed the "<Couse A>" for "<EDC App>" with Role "<EDC Role 1>" for "<Entity>"
+	And I completed the "<Course A>" for "<EDC App>" with Role "<EDC Role 1>" for "<Entity>"
 	And I am the "<Entity>" owner
 	And Course "<Course A>" is required course for "<EDC App>" with Role "<EDC Role 1>" for "<Entity>"
 	And I invite iMedidata User "<iMedidata User 2 ID>" to "<Entity>" with App "<EDC App>" with Role "<EDC Role 1>", App "<Modules Ap>" with Role "<Modules Role 1>"
@@ -999,6 +997,7 @@ Scenario Outline: When a user accepts an invitation but has blocking elearning c
 	And I log in to iMedidata as User "<iMedidata User 2 ID>"
 	And I accept the invitation to "<Entity>"
 	And I should see "<Course A>" required for access
+	And I take a screenshot
 	And I log out 
 	And I log in as iMedidata user "<iMedidata User 1 ID>"
 	And I navigate to Rave by following App "<EDC App>" with Role "<EDC Role1>"
@@ -1026,15 +1025,17 @@ Scenario: When a user accepts an invitation to a study that has elearning block 
 	And I invite iMedidata User "<iMedidata User 2 ID>" to "<Study A>" with App "<EDC App>" with Role "<EDC Role 1>", App "<Modules Ap>" with Role "<Modules Role 1>"
 	And I invite iMedidata User "<iMedidata User 2 ID>" to "<Study B>" with App "<EDC App>" with Role "<EDC Role 1>", App "<Modules App>" with Role "<Modules Role 1>"
 	And the user "<iMedidata User 2 ID>" has accepted invitation to both Study "<Study A>" ,"<Study B>"
+	And I take a screenshot
 	And I navigate to Rave by following "<EDC App>" for Study "<Study A>"
-	And I navigate to User Adminstration
+	And I navigate to User Administration
 	And I search for User "<iMedidata User 2 ID>" with Authenticator "iMedidata"
 	And I should see "<EDC Role 1>" for User "<iMedidata User 2 ID>"
 	And I navigate to User Details page for User "<iMedidata User 2 ID>"
 	And I should see only "<Study B>" assigned to the user in Studies Pane
 	And I should not see "<Study A>" in Studies Pane
+	And I take a screenshot
 	And I log out
-	AAnd I log in to iMedidata as User "<iMedidata User 2 ID>"
+	And I log in to iMedidata as User "<iMedidata User 2 ID>"
 	And I should see "<Course A>" required for access for Study "<Study A>"
 	When I follow "<EDC App>" for "<Study B>"
 	Then I am on Rave"<Study B>" page 
@@ -1062,8 +1063,9 @@ Scenario:  When removing a course mapping unblocks user then create invitation m
 	And I navigate to User Details page for User "<iMedidata User 2 ID>"
 	And I should see only "<Study B>" assigned to the user in Studies Pane
 	And I should not see "<Study A>" in Studies Pane
+	And I take a screenshot
 	And I log out
-	AAnd I log in to iMedidata as User "<iMedidata User 2 ID>"
+	And I log in to iMedidata as User "<iMedidata User 2 ID>"
 	And I should see "<Course A>" required for access for Study "<Study A>"
 	When I follow "<EDC App>" for "<Study B>"
 	Then I am on Rave "<Study B>" page 
@@ -1087,6 +1089,6 @@ Scenario:  When removing a course mapping unblocks user then create invitation m
 	And I should not see "<Course A>" required for access
 	And I follow "<EDC App>" for "<Study A>"
 	And I am on Rave "<Study A>" page 
-	And I take a screenshot 
+	And I take a screenshot
 
- 
+

@@ -1,4 +1,4 @@
-# The Rave Architect Security application in iMedidata provides a way for owners to set the User with a particular Rave Security Group, for Architect access.
+﻿# The Rave Architect Security application in iMedidata provides a way for owners to set the User with a particular Rave Security Group, for Architect access.
 
 Feature: Rave Architect Security
     In order to use Rave Architect
@@ -62,6 +62,7 @@ And I am logged in
 And I navigate to Configuration Module 
 And I follow "Security Roles" page
 And I assign a "<Default Architect Security Role>" as Default Role for Module "<Architect Project>"
+And I take a screenshot
 And I log out
 And I am logged in to iMedidata
 And my Username is "<iMedidata User 1 ID>" in to iMedidata
@@ -69,9 +70,11 @@ And there is an iMedidata Study Group  "<Study Group>"
 And I am the owner of the Study Group "<Study Group>"
 And I created Study  "<Study A>" in the Study Group  "<Study Group>"
 And I invite a user "<iMedidata User 2 ID>" to Study "<Study A>" as the Study owner
+And the user "<iMedidata User 2 ID>" has accepted the invitation
 And the user "<iMedidata User 2 ID>" has assigned to the iMedidata Study "<Study A>"
 And the user "<iMedidata User 2 ID>" has an assignment to the iMedidata Study  "<Study A>" for App  "<Edc app>" with "<EDC Role 1>"
-And the user "<iMedidata User 2 ID>" has an assignment to the iMedidata Study  "<Study A>" for App  "<Modules App>" with "<Modules Role 1>" 
+And the user "<iMedidata User 2 ID>" has an assignment to the iMedidata Study  "<Study A>" for App  "<Modules App>" with "<Modules Role 1>"
+And I take a screenshot
 And I log out from iMedidata
 And I log in as user "<iMedidata User 2 ID>" in iMedidata
 And I accept the invitation to Study "<Study A>"
@@ -122,6 +125,7 @@ And I invite the User "<iMedidata User 2 ID>" to the following for Study "<Study
 And I logged out as User "<iMedidata User 1 ID>"
 And I login as User "<iMedidata User 2 ID>"
 And the User "<iMedidata User 2 ID>" accepts the invitation to the Study "<Study A>"
+And I take a screenshot
 And I follow App "<EDC app>" for Study "<Study A>"
 And I am on Rave Study "<Study A>" page
 When I navigate to User Details page for User "<iMedidata User 2 ID>"
@@ -155,22 +159,24 @@ And I take a screenshot
 @Rave 564 Patch 13
 @PB2.5.8.27-01
 @Validation
-Scenario:When iMedidata is used to assign specific access to a study, If user is assigned to more than one EDC role, All the User accounts will have all the Architect security Group assignments.       
+Scenario:  When iMedidata is used to assign specific access to a study, If user is assigned to more than one EDC role,
+             All the User accounts will have all the Architect security Group assignments.       
 
 Given I am an iMedidata User
 And there is a Rave user with Username "<iMedidata User 2 ID>"
 And there is an iMedidata Study Group  "<Study Group>"
 And there is an iMedidata Studies  "<Study A>" "<Study B>" in the Study Group  "<Study Group>"
-And there exists a iMedidata user with Username "<iMedidata User 2 ID>"
+And there exists an iMedidata user with Username "<iMedidata User 2 ID>"
 And the iMedidata User "<iMedidata User 2 ID >" has an "<Security Group App >" assignment for Study "<Study A>" "<Study B>" with Role "<Security Group 1>"
 And the iMedidata User "<iMedidata User 2 ID>" has an "<Edc App>" assignment for Study "<Study A>" "<Study B>" with Role "<Edc Role 1>"
 And the iMedidata User "<iMedidata User 2 ID>" has an "<Modules App>"  assignment for Study "<Study A>" "<Study B>" with Role "<Modules Role 1>
+And I take a screenshot
 And I am logged in iMedidata as "<iMedidata User 2 ID>"
 And I change User "<iMedidata User 2 ID>" with an assignment to Study "<Study A>" for App "<EDC App>" Role "<EDC Role 2>"
 And I change User "<iMedidata User 2 ID>" with an assignment to Study "<Study A>" for App "<Security Group App>" with role "<Security Group 2>"
+And I take a screenshot
 And I am on iMedidata Home page 
 And I follow "<Edc App>" for Study "<Study A>"
-And I am on Rave Connection page
 And I have linked to the Rave User with Username "<iMedidata User 2 ID>"
 And I am on Study "<Study A>" home page
 And I navigate to the User Administration Module
@@ -199,11 +205,14 @@ And there is an iMedidata Study  "<Study A>" in the Study Group  "<Study Group>"
 And I have an assignment to Study "<Study A>" for App "<Edc App>" Role "<EDC Role 1>" "<EDC Role 2>"
 And I have an assignment to Study "<Study A>" for App "<Modules App>" Role "<Modules Role 1>"
 And I have an assignment to Study "<Study A>" for App "<Security App>" Role "<Security Group 1>"
+And I take a screenshot
 And I follow app "<EDC App>" for study "<Study A>"
-And I on Role Selection page
+And I am on Role Selection page
+And I take a screenshot
 And I select the Role "<EDC Role 1>" 
 And I click on Continue button
 And I am on Rave Study Home page
+And I take a screenshot
 When I navigate to User Adminstration
 And I search for user"<iMedidata User 1 ID>" Authenticator "iMedidata"
 Then I should see 2 search results for "<iMedidata User 1 ID>"

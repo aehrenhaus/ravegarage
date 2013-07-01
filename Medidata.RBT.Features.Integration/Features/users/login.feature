@@ -58,6 +58,7 @@ Scenario: If the internally authenticated user is experiencing Password Timeout 
 	And I Check Password Timeout 
 	And I uncheck Interaction timeout
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	When I follow link "My Profile"
 	Then I see the Password Timeout page
@@ -81,6 +82,7 @@ Scenario: If an iMedidata user is experiencing Password Timeout in Rave, the sys
 	And I Check Password Timeout 
 	And I uncheck Interaction Timeout
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	When I follow link "My Profile"
 	Then I see the Password Timeout page
@@ -111,6 +113,7 @@ Scenario: If Rave users are experiencing Interaction Timeout in Rave, the system
 	And I set Interaction Timeout to 1 minute
 	And I Check Interaction Timeout 
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	When I follow link "My Profile"
 	Then I see the Rave Login page
@@ -134,6 +137,7 @@ Scenario: If an iMedidata user is experiencing Interaction Timeout in Rave, this
 	And I set Interaction Timeout to 1 minute
 	And I Check Interaction Timeout 
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	When I follow link "My Profile"
 	Then I should see the iMedidata Login page
@@ -147,6 +151,7 @@ Scenario: If an iMedidata user is experiencing an iMedidata timeout, this will r
 
 	Given I am an iMedidata User "<iMedidata User 1>" with username "<iMedidata User 1 ID>" and password "<iMedidata User 1 Password>" 
     And I am the owner of study "<Study A>" with Modules app "<Modules App>" with role "<Modules Role 1>"  EDC app "<EDC App>" with role "<EDC Role 1>"
+	And I take a Screenshot
 	And I select app "<EDC App>" associated with study "<Study A>"  
 	And I am in Rave
 	And I follow link "Configuration"
@@ -156,6 +161,7 @@ Scenario: If an iMedidata user is experiencing an iMedidata timeout, this will r
 	And I set Interaction Timeout to "999"
 	And I Check Interaction Timeout 
 	And I follow link "Update"
+	And I take a Screenshot
 	And I follow link "Home"
 	And I wait for 65 minutes
 	When I follow link "iMedidata"
@@ -175,6 +181,7 @@ Scenario: If a Rave managed user submits correct credentials after a Password ti
 	And I Check Password Timeout 
 	And I uncheck Interaction Timeout
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	And I follow link "My Profile"
 	And I see the Password Timeout page
@@ -198,6 +205,7 @@ Scenario: If an iMedidata-managed user submits correct credentials after a Passw
 	And I Check Password Timeout 
 	And I uncheck Interaction Timeout
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	And I follow link "My Profile"
 	And I see the Rave Password Timeout page
@@ -219,6 +227,7 @@ Scenario: If a Rave managed user submits correct credentials after an Interactio
 	And I set Interaction Timeout to 1 minute 
 	And I Check Interaction Timeout 
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	And I follow link "My Profile"
 	And I see the Rave Login page
@@ -243,6 +252,7 @@ Scenario: If an iMedidata-managed user submits correct credentials after an Inte
 	And I set Interaction Timeout to 1 minute
 	And I Check Interaction Timeout 
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	And I follow link "My Profile"
 	And I see iMedidata Login page
@@ -269,6 +279,7 @@ Scenario: If an iMedidata-managed user submits correct credentials after an iMed
 	And I set Interaction Timeout to "999"
 	And I Check Interaction Timeout 
 	And I follow link "Update"
+	And I take a Screenshot
 	And I follow link "Home"
 	And I wait for 65 minutes
 	And I follow link "iMedidata"
@@ -292,6 +303,7 @@ Scenario: If a Rave managed user submits incorrect credentials after a Password 
 	And I Check Password Timeout 
 	And I uncheck Interaction Timeout
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	And I follow link "My Profile"
 	And I see the Password Timeout page
@@ -316,6 +328,7 @@ Scenario: If a Rave managed user submits incorrect credentials (Wrong Password) 
 	And I set Interaction Timeout to 1 minute 
 	And I Check Interaction Timeout 
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	And I follow link "My Profile"
 	And I see the Rave Login page
@@ -341,6 +354,7 @@ Scenario: If a Rave managed user submits incorrect credentials (Wrong Username) 
 	And I set Interaction Timeout to 1 minute 
 	And I Check Interaction Timeout 
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	And I follow link "My Profile"
 	And I see the Rave Login page
@@ -369,6 +383,7 @@ Scenario: If an iMedidata-managed user submits incorrect credentials after a Pas
 	And I Check Password Timeout 
 	And I uncheck Interaction Timeout
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	And I follow link "My Profile"
 	And I see the Rave Password Timeout page
@@ -396,13 +411,14 @@ Scenario: If an iMedidata-managed user submits incorrect credentials (wrong pass
 	And I set Interaction Timeout to 1 minute
 	And I Check Interaction Timeout 
 	And I follow link "Update"
+	And I take a Screenshot
 	And I wait for 65 seconds
 	And I follow link "My Profile"
 	And I am on iMedidata Login page
 	And I Enter Text Field Username value "<iMedidata User 1>"
 	And I Enter Text Field Password value "WrongPassword"
 	When I click button "Log In"
-	Then I should be on iMedidata homepage
+	Then I should be on iMedidata Login page
 	And I should not be on "My Profile" page
 	And I take a Screenshot
 
@@ -413,6 +429,7 @@ Scenario: If an iMedidata user clicks on “Logout” link in Rave, the user’s
 
 	Given I am an iMedidata User "<iMedidata User 1>" with username "<iMedidata User 1 ID>" password "<iMedidata User 1 Password>" and user group "<User Group 1>"
 	And I am the owner to study group "<Study Group>" with Modules app "<Modules App>" with role "<Modules Role 1>" EDC app "<EDC App>" with role "<EDC Role 1>"
+	And I take a Screenshot
 	And I select app "<Modules App>" associated with study group "<Study Group>"
 	And I am in Rave
 	When I follow link "Logout"
@@ -426,6 +443,7 @@ Scenario: If an internally authenicated user clicks on “Logout” link in Rave
 
 	Given I am a Rave User with Rave username "<Rave User Name 1>"
 	And I am logged in to Rave
+	And I take a Screenshot
 	When I follow link "Logout"
 	Then I should be on Rave Log out page
 	And I take a Screenshot
@@ -437,6 +455,7 @@ Scenario: If an iMedidata user attempts to login directly to Rave, the system wi
 
 	Given I am an iMedidata User with username "<iMedidata User 1 ID>"
 	And I am the owner to study group "<Study Group>" with Modules app "<Modules App>" with role "<Modules Role 1>" EDC app "<EDC App>" with role "<EDC Role 1>"
+	And I take a Screenshot
 	And I am on the Rave login page
 	And I Enter Text Field Rave User Name value "<iMedidata User 1 ID>"
 	And I Enter Text Field Rave Password value "<iMedidata User 1 Password>"
@@ -453,6 +472,7 @@ Scenario: If an iMedidata user selects iMedidata link in Rave, and if the sessio
     Given I am an iMedidata User with username "<iMedidata User 1 ID>"
 	And I am logged in
 	And I am assignment to Study "<Study A>" with Modules app "<Modules App>" with role "<Modules Role 1>" EDC app "<EDC App>" with role "<EDC Role 1>"
+	And I take a Screenshot
 	And I follow "<EDC App>" for Study "<Study A>"
 	And I am on Rave Study "<Study A>" home page
 	And I wait for 62 minutes
@@ -471,6 +491,8 @@ Scenario: If an Rave managed user experiencing interaction time out in Rave and 
    And I uncheck Password Time out 
    And I check Interaction Timeout
    And I Set Interaction Timeout to "1"
+   And I follow link "Update"
+   And I take a Screenshot
    And I wait "65" seconds
    And I follow "My Profile" 
    And I am on Rave Login Page
@@ -501,6 +523,8 @@ Scenario: If an iMedidata managed user experiencing password time out in Rave su
    And I check Password Time out 
    And I Set Password Timeout to "1"
    And I uncheck Interaction Timeout
+   And I follow link "Update"
+   And I take a screenshot
    And I wait "65" seconds
    And I follow "My Profile" 
    And I am on Rave "Password Timeout" page
@@ -514,10 +538,12 @@ Scenario: If an iMedidata managed user experiencing password time out in Rave su
    And I see Incorrect Username/password
    And I am on Rave "Password Timeout" page
    And I enter Password "Wrong Password" 
+   And I take a screenshot
    And I click Enter
    And I see Incorrect Username/password
    And I still on Rave "Password Timeout" page
    And I do not see "User is Locked out" message
+   And I take a screenshot
    And I enter Password "<iMedidata User 1 Password>" 
    And I click Enter
    And I see the page "My Profile"
@@ -530,7 +556,8 @@ Scenario: If an iMedidata managed user is experiencing a Rave Password Timeout a
 
     Given I am logged in to iMedidata as iMedidata user "<iMedidata User 1 ID >" with password "<iMedidata User 1 Password>"
     And I am assigned to Study "<Study A>" with Modules app "<Modules App>" with role "<Modules Role 1>" EDC app "<EDC App>" with role "<EDC Role 1> "Security app "<Security App>" with role "<Security Role 1>"
-    And I follow "<EDC App>" for Study "<Study A>"
+    And I take a screenshot
+	And I follow "<EDC App>" for Study "<Study A>"
     And I am on Rave Study "<Study A>" home page 
     And I follow the link "Configuration"
     And I follow the link "Other Settings"
@@ -538,6 +565,7 @@ Scenario: If an iMedidata managed user is experiencing a Rave Password Timeout a
     And I Set Password Timeout to "1"
 	And I uncheck Interaction Time out
 	And I update
+	And I take a screenshot
     And I wait "65" seconds
     And I follow link "My Profile" 
     And the "Password Timeout" page is displayed
