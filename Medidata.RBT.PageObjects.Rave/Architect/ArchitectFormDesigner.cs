@@ -210,7 +210,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 }
                 else if (string.IsNullOrEmpty(type) || type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    if (!exactMatch && Browser.FindElementByTagName("body").Text.Contains(identifier))
+                    if (!exactMatch && Browser.TryFindElementBy(By.XPath("//*[contains(text(), '" + identifier + "')]")) != null)
                         retVal = true;
                 }
 
