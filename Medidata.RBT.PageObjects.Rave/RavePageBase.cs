@@ -17,6 +17,22 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public abstract class RavePageBase : PageBase
 	{
+		private static readonly IList<string> MODULE_LIST = new List<string>() { 
+			"Architect",
+			"User Administration",
+			"Site Administration",
+			"Reporter",
+			"Configuration",
+			"Report Administration",
+			"Lab Administration",
+			"EED",
+			"Translation Workbench",
+			"PDF Generator",
+			"DCF",
+			"Query Management",
+			"Welcome Message"};
+
+
 		public RavePageBase()
 		{
 		}
@@ -28,16 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage NavigateTo(string name)
 		{
-			if (new string[] {
-				"Architect",
-				"User Administration",
-				"Site Administration",
-				"Reporter",
-				"Configuration",
-				"Report Administration",
-				"Lab Administration",
-				"EED",
-				"Translation Workbench","PDF Generator","DCF","Query Management","Welcome Message"}.Contains(name))
+			if (MODULE_LIST.Contains(name))
 			{
 				if (!(Context.CurrentPage is HomePage))
 					Context.CurrentPage = new HomePage().NavigateToSelf();
