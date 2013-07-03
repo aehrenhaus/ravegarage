@@ -34,25 +34,27 @@ Scenario: As an external user with sign permissions, I can access a subject form
 
 	And I login as user "<iMedidata user 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	When I select form "<Form1>"
 	Then I see form "<Form1>" displayed
-	And I should see button "<Sign And Save>"
+	And I should see button "<Sign and Save>"
 	And I take a screenshot 1 of 46
 	
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch12
 @PB_2.5.3.2
 @Validation
-Scenario: As an external user, when I click on the "Sign And Save" button on a form without saved data, I will see the eSignature pop up window
+Scenario: As an external user, when I click on the "Sign and Save" button on a form without saved data, I will see the eSignature pop up window
 
 	And I login as user "<iMedidata user 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>"
-	When I click button "Sign And Save"	
+	When I click button "Sign and Save"	
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -60,16 +62,17 @@ Scenario: As an external user, when I click on the "Sign And Save" button on a f
 	And I should see textbox with label "Username"
 	And I should see textbox with label "Password"
 	And I should see button with label "eSign"
-	And I take a screenshot 2 of of 46
+	And I take a screenshot 2 of 46
 	
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch12
 @PB_2.5.3.3
 @Validation
-Scenario: As an external user, I can click the "Sign And Save" button on a form with saved data and I will see the eSignature pop up window
+Scenario: As an external user, I can click the "Sign and Save" button on a form with saved data and I will see the eSignature pop up window
 
 	And I login as user "<iMedidata user 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>"
@@ -81,7 +84,7 @@ Scenario: As an external user, I can click the "Sign And Save" button on a form 
 	And I should see icon "Requires Signature" on "Field 2A" on form "<Form1>" in subject "<Subject>"
 	And I should see icon "Requires Signature" on "Field 3A" on form "<Form1>" in subject "<Subject>"
 	And I take a screenshot 3 of 46
-	When I click button "Sign And Save"	
+	When I click button "Sign and Save"	
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -99,13 +102,14 @@ Scenario: As an external user with sign privileges, I can successfully sign the 
 
 	And I login as user "<iMedidata user 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
 	And I click button "<Save>"
-	And I click button "Sign And Save"	
+	And I click button "Sign and Save"	
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -128,10 +132,11 @@ Scenario: As an external user with access to the audit trail, I can view the aud
 
 	And I login as user "<iMedidata user 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -140,10 +145,10 @@ Scenario: As an external user with access to the audit trail, I can view the aud
 	And I enter password textbox with Password "<Password1>"
 	And I click button "eSign"
 	When I click icon "Complete" for form "<Form1>" in subject "<Subject>" 
-	Then I should see the message "User signature succeeded." on the on the form level audit on form "<Form1>" in subject "<Subject>"
-	And I should see the message "DataPage created." on the on the form level audit on form "<Form1>" in subject "<Subject>"
-	And I should see the username <iMedidata user 1> on the form level audit on form "<Form1>"	in subject "<Subject>
-	And I should see the timestamp <dd MMM yyyy HH:mm:ss> "on the "form level audit on form "<Form1>"	in subject "<Subject>
+	Then I should see the message "User signature succeeded." on the form level audit on form "<Form1>" in subject "<Subject>"
+	And I should see the message "DataPage created." on the form level audit on form "<Form1>" in subject "<Subject>"
+	And I should see the username <iMedidata user 1> on the form level audit on form "<Form1>"	in subject "<Subject>"
+	And I should see the timestamp <dd MMM yyyy HH:mm:ss> on the form level audit on form "<Form1>" in subject "<Subject>"
 	And I take a screenshot 6 of 46
 
 #------------------------------------------------------------------------------------------------------------
@@ -154,12 +159,13 @@ Scenario: As an iMedidata user with signature permissions, I will see a warning 
 
 	And I login as user "<iMedidata user 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -178,12 +184,13 @@ Scenario: As an iMedidata user with signature permissions, I will see a warning 
 
 	And I login as user "<iMedidata user 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -208,7 +215,7 @@ Scenario: As a external user with access to the audit trail, I will see a simple
 	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -248,12 +255,13 @@ Scenario: As an iMedidata user that failed 5 consecutive signature attempts, my 
 
 	And I login as user "<iMedidata user 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -279,11 +287,11 @@ Scenario: As an iMedidata user that failed 5 consecutive signature attempts, my 
 	When I click button "eSign"
 	Then I should see a pop-up window with message to confirm whether the user wants to leave the page and informing the user that the entered data may not be saved.  
 	And I take a screenshot 14 of 46
-	When I select confirmation button to leave the page
+	When I select confirmation button to leave Page
 	Then I should see page "iMedidata Login Page"
 	When I attmept to log in with Username <iMedidata User 1>
 	And password <Password1>
-	Then I should see the message informing that the login is invalid and the account will be locked for five (5) minutes
+	Then I should see the message "Invalid Login. You have entered an invalid password over the retry limit. Your account will be locked for five (5) minutes."
 	And I take a screenshot 15 of 46
 	
 #------------------------------------------------------------------------------------------------------------
@@ -294,9 +302,10 @@ Scenario: As a external user with batch sign permissions, I will see the  "Sign 
 
 	And I login as user "<iMedidata User 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	When I create a subject
-	Then I should see button "Sign And Save"
+	Then I should see button "Sign and Save"
 	And I take a screenshot 16 of 46
 	
 #------------------------------------------------------------------------------------------------------------
@@ -307,9 +316,10 @@ Scenario: As a external user, when I click on the "Sign and Save" button on the 
 
 	And I login as user "<iMedidata User 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
-	When I click button "Sign And Save"
+	When I click button "Sign and Save"
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -320,13 +330,14 @@ Scenario: As a external user, when I click on the "Sign and Save" button on the 
 	And I take a screenshot 17 of 46
 	
 #------------------------------------------------------------------------------------------------------------
-@release_564_patch12
+@release_564_2013.2.0
 @PB_2.5.3.12
 @Validation
 Scenario: As a external user with batch sign permissions, when I sign at the Calendar View, all forms requiring signature for that subject are signed 
 
 	And I login as user "<iMedidata User 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>" which requires signature
@@ -343,7 +354,7 @@ Scenario: As a external user with batch sign permissions, when I sign at the Cal
 	And I enter data in field "<LogField 9B>" on "<Form 9>" in folder "<Folder A>"	
 	And I click button "Save"	
 	And I click the "subject tab"
-	And I click button "Sign And Save" button
+	And I click button "Sign and Save" button
 	And I see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -351,12 +362,12 @@ Scenario: As a external user with batch sign permissions, when I sign at the Cal
 	And I enter username textbox with User ID "<iMedidata user ID>"
 	And I enter password textbox with Password "<iMedidata user Password>"
 	When I click button "eSign"
-	Then I should see text "Signature attempt was successful" on subject homepage
+	Then I should see text "Your signature is being applied. You may continue working on other subjects." on subject homepage
 	And I take a screenshot 18 of 46
 	And I go to form "<Form1>" 
 	And I should see icon "Complete" for form "<Form1>" in subject "<Subject>" 
 	And I should see icon "Complete" on "Field 1A" on form "<Form1>" in subject "<Subject>"
-	And I should see icon "Complete" on "Field 1B" on form "<Form1>" in subject "<Subject>"
+	And I should see icon "Complete" on "Field 2A" on form "<Form1>" in subject "<Subject>"
 	When I click on complete icon on form level for subject "<Subject>"
 	Then I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"		
@@ -405,7 +416,7 @@ Scenario: As a external user with batch sign permissions, when I sign at the Cal
 	And I click the tab "Form9" in folder "<Folder A>"
 	And I click the log line link for the field "<Log Field 9A>"
 	When I click on icon "Complete" for field "<Log Field 9A>"
-	Ten I should see the message "User entered 'data'" on the audit for field "<Log Field 9A>" on form "<Form 9>"in folder "<Folder A>"
+	Then I should see the message "User entered 'data'" on the audit for field "<Log Field 9A>" on form "<Form 9>"in folder "<Folder A>"
 	And I should see the message "User signature succeeded." on the audit for field "<Log Field 9A>" on form "<Form 9>"in folder "<Folder A>"	
 	And I take a screenshot	27 of 46
 	And I click the tab "Form9" in folder "<Folder A>"
@@ -424,18 +435,18 @@ Scenario: As a external user, I will see a simple error message displayed when I
 
 	And I login as user "<iMedidata User 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>" which requires signature
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
 	And I click button "Save"
-	And I click button "Sign And Save" button
+	And I click button "Sign and Save" button
 	And I see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
-	And I see the current "|Timestamp|"	
-	
+	And I see the current "|Timestamp|"		
 	And I enter username textbox with User ID "<iMedidata user ID>"
 	And I enter password textbox with Password "<Password1>xx"
 	When I click button "eSign"
@@ -450,21 +461,23 @@ Scenario: As a external user with batch sign permissions, I will see the "Sign a
 
 	And I login as user "<iMedidata user 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select link "Grid View"
 	When I select link "All"
-	Then I should see button "Sign And Save"
+	Then I should see button "Sign and Save"
 	And I take a screenshot 30 of 46
 	
 #------------------------------------------------------------------------------------------------------------
-@release_564_patch12
+@release_564_2013.2.0
 @PB_2.5.3.15 
 @Validation
 Scenario: As a external user with batch sign permissions, when I sign in the Grid View, all forms requiring signature for the subject are signed 
 
 	And I login as user "<iMedidata User 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>"
@@ -483,8 +496,8 @@ Scenario: As a external user with batch sign permissions, when I sign in the Gri
 	And I click the "subject tab"
 	And I select link "Grid View"
 	And I select link "All"
-	And I take a srceenshot 31 of 46
-	And I click button "Sign And Save" button
+	And I take a screenshot 31 of 46
+	And I click button "Sign and Save" button
 	And I see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -492,12 +505,12 @@ Scenario: As a external user with batch sign permissions, when I sign in the Gri
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<Password1>"
 	When I click button "eSign"
-	Then I should see text "Signature attempt was successful" on subject homepage
+	Then I should see text "Your signature is being applied. You may continue working on other subjects." on subject homepage
 	And I take a screenshot 32 of 46
 	And I go to form "<Form1>"
 	And I should see icon "Complete" for form "<Form1>" in subject "<Subject>" 
 	And I should see icon "Complete" on "Field 1A" on form "<Form1>" in subject "<Subject>"
-	And I should see icon "Complete" on "Field 1A" on form "<Form1>" in subject "<Subject>"
+	And I should see icon "Complete" on "Field 2A" on form "<Form1>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"		
 	And I take a screenshot 33 of 46
@@ -554,6 +567,7 @@ Scenario: As a external user, I will see a simple error message displayed when I
 
 	And I login as user "<iMedidata User 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>" which requires signature
@@ -564,7 +578,7 @@ Scenario: As a external user, I will see a simple error message displayed when I
 	And I select link "Grid View"
 	And I take a screenshot 43 of 46
 	And I select form "<Form1>" which requires signature
-	And I click button "Sign And Save" button
+	And I click button "Sign and Save" button
 	And I see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -583,12 +597,13 @@ Scenario: When an iMedidata user enters other user credential, then form is not 
 
 	And I login as user "<iMedidata User 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -607,27 +622,24 @@ Scenario: If the iMedidata session times out before the Rave session and the ext
 
 	And I login as user "<iMedidata user 1>"
 	And I select study "<Study A>"
+	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
 	And I click button "<Save>"
-	And I click button "Sign And Save"	
+	And I click button "Sign and Save"	
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
 	And I see the current "|Timestamp|"	
 	And I wait until the iMedidata timeout period has passed
 	And I enter username textbox with User ID "<iMedidata user ID>"
-	And I enter password textbox with Password "<iMedidata user Password"
+	And I enter password textbox with Password "<iMedidata user Password>"
 	When I click button "eSign"
 	Then I should see icon "Complete" for form "<Form1>" in subject "<Subject>" 
 	And I should see icon "Complete" on "Field 1A" on form "<Form1>" in subject "<Subject>"
 	And I should see icon "Complete" on "Field 2A" on form "<Form1>" in subject "<Subject>"
 	And I should see message "First Name Last Name Title (iMedidata user 1) dd Mmm yyyy HH:mm:ss <Time Zone>"
 	And I take a screenshot 46 of 46
-	
-
-	
-	

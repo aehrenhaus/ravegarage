@@ -1,4 +1,4 @@
-# Rave sets up a trust relationship with iMedidata via an SSL certificate.  iMedidata includes both the web application server and the Central Authentication Service (CAS) server. The CAS server permits a user to access multiple Medidata applications, like Rave, after providing their credentials only once via iMedidata. In other words CAS centralizes the authentication process, providing the user the ability to access multiple Medidata applications seamlessly. Finally, to communicate with iMedidata, Rave uses Rave Web Services Outbound (RWSO) which serves as an intermediary to facilitate the external connection to iMedidata, which may be outside the trusted network.  Finally, the iMedidata API requires a public-private key handshake prior to any data exchange, and uses a temporary token that authenticates the exchange to prevent any unauthorized access.  
+﻿# Rave sets up a trust relationship with iMedidata via an SSL certificate.  iMedidata includes both the web application server and the Central Authentication Service (CAS) server. The CAS server permits a user to access multiple Medidata applications, like Rave, after providing their credentials only once via iMedidata. In other words CAS centralizes the authentication process, providing the user the ability to access multiple Medidata applications seamlessly. Finally, to communicate with iMedidata, Rave uses Rave Web Services Outbound (RWSO) which serves as an intermediary to facilitate the external connection to iMedidata, which may be outside the trusted network.  Finally, the iMedidata API requires a public-private key handshake prior to any data exchange, and uses a temporary token that authenticates the exchange to prevent any unauthorized access.  
 # When an externally authenticated user successfully logs in iMedidata, the system will display all the studies the user has access to. From iMedidata the user will be able to access a specific Study within Rave.
 # Rave will check if the request has originated from iMedidata and will do the following:
 # 1)	Get the iMedidata username and email address
@@ -34,7 +34,13 @@ Feature: Rave Integration for Users
 		|{Study B}	|{Study Group} 	|
 		|{Study C}	|{Study Group} 	|
 	And there exists Rave study "<Rave Study>" 
-		|{Rave Study 1}	|		
+		|{Rave Study 1}	|
+	And there exists Rave site "<Rave Site>" 
+		|{Rave Site 1}	|
+	And there exists Rave Monitor study "<Rave Monitor Study>" 
+		|{Monitor Study}	|
+	And there exists Rave Monitor site "<Rave Monitor Site>" 
+		|{Monitor Site}	|		
 	And there exists app "<App>" associated with study 
 		|App			|
 		|{EDC App}		|
@@ -69,18 +75,20 @@ Feature: Rave Integration for Users
 @Rave 564 Patch 13
 @PB2.7.5.13-10
 @Validation
-Scenario: When a user is created and accepts invitation to a study or study group in iMedidata , then the user account is created in Rave automatically and linked to iMedidata.  All this does is create the account, and provide an assignment
+Scenario: When a user is created and accepts invitation to a study in iMedidata , then the user account is created in Rave automatically and linked to iMedidata.  All this does is create the account, and provide an assignment
    
     Given there is User "<New User>" with a valid email account
 	And I am an iMedidata user with User name "<iMedidata user 1 ID>"
 	And I am the owner to <Entity>
 	And I invite user "<New User>" to <Entity> for  Modules app "<Modules App>" with role "<Modules Role 1>" and EDC App "<EDC App>" with role "<EDC Role 1>"
+	And I take a screenshot
 	And I login to email account for user "<New User>"
 	And I select invitation from iMedidata user
 	And I select link from email to activate account
 	And I activate iMedidata account for user "<New User>"
 	And I log in to iMedidata as user "<New User>"
 	And I see the invitation for <Entity>
+	And I take a screenshot
 	And I accept the invitation
 	And I log out
 	And I log in as "<iMedidata User 1 ID>"
@@ -88,21 +96,22 @@ Scenario: When a user is created and accepts invitation to a study or study grou
 	And I navigate to User Adminstration
 	And I search for User "<New User>" with Authenticator "iMedidata"
 	And I should see "<New User>" in search results
+	And I take a screenshot
 	And I navigate to user details for "<New User>"
-	And I should see source :iMedidata
+	And I should see Authenticator :iMedidata
 	And I should see assignment to the <Result>
 	And I take a screenshot
 
 |Entity                | Result|
 |Study                 | Study |
-|Study Group           | Studies in the Study Group|
+|Study Group           | Study in the Study Group|
 
 	
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.7.5.13-11
 @Validation
 @BUG
-Scenario: When a user accepts invitation to a Study or Study Group in iMedidata and the message has not been prosessed yet to Rave,
+Scenario: When a user accepts invitation to a Study in iMedidata and the message has not been prosessed yet to Rave,
           the user will see the following message "Your user account is in the process of being updated. Please Go Back to iMedidata
 		  and try again." when trying to navigate to Rave.
 	
@@ -110,6 +119,7 @@ Scenario: When a user accepts invitation to a Study or Study Group in iMedidata 
 	And I am an iMedidata user with User name "<iMedidata user 1 ID>"
 	And I am the owner to the Study <Entity>
 	And I invite user "<New User>" to Study <Entity> for  Modules app "<Modules App>" with role "<Modules Role 1>" and EDC App "<EDC App>" with role "<EDC Role 1>"
+	And I take a screenshot
 	And I login to email account for iMedidata user "<New User>"
 	And I select invitation from iMedidata user
 	And I select link from email to activate account
@@ -117,33 +127,35 @@ Scenario: When a user accepts invitation to a Study or Study Group in iMedidata 
 	And I log in to iMedidata as user "<New User>"
 	And I see the invitation for Study <Entity>
 	And I accept the invitation
-	And the message has not be processed yet
+	And the message has not been processed yet
 	When I follow "<EDC App>" for <Entity>
 	Then I should see message "Your user account is in the process of being updated. Please Go Back to iMedidata and try again."
 	And I should see "Go Back" button
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.7.5.13-12
 @Validation
 @BUG
-Scenario: When a user accepts invitation to a Study or Study Group in iMedidata and the message has not been prosessed yet to Rave,
+Scenario: When a user accepts invitation to a Study in iMedidata and the message has not been prosessed yet to Rave,
              the user will see the following message "Your user account is in the process of being updated. Please Go Back to
-			 iMedidata and try again." when trying to navigate to Rave.When clicking on "Go Back"button user should be directed to iMedidata home page
+			 iMedidata and try again." when trying to navigate to Rave. When clicking on "Go Back"button user should be directed to iMedidata home page
 	
     Given there is User "<New User>" with a valid email account
 	And I am an iMedidata user with User name "<iMedidata user 1 ID>"
 	And I am the owner to <Entity>
 	And I invite user "<New User>" to <Entity> for  Modules app "<Modules App>" with role "<Modules Role 1>" and EDC App "<EDC App>" with role "<EDC Role 1>"
+	And I take a screenshot
 	And I login to email account for user "<New User>"
 	And I select invitation from iMedidata user
 	And I select link from email to activate account
 	And I activate iMedidata account for user "<New User>"
 	And I log in to iMedidata as user "<New User>"
 	And I see the invitation for <Entity>
+	And I take a screenshot
 	And I accept the invitation
-	And the message has not be processed yet
+	And the message has not been processed yet
 	And I follow "<EDC App>" for <Entity>
 	And I should see message "Your user account is in the process of being updated. Please Go Back to iMedidata and try again."
 	And I should see "Go Back" button
@@ -153,11 +165,11 @@ Scenario: When a user accepts invitation to a Study or Study Group in iMedidata 
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.7.5.13-13
 @Validation
 @BUG
-Scenario: When a user accepts invitation to a Study or Study Group in iMedidata and the message has not been prosessed yet to Rave,
+Scenario: When a user accepts invitation to a Study in iMedidata and the message has not been processed yet to Rave,
           the user will see the following message "Your user account is in the process of being updated. Please Go Back to iMedidata and try again."
            when trying to navigate to Rave. When clicking on Refresh button on the browser window , user should remain on the same page.
 	
@@ -165,6 +177,7 @@ Scenario: When a user accepts invitation to a Study or Study Group in iMedidata 
 	And I am an iMedidata user with User name "<iMedidata user 1 ID>"
 	And I am the owner to <Entity>
 	And I invite user "<New User>" to <Entity> for  Modules app "<Modules App>" with role "<Modules Role 1>" and EDC App "<EDC App>" with role "<EDC Role 1>"
+	And I take a screenshot
 	And I login to email account for user "<New User>"
 	And I select invitation from iMedidata user
 	And I select link from email to activate account
@@ -172,7 +185,7 @@ Scenario: When a user accepts invitation to a Study or Study Group in iMedidata 
 	And I log in to iMedidata as user "<New User>"
 	And I see the invitation for <Entity>
 	And I accept the invitation
-	And the message has not be processed yet
+	And the message has not been processed yet
 	And I follow "<EDC App>" for <Entity>
 	And I should see message "Your user account is in the process of being updated. Please Go Back to iMedidata and try again."
 	And I should see "Go Back" button
@@ -200,7 +213,7 @@ Scenario: When a user is created in iMedidata with EDC roles , one and only one 
 	And I select Role "<EDC Role 1>"
 	And I am on Study "<Study A>" home page
 	And I navigate to User Adminstration
-	When I search for user "<iMedidata User 2 ID>" with Authenticator set to  iMedidata
+	When I search for user "<iMedidata User 2 ID>" with Authenticator set to iMedidata
 	Then I should see three results for "<iMedidata User 2 ID>" 
 	And I take a screenshot
 	And I should see account for Role "<EDC Role 1>" 
@@ -216,7 +229,7 @@ Scenario: When a user is created in iMedidata with EDC roles , one and only one 
 	And I should see Study "<Study A>" in Studies Pane with Role "<EDC Role 3>"
     And I take a screenshot
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.7.5.13-11A
 @Validation
 Scenario: When a User Account Details modified in iMedidata, that user account is updated in User Details page in Rave automatically with out the iMedidata user accessing Rave.
@@ -232,7 +245,7 @@ Scenario: When a User Account Details modified in iMedidata, that user account i
 	And I enter Middle Name "MiddleName"
 	And I enter Last Name "LastName"
 	And I enter Title "Title"
-	And I enter Department "Department"
+	And I enter Institution "Institution"
 	And I enter Address Line 1 "AddressLine1"
 	And I enter Address Line 2 "AddressLine2"
 	And I enter Address Line 3 "AddressLine3"
@@ -247,10 +260,10 @@ Scenario: When a User Account Details modified in iMedidata, that user account i
 	And I enter Fax "Fax"
 	And I enter Pager "Pager"
 	And I take a screenshot
-	And I follow the link "Home"
+	And I click "Save"
 	And I follow "<Modules App>" for Study "<Study A>"
 	And I am in Rave
-	And I follow the the link "User Administration"
+	And I follow the link "User Administration"
 	And I navigate to the User Details page for iMedidata user with login "<iMedidata User 1 ID>"
 	And I see Login "<iMedidata User 1 ID>"
 	And I see Title "Title"
@@ -298,7 +311,7 @@ Scenario: When a User Account Details modified in iMedidata, that user account i
 	And I should see text Address Line 2 is "Address Line 2xx"
 	And I should see text Address Line 3 is "Address Line 3"
 	And I should see text City is "Cityxx"
-	And I should see text State is "<State" 
+	And I should see text State is "<State>" 
 	And I should see text Postal Code is "Postal Codexx"
 	And I should see text Country is "<Country>"
 	And I should see text Email is "Email"	
@@ -310,7 +323,7 @@ Scenario: When a User Account Details modified in iMedidata, that user account i
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.7.5.13-11B
 @Validation
 Scenario: When a user details modified in iMedidata, that user account is updated in My Profile page in Rave automatically.
@@ -325,7 +338,7 @@ Scenario: When a user details modified in iMedidata, that user account is update
 	And I enter Middle Name "MiddleName"
 	And I enter Last Name "LastName"
 	And I enter Title "Title"
-	And I enter Department "Department"
+	And I enter Institution "Institution"
 	And I enter Address Line 1 "AddressLine1"
 	And I enter Address Line 2 "AddressLine2"
 	And I enter Address Line 3 "AddressLine3"
@@ -339,19 +352,19 @@ Scenario: When a user details modified in iMedidata, that user account is update
 	And I enter Mobile Phone "Mobile Phone"
 	And I enter Fax "Fax"
 	And I enter Pager "Pager"
+	And I take a screenshot
 	And I save my changes
 	And I note the time changes are saved "<Time 1>"
-	And I follow the link "Home"
 	And I follow a "<Modules App>" for Study "<Study A>"
 	And I am in Rave
-	And I follow the the link "My Profile"
-	And I should see Username "<iMedidata User 1 ID>"
-	And I should see should Email "<Email>"
+	And I follow the link "My Profile"
+	And I should see iMedidata User Name "<iMedidata User 1 ID>"
+	And I should see Email "<Email>"
 	And I should see First Name "FirstName"
 	And I should see Middle Name "MiddleName"
 	And I should see Last Name "LastName"
 	And I should see Title "Title"
-	And I should  see Institution "Institution"
+	And I should see Institution "Institution"
 	And I should see Address Line 1 "AddressLine1"
 	And I should see Address Line 2 "AddressLine2"
 	And I should see Address Line 3 "AddressLine3"
@@ -372,7 +385,7 @@ Scenario: When a user details modified in iMedidata, that user account is update
 @FUTURE
 Scenario: When a user is disabled in iMedidata, that user account is deactivated in Rave automatically.
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.7.5.13-01
 @Validation
 Scenario Outline: When a user is created or updated in iMedidata, the following User attributes are synchronized between Rave and iMedidata and displayed on the My Profile page.
@@ -413,7 +426,7 @@ Examples:
 	And I enter Middle Name "MiddleName"
 	And I enter Last Name "LastName"
 	And I enter Title "Title"
-	And I enter Department "Department"
+	And I enter Institution "Institution"
 	And I enter Address Line 1 "AddressLine1"
 	And I enter Address Line 2 "AddressLine2"
 	And I enter Address Line 3 "AddressLine3"
@@ -427,17 +440,18 @@ Examples:
 	And I enter Mobile Phone "Mobile Phone"
 	And I enter Fax "Fax"
 	And I enter Pager "Pager"
+	And I take a screenshot
 	And I save my changes
 	And I follow a "<EDC App>" link for Study "<Study A>"
 	And I am in Rave Study "<Study A>" page
-	And I follow the the link "My Profile"
-	And I should see Username "<iMedidata User 2 ID>"
+	And I follow the link "My Profile"
+	And I should see iMedidata User Name "<iMedidata User 2 ID>"
 	And I should see should Email "<Email>"
 	And I should see First Name "FirstName"
 	And I should see Middle Name "MiddleName"
 	And I should see Last Name "LastName"
 	And I should see Title "Title"
-	And I should  see Institution "Institution"
+	And I should see Institution "Institution"
 	And I should see Address Line 1 "AddressLine1"
 	And I should see Address Line 2 "AddressLine2"
 	And I should see Address Line 3 "AddressLine3"
@@ -448,7 +462,7 @@ Examples:
     And I should see Locale "<Locale>"
 	And I should see Phone "Phone"
 	And I should see Fax "Fax"
-	And I should see "Time Zone" is "<Time Zone>"
+	And I should see Time Zone is "<Time Zone>"
 	And I take a screenshot
 	And I follow link iMedidata
 	And I follow link "Account Details"
@@ -456,8 +470,10 @@ Examples:
 	And I update Middle Name "MiddleNamexx"
 	And I update Last Name "LastNamexx"
 	And I update Title "Titlexx"
+	And I update Institution "Institutionxx"
 	And I update Address Line 1 "AddressLine1xx"
 	And I update Address Line 2 "AddressLine2xx"
+	And I update Address Line 3 "AddressLine3xx"
 	And I update City "Cityxx"
 	And I update Locale "Eng"
 	And I update time zone "<EST>"
@@ -466,29 +482,29 @@ Examples:
 	And I update Postal Code "Postal Codexx"
 	And I update Fax "2837438"
 	And I update Phone "1322"
-	And I save my changes
 	And I take a screenshot
-	And I follow a "<Modules App>" link for Study "<Study A>"
+	And I save my changes
+	And I follow a "<EDC App>" link for Study "<Study A>"
 	And I am in Rave Study "<Study A>" page
-	When I follow the the link "My Profile"
-	Then I should see Username "<iMedidata User 2 ID>"
+	When I follow the link "My Profile"
+	Then I should see iMedidata User Name "<iMedidata User 2 ID>"
 	And I should see should Email "<Email>"
-	And I should see First Name "FirstName"
-	And I should see Middle Name "MiddleName"
-	And I should see Last Name "LastName"
-	And I should see Title "Title"
-	And I should  see Institution "Institution"
-	And I should see Address Line 1 "AddressLine1"
-	And I should see Address Line 2 "AddressLine2"
-	And I should see Address Line 3 "AddressLine3"
-	And I should see City "City"
-	And I should see Postal Code "Postal Code"
+	And I should see First Name "FirstNamexx"
+	And I should see Middle Name "MiddleNamexx"
+	And I should see Last Name "LastNamexx"
+	And I should see Title "Titlexx"
+	And I should see Institution "Institutionxx"
+	And I should see Address Line 1 "AddressLine1xx"
+	And I should see Address Line 2 "AddressLine2xx"
+	And I should see Address Line 3 "AddressLine3xx"
+	And I should see City "Cityxx"
+	And I should see Postal Code "Postal Codexx"
 	And I should see State "<NJ>"
 	And I should see Country "USA"
     And I should see Locale "English"
-	And I should see Phone "Phone"
 	And I should see Time Zone "<EST>"
-	And I should see Fax "Fax"
+	And I should see Fax "2837438"
+	And I should see Phone "1322"
 	And I take a screenshot
 
 @Rave 564 Patch 13
@@ -508,24 +524,29 @@ Scenario Outline: When a user is created or updated in iMedidata, the following 
     | Phone                         | 999                                      | 
     | Time Zone                     | "<Time Zone>"                            |
     | Password                      | "<iMedidata User 1 Password>"            | 
-    | Confirm Password              | "<iMedidata User 1 Password>"            |
+    | Password Confirmation         | "<iMedidata User 1 Password>"            |
+	And I select a "Security Question" and "Answer"
     And I take a screenshot
 	And I select "Activate"
-    And I am iMedidata Log in page
+    And I am in iMedidata Log in page
+	And I take a screenshot
     And I log in 
-	And I am on 'iMedidata Terms of Use' page
+	And I am on 'iMedidata Terms Of Use' page
 	And I enter correct credentails for User "<iMedidata User 1 ID>" 
+	And I take a screenshot
+	And I click button "I Agree"
 	And I am on iMedidata Home page
 	And I accept invitation to Study "<Study A>" for app "<EDC App>" with Role "<EDC Role 1>" App "<Modules App>" Role "<Modules Role 1>"
+	And I take a screenshot
 	And I navigate to Rave by accessing "<EDC App>" for Study "<Study A>"
 	And I navigate to User Adminstration
 	And I search for User "<iMedidata User 1 ID>" with Authenticator "iMedidata"
 	And I navigate to User Details page for "<iMedidata User 1 ID>"
 	And I verify the following :
-    | Rave  Field Name              | Value                                    | 
+    | Rave Field Name               | Value                                    | 
     | First Name                    | "<iMedidata>"                            | 
     | Last Name                     | "<User 1>"                               | 
-    | Username                      | <iMedidata User 1 ID >                   | 
+    | Log In                        | <iMedidata User 1 ID >                   | 
     | Email                         | <iMedidata User 1 Email>                 | 
     | Language                      | "<Locale>"                               | 
     | Phone                         | 999                                      | 
@@ -552,13 +573,13 @@ Scenario Outline: When a user is created or updated in iMedidata, the following 
     | Pager                         | "<392849>"                               | 
     | Mobile Phone                  | "<932849>"                               | 
     | Time Zone                     | "<Time Zone>"                            | 
-	| Locale                        | "<Locale >"                              | 
+	| Locale                        | "<Locale>"                               | 
 	And I take a screenshot
 	And I follow "<EDC App>" for Study "<Study A>" 
 	And I navigate to User Adminstration
 	When I navigate to User Details for "<iMedidata User 1 ID>"
 	Then I should see the following : 
-    | Rave  Field Name              | value                                    |
+    | Rave Field Name               | value                                    |
     | First Name                    | "<iMedidata> xx"                         | 
     | Last Name                     | "<User 1>yy"                             | 
     | Middle Name                   | "<Middle Name>"                          | 
@@ -592,7 +613,7 @@ Scenario Outline: If the user is an iMedidata user, then the fields on User Info
 	When I follow link "My Profile"
 	Then I should see the following fields are uneditable
     |First Name  |Middle Name  |Last Name  |Title  |Institution |Address Line 1 | Address Line 2 | Address Line 3 |City |State  |Postal Code |Country |Email |Phone |Fax |Locale |
-	And dropdown "Time Zone" is disabled
+	And dropdown "TimeZone" is disabled
 	And I should not see link "Edit" in User Information pane
 	And I take a screenshot
 
@@ -630,12 +651,13 @@ Scenario Outline: If the user is an iMedidata user, then the following fields on
 	Given I am an existing iMedidata user with username "<iMedidata User 1 ID>"
 	And I am  logged in to iMedidata
 	And I have an assignment to Study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>", for app "<Modules App>" with Role "<Modules Role 1>"
+	And I take a screenshot
 	And I follow a "<EDC App>" link for Study "<study A>"
 	And I am in Rave
-	And I follow the the link "User Administration"
+	And I follow the link "User Administration"
 	When I navigate to the User Details page for iMedidata user with login "<iMedidata User 1 ID>"
 	Then I should see the following fields are not editable:
-    |Login|Title|First Name|Middle Name| Last Name| Email| telePhone |PIN|URL| User Group|Salutation| Facsimile|Institution| Address Line 1 |Address Line 2 |Address Line 3| City|State  |Postal Code|Mobile Phone |Country|Pager|Locale |TimeZone|Language|
+    |Login|Title|First Name|Middle Name| Last Name| Email| Telephone |PIN|URL| User Group|Salutation| Facsimile|Institution| Address Line 1 |Address Line 2 |Address Line 3| City|State  |Postal Code|Mobile Phone |Country|Pager|TimeZone|Language|
 	And I take a screenshot
 	
 
@@ -650,17 +672,17 @@ Scenario: For an iMedidata user, Rave displays “iMedidata” as the Authentica
 	And I have an assignment to study "<Study A>" for App "<Modules App>" with Role "<Modules Role 1>"
 	And I follow the app link  "<Modules App>" for Study "<Study A>"
 	And I am on Rave Study "<Study A>" page
-	When I follow the the link "My Profile"
+	When I follow the link "My Profile"
 	Then I should see "<iMedidata User 1 ID>" as iMedidata User Name on My Profile page
-	And I should see Authenticator:iMedidata
+	And I should see Authenticator iMedidata
 	And I take a screenshot
-	And I navigate to User Details page for user "<iMedidata User 1 ID>" in User Adminstration
+	And I navigate to User Details page for user "<iMedidata User 1 ID>" in User Administration
 	And I should see "<iMedidata User 1 ID>" as iMedidata User Name on User Details page
 	And I should see Authenticator:iMedidata
 	And I take a screenshot
 	
 	
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.4.1.2-01
 @Validation
 Scenario: Rave displays a Last External Update Date field indicating when information was last updated on iMedidata. This field will appear on User Details and My Profile pages. For example My Profile page on Rave will display Last External Update Date as the date when user information of externally authenticated user was last updated on iMedidata. Important: This date is the actual iMedidata update date, not the date when the data was received by Rave.
@@ -681,7 +703,8 @@ Scenario: Rave displays a Last External Update Date field indicating when inform
 	When I follow link "My Profile"
 	Then I should note value "<Time 2>" of "Last External Update Date"
 	And I take a screenshot
-	And I follow the the link "User Administration"
+	And I navigate to "Home" page
+	And I follow the link "User Administration"
 	And I navigate to User Details page for "<iMedidata User 1 ID>"
 	And I note value "<Time 3>" of "Last External Update Date"
 	And I take a screenshot
@@ -698,24 +721,24 @@ Scenario: When a user accesses Rave using an external account, Rave will correct
 	And I have an assignment to Study "<Study A>" for App "<Modules app>" with Role "<Modules Role 1>"
 	And I follow the app link "<Modules App>" for Study "<Study A>"
 	And I am on Rave Study "<Study A>" page
-	And I follow the the link "My Profile"
+	And I follow the link "My Profile"
 	And the user profile for that user is displayed
 	And I should see timezone "<TimeZone1>"
 	And I take a screenshot
-	And I follow the the link "User Administration"
+	And I follow the link "User Administration"
 	And I navigate to the User Details page for iMedidata user "<iMedidata User 1 ID>"
 	And I should see timezone "<TimeZone1>"
 	And I take a screenshot
 	And I select link "iMedidata"
 	And I am on iMedidata homepage
-	And I navigate to Account details page
+	And I navigate to Account Details page
 	And I change timezone to "<TimeZone2>"
 	And I follow the app link "<Modules App>" for Study "<Study A>"
 	And the Rave Study Home page is displayed
-	When I follow the the link "My Profile"
+	When I follow the link "My Profile"
 	Then I should see timezone is set to "<TimeZone2>"
 	And I take a screenshot
-	And I follow the the link "User Administration"
+	And I follow the link "User Administration"
 	And I navigate to the User Details page for iMedidata user "<iMedidata User 1 ID>"
 	And I should see timezone is set to "<TimeZone2>"
 	And I take a screenshot
@@ -727,7 +750,7 @@ Scenario: When a user accesses Rave using an external account, Rave will correct
 Scenario: When a user accesses Rave using an external account, Rave will correctly set the current locale / language to correctly match the user's language preference in iMedidata.
 	
 	Given I am an iMedidata user with username "<iMedidata User 1 ID>"
-	And I am assigned to local "<JPN>"
+	And I am assigned to locale "<JPN>"
 	And I select a link "<Modules App>" for Study "<Study A>"
 	And I am in Rave "<Study A>" page
 	And I should see Kanji Characters
@@ -740,8 +763,9 @@ Scenario: When a user accesses Rave using an external account, Rave will correct
 	And I select link "iMedidata"
 	And I am redirected to iMedidata
 	And I follow link "Account Details"
-	And I change local to "<Eng>"
-	And I select a link a link "<Modules App>" for Study "<Study A>"
+	And I change locale to "<Eng>"
+	And I take a screenshot
+	And I select a link "<Modules App>" for Study "<Study A>"
 	And I am in Rave "<Study A>" page
 	And I follow the link "My Profile"
 	And I should see locale "Eng"
@@ -763,13 +787,15 @@ Scenario: When a user accesses Rave using an external account, Rave will correct
 	And I follow link "Advanced Configuration"
 	And I select "Yes" on warning page
 	And I set Default Locale to "English"
-	And I select save
+	And I select Save
+	And I take a screenshot
 	And I log out
 	And I login in to iMedidata as user with username "<iMedidata User 1 ID>"
-	And I am assigned to locale "<Locale4>"
+	And I am assigned to locale "<Locale4>" which does not exist in the Rave URL
+	And I take a screenshot
 	And I have an assignment to Study "<Study A>" with app "<EDC App>" for Role "<EDC Role 1>"
 	And I have an assignment to Study "<Study A>" with App "<Modules App>" for Role "<Modules Role 1>"
-	And I select Modules "<Modules app>" for Study "<Study A>"
+	And I select a link "<Modules App>" for Study "<Study A>"
 	And I am on Rave Study "<Study A>" home page
 	And the locale is "English" and not locale "<Locale 4>"
 	When I navigate to My Profile page 
@@ -802,7 +828,7 @@ Scenario: If the user is not an iMedidata user, then Rave will display the Chang
 	And I should see text box "Old Password"
 	And I should see text box "New Password"
 	And I should see text box "Confirm Password"
-	And I should see button "Save Password And Continue"
+	And I should see button "Save Password and Continue"
 	And I change password "<Rave Password 1>" to password "<Rave Password 1>XX"
 	And I should see text "Password Changed"
 	And I should see link "Click here to continue..."
@@ -819,7 +845,7 @@ Scenario: If the user is an iMedidata user, then Rave will not display the Chang
 	And I have an assignment to Study "<Study A>" for app  "<EDC App>" with role "<EDC Role 1>" for App "<Modules App>" with role "<Modules Role 1>"
 	And I follow the app link "<EDC App>" for "<Study A>"
 	And the study homepage for study "<Study A>" is displayed
-	When I follow the the link "My Profile"
+	When I follow the link "My Profile"
 	Then the user profile for that user is displayed
 	And I should not see the link "Change Password"
 	And I take a screenshot
@@ -847,7 +873,7 @@ Scenario: Rave will enable the user to select an Authenticator on User Administr
 	Given I am a Rave user "<Rave User 1>" with username "<Rave User Name 1>" and password "<Rave Password 1>" with access to User Adminstration
 	And I login to Rave as Rave user "<Rave User 1>"
 	When I select link "User Administration"
-	Then I should see the "Users" Page
+	Then I should see the "User Administration" Page
 	And I should see the dropdown "Authenticator" defaulted to "Internal"
 	And I verify selection list for dropdown "Authenticator" has choice "iMedidata"
 	And I take a screenshot
@@ -860,7 +886,7 @@ Scenario: If the user selects “iMedidata” as the Authenticator and clicks on
 	Given I am a Rave user "<Rave User 1>" with username "<Rave User Name 1>" and password "<Rave Password 1>" with access to User Adminstration
 	And I login to Rave as Rave user "<Rave User 1>"
 	And I select link "User Administration"
-	And I should see the "Users" Page
+	And I should see the "User Administration" Page
 	And I should see the dropdown "Authenticator" defaulted to "Internal"
 	And I select "iMedidata"  from the dropdown "Authenticator" 
 	When I follow the link "Search"
@@ -879,7 +905,7 @@ Scenario: If the user selects “Internal” as the Authenticator and clicks on 
 	And I login to Rave as Rave user "<Rave User 1>"
 	And I should see the user homepage
 	And I select link "User Administration"
-	And I should see the "Users" Page
+	And I should see the "User Administration" Page
 	And I should see the dropdown "Authenticator" defaulted to "Internal"
 	And I select "Internal"  from the dropdown "Authenticator" 
 	When I follow the link "Search"
@@ -900,7 +926,7 @@ Scenario Outline: If the user is an iMedidata user, then the following attribute
 	And I follow link "Home"
 	And I follow link "User Administration
 	And I enter in Log in textbox,"<iMedidata User 1 ID>"
-	And I select fron Authenticator dropdown, "iMedidata"
+	And I select from Authenticator dropdown, "iMedidata"
 	And I select link "Search"
 	And I should see iMedidata user "<iMedidata User 1 ID>" in the search results
 	When I click details icon for Log In "<iMedidata User 1 ID>"
@@ -929,30 +955,36 @@ Examples:
 	| Network Mask       		| yes  	    	  |
 		
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.7.2-02
 @Validation
-Scenario: On the User Details page, an iMedidata user may NOT removed from a study if the study is controlled from  iMedidata
+@MCC-55692
+Scenario: On the User Details page, an iMedidata user may NOT be removed from a study if the study is controlled from iMedidata.
+          For an iMedidata user, the remove icon and sites arrow icon will not be displayed for iMedidata studies.
+		  For an iMedidata user, the remove icon and sites arrow icon will be displayed for Rave studies.
 	
 	Given I am an iMedidata user with username "<iMedidata User 1 ID>"
-	And I have an assignment to Study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>" for App "<Modules App>" with Role "<Modules Role 1>"
-	And I follow "<EDC App>" for Study "<Study A>"
+	And there exists a Rave Study "<Rave Study 1>"
+	And I have an assignment to iMedidata Study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>" for App "<Modules App>" with Role "<Modules Role 1>"
+	And I follow "<EDC App>" for iMedidata Study "<Study A>"
 	And I am in Rave
 	And I follow link "Home"
 	And I follow link "User Administration
 	And I enter in Log in textbox,"<iMedidata User 1 ID>"
-	And I select fron Authenticator dropdown, "iMedidata"
+	And I select from Authenticator dropdown, "iMedidata"
 	And I select link "Search"
 	And I should see iMedidata user "<iMedidata User 1 ID>" in the search results
-	And I navigate to User Details page for "<iMedidata User 1 ID>"
-	When I follow "Remove" for study "<Study A>" in Studies pane
-	Then I should see its not editable
-	And I should see "<Study A>" in Studies Pane
-	And I take a screenshot
+	When I navigate to User Details page for "<iMedidata User 1 ID>"
+	Then I should not see remove icon and sites arrow icon for iMedidata Study "<Study A>"
+	And I take a screenshot	
+    And I should see remove icon and sites arrow icon for Rave Study "<Rave Study 1>"
+	And I take a screenshot	
 
 @Rave 564 Patch 13
 @PB2.5.7.3-01
 @Validation
+# This scenario is not part of this release. It will not be executed.
+
 Scenario: On the User Details page, an iMedidata authenticated user can be assigned to or removed from the Site Monitor project.
 
 	Given I am an iMedidata user with username "<iMedidata User 4 ID>"
@@ -973,7 +1005,7 @@ Scenario: On the User Details page, an iMedidata authenticated user can be assig
 	And I take a screenshot
 	And I log out of Rave
 	And I login to iMedidata as iMedidata user "<iMedidata User 4 ID>" with password "<iMedidata User 4 Password>"
-	And I select app link "<EDC App>" with role "<EDC Role CRA create sub cannot view all sites>" fpr study "<Study D>"
+	And I select app link "<EDC App>" with role "<EDC Role CRA create sub cannot view all sites>" for study "<Study D>"
 	And I am in Rave
 	And I should see text "Monitor Tool Kit"
 	And I should see link "<Study D>"
@@ -988,36 +1020,36 @@ Scenario: On the User Details page, an iMedidata authenticated user can be assig
 	And I click details icon for iMedidata user "<iMedidata User 4 ID>"
 	And remove study "Site Monitor"
 	And I take a screenshot
-	And i log out of Rave
+	And I log out of Rave
 	And I login to iMedidata as iMedidata user "<iMedidata User 4 ID>" with password "<iMedidata User 4 Password>"
-	When I select app link "<EDC App>" with role "<EDC Role CRA create sub cannot view all sites>" fpr study "<Study D>"
+	When I select app link "<EDC App>" with role "<EDC Role CRA create sub cannot view all sites>" for study "<Study D>"
 	Then I am in Rave
 	And I should not see text "Monitor Tool Kit"
 	And I should see link "<Study D>"
 	And I should not see link "Monitor Visits"
 	And I take a screenshot
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.7.4-01
 @Validation
-Scenario: On the User Details page, an iMedidata user cannot be assigned to a Rave or an iMedidata Study.
+@MCC-55692
+Scenario: On the User Details page, an iMedidata user and Rave user can see "Assign to Study" Link 
 
 	Given I am an iMedidata user with username "<iMedidata User 1 ID>"
 	And there exists a Rave User "<Rave User Name 1>" not connected to iMedidata
-	And I have an assignment to Study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>", Modules App "<Modules App>" with Role "<Modules Role 1>"
+	And I have an assignment to iMedidata Study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>", Modules App "<Modules App>" with Role "<Modules Role 1>"
 	And I follow link "<Modules App>" for Study "<Study A>"
 	And I am in Rave
 	And I follow link "Home"
 	And I follow link "User Administration"
-	When I navigate to User Details page for User "<iMedidata User 1 ID>"
-	Then I should not see "Assign to Study" Link
+	When I navigate to User Details page for iMedidata User "<iMedidata User 1 ID>"
+	Then I should see "Assign to Study" Link
 	And I take a screenshot
-	And I navigate to User Adminstration
+	And I navigate to User Administration
 	And I search for "Internal" Users
 	And I navigate to User Details page for a Rave User "<Rave User Name 1>"
 	And I should see "Assign to Study" Link
 	And I take a screenshot
-
 
 @Rave 564 Patch 13
 @PB2.5.7.4-02
@@ -1032,12 +1064,12 @@ Scenario: On the User Details page, an iMedidata user cannot be assigned to a Se
 	And I follow link "Home"
 	And I follow link "User Administration"
 	When I navigate to User Details page for User "<iMedidata User 1 ID>"
-	Then I should not see "Assign to Security Group" Link
+	Then I should not see "Assign To Security Group" Link
 	And I take a screenshot
 	And I navigate to User Adminstration
 	And I search for "Internal" Users
 	And I navigate to User Details page for a Rave User "<Rave User Name 1>"
-	And I should see "Assign to Security Group" Link
+	And I should see "Assign To Security Group" Link
 	And I take a screenshot
 
 
@@ -1079,13 +1111,13 @@ Scenario: On the User Details page, a Rave user may be assigned an iMedidata stu
 	And I follow link "Home"
 	And I follow link "User Administration"
 	And I enter in Log in textbox,"<Rave User Name 1>"
-	And I select fron Authenticator dropdown, "Internal"
+	And I select from Authenticator dropdown, "Internal"
 	And I select link "Search"
 	And I should see Rave user "<Rave User Name 1>" in the search results
 	And I click details icon for Log In "<Rave User Name 1>"
 	And the User Details page is displayed
 	And I follow "Assign to Study"
-	And in 'Select Role" dropdown select role "<EDC Role 1>"
+	And in "Select Role" dropdown select role "<EDC Role 1>"
 	And in "Assign User to Study" dropdown select study "<Study B>"
 	When I select link "Assign User"
 	Then I should see study "<Study B>" added to the list of assigned studies.
@@ -1103,17 +1135,17 @@ Scenario: A Study that is linked to iMedidata, the following fields will be uned
 	And I have an assignment to Study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>", Modules App "<Modules App>" with Role "<Modules Role 1>"
 	And I follow link "<Modules App>" for Study "<Study A>"
 	And I am in Rave
-	And I Architect 
+	And I navigate to Architect 
 	When I follow "<Study A>"
-	Then I should see the following uneditable on "<Study A>" page
+	Then I should see the following fields uneditable on "<Study A>" page
     |Study Name|Description|
 	And I take a screenshot
-	And I navigate to Environment Set up page
-    And I should see the following uneditable
+	And I navigate to Environment Setup page
+    And I should see the following fields uneditable
     |Enrollment Target|Linked to iMedidata check box|Environment|
 	And I take a screenshot
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.7.5-03
 @Validation
 Scenario: When a user is removed from a Study Group and re invited to a study with EDC App only, then the user should be able to navigate to Rave and account should be created appropriately in Rave.
@@ -1128,18 +1160,184 @@ And I should see "<Study A>", "<Study B>", "<Study C>"
 And I navigate to User Adminstration
 And I navigate to User Details page for "<iMedidata User 1 ID>"
 And I should see "<EDC Role 1>" assigned to the user
-And I should "<Study A>", "<Study B>", "<Study C>" assigned to the suer in the Studies Pane
+And I should see "<Study A>", "<Study B>", "<Study C>" assigned to the user in the Studies Pane
 And I navigate to iMedidata
-And my assignment to "<Study Group>" is removed
-And I have a new invitation to "<Study A>" for "<EDC App>" with Role "<EDC Role 1>" 
+And I Log out
+And I Log in as iMedidata user
+And I remove assignment to "<Study Group>" for iMedidata user "<iMedidata User 1 ID>"
+And I invite iMedidata user "<iMedidata User 1 ID>" to "<Study A>" for "<EDC App>" with Role "<EDC Role 1>" 
+And I Log out
+And I Log in as iMedidata user "<iMedidata User 1 ID>"
 And I accept the invitation
 When I follow "<EDC App>" for "<Study A>" 
 Then I should be in Rave "<Study A>" page
 And I take a screenshot
 And I Log out
 And I log in to Rave as "<Rave User Name 1>" with access to User Adminstration
-And I navigate to User Details page for User "<iMedidata User 1 ID>"
+And I navigate to User Details page for iMedidata User "<iMedidata User 1 ID>"
 And I should see "<EDC Role 1>" assigned to the user
 And I should see "<Study A>" assigned to the user
-And I should not see "<Study B>" , "<Study C>"
+And I should not see "<Study B>" and "<Study C>"
 And I take a screenshot
+
+@Rave 2013.2.0.
+@MCC-55692 - 01
+@Validation
+Scenario: iMedidata user can see and assign Rave studies in assign to "Study" dropdown
+
+	Given I am an iMedidata user with username "<iMedidata User 1 ID>"
+	And there exists a Rave Study "<Rave Study 1>"
+    And I have an assignment to iMedidata Study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>", Modules App "<Modules App>" with Role "<Modules Role 1>"
+	And I follow link "<Modules App>" for iMedidata Study "<Study A>"
+	And I am in Rave
+	And I follow link "Home"
+	And I follow link "User Administration"
+	And I navigate to User Details page for iMedidata User "<iMedidata User 1 ID>"
+	And I should see "Assign to Study" Link
+	And I take a screenshot
+	When I select link "Assign to Study"
+	Then I should see Rave Study "<Rave Study 1>" in the "Study" dropdown
+	And I should not see iMedidata Study "<Study A>" in the "Study" dropdown
+	And I take a screenshot
+	And I assign Rave Study "<Rave Study 1>" for iMedidata User "<iMedidata User 1 ID>"
+	And I take a screenshot
+
+@Rave 2013.2.0.
+@MCC-55692 - 02
+@Validation
+Scenario: Rave user can see and assign Rave and iMedidata studies in assign to "Study" dropdown
+
+	Given I am an Rave User "<Rave User Name 1>" not connected to iMedidata
+	And there exists a iMedidata Study "<Study A>"
+	And I have an assignment to Rave Study "<Rave Study 1>"
+	And I am in Rave
+	And I follow link "User Administration"
+	And I navigate to User Details page for Rave User "<Rave User Name 1>"
+	And I should see "Assign to Study" Link
+	When I select link "Assign to Study"
+	Then I should see Rave Study "<Rave Study 1>" in the "Study" dropdown
+	And I should see iMedidata Study "<Study A>" in the "Study" dropdown
+	And I take a screenshot
+	And I assign Rave Study "<Rave Study 1>" for Rave User "<Rave User Name 1>" 
+	And I assign iMedidata Study "<Study A>" for Rave User "<Rave User Name 1>"
+	And I take a screenshot
+
+@Rave 2013.2.0.
+@MCC-55692 - 03
+@Validation
+Scenario: Rave user can see remove icon and sites arrow icon for iMedidata studies.  Rave user can see remove icon and sites arrow icon for Rave studies.
+	
+	Given I am an Rave User "<Rave User Name 1>" not connected to iMedidata
+	And there exists a iMedidata Study "<Study A>"
+	And I have an assignment to Rave Study "<Rave Study 1>"
+	And I am in Rave
+	And I follow link "User Administration
+	And I enter in Log in textbox,"<Rave User Name 1>"
+	And I select from Authenticator dropdown, "Internal"
+	And I select link "Search"
+	And I should see Rave User "<Rave User Name 1>" in the search results
+	When I navigate to User Details page for Rave User "<Rave User Name 1>"
+	Then I should see remove icon and sites arrow icons for iMedidata Study "<Study A>"
+	And I take a screenshot	
+    And I should see remove icon and sites arrow icons for Rave Study "<Rave Study 1>"
+	And I take a screenshot	
+
+
+@Rave 2013.2.0.
+@MCC-55692 - 04
+@Validation
+Scenario: iMedidata user can navigate to Rave Study Sites page and remove assigned Rave study
+
+ 	Given I am an iMedidata user with username "<iMedidata User 1 ID>"
+	And there exists a Rave Study "<Rave Study 1>"
+	And I have an assignment to iMedidata Study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>", Modules App "<Modules App>" with Role "<Modules Role 1>"
+	And I follow link "<Modules App>" for Study "<Study A>"
+	And I am in Rave
+	And I follow link "Home"
+	And I follow link "User Administration"
+	And I navigate to User Details page for iMedidata User "<iMedidata User 1 ID>"
+	And I should not see remove icon and sites arrow icon for iMedidata Study "<Study A>"
+	And I should see remove icon and sites arrow icon for Rave Study "<Rave Study 1>"
+	When I select sites arrow icon for Rave Study "<Rave Study 1>"
+	Then I should be on Study Sites page for "Rave Site 1"
+	And I select checkbox "Rave Site 1"
+    And I select link "Update"
+	And I should see "Rave Site 1" checkbox is checked
+	And I take a screenshot	
+	And I navigate back to User Details page for iMedidata User "<iMedidata User 1 ID>"
+	And I take a screenshot	
+	And I select remove icon for Rave Study "<Rave Study 1>"
+	And I should see Rave Study "<Rave Study 1>" is removed for iMedidata User "<iMedidata User 1 ID>"
+	And I take a screenshot	
+
+@Rave 2013.2.0.
+@MCC-55692 - 05
+@Validation
+Scenario: Rave user can navigate to Rave Study Sites page and remove assigned Rave study. Rave user can navigate to iMedidata Study Sites page and remove assigned iMedidata study.
+          
+	Given I am an Rave User "<Rave User Name 1>" not connected to iMedidata
+	And there exists a iMedidata Study "<Study A>"
+	And I have an assignment to Rave Study "<Rave Study 1>" and Rave Site "Rave Site 1"
+	And I am in Rave
+	And I follow link "User Administration"
+	And I navigate to User Details page for Rave User "<Rave User Name 1>"
+	And I should see remove icon and sites arrow icon for iMedidata Study "<Study A>"
+	And I should see remove icon and sites arrow icon for Rave Study "<Rave Study 1>"
+	When I select sites arrow icon for iMedidata Study "<Study A>"
+	Then I should be on Study Sites page for "Site A1"
+	And I select checkbox "Site A1"
+    And I select link "Update"
+	And I should see "Site A1" checkbox is checked
+	And I take a screenshot	
+	And I navigate back to User Details page for Rave User "<Rave User Name 1>"
+	And I take a screenshot	
+	And I select remove icon for iMedidata Study "<Study A>"
+	And I should see iMedidata Study "<Study A>" is removed for Rave User "<Rave User Name 1>"
+	And I take a screenshot	
+	And I select sites arrow icon for Rave Study "<Rave Study 1>"
+	And I should be on Study Sites page for "Rave Site 1"
+	And I select checkbox "Rave Site 1"
+    And I select link "Update"
+	And I should see "Rave Site 1" checkbox is checked
+	And I take a screenshot	
+	And I navigate back to User Details page for Rave User "<Rave User Name 1>"
+	And I take a screenshot	
+	And I select remove icon for Rave Study "<Rave Study 1>"
+	And I should see Rave Study "<Rave Study 1>" is removed for Rave User "<Rave User Name 1>"
+	And I take a screenshot
+	
+@Rave 2013.2.0.
+@MCC-55692 - 06
+@Validation
+Scenario: iMedidata user can see and assign Rave Monitor study in assign to "Study" dropdown. iMedidata user can navigate to Rave Monitor Study Sites page and remove assigned Rave Monitor study.
+
+	Given I am an iMedidata user with username "<iMedidata User 1 ID>"
+	And there exists a Rave Monitor Study "<Monitor Study>" and Rave Monitor Site "Monitor Site"
+    And I have an assignment to iMedidata Study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>", Modules App "<Modules App>" with Role "<Modules Role 1>"
+	And I follow link "<Modules App>" for iMedidata Study "<Study A>"
+	And I am in Rave
+	And I follow link "Home"
+	And I follow link "User Administration"
+	And I navigate to User Details page for iMedidata User "<iMedidata User 1 ID>"
+	And I should see "Assign to Study" Link
+	And I take a screenshot
+	When I select link "Assign to Study"
+	Then I should see Rave Monitor Study "<Monitor Study>" in the "Study" dropdown
+	And I should not see iMedidata Study "<Study A>" in the "Study" dropdown
+	And I take a screenshot
+	And I assign Rave Monitor Study "<Monitor Study>" for iMedidata User "<iMedidata User 1 ID>"
+	And I take a screenshot
+	And I should see remove icon and sites arrow icons for Rave Monitor Study "<Monitor Study>"
+	And I should not see remove icon and sites arrow icons for iMedidata Study "<Study A>"
+	And I take a screenshot
+	When I select sites arrow icon for Rave Monitor Study "<Monitor Study>"
+	Then I should be on Study Sites page for "Monitor Site"
+	And I select checkbox "Monitor Site"
+    And I select link "Update"
+	And I should see "Monitor Site" checkbox is checked
+	And I take a screenshot	
+	And I navigate back to User Details page for iMedidata User "<iMedidata User 1 ID>"
+	And I take a screenshot	
+	And I select remove icon for Rave Monitor Study "<Monitor Study>"
+	And I should see Rave Monitor Study "<Monitor Study>" is removed for iMedidata User "<iMedidata User 1 ID>"
+	And I take a screenshot	

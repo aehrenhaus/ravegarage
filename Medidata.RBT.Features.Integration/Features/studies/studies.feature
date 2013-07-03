@@ -44,6 +44,7 @@ Feature: Rave Integration for Studies
 		|{New Study G}	|{Study Group} 	|
 		|{Old Study A}	|{Study Group} 	|
 		|{Old Study B}	|{Study Group} 	|
+		|{Study A}		|{Study Group} 	|
 
 	And there exists subject <Subject> with eCRF page <eCRF Page>" in Site <Site>
 		|Site			|Subject		|eCRF Page		|
@@ -77,7 +78,7 @@ Feature: Rave Integration for Studies
 		|{Security App}	|{Security Role 1}	|	
 		|{Security App}	|{Security Role 2}	|
 		
-	Query:
+Queries:
 	select dbo.fnlocaldefault(projectname) as ProjectName, 
     dbo.fnlocaldefault(environmentnameid) as Environment,
     s.UUID,
@@ -86,7 +87,27 @@ Feature: Rave Integration for Studies
     on  p.projectid = s.projectid
     where s.projectid=xxx
 
-@Rave 564 Patch 13
+	or
+
+	select dbo.fnlocaldefault(projectname) as ProjectName, 
+    dbo.fnlocaldefault(environmentnameid) as Environment,
+    s.UUID,
+    * from studies s
+    join projects p
+    on  p.projectid = s.projectid
+    where s.studyid=xxxx
+    
+	or
+
+    Select UUID, ProjectID, ExternalID, EnrollmentTarget from dbo.Studies
+    where StudyID = xxxx
+	
+	or (Jason message)
+
+	select top 10 * from CentralLogging where Message like '%Incoming%' order by 1 desc
+
+
+@Rave 2013.2.0.
 @PB2.5.8.7-01
 @Validation
 Scenario: An iMedidata user can create a study in Rave.  This study creation is messaged to Rave which creates a matching,
@@ -94,15 +115,15 @@ Scenario: An iMedidata user can create a study in Rave.  This study creation is 
     
 
     Given I am an iMedidata user "<iMedidata User 1 ID ID>"  logged in to iMedidata
-	And I am an owner of the Study Group named “SG 1”
-    And I am on the Study Group Manage page for the Study Group named “SG 1”
+	And I am an owner of the Study Group named “<Study Group>”
+    And I am on the Study Group Manage page for the Study Group named “<Study Group>”
     And I follow "Create New Study"
     And I fill in “Name” with “<Study A>”
     And I fill in “Protocol Number” with “<Protocol Number1>”
 	And I enter a number "<Enrollment Target Number>" in textbox "Enrollment Target" 
     And I check checkbox "Is Production"
     And I select button "Save"
-    And I should see message “Study A created successfully"
+    And I should see message “You successfully created the "<Study A>" study in the "<Study Group>" study group."
 	And I invite iMedidata user "<iMedidata New User 2>" as a study owner to Study "<Study A>" with App named "<Edc App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Role 1>"
 	And a json message is sent to Rave that will contain "uuid" and "id"
 	And I take a screenshot
@@ -111,7 +132,7 @@ Scenario: An iMedidata user can create a study in Rave.  This study creation is 
 	And I log in as user "<iMedidata New User 2>"
 	And I am on the iMedidata Home page
 	And I accept the invitation
-    And I follow app link "<Edc App> that is assigned to study “Study A”
+    And I follow app link "<Edc App> that is assigned to study “<Study A>”
     And I should see there is a Project named “Study A”
 	And I take a screenshot
 	And i select link "Architect"
@@ -141,7 +162,7 @@ Scenario Outline: An iMedidata user can update a study in Rave. The following at
 	And I take a screenshot
 	And a json message is sent to Rave that will contain "Study uuid" and "id"
 	And I follow app link "<Edc App> that is assigned to study “<Study A>x”
-    And I should see there is a Project named “<Study A>x”
+    And I should see there is a Project named “<Study B>x”
 	And I take a screenshot
 	And i select link "Architect"
 	And I select link "<Study A>x'
@@ -160,7 +181,7 @@ Scenario Outline: An iMedidata user can update a study in Rave. The following at
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.8.20-01
 @Validation
 Scenario: If I have a project + environment in Rave that is not linked to a study in iMedidata.When the study is created in iMedidata, Rave should link that Project and Environment.
@@ -168,17 +189,18 @@ Scenario: If I have a project + environment in Rave that is not linked to a stud
 	
 
 	Given there exists Rave Project "<Study B>" with aux environment "<Aux 1>" on Rave 
-    And there is a Study Group named "SG 1" in iMedidata
+    And there is a Study Group "<Study Group>" in iMedidata
 	And I am logged in to iMedidata as user <iMedidata  User 1>"
-	And I am an owner of the Study Group named “SG 1”
-    And I am on the Study Group Manage page for the Study Group named “SG 1”
+	And I am an owner of the Study Group "<Study Group>"
+    And I am on the Study Group Manage page for the Study Group named "<Study Group>"
     And I follow "Create New Study"
     And I fill in Textbox “Name” with "<Study B (Aux1)>"
     And I fill in “Protocol Number” with “<Protocol Number2>”
 	And I enter a number "<Enrollment Target Number>" in textbox "Enrollment Target" 
 	And I select button "Save"
-    And I should see message “Study B (Aux 1) created successfully"
+    And I should see message “You successfully created the "<Study B> <(Aux1)>" study in the "<Study Group>" study group."
 	And a json message is sent to Rave that will contain "uuid" and "id"
+	And I take a screenshot
 	And I invite iMedidata user "<iMedidata New User 2>" as a study owner to Study "<Study B>" with App named "<Edc App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>" and App "<Security App>" with Role "<Security Role 1>"
 	And I select link "Home"
 	And I log out as user "<iMedidata User 1 ID>"
@@ -210,23 +232,23 @@ Rave2012.2.0
 Scenario: If I have a  study in iMedidata, and a project + environment in Rave that is not linked to that study, when the study is created in iMedidata (or Rave recieves a relationship , study site or user assignment, to that unlinked study), Rave should do a UUID match, and if found, link that Project and Environment and synchronize ALL OBJECTS related to that study (attributes, studysites, sites, user assignments, users.)
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.8.7-03
 @Validation
 Scenario: If I have a project with an aux environment in Rave that is not linked to study in iMedidata,  when the study is created in iMedidata, Rave should do a name match from the Rave project name and environment name against the iMedidata study and link the two automatically.  When doing the project name and/or environment name match, care must be taken to trim both of extra spaces and disallowed punctuation and invisible characters.
 
 
 	Given there exists Rave Project "<Study C>" with aux environment "<Aux 2>" 
-	And there is a Study Group named "SG 1" in iMedidata
+	And there is a Study Group named "<Study Group>" in iMedidata
 	And I am logged in to iMedidata as user <iMedidata  User 1>"
-	And I am an owner of the Study Group named “SG 1”
-    And I am on the Study Group Manage page for the Study Group named “SG 1”
+	And I am an owner of the Study Group named “<Study Group>”
+    And I am on the Study Group Manage page for the Study Group “<Study Group>”
     And I follow "Create New Study"
     And I fill in Textbox “Name” with "<Study C  (Aux 2)>  "(2 extra spaces at end and 2 spaces betewwn c and ()
     And I fill in “Protocol Number” with “<Protocol Number3>”
 	And I enter a number "<Enrollment Target Number>" in textbox "Enrollment Target" 
 	And I select button "Save"
-    And I should see message “Study C (Aux 2) created successfully"
+	And I should see message “You successfully created the "<Study C> <(Aux2)>" study in the "<Study Group>" study group."
 	And I invite iMedidata user "<iMedidata New User 2>" as a study owner to Study "<Study C>" with App named "<Edc App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Role 1>"
 	And I select link "Home"
 	And I am on the iMedidata Home page
@@ -247,7 +269,7 @@ Scenario: If I have a project with an aux environment in Rave that is not linked
 
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.8.7-03A
 @Validation
 Scenario: If I a project + environment in Rave that is not linked to a study in iMedidata. When the study is created in iMedidata, Rave should do a name match from the Rave project name and environment name against the iMedidata study and link the two automatically.  When doing the project name and/or environment name match, care must be taken to allow for cases where there may be a word or phrase already in the study name that is surrounded by parens, for example Study A (1424) (UAT)
@@ -255,16 +277,16 @@ Scenario: If I a project + environment in Rave that is not linked to a study in 
 
 
 	Given there exists Rave Project "<Study D>(zx)" with aux envitonment "<Aux 2>" on Rave 
-	And there is a Study Group named "SG 1" in iMedidata
+	And there is a Study Group named "<Study Group>" in iMedidata
 	And I am logged in to iMedidata as user <iMedidata  User 1>"
-	And I am an owner of the Study Group named “SG 1”
-    And I am on the Study Group Manage page for the Study Group named “SG 1”
+	And I am an owner of the Study Group named “<Study Group>”
+    And I am on the Study Group Manage page for the Study Group named “<Study Group>”
 	And I follow "Create New Study"
     And I fill in Textbox “Name” with "<Study D(zx) (Aux 2)>"
     And I fill in “Protocol Number” with “<Protocol Number4>”
 	And I enter a number "<Enrollment Target Number>" in textbox "Enrollment Target" 
 	And I select button "Save"
-    And I should see message “Study D(zx) (Aux 2) created successfully"
+	And I should see message “You successfully created the "<Study D(zx)> <(Aux2)>" study in the "<Study Group>" study group."
 	And I invite iMedidata user "<iMedidata New User 2>" as a study owner to Study "<Study D(zx)>" with App named "<Edc App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Role 1>"
 	And I select link "Home"
 	And I am on the iMedidata Home page
@@ -284,33 +306,34 @@ Scenario: If I a project + environment in Rave that is not linked to a study in 
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.8.7-04
 @Validation
-Scenario: If I have a project in Rave that is not linked to study in iMedidata,when the study is created in iMedidata with spaces before
-           and after the study name, Rave will link to the matching study name in Rave, instead of creating a new study in Rave
+Scenario: If I have a project in Rave that is not linked to study in iMedidata,when the study is created in iMedidata with spaces before and after the study name,
+         Rave will not link to the matching study name ( with no spaces) in Rave, instead it will create a new study in Rave.
 	
-	Given there exists Rave Project "<Study C>" 
-	And there is a Study Group named "SG 1" in iMedidata
+	Given there exists Rave Project "<Study E>" 
+	And there is a Study Group named "<Study Group>" in iMedidata
 	And I am logged in to iMedidata as user "<iMedidata User 1 ID>"
-	And I am an owner of the Study Group named "SG 1"
-    And I am on the Study Group Manage page for the Study Group named "SG 1"
+	And I am an owner of the Study Group named "<Study Group>"
+    And I am on the Study Group Manage page for the Study Group named "<Study Group>"
     And I follow "Create New Study"
-    And I fill in Textbox "Name" with "<  Study C  >"(2 extra spaces at end and 2 spaces before )
+    And I fill in Textbox "Name" with "<  Study E  >"(2 extra spaces at end and 2 spaces before )
     And I fill in "Protocol Number" with "<Protocol Number3>"
 	And I enter a number "<Enrollment Target Number>" in textbox "Enrollment Target" 
+	And I check checkbox "Is Production"
 	And I select button "Save"
-    And I should see message "<  Study C  >" created successfully"
-	And I have an assignment to study "<  Study C  >" with App named "<EDC App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Group 1>"
+	And I should see message “You successfully created the "<Study C>" study in the "<Study Group>" study group."
+    And I have an assignment to study "<  Study E  >" with App named "<EDC App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Group 1>"
 	And I select link "Home"
-	When I follow EDC link to "<Study C>"
-  	Then I should see there is a Project named "<Study C>"
+	When I follow EDC link to "<Study E>"
+  	Then I should see there is a Project named "<Study E>"
 	And I take a screenshot
 	And I select link "Architect"
-	And I should see two projects "<Study C>"
-	And I select link "<Study C>"
+	And I should see two projects "<Study E>"
+	And I select link "<  Study E  >"
 	And I follow Edit 
-	And I should see "<  Study C  >"
+	And I should see "<  Study E  >"
 	And I should see Study Information is uneditable
 	And I take a screenshot
 	And I select link "Studies Environment Setup"
@@ -318,42 +341,43 @@ Scenario: If I have a project in Rave that is not linked to study in iMedidata,w
     And I should see checkbox "Linked to iMedidata" is checked
 	And I take a screenshot
 	And I navigate back to Architect
-	And I follow "<Study C>"
+	And I follow "<Study E>"
 	And I click on Edit 
-	And I should see "<Study C>" with no spaces
+	And I should see "<Study E>" with no spaces
 	And I should see Study Information is editable
 	And I select link "Studies Environment Setup"
     And I should see checkbox "Linked to iMedidata" is un checked
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.8.7-05
 @Validation
 Scenario: If I have a project in Rave that is not linked to study in iMedidata,when the study is created in iMedidata with spaces before the study name,
-          Rave will link to the matching study name in Rave, instead of creating a new study in Rave.
+            Rave will not link to the matching study name ( with no spaces) in Rave, instead it will create a new study in Rave.
 	
-	Given there exists Rave Project "<Study C>" 
-	And there is a Study Group named "SG 1" in iMedidata
+	Given there exists Rave Project "<Study F>" 
+	And there is a Study Group named "<Study Group>" in iMedidata
 	And I am logged in to iMedidata as user "<iMedidata User 1 ID>"
-	And I am an owner of the Study Group named "SG 1"
-    And I am on the Study Group Manage page for the Study Group named "SG 1"
+	And I am an owner of the Study Group named "<Study Group>"
+    And I am on the Study Group Manage page for the Study Group named "<Study Group>"
     And I follow "Create New Study"
-    And I fill in Textbox "Name" with "<  Study C>"(2 spaces before )
+    And I fill in Textbox "Name" with "<  Study F>"(2 spaces before )
     And I fill in "Protocol Number" with "<Protocol Number3>"
 	And I enter a number "<Enrollment Target Number>" in textbox "Enrollment Target" 
+	And I check checkbox "Is Production"
 	And I select button "Save"
-    And I should see message "<  Study C>" created successfully"
+    And I should see message “You successfully created the "<Study F>" study in the "<Study Group>" study group."
 	And I have an assignment to study "<  Study C>" with App named "<EDC App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Group 1>"
 	And I select link "Home"
-	When I follow EDC link to "<Study C>"
-  	Then I should see there is a Project named "<Study C>"
+	When I follow EDC link to "<Study F>"
+  	Then I should see there is a Project named "<Study F>"
 	And i take a screenshot
 	And i select link "Architect"
-	And I should see two projects "<Study C>"
-	And I select link "<Study C>"
+	And I should see two projects "<Study F>"
+	And I select link "<  Study F>"
 	And I follow Edit 
-	And I should see "<  Study C>" with spaces before study name
+	And I should see "<  Study F>" with spaces before study name
 	And I should see Study Information is uneditable
 	And I take a screenshot
 	And I select link "Studies Environment Setup"
@@ -361,42 +385,43 @@ Scenario: If I have a project in Rave that is not linked to study in iMedidata,w
     And checkbox "Linked to iMedidata" is checked
 	And I take a screenshot
 	And I navigate back to Architect
-	And I follow "<Study C>"
+	And I follow "<Study F>"
 	And I click on Edit 
-	And I should see "<Study C>" with no spaces
+	And I should see "<Study F>" with no spaces
 	And I should see Study Information is editable
 	And I select link "Studies Environment Setup"
     And checkbox "Linked to iMedidata" is un checked
 	And I take a screenshot	
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.8.7-06
 @Validation
 Scenario: If I have a project in Rave that is not linked to study in iMedidata,when the study is created in iMedidata with spaces after the study name,
-           Rave will link to the matching study name in Rave, instead of creating a new study in Rave.
+          Rave will link to the matching study name ( with no spaces) in Rave.
 	
-	Given there exists Rave Project "<Study C>" 
-	And there is a Study Group named "SG 1" in iMedidata
+	Given there exists Rave Project "<Study G>" 
+	And there is a Study Group named "<Study Group>" in iMedidata
 	And I am logged in to iMedidata as user "<iMedidata User 1 ID>"
-	And I am an owner of the Study Group named "SG 1"
-    And I am on the Study Group Manage page for the Study Group named "SG 1"
+	And I am an owner of the Study Group named "<Study Group>"
+    And I am on the Study Group Manage page for the Study Group named "<Study Group>"
     And I follow "Create New Study"
-    And I fill in Textbox "Name" with "<Study C>  "(2 spaces after )
+    And I fill in Textbox "Name" with "<Study G>  "(2 spaces after )
     And I fill in "Protocol Number" with "<Protocol Number3>"
 	And I enter a number "<Enrollment Target Number>" in textbox "Enrollment Target" 
+	And I check checkbox "Is Production
 	And I select button "Save"
-    And I should see message "<Study C>  " created successfully"
-	And I have an assignment to study "<Study C>  " with App named "<EDC App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Group 1>"
+    And I should see message “You successfully created the "<Study G>" study in the "<Study Group>" study group."
+	And I have an assignment to study "<Study G>  " with App named "<EDC App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Group 1>"
 	And I select link "Home"
-	When I follow EDC link to "<Study C>  "
-  	Then I should see there is only one Project named "<Study C>  "
+	When I follow EDC link to "<Study G>  "
+  	Then I should see there is only one Project named "<Study G>  "
 	And I take a screenshot
 	And I select link "Architect"
-	And I should see one project "<Study C>"
-	And I select link "<Study C>"
+	And I should see one project "<Study G>"
+	And I select link "<Study G>"
 	And I follow Edit 
-	And I should see "<Study C>  " with spaces after study name
+	And I should see "<Study G>  " with spaces after study name
 	And I should see Study Information is uneditable
 	And I take a screenshot
 	And I select link "Studies Environment Setup"
@@ -404,7 +429,7 @@ Scenario: If I have a project in Rave that is not linked to study in iMedidata,w
     And checkbox "Linked to iMedidata" is checked
 	And I take a screenshot
 	
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.8.19-01
 @Validation
 Scenario: If I a project + environment in Rave that is not linked to a study in iMedidata.
@@ -412,30 +437,30 @@ Scenario: If I a project + environment in Rave that is not linked to a study in 
 
 
 	Given I am an iMedidata user
-	And there exists Rave Project "<Study E>ZqA>" on Rave 
-	And there is a Study Group named "SG 1" in iMedidata
+	And there exists Rave Project "<Study H>ZqA>" on Rave 
+	And there is a Study Group named "<Study Group>" in iMedidata
 	And I am logged in to iMedidata as user <iMedidata  User 1>"
-	And I am an owner of the Study Group named “SG 1”
-    And I am on the Study Group Manage page for the Study Group named “SG 1”
+	And I am an owner of the Study Group named “<Study Group>”
+    And I am on the Study Group Manage page for the Study Group named “<Study Group>”
 	And I follow "Create New Study"
-    And I fill in Textbox “Name” with "<Study E>zqA>"
+    And I fill in Textbox “Name” with "<Study H>zqA>"
     And I fill in “Protocol Number” with “<Protocol Number5>”
 	And I enter a number "<Enrollment Target Number>" in textbox "Enrollment Target" 
 	And I check checkbox "Is Production"
 	And I select button "Save"
-    And I should see message “"<Study E>zqA>" created successfully"
-	And I invite iMedidata user "<iMedidata New User 2>" as a study owner to Study "<Study E>zqA" with App named "<Edc App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Role 1>"
+ 	And I should see message “You successfully created the "<Study H>zqA>" study in the "<Study Group>" study group."
+	And I invite iMedidata user "<iMedidata New User 2>" as a study owner to Study "<Study H>zqA" with App named "<Edc App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Role 1>"
 	And I select link "Home"
 	And I am on the iMedidata Home page
 	And I log out as user "<iMedidata User 1 ID>"
 	And I log in as user "<iMedidata New User 2>"
 	And I am on the iMedidata Home page
 	And I accept the invitation
-	When I follow EDC link to "<Study E>zqA"
-	Then I should see Project named "<Study E>zqA"
+	When I follow EDC link to "<Study H>zqA"
+	Then I should see Project named "<Study H>zqA"
  	And i take a screenshot
 	And i select link "Architect"
-	And I select link "<"<Study E>zqA">'
+	And I select link "<"<Study H>zqA">'
 	And I select link "Studies Environment Setup"
 	And it will have enrollment target "<Enrollment Target Number>"
     And checkbox "Linked to iMedidata" is checked
@@ -443,25 +468,25 @@ Scenario: If I a project + environment in Rave that is not linked to a study in 
 		
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.8.16-01
 @Validation
 Scenario: If I have an unlinked study in iMedidata, when the study is created in iMedidata, Rave should do a UUID match, and failing that a name match against the iMedidata study and, on a match against only the project name, link the found project and create the new environment that maps to that study.
 
 
-	Given there exists Rave Project "<Study F>" with aux envitonment "<Aux 2>"
+	Given there exists Rave Project "<Study J>" with aux environment "<Aux 2>"
 	And I have access to the Rave Module named “Architect” 
-	And there is a Study Group named "SG 1" in iMedidata
+	And there is a Study Group named "<Study Group>" in iMedidata
 	And I am logged in to iMedidata as user <iMedidata  User 1>"
-	And I am an owner of the Study Group named “SG 1”
-    And I am on the Study Group Manage page for the Study Group named “SG 1”
+	And I am an owner of the Study Group named “<Study Group>”
+    And I am on the Study Group Manage page for the Study Group named “<Study Group>”
 	And I follow "Create New Study"
-	And I fill in Textbox “Name” with "<Study F (Aux 3)> 
+	And I fill in Textbox “Name” with "<Study J (Aux 3)> 
     And I fill in “Protocol Number” with “<Protocol Number6>”
 	And I enter a number "<Enrollment Target Number>" in textbox "Enrollment Target" 
 	And I select button "Save"
-    And I should see message “Study F (Aux 3) created successfully"
-	And I invite iMedidata user "<iMedidata New User 2>" as a study owner to Study "<Study F (Aux 3)>" with App named "<Edc App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Role 1>"
+	And I should see message “You successfully created the "<Study J>""(<Aux 3>)" Study Jn the "<Study Group>" study group."
+	And I invite iMedidata user "<iMedidata New User 2>" as a study owner to Study "<Study J (Aux 3)>" with App named "<Edc App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Role 1>"
 	And I select link "Home"
 	And I am on the iMedidata Home page
 	And I log out as user "<iMedidata User 1 ID>"
@@ -469,47 +494,49 @@ Scenario: If I have an unlinked study in iMedidata, when the study is created in
 	And I am on the iMedidata Home page
 	And I accept the invitation
 	And I am on the iMedidata Home page
-	When I follow EDC link to "<Study F (Aux3)>"
-    Then I should see there is a Project named "<Study F>"
-    And I should see there is an Environment “<Aux 2>” for the Project named "<Study F>"
-	And I should see there is an Environment “<Aux 3>” for the Project named "<Study F>"
-	And i take a screenshot
-	And i select link "Architect"
-	And I select link "<Study F>'
+	When I follow EDC link to "<Study J (Aux3)>"
+	Then I see the page "<Study J (Aux3)>"
+	And I select link "Architect"
+	Then I should see there is a Project named "<Study J>"
+	And I select link "<Study J>"
 	And I select link "Studies Environment Setup"
-	And it will have enrollment target "<Enrollment Target Number>"
+    And I should see there is an Environment “<Aux 2>” for the Project named "<Study J>"
+	And I should see there is an Environment “<Aux 3>” for the Project named "<Study J>"
+	And i take a screenshot
+'	And it will have enrollment target "<Enrollment Target Number>"
 	And I will see environment "<Aux 3>"
     And checkbox "Linked to iMedidata" is checked
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.8.15-02
 @Validation
 Scenario: If I have an unlinked study in iMedidata, when the study is created in iMedidata, Rave should do a UUID match, and failing that a name match against the iMedidata study and, if the project and environment name matches but the environment is inactive in Rave, create and link a new environment.
 
-	Given there exists Rave Project "<Study G>"
-	And Rave Project "<Study G>" is inactive
-	And there is a Study Group named "SG 1" in iMedidata
+	Given there exists Rave Project "<Study K>"
+	And Rave Project "<Study K>" is inactive
+	And there is a Study Group named "<Study Group>" in iMedidata
 	And I am logged in to iMedidata as user <iMedidata  User 1>"
-	And I am an owner of the Study Group named “SG 1”
-    And I am on the Study Group Manage page for the Study Group named “SG 1”
+	And I am an owner of the Study Group named “<Study Group>”
+    And I am on the Study Group Manage page for the Study Group named “<Study Group>”
 	And I follow "Create New Study"
-    And I fill in Textbox “Name” with "<Study G> 
+    And I fill in Textbox “Name” with "<Study K> 
     And I fill in “Protocol Number” with “<Protocol Number6>”
 	And I enter a number "<Enrollment Target Number>" in textbox "Enrollment Target" 
+	And I check checkbox "Is Production"
 	And I select button "Save"
-    And I should see message “Study G created successfully"
-	And I invite iMedidata user "<iMedidata New User 2>" as a study owner to Study "<Study G>" with App named "<Edc App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Role 1>"
+	And I should see message “You successfully created the "<Study K>" study in the "<Study Group>" study group."
+	And I invite iMedidata user "<iMedidata New User 2>" as a study owner to Study "<Study K>" with App named "<Edc App>" and the Role "<EDC Role 1>" and App named "<Modules App>" and the Role "<Modules Role 1>"and App "<Security App>" with Role "<Security Role 1>"
 	And I select link "Home"
 	And I am on the iMedidata Home page
 	And I log out as user "<iMedidata User 1 ID>"
 	And I log in as user "<iMedidata New User 2>"
 	And I am on the iMedidata Home page
 	And I accept the invitation
-	When I follow EDC link to "<Study G>"
+	When I follow EDC link to "<Study K>"
 	And I select link "Architect"
-	And I select link "<Study G>'
+	And I select link "<Study K>'
 	And I select link "Studies Environment Setup"
 	And it will have enrollment target "<Enrollment Target Number>"
     Then I should see checkbox "Linked to iMedidata" is checked

@@ -60,7 +60,7 @@ Scenario: If an already connected iMedidata user accesses Rave through a study a
     And the iMedidata Study "<Study A> is linked to the Rave Study "<Study A>"
     And I have an assignment to the iMedidata Study "<Study A>" for the App "<EDC App>" Role "<EDC Role 1>" for App "<Modules App>" Role "<Modules Role 1>"
 	And I am on the iMedidata Home page
-    When I click on the App "<EDC App>" next to the Study  "<Study A>"
+    When I click on the App "<EDC App>" next to the Study "<Study A>"
     Then I should be on the Study "<Study A>" page in Rave
 	And I take a screenshot
 	And I should not see Role Selection page
@@ -85,7 +85,7 @@ Scenario: If an already connected iMedidata user access Rave through a study app
     And I am on the iMedidata Home page
     When I click on the App  "<EDC App>" next to the Study  "<Study A>"
     Then I should see the Role Selection Page
-	And I should see "<EDC Role 1>" "<EDC Role 2>" in 'Select Role' Dropdown
+	And I should see "<EDC Role 1>" "<EDC Role 2>" in 'Select a Role' Dropdown
 	And I take a screenshot
 	And I select "<EDC Role 1>" 
 	And I select continue 
@@ -115,10 +115,10 @@ Scenario: If an already connected iMedidata user access Rave through a study app
     And I am on the iMedidata Home page
     When I click on the App  "<EDC App>" next to the Study  "<Study A>"
     Then I should see the Role Selection Page
-	And I should see Roles "<EDC Role 1>", "<EDC Role 2>", "<EDC Role 3>", "<EDC Role 4>", "<EDC Role 5>", "<EDC Role 6>", "<EDC Role 7>","<EDC Role 8>", "<EDC Role 9>", "<EDC Role 10>", "<EDC Role 11>" , "<EDC Role 12>" in Select Role Dropdown
+	And I should see Roles "<EDC Role 1>", "<EDC Role 2>", "<EDC Role 3>", "<EDC Role 4>", "<EDC Role 5>", "<EDC Role 6>", "<EDC Role 7>","<EDC Role 8>", "<EDC Role 9>", "<EDC Role 10>", "<EDC Role 11>" , "<EDC Role 12>" in Select a Role Dropdown
 	And I take a screenshot
 	And I select "<EDC Role 1>" 
-	And I select continue 
+	And I select Continue 
 	And I am on Study "<Study A>" home page in Rave
 	And I navigate to User Adminstration
 	And I search for User "<iMedidata User 1 ID>" with Authenticator "iMedidata"
@@ -154,17 +154,18 @@ Scenario: If a connected iMedidata user accesses Rave with multiple EDC roles af
     And I click the App "<EDC App>" associated with study "<Study A>"
     And I am on Rave "<Study A>" home page
 	And I should not see Role Selection page
+	And I take a screenshot
 	And I follow iMedidata link
 	And I am on iMedidata Home page
 	And I have an new assignment to the iMedidata study "<Study A>" for App "<EDC App>" with  Role "<EDC Role 2>", "<EDC Role 3>", "<EDC Role 4>", "<EDC Role 5>", "<EDC Role 6>", "<EDC Role 7>"
     When I click the App  "<EDC App>" associated with study "<Study A>"
 	Then I should be on Role Selection page
-	And I should see Roles "<EDC Role 1>", "<EDC Role 2>", "<EDC Role 3>", "<EDC Role 4>", "<EDC Role 5>", "<EDC Role 6>", "<EDC Role 7>" in dropdown "Select Role" 
+	And I should see Roles "<EDC Role 1>", "<EDC Role 2>", "<EDC Role 3>", "<EDC Role 4>", "<EDC Role 5>", "<EDC Role 6>", "<EDC Role 7>" in dropdown "Select a Role" 
     And I take a screenshot
-	And I select "<EDC Role 2>" from dropdown "Select Role" 
+	And I select "<EDC Role 2>" from dropdown "Select a Role" 
     And I select "Continue"
     And I should be on the Study "<Study A>" home page in Rave
-	And I take a screen shot
+	And I take a screenshot
 	And I navigate to User Adminstration
 	And I search for User "<iMedidata User 1 ID>" with Authenticator "iMedidata"
 	And I should see Role "<EDC Role 1>" assigned to user "<iMedidata User 1 ID>"
@@ -177,7 +178,7 @@ Scenario: If a connected iMedidata user accesses Rave with multiple EDC roles af
 	And I take a screenshot
 	
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.1.88-01
 @Validation
 Scenario: If an already connected iMedidata user accesses the Rave URL for the first time with a single Rave Modules role (User Group), then Rave will take the user directly to the Rave home page with the appropriate Rave Modules role (User Group).
@@ -189,18 +190,18 @@ Scenario: If an already connected iMedidata user accesses the Rave URL for the f
     And there is a Rave Study "<Study A>"
     And the iMedidata Study "<Study A> is linked to the Rave Study "<Study A>"
     And I have an assignment to only iMedidata Study "<Study A>" for the App "<Modules App>" Role "<Modules Role 1>"
-	When I click the App  "<Modules App>" associated with study "<Study A>"
+	When I click the App "<Modules App>" associated with study "<Study A>"
     Then I should be on Rave Home page
-	And I take a screen shot
+	And I take a screenshot
 	And I see All Modules listed on the left hand side
     And I select link "User Administration"
 	And I enter in text box "Log In " with User ID "<iMedidata New User 1 ID>"
 	And I select "iMedidata" from the dropdown "Authenticator" 
 	And I select link "Search"
 	And I should see only one row in the search results table
-	And I should see column Log In "<iMedidata User 1 ID>"
-	And I should see column User Group "<Modules Role 1>"
-	And I should see column Role "   "
+	And I should see column Log In with entry "<iMedidata User 1 ID>"
+	And I should see column User Group with entry "<Modules Role 1>"
+	And I should see column Role no entry
 	And I take a screenshot 
 	
 @Rave 564 Patch 13
@@ -217,7 +218,8 @@ Scenario: If an already connected iMedidata user accesses the Rave URL for the f
 	And I have an Invitation to the Study Group "<Study Group>" with App "<EDC App>"  Role "<EDC Role 1>" with App "<Modules App>" Role "<Modules Role 1>" App "<Security App>" with Role "<Security Group 1>" as owner
 	And I accept the invitation
 	And I see Study Group "<Study Group>" Study "<Study A>", "<Study B>", "<Study C>" listed in my Studies Pane in iMedidata home page
-	When I click the App  "<EDC App>" associated with study group "<Study Group>"
+	And I take a screenshot
+	When I click the App "<EDC App>" associated with study group "<Study Group>"
     Then I should be on Rave Home page
 	And I should see study "<Study A>"
 	And I should see study "<Study B>"
@@ -243,28 +245,33 @@ Scenario: If the user is an iMedidata user, when the user has multiple EDC Roles
 	And I am on the iMedidata Home page
     When I follow "<EDC App>" associated with study "<Study A>"
     Then I am on the Role Selection page
-	And I see "<EDC Role 1>" "<EDC Role 2>" in "Select Role" dropdown
+	And I see "<EDC Role 1>" "<EDC Role 2>" in "Select a Role" dropdown
     And I take a screen shot
     And I should not see "<EDC Role 3>", "<EDC Role 4>"
-	And I select "<EDC Role 2>" from dropdown "Select Role" 
+	And I select "<EDC Role 2>" from dropdown "Select a Role" 
     And I select "Continue"
     And I should be on the Study Home page "<Study A>"
 	And I select Home Icon 
 	And I should see Study "<Study A>"
 	And I should not see Study "<Study B>"
+	And I take a screenshot
 	And I follow iMedidata Link
 	And I am on iMedidata Home page
 	And I follow "<EDC App>" for Study "<Study B>"
 	And I should be on Role Selection page
-	And I should see "<EDC Role 3>", "<EDC Role 4>" in "Select Role" dropdown
+	And I should see "<EDC Role 3>", "<EDC Role 4>" in "Select a Role" dropdown
+	And I take a screenshot
 	And I should not see "<EDC Role 1>", "<EDC Role 2>"
 	And I select "<EDC Role 4>"
+	And I select "Continue"
 	And I am on Rave Study "<Study B>" home page
 	And I should not see "<Study A>"
+	And I take a screenshot
 	And I navigate to User Adminstration 
 	And I search for user "<iMedidata User 1 ID>" with Authenticator "iMedidata"
     And I verify four user accounts are displayed in search results
     And I verify "<EDC Role 1>" "<EDC Role 2>" "<EDC Role 3>", "<EDC Role 4>" for User "<iMedidata User 1 ID>"
+	And I take a screenshot
 	And I navigate to User Details page for "<EDC Role 1>"
 	And I should see "<Study A> displayed in Studies Pane 
 	And I take a screen shot
@@ -278,45 +285,57 @@ Scenario: If the user is an iMedidata user, when the user has multiple EDC Roles
 	And I should see "<Study B> displayed in Studies Pane 
 	And I take a screen shot
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.1.25-02
 @Validation
-Scenario: If the user is an iMedidata user, when the user has multiple EDC Roles assigned to studies in an study group and subsequently accesses the Rave URL in iMedidata for that Study Group, then Rave will display all roles across all studies in  that Study Group  on Role selection page.
+Scenario: If the user is an iMedidata user(not assigned to SG), when the user has multiple EDC Roles assigned to studies in an study
+           group and subsequently accesses the Rave URL in iMedidata for that Study Group, then Rave will display all roles
+           across all studies in  that Study Group  on Role selection page.
 
     Given I am an iMedidata User
     And I am logged in
-    And my Username is "<iMedidata User 1 ID>" in iMedidata
 	And I am connected to Rave
-    And there is an iMedidata Study Group  "<Study Group>"
-    And there is an iMedidata Study "<Study A>", "<Study B>", "<Study C>" in the Study Group "<Study Group>"
-	And I have an assignment to iMedidata Study "<Study A>" to App "<EDC App>" Role "<EDC Role 1>" Role "<EDC Role 2>" Modules App "<Modules App>" role "<Modules Role 1>"
-	And I have an assignment to iMedidata Study "<Study B>" to App "<EDC App>" with only Role "<EDC Role 3>" Modules App "<Modules App>" Role "<Modules Role 1>"
-    And I have an assignment to iMedidata Study Group "<Study Group>" with App "<EDC App>"  Role "<EDC Role 1>" Modules App "<Modules App>" Role "<Modules Role 1>"
+	And there is an iMedidata Study Group  "<Study Group>"
+	And I am the Study Group owner
+	And I created iMedidata Studies "<Study A>", "<Study B>"  and "<Study C>" in the Study Group "<Study Group>"
+	And there is iMedidata user with Username "<iMedidata User 1 ID>" in iMedidata
+	And iMedidata user "<iMedidata User 1 ID>"  has no assignment to iMedidata "<Study Group>"
+  	And iMedidata user "<iMedidata User 1 ID>" is invited to iMedidata Study "<Study A>" to App "<EDC App>" Role "<EDC Role 1>" Role "<EDC Role 2>" Modules App "<Modules App>" role "<Modules Role 1>"
+	And I take a screenshot
+	And iMedidata user "<iMedidata User 1 ID>" is invited to iMedidata Study "<Study B>" to App "<EDC App>" with only Role "<EDC Role 3>" Modules App "<Modules App>" Role "<Modules Role 1>"
+	And I take a screenshot
+	And iMedidata user "<iMedidata User 1 ID>" is invited to iMedidata Study "<Study C>" to App "<EDC App>" Role "<EDC Role 1>" Modules App "<Modules App>" Role "<Modules Role 1>"
+	And I take a screenshot
+	And I am logged out
+	And I am logged in as iMedidata user "<iMedidata User 1 ID>"
+	And I accept the invitation to the studies "<Study A>", "<Study B>"  and "<Study C>"
 	And I am on the iMedidata Home page
-    When I follow App "<EDC App>" associated with Study Group "<Study Group>"
+    When I follow  Study Group "<Study Group>", on the left pane of the screen
     Then I am on the Role Selection page
-	And I see "<EDC Role 1>" "<EDC Role 2>" "<EDC Role 3>" from dropdown "Select Role" 
+	 And I see "<EDC Role 1>" "<EDC Role 2>" "<EDC Role 3>" from dropdown "Select a Role" 
     And I take a screenshot
-	And I select "<EDC Role 2>" from dropdown "Select Role" 
+	And I select "<EDC Role 2>" from dropdown "Select a Role" 
     And I select "Continue"
     And I should be on the Rave Study "<Study A>" Home page
 	And I should not see "<Study B>" or "<Study C>"
 	And I take a screenshot
 	And I follow iMedidata link
-	And I follow App "<EDC App>" for Study Group "<Study Group>"
+	And I follow Study Group "<Study Group>", on the left pane of the screen
 	And I am on Role Selection page
 	And I select "<EDC Role 1>
+	And I select "Continue"
 	And I should be on Rave Home page
-	And I should see studies "<Study A>" "<Study C>"
+	And I should see studies "<Study A>" , "<Study C>"
 	And I take a screenshot
 	And I should not see Study "<Study B>"
-    And I take a screen shot
+    And I take a screenshot
 	And I follow iMedidata link
-	And I follow App "<EDC App>" for Study Group "<Study Group>"
+	And I follow Study Group "<Study Group>", on the left pane of the screen
 	And I am on Role Selection page
 	And I select "<EDC Role 3>
+	And I select "Continue"
 	And I should be on Rave Study "<Study B>" page
-	And I should not see "<Study A>", "<Study B>"
+	And I should not see "<Study A>", "<Study C>"
 	And I take a screenshot
 
 @Rave 564 Patch 13 
@@ -328,29 +347,32 @@ Scenario: If an iMedidata user with two EDC roles in a linked study has one of t
   	Given I am an iMedidata User
     And I am logged in
     And my Username is "<iMedidata User 2 ID>" in iMedidata
-    And I am connected to  Rave 
+    And I am connected to Rave 
     And there is an iMedidata Study Group  "<Study Group>" 
 	And there is an iMedidata Study "<Study C>" assigned to Study Group "<Study Group>"
 	And I have an assignment to study "<Study C>" with App "<EDC App>" Role "<EDC Role 1>" Role "<EDC Role 2>" App "<Modules App>" with Role "<Modules Role 1>" for App "<Security App>" with Role "<Security Group 1>"
 	And I click the App "<EDC App>" associated with study "<Study C>"
     And I am on the Role Selection page
-	And I see "<EDC Role 1>" "<EDC Role 2>" in "Select Role" dropdown
-    And I select "<EDC Role 2>" from dropdown "Select Role" 
+	And I see "<EDC Role 1>" "<EDC Role 2>" in "Select a Role" dropdown
+    And I select "<EDC Role 2>" from dropdown "Select a Role" 
     And I select "Continue"
     And I am on Rave Home page
+	And I take a screenshot	
 	And I navigate to User Adminstration in Rave
 	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
 	And I should see only two accounts for "<iMedidata User 2 ID>" with Role "<EDC Role 1>" "<EDC Role 2>"
+	And I take a screenshot
 	And I select link "iMedidata"
 	And I am on iMedidata Home page
     And my Role "<EDC Role 1>" for Study "<Study C>" is changed to "<EDC Role 3>"
 	When I click the App  "<EDC App>" associated with study "<Study C>"
-	Then I should see "<EDC Role 2>" "<EDC Role 3>" in "Select Role" dropdown
+	Then I should see "<EDC Role 2>" "<EDC Role 3>" in "Select a Role" dropdown
 	And I take a screenshot
-	And I should not see "<EDC Role 1>" in "Select Role" dropdown
-    And I select "<EDC Role 3>" from dropdown "Select Role" 
+	And I should not see "<EDC Role 1>" in "Select a Role" dropdown
+    And I select "<EDC Role 3>" from dropdown "Select a Role" 
     And I select "Continue"
     And I am on Rave Study "<Study C>" page
+	And I take a screenshot
 	And I navigate to User Adminstration
 	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
 	And I should see two accounts for "<iMedidatat User 2 ID>" with Role "<EDC Role 2>", "<EDC Role 3>"
@@ -378,21 +400,24 @@ Scenario: If a user has more than one EDC Role in a specific study profile data,
     And the Rave User has an EDC Role of "<EDC Role 1>" "<EDC Role 2>"
     And there is an iMedidata Study Group  "<Study Group>"
     And there is an iMedidata Study  "<Study A>" in the Study Group  "<Study Group>"
-    And I have an assignment to the iMedidata Study  "<Study A>" for the App  "<EDC App>"  Role "<EDC Role 1>" Role "<EDC Role 2>" for App "<Modules App>" with Role "<Modules Role 1>" App "<security App>" with Role "<Security Group 1>"
+    And I have an assignment to the iMedidata Study  "<Study A>" for the App "<EDC App>"  Role "<EDC Role 1>" Role "<EDC Role 2>" for App "<Modules App>" with Role "<Modules Role 1>" App "<security App>" with Role "<Security Group 1>"
 	And I am on the iMedidata Home page
 	And I navigate to Account Details page
 	And I note the following:
-	|Email|First Name|Last Name|TimeZone|Locale|Phone|UserName|
+	|Email|First Name|Last Name|TimeZone|Locale|Phone|Username|
 	|iMedidata User 1 Email|iMedidata First Name1|iMedidata Last Name1|"<EST>"|"<Eng>"|20398239|"<iMedidata User 1 ID>"|
     And I take a screenshot
+	And I navigate to iMedidata Home page
 	And I click the App  "<EDC App>" associated with study "<Study A>"
 	And I select Role "<EDC Role 1>" on Role Selection page
+	And I select "Continue"
 	And I am on Rave Homepage
 	And I navigate to My Profile 
 	And I verify the following:
-    |Email|First Name|Last Name|TimeZone|Language|TelePhone|iMedidata UserName|
+    |Email|First Name|Last Name|TimeZone|Locale|Phone|iMedidata UserName|
 	|iMedidata User 1 Email|iMedidata First Name1|iMedidata Last Name1|"<EST>"|"<Eng>"|20398239|"<iMedidata User 1 ID>"|
 	And I take a screenshot
+	And I navigate to Rave Homepage
 	And I select link "User Administration"
 	And I search for user "<iMedidata User 1 ID>" with iMedidata as "Authenticator"	
 	And I see two rows in the search results table
@@ -410,10 +435,11 @@ Scenario: If a user has more than one EDC Role in a specific study profile data,
 	And I take a screenshot
 
 	
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.1.73-02
 @Validation
-Scenario: If an iMedidata user has more than one EDC Role, then the following attributes will be active for that user irrespective of the role selected when Rave is accessed by the user from iMedidata: Project, Role, and Deny Access. 
+Scenario: If an iMedidata user has more than one EDC Role, then the following attributes will be active for that user irrespective
+ of the role selected when Rave is accessed by the user from iMedidata: Project, Role, and Deny Access. 
           
 	Given I am an iMedidata User
     And I am logged in
@@ -421,28 +447,30 @@ Scenario: If an iMedidata user has more than one EDC Role, then the following at
     And I am connected to  Rave User "<iMedidata User 1 ID>"
     And there is an iMedidata Study Group  "<Study Group>"
     And there is an iMedidata Study  "<Study A>" in the Study Group  "<Study Group>"
-	And there is a Rave Study  "<Study A>"
+	And there are Rave Studies  "<Study A>" "<Study B>" "<Study C>"
     And the iMedidata Study  "<Study A>" is linked to the Rave Study  "<Study A>"
-    And I have an assignment to the iMedidata Study  "<Study A>" for the App  "<EDC App>"  Role "<EDC Role 1>" Role "<EDC Role 2>" for app  "<Modules Ap>" Role "<Modules Role 1>" for app "<Security App>" with Role "<Security Group 1>"
-	And there is a Rave Study "<Study B>" that is not connected to iMedidata
+    And I have an assignment to the iMedidata Study  "<Study A>" for the App "<EDC App>"  Role "<EDC Role 1>" Role "<EDC Role 2>" for app "<Modules App>" Role "<Modules Role 1>" for app "<Security App>" with Role "<Security Group 1>"
+	And there is a Rave Study "<Study B>" that is not linked to iMedidata (Rave Study Only)
+	And there is a Rave Study "<Study C>" that is not linked to iMedidata (Rave Study Only)
 	And I am on the iMedidata Home page
     And I click the App  "<EDC App>" associated with study "<Study A>"
-	And I select "<EDC Role 1>" from "Select Role" on Role selection page
+	And I select "<EDC Role 1>" from "Select a Role" dropdown on Role selection page
+	And I select "Continue"
 	And I am on Rave Study "<Study A>" page
 	And I select link "User Administration"
 	And I search for user "<iMedidata User 1 ID>" with iMedidata as "Authenticator"	
 	And I see two rows in the search results table
 	And I navigate to user details page for "<EDC Role 1>"
-	And I follow "Assign to Project" in Other Modules 
-	And I select a "Project" "<Study B>"
+	And I follow "Assign To Project" in Other Modules 
+	And I select a "Project" "<Study B>" (Rave Study Only)
 	And I select a "Role"
 	And I uncheck "Deny Access"
 	And I take a screenshot
 	And I follow "Assign"
 	And I should see the project added to "Other Modules" section of the User
 	And I navigate to User Details page for "<EDC Role 2>"
-	And I follow "Assign to Project" in Other Modules 
-	And I select a "Project" "<Study B>"
+	And I follow "Assign To Project" in Other Modules 
+	And I select a "Project" "<Study C>" (Rave Study Only)
 	And I select a "Role"
 	And I uncheck "Deny Access"
 	And I take a screenshot
@@ -462,51 +490,55 @@ Scenario: If a user is a external user and is connected to a Internal user with 
 	| DEA Number       			| 
 	| Network Mask       		| 
 
-
-    Given I am an iMedidata User "<iMedidata User 1 ID>"
-    And I have activated my account 
-    And I have an assignment to the iMedidata Study  "<Study A>" for the App  "<EDC App>"  Role "<EDC Role 1>" Role "<EDC Role 2>" for app  "<Modules Ap>" Role "<Modules Role 1>" for app "<Security App>" with Role "<Security Group 1>"
-    And there exists a Rave User with Username "<iMedidata User 1 ID>"
-	And I log in to Rave as user "<Rave User Name 1>" with access to "User Adminstration"
-	And I navigate to User Adminstration
+    Given I am an iMedidata User
+	And there exists a Rave User with Username "<iMedidata User 1 ID>"
+	And I log in to Rave as user "<iMedidata User 1 ID>" with access to "User Administration"
+	And I navigate to User Administration
 	And I navigate to User Details page for user "<iMedidata User 1 ID>"
 	And I update the following :
-    | Credentials              	| Cred 	|
-	| Sponsor Approval         	| Check | 
-	| Investigator       		| Check |
-	| Investigator Number       | 38278 | 
-	| DEA Number       			| 82343 |
-	| Network Mask       		| NewMa |
+    | Credentials              	| <Credentials>			|
+	| Sponsor Approval         	| Check					| 
+	| Investigator       		| Check					|
+	| Investigator Number       | <Ivestigator Number>	| 
+	| DEA Number       			| <DEA Number>			|
+	| Network Mask       		| <NetMask>				|
 	And I take a screenshot
 	And I log out 
-	And I log in to iMedidata as "<iMedidata User 1 ID>"
-    And I click the App "<EDC App>" associated with study "<Study A>"
+	And I log in to iMedidata as iMedidata User
+    And I invite a iMedidata User with Username "<iMedidata User 1 ID>" 
+    And iMedidata User "<iMedidata User 1 ID>" has assignment to the iMedidata Study  "<Study A>" for the App "<EDC App>"  Role "<EDC Role 1>" Role "<EDC Role 2>" for app "<Modules App>" Role "<Modules Role 1>" for app "<Security App>" with Role "<Security Group 1>"
+	And I log out
+	And I log in to iMedidata as iMedidata User "<iMedidata User 1 ID>"
+	And I accept the invitation for study "<Study A>"
+	And I click the App "<EDC App>" associated with study "<Study A>"
 	And I am on Rave Connection Page
 	And I enter Password "<Password>"
 	And I follow "Link Account"
 	And I am on Role Selection page
-	And I select "<EDC Role 1>" from "Select Role" 
+	And I select "<EDC Role 1>" from "Select a Role"
+	And I select "Continue"
 	And I am on Rave Study "<Study A>" page
 	And I select link "User Administration"
 	And I search for user "<iMedidata User 1 ID>" with iMedidata as "Authenticator"	
 	And I see two rows in the search results table
 	When I navigate to user details page for "<EDC Role 1>"  
 	Then I should see the following applied to "<EDC Role 1>"
-	| Credentials              	| Cred 	|
-	| Sponsor Approval         	| Check | 
-	| Investigator       		| Check |
-	| Investigator Number       | 38278 | 
-	| DEA Number       			| 82343 |
-	| Network Mask       		| NewMa |
+	| Credentials              	| <Credentials>			|
+	| Sponsor Approval         	| Check					| 
+	| Investigator       		| Check					|
+	| Investigator Number       | <Ivestigator Number>	|  
+	| DEA Number       			| <DEA Number>			|
+	| Network Mask       		| <NetMask>				|
 	And I take a screenshot
+	And I follow "Go Back"
 	And I navigate to User Details page for "<EDC Role 2>"
 	Then I should see the following applied to "<EDC Role 2>"
-	| Credentials              	| Cred 	|
-	| Sponsor Approval         	| Check | 
-	| Investigator       		| Check |
-	| Investigator Number       | 38278 | 
-	| DEA Number       			| 82343 |
-	| Network Mask       		| NewMa |
+	| Credentials              	| <Credentials>			|
+	| Sponsor Approval         	| Check					| 
+	| Investigator       		| Check					|
+	| Investigator Number       | <Ivestigator Number>	|  
+	| DEA Number       			| <DEA Number>			|
+	| Network Mask       		| <NetMask>				|
 	And I take a screenshot
 
 

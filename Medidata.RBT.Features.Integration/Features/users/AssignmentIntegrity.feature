@@ -18,6 +18,7 @@ Feature: General Functionality
 	And there exists study "<Study>" in study group "<Study Group>"
 		|Study			|Study Group 	|
 		|{Study A}		|{Study Group} 	|
+		|{Study E}		|{Study Group} 	|
 	And there exists subject <Subject> with eCRF page <eCRF Page>" in Site <Site>
 		|Site			|Subject		|eCRF Page		|
 		|{New Site A1}	|{Subject 1}	|{eCRF Page 1}	|
@@ -46,7 +47,7 @@ Feature: General Functionality
 
 #------------------------------------------------------#Old Patch with Rave External user----------------------------------------------------------------
 
-@Rave 564 Patch 13
+@Rave 2013.2.0.
 @PB2.5.1.76-88
 @Assignment Integrity 1
 @Validation
@@ -67,7 +68,7 @@ Scenario: I am a Rave External user created from a previous patch.  When the new
    And I should see "<Security Group 1>" in Other Modules Section
    And I should see "<Default Security Role>" for "<Study A>" "<Study E>"
    And I should see User group "<Modules Role 1>"
-   And I see test box "Trained Date" "<Date earlier than today>"
+   And I see test box "Trained Date" "<Date earlier or equal to today>"
    And Training Signed checkbox is "Checked"
    And I take a screenshot 
    And I should navigate to "Reporter"
@@ -113,7 +114,7 @@ Scenario: I am a Rave External user created from a previous patch.  When the new
 	And I log out
 	And I log in as iMedidata as Admin "<iMedidata Admin User>"
 	And I create a Study "<Study B>"
-	And I assign "<study B>" to "<iMedidata New User 1 Name>" with "<EDC App>" with "<EDC Role 1>", "<EDC Role 2>" and "<EDC Role 3>" "<Modules App>" with "<Modules Role 1>" Security App "<Security App>" with "<Security Group1>"
+	And I assign "<S tudy B>" to "<iMedidata New User 1 Name>" with "<EDC App>" with "<EDC Role 1>", "<EDC Role 2>" and "<EDC Role 3>" "<Modules App>" with "<Modules Role 1>" Security App "<Security App>" with "<Security Group1>"
 	And I log out 
 	And I log in to iMedidata as "<iMedidata New User 1 Name>"
 	And I accept the invitation to "<Study B>"
