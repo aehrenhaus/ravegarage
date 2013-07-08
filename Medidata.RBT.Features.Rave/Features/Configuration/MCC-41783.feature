@@ -484,7 +484,9 @@ Scenario: PB_MCC_41783_15 As an EDC user, Migrating Subject Verification for ina
 	And I verify deviation "code" with value "A" exists in CRF
 	And I verify deviation "class" with value "20" does not exist in CRF
 	And I verify deviation "class" with value "10" exists in CRF
-	And I take a screenshot	
+	And I take a screenshot
+	And I select link "SUB{Var(num1)}" in "Header"	
+	And I select Form "VISIT_INFO"
 	And I enter data in CRF and save
 	    | Field      | Data        |
 	    | VISIT_DATE | 08 Jan 2000 |
@@ -514,16 +516,16 @@ Scenario: PB_MCC_41783_16, As an user, When I run Protocol Deviation Report, the
 	    | VISIT_DATE | 07 Jan 2000 |
 	And I take a screenshot
 	And I add Protocol Deviation
-		| Field      | Class | Code | Text                 |
-		| VISIT_DATE | 20    | B    | Protocol Deviation 1 |
+		| Field      | Class | Code | Text               |
+		| VISIT_DATE | 20    | B    | Protocol Deviation |
 	And I save the CRF page
 	And I take a screenshot
 	And I select link "SUB{Var(num1)}" in "Header"	
 	And I select Form "VISIT_INFO"
 	When I click audit on Field "VISIT_DATE"
 	Then I verify last audit exist
-		| Audit Type         | Query Message                                                           | 
-		| Protocol Deviation | Protocol deviation created: Protocol Deviation Added Class: 20 Code: B. |
+		| Audit Type         | Query Message                                                     |
+		| Protocol Deviation | Protocol deviation created: Protocol Deviation Class: 20 Code: B. |
 	And I navigate to "Home"
 	And I navigate to "Configuration"
 	And I navigate to "Other Settings"
