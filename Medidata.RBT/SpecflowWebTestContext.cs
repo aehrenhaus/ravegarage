@@ -32,7 +32,7 @@ namespace Medidata.RBT
 			if (RBTConfiguration.Default.AutoCloseBrowser)
 				WebTestContext.CloseBrowser();
 
-			GernerateReport();
+            //GernerateReport();
 		}
 
 		public override void BeforeTestRun()

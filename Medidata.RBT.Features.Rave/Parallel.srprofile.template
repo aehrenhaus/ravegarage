@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestProfile xmlns="http://www.specrun.com/schemas/2011/09/TestProfile">
+  <Settings projectName="Medidata.RBT.Features.Rave" projectId="{d4f6e1e6-67ac-4c8d-8f00-88c70d5d5436}" reportTemplate="..\..\ReportTemplate.cshtml"/>
+  <Execution stopAfterFailures="100" testThreadCount="2" testSchedulingMode="Sequential" retryCount="0"/>
+  <!-- For collecting by a SpecRun server update and enable the following element. For using the 
+      collected statistics, set testSchedulingMode="Adaptive" attribute on the <Execution> element.
+    <Server serverUrl="http://specrunserver:6365" publishResults="true" />
+  -->
+  <Filter>@web</Filter>
+  <TestAssemblyPaths>
+    <TestAssemblyPath>Medidata.RBT.Features.Rave.dll</TestAssemblyPath>
+  </TestAssemblyPaths>
+  <DeploymentTransformation>
+    <Steps>
+      <Relocate targetFolder="%TMP%\RaveGarage{TestThreadId}\Medidata.RBT.Features.Rave\bin\build"/>
+      <CopyFolder source="{OriginalBaseFolder}\..\..\..\Medidata.RBT.Features.Rave" target="web"/>
+      <CopyFolder source="{OriginalBaseFolder}\..\..\..\Uploads" target="..\..\..\Uploads"/>
+      <CopyFolder source="{OriginalBaseFolder}\..\..\..\Firefox" target="..\..\..\Firefox"/>
+      <CopyFolder source="{OriginalBaseFolder}\..\..\..\ExternalDlls" target="..\..\..\ExternalDlls"/>
+      <CopyFolder source="{OriginalBaseFolder}\..\..\..\Medidata.RBT" target="..\..\..\Medidata.RBT"/>
+      <ConfigFileTransformation configFile="App.config">
+        <Transformation>
+          <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+							<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+                <RaveConfiguration RaveURL="http://localhost/Rave564/" RWSURL="" ReportURL="http://localhost/Rave564architectureCrystalViewer/" DefaultUser="defuser" DefaultUserPassword="password" 
+                       xdt:Transform="Replace" />
+                       
+                <connectionStrings>
+                  <add name="RaveConnection" connectionString="Server=DLJ7Q7FV1;Database=localRaveDB_patch13;uid=localRaveDB_patch13;pwd=password*8;Connection Timeout=600" providerName="System.Data.SqlClient"
+                       xdt:Locator="Match(name)" xdt:Transform="SetAttributes(connectionString)"/>
+                </connectionStrings>
+							</configuration>
+						]]>
+        </Transformation>
+      </ConfigFileTransformation>
+      <!-- sample config transform to change the connection string-->
+      <!--<ConfigFileTransformation configFile="App.config">
+        <Transformation>
+          <![CDATA[<?xml version="1.0" encoding="utf-8"?>
+							<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+                <connectionStrings>
+                  <add name="MyDatabase" connectionString="Data Source=.;Initial Catalog=MyDatabaseForTesting;Integrated Security=True" 
+                       xdt:Locator="Match(name)" xdt:Transform="SetAttributes(connectionString)" />
+                </connectionStrings>
+							</configuration>
+						]]>
+        </Transformation>
+      </ConfigFileTransformation>-->
+    </Steps>
+  </DeploymentTransformation>
+</TestProfile>

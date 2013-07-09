@@ -57,12 +57,16 @@ namespace Medidata.RBT
 		/// <param name="assembly"></param>
 		public static void RegisterStringReplaceAssembly(Assembly assembly) 
 		{
-			var iStringReplaceTypes = assembly.GetTypes().Where(t => t.GetInterface("IStringReplace") != null); ;
-			foreach (Type type in iStringReplaceTypes)
-			{
-				string replaceName = type.Name.Replace("Replace", "");
-				allReplaces.Add(replaceName, Activator.CreateInstance(type) as IStringReplace);
-			}
+            try
+            {
+                var iStringReplaceTypes = assembly.GetTypes().Where(t => t.GetInterface("IStringReplace") != null); ;
+                foreach (Type type in iStringReplaceTypes)
+                {
+                    string replaceName = type.Name.Replace("Replace", "");
+                    allReplaces.Add(replaceName, Activator.CreateInstance(type) as IStringReplace);
+                }
+            }
+            catch (ReflectionTypeLoadException) { }
 		}
 
 		/// <summary>
