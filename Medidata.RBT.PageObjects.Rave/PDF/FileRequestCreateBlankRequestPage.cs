@@ -23,6 +23,16 @@ namespace Medidata.RBT.PageObjects.Rave
         public FileRequestPage CreateBlankPDF(PDFCreationModel args)
         {
             base.CreatePDF(args);
+			//NOTE : Try to find a selected matrix from the Matrix dropdown before the form is saved. 
+			//It is possible to save the form without Matrix selected but that causes an error while generating the blank pdf file.
+			Func<IWebDriver, IWebElement> query = 
+				wd => wd.FindElements(By.XPath("//select[@id='Matrix']/option"))
+					.FirstOrDefault(element => element.Selected);
+
+			var selectedMatrixOption = Browser.TryFindElementBy(query, isWait: true);
+			if (selectedMatrixOption == null)
+				throw new NotFoundException("Expected a selected matrix in Matrix dropdown but it was not found");
+
             Browser.TryFindElementByPartialID("SaveLnkBtn").Click();
 
             Browser.TryFindElementById("_ctl0_Content_SearchCriteriaLabel", true, 10);
