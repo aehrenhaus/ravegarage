@@ -23,16 +23,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public FileRequestPage CreateBlankPDF(PDFCreationModel args)
         {
             base.CreatePDF(args);
-			//NOTE : Try to find a selected matrix from the Matrix dropdown before the form is saved. 
-			//It is possible to save the form without Matrix selected but that causes an error while generating the blank pdf file.
-			Func<IWebDriver, IWebElement> query = 
-				wd => wd.FindElements(By.XPath("//select[@id='Matrix']/option"))
-					.FirstOrDefault(element => element.Selected);
-
-			var selectedMatrixOption = Browser.TryFindElementBy(query, isWait: true);
-			if (selectedMatrixOption == null)
-				throw new NotFoundException("Expected a selected matrix in Matrix dropdown but it was not found");
-
+			
             Browser.TryFindElementByPartialID("SaveLnkBtn").Click();
 
             Browser.TryFindElementById("_ctl0_Content_SearchCriteriaLabel", true, 10);
@@ -61,6 +52,8 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 Dropdown crfVersionDropdown = Browser.DropdownById("CRFVersion", true);
                 crfVersionDropdown.SelectByPartialText(SeedingContext.GetExistingFeatureObjectOrMakeNew<CrfVersion>(crfVersion, () => null).UniqueName);
+
+				this.EnsureMatrixIsSelected();
             }
         }
 
@@ -68,5 +61,22 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             get { return "Modules/PDF/FileRequest.aspx?Type=Blank"; }
         }
+
+		/// <summary>
+		/// Ensures that Matrix dropdown has a selected value.
+		/// Will throw NotFoundException if no value is selected.
+		/// </summary>
+		private void EnsureMatrixIsSelected()
+		{
+			//NOTE : Try to find a selected matrix from the Matrix dropdown before the form is saved. 
+			//It is possible to save the form without Matrix selected but that causes an error while generating the blank pdf file.
+			Func<IWebDriver, IWebElement> query =
+				wd => wd.FindElements(By.XPath("//select[@id='Matrix']/option"))
+					.FirstOrDefault(element => element.Selected);
+
+			var selectedMatrixOption = Browser.TryFindElementBy(query, isWait: true);
+			if (selectedMatrixOption == null)
+				throw new NotFoundException("Expected a selected matrix in Matrix dropdown but it was not found");
+		}
 	}
 }
