@@ -1,7 +1,7 @@
 ﻿@FT_MCC-55674_Manual
 @ignore
 
-Feature: MCC-55674_Manual Unsupported Browser Negative Test feature file.
+Feature: MCC-55674_Manual Unsupported Browser Negative Test feature file
 	As a user
 	I want to open and navigate URL
 	So I should not see the message 'You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.'
@@ -37,6 +37,7 @@ Scenario: PB_MCC_55674_01 As an EDC user, when I open Rave URL, then I should no
 		|Safari			|
 		|Chrome			|
 	And I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
+	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------
 @release_2013.2.0
@@ -56,7 +57,8 @@ Scenario: PB_MCC_55674_02 As an EDC user, when I log in to Rave URL, then I shou
 		|SUPER USER 1	|password	|Rave		|
 		|esiguser4	    |Password1	|iMedidata	|
 	And I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
-
+	And I take a screenshot
+	
 #----------------------------------------------------------------------------------------------------------------------------------
 @release_2013.2.0
 @PB_MCC_55674_03
@@ -70,15 +72,17 @@ Scenario: PB_MCC_55674_03 As an EDC user, when I am on Change Password, then I s
 		|Firefox	 	|
 		|Safari			|
 		|Chrome			|	
-  	And I am logged in as user "<User>" with password "<Password>" in "<App>"
+  	When I am logged in as user "<User>" with password "<Password>" in "<App>"
 		|User		    |Password	|App		|
 		|SUPER USER 1	|password	|Rave		|
 		|esiguser4	    |Password1	|iMedidata	|
-	And I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
+	Then I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
+	And I take a screenshot	
 	And I select link "My Profile"
-	And I select link "Change Password"
-	And I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
-		
+	When I select link "Change Password"
+	Then I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
+	And I take a screenshot
+	
 #----------------------------------------------------------------------------------------------------------------------------------
 @release_2013.2.0
 @PB_MCC_55674_04
@@ -92,19 +96,21 @@ Scenario: PB_MCC_55674_04 As an EDC user, when I am on Form Preview page in Form
 		|Firefox	 	|
 		|Safari			|
 		|Chrome			|	
-  	And I am logged in as user "<User>" with password "<Password>" in "<App>"
+  	When I am logged in as user "<User>" with password "<Password>" in "<App>"
 		|User		    |Password	|App		|
 		|SUPER USER 1	|password	|Rave		|
 		|esiguser4	    |Password1	|iMedidata	|
-	And I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
+	Then I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
+	And I take a screenshot	
 	And I select link "Architect"
 	And I select link "MCC_55674"
 	And I select link "Draft 1"
 	And I select link "Forms"
 	And I select fields arrow for "PRIMARY"
-	And I select link "Preview"
-	And I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist	
-
+	When I select link "Preview"
+	Then I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist	
+	And I take a screenshot
+	
 #----------------------------------------------------------------------------------------------------------------------------------
 @release_2013.2.0
 @PB_MCC_55674_05
@@ -118,9 +124,10 @@ Scenario: PB_MCC_55674_05 As an EDC user, when I on 'Activate New Account' page,
 		|Firefox	 	|
 		|Safari			|
 		|Chrome			|
-	And I select link "Activate New Account"		
-	And I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
-
+	When I select link "Activate New Account"		
+	Then I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
+	And I take a screenshot
+	
 #----------------------------------------------------------------------------------------------------------------------------------
 @release_2013.2.0
 @PB_MCC_55674_06
@@ -134,8 +141,9 @@ Scenario: PB_MCC_55674_06 As an EDC user, when I on 'Forgot Password' page, then
 		|Firefox	 	|
 		|Safari			|
 		|Chrome			|
-	And I select link "Forgot Password?"		
-	And I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
+	When I select link "Forgot Password?"		
+	Then I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
+	And I take a screenshot
 	
 #----------------------------------------------------------------------------------------------------------------------------------
 @release_2013.2.0
@@ -150,5 +158,6 @@ Scenario: PB_MCC_55674_07 As an EDC user, when I on Rave Login page with Japanes
 		|Firefox	 	|
 		|Safari			|
 		|Chrome			|
-	And I select link "Japanesse" from "Locale" dropdown
-	And I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist
+	When I select link "Japanesse" from "Locale" dropdown
+	Then I verify text "You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." does not exist				
+	And I take a screenshot	
