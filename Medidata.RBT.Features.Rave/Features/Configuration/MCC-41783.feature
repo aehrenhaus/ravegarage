@@ -485,7 +485,7 @@ Scenario: PB_MCC_41783_15 As an EDC user, Migrating Subject Verification for ina
 	And I verify deviation "class" with value "20" does not exist in CRF
 	And I verify deviation "class" with value "10" exists in CRF
 	And I take a screenshot
-	And I select link "SUB{Var(num1)}" in "Header"	
+	And I select link "sub{Var(num7)}" in "Header"	
 	And I select Form "VISIT_INFO"
 	And I enter data in CRF and save
 	    | Field      | Data        |
