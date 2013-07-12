@@ -107,6 +107,7 @@ namespace Medidata.RBT
 
 			public FileInfo WaitForFile()
 			{
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.WaitForFile()", DateTime.Now.ToString("hh:mm:ss.fff"));
 				return WaitForDownloadFinish();
 			}
 
@@ -115,6 +116,7 @@ namespace Medidata.RBT
 			/// </summary>
 			public void Dispose()
 			{
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.Dispose()", DateTime.Now.ToString("hh:mm:ss.fff"));
 				WaitForDownloadFinish();
 			}
 
@@ -157,6 +159,8 @@ namespace Medidata.RBT
 
 			private void watcher_Created(object sender, FileSystemEventArgs e)
 			{
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.watcher_Created()", DateTime.Now.ToString("hh:mm:ss.fff"));
+
 				const string partExt = ".part";
 
 				var ext = Path.GetExtension(e.FullPath);
@@ -167,15 +171,35 @@ namespace Medidata.RBT
 				//ignore this temp file created by firefox
 				if (ext == partExt)
 				{
+					Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.watcher_Created() -> File extension is .part -> exitting", DateTime.Now.ToString("hh:mm:ss.fff"));
 					return;
 				}
 				else
 				{
+					Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.watcher_Created() -> File extension is NOT .part", DateTime.Now.ToString("hh:mm:ss.fff"));
+					
 					//Wait untill the final downloaded file is fully converted from .part file by firefox
-					Func<bool> check = () => !File.Exists(partial);
+					Func<bool> check = () =>
+					{
+						Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.watcher_Created() -> Anonymous Func<bool> -> Checking if [{1}] file exists", DateTime.Now.ToString("hh:mm:ss.fff"), partial);
+						var result = !File.Exists(partial);
+
+						if(result)
+							Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.watcher_Created() -> Anonymous Func<bool> -> File [{1}] no longer exists", DateTime.Now.ToString("hh:mm:ss.fff"), partial);
+						else
+							Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.watcher_Created() -> Anonymous Func<bool> -> File [{1}] still exists", DateTime.Now.ToString("hh:mm:ss.fff"), partial);
+
+						return result;
+					};
+
+					
 					var timeout = RBTConfiguration.Default.DownloadTimeout * 1000;	//Timeput in milliseconds
+					Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.watcher_Created() -> Configured timeout is [{1}] in ms", DateTime.Now.ToString("hh:mm:ss.fff"), timeout);
+
+					Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.watcher_Created() -> Start waiting for .part file to be deleted", DateTime.Now.ToString("hh:mm:ss.fff"));
 					if (this.Wait(check, timeout, 100))
 					{
+						Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.watcher_Created() -> _lastDownloadedFile is [{1}]", DateTime.Now.ToString("hh:mm:ss.fff"), e.FullPath);
 						_lastDownloadedFile = new FileInfo(e.FullPath);
 						(sender as FileSystemWatcher).Dispose();
 					}
@@ -184,11 +208,30 @@ namespace Medidata.RBT
 
 			private FileInfo WaitForDownloadFinish()
 			{
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.WaitForDownloadFinish()", DateTime.Now.ToString("hh:mm:ss.fff"));
+
 				if (_watchingForDownload == false)
+				{
+					Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.WaitForDownloadFinish() -> _watchingForDownload == false -> returning null", DateTime.Now.ToString("hh:mm:ss.fff"));
 					return null;
+				}
 
 				var timeout = RBTConfiguration.Default.DownloadTimeout * 1000;	//Timeput in milliseconds
-				if (!this.Wait(() => _lastDownloadedFile != null, timeout, 100))
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.WaitForDownloadFinish() -> Configured timeout is [{1}] in ms", DateTime.Now.ToString("hh:mm:ss.fff"), timeout);
+
+				Func<bool> check = () =>
+				{
+					Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.WaitForDownloadFinish() -> Anonymous Func<bool> -> Checking if _lastDownloadedFile != null", DateTime.Now.ToString("hh:mm:ss.fff"));
+					var result = _lastDownloadedFile != null;
+					if(result)
+						Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.WaitForDownloadFinish() -> Anonymous Func<bool> -> _lastDownloadedFile != null", DateTime.Now.ToString("hh:mm:ss.fff"));
+					else
+						Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.WaitForDownloadFinish() -> Anonymous Func<bool> -> _lastDownloadedFile == null", DateTime.Now.ToString("hh:mm:ss.fff"));
+
+					return result;
+				};
+
+				if (!this.Wait(check, timeout, 100))
 					throw new TimeoutException("File download is taking too long");
 
 				_watchingForDownload = false;
@@ -198,16 +241,27 @@ namespace Medidata.RBT
 
 			private bool Wait(Func<bool> action, int timeout, int tries)
 			{
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.Wait()", DateTime.Now.ToString("hh:mm:ss.fff"));
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.Wait() -> timeout param is [{1}] in ms", DateTime.Now.ToString("hh:mm:ss.fff"), timeout);
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.Wait() -> tries param is [{1}]", DateTime.Now.ToString("hh:mm:ss.fff"), tries);
+
 				timeout = timeout < tries ? tries : timeout;
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.Wait() -> timeout (calculated) is [{1}] in ms", DateTime.Now.ToString("hh:mm:ss.fff"), timeout);
 				var interval = (int)Math.Round((double)timeout / tries, 0);
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.Wait() -> interval is [{1}] in ms", DateTime.Now.ToString("hh:mm:ss.fff"), interval);
 
 				var counter = 0;
 				var result = action();
+				Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.Wait() -> result (after first action() call) is [{1}]", DateTime.Now.ToString("hh:mm:ss.fff"), result);
+
 				while (!result && counter <= timeout)
 				{
 					result = action();
 					Thread.Sleep(interval);
 					counter += interval;
+
+					Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.Wait() -> while loop -> counter is [{1}]", DateTime.Now.ToString("hh:mm:ss.fff"), counter);
+					Console.WriteLine("-> [{0}] -> In DownloadFileWatcher.Wait() -> while loop -> result is [{1}]", DateTime.Now.ToString("hh:mm:ss.fff"), result);
 				}
 
 				return result;
