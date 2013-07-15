@@ -1,4 +1,5 @@
 ﻿@FT_MCC_41783_MCC_61213_Upload
+@ignore
 #Add ability to inactivate Protocol Deviations to Configuration Loader
 
 Feature: MCC_41783_MCC_61213_Upload Add ability to inactivate Protocol Deviations to Configuration Loader.
