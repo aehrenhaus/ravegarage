@@ -1011,12 +1011,12 @@ Examples:
     | Study          |
     | Study Group    |
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.9.33-14
 @Validation
 Scenario: When a user accepts an invitation to a study that has elearning block and accepts to a study that has no elearning blocking. Only the invitation that is not blocked should have a message sent for it.
 
-	Given I am a iMedidata User "<iMedidata User 1 ID>"
+	Given I am an iMedidata User "<iMedidata User 1 ID>"
 	And I am connected to Rave
     And there is a "<Study A>", "<Study B>"
     And I have an assignment to "<Study A>" , "<Study B>" with app "<EDC App>" with Role "<EDC Role 1>" App "<Modules App>" with Role "<Modules Role 1>"
@@ -1026,7 +1026,7 @@ Scenario: When a user accepts an invitation to a study that has elearning block 
 	And I invite iMedidata User "<iMedidata User 2 ID>" to "<Study B>" with App "<EDC App>" with Role "<EDC Role 1>", App "<Modules App>" with Role "<Modules Role 1>"
 	And the user "<iMedidata User 2 ID>" has accepted invitation to both Study "<Study A>" ,"<Study B>"
 	And I take a screenshot
-	And I navigate to Rave by following "<EDC App>" for Study "<Study A>"
+	And I navigate to Rave by following "<EDC App>" for Study "<Study A>" as User "<iMedidata User 1 ID>"
 	And I navigate to User Administration
 	And I search for User "<iMedidata User 2 ID>" with Authenticator "iMedidata"
 	And I should see "<EDC Role 1>" for User "<iMedidata User 2 ID>"
@@ -1092,3 +1092,109 @@ Scenario:  When removing a course mapping unblocks user then create invitation m
 	And I take a screenshot
 
 
+@Rave 2013.2.0
+@PB2.5.9.33-16
+@Validation
+Scenario: If a user has multiple EDC roles and a role that blocks the user from study is added then a DELETE invitation message should be generated
+    
+	Given I am an iMedidata user "<iMedidata User 1 ID>"
+    And I am logged in
+    And there is a Course named "<My Course>" with Course File that has a Locale of "eng"
+    And there is an iMedidata study "<Study A>"
+	And there is an iMedidata study "<Study B>"
+	And the Course named "My Course" is assined to Study "<Study A>" with Role "<EDC Role 5>" (role requires eLearning course)
+	And there is no Course assigned to Study "<Study B>"
+    And I am the Owner of Studies named "<Study A>" and "<Study B>" 
+    And the Course "<My Course>" is mapped as required for App "<EDC App>" with Role "<EDC Role 5>" for Study "<Study A>" 
+    And I invite a new user "<iMedidata User 2 ID>" with email "<iMedidata User 2 email>" to Study "<Study A>" and "<Study B>"
+	And there is an Assignment for the new User "<iMedidata User 2 ID>"to the Study named "<Study A>" and the App named "<EDC App>" with Role "<EDC Role 1>", "<EDC Role 2>", "<EDC Role 3>", App "<Modules App>" with Role "<Modules Role 1>"
+	And there is an Assignment for the new User "<iMedidata User 2 ID>"to the Study named "<Study B>" and the App named "<EDC App>" with Role "<EDC Role 1>", "<EDC Role 2>", "<EDC Role 3>", App "<Modules App>" with Role "<Modules Role 1>"
+	And the new user "<iMedidata User 2 ID>" has accepted the invitation to Study "<Study A>" and "<Study B>"
+	And I take a screenshot
+	And I navigate to Rave as iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Administration
+	And I search for User "<iMedidata User 2 ID>" with Authenticator "iMedidata"
+	And I should see User "<iMedidata User 2 ID>" with "<EDC Role 1>", "<EDC Role 2>" and "<EDC Role 3>"
+	And I navigate to User Details page for User "<iMedidata user 2 ID>" with "<EDC Role 1>"
+	And I should see "<EDC Role 1>" assigned to User for Study "<Study A>" and "<Study B>"
+	And I should see that the Active Check box is checked
+	And I take a screenshot	
+	And I select the "Go Back" link
+	And I navigate to User Details page for User "<iMedidata user 2 ID>" with "<EDC Role 2>"
+	And I should see "<EDC Role 2>" assigned to User for Study "<Study A>" and "<Study B>"
+	And I should see that the Active Check box is checked
+	And I take a screenshot	
+	And I select the "Go Back" link
+	And I navigate to User Details page for User "<iMedidata user 2 ID>" with "<EDC Role 3>"
+	And I should see "<EDC Role 3>" assigned to User for Study "<Study A>" and "<Study B>"	
+	And I should see that the Active Check box is checked
+	And I take a screenshot
+	And I select link 'iMedidata'
+	And I am on iMedidata home Page
+	And I logout of iMedidata
+	And I login as User "<iMedidata user 2 ID>"
+	And I should not see "<My course>" is "required for access" message under Study "<Study A>" and "<Study B>"
+	And I take a screenshot	
+	And I should see the link "<Modules App>" associated with study "<Study A>" and "<Study B>"
+	And I should see the link "<EDC App>" associated with study "<Study A>" and "<Study B>"
+	And I select link "<EDC App>" associated with study "<Study A>"
+	And I am at the Role selection page
+	And I take a screenshot
+	And I select Role "<EDC Role 1>"
+	And I am on Rave Study "<Study A>" home page
+	And I should not see "<My course>" is "required for access" message
+	And I take a screenshot
+	And I select link "iMedidata"
+	And I am on iMedidata home page
+	And I select link "<EDC App>" associated with study "<Study B>"
+	And I am at the Role selection page
+	And I take a screenshot
+	And I select Role "<EDC Role 1>"
+	And I am on Rave Study "<Study B>" home page
+	And I should not see "<My course>" is "required for access" message
+	And I take a screenshot
+	And I logout of iMedidata
+	And I login as User "<iMedidata User 1 ID>"
+	And I navigate to Manage Study "<Study A>" Page
+	And I add a Role for the User "<iMedidata User 2 ID>" for App "<EDC App>" Role "<EDC Role 5>" for Study "<Study A>"
+	And I take a screenshot
+    And I navigate to Rave as iMedidata user "<iMedidata User 1 ID>"
+	And I search for User "<iMedidata User 2 ID>" with Authenticator "iMedidata"
+	And I should see User "<iMedidata User 2 ID>" with "<EDC Role 1>", "<EDC Role 2>", "<EDC Role 3>"
+	And I should not see User "<iMedidata User 2 ID>" with "<EDC Role 5>"
+	And I navigate to User Details page for User "<iMedidata user 2 ID>" with "<EDC Role 1>"
+	And I should see "<EDC Role 1>" assigned to User for Study "<Study B>"
+	And I should not see "<EDC Role 1>" assigned to User for Study "<Study A>"
+	And I should see that the Active Check box is checked
+	And I take a screenshot
+	And I select the "Go Back" link
+	And I navigate to User Details page for User "<iMedidata user 2 ID>" with "<EDC Role 2>"
+	And I should see "<EDC Role 2>" assigned to User for Study "<Study B>"
+	And I should not see "<EDC Role 2>" assigned to User for Study "<Study A>"
+	And I should see that the Active Check box is checked
+	And I take a screenshot
+	And I select the "Go Back" link
+	And I navigate to User Details page for User "<iMedidata user 2 ID>" with "<EDC Role 3>"
+	And I should see "<EDC Role 3>" assigned to User for Study "<Study B>"
+	And I should not see "<EDC Role 3>" assigned to User for Study "<Study A>"
+	And I should see that the Active Check box is checked
+	And I take a screenshot
+	And I select link iMedidata
+	And I am on iMedidata home page
+	And I logout of iMedidata
+	And I log in as User "<iMedidata User 2 ID>"
+	And I should see "<My course>" is "required for access" message under Study "<Study A>"
+	And I should not see "<My course>" is "required for access" message under Study "<Study B>"	
+	And I take a screenshot	
+	And I should see the link "<Modules App>" associated with study "<Study B>"
+	And I should see the link "<EDC App>" associated with study "<Study B>"
+	And I select link "<EDC App>" associated with study "<Study B>"
+	And I am at the Role selection page
+	And I take a screenshot
+	And I select Role "<EDC Role 1>"
+	And I am on Rave Study "<Study B>" home page
+	And I should not see "<My course>" is "required for access" message
+	And I take a screenshot
+	And I select iMedidata link
+	And I am on the iMedidata home page
+	And I logout of iMedidata

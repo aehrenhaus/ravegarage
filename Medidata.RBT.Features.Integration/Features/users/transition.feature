@@ -2209,14 +2209,14 @@ Scenario: When an eLearning course that is assigned to a user in Rave with statu
 	#iMedidata
 	And I log in into iMedidata as Admin User "<iMedidata User 1 ID>"
 	And there is iMedidata Study Group
-	And I creat new iMedidata Study "<Study A>" taht linked to Rave Study "<Study A>"
-	And I creat new iMedidata Site "<Site A>" that linked to Rave Site "<Site A>"	
+	And I creat new iMedidata Study "<Study A>" that is linked to Rave Study "<Study A>"
+	And I creat new iMedidata Site "<Site A>" that is linked to Rave Site "<Site A>"	
 	And I invite a new iMedidata user with email "<iMedidata New User 2 Email>" to Study "<Study A>", Site "<Site A>"
 	And I assign Module App "<Modules App>" with role "<Modules Role 1>" to new iMedidata user.
     And the new iMedidata Username is "<iMedidata User 2 ID>"
 	And I logout of iMedidata
 	
-	And I login to iMdidata as "<iMedidata User 2 ID>"
+	And I login to iMedidata as "<iMedidata User 2 ID>"
 	And I accept the invitation
 	And I should see the link "<Modules App>" associated with study "<Study A>"
 	And I take a screenshot
@@ -2289,20 +2289,24 @@ Scenario: When an eLearning course that is assigned to a user in Rave with statu
 	Then I should see (eLearning Required) for "<Study A>"
 	And I see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC. For more help accessing eLearning courses, click on the Rave Help link above'
 	And I verify that eLearning Course Status is "Not Started"
-	And I take a screenshot
+	And I start the eLearning course but not completed
+	When I select link "Home"
+	Then I should see the eLearning Courses section
+	And I see the eLearning Course Status "Incomplete"
+	And I take a screenshot	
 	And I navigate to "User Administration" Module
     And I search for user "<Rave User Name 1>"
     And I go to the User Details page for user "<Rave User Name 1>"
     And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
-    And I verify from the eLearning section that the Status is "Not Started" for eLearning course "<Course 1>"
+    And I verify from the eLearning section that the Status is "Incomplete" for eLearning course "<Course 1>"
     And I take a screenshot
 	And I log out as Rave user
   
 	#iMedidata
 	And I log in into iMedidata as Admin User "<iMedidata User 1 ID>"
 	And there is iMedidata Study Group
-	And I creat new iMedidata Study "<Study A>" taht linked to Rave Study "<Study A>"
-	And I creat new iMedidata Site "<Site A>" that linked to Rave Site "<Site A>"	
+	And I creat new iMedidata Study "<Study A>" that is linked to Rave Study "<Study A>"
+	And I creat new iMedidata Site "<Site A>" that is linked to Rave Site "<Site A>"	
 	And I invite a new iMedidata user with email "<iMedidata New User 2 Email>" to Study "<Study A>", Site "<Site A>"
 	And I assign Module App "<Modules App>" with role "<Modules Role 1>" to new iMedidata user.
     And the new iMedidata Username is "<iMedidata User 2 ID>"
@@ -2350,7 +2354,6 @@ Scenario: When an eLearning course that is assigned to a user in Rave with statu
     And I search for user "<iMedidata User 2 ID>" Authenticator "iMedidata"
 	And I go to the User Details page for user "<iMedidata User 2 ID>"
     And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
-    And I see elearning course is not required on eLearning section
 	And I verify that the status of the eLearning course is "Completed"
 	And I take a screenshot
 
@@ -2369,6 +2372,7 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
 	And I am logged in to Rave
     And my Name is "<First Name 1>" "<Last Name 1>"
 	And my username is "<Rave User Name 1>"
+	And my Email is "<iMedidata User 2 Email>"
 	And there is Rave Study  "<Study A>"
     And there is Rave Site  "<Site A>"
 	And I have assigned to the "<Study A>" 
@@ -2378,7 +2382,10 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
 	And I have eLearning course assigned to the "<Study A>" and Role "<EDC Role 1>"
 	And the e-Learning Course has the same UUID in Rave and iMedidata
 	And I have not started the eLearning course
-	And I have "Override" check box NOT checked for the eLearning Course
+	And I navigate to "User Administration" Module
+    And I search for user "<Rave User Name 1>"
+    And I go to the User Details page for user "<Rave User Name 1>"	
+	And the "Override" check box is NOT checked in the eLearning Course section
 	And I take a screenshot
 	And I navigate to Rave Home page
 	And I do see the required eLearning Course
@@ -2388,8 +2395,8 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
    #iMedidata
 	And I log in into iMedidata as Admin User "<iMedidata User 1 ID>"
 	And there is iMedidata Study Group
-	And I creat new iMedidata Study "<Study A>" taht linked to Rave Study "<Study A>"
-	And I creat new iMedidata Site "<Site A>" that linked to Rave Site "<Site A>"	
+	And I creat new iMedidata Study "<Study A>" that is linked to Rave Study "<Study A>"
+	And I creat new iMedidata Site "<Site A>" that is linked to Rave Site "<Site A>"	
 	And I invite a new iMedidata user with email "<iMedidata New User 2 Email>" to Study "<Study A>", Site "<Site A>"
 	And I assign Module App "<Modules App>" with role "<Modules Role 1>" to new iMedidata user.
     And the new iMedidata Username is "<iMedidata User 2 ID>"
@@ -2413,12 +2420,31 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
 	And I take a screenshot
 	And I logout of iMedidata
 	
+	And I login to Rave as "Defuser" user
+	And I navigate to User Admin
+	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I verify that the user "<iMedidata User 2 ID>" is not displayed
+	And I take a screenshot
+	And I logout of Rave	
+	
 	And I login to iMedidata as "<iMedidata User 2 ID>"
 	And I see "<eLearnig Course> is required for access" text
 	And I do not see the link "<Modules App>" associated with study "<Study A>"
 	And I do not see the link "<EDC App>" associated with study "<Study A>"
 	And I take a screenshot
-	When I select the "Override" check box for the eLearning Course
+	And I logout of iMedidata	
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I navigate to study "<Study A>"
+	And I search for User "<iMedidata User 2 ID>"
+	And I select Course under eLearning
+	And I check the Override checkbox
+	And I provide Reason / Training Date
+	And I take a screenshot
+	And I select button "Save"
+	And I logout of iMedidata	
+	
+	When I login to iMedidata as "<iMedidata User 2 ID>"
 	Then I should be on the iMedidata home page
 	And I should see the link "<Modules App>" associated with study "<Study A>"
 	And I should see the link "<EDC App>" associated with study "<Study A>"
@@ -2436,7 +2462,7 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
     And I search for user "<iMedidata User 2 ID>" Authenticator "iMedidata"
 	And I go to the User Details page for user "<iMedidata User 2 ID>"
     And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
-    And I see elearning course is not required on eLearning section
+    And I see elearning course status is "Not Started" on eLearning section
 	And I verify that the "Override" check box is checked
 	And I take a screenshot
 
@@ -2454,6 +2480,7 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
 	And I am logged in to Rave
     And my Name is "<First Name 1>" "<Last Name 1>"
 	And my username is "<Rave User Name 1>"
+	And my Email is "<iMedidata User 1 Email>"	
 	And there is Rave Study  "<Study A>"
     And there is Rave Site  "<Site A>"
 	And I have assigned to the "<Study A>" 
@@ -2479,16 +2506,19 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
 	And I log out as Rave user
   
    #iMedidata
-	When I log in into iMedidata as invited New User "<iMedidata User 1 ID>"
-	Then I accepted the invitation
+	When I log in into iMedidata as invited New User "<iMedidata User 1 ID>" and email "<iMedidata User 1 Email>"
+	Then I accept the invitation
 	And there is iMedidata Study "<Study A>" linked to Rave Study "<Study A>"
 	And there is iMedidata Site "<Site A>" linked to Rave Site "<Site A>"
     And I have an assignment to a iMedidata Study "<Study A>" for EDC App "<EDC App>" with Role "<EDC Role 1>"
-	And I take a screenshot
 	And I have an assignment to a Study "<Study A>"  for Modules App "<Modules App>" with Role "<Modules Role 1>"
-	And I follow a "<EDC App>" link
-    And I am on Rave Study Site Home page
-	And I do not see the eLearning Courses section
+	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page
 	And I take a screenshot
 	And I navigate to User Administration Module
 	And I search for the iMedidata User "<iMedidata User 1 ID>"
@@ -2507,25 +2537,25 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
 @Rave 2013.2.0
 @MCC2.7.1.3-05-4
 @Validation
-Scenario: When an eLearning course  with Status "Incomplete" (failed test) that is assigned to a user in Rave and eLearning course
-           that is assigned to a user in iMedidata and the course has the same UUID in Rave and iMedidata,then the new created iMedidata
-		   user that is assigned & takes the eLearning in iMedidata, should not have to take the eLearning course more than 1 time.  
+Scenario: When an eLearning course in Rave with Status "Incomplete" (failed test) is moved to a user in iMedidata and the course has the same UUID in Rave and iMedidata, then the newly created iMedidata
+		   user that is assigned & takes the eLearning in iMedidata, should not take the eLearning course more than 1 time.  
 
   #Rave	
 	Given I am a Rave User
 	And I am logged in to Rave
     And my Name is "<First Name 1>" "<Last Name 1>"
 	And my username is "<Rave User Name 1>"
+	And my Email is "<iMedidata User 2 Email>"
 	And there is Rave Study  "<Study A>"
     And there is Rave Site  "<Site A>"
 	And I have assigned to the "<Study A>" 
 	And I have assigned to the "<Site A>"
 	And I am not connected to iMedidata
 	And I have eLearning course created
-	And I have eLearning course assigned to the "<Study A>" and Role "<EDC Role 1>"
+	And I have eLearning course assigned to study "<Study A>" and Role "<EDC Role 1>"
 	And the e-Learning Course has the same UUID in Rave and iMedidata
-	And I have started that eLearning course but not completed (test failed)
-	And I navigate to Rave Sudy Home page
+	And I start the eLearning course but not completed (test failed)
+	And I navigate to Rave Study Home page
 	And I see the eLearning Courses section
 	And I see the eLearning Course Status "Incomplete"
 	And I take a screenshot
@@ -2534,8 +2564,8 @@ Scenario: When an eLearning course  with Status "Incomplete" (failed test) that 
    #iMedidata
 	And I log in into iMedidata as Admin User "<iMedidata User 1 ID>"
 	And there is iMedidata Study Group
-	And I creat new iMedidata Study "<Study A>" taht linked to Rave Study "<Study A>"
-	And I creat new iMedidata Site "<Site A>" that linked to Rave Site "<Site A>"	
+	And I creat new iMedidata Study "<Study A>" that is linked to Rave Study "<Study A>"
+	And I creat new iMedidata Site "<Site A>" that is linked to Rave Site "<Site A>"	
 	And I invite a new iMedidata user with email "<iMedidata New User 2 Email>" to Study "<Study A>", Site "<Site A>"
 	And I assign Module App "<Modules App>" with role "<Modules Role 1>" to new iMedidata user.
     And the new iMedidata Username is "<iMedidata User 2 ID>"
@@ -2576,14 +2606,12 @@ Scenario: When an eLearning course  with Status "Incomplete" (failed test) that 
     When I follow link "Link Account"
 	Then I should be on the Study Site "<Site A>" page
     And I should not see the eLearning Home page with Status "Incomplete"
-	And I should not see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC.
-    For more help accessing eLearning courses, click on the Rave Help link above'
     And I take a screenshot
     And I navigate to "User Administration" Module
     And I search for user "<iMedidata User 2 ID>" Authenticator "iMedidata"
 	And I go to the User Details page for user "<iMedidata User 2 ID>"
     And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
-    And I see elearning course is not required on eLearning section
+    And I see elearning course "<eLearning Course>" on eLearning section
 	And I verify that the status of the eLearning course is "Completed"
 	And I take a screenshot
 
@@ -2594,8 +2622,8 @@ Scenario: When an eLearning course  with Status "Incomplete" (failed test) that 
 @MCC2.7.1.3-05-5
 @Validation
 Scenario: When an eLearning course that is assigned to a user in Rave with Status "Incomplete" is moved from Rave to iMedidata 
-          and the course has the same UUID in Rave and iMedidata,and course has been overrided in iMedidata,then user should not
-		  have to take the eLearning course more than 1 time.
+          and the course has the same UUID in Rave and iMedidata,and course has been overrided in iMedidata, then user should not
+		  take the eLearning course more than 1 time.
 		 
 
   #Rave	
@@ -2603,6 +2631,7 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
 	And I am logged in to Rave
     And my Name is "<First Name 1>" "<Last Name 1>"
 	And my username is "<Rave User Name 1>"
+	And my Email is "<iMedidata User 2 Email>"
 	And there is Rave Study  "<Study A>"
     And there is Rave Site  "<Site A>"
 	And I have assigned to the "<Study A>" 
@@ -2611,19 +2640,23 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
 	And I have eLearning course created
 	And I have eLearning course assigned to the "<Study A>" and Role "<EDC Role 1>"
 	And the e-Learning Course has the same UUID in Rave and iMedidata
-	And I have started the eLearning course BUT not completed
-	And I have "Override" check box NOT checked for the eLearning Course
+	And I start the eLearning course but not completed
+	And I navigate to "User Administration" Module
+    And I search for user "<Rave User Name 1>"
+    And I go to the User Details page for user "<Rave User Name 1>"	
+	And the "Override" check box is NOT checked in the eLearning Course section
+	And I see elearning course status is "Incomplete" on eLearning section
 	And I take a screenshot
-	And I navigate to Rave Home page
-	And I do see the required eLearning Course
+	When I select link "Home"
+	Then I should be on the eLearning Home page
 	And I take a screenshot
 	And I log out as Rave user
   
    #iMedidata
 	And I log in into iMedidata as Admin User "<iMedidata User 1 ID>"
 	And there is iMedidata Study Group
-	And I creat new iMedidata Study "<Study A>" taht linked to Rave Study "<Study A>"
-	And I creat new iMedidata Site "<Site A>" that linked to Rave Site "<Site A>"	
+	And I creat new iMedidata Study "<Study A>" that is linked to Rave Study "<Study A>"
+	And I creat new iMedidata Site "<Site A>" that is linked to Rave Site "<Site A>"	
 	And I invite a new iMedidata user with email "<iMedidata New User 2 Email>" to Study "<Study A>", Site "<Site A>"
 	And I assign Module App "<Modules App>" with role "<Modules Role 1>" to new iMedidata user.
     And the new iMedidata Username is "<iMedidata User 2 ID>"
@@ -2647,12 +2680,31 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
 	And I take a screenshot
 	And I logout of iMedidata
 	
+	And I login to Rave as "Defuser" user
+	And I navigate to User Admin
+	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I verify that the user "<iMedidata User 2 ID>" is not displayed
+	And I take a screenshot
+	And I logout of Rave	
+	
 	And I login to iMedidata as "<iMedidata User 2 ID>"
 	And I see "<eLearnig Course> is required for access" text
 	And I do not see the link "<Modules App>" associated with study "<Study A>"
 	And I do not see the link "<EDC App>" associated with study "<Study A>"
 	And I take a screenshot
-	When I select the "Override" check box for the eLearning Course
+	And I logout of iMedidata	
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I navigate to study "<Study A>"
+	And I search for User "<iMedidata User 2 ID>"
+	And I select Course under eLearning
+	And I check the Override checkbox
+	And I provide Reason / Training Date
+	And I take a screenshot
+	And I select button "Save"
+	And I logout of iMedidata	
+	
+	When I login to iMedidata as "<iMedidata User 2 ID>"
 	Then I should be on the iMedidata home page
 	And I should see the link "<Modules App>" associated with study "<Study A>"
 	And I should see the link "<EDC App>" associated with study "<Study A>"
@@ -2660,15 +2712,15 @@ Scenario: When an eLearning course that is assigned to a user in Rave with Statu
 	And I select the link "<EDC App>" associated with study "<Study A>"
     And I see the "Rave Connection" Page
     And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
-    And I follow link "Link Account"
-	And I should be on the Study Site "<Site A>" page
-    And I should not see the eLearning Home page with Status "Incomplete"
-	And I take a screenshot
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page
+    And I take a screenshot
     And I navigate to "User Administration" Module
     And I search for user "<iMedidata User 2 ID>" Authenticator "iMedidata"
 	And I go to the User Details page for user "<iMedidata User 2 ID>"
     And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
-    And I see elearning course has Status "Incomplete"
+    And I see elearning course status is "Incomplete" on eLearning section
 	And I verify that the "Override" check box is checked
 	And I take a screenshot
 
@@ -2692,16 +2744,16 @@ Scenario:  When an eLearning course with Status "Not Started" is assigned to a u
 	And I am logged in to Rave
     And my Name is "<First Name 1>" "<Last Name 1>"
 	And my username is "<Rave User Name 1>"
+	And my Email is "<Rave User 1 Email>"
 	And there is Rave Study  "<Study A>"
     And there is Rave Site  "<Site A>"
-	And I have assigned to the "<Study A>" 
-	And I have assigned to the "<Site A>"
+	And I am assigned to Study "<Study A>" 
+	And I am assigned to Site "<Site A>"
 	And I am not connected to iMedidata
 	And I have eLearning course created
-	And I have eLearning course assigned to the "<Study A>" and Role "<EDC Role 1>"
+	And I have eLearning course assigned to Study "<Study A>" and Role "<EDC Role 1>"
 	And the e-Learning Course has the same UUID in Rave and iMedidata
-	And I see the eLearning course status as "Not Started"
-	And I have "Override" check box NOT checked for the eLearning Course
+	And the "Override" check box is NOT checked for the eLearning Course in the User details page
 	And I take a screenshot
 	And I navigate to Rave Home page
 	And I see the "<Study A>" with (eLearning Required) text
@@ -2710,29 +2762,43 @@ Scenario:  When an eLearning course with Status "Not Started" is assigned to a u
 	And I see the eLearning Course Status "Not Started"
 	And I am not on the Rave Study Site Home page
 	And I take a screenshot
-	And I log out as Rave user
+	And I logout as Rave user
   
     
 #iMedidata
-    And I activate invoted New User "<iMedidata User 1 ID>"
-	And I log in into iMedidata as invited New User "<iMedidata User 1 ID>"
+	And I receive account activation email
+    And I activate invited New User "<iMedidata User 2 ID>"
+	And I log in to iMedidata as invited New User "<iMedidata User 2 ID>"
 	And I see "<eLearnig Course> is required for access" 
 	And I do not see the link "<Modules App>" associated with study "<Study A>"
 	And I do not see the link "<EDC App>" associated with study "<Study A>"
 	And I take a screenshot
-	When I override the course in iMedidata
-	Then I am on iMedidata Home page
-	And I accept the invitation
-	And I should be on the iMedidata Home page
+	And I logout of iMedidata
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I navigate to study "<Study A>"
+	And I search for User "<iMedidata User 2 ID>"
+	And I select Course under eLearning
+	And I check the Override checkbox
+	And I provide Reason / Training Date
+	And I take a screenshot
+	And I select button "Save"
+	And I logout of iMedidata
+	
+	When I login to iMedidata as "<iMedidata User 2 ID>"
+	Then I should be on the iMedidata home page
 	And I should see the link "<Modules App>" associated with study "<Study A>"
 	And I should see the link "<EDC App>" associated with study "<Study A>"
 	And I take a screenshot
-	And I follow a "<Modules App>" associated with study "<Study A>"
-	And I am on Rave Study Site Home page
-	And I do not see the required eLearning section
-	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page
+
 	And I navigate to User Administration Module
-	And I search for the iMedidata User "<iMedidata User 1 ID>"
+	And I search for the iMedidata User "<iMedidata User 2 ID>"
 	And I navigate to the User Details page
 	And I see the eLearning Courses section with Status "Not Started"
 	And I see the "Override" check box is checked for the eLearning Course
@@ -2754,7 +2820,7 @@ Scenario: When an eLearning course with Status "Incomplete" that is assigned to 
 	And I am logged in to Rave
     And my Name is "<First Name 1>" "<Last Name 1>"
 	And my username is "<Rave User Name 1>"
-	And my Email is "<iMedidata User 2 Email>"
+	And my Email is "<Rave User 1 Email>"
 	And there is Rave Study  "<Study A>"
     And there is Rave Site  "<Site A>"
 	And I am assigned to "<Study A>" 
@@ -2780,23 +2846,24 @@ Scenario: When an eLearning course with Status "Incomplete" that is assigned to 
 
 
 #iMedidata
-	And I activate invited New User "<iMedidata User 1 ID>"
-	And I log in into iMedidata as invited New User "<iMedidata User 1 ID>"
+	And I receive account activation email
+    And I activate invited New User "<iMedidata User 1 ID>"
+	And I log in to iMedidata as invited New User "<iMedidata User 1 ID>"
 	And I see "<eLearnig Course> is required for access" 
 	And I do not see the link "<Modules App>" associated with study "<Study A>"
 	And I do not see the link "<EDC App>" associated with study "<Study A>"
 	And I take a screenshot
-	When I take the course in iMedata and pass the test
-	Then I am on iMedidata Home page 
-	And I accept the invitation
-	And I should be on the iMedidata home page
+	When I take the course in iMedata and complete the course
+	Then I should be on the iMedidata Home page 
 	And I should see the link "<Modules App>" associated with study "<Study A>"
 	And I should see the link "<EDC App>" associated with study "<Study A>"
 	And I take a screenshot
-	And I follow a "<Modules App>" associated with study "<Study A>"
-	And I am on Rave Study Site Home page
-	And I do not see the required eLearning section
-	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page
 	And I navigate to User Administration Module
 	And I search for the iMedidata User "<iMedidata User 1 ID>"
 	And I navigate to the User Details page
@@ -2819,7 +2886,7 @@ Scenario: When an eLearning course with Status "Not Started"that is assigned to 
 	And I am logged in to Rave
     And my Name is "<First Name 1>" "<Last Name 1>"
 	And my username is "<Rave User Name 1>"
-	And my Email is "<iMedidata User 2 Email>"
+	And my Email is "<Rave User 1 Email>"
 	And there is Rave Study  "<Study A>"
     And there is Rave Site  "<Site A>"
 	And I am assigned to "<Study A>" 
@@ -2844,6 +2911,7 @@ Scenario: When an eLearning course with Status "Not Started"that is assigned to 
    
 
 #iMedidata
+	And I receive account activation email
 	And I activate invited New User "<iMedidata User 1 ID>"
 	And I log in into iMedidata as invited New User "<iMedidata User 1 ID>"
 	And I see "<eLearnig Course> is required for access" 
@@ -2889,13 +2957,12 @@ Scenario: When an eLearning course with Status "Incompete" that is assigned to a
 	And I have assigned to the "<Study A>" 
 	And I have assigned to the "<Site A>"
 	And I am not connected to iMedidata
-	And I have eLearning course created
-	And I have eLearning course assigned to the "<Study A>" and Role "<EDC Role 1>"
+	And I have eLearning course assigned to Study "<Study A>" and Role "<EDC Role 1>"
 	And the e-Learning Course has the same UUID in Rave and iMedidata
 	And I see the eLearning course status as "Not Started"
-	And I start the e-Learning course BUT not complete
+	And I start the e-Learning course BUT not completed
 	And I see the Status of the eLearning course is "Incomplete"
-	And I have "Override" check box NOT checked for the eLearning Course
+    And the "Override" check box is NOT checked for the eLearning Course in the User details page
 	And I take a screenshot
 	And I navigate to Rave Home page
 	And I see the "<Study A>" with (eLearning Required) text
@@ -2907,27 +2974,42 @@ Scenario: When an eLearning course with Status "Incompete" that is assigned to a
   
     
 #iMedidata
-    And I activate invoted New User "<iMedidata User 1 ID>"
-	And I log in into iMedidata as invited New User "<iMedidata User 1 ID>"
+
+	And I receive account activation email
+    And I activate invited New User "<iMedidata User 2 ID>"
+	And I log in to iMedidata as invited New User "<iMedidata User 2 ID>"
 	And I see "<eLearnig Course> is required for access" 
 	And I do not see the link "<Modules App>" associated with study "<Study A>"
 	And I do not see the link "<EDC App>" associated with study "<Study A>"
 	And I take a screenshot
-	When I override the course in iMedidata
-	Then I am on iMedidata Home page
-	And I accept the invitation
-	And I should be on the iMedidata Home page
+	And I logout of iMedidata
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I navigate to study "<Study A>"
+	And I search for User "<iMedidata User 2 ID>"
+	And I select Course under eLearning
+	And I check the Override checkbox
+	And I provide Reason / Training Date
+	And I take a screenshot
+	And I select button "Save"
+	And I logout of iMedidata
+	
+	When I login to iMedidata as "<iMedidata User 2 ID>"
+	Then I should be on the iMedidata home page
 	And I should see the link "<Modules App>" associated with study "<Study A>"
 	And I should see the link "<EDC App>" associated with study "<Study A>"
 	And I take a screenshot
-	And I follow a "<Modules App>" associated with study "<Study A>"
-	And I am on Rave Study Site Home page
-	And I do not see the required eLearning section
-	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page
+
 	And I navigate to User Administration Module
-	And I search for the iMedidata User "<iMedidata User 1 ID>"
+	And I search for the iMedidata User "<iMedidata User 2 ID>"
 	And I navigate to the User Details page
-	And I see the eLearning Course Status "Incomplete"
+	And I see the eLearning Courses section with Status "Incomplete"
 	And I see the "Override" check box is checked for the eLearning Course
 	And I take a screenshot
 
