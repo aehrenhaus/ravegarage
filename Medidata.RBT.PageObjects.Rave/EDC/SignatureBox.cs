@@ -42,13 +42,9 @@ namespace Medidata.RBT.PageObjects.Rave
                 UsernameBox.EnhanceAs<Textbox>().SetText(userName);
 			PasswordBox.EnhanceAs<Textbox>().SetText(password);
 			ValidateSignAndSave.Click();
+            Browser.WaitForElementToCompleteDisplayOrDisplayWithWarning(By.Id("dialog"), By.ClassName("oddWarning"));
 		}
 
         public override string URL { get { return "NOT USED"; } }
-       
-
-   
-
-	
 	}
 }
