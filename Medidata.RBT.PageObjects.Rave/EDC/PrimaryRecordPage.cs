@@ -13,21 +13,12 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public class PrimaryRecordPage : BaseEDCPage
 	{
-
-
-
-		public override IEDCFieldControl FindField(string fieldName)
-		{
-			return new DataPageControl(this).FindField(fieldName);
-		}
-
-
         //TODO: treat primary record page as an extension of regular page, it is very similar, and makes no sense to reinvent methods for it.  
 		public SubjectPage FillNameAndSave(IEnumerable<FieldModel> dps) 
 		{
 			FillDataPoints(dps);
             SaveForm();
-				
+
 			return new SubjectPage();
 		}
 
@@ -45,6 +36,5 @@ namespace Medidata.RBT.PageObjects.Rave
             SubjectPage subPage = prp.FillNameAndSave(dps);
             return subPage;
         }
-
 	}
 }

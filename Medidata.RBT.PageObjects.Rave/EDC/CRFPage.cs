@@ -13,7 +13,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public CRFPage SelectUnitsForFields(IEnumerable<LabRangeModel> units)
         {
             foreach (var unit in units)
-                FindField(unit.Field, "Unit").EnterData(unit.Unit, EnumHelper.GetEnumByDescription<ControlType>("dropdown"));
+                FindUnit(unit.Field).EnterData(unit.Unit, EnumHelper.GetEnumByDescription<ControlType>("dropdown"));
 
             return this;
         }
@@ -156,11 +156,6 @@ namespace Medidata.RBT.PageObjects.Rave
             return false;
         }
 
-		public override IEDCFieldControl FindField(string fieldName)
-		{
-			return FindField(fieldName, "Field");
-		}
-
 		/// <summary>
 		/// TODO: what is Unit?
 		/// </summary>
@@ -168,14 +163,9 @@ namespace Medidata.RBT.PageObjects.Rave
 		/// <param name="attribute"></param>
         /// <param name="record">The record position (ie. log line number)</param>
 		/// <returns></returns>
-        public IEDCFieldControl FindField(string fieldName, string attribute = "Field", int? record = null)
+        public IEDCFieldControl FindUnit(string fieldName, int? record = null)
         {
-            if (attribute.Equals("Field"))
-                return new DataPageControl(this).FindField(fieldName, record);
-            else if (attribute.Equals("Unit"))
-                return new LabDataPageControl(this).FindUnitDropdown(fieldName);
-            else
-                throw new NotImplementedException("FindField method in CRFPage.cs doesn't support attribute: " + attribute);
+            return new LabDataPageControl(this).FindUnitDropdown(fieldName);
         }
 
         /// <summary>

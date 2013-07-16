@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class DDEPage : RavePageBase
+	public class DDEPage : BaseEDCPage
 	{
 		public DDEPage()
 		{
@@ -75,12 +75,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
 			return this;
 		}
-
-		public IEDCFieldControl FindField(string fieldName)
-		{
-			return new DataPageControl(this).FindField(fieldName);
-		}
-	
 
 		public DDEPage FillLoglineDataPoints(int line, Table table)
 		{
