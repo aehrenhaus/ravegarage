@@ -463,13 +463,16 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"I verify Audits exist")]
 		public void IVerifyAuditsExist(Table table)
 		{
+			var auditsPage = CurrentPage.As<AuditsPage>();
 			var audits = table.CreateSet<AuditModel>();
             int position = 1;
+			
 			foreach (var a in audits)
 			{
-                bool exist = CurrentPage.As<AuditsPage>().AuditExist(a, position);
-				Assert.IsTrue(exist, string.Format ("Audit {0} does not exist",a.AuditType));
-                position++;
+				bool exists = auditsPage.ExpectAuditExist(a, position);
+
+				Assert.IsTrue(exists, string.Format("Audit {0} does not exist", a.AuditType));
+				position++;
 			}
 		}
 
@@ -481,12 +484,10 @@ namespace Medidata.RBT.Features.Rave
         public void IVerifyLastAuditExist(Table table)
         {
             var audits = table.CreateSet<AuditModel>();
-            int position = 1;
             foreach (var a in audits)
             {
                 bool exist = CurrentPage.As<AuditsPage>().AuditExist(a, null);
                 Assert.IsTrue(exist, string.Format("Audit {0} does not exist", a.AuditType));
-                position++;
             }
         }
 

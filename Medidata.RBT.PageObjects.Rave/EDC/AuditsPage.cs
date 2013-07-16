@@ -30,6 +30,32 @@ namespace Medidata.RBT.PageObjects.Rave
             audit.User, audit.Time, position);
         }
 
+		/// <summary>
+		/// Checks whether an audit exists with bias towards the audit being present on the page. 
+		/// If audit is not present, performs the check again after refreshing page.
+		/// Audit is re-checked untill timout window, given by SeleniumConfiguration.Default.WaitElementTimeout, has expired.
+		/// </summary>
+		/// <param name="audit">AuditModel instance representing the audit to check for.</param>
+		/// <param name="position">The position (1 based) at which the audit is expected.</param>
+		/// <returns>True if audit is present on page. False othwerwise.</returns>
+		public bool ExpectAuditExist(AuditModel audit, int? position)
+		{
+			Func<bool> auditFilter = () =>
+				this.AuditExist(audit, position);
+			Func<bool, bool> check = (result) =>
+			{
+				if (!result)
+					this.Browser.Navigate().Refresh();
+
+				return result;
+			};
+
+			var window = TimeSpan.FromSeconds(
+				SeleniumConfiguration.Default.WaitElementTimeout);
+
+			return Misc.SafeCall(auditFilter, check, window);
+		}
+
         /// <summary>
         /// Overriding ChooseFromDropdown to find the dropdown based on field name, if drop down selected fails then fall back to base implementation
         /// </summary>
