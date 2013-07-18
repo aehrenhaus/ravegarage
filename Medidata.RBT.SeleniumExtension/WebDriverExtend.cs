@@ -14,22 +14,6 @@ namespace Medidata.RBT.SeleniumExtension
 {
 	public static class WebDriver
 	{
-		public static bool TryExecuteJavascript(this RemoteWebDriver driver, string script)
-		{
-			try
-			{
-				driver.ExecuteScript(script);
-			
-			}
-			catch
-			{
-				return false;
-			}
-
-			return true;
-		}
-
-
 		public static long GetPageOffsetX(this RemoteWebDriver driver)
 		{
 			IJavaScriptExecutor js = driver as IJavaScriptExecutor;

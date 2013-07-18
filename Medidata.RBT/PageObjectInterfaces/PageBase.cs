@@ -149,14 +149,13 @@ namespace Medidata.RBT
 
 		public IPage WaitForPageLoads()
 		{
-			try
-			{
-				var alert = Browser.SwitchTo().Alert();
-			}
-			catch
-			{
-
-			}
+            try
+            {
+                Browser.SwitchTo().Alert();
+            }
+            catch (NoAlertPresentException)
+            {
+            }
 
 			Browser.WaitForDocumentLoad();
 			var uri = new Uri(Browser.Url);
@@ -302,13 +301,12 @@ namespace Medidata.RBT
 		/// <summary>
 		/// See IPage interface
 		/// </summary>
-        public virtual bool IsThePage()
+        public bool IsThePage()
         {
 			if (string.IsNullOrEmpty(this.URL))
 				return false;
 			var uri = new Uri(Browser.Url);
 			string stripSessionUrl = uri.Scheme + "://" + uri.Host+string.Join("",uri.Segments.Where(x=>!x.StartsWith("(S(")).ToArray()).ToLower();
-			//uri = new Uri(stripSessionUrl);
 
 			if (!stripSessionUrl.StartsWith(BaseURL.ToLower()))
 				return false;
@@ -424,7 +422,9 @@ namespace Medidata.RBT
         public void SetFocusElement(IWebElement ele)
         {
             this.Browser
-                .TryExecuteJavascript("document.getElementById('" + ele.GetAttribute("ID") + "').focus()");
+                .ExecuteScript(
+                "var element = document.getElementById('" + ele.GetAttribute("ID") + "');"
+                + "if(element != null) element.focus();");
         }
 
 		public IWebElement GetFocusElement()

@@ -60,10 +60,12 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                 MakeLabUnitsDictionariesEntriesUnique(excel);
                 MakeAnalytesUnique(excel);
                 MakeLabUnique(excel);
+                MakeGlobalVariablesUnique(excel);
                 MakeAnalyteRangesUnique(excel);
                 MakeUnitConversionAnalyteUnique(excel);
                 MakeStandardGroupUnique(excel);
                 MakeStandardGroupEntriesUnique(excel);
+                
 
                 //Create a unique version of the file to upload
                 UniqueFileLocation = MakeFileLocationUnique(FileLocation);
@@ -93,9 +95,34 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             }
         }
 
+        /// <summary>
+        /// Replace global variables with the seedable object equivalents.
+        /// </summary>
+        /// <param name="excel">The lab configuration workbook</param>
+        private void MakeGlobalVariablesUnique(ExcelWorkbook excel)
+        {
+            ExcelTable globalVariableTable = excel.OpenTableForEdit("GlobalVariables");
+            for (int row = 1; row <= globalVariableTable.RowsCount; row++)
+            {
+                //Name
+                string globalVariableString = globalVariableTable[row, "OID"] as string;
+                if (!string.IsNullOrEmpty(globalVariableString))
+                {
+                    GlobalVariable globalVariable = SeedingContext.GetExistingFeatureObjectOrMakeNew<GlobalVariable>(globalVariableString.Trim(),
+                        () => new GlobalVariable(globalVariableString.Trim()));
+                    globalVariable.UniqueName = RemoveCharactersFromStringEqualToTIDLength(globalVariable);
+                    globalVariableTable[row, "OID"] = globalVariable.UniqueName.ToString();
+                }
+            }
+        }
+
         private string RemoveCharactersFromStringEqualToTIDLength(BaseRaveSeedableObject originalSeedableObject)
         {
             string ret = originalSeedableObject.UniqueName;
+
+            if (!MaintainStringLength)
+                return ret;
+
             int tidLength = originalSeedableObject.TID.Length;
             int startOfTid = ret.IndexOf(originalSeedableObject.TID);
             if (MaintainStringLength && startOfTid - tidLength > 0)
@@ -120,6 +147,15 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 						() => new RangeType(rangeTypeString.Trim()));
 					rangeTypeVariablesTable[row, "RangeType"] = rangeType.UniqueName.ToString();
 				}
+
+                //GloablVariables
+                string globalVariableString = rangeTypeVariablesTable[row, "GlobalVariable"] as string;
+                if (!string.IsNullOrEmpty(globalVariableString))
+                {
+                    GlobalVariable globalVariable = SeedingContext.GetExistingFeatureObjectOrMakeNew<GlobalVariable>(globalVariableString.Trim(),
+                        () => new GlobalVariable(globalVariableString.Trim()));
+                    rangeTypeVariablesTable[row, "GlobalVariable"] = globalVariable.UniqueName.ToString();
+                }
 			}
 		}
 
@@ -216,12 +252,82 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         }
 
         /// <summary>
+        /// Replace the range type name in the analyte ranges column title with the unique version
+        /// </summary>
+        /// <param name="columnTitle">The existing column title, is returned as the version that is made unique</param>
+        /// <param name="rangeTypeDictionary">Dictionary containing all RangeTypes which have already been seeded</param>
+        /// <returns>The length of the rangeType variable so that we may do the correct substring operations later</returns>
+        private int? ReplaceRangeTypeNamesWithUniqueVersion(ref string columnTitle, Dictionary<string, string> rangeTypeDictionary)
+        {
+            int? lengthOfRangeType = null;
+            foreach (KeyValuePair<string, string> rangeType in rangeTypeDictionary)
+            {
+                if (columnTitle.StartsWith(rangeType.Key))
+                {
+                    columnTitle = rangeType.Value + columnTitle.Substring(rangeType.Key.Length, columnTitle.Length - rangeType.Key.Length);
+                    lengthOfRangeType = rangeType.Value.Length;
+                    break;
+                }
+            }
+
+            return lengthOfRangeType;
+        }
+
+        /// <summary>
+        /// Replace the global variable name in the analyte ranges  column title with the unique version
+        /// </summary>
+        /// <param name="columnTitle">The existing column title, is returned as the version that is made unique</param>
+        /// <param name="globalVariableDictionary">Dictionary containing all GlobalVariables which have already been seeded</param>
+        /// <param name="lengthOfRangeType">The length of the rangeType variable so that we may do the correct substring operations</param>
+        private void ReplaceGlobalVariableNamesWithUniqueVersion(ref string columnTitle, Dictionary<string, string> globalVariableDictionary, int lengthOfRangeType)
+        {
+            foreach (KeyValuePair<string, string> globalVariable in globalVariableDictionary)
+            {
+                string columnTitleWithoutRangeType = columnTitle.Substring(lengthOfRangeType + "_".Length, columnTitle.Length - (lengthOfRangeType + "_".Length));
+                if (columnTitleWithoutRangeType.StartsWith(globalVariable.Key))
+                {
+                    StringBuilder columnTitleSB = new StringBuilder();
+                    columnTitleSB.Append(columnTitle.Substring(0, lengthOfRangeType)); //RangeType
+                    columnTitleSB.Append('_');
+                    columnTitleSB.Append(globalVariable.Value);
+                    columnTitleSB.Append('_');
+                    int indexOfStringToReplace = lengthOfRangeType + "_".Length + globalVariable.Key.Length + "_".Length;
+                    columnTitleSB.Append(columnTitle.Substring(indexOfStringToReplace, columnTitle.Length - indexOfStringToReplace));//Rest of the column title
+                    columnTitle = columnTitleSB.ToString();
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// The column headers for analyte ranges can contain both RangeTypes and GlobalVariables, 
+        /// so we need to replace these with the unique versions of themselves which we made unique earlier
+        /// </summary>
+        /// <param name="analyteRangesTable">The table containing the analyte ranges</param>
+        /// <param name="rangeTypeDictionary">Dictionary containing all RangeTypes which have already been seeded</param>
+        /// <param name="globalVariableDictionary">Dictionary containing all GlobalVariables which have already been seeded</param>
+        private void RenameColumnHeadersForAnalyteRanges(
+            ExcelTable analyteRangesTable, 
+            Dictionary<string, string> rangeTypeDictionary, 
+            Dictionary<string, string> globalVariableDictionary)
+        {
+            for (int i = 0; i < analyteRangesTable.ColumnNames.Length; i++)
+			{
+                string columnTitle = analyteRangesTable.ColumnNames[i];
+                int? lengthOfRangeType = ReplaceRangeTypeNamesWithUniqueVersion(ref columnTitle, rangeTypeDictionary);
+                if(lengthOfRangeType.HasValue)
+                    ReplaceGlobalVariableNamesWithUniqueVersion(ref columnTitle, globalVariableDictionary, lengthOfRangeType.Value);
+
+                analyteRangesTable[0, analyteRangesTable.ColumnNames[i]] = columnTitle;
+			}
+        }
+
+        /// <summary>
         /// Replace analyte ranges (also known as lab ranges) with the seedable object equivalents.
         /// </summary>
         /// <param name="excel">The lab configuration workbook</param>
         private void MakeAnalyteRangesUnique(ExcelWorkbook excel)
         {
-			Dictionary<string, string> mappingDictionary = new Dictionary<string, string>();
 			//identify the rangeTypes with uniquename
 			ExcelTable rangeTypesTable = excel.OpenTableForEdit("RangeTypes");
 			for (int row = 1; row <= rangeTypesTable.RowsCount; row++)
@@ -229,21 +335,18 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 				string rangeTypeString = rangeTypesTable[row, "Name"] as string;
 				RangeType rangeType = SeedingContext.GetExistingFeatureObjectOrMakeNew<RangeType>(rangeTypeString.Trim(),
 					() => new RangeType(rangeTypeString.Trim()));
-				mappingDictionary.Add(rangeTypeString, rangeType.UniqueName);
 			}
 
-			ExcelTable analyteRangesTable = excel.OpenTableForEdit("AnalyteRanges");
-			//rename column headers for analyteRanges
-			for (int i = 0; i < analyteRangesTable.ColumnNames.Length; i++)
-			{
-				foreach (string key in mappingDictionary.Keys)
-				{
-					if (analyteRangesTable.ColumnNames[i].StartsWith(key))
-					{
-						analyteRangesTable[0, analyteRangesTable.ColumnNames[i]] = analyteRangesTable.ColumnNames[i].Replace(key, mappingDictionary[key]);
-					}
-				}
-			}
+            Dictionary<string, string> rangeTypeDictionary
+                = SeedingContext.SeedableObjects.Where(x => x.Value.GetType() == typeof(RangeType))
+                .ToDictionary(so => so.Key, so => so.Value.UniqueName);
+
+            Dictionary<string, string> globalVariableDictionary
+                = SeedingContext.SeedableObjects.Where(x => x.Value.GetType() == typeof(GlobalVariable))
+                .ToDictionary(so => so.Key, so => so.Value.UniqueName);
+
+            ExcelTable analyteRangesTable = excel.OpenTableForEdit("AnalyteRanges");
+            RenameColumnHeadersForAnalyteRanges(analyteRangesTable, rangeTypeDictionary, globalVariableDictionary);
 
 
             for (int row = 1; row <= analyteRangesTable.RowsCount; row++)
@@ -289,8 +392,6 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                         () => new LabUnit(labUnitString.Trim()));
                     analyteRangesTable[row, "LabUnit"] = labUnit.UniqueName.ToString();
                 }
-                
-
             }
         }
 

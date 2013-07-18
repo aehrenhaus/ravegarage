@@ -19,6 +19,8 @@
   <WindowWidth>15150</WindowWidth>
   <WindowTopX>-15</WindowTopX>
   <WindowTopY>3720</WindowTopY>
+  <ActiveSheet>15</ActiveSheet>
+  <FirstVisibleSheet>10</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -279,13 +281,12 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <Selected/>
    <LeftColumnVisible>11</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>22</ActiveCol>
+     <ActiveRow>36</ActiveRow>
+     <ActiveCol>13</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -2334,6 +2335,14 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <LeftColumnVisible>38</LeftColumnVisible>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>50</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
    <AllowFormatCells/>
@@ -8071,7 +8080,7 @@
       ss:Type="String">CVFOLDER</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="25.5">
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Pregnancy StatusUS15417_DT13905</Data><NamedCell
+    <Cell ss:StyleID="s64"><Data ss:Type="String">PregStatUS15417_DT13905</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SUBJECTENROLLMENT</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -8793,11 +8802,13 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <TopRowVisible>3</TopRowVisible>
+   <Selected/>
+   <TopRowVisible>2</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>10</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
