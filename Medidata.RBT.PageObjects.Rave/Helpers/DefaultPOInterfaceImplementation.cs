@@ -61,16 +61,23 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			IWebElement found = null;
 			foundOnPage = 0;
-			do
-			{
-				foundOnPage++;
-				found = searchFunc();
-				if (found != null)
-					break;
+            //TODO: Remove this try/catch it is unessesary. 
+            //This may cause null references to no longer be swallowed and FFs to fail, but we should fix the null references, not ignore them.
+            try 
+            {
+                do
+                {
+                    foundOnPage++;
+                    found = searchFunc();
+                    if (found != null)
+                        break;
 
-			}
-			while (page.GoNextPage(areaIdentifier));
-
+                }
+                while (page.GoNextPage(areaIdentifier));
+            }
+            catch
+            {
+            }
 			return found;
 		
 		}

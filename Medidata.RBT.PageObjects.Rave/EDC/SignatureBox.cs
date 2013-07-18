@@ -22,8 +22,8 @@ namespace Medidata.RBT.PageObjects.Rave
             List<IWebElement> userAndPasswordBox = Browser.TryFindElementsBy(By.XPath("*//input[contains(@id,'TwoPart') or @id='SignatureBox' or @type='password']")).ToList();
 
             UsernameBox = userAndPasswordBox.Count == 2 ? userAndPasswordBox.FirstOrDefault(x => x.GetAttribute("id").EndsWith("TwoPart")) : null;
-            PasswordBox = userAndPasswordBox.Count == 2 ? userAndPasswordBox.FirstOrDefault(x => x.GetAttribute("id").Equals("SignatureBox", System.StringComparison.InvariantCultureIgnoreCase)
-                || x.GetAttribute("type").Equals("password", System.StringComparison.InvariantCultureIgnoreCase)) : userAndPasswordBox[0];
+            PasswordBox = userAndPasswordBox.Count == 2 ? userAndPasswordBox.FirstOrDefault(x => x.GetAttribute("id").Equals("SignatureBox")
+                || x.GetAttribute("type").Equals("password")) : userAndPasswordBox[0];
             ValidateSignAndSave = Browser.TryFindElementById("ValidateSignAndSave", isWait: false);
 		}
 
