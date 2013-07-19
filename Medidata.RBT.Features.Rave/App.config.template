@@ -6,6 +6,7 @@
 		<section name="RaveConfiguration" type="Medidata.RBT.PageObjects.Rave.RaveConfiguration, Medidata.RBT.PageObjects.Rave" />
 		<section name="SeleniumConfiguration" type="Medidata.RBT.SeleniumExtension.SeleniumConfiguration, Medidata.RBT.SeleniumExtension" />
 		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=null" requirePermission="true" />
+    <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration"/>
 	</configSections>
 
 
@@ -35,10 +36,27 @@
 		SuppressSeeding=""
 		POAssembly="Medidata.RBT.PageObjects.Rave, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
 		UploadTimeout="400"
-		DownloadTimeout="400"
-		>
-	
+		DownloadTimeout="400" 
+    SeleniumServerUrl="">
+    
 	</RBTConfiguration>
+
+  <unity xmlns="http://schemas.microsoft.com/practices/2010/unity">
+    <namespace name="Medidata.RBT"/>
+    <assembly name="Medidata.RBT"/>
+    <container>
+      <types>
+        <register type="IBrowserFactory"
+                  mapTo="BrowserFactory"/>
+        <register name="firefox" type="IWebBrowser"
+              mapTo="FirefoxBrowser"/>
+        <register name="chrome" type="IWebBrowser"
+              mapTo="ChromeBrowser"/>
+        <register name="ie" type="IWebBrowser"
+              mapTo="InternetExplorerBrowser"/>
+      </types>
+    </container>
+  </unity>
 
 	<RaveConfiguration
 		RaveURL ="http://rave564nycdev02a.mdsol.com/MedidataRAVE/"
@@ -56,6 +74,19 @@
 			<stepAssembly assembly="Medidata.RBT" />
 			<stepAssembly assembly="Medidata.RBT.Common.Steps" />
 		</stepAssemblies>
+    
+    <!-- For additional details on SpecFlow configuration options see http://go.specflow.org/doc-config --><!-- use unit test provider SpecRun+NUnit or SpecRun+MsTest for being able to execute the tests with SpecRun and another provider -->
+    <!--<runtime>
+      <dependencies>
+        <register type="TechTalk.SpecRun.SpecFlowPlugin.Runtime.SpecRunRuntimeProvider, SpecRun.SpecFlowPlugin" as="TechTalk.SpecFlow.UnitTestProvider.IUnitTestRuntimeProvider"
+          name="SpecRun+MsTest" />
+      </dependencies>
+    </runtime>-->
+    <!-- For running specrun uncomment the section below and comment the unitTestProvide section above for mstest-->
+    <!--<unitTestProvider name="SpecRun" />
+    <plugins>
+      <add name="SpecRun" />
+    </plugins>-->
 	</specFlow>
 	<appSettings>
 

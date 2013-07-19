@@ -222,5 +222,12 @@ namespace Medidata.RBT
 			set { this["FtpPassword"] = value; }
 		}
 
+        [ConfigurationProperty("SeleniumServerUrl", DefaultValue = "")]
+        public string SeleniumServerUrl
+        {
+            get { return (string)this["SeleniumServerUrl"];}
+            set { this["SeleniumServerUrl"] = value;}
+        }
+
     }
 }

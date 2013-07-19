@@ -10,9 +10,6 @@ using System.Threading;
 using Medidata.RBT.SeleniumExtension;
 
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 
 
@@ -297,28 +294,28 @@ namespace Medidata.RBT
 			{
 				RemoteWebDriver _webdriver = null;
 
-				var driverPath = RBTConfiguration.Default.WebDriverPath;
-				if (!Path.IsPathRooted(driverPath))
-					driverPath = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, driverPath)).FullName;
+                BrowserNames browserEnum;
+                int browserNumber;
+                if (int.TryParse(browserName, out browserNumber))
+                    browserEnum = (BrowserNames)browserNumber;
+                else
+					browserEnum = (BrowserNames)Enum.Parse(typeof(BrowserNames), RBTConfiguration.Default.BrowserName.ToLower());
 
-				switch (RBTConfiguration.Default.BrowserName.ToLower())
-				{
-					case "firefox":
+                IWebBrowser webBrowser = 
+                    ((IBrowserFactory)RBTModule.Instance.Container.Resolve(typeof(IBrowserFactory), ""))
+                    .CreateWebBrowser(browserEnum);
+					
 						const int maxAttempts = 5;	//Number of times to try to create the FirefoxDriver without WebDriverException being thrown.
 						
 						_webdriver = Misc.SafeCall(() =>
 						{
-							FirefoxDriver result = null;
+							RemoteWebDriver result = null;
 							try
 							{
-								FirefoxProfile p = new FirefoxProfile();
-								FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
-								p.SetPreference("browser.download.folderList", 2);
-								p.SetPreference("browser.download.manager.showWhenStarting", false);
-								p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath.ToUpper());
-								p.SetPreference("browser.helperApps.neverAsk.saveToDisk", RBTConfiguration.Default.AutoSaveMimeTypes);
-
-								result = new FirefoxDriver(bin, p, TimeSpan.FromMinutes(2));
+								if (string.IsNullOrWhiteSpace(RBTConfiguration.Default.SeleniumServerUrl))
+									result = webBrowser.CreateLocalWebDriver();
+								else
+									result = webBrowser.CreateRemoteWebDriver();
 							}
 							catch (WebDriverException wdex)
 							{
@@ -345,19 +342,7 @@ namespace Medidata.RBT
 						if (_webdriver == null)
 							throw new WebDriverException(string.Format("-> WebTestContext.OpenBrowser -> Unable to create FirefoxDriver instance after [{0}] attempts", maxAttempts));
 
-						break;
-
-
-					case "chrome":
-						_webdriver = new ChromeDriver(driverPath);
-						break;
-
-
-					case "ie":
-						_webdriver = new InternetExplorerDriver(driverPath);
-						break;
-
-				}
+                    
 
 				Browser = _webdriver;
 			}
