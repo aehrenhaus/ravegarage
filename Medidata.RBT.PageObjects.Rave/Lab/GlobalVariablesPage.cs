@@ -7,6 +7,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using System.Collections.ObjectModel;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class GlobalVariablesPage : LabPageBase, IVerifyObjectExistence
@@ -24,39 +26,46 @@ namespace Medidata.RBT.PageObjects.Rave
         public void IAddNewGlobalVariables(IEnumerable<ArchitectObjectModel> variables)
 		{
             HtmlTable mainTable;
-            //Browser.TryFindElementById("_ctl0_Content_MainDataGrid").EnhanceAs<HtmlTable>().Rows()[5].Textboxes()[0]
 
-
-            foreach (var variable in variables)
+            foreach (ArchitectObjectModel variable in variables)
             {             
                 Browser.TryFindElementByPartialID("_ctl0_Content_LinkButtonMainAddNew").Click();
                 mainTable = Browser.TryFindElementById("_ctl0_Content_MainDataGrid").EnhanceAs<HtmlTable>();
-                mainTable.Rows()[mainTable.Rows().Count - 2].Textboxes()[0].EnhanceAs<Textbox>().SetText(variable.OID);
-                mainTable.Rows()[mainTable.Rows().Count - 2].Textboxes()[1].EnhanceAs<Textbox>().SetText(variable.Format);
+
+                ReadOnlyCollection<Textbox> mainDataGridTextboxes = mainTable.Rows()[mainTable.Rows().Count - 2].Textboxes();
+
+                mainDataGridTextboxes[0].EnhanceAs<Textbox>()
+                    .SetText(SeedingContext.GetExistingFeatureObjectOrMakeNew<GlobalVariable>(variable.OID, () => new GlobalVariable(variable.OID)).UniqueName);
+                mainDataGridTextboxes[1].EnhanceAs<Textbox>().SetText(variable.Format);
                 Browser.ImageBySrc("../../Img/i_ccheck.gif").Click();
                 Browser.WaitForDocumentLoad();
             }          
 		}
+
         public bool GlobalVariablesExistWithOIDs(IEnumerable<ArchitectObjectModel> variables)
         {
             bool found = false;
-            foreach (var variable in variables)
+            foreach (ArchitectObjectModel variable in variables)
             {
                 found = false;
                 foreach (var row in Browser.TryFindElementById("_ctl0_Content_MainDataGrid").EnhanceAs<HtmlTable>().Rows().Skip(1))
-                    if (row.Children()[0].Text.Equals(variable.OID))
+                    if (row.Children()[0].Text
+                        .Equals(SeedingContext.GetExistingFeatureObjectOrMakeNew<GlobalVariable>(variable.OID
+                        , () => { throw new Exception("GlobalVariable not seeded"); }).UniqueName))
                         found = true;
                 if (!found)
                     return false;
             }
             return found;
         }
+
         public void GlobalVariablesDelete(IEnumerable<ArchitectObjectModel> variables)
         {
-            foreach (var variable in variables)
+            foreach (ArchitectObjectModel variable in variables)
             {
                 foreach (var row in Browser.TryFindElementById("_ctl0_Content_MainDataGrid").EnhanceAs<HtmlTable>().Rows().Skip(1))
-                    if (row.Children()[0].Text.Equals(variable.OID))
+                    if (row.Children()[0].Text.Equals(SeedingContext.GetExistingFeatureObjectOrMakeNew<GlobalVariable>(variable.OID,
+                        () => { throw new Exception("GlobalVariable not seeded"); }).UniqueName))
                     {
                         row.Images().First(x => x.GetAttribute("src").EndsWith("i_cedit.gif")).Click();
                         Browser.TryFindElementBy(By.XPath(".//input[@type='checkbox']")).EnhanceAs<Checkbox>().Check();
@@ -65,9 +74,10 @@ namespace Medidata.RBT.PageObjects.Rave
                     }
             }
         }
+
         public void GlobalVariablesEdit(IEnumerable<ArchitectObjectModel> variables)
         {
-            foreach (var variable in variables)
+            foreach (ArchitectObjectModel variable in variables)
             {
                 foreach (var row in Browser.TryFindElementById("_ctl0_Content_MainDataGrid").EnhanceAs<HtmlTable>().Rows().Skip(1))
                     if (row.Children()[0].Text.Equals(variable.From))
@@ -79,7 +89,6 @@ namespace Medidata.RBT.PageObjects.Rave
                     }
             }
         }
-
 
         public bool VerifyObjectExistence(
             string areaIdentifier,

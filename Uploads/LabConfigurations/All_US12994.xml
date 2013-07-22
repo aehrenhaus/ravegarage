@@ -17,10 +17,6 @@
   <RaveDbVersion dt:dt="string">5.6</RaveDbVersion>
  </CustomDocumentProperties>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <SupBook>
-   <Path> </Path>
-   <SheetName> </SheetName>
-  </SupBook>
   <WindowHeight>10005</WindowHeight>
   <WindowWidth>10005</WindowWidth>
   <WindowTopX>120</WindowTopX>
@@ -43,7 +39,7 @@
   <Style ss:ID="s62" ss:Name="Normal_Sheet1">
    <Font ss:FontName="Arial" x:Family="Swiss"/>
   </Style>
-  <Style ss:ID="m68552224" ss:Parent="s62">
+  <Style ss:ID="m63305696" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -56,7 +52,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m68552244" ss:Parent="s62">
+  <Style ss:ID="m63305716" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -69,7 +65,7 @@
    <NumberFormat/>
    <Protection ss:Protected="0"/>
   </Style>
-  <Style ss:ID="m68552264" ss:Parent="s62">
+  <Style ss:ID="m63305736" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -82,7 +78,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m68552284" ss:Parent="s62">
+  <Style ss:ID="m63305756" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -95,7 +91,7 @@
    <NumberFormat/>
    <Protection ss:Protected="0"/>
   </Style>
-  <Style ss:ID="m68552304" ss:Parent="s62">
+  <Style ss:ID="m63305776" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
@@ -108,7 +104,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m68552324" ss:Parent="s62">
+  <Style ss:ID="m63305796" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="2"/>
@@ -121,7 +117,7 @@
    <NumberFormat/>
    <Protection ss:Protected="0"/>
   </Style>
-  <Style ss:ID="m68552000" ss:Parent="s62">
+  <Style ss:ID="m63305472" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -134,7 +130,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m68552020" ss:Parent="s62">
+  <Style ss:ID="m63305492" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -147,7 +143,7 @@
    <NumberFormat ss:Format="@"/>
    <Protection ss:Protected="0"/>
   </Style>
-  <Style ss:ID="m68552040" ss:Parent="s62">
+  <Style ss:ID="m63305512" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -160,7 +156,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m68552060" ss:Parent="s62">
+  <Style ss:ID="m63305532" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -173,7 +169,7 @@
    <NumberFormat/>
    <Protection ss:Protected="0"/>
   </Style>
-  <Style ss:ID="m68552080" ss:Parent="s62">
+  <Style ss:ID="m63305552" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -186,7 +182,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="m68552100" ss:Parent="s62">
+  <Style ss:ID="m63305572" ss:Parent="s62">
    <Alignment ss:Horizontal="Center" ss:Vertical="Top" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
@@ -422,33 +418,33 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552000"><Data ss:Type="String">Client</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552020"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305472"><Data ss:Type="String">Client</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305492"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="20.25">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552040"><Data ss:Type="String">Client Project Name</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552060"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305512"><Data ss:Type="String">Client Project Name</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305532"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="17.25">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552080"><Data ss:Type="String">Medidata Project Number</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552100"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305552"><Data ss:Type="String">Medidata Project Number</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305572"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18.75">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552224"><Data ss:Type="String">Client Implementation Manager</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552244"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305696"><Data ss:Type="String">Client Implementation Manager</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305716"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="19.5">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552264"><Data ss:Type="String">Medidata Implementation Manager</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552284"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305736"><Data ss:Type="String">Medidata Implementation Manager</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305756"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18.75">
     <Cell ss:StyleID="s72"/>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552304"><Data ss:Type="String">Medidata Study Designer</Data></Cell>
-    <Cell ss:MergeAcross="1" ss:StyleID="m68552324"/>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305776"><Data ss:Type="String">Medidata Study Designer</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="m63305796"/>
    </Row>
    <Row>
     <Cell ss:StyleID="s66"/>
@@ -1473,7 +1469,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">StandardREG_US12994_AgeREG_US12994_To Age_YearREG_US12994</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s127"><Data ss:Type="String">StandardREG_US12994_Pregnancy StatusREG_US12994_Pregnancy Status</Data><NamedCell
+    <Cell ss:StyleID="s127"><Data ss:Type="String">StandardREG_US12994_PregREG_US12994_Pregnancy Status</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">StandardREG_US12994_sexREG_US12994_Sex</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1558,7 +1554,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>14</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -1567,14 +1563,15 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>10</ActiveRow>
+     <ActiveCol>18</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -2028,7 +2025,7 @@
       ss:Type="String"></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="25.5">
-    <Cell ss:StyleID="s129"><Data ss:Type="String">Pregnancy StatusREG_US12994</Data><NamedCell
+    <Cell ss:StyleID="s129"><Data ss:Type="String">PregREG_US12994</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">$5</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">yesnoREG_US12994</Data><NamedCell

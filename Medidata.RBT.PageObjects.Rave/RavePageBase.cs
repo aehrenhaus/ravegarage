@@ -158,6 +158,7 @@ namespace Medidata.RBT.PageObjects.Rave
             }
 			return name;
 		}
+
 		/// <summary>
 		/// returns study name, used in dropdowns.
 		/// </summary>
@@ -171,19 +172,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
 		{
 			//move D's code from EDC steps.ISelectLink____In____() to here
-			try
-			{
-				if (areaIdentifier.ToLower().Contains("project") || linkText.ToLower().Contains("project") || linkText.ToLower().Contains("study"))
-					linkText = SpecialStringHelper.Replace(GetSeededProjectName(linkText));
-				else
-					linkText = SpecialStringHelper.Replace(linkText);
-			}
-
-			catch
-			{
+            if (areaIdentifier != null && (areaIdentifier.ToLower().Contains("project") 
+                || linkText.ToLower().Contains("project") || linkText.ToLower().Contains("study")))
+				linkText = SpecialStringHelper.Replace(GetSeededProjectName(linkText));
+			else
 				linkText = SpecialStringHelper.Replace(linkText);
-			}
-
 
 
 			linkText = ReplaceSeedableObjectName(objectType, linkText);

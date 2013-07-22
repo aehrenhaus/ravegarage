@@ -81,44 +81,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 
 				draftTable[1, "ProjectName"] = Project.UniqueName;
 
-                //Lab standard group
-                try
-                {
-                    string labStandardGroupName = draftTable[1, "LabStandardGroup"].ToString();
-
-                    if (!string.IsNullOrEmpty(labStandardGroupName))
-                    {
-						StandardGroup labStandardGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(labStandardGroupName, () => new StandardGroup(labStandardGroupName));
-                        draftTable[1, "LabStandardGroup"] = labStandardGroup.UniqueName;
-                    }
-                }
-                catch (NullReferenceException) { }
-
-                //ReferenceLabs
-                try
-                {
-                    string referenceLabName = draftTable[1, "ReferenceLabs"].ToString();
-
-                    if (!string.IsNullOrEmpty(referenceLabName))
-                    {
-						Lab referenceLabsGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(referenceLabName, () => new Lab(referenceLabName));
-                        draftTable[1, "ReferenceLabs"] = referenceLabsGroup.UniqueName;
-                    }
-                }
-                catch (NullReferenceException) { }
-
-                //AlertLabs
-                try
-                {
-                    string alertLabName = draftTable[1, "AlertLabs"].ToString();
-
-                    if (!string.IsNullOrEmpty(alertLabName))
-                    {
-						Lab alertLabsGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(alertLabName, () => new Lab(alertLabName));
-                        draftTable[1, "AlertLabs"] = alertLabsGroup.UniqueName;
-                    }
-                }
-                catch (NullReferenceException) { }
+                MakeLabStandardGroupUnique(draftTable);
+                MakeReferenceLabUnique(draftTable);
+                MakeAlertLabUnique(draftTable);
 
 				//draft
 				var oldDraftName = draftTable[1, "DraftName"].ToString();
@@ -142,11 +107,90 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     ReplaceEntryAndViewRestrictionsWithUniqueRolesOnFormLevel(formsTable, row);
 			    }
 
+                MakeGlobalVariablesUnique(excel);
+
 			    //Create a unique version of the file to upload
 				UniqueFileLocation = MakeFileLocationUnique(FileLocation);
 
 				excel.SaveAs(UniqueFileLocation);
 			}
+        }
+
+        /// <summary>
+        /// Replace reference lab with the seedable object equivalent.
+        /// </summary>
+        /// <param name="draftTable">The draft table</param>
+        private void MakeLabStandardGroupUnique(ExcelTable draftTable)
+        {
+            string labStandardGroupString = (string)draftTable[1, "LabStandardGroup"];
+            if (labStandardGroupString == null)
+                return;
+
+            string labStandardGroupName = labStandardGroupString.ToString();
+
+            if (!string.IsNullOrEmpty(labStandardGroupName))
+            {
+                StandardGroup labStandardGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(labStandardGroupName, () => new StandardGroup(labStandardGroupName));
+                draftTable[1, "LabStandardGroup"] = labStandardGroup.UniqueName;
+            }
+        }
+
+        /// <summary>
+        /// Replace reference lab with the seedable object equivalent.
+        /// </summary>
+        /// <param name="draftTable">The draft table</param>
+        private void MakeReferenceLabUnique(ExcelTable draftTable)
+        {
+            string referenceLabString = (string)draftTable[1, "ReferenceLabs"];
+            if (referenceLabString == null)
+                return;
+
+            string referenceLabName = referenceLabString.ToString();
+
+            if (!string.IsNullOrEmpty(referenceLabName))
+            {
+                Lab referenceLabsGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(referenceLabName, () => new Lab(referenceLabName));
+                draftTable[1, "ReferenceLabs"] = referenceLabsGroup.UniqueName;
+            }
+        }
+
+        /// <summary>
+        /// Replace alert lab with the seedable object equivalent.
+        /// </summary>
+        /// <param name="draftTable">The draft table</param>
+        private void MakeAlertLabUnique(ExcelTable draftTable)
+        {
+            string alertLabString = (string)draftTable[1, "AlertLabs"];
+            if (alertLabString == null)
+                return;
+
+            string alertLabName = alertLabString.ToString();
+
+            if (!string.IsNullOrEmpty(alertLabName))
+            {
+                Lab alertLabsGroup = SeedingContext.GetExistingFeatureObjectOrMakeNew(alertLabName, () => new Lab(alertLabName));
+                draftTable[1, "AlertLabs"] = alertLabsGroup.UniqueName;
+            }
+        }
+
+        /// <summary>
+        /// Replace global variables with the seedable object equivalents.
+        /// </summary>
+        /// <param name="excel">The lab configuration workbook</param>
+        private void MakeGlobalVariablesUnique(ExcelWorkbook excel)
+        {
+            ExcelTable globalVariableTable = excel.OpenTableForEdit("LabVariableMappings");
+            for (int row = 1; row <= globalVariableTable.RowsCount; row++)
+            {
+                //Name
+                string globalVariableString = globalVariableTable[row, "GlobalVariableOID"] as string;
+                if (!string.IsNullOrEmpty(globalVariableString))
+                {
+                    GlobalVariable globalVariable = SeedingContext.GetExistingFeatureObjectOrMakeNew<GlobalVariable>(globalVariableString.Trim(),
+                        () => new GlobalVariable(globalVariableString.Trim()));
+                    globalVariableTable[row, "GlobalVariableOID"] = globalVariable.UniqueName.ToString();
+                }
+            }
         }
 
         /// <summary>

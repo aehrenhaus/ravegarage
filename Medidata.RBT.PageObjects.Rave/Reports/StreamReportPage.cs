@@ -10,7 +10,7 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class StreamReportPage : PageBase
+    public class StreamReportPage : RavePageBase
 	{
 		public StreamReportPage()
 		{

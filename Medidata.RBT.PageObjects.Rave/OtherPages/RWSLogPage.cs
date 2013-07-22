@@ -10,7 +10,7 @@ using System.Collections.Specialized;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class RWSLogPage : PageBase
+    public class RWSLogPage : RavePageBase
     {
 		public RWSLogPage()
 		{
@@ -23,8 +23,6 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public RWSLogPage(string logger)
         {
-
-
             string dialogTitle = "Authentication Required";
             string username = "defuser";
             string password = "password";
