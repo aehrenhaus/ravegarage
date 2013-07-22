@@ -9,6 +9,7 @@ using System.Collections.Specialized;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.ObjectModel;
 using TechTalk.SpecFlow;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 
 namespace Medidata.RBT.PageObjects.Rave

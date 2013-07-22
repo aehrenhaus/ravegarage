@@ -48,11 +48,9 @@ namespace Medidata.RBT.ConfigurationHandlers
             set { this["TakeScreenShotsEveryStep"] = value; }
         }
 
-
         [ConfigurationProperty("EnableSeeding", DefaultValue = true, IsRequired = true)]
         public bool EnableSeeding
         {
-
             get
             {
                 return (bool)this["EnableSeeding"];
@@ -66,8 +64,6 @@ namespace Medidata.RBT.ConfigurationHandlers
             get { return (String)this["BrowserName"]; }
             set { this["BrowserName"] = value; }
         }
-
-
 
 		[ConfigurationProperty("WebDriverPath", DefaultValue = "", IsRequired = true)]
         public String WebDriverPath
@@ -145,21 +141,6 @@ namespace Medidata.RBT.ConfigurationHandlers
             set { this["ScenarioNamePrefix"] = value; }
         }
 
-
-		[ConfigurationProperty("SeedFromBackendClasses", DefaultValue = "", IsRequired = false)]
-		public String SeedFromBackendClasses
-		{
-			get { return (String)this["SeedFromBackendClasses"]; }
-			set { this["SeedFromBackendClasses"] = value; }
-		}
-
-		[ConfigurationProperty("SuppressSeeding")]
-		public String SuppressSeeding
-		{
-			get { return (String)this["SuppressSeeding"]; }
-			set { this["SuppressSeeding"] = value; }
-		}
-
 		[ConfigurationProperty("POAssembly", DefaultValue = "Medidata.RBT.PageObjects.Rave.dll")]
 		public String POAssembly
 		{
@@ -167,14 +148,12 @@ namespace Medidata.RBT.ConfigurationHandlers
 			set { this["POAssembly"] = value; }
 		}
 
-
 		[ConfigurationProperty("UploadTimeout", DefaultValue = 200)]
 		public int UploadTimeout
 		{
 			get { return (int)this["UploadTimeout"]; }
 			set { this["UploadTimeout"] = value; }
 		}
-
 
 		[ConfigurationProperty("DownloadTimeout", DefaultValue = 200)]
 		public int DownloadTimeout
@@ -224,7 +203,6 @@ namespace Medidata.RBT.ConfigurationHandlers
 			get { return (string)this["FtpPassword"]; }
 			set { this["FtpPassword"] = value; }
 		}
-
         [ConfigurationProperty("SeleniumServerUrl", DefaultValue = "")]
         public string SeleniumServerUrl
         {

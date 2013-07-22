@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using System.Text.RegularExpressions;

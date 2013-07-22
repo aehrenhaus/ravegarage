@@ -15,7 +15,7 @@ using O2S.Components.PDF4NET.PDFFile;
 using O2S.Components.PDF4NET.Converters;
 using System.Drawing;
 using Medidata.RBT.PageObjects.Rave.Audits;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using System.Text.RegularExpressions;
 using Medidata.RBT.Utilities.PDF;
 

@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 
 using Medidata.RBT.PageObjects.Rave.SiteAdministration;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using System.Threading;
 
 namespace Medidata.RBT.PageObjects.Rave

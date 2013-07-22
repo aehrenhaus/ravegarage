@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using System.Linq;
 
 namespace Medidata.RBT.PageObjects.Rave

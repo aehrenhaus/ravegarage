@@ -2,9 +2,9 @@
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using System.Collections.Generic;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 namespace Medidata.RBT.Features.Rave
 {

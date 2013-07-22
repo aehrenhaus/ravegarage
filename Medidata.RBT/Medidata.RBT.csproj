@@ -33,11 +33,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core">
       <HintPath>..\ExternalDlls\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\ExternalDlls\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Medidata.MAuth">
+      <HintPath>..\packages\Medidata.MAuth.2.3.0.0\lib\net40\Medidata.MAuth.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -53,8 +63,8 @@
       <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="O2S.Components.PDF4NET, Version=4.4.0.0, Culture=neutral, PublicKeyToken=80d03dd9e5b85317, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -98,6 +108,7 @@
     <Compile Include="BrowserStepsBase.cs" />
     <Compile Include="WebBrowsers\ChromeBrowser.cs" />
     <Compile Include="WebBrowsers\FirefoxBrowser.cs" />
+    <Compile Include="Helpers\MAuthHelper.cs" />
     <Compile Include="Helpers\RegexHelper.cs" />
     <Compile Include="Helpers\ConsoleWriterSetup.cs" />
     <Compile Include="Helpers\Constants.cs" />
@@ -108,6 +119,7 @@
     <Compile Include="Helpers\FilteredConsoleWriter.cs" />
     <Compile Include="Helpers\MathHelper.cs" />
     <Compile Include="Helpers\MultipleStreamWriter.cs" />
+    <Compile Include="MAuthContext.cs" />
     <Compile Include="Interfaces\IWebBrowser.cs" />
     <Compile Include="Interfaces\IBrowserFactory.cs" />
     <Compile Include="WebBrowsers\InternetExplorerBrowser.cs" />

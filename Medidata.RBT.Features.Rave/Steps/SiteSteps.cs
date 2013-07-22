@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave.SiteAdministration;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 namespace Medidata.RBT.Features.Rave.Steps.Seeding
 {
@@ -21,7 +22,7 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         [StepDefinition(@"Site ""([^""]*)"" exists")]
         public void Site____Exists(string siteName)
         {
-            SeedingContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName, ""));
+            SeedingContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName));
         }
 
         /// <summary>
