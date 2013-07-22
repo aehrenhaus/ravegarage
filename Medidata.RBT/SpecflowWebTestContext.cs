@@ -32,7 +32,9 @@ namespace Medidata.RBT
 			if (RBTConfiguration.Default.AutoCloseBrowser)
 				WebTestContext.CloseBrowser();
 
-            //GernerateReport();
+            if (!SpecflowSectionHandler.UnitTestProvider.Name.Contains("SpecRun")
+                && SpecflowSectionHandler.UnitTestProvider.Name.Contains("MsTest"))
+                GernerateReport();
 		}
 
 		public override void BeforeTestRun()
