@@ -111,7 +111,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
                     GlobalVariable globalVariable = SeedingContext.GetExistingFeatureObjectOrMakeNew<GlobalVariable>(globalVariableString.Trim(),
                         () => new GlobalVariable(globalVariableString.Trim()));
                     globalVariable.UniqueName = RemoveCharactersFromStringEqualToTIDLength(globalVariable);
-                    globalVariableTable[row, "OID"] = globalVariable.UniqueName.ToString();
+                    globalVariableTable[row, "OID"] = globalVariable.UniqueName;
                 }
             }
         }
@@ -274,12 +274,16 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         }
 
         /// <summary>
-        /// Replace the global variable name in the analyte ranges  column title with the unique version
+        /// Replace the global variable name in the analyte ranges column title with the unique version.
+        /// The column will be in the format "RangeType_GlobalVariable_HighValueLabelOrLowValueLabel"
         /// </summary>
         /// <param name="columnTitle">The existing column title, is returned as the version that is made unique</param>
         /// <param name="globalVariableDictionary">Dictionary containing all GlobalVariables which have already been seeded</param>
         /// <param name="lengthOfRangeType">The length of the rangeType variable so that we may do the correct substring operations</param>
-        private void ReplaceGlobalVariableNamesWithUniqueVersion(ref string columnTitle, Dictionary<string, string> globalVariableDictionary, int lengthOfRangeType)
+        private void ReplaceGlobalVariableNamesWithUniqueVersion(
+            ref string columnTitle, 
+            Dictionary<string, string> globalVariableDictionary,
+            int lengthOfRangeType)
         {
             foreach (KeyValuePair<string, string> globalVariable in globalVariableDictionary)
             {
