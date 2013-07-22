@@ -10,14 +10,14 @@ using System.IO;
 namespace Medidata.RBT
 {
     /// <summary>
-    /// 
+    /// class to encapsulate firefox browser capabilites and options, and provide drive instance
     /// </summary>
     public class FirefoxBrowser : AbstractBrowser
     {
         DesiredCapabilities _browserCapabilities;
 
         /// <summary>
-        /// 
+        /// A property to retrieve firefox browser capabilities
         /// </summary>
         public override DesiredCapabilities BrowserCapabilities
         {
@@ -28,7 +28,7 @@ namespace Medidata.RBT
         }
 
         /// <summary>
-        /// 
+        /// Contructor to instantiate firefox browser that initializes the desired browser capabilities
         /// </summary>
         public FirefoxBrowser()
         {
@@ -54,7 +54,10 @@ namespace Medidata.RBT
             return p;
         }
 
-
+        /// <summary>
+        /// Method to create instance of firefox driver
+        /// </summary>
+        /// <returns>RemoteWebDriver object</returns>
         public override RemoteWebDriver CreateLocalWebDriver()
         {
             return new FirefoxDriver(_browserCapabilities);

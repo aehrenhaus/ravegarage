@@ -9,7 +9,7 @@ using System.Configuration;
 namespace Medidata.RBT
 {
     /// <summary>
-    /// 
+    /// RBT Module is the central place from where container can be accessed
     /// </summary>
     public sealed class RBTModule
     {
@@ -17,7 +17,7 @@ namespace Medidata.RBT
         IUnityContainer m_container;
 
         /// <summary>
-        /// 
+        /// Static property to get singleton instance of RBT module
         /// </summary>
         public static RBTModule Instance
         {
@@ -28,7 +28,7 @@ namespace Medidata.RBT
         }
 
         /// <summary>
-        /// 
+        /// Proprety to access container of type IUnityContainer to resolve dependencies
         /// </summary>
         public IUnityContainer Container
         {

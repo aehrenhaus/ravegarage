@@ -9,14 +9,14 @@ using OpenQA.Selenium.Chrome;
 namespace Medidata.RBT
 {
     /// <summary>
-    /// 
+    /// class used to specify capabilities and options for chrome browser
     /// </summary>
     public class ChromeBrowser : AbstractBrowser
     {
         DesiredCapabilities _browserCapabilities;
 
         /// <summary>
-        /// 
+        /// Property to retieve chrome browser capabilites
         /// </summary>
         public override DesiredCapabilities BrowserCapabilities
         {
@@ -27,7 +27,7 @@ namespace Medidata.RBT
         }
 
         /// <summary>
-        /// 
+        /// Contructor to create an instance of Chrome browser class
         /// </summary>
         public ChromeBrowser()
         {
@@ -39,6 +39,10 @@ namespace Medidata.RBT
             _browserCapabilities = DesiredCapabilities.Chrome();
         }
 
+        /// <summary>
+        /// Method to create instance of chrome driver
+        /// </summary>
+        /// <returns>RemoteWebDriver object</returns>
         public override RemoteWebDriver CreateLocalWebDriver()
         {
             var driverPath = RBTConfiguration.Default.WebDriverPath;

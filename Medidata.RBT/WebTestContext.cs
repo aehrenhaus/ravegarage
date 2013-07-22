@@ -312,6 +312,8 @@ namespace Medidata.RBT
 							RemoteWebDriver result = null;
 							try
 							{
+                                //Only use remote web browser when selenium server url is string is specified
+                                //as we would be using selenium's grid capabilities else just create an insatnce of specific browser
 								if (string.IsNullOrWhiteSpace(RBTConfiguration.Default.SeleniumServerUrl))
 									result = webBrowser.CreateLocalWebDriver();
 								else
