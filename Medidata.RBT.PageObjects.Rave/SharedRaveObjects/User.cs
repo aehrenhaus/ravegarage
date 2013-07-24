@@ -12,6 +12,7 @@ using System.Xml;
 using Medidata.RBT.PageObjects.Rave.UserAdministrator;
 using Medidata.RBT.SharedObjects;
 using Medidata.RBT.SharedRaveObjects;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
@@ -54,7 +55,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 		public User(string userUploadName)
         {
 	        UniqueName = userUploadName;
-	        Password = RaveConfiguration.Default.DefaultUserPassword;
+            Password = RaveConfigurationGroup.Default.DefaultUserPassword;
         }
 
 	    /// <summary>
@@ -98,7 +99,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             WebTestContext.CurrentPage.As<ActivatePage>().ClickButton("ActivateButton");
 
             //Set New Password
-            this.Password = RaveConfiguration.Default.DefaultUserPassword;
+            this.Password = RaveConfigurationGroup.Default.DefaultUserPassword;
             WebTestContext.CurrentPage.As<PasswordPage>().NewPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
             WebTestContext.CurrentPage.As<PasswordPage>().ConfirmPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
             WebTestContext.CurrentPage.As<PasswordPage>().ClickButton("Save Password and Continue");

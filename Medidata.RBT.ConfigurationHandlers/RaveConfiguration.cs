@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 
-namespace Medidata.RBT.PageObjects.Rave
+namespace Medidata.RBT.ConfigurationHandlers
 {
-	public class RaveConfiguration : ConfigurationSection
+	public class RaveConfiguration : ConfigurationElement
 	{
-		public static RaveConfiguration Default { get; private set; }
-
-		static RaveConfiguration()
-		{
-			Default = (RaveConfiguration)System.Configuration.ConfigurationManager.GetSection(
-			"RaveConfiguration");
-		}
+		
+        [ConfigurationProperty("Name", DefaultValue = "", IsRequired = true)]
+        public String Name
+        {
+            get { return (String)this["Name"]; }
+            set { this["Name"] = value; }
+        }
 
 		[ConfigurationProperty("DefaultUser", DefaultValue = "", IsRequired = true)]
 		public String DefaultUser

@@ -18,6 +18,7 @@ using System.Text.RegularExpressions;
 using Medidata.RBT.GenericModels;
 using System.Collections;
 using Medidata.RBT.Utilities.PDF;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.Utilities
 {

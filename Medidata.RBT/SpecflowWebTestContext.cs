@@ -9,6 +9,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Collections.Specialized;
 using System.Collections;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT
 {

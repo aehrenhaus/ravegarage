@@ -6,6 +6,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using System.IO;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT
 {

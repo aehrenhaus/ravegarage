@@ -13,6 +13,7 @@ using System.Reflection;
 using Medidata.RBT.SharedObjects;
 using Medidata.RBT.SharedRaveObjects;
 using System.Text.RegularExpressions;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {

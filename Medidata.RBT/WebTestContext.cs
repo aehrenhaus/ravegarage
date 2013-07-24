@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.ConfigurationHandlers;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;

@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 using System.Threading;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT
 {

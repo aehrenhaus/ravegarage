@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <configuration>
 	<configSections>
-		<section name="specFlow" type="TechTalk.SpecFlow.Configuration.ConfigurationSectionHandler,TechTalk.SpecFlow" />
-		<section name="RBTConfiguration" type="Medidata.RBT.RBTConfiguration, Medidata.RBT" />
-		<section name="RaveConfiguration" type="Medidata.RBT.PageObjects.Rave.RaveConfiguration, Medidata.RBT.PageObjects.Rave" />
+    <section name="RBTConfiguration" type="Medidata.RBT.ConfigurationHandlers.RBTConfiguration, Medidata.RBT.ConfigurationHandlers" />
+    <section name="RaveConfigurationGroup" type="Medidata.RBT.ConfigurationHandlers.RaveConfigurationGroup, Medidata.RBT.ConfigurationHandlers" />
+    <section name="SeleniumConfiguration" type="Medidata.RBT.ConfigurationHandlers.SeleniumConfiguration, Medidata.RBT.ConfigurationHandlers" />
 		<section name="SeleniumConfiguration" type="Medidata.RBT.SeleniumExtension.SeleniumConfiguration, Medidata.RBT.SeleniumExtension" />
 		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, PublicKeyToken=null" requirePermission="true" />
     <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration"/>
@@ -37,7 +37,8 @@
 		POAssembly="Medidata.RBT.PageObjects.Rave, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
 		UploadTimeout="400"
 		DownloadTimeout="400" 
-    SeleniumServerUrl="">
+    SeleniumServerUrl=""
+    RaveConfigurationName="default">
     
 	</RBTConfiguration>
 
@@ -58,14 +59,19 @@
     </container>
   </unity>
 
-	<RaveConfiguration
-		RaveURL ="http://rave564nycdev02a.mdsol.com/MedidataRAVE/"
-		RWSURL=""
-		ReportURL="http://rave564nycdev02a.mdsol.com/RaveCrystalViewer/"
-		DefaultUser="defuser"
-		DefaultUserPassword="password"
+  <RaveConfigurationGroup>
+    <RaveConfigurations>
+      <RaveConfiguration
+        Name ="default"
+        RaveURL ="http://rave564nycdev02a.mdsol.com/MedidataRAVE/"
+        RWSURL=""
+        ReportURL="http://rave564nycdev02a.mdsol.com/RaveCrystalViewer/"
+        DefaultUser="defuser"
+        DefaultUserPassword="password"
 		
-		/>
+		  />
+    </RaveConfigurations>
+  </RaveConfigurationGroup>
 
 	<specFlow>
 		<language feature="en-US" tool="" />

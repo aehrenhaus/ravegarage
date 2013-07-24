@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -31,8 +32,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		public LoginSession(WebTestContext context, string username = null, string passowrd = null, bool restoreOriginalUser = true, bool restoreOriginalPage = false)
 		{
 			this.context = context;
-            previousUser = context.CurrentUser ?? RaveConfiguration.Default.DefaultUser;
-			previousPassword = context.CurrentUserPassword ?? RaveConfiguration.Default.DefaultUserPassword;
+            previousUser = context.CurrentUser ?? RaveConfigurationGroup.Default.DefaultUser;
+            previousPassword = context.CurrentUserPassword ?? RaveConfigurationGroup.Default.DefaultUserPassword;
 			originalPage = context.CurrentPage;
 
 			this.RestoreOriginalUser = restoreOriginalUser;

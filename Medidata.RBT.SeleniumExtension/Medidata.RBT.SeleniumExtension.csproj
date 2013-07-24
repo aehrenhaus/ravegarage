@@ -69,7 +69,6 @@
     <Compile Include="EnhancedControls\Option.cs" />
     <Compile Include="EnhancedControls\RadioButton.cs" />
     <Compile Include="EnhancedControls\Hyperlink.cs" />
-    <Compile Include="SeleniumConfiguration.cs" />
     <Compile Include="SearchContext_TryFindAndWait.cs" />
     <Compile Include="WebDriverExtend.cs" />
     <Compile Include="WebElement.cs" />
@@ -81,6 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Medidata.RBT.ConfigurationHandlers\Medidata.RBT.ConfigurationHandlers.csproj">
+      <Project>{11731335-E462-47EA-8DC9-E668A7C183C7}</Project>
+      <Name>Medidata.RBT.ConfigurationHandlers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.PageObjects.Rave.TableModels;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.Features.Rave.Steps
 {

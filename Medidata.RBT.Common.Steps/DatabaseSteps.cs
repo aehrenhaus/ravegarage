@@ -1,6 +1,7 @@
 ﻿using System;
 using TechTalk.SpecFlow;
 using System.IO;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.Common.Steps
 {

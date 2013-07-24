@@ -5,6 +5,7 @@ using System.Text;
 using OpenQA.Selenium.Remote;
 using System.IO;
 using OpenQA.Selenium.Chrome;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT
 {

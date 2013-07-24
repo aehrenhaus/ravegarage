@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using OpenQA.Selenium.Remote;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT
 {

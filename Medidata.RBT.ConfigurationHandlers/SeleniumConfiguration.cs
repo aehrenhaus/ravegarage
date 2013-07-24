@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 
-namespace Medidata.RBT.SeleniumExtension
+namespace Medidata.RBT.ConfigurationHandlers
 {
 	public class SeleniumConfiguration : ConfigurationSection
 	{

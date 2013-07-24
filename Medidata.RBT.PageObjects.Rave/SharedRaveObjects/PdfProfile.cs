@@ -13,6 +13,7 @@ using Medidata.RBT.PageObjects.Rave.Configuration;
 using Medidata.RBT.PageObjects.Rave.PDF;
 using Medidata.RBT.SharedObjects;
 using System.IO;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {

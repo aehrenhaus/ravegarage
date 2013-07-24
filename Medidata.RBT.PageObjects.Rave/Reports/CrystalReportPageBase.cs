@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -22,7 +23,7 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 try
                 {
-                    string[] reportUrls = RaveConfiguration.Default.ReportURL.Split(',');
+                    string[] reportUrls = RaveConfigurationGroup.Default.ReportURL.Split(',');
                     if (Browser != null && !string.IsNullOrEmpty(Browser.Url))
                     {
                         foreach (string reportUrl in reportUrls)

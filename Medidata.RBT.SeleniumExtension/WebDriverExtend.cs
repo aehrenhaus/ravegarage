@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Support.UI;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.SeleniumExtension
 {

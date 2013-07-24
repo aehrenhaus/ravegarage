@@ -143,7 +143,6 @@
     <Compile Include="Utilities\PDF\BaseEnhancedPDFPage.cs" />
     <Compile Include="Utilities\PDF\BaseEnhancedPDFSearchTextResult.cs" />
     <Compile Include="Utilities\PDF\BaseEnhancedPDF.cs" />
-    <Compile Include="RBTConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedObjects\ISeedableObject.cs" />
     <Compile Include="SharedObjects\SeedingOptions.cs" />
@@ -165,6 +164,10 @@
     <Compile Include="WebTestContext.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Medidata.RBT.ConfigurationHandlers\Medidata.RBT.ConfigurationHandlers.csproj">
+      <Project>{11731335-E462-47EA-8DC9-E668A7C183C7}</Project>
+      <Name>Medidata.RBT.ConfigurationHandlers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">
       <Project>{22945718-331A-4CC1-A98A-A7E7500FAF76}</Project>
       <Name>Medidata.RBT.SeleniumExtension</Name>

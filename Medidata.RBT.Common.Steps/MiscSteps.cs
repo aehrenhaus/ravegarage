@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.SeleniumExtension;
 using System.IO;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.Common.Steps
 {

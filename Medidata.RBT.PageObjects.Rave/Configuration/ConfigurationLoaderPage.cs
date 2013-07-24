@@ -8,6 +8,7 @@ using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
 using Medidata.RBT.PageObjects.Rave.SiteAdministration;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.PageObjects.Rave.Configuration
 {

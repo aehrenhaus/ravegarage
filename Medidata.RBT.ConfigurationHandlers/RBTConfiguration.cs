@@ -5,7 +5,7 @@ using System.Text;
 using System.Configuration;
 using System.IO;
 
-namespace Medidata.RBT
+namespace Medidata.RBT.ConfigurationHandlers
 {
     public class RBTConfiguration : ConfigurationSection
     {
@@ -229,5 +229,11 @@ namespace Medidata.RBT
             set { this["SeleniumServerUrl"] = value;}
         }
 
+        [ConfigurationProperty("RaveConfigurationName", DefaultValue = "default")]
+        public string RaveConfigurationName
+        {
+            get { return (string)this["RaveConfigurationName"]; }
+            set { this["RaveConfigurationName"] = value; }
+        }
     }
 }

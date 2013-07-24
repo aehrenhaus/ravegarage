@@ -12,6 +12,7 @@ using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.SeleniumExtension;
 using Medidata.RBT.PageObjects.Rave.TableModels;
+using Medidata.RBT.ConfigurationHandlers;
 
 
 namespace Medidata.RBT.Features.Rave.Steps
@@ -222,7 +223,7 @@ namespace Medidata.RBT.Features.Rave.Steps
 
             LoginPage page = new LoginPage();
             page.NavigateToSelf();
-            CurrentPage = page.Login(loggedInUserBeforeAssignments, RaveConfiguration.Default.DefaultUserPassword);
+            CurrentPage = page.Login(loggedInUserBeforeAssignments, RaveConfigurationGroup.Default.DefaultUserPassword);
             CurrentPage = new WorkflowConfigPage().NavigateToSelf();
         }
  

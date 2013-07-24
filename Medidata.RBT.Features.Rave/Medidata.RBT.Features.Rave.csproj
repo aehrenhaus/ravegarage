@@ -686,6 +686,10 @@
       <Project>{45796EAF-4C33-4410-A85E-D5EF7EBE7EFE}</Project>
       <Name>Medidata.RBT.Common.Steps</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Medidata.RBT.ConfigurationHandlers\Medidata.RBT.ConfigurationHandlers.csproj">
+      <Project>{11731335-E462-47EA-8DC9-E668A7C183C7}</Project>
+      <Name>Medidata.RBT.ConfigurationHandlers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.PageObjects.Rave\Medidata.RBT.PageObjects.Rave.csproj">
       <Project>{14989202-B55D-4273-85E2-1BFD95A4BB80}</Project>
       <Name>Medidata.RBT.PageObjects.Rave</Name>

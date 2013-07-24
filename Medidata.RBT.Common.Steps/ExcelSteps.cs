@@ -7,6 +7,7 @@ using TechTalk.SpecFlow;
 using System.IO;
 using TechTalk.SpecFlow.Assist;
 using System.Linq;
+using Medidata.RBT.ConfigurationHandlers;
 
 
 namespace Medidata.RBT.Common.Steps
