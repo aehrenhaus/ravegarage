@@ -21,14 +21,11 @@
       <ConfigFileTransformation configFile="App.config">
         <Transformation>
           <![CDATA[<?xml version="1.0" encoding="utf-8"?>
-							<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
-                <RaveConfiguration RaveURL="http://localhost/Rave564/" RWSURL="" ReportURL="http://localhost/Rave564architectureCrystalViewer/" DefaultUser="defuser" DefaultUserPassword="password" 
-                       xdt:Transform="Replace" />
-                       
-                <connectionStrings>
-                  <add name="RaveConnection" connectionString="Server=DLJ7Q7FV1;Database=localRaveDB_patch13;uid=localRaveDB_patch13;pwd=password*8;Connection Timeout=600" providerName="System.Data.SqlClient"
-                       xdt:Locator="Match(name)" xdt:Transform="SetAttributes(connectionString)"/>
-                </connectionStrings>
+            <RBTConfiguration
+                  DatabaseConnection="{TestThreadId}" 
+                  RaveConfigurationName="{TestThreadId}"
+                  xdt:Transform="SetAttributes(DatabaseConnection, RaveConfigurationName)">
+                </RBTConfiguration>
 							</configuration>
 						]]>
         </Transformation>

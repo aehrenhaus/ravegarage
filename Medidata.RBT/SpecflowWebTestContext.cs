@@ -30,9 +30,6 @@ namespace Medidata.RBT
 			WebTestContext.ClearTempFiles();
 			WebTestContext.ClearDownloads();
 
-			if (RBTConfiguration.Default.AutoCloseBrowser)
-				WebTestContext.CloseBrowser();
-
             if (!SpecflowSectionHandler.UnitTestProvider.Name.Contains("SpecRun")
                 && SpecflowSectionHandler.UnitTestProvider.Name.Contains("MsTest"))
                 GernerateReport();
@@ -48,8 +45,6 @@ namespace Medidata.RBT
 
 			//do clean up both before and after test run :)
 			WebTestContext.ClearTempFiles();
-
-			WebTestContext.OpenBrowser();
 
 
 			SeedingContext.DefaultSeedingOption = new SeedingOptions(
@@ -92,6 +87,8 @@ namespace Medidata.RBT
 		public override void BeforeScenario()
 		{
 			base.BeforeScenario();
+            WebTestContext.OpenBrowser();
+
 			WebTestContext.CurrentUser = null;
 
 			Storage.Clear();
@@ -119,6 +116,9 @@ namespace Medidata.RBT
 			TrySaveScreenShot();
 
 			Factory.DeleteObjectsMarkedForScenarioDeletion();
+
+            if (RBTConfiguration.Default.AutoCloseBrowser)
+                WebTestContext.CloseBrowser();
 		}
 
 		public override void AfterStep()
