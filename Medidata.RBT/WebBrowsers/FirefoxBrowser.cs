@@ -41,8 +41,6 @@ namespace Medidata.RBT
             _browserCapabilities = DesiredCapabilities.Firefox();
             FirefoxProfile p = GetFirefoxProfile();
             _browserCapabilities.SetCapability(FirefoxDriver.ProfileCapabilityName, p);
-            _browserCapabilities.SetCapability(FirefoxDriver.BinaryCapabilityName,
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, RBTConfiguration.Default.BrowserPath));
         }
 
         private FirefoxProfile GetFirefoxProfile()
@@ -61,7 +59,11 @@ namespace Medidata.RBT
         /// <returns>RemoteWebDriver object</returns>
         public override RemoteWebDriver CreateLocalWebDriver()
         {
+            _browserCapabilities.SetCapability(FirefoxDriver.BinaryCapabilityName,
+               Path.Combine(AppDomain.CurrentDomain.BaseDirectory, RBTConfiguration.Default.BrowserPath));
+
             return new FirefoxDriver(_browserCapabilities);
         }
+
     }
 }

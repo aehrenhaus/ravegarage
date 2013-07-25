@@ -9,8 +9,25 @@
 @set profile=%1
 @if "%profile%" == "" set profile=Default
 
-SpecRun.exe run %profile%.srprofile "/baseFolder:%~dp0\bin\Debug" /log:"..\..\..\TestResults\SpecRun\specrun.log" %2 %3 %4 %5
+@echo "Deleting any result html file in base folder"
+@del %~dp0\bin\Debug\*.html
+@echo "Deleting any images in the base folder's image directory"
+@del %~dp0\bin\Debug\Output\*.jpg
+
+@set TIMESTAMP=%DATE:~10,4%_%DATE:~4,2%_%DATE:~7,2%_%TIME:~0,2%_%TIME:~3,2%_%TIME:~6,2%
+
+SpecRun.exe run %profile%.srprofile "/baseFolder:%~dp0\bin\Debug" /log:"%~dp0\..\TestResults\%TIMESTAMP%\specrun.log" %2 %3 %4 %5
+
+@popd
+
+@echo Moving results to the results directory %~dp0\..\TestResults\%TIMESTAMP%
+
+@mkdir "..\TestResults\%TIMESTAMP%"
+@mkdir "..\TestResults\%TIMESTAMP%\Output"
+
+@move %~dp0\bin\Debug\*.html "..\TestResults\%TIMESTAMP%"
+@move %~dp0\bin\Debug\Output\*.jpg "..\TestResults\%TIMESTAMP%\Output"
 
 :end
 
-@popd
+
