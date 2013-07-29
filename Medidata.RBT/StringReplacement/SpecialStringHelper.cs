@@ -59,7 +59,7 @@ namespace Medidata.RBT
 		{
             try
             {
-                var iStringReplaceTypes = assembly.GetTypes().Where(t => t.GetInterface("IStringReplace") != null); ;
+                var iStringReplaceTypes = assembly.GetTypes().Where(t => t.GetInterface("IStringReplace") != null);
                 foreach (Type type in iStringReplaceTypes)
                 {
                     string replaceName = type.Name.Replace("Replace", "");

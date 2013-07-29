@@ -24,6 +24,8 @@ namespace Medidata.RBT
 	/// </summary>
 	public class WebTestContext
 	{
+        IWebBrowser _webBrowser;
+
 		#region Some context variables that may be used durnig test.
 
 		public WebTestContext()
@@ -32,8 +34,19 @@ namespace Medidata.RBT
 			POFactory = new PageObjectFactory(this);
             var assem = Assembly.Load(RBTConfiguration.Default.POAssembly);
 			POFactory.AddAssembly(assem);
+            ResolveBrowser();
 			
 		}
+
+        private void ResolveBrowser()
+        {
+            BrowserNames browserEnum;
+
+            browserEnum = (BrowserNames)Enum.Parse(typeof(BrowserNames), RBTConfiguration.Default.BrowserName.ToLower());
+
+            _webBrowser = ((IBrowserFactory)RBTModule.Instance.Container.Resolve(typeof(IBrowserFactory), ""))
+                .CreateWebBrowser(browserEnum);
+        }
 
 		public FileInfo LastDownloadedFile { get; set; }
 
@@ -289,61 +302,50 @@ namespace Medidata.RBT
 		/// </summary>
 		/// <param name="browserName"></param>
 		/// <returns></returns>
-		public void OpenBrowser(string browserName = null)
+		public void OpenBrowser()
 		{
 			if (Browser == null)
 			{
 				RemoteWebDriver _webdriver = null;
-
-                BrowserNames browserEnum;
-                int browserNumber;
-                if (int.TryParse(browserName, out browserNumber))
-                    browserEnum = (BrowserNames)browserNumber;
-                else
-					browserEnum = (BrowserNames)Enum.Parse(typeof(BrowserNames), RBTConfiguration.Default.BrowserName.ToLower());
-
-                IWebBrowser webBrowser = 
-                    ((IBrowserFactory)RBTModule.Instance.Container.Resolve(typeof(IBrowserFactory), ""))
-                    .CreateWebBrowser(browserEnum);
 					
-						const int maxAttempts = 5;	//Number of times to try to create the FirefoxDriver without WebDriverException being thrown.
+				const int maxAttempts = 5;	//Number of times to try to create the FirefoxDriver without WebDriverException being thrown.
 						
-						_webdriver = Misc.SafeCall(() =>
+				_webdriver = Misc.SafeCall(() =>
+				{
+					RemoteWebDriver result = null;
+					try
+					{
+                        //Only use remote web browser when selenium server url is string is specified
+                        //as we would be using selenium's grid capabilities else just create an insatnce of specific browser
+						if (string.IsNullOrWhiteSpace(RBTConfiguration.Default.SeleniumServerUrl))
+                            result = _webBrowser.CreateLocalWebDriver();
+						else
+                            result = _webBrowser.CreateRemoteWebDriver();
+					}
+					catch (WebDriverException wdex)
+					{
+						Console.WriteLine("-> WebTestContext.OpenBrowser failed while attempting to instantiate FirefoxDriver");
+						Console.WriteLine(string.Format("-> WebDriverException was : {0}", wdex.Message));
+						if (result != null)
 						{
-							RemoteWebDriver result = null;
-							try
-							{
-                                //Only use remote web browser when selenium server url is string is specified
-                                //as we would be using selenium's grid capabilities else just create an insatnce of specific browser
-								if (string.IsNullOrWhiteSpace(RBTConfiguration.Default.SeleniumServerUrl))
-									result = webBrowser.CreateLocalWebDriver();
-								else
-									result = webBrowser.CreateRemoteWebDriver();
-							}
-							catch (WebDriverException wdex)
-							{
-								Console.WriteLine("-> WebTestContext.OpenBrowser failed while attempting to instantiate FirefoxDriver");
-								Console.WriteLine(string.Format("-> WebDriverException was : {0}", wdex.Message));
-								if (result != null)
-								{
-									Console.WriteLine("-> WebTestContext.OpenBrowser -> result was not null -> attempting call result.Quit()");
-									result.Quit();
-								}
-								else
-								{
-									Console.WriteLine("-> WebTestContext.OpenBrowser -> result was null");
-								}
+							Console.WriteLine("-> WebTestContext.OpenBrowser -> result was not null -> attempting call result.Quit()");
+							result.Quit();
+						}
+						else
+						{
+							Console.WriteLine("-> WebTestContext.OpenBrowser -> result was null");
+						}
 
-								result = null;
-							}
+						result = null;
+					}
 
-							return result;
-						},
-						(driver) => driver != null,
-						maxAttempts);
+					return result;
+				},
+				(driver) => driver != null,
+				maxAttempts);
 
-						if (_webdriver == null)
-							throw new WebDriverException(string.Format("-> WebTestContext.OpenBrowser -> Unable to create FirefoxDriver instance after [{0}] attempts", maxAttempts));
+				if (_webdriver == null)
+					throw new WebDriverException(string.Format("-> WebTestContext.OpenBrowser -> Unable to create FirefoxDriver instance after [{0}] attempts", maxAttempts));
 
                     
 
