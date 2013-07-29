@@ -174,7 +174,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-41783_MCC_61213_Download.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\Configuration\MCC-41783_Audit2.feature.cs">
+    <Compile Include="Features\Configuration\MCC-41783_Audit.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-41783_Audit.feature</DependentUpon>
@@ -764,7 +764,7 @@
     </None>
     <None Include="Features\Configuration\MCC-41783_Audit.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>MCC-41783_Audit2.feature.cs</LastGenOutput>
+      <LastGenOutput>MCC-41783_Audit.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Configuration\US13011_DT13976_Upload.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
