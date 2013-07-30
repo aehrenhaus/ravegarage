@@ -19,7 +19,8 @@
   <WindowWidth>10005</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>135</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
+  <ActiveSheet>19</ActiveSheet>
+  <FirstVisibleSheet>14</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -417,6 +418,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -17156,7 +17158,6 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -17177,8 +17178,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>43</ActiveCol>
+     <ActiveRow>10</ActiveRow>
+     <ActiveCol>41</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -27526,7 +27527,7 @@
    <Column ss:Index="15" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="93"/>
    <Column ss:StyleID="s63" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="28.5"/>
    <Column ss:Index="200" ss:StyleID="s63" ss:Hidden="1" ss:Span="4"/>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="63.75">
     <Cell ss:StyleID="s64"><Data ss:Type="String">CheckName</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">FolderOID</Data><NamedCell
@@ -27560,7 +27561,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">ActionType_ValCol</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell><Data ss:Type="String">ADDFM_PREG</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">DEMOG</Data><NamedCell
@@ -27609,7 +27610,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">STANDARDFORM</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell><Data ss:Type="String">ADDFM_PREG</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">DEMOG</Data><NamedCell
@@ -27663,7 +27664,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
       ss:Type="String">STANDARDFORM3</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s66"><Data ss:Type="String">CALENDAR(V1)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">WK1</Data><NamedCell
@@ -27689,7 +27690,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">STANDARDFORM02</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell><Data ss:Type="String">CALENDAR(V2)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">WK2</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -27839,7 +27840,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">TEXT3</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell><Data ss:Type="String">if empty</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">DICTFORM</Data><NamedCell
@@ -27944,7 +27945,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">LOGFORM02</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell><Data ss:Type="String">REQ01</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">REQFRMS</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -27969,7 +27970,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">LOGFORM03</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s66"><Data ss:Type="String">REQ02</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3" ss:StyleID="s66"><Data ss:Type="String">REQFRMS</Data><NamedCell
@@ -27995,7 +27996,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell><Data ss:Type="String">REQ03</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">REQFRMS</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -28018,7 +28019,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">VERIFY</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s66"><Data ss:Type="String">REQ04</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3" ss:StyleID="s66"><Data ss:Type="String">REQFRMS</Data><NamedCell
@@ -28044,7 +28045,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">REVIEW</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell><Data ss:Type="String">REQ05</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">REQFRMS</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -28069,7 +28070,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">QUERY</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s66"><Data ss:Type="String">REQ06</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3" ss:StyleID="s66"><Data ss:Type="String">REQFRMS</Data><NamedCell
@@ -28095,7 +28096,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">STICKY</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell><Data ss:Type="String">REQ07</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">REQFRMS</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -28120,7 +28121,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">LOCK</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s66"><Data ss:Type="String">set invisible</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">SCRN</Data><NamedCell
@@ -28148,7 +28149,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">FREEZE</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell><Data ss:Type="String">SetSubjectName</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">SUBJID</Data><NamedCell
@@ -28170,7 +28171,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">CHANGE</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="76.5">
     <Cell ss:StyleID="s66"><Data ss:Type="String">set visible</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">SCRN</Data><NamedCell
@@ -28253,7 +28254,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">TRANSLATE</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="76.5">
     <Cell><Data ss:Type="String">dict 1 edit check</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">DICTFORM1</Data><NamedCell
@@ -28281,7 +28282,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!R[1]C7)&gt;0,Fields!R[1]C7,&quot;&quot;)"><Data
       ss:Type="String">DATA</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0" ss:Height="63.75">
     <Cell><Data ss:Type="String">dict 1 edit check</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">DICTFORM1</Data><NamedCell
@@ -39326,7 +39327,7 @@
    xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
  </Worksheet>
- <Worksheet ss:Name="LabVariableMappings" ss:Protected="1">
+ <Worksheet ss:Name="LabVariableMappings">
   <Names>
    <NamedRange ss:Name="_FilterDatabase"
     ss:RefersTo="=LabVariableMappings!R1C1:R306C6" ss:Hidden="1"/>
@@ -39367,7 +39368,7 @@
       ss:Type="String">BASE</Data></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">sexold</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">SEXOLD</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">LABDEMOG</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">SEX1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -39401,7 +39402,7 @@
       ss:Type="String">FU2</Data></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">AgeREG_R2012011</Data><NamedCell
+    <Cell><Data ss:Type="String">AGEREG_R2012011</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">LABDEMOG</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -41863,6 +41864,7 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -41882,10 +41884,12 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
-   <ProtectObjects>True</ProtectObjects>
-   <ProtectScenarios>True</ProtectScenarios>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
    <AllowFormatCells/>
    <AllowSizeCols/>
    <AllowSizeRows/>

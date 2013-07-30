@@ -419,16 +419,13 @@ namespace Medidata.RBT.Utilities
             BaseEnhancedPDF pdf, 
             List<string> stringsToSearchFor,
             bool shouldExist, 
-            string pageName = null)
+            string pageName = null,
+			bool? bold = null)
         {
-            Assert.IsFalse(String.IsNullOrEmpty(pdf.Text));
-            string noWhitespacePDFtext = Regex.Replace(pdf.Text, @"\s", "");
-
             string ret = null;
             foreach (string stringToVerifyGDM in stringsToSearchFor)
             {
-                string stringToVerify = Regex.Replace(stringToVerifyGDM, @"\s", "");
-                ret = VerifyPDFText(pdf, stringToVerify, shouldExist, pageName);
+				ret = VerifyPDFText(pdf, stringToVerifyGDM, shouldExist, pageName, bold);
                 if (ret != null)
                     return ret;
             }
@@ -453,29 +450,37 @@ namespace Medidata.RBT.Utilities
             bool? bold = null
             )
         {
-            PDFSearchTextResultCollection pdfSearchTextResultCollection = null;
-            if(pageName != null)
-            {
-                BaseEnhancedPDFPage page = GetPageFromFirstMatchingBookmark(pdf, pageName);
-                pdfSearchTextResultCollection = page.BasePage.SearchText(text);
-            }
-            if (shouldExist)
-            {
-                if ((pageName != null && (pdfSearchTextResultCollection == null || pdfSearchTextResultCollection.Count == 0))
-                    || (pageName == null && !pdf.Text.Contains(text))
-                    )
-                    return String.Format("Text {0} not found in pdf and it should be.", text);
-            }
-            else
-            {
-                if ((pageName != null && (pdfSearchTextResultCollection != null || pdfSearchTextResultCollection.Count > 0))
-                    || (pageName == null && pdf.Text.Contains(text))
-                    )
-                    return String.Format("Text {0} found in pdf and it should not be.", text);
-            }
+			Assert.IsFalse(String.IsNullOrEmpty(pdf.Text));
 
-            if(bold.HasValue)
-                return VerifyBoldText(pdfSearchTextResultCollection, text, pageName, bold);
+            PDFSearchTextResultCollection pdfSearchTextResultCollection = null;
+			bool hasItems = false;
+
+			if (pageName != null)
+			{
+				BaseEnhancedPDFPage page = GetPageFromFirstMatchingBookmark(pdf, pageName);
+				pdfSearchTextResultCollection = page.BasePage.SearchText(text);
+
+				hasItems = pdfSearchTextResultCollection != null || pdfSearchTextResultCollection.Count > 0;
+
+				if (shouldExist && !hasItems)
+					return String.Format("Text {0} not found in pdf and it should be.", text);
+				else if (!shouldExist && hasItems)
+					return String.Format("Text {0} found in pdf and it should not be.", text);
+
+				if (bold.HasValue)
+					return VerifyBoldText(pdfSearchTextResultCollection, text, bold);
+			}
+			else
+			{
+				var textSansWhiteSpace = Regex.Replace(text, @"\s", string.Empty);
+				var pdfTextSansWhiteSpace = Regex.Replace(pdf.Text, @"\s", string.Empty);
+				hasItems = pdfTextSansWhiteSpace.Contains(textSansWhiteSpace);
+
+				if(shouldExist && !hasItems)
+					return String.Format("Text {0} not found in pdf and it should be.", text);
+				else if (!shouldExist && hasItems)
+					return String.Format("Text {0} found in pdf and it should not be.", text);
+			}
 
             return null;
         }
@@ -491,10 +496,9 @@ namespace Medidata.RBT.Utilities
         private string VerifyBoldText(
             PDFSearchTextResultCollection pdfSearchTextResultCollection,
             string text,
-            string pageName = null, 
             bool? bold = null)
         {
-            if (pageName == null)
+			if (pdfSearchTextResultCollection == null)
                 return null; //TODO: Add in support for verifying bold text on an entire PDF has not been added yet.
 
             PDFTextRun ptr = pdfSearchTextResultCollection.FirstOrDefault().TextRuns.FirstOrDefault();

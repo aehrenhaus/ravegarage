@@ -1,7 +1,7 @@
 #Rave allows for eSignatures to be applied to Forms, Folders and Subjects, as well as eLearning confirmation pages. As part of Rave’s current user authentication model, the user submits their eSignature credentials as a binding eSignature in Rave.
 #Rave supports two types of eSignature methods. The old style eSignature which is built into the eCRF form using an eSig field OID, which is being deprecated beginning in Rave 5.6.4 patch 9. This signature method relies on credentials residing in the Rave database or direct API communication to mimic the credentials being stored in the Rave database for performing the verification to support eSignatures which validate individual datapoints.
 #The new style eSignature, which resides at the form level, offers the flexibility to use iMedidata CAS to authenticate or verify user credentials. These form level verfications provide a more eficient means of bulk signing and do not require individual datapoint verification.
-# The new style signatures will leverage the Sign and Save eSignature method of verifying and applying an eSignature to the form (or forms) before saving changes. A modal window will be used to present the signature request and to capture the credentials for verification. If verification succeeds, data is saved and the eSignature is applied to all new style forms. If verification should fail, the signature is not applied, no selections or changes are saved and the modal window can be closed. All selections made prior to the modal opening are persisted and the user may choose to Save or Cancel without applying an eSignature. By default, Rave sets a failure threshold of 3 failed attempts before the user is locked out. This rule remains in effect.
+#The new style signatures will leverage the Sign and Save eSignature method of verifying and applying an eSignature to the form (or forms) before saving changes. A modal window will be used to present the signature request and to capture the credentials for verification. If verification succeeds, data is saved and the eSignature is applied to all new style forms. If verification should fail, the signature is not applied, no selections or changes are saved and the modal window can be closed. All selections made prior to the modal opening are persisted and the user may choose to Save or Cancel without applying an eSignature. By default, Rave sets a failure threshold of 3 failed attempts before the user is locked out. This rule remains in effect.
 #eSignature failure messages and audit failure messages will be simplified so that users are not given information that would compromise Rave security. Audit success messages will be simplified and unified to match the failure messages and to accurately reflect the message content defined by the SAML protocol. 
 
 
@@ -108,7 +108,7 @@ Scenario: As a Rave user with sign permissions, I can access a subject form that
 	When I select form "<Form1>"
 	Then I see form "<Form1>" displayed
 	And I should see button "<Sign and Save>"
-	And I take a screenshot 1 of 38
+	And I take a screenshot 1 of 40
 	
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -129,7 +129,7 @@ Scenario: As a Rave user, when I click on the "Sign and Save" button on a form w
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
 	And I see the current "|Timestamp|"
-	And I take a screenshot 2 of 38
+	And I take a screenshot 2 of 40
 
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -153,7 +153,7 @@ Scenario: As a Rave user, I can click the "Sign and Save" button on a form with 
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
 	And I see the current "|Timestamp|"
-	And I take a screenshot 3 of 38
+	And I take a screenshot 3 of 40
 
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -182,7 +182,7 @@ Scenario: As a Rave user with sign privileges, I can successfully sign the form 
 	And I should see icon "Complete" on "Field 2A" on form "<Form1>" in subject "<Subject>"
 	And I should see User's Name and Title
 	And I should see User's date and timezone
-	And I take a screenshot 4 of 38
+	And I take a screenshot 4 of 40
 
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -208,17 +208,17 @@ Scenario: As a Rave user with access to the audit trail, I can view the audit tr
 	When I click icon "Complete" for form "<Form1>" in subject "<Subject>" 
 	Then I should see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"
-	And I take a screenshot 5 of 38
+	And I take a screenshot 5 of 40
 	And I go back to form "<Form1>"
 	When I click icon "Complete" on "Field 1A" on form "<Form1>" in subject "<Subject>"
 	Then I should see the message "User entered 'data'" on the audit for field "<Field 1A>" on form "<Form1>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the audit for field "<Field 1A>" on form "<Form1>"	in subject "<Subject>"
-	And I take a screenshot 6 of 38
+	And I take a screenshot 6 of 40
 	And I go back to form "<Form1>"
 	When I click icon "Complete" on "Field 2A" on form "<Form1>" in subject "<Subject>"
 	Then I should see the message "User entered 'data'" on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"
 	And I should see the message "User signature succeeded." on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"	
-	And I take a screenshot 7 of 38	
+	And I take a screenshot 7 of 40	
 	
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -242,7 +242,7 @@ Scenario: As a Rave user with signature permissions, I will see a warning messag
 	And I enter password textbox with Password "<Rave User Password>"
 	When I click button "Sign and Save"
 	Then I should see message "Signature attempt failed" on the pop up
-	And I take a screenshot 8 of 38
+	And I take a screenshot 8 of 40
 
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -266,7 +266,7 @@ Scenario: As a Rave user with signature permissions, I will see a warning messag
 	And I enter password textbox with Password "<RaveUser Password>xx"
 	When I click button "Sign and Save"
 	Then I should see message "Signature attempt failed" on the pop up
-	And I take a screenshot 9 of 38
+	And I take a screenshot 9 of 40
 
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -299,15 +299,15 @@ Scenario: As a Rave user with access to the audit trail, I will see a simple mes
 	And I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"	
 	And I should see the message "User signature failed." on the form level audit for form "<Form1>" in subject "<Subject>"
 	And I should see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"
-	And I take a screenshot 10 of 38
+	And I take a screenshot 10 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 1A>" on form "<Form1>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the audit for field "<Field 1A>" on form "<Form1>"	in subject "<Subject>"
 	And I should not see the message "User signature failed." on the audit for field "<Field 1A>" on form "<Form1>"	in subject "<Subject>"
-	And I take a screenshot 11 of 38
+	And I take a screenshot 11 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"
 	And I should see the message "User signature succeeded." on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"
 	And I should not see the message "User signature failed." on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"	
-	And I take a screenshot 12 of 38
+	And I take a screenshot 12 of 40
 	
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -340,7 +340,7 @@ Scenario: As a Rave user that failed 3 consecutive signature attempts, my Rave s
 	When I click button "Sign and Save"
 	Then I should see page "Rave Login Page"
 	And I should see text "Continuous Signature Failures"
-	And I take a screenshot 13 of 38
+	And I take a screenshot 13 of 40
 	
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch9
@@ -353,7 +353,7 @@ Scenario: As a Rave user with batch sign permissions, I will see the  "Sign and 
 	And I select site "<Site A1>" that is in study "<Study A>"
 	When I create a subject
 	Then I should see button "Sign and Save"
-	And I take a screenshot 14 of 38
+	And I take a screenshot 14 of 40
 
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -373,10 +373,10 @@ Scenario: As a Rave user, when I click on the "Sign and Save" button on the subj
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
 	And I see the current "|Timestamp|"
-	And I take a screenshot 15 of 38
+	And I take a screenshot 15 of 40
 	
 #----------------------------------------------------------------------------------------------------------------------
-@release_564_patch12
+@release_564_2013.2.0
 @PB_2.5.2.12
 @Validation
 Scenario: As a Rave user with batch sign permissions, when I sign at the Calendar View, all forms requiring signature for that subject are signed 
@@ -407,49 +407,50 @@ Scenario: As a Rave user with batch sign permissions, when I sign at the Calenda
 	And I enter user name textbox with User ID "<Rave User ID>"
 	And I enter password textbox with Password "<Rave User Password>"
 	When I click button "Sign and Save"
-	Then I should see text "Signature attempt was successful" on subject homepage
+	Then I should see text "Your signature is being applied. You may continue working on other subjects." on subject homepage
+	And I take a screenshot 16 of 40
 	And I go to form "<Form1>" 
 	And I should see icon "Complete" for form "<Form1>" in subject "<Subject>" 
 	And I should see icon "Complete" on "Field 1A" on form "<Form1>" in subject "<Subject>"
 	And I should see icon "Complete" on "Field 2A" on form "<Form1>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"		
-	And I take a screenshot 16 of 38
+	And I take a screenshot 17 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 1A>" on form "<Form1>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the audit for field "<Field 1A>" on form "<Form1>"	in subject "<Subject>"
-	And I take a screenshot 17 of 38
+	And I take a screenshot 18 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"
 	And I should see the message "User signature succeeded." on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"	
-	And I take a screenshot 18 of 38
+	And I take a screenshot 19 of 40
 	And I go to form "<Form6>"	
 	And I should see icon "Complete" for form "<Form6>" in subject "<Subject>" 
 	And I should see icon "Complete" on "Field 1H" on form "<Form6>" in subject "<Subject>"
 	And I should see icon "Complete" on "Field 2H" on form "<Form6>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form6>" in subject "<Subject>"	
 	And I should not see the message "User signature succeeded." on the form level audit for form "<Form6>" in subject "<Subject>"		
-	And I take a screenshot 19 of 38
+	And I take a screenshot 20 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 1H>" on form "<Form6>" in subject "<Subject>"	
 	And I should not see the message "User signature succeeded." on the audit for field "<Field 1H>" on form "<Form6>"	in subject "<Subject>"
-	And I take a screenshot 20 of 38
+	And I take a screenshot 21 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 2H>" on form "<Form6>" in subject "<Subject>"
 	And I should not see the message "User signature succeeded." on the audit for field "<Field 2H>" on form "<Form6>" in subject "<Subject>"	
-	And I take a screenshot 21 of 38
+	And I take a screenshot 22 of 40
 	And I go to form "<Form9>" in folder "<Folder A>"
 	And I should see icon "Complete" for form "<Form9>" in subject "<Subject>" in folder "<Folder A>"
 	And I should see icon "Complete" on "Log Field 9A" on form "<Form9>" in folder "<Folder A>"
 	And I should see icon "Complete" on "Log Field 9B" on form "<Form9>" in folder "<Folder A>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form9>" in folder "<Folder A>"	
 	And I should see the message "User signature succeeded." on the form level audit for form "<Form9>" in folder "<Folder A>"		
-	And I take a screenshot 22 of 38
+	And I take a screenshot 23 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 9>" on form "<Form9>" in folder "<Folder A>"	
 	And I should see the message "User signature succeeded." on the audit for field "<Field 9>" on form "<Form9>"in folder "<Folder A>"
-	And I take a screenshot 23 of 38
+	And I take a screenshot 24 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Log Field 9A>" on form "<Form9>"in folder "<Folder A>"
 	And I should see the message "User signature succeeded." on the audit for field "<Log Field 9A>" on form "<Form9>"in folder "<Folder A>"	
-	And I take a screenshot 24 of 38	
+	And I take a screenshot 25 of 40	
 	And I should see the message "User entered 'data'" on the audit for field "<Log Field 9B>" on form "<Form9>"in folder "<Folder A>"
 	And I should see the message "User signature succeeded." on the audit for field "<Log Field 9B>" on form "<Form9>"in folder "<Folder A>"	
-	And I take a screenshot	25 of 38
+	And I take a screenshot	26 of 40
 	
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -474,7 +475,7 @@ Scenario: As a Rave user, I will see a simple error message displayed when I att
 	And I enter password textbox with Password "<Rave User Password>xx"
 	When I click button "Sign and Save"
 	Then I should see text "Signature attempt failed" on the pop up
-	And I take a screenshot	26 of 38
+	And I take a screenshot	27 of 40
 	
 #----------------------------------------------------------------------------------------------------------------------
 @release_564_patch9
@@ -489,10 +490,10 @@ Scenario: As a Rave user with batch sign permissions, I will see the "Sign and S
 	And I select link "Grid View"
 	When I select link "All"
 	Then I should see button "Sign and Save"
-	And I take a screenshot 27 of 38
+	And I take a screenshot 28 of 40
 	
 #----------------------------------------------------------------------------------------------------------------------
-@release_564_patch12
+@release_564_2013.2.0
 @PB_2.5.2.15 
 @Validation
 Scenario: As a Rave user with batch sign permissions, when I sign in the Grid View, all forms requiring signature for the subject are signed 
@@ -525,49 +526,50 @@ Scenario: As a Rave user with batch sign permissions, when I sign in the Grid Vi
 	And I enter username textbox with User ID "<Rave  User ID>"
 	And I enter password textbox with Password "<Rave User Password>"
 	When I click button "Sign and Save"
-	Then I should see text "Signature attempt was successful" on subject homepage
+	Then I should see text "Your signature is being applied. You may continue working on other subjects." on subject homepage
+	And I take a screenshot 29 of 40
 	And I go to form "<Form1>"
 	And I should see icon "Complete" for form "<Form1>" in subject "<Subject>" 
 	And I should see icon "Complete" on "Field 1A" on form "<Form1>" in subject "<Subject>"
 	And I should see icon "Complete" on "Field 2A" on form "<Form1>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"		
-	And I take a screenshot 28 of 38
+	And I take a screenshot 30 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 1A>" on form "<Form1>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the audit for field "<Field 1A>" on form "<Form1>"	in subject "<Subject>"
-	And I take a screenshot 29 of 38
+	And I take a screenshot 31 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"
 	And I should see the message "User signature succeeded." on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"	
-	And I take a screenshot	30 of 38
+	And I take a screenshot	32 of 40
 	And I go to form "<Form6>
 	And I should see icon "Complete" for form "<Form6>" in subject "<Subject>" 
 	And I should see icon "Complete" on "Field 1H" on form "<Form6>" in subject "<Subject>"
 	And I should see icon "Complete" on "Field 2H" on form "<Form6>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form6>" in subject "<Subject>"	
 	And I should not see the message "User signature succeeded." on the form level audit for form "<Form6>" in subject "<Subject>"		
-	And I take a screenshot 31 of 38
+	And I take a screenshot 33 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 1H>" on form "<Form6>" in subject "<Subject>"	
 	And I should not see the message "User signature succeeded." on the audit for field "<Field 1H>" on form "<Form6>"	in subject "<Subject>"
-	And I take a screenshot 32 of 38
+	And I take a screenshot 34 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 2H>" on form "<Form6>" in subject "<Subject>"
 	And I should not see the message "User signature succeeded." on the audit for field "<Field 2H>" on form "<Form6>" in subject "<Subject>"	
-	And I take a screenshot 33 of 38	
+	And I take a screenshot 35 of 40	
 	And I go to form "<Form9> in folder "<Folder A>"
 	And I should see icon "Complete" for form "<Form9>" in subject "<Subject>" in folder "<Folder A>"
 	And I should see icon "Complete" on "Log Field 9A" on form "<Form9>" in folder "<Folder A>"
 	And I should see icon "Complete" on "Log Field 9B" on form "<Form9>" in folder "<Folder A>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form9>" in folder "<Folder A>"	
 	And I should see the message "User signature succeeded." on the form level audit for form "<Form9>" in folder "<Folder A>"		
-	And I take a screenshot 34 of 38
+	And I take a screenshot 36 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Field 9>" on form "<Form9>" in folder "<Folder A>"	
 	And I should see the message "User signature succeeded." on the audit for field "<Field 9>" on form "<Form9>"in folder "<Folder A>"
-	And I take a screenshot 35 of 38
+	And I take a screenshot 37 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Log Field 9A>" on form "<Form9>"in folder "<Folder A>"
 	And I should see the message "User signature succeeded." on the audit for field "<Log Field 9A>" on form "<Form9>"in folder "<Folder A>"	
-	And I take a screenshot	36 of 38
+	And I take a screenshot	38 of 40
 	And I should see the message "User entered 'data'" on the audit for field "<Log Field 9B>" on form "<Form9>"in folder "<Folder A>"
 	And I should see the message "User signature succeeded." on the audit for field "<Log Field 9B>" on form "<Form9>"in folder "<Folder A>"	
-	And I take a screenshot 37 of 38	
+	And I take a screenshot 39 of 40	
 
 	
 #----------------------------------------------------------------------------------------------------------------------
@@ -594,6 +596,6 @@ Scenario: As a Rave user, I will see a simple error message displayed when I att
 	And I enter password textbox with Password "<Rave User Password>xx"
 	When I click button "Sign and Save"
 	Then I should see text "Signature attempt failed" on the pop up
-	And I take a screenshot 38 of 38
+	And I take a screenshot 40 of 40
 
 #----------------------------------------------------------------------------------------------------------------------	

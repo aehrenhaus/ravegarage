@@ -17,6 +17,22 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public abstract class RavePageBase : PageBase
 	{
+		private static readonly IList<string> MODULE_LIST = new List<string>() { 
+			"Architect",
+			"User Administration",
+			"Site Administration",
+			"Reporter",
+			"Configuration",
+			"Report Administration",
+			"Lab Administration",
+			"EED",
+			"Translation Workbench",
+			"PDF Generator",
+			"DCF",
+			"Query Management",
+			"Welcome Message"};
+
+
 		public RavePageBase()
 		{
 		}
@@ -28,16 +44,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public override IPage NavigateTo(string name)
 		{
-			if (new string[] {
-				"Architect",
-				"User Administration",
-				"Site Administration",
-				"Reporter",
-				"Configuration",
-				"Report Administration",
-				"Lab Administration",
-				"EED",
-				"Translation Workbench","PDF Generator","DCF","Query Management","Welcome Message"}.Contains(name))
+			if (MODULE_LIST.Contains(name))
 			{
 				if (!(Context.CurrentPage is HomePage))
 					Context.CurrentPage = new HomePage().NavigateToSelf();
@@ -151,6 +158,7 @@ namespace Medidata.RBT.PageObjects.Rave
             }
 			return name;
 		}
+
 		/// <summary>
 		/// returns study name, used in dropdowns.
 		/// </summary>
@@ -164,19 +172,11 @@ namespace Medidata.RBT.PageObjects.Rave
 		public override IPage ClickLink(string linkText, string objectType = null, string areaIdentifier = null, bool partial = false)
 		{
 			//move D's code from EDC steps.ISelectLink____In____() to here
-			try
-			{
-				if (areaIdentifier.ToLower().Contains("project") || linkText.ToLower().Contains("project") || linkText.ToLower().Contains("study"))
-					linkText = SpecialStringHelper.Replace(GetSeededProjectName(linkText));
-				else
-					linkText = SpecialStringHelper.Replace(linkText);
-			}
-
-			catch
-			{
+            if (areaIdentifier != null && (areaIdentifier.ToLower().Contains("project") 
+                || linkText.ToLower().Contains("project") || linkText.ToLower().Contains("study")))
+				linkText = SpecialStringHelper.Replace(GetSeededProjectName(linkText));
+			else
 				linkText = SpecialStringHelper.Replace(linkText);
-			}
-
 
 
 			linkText = ReplaceSeedableObjectName(objectType, linkText);

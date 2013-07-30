@@ -164,6 +164,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-41783.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Configuration\MCC_41783_MCC_61213_Upload.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC_41783_MCC_61213_Upload.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Configuration\MCC-41783_MCC_61213_Download.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-41783_MCC_61213_Download.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Configuration\MCC-41783_Audit.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-41783_Audit.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Configuration\US13011_DT13976_Upload.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -514,6 +529,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-66009_Manual.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\TSDV\MCC-67068.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-67068.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\TSDV\US19017.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -733,6 +753,18 @@
     <None Include="Features\Configuration\MCC-41783.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-41783.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Configuration\MCC_41783_MCC_61213_Upload.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC_41783_MCC_61213_Upload.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Configuration\MCC-41783_MCC_61213_Download.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-41783_MCC_61213_Download.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Configuration\MCC-41783_Audit.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-41783_Audit.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Configuration\US13011_DT13976_Upload.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -985,6 +1017,10 @@
     <None Include="Features\TSDV\MCC-66009_Manual.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-66009_Manual.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TSDV\MCC-67068.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-67068.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\TSDV\US19017.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

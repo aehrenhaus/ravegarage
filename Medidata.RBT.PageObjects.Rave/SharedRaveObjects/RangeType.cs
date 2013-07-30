@@ -27,6 +27,9 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="rangeTypeName">The feature file range type name</param>
         public RangeType(string rangeTypeName)
         {
+            //TODO: Find a better solution to this issue
+            //if (rangeTypeName.Contains('_'))
+            //    throw new ArgumentOutOfRangeException("Range Type cannot contain \"_\"). This will cause issues when parsing AnalyteRanges.");
             UniqueName = rangeTypeName;
         }
 

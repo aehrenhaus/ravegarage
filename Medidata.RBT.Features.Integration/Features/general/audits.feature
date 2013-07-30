@@ -78,12 +78,12 @@ Feature: Audit
 
 
     
-@Rave 564 Patch 13
+@Rave2013.2.0
 @PB2.5.8.28-01A
 @Validation
 
 Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited in the 'name' 
-          of system user that did the original action in iMedidata.
+          of the user that did the original action in iMedidata.  (new iMedidata User linked to a Rave user)
 
 	Given I am an existing Rave User "<Rave User 1 ID>"
 	And my Email is "<iMedidata User 2 Email>"
@@ -98,24 +98,22 @@ Scenario: Operations on studies, sites, studysites, users, study assignments, st
 	And I have invited a new iMedidata user with Email "<iMedidata User 2 Email>"
 	And new iMedidata username is "<iMedidata User 2 ID>"
     And new iMedidata username "<iMedidata User 2 ID>" is the Study "<Study A>" owner
-	And new iMedidata username "<iMedidata User 2 ID>" accept the invitation
 	And Logged out as iMedidata User "<iMedidata User 1 ID>"
 	And I am login as iMedidata username "<iMedidata User 2 ID>" 
-	And I assigned to iMedidata Study named "<Study A>"
-    And I assigned to iMedidata Site named "<Site A>"
+	And new iMedidata username "<iMedidata User 2 ID>" accept the invitation
+	And I am assigned to iMedidata Study named "<Study A>"
+    And I am assigned to iMedidata Site named "<Site A>"
 	And I have an assignment to the iMedidata Study named "<Study A>" for the App link named "<Edc App>" with Roles "<EDC Role 1>"
 	And I have an assignment to the iMedidata Study named "<Study A>" for the App link named "<Modules App>" with Role "<Modules Role 1>"
 	And I am on iMedidata Home page
 	And I access the "Rave Modules" App through iMedidata
 	And I am on Rave Connection page
-	And I am connect to the Rave by entering password
+	And I connect to the Rave by entering password
 	And I select Link Account button
-	And I am on "Role Selection" page
-	And I am select "<EDC Role 1>" role 
-	And I select "Continue" button
+
 	And I am on Rave Site named "<Site A>" Home page
 	And I navigate to Report Module
-	And I assigned to the "Audit Trail Report" in Rave
+	And I am assigned to the "Audit Trail Report" in Rave
     And I am on the Rave "My Reports" page
 	And I select "Audit Trail Report" report link
 	And I select Rave Study named "<Study A>" from Report Parameters section
@@ -136,7 +134,7 @@ Scenario: Operations on studies, sites, studysites, users, study assignments, st
     And I have updated iMedidata Site named "<Site Azz>"
 	And I navigate to iMedidata Home page
 	And I access the "Rave Modules" App through iMedidata
-	And I am on Rave Site named "<Site A>" Home page
+	And I am on Rave Site named "<Site Azz>" Home page
 	And I navigate to the Rave Home page
 	And I select "Reporter" link from the Installed Modules section
 	And I should be on "My Reports" page
@@ -152,12 +150,12 @@ Scenario: Operations on studies, sites, studysites, users, study assignments, st
 	And I take a screenshot (take as many screenshots as needed)
 	And I close the Audit Trail Report" report
 
-@Rave 564 Patch 13
+@Rave2013.2.0
 @PB2.5.8.28-01B
 @Validation
 
 Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited in the 'name' 
-          of system user that did the original action in iMedidata.
+          of the user that did the original action in iMedidata. (existing iMedidata user not linked to a rave user)
 
 	Given I am an existing iMedidata User "<iMedidata User 1 ID>"
 	And I am a Study Group owner
@@ -216,32 +214,27 @@ Scenario: Operations on studies, sites, studysites, users, study assignments, st
 	And I close the Audit Trail Report" report
 
 
-@Rave 564 Patch 13
+@Rave2013.2.0
 @PB2.5.8.28-04A
 @Validation
 
 Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited in the 'name' 
-          of system user that did the original action in iMedidata.
+          of the user that did the original action in iMedidata. (New user)
 
-	Given I am an existing Rave User "<Rave User 1 ID>"
-	And I am logged in
-	And my Email is "<iMedidata User 2 Email>"
-	And there is a Rave Study named "<Study A>"
-	And there is an Rave Site named "<Site A>"
-	And the Rave Site named "<Site A>" and  Rave Study named "<Study A>" assigned to the Rave User "<Rave User 1 ID>"
-	And I assigned to the "Audit Trail Report" in Rave
-	And I log out
 	And I am logged in to iMedidata as iMedidata User "<iMedidata User 1 ID>"
+	And there is a Rave Study named "<Study A>"
+	And there is a Rave Site named "<Site A>"
+	And the Rave Site named "<Site A>" is assigned to Rave Study named "<Study A>" 
+	And I take a screenshot
 	And I am a Study Group owner
 	And I created a new Study named "<Study A>"
 	And I created a new Site named  "<Site A>"
 	And I created a new Site named  "<Site B>"
-	And I have invited a new iMedidata user with Email "<iMedidata User 2 Email>"
-	And new iMedidata username is "<iMedidata User 2 ID>"
-    And new iMedidata username "<iMedidata User 2 ID>" is the Study "<Study A>" owner
+	And I have invited iMedidata user with user ID "<iMedidata User 2 ID>" and  with Email "<iMedidata User 2 Email>" to study "Study A>" as Study and Site owner
 	And new iMedidata username "<iMedidata User 2 ID>" accept the invitation
 	And Logged out as iMedidata User "<iMedidata User 1 ID>"
 	And I am login as iMedidata username "<iMedidata User 2 ID>" 
+	And new iMedidata username "<iMedidata User 2 ID>" accept the invitations to study and sites
 	And I assigned to iMedidata Study named "<Study A>"
     And I assigned to iMedidata Site named "<Site A>"
 	And I assigned to iMedidata Site named "<Site B>"
@@ -270,23 +263,22 @@ Scenario: Operations on studies, sites, studysites, users, study assignments, st
 	And I am back on iMedidata Home page
 	And I navigate to Manage Study "<Study A>"page
 	And I have updated assignment to the iMedidata Study named "<Study A>" for the App link named "<Edc App>" with Roles "<EDC Role 2>"
-	And I have updated iMedidata Study named "<Study Azz>"
     And I have updated iMedidata Site named "<Site Azz>"
 	And I have updated iMedidata Site named "<Site Bzz>"
 	And I navigate to iMedidata Home page
 	And I access the "Rave Modules" App through iMedidata
-	And I am on Rave Study named "<Study Azz>" Home page
+	And I am on Rave Study named "<Study A>" Home page
 	And I see Site named "<Site Azz>" and Site named "<Site Bzz>" are displayed
 	And I navigate to the Rave Home page
 	And I select "Reporter" link from the Installed Modules section
 	And I should be on "My Reports" page
 	And I select "Audit Trail Report" report link
-	And I select Rave Study named "<Study Azz>" from Report Parameters section
+	--And I select Rave Study named "<Study A>" from Report Parameters section
 	And I select Rave study Site "<Site Azz>"
 	And I select Rave study Site "<Site Bzz>"
 	And I click on Submit Report button
-	And I should see the "Audit Trail Report" for "<Study Azz>"
-	And I should see iMedidata Study named "<Study Azz>" is displayed on the report page 
+	And I should see the "Audit Trail Report" for "<Study A>"
+	--And I should see iMedidata Study named "<Study A>" is displayed on the report page 
 	And I should see iMedidata Site named "<Site Azz>" is displayed on report page 
 	And I should see iMedidata Site named "<Site Bzz>" is displayed on report page 
 	And I should see a audit data in "Audit Action Type" column
@@ -295,12 +287,12 @@ Scenario: Operations on studies, sites, studysites, users, study assignments, st
 	And I close the Audit Trail Report" report
 
 
-@Rave 564 Patch 13
+@Rave2013.2.0
 @PB2.5.8.28-04B
 @Validation
 
 Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited in the 'name' 
-          of system user that did the original action in iMedidata.
+          of the user that did the original action in iMedidata. (existing user)
 
 	Given I am an existing iMedidata User "<iMedidata User 1 ID>"
 	And I am a Study Group owner
@@ -347,7 +339,6 @@ Scenario: Operations on studies, sites, studysites, users, study assignments, st
 	And I select link iMedidata
 	And I am back on iMedidata Home page
 	And I navigate to Manage Study "<Study A>"page
-	And I have updated iMedidata Study named "<Study Azz>"
     And I have updated iMedidata Site named "<Site Azz>"
 	And I have updated iMedidata Site named "<Site Bzz>"
 	And I change the EDC Role assignment to with Role "<EDC Role 2>"
@@ -359,12 +350,12 @@ Scenario: Operations on studies, sites, studysites, users, study assignments, st
 	And I have assigned to the "Audit Trail Report"
 	And I select "Reporter" link from the Installed Modules section
 	And I select "Audit Trail Report" report link
-	And I select Rave Study named "<Study Azz>" from Report Parameters section
+	And I select Rave Study named "<Study A>" from Report Parameters section
 	And I select Rave study Site "<Site Azz>"
 	And I select Rave study Site "<Site Bzz>"
 	And I click on Submit Report button
 	And I should see the "Audit Trail Report" for "<Study Azz>"
-	And I should see iMedidata Study named "<Study Azz>" is displayed on the report page 
+	And I should see iMedidata Study named "<Study A>" is displayed on the report page 
 	And I should see iMedidata Site named "<Site Azz>" on the report
 	And I should see iMedidata Site named "<Site Bzz>" on the report
 	And I should see a audit data in "Audit Action Type" column

@@ -101,20 +101,23 @@ namespace Medidata.RBT
 		/// <returns>Value returned by action delegate.</returns>
 		public static T SafeCall<T>(Func<T> action, Func<T, bool> predicate, TimeSpan window, int waitDeltaMillieconds = 0)
 		{
-			if (waitDeltaMillieconds >= window.Milliseconds)
+			if (waitDeltaMillieconds >= window.TotalMilliseconds)
 				throw new System.ArgumentOutOfRangeException(
 					string.Format("waitDeltaMillieconds [{0}] must be less then window.Milliseconds [{1}]", 
 						waitDeltaMillieconds, 
 						window.Milliseconds));
 			
 			T result;
+			bool predicateSuccess = false;
 
 			do
 			{
 				var start = DateTime.Now.Ticks;
 
 				result = action();
-				if (waitDeltaMillieconds > 0)
+				predicateSuccess = predicate(result);
+
+				if (waitDeltaMillieconds > 0 && !predicateSuccess)
 					Thread.Sleep(waitDeltaMillieconds);
 
 				var end = DateTime.Now.Ticks;
@@ -122,7 +125,7 @@ namespace Medidata.RBT
 				var delta = TimeSpan.FromTicks(end - start);
 				window = window - delta;
 			}
-			while (!predicate(result) && window.Milliseconds > 0);
+			while (!predicateSuccess && window.TotalMilliseconds > 0);
 
 			return result;
 		}

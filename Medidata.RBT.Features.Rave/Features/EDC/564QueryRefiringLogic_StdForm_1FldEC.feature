@@ -287,7 +287,7 @@ Scenario: PB_US12940_02D As an EDC user, when I entered bad data in field A that
       | Age 4 | 16   |
   	And I verify Query is displayed
 	  | Field | Query Message                                                                        | Closed | Answered |
-	  | Age 3 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
+	  | Age 4 | Age must be greater than or equal to 18 and less than or equal to 65. Please verify. | false  | false    |
 	And I take a screenshot	
 
 @release_564_Patch11

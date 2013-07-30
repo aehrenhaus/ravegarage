@@ -21,29 +21,29 @@ Scenario: MCC53645-001 When users are modified in User Administration with same 
 	Given I navigate to "User Administration"
 	And I select link "New User"
 	And I enter data in User Administration and save
-		| Log In* 	  | PIN* | First Name*| Last Name*|
-		| MCC53645-001| 12345| First 	  | Last 	  |
+		| Log In*     | PIN* | First Name*| Last Name*|
+		| MCC53645-001| 12345| First 	  | Last      |
 	And I take a screenshot
 	And I select link "New User"
 	And I enter data in User Administration and save
-		| Log In* 	  | PIN* | First Name*| Last Name*|
+		| Log In*     | PIN* | First Name*| Last Name*|
 		| MCC53645-002| 12345| First      | LastOne   |
 	And I take a screenshot
 	And I navigate to "User Administration"
 	And I select User "MCC53645-002"
 	And I enter data in User Administration and save
-		| Log In* 	  | PIN* | First Name*| Last Name*|
-		| MCC53645-002| 12345| First 	  | Last 	  |
+		| Log In*     | PIN* | First Name*| Last Name*|
+		| MCC53645-002| 12345| First 	  | Last      |
 	Then I verify text "For security purposes, please update your PIN" exists
 	And I take a screenshot
 	And I enter data in User Administration and save
-		| Log In* 	  | PIN* | First Name*| Last Name*|
-		| MCC53645-002| 12345| First 	  | Last 	  |
+		| Log In*     | PIN* | First Name*| Last Name*|
+		| MCC53645-002| 12345| First 	  | Last      |
 	Then I verify text "Enter a unique combination for First Name, Last Name and Pin" exists
 	And I take a screenshot
 	And I enter data in User Administration and save
-		| Log In* 	  | PIN* | First Name*| Last Name*|
-		| MCC53645-002| 54321| First 	  | Last 	  |
+		| Log In*     | PIN* | First Name*| Last Name*|
+		| MCC53645-002| 54321| First 	  | Last      |
 	Then I verify text "For security purposes, please update your PIN" does not exist
 	Then I verify text "Enter a unique combination for First Name, Last Name and Pin" does not exist
 	Then I verify User is update
@@ -60,18 +60,18 @@ Scenario: MCC53645-002 When users are uploaded with same Last Name, an error mes
 	Given I navigate to "User Administration"
 	And I select link "New User"
 	And I enter data in User Administration and save
-		| Log In* 	  | PIN* | First Name*| Last Name*|
+		| Log In*     | PIN* | First Name*| Last Name*|
 		| MCC53645-003| 12345| FirstName  | LastName  |	
 	And I take a screenshot
 	And I select link "New User"
 	And I enter data in User Administration and save
-		| Log In* 	  | PIN* | First Name*| Last Name*|
+		| Log In*     | PIN* | First Name*| Last Name*|
 		| MCC53645-004| 12345| FirstName  | Last      | 
 	And I take a screenshot
 	And I navigate to "User Administration"
 	And I download User "MCC53645-004"
 	And I modify User Draft and save
-		| Log In* 	  | PIN* | First Name*| Last Name*|
+		| Log In*     | PIN* | First Name*| Last Name*|
 		| MCC53645-004| 12345| FirstName  | LastName  | 
 	And I take a screenshot	
 	And I select link "Upload Users"
@@ -158,8 +158,7 @@ Scenario: MCC53645-004 When users are uploaded with same First Name, an error me
 	And I take a screenshot
 	And I modify User Draft and save
 		| Log In*      | PIN*  | First Name* | Last Name* |
-		| MCC53645-008 | 54321 | FirstCCC    | Last       |
-	And I take a screenshot	
+		| MCC53645-008 | 54321 | FirstCCC    | Last       |	
 	Then I verify text "Upload successful." exists
 	Then I verify User is update
 	And I take a screenshot
@@ -240,7 +239,7 @@ Scenario: MCC53645-007 When a user's First Name or Lat Name is updated, an error
 	And I enter data in User Administration and save
 		| Log In* | PIN*  | First Name*| Last Name* |
 		| defuser | 12345 | DefaultAAA | User       |
-	Then I verify text "Enter a unique combination for First Name, Last Name and Pin" exists
+	Then I verify text "For security purposes, please update your PIN" exists
 	And I take a screenshot
 	And I enter data in User Administration and save
 		| Log In* | PIN*  | First Name*| Last Name* |
@@ -259,7 +258,7 @@ Scenario: MCC53645-007 When a user's First Name or Lat Name is updated, an error
 	And I enter data in User Administration and save
 		| Log In* | PIN*  | First Name*| Last Name* |
 		| defuser | 12345 | Default    | UserBBB    |
-	Then I verify text "Enter a unique combination for First Name, Last Name and Pin" exists
+	Then I verify text "For security purposes, please update your PIN" exists
 	And I take a screenshot
 	And I enter data in User Administration and save
 		| Log In* | PIN*  | First Name*| Last Name* |
@@ -293,7 +292,7 @@ Scenario: MCC53645-008 When a user select Forgot password, user can recover pass
 	And I log out of Rave
 	And I click link "Log In"
 	And I click link "Forgot Password?"
-	And I enter data and save
+	And I enter data 
 		| First Name | Last Name| PIN   |
 		| Default    | User     | 12345 |
 	And I take a screenshot

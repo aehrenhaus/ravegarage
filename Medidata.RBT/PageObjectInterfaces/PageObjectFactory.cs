@@ -62,17 +62,9 @@ namespace Medidata.RBT
 
 		public virtual IPage GetPageByUrl(Uri uri)
 		{
-			foreach (var po in _pageObjects)
+			foreach (IPage po in _pageObjects)
 			{
-				bool isThePage = false;
-				try
-				{
-					isThePage = po.IsThePage();
-
-				}
-				catch
-				{
-				}
+				bool isThePage = po.IsThePage();
 				if (isThePage)
 				{
 					//instead of return po, create a new instance. 

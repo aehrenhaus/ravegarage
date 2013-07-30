@@ -15,29 +15,26 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public abstract class LabPageBase : RavePageBase, ICanPaginate
     {
+		private static readonly NameValueCollection PO_CLASS_MAPPING = new NameValueCollection() { 
+			{ "Unit Conversions", "UnitConversionsPage" },
+			{ "Global Data Dictionaries", "GlobalDataDictionariesPage" },
+			{ "Global Unit Dictionaries", "GlobalUnitDictionariesPage" },
+			{ "Global Variables", "GlobalVariablesPage" },
+			{ "Lab Unit Dictionaries", "LabUnitDictionariesPage" },
+			{ "Central Labs", "CentralLabsPage" },
+			{ "Global Labs", "LabsPage" }};
+
+
         public override IPage NavigateTo(string name)
         {
-            NameValueCollection poClassMapping = new NameValueCollection();
-
-            poClassMapping["Unit Conversions"] = "UnitConversionsPage";
-            poClassMapping["Global Data Dictionaries"] = "GlobalDataDictionariesPage";
-            poClassMapping["Global Unit Dictionaries"] = "GlobalUnitDictionariesPage";
-            poClassMapping["Global Variables"] = "GlobalVariablesPage";
-            poClassMapping["Lab Unit Dictionaries"] = "LabUnitDictionariesPage";
-
-
-            poClassMapping["Central Labs"] = "CentralLabsPage";
-            poClassMapping["Global Labs"] = "LabsPage";
-
-
-            var leftNavContainer = Browser.FindElementById("TblOuter");
-            var link = leftNavContainer.TryFindElementBy(By.LinkText(" " + name));
+			var elements = Browser.TryFindElementsBy(By.XPath("//*[@id='TblOuter']//a"));
+			var link = elements.FirstOrDefault(element => element.Text.Equals(" " + name));
 
             if (link == null)
                 return base.NavigateTo(name);
 
             link.Click();
-            string className = poClassMapping[name];
+			string className = PO_CLASS_MAPPING[name];
             return Context.POFactory.GetPage(className);
         }
 

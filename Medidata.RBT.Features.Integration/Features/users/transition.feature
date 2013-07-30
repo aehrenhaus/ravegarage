@@ -1,10 +1,10 @@
-Feature: Rave Integration for Transition
+Feature: 
+    Rave Integration for Transition
     In order to transition users to iMedidata
     As a User xx
     I want to be able to see the iMedidata connection page
-	
-	
-	Background1:
+		
+Background1:
 	Given I am an iMedidata user with first name "<Fname>" and last name "<Lname>" with pin "<PIN>" password "<Password>" and user id "<User id/Name>"
 		|Fname								|Lname								|PIN						| Password							|User id/Name						|Email 							|
 		|{iMedidata User First Name 1}		|{iMedidata User Last Name 1}		|iMedidata User 1 PIN}		|{iMedidata User 1 Password}		|{iMedidata User 1 id}			|{iMedidata User 1 Email}		|
@@ -56,12 +56,37 @@ Feature: Rave Integration for Transition
 		|{Rave URL 2}	|{rave564conlabtesting2.mdsol.com	|
 		|{Rave URL 3}	|{rave564conlabtesting3.mdsol.com	|
 		|{Rave URL 4}	|{rave564conlabtesting4.mdsol.com	|
+		
+	And there exists <eLearning Course> associated with Study "<Study A>"
+		|{Study A}	|
+		
 	And There exists <eLearning Course> associated with "<Role>"
 		|eLearning Course	|
-		|{Course 1}
+		|{Course 1}			|
 		
-
-Background2:
+	And There existing 	iMedidata <eLearning Course> linked to Rave <eLearning Course> 
+	    |iMedidata eLearning Course	|Rave eLearning Course 	|
+		|{Course 1}	|				|{Course 1}				|		
+		|{Course 2}	|				|{Course 2}				|
+		|{Course 3}	|				|{Course 3}				|
+		|{Course 4}	|				|{Course 4}				|
+		|{Course 5}	|				|{Course 5}				|
+		|{Course 6}	|				|{Course 6}				|
+		|{Course 7}	|				|{Course 7}				|
+		
+	And There existing 	iMedidata <eLearning Course> linked to Rave <eLearning Course> 
+	And iMedidata eLearning courses have the same UUID as Rave eLearning courses.
+	    |eLearning Course	|
+		|{Course 2}			|
+		|{Course 3}			|
+		|{Course 4}			|
+		|{Course 5}			|
+		|{Course 6}			|
+		|{Course 7}			|
+		|{Course 8}			|
+	
+	
+ Background2:
 
 	Given I am a Rave admin user
     And I create a Rave user with Mandatory fields
@@ -72,16 +97,20 @@ Background2:
 	And I activate the user
 	And I assign the Rave user to Study A with role <Role 1>
 	And I assign the Rave user to Study B with role <Role 2>
-	And I assign the Rave user to Study C with role <Role2>
+	And I assign the Rave user to Study C with role <Role 2>
+	And I take a screenshot
 	And there exists Site C1 associated with Study C
 	And I assign Site C1 to User
+	And I take a screenshot
 	And I assign eLearning to Study B with role <Role 2>
+	And I take a screenshot
 	And I assign <Report> to the Rave user
 	And I assign BOXI to the Rave user 
 	And I assign JReview to the Rave user
 	And I assign Architect Difference standard report to the Rave user
 	And I assign User Saved report to the Rave user
 	And I assign Audit Trail Report to the Rave user
+	And I take a screenshot
 	And I assign the Other Modules as follows:
 	|Module								|Project				    |Role							|Security Group		|Deny Access	|Remove	|
 	|Architect Project					|Study A					|Architect Role 1		        |					|				|		|
@@ -90,6 +119,7 @@ Background2:
 	|Batch Upload Configuration	        |Study A				    |Batch upload Role1          	|					|				|		|
 	|SafetyGatewayMapping		     	|Study A				    |Mapping Role1		         	|					|				|		|
 	|SafetyGatewayManagement	        |Study A				    |Management Role1	            |					|				|		|
+	And I take a screenshot
 	And there is an iMedidata Study  "<Study A>" and "<Study B>"
     And the iMedidata Study  "<Study A>" is linked to the Rave Study "<Study A>"
     And the iMedidata Study  "<Study B>" is linked to the Rave Study "<Study B>"
@@ -171,6 +201,7 @@ Scenario: If an iMedidata user accesses Rave through the Rave URL or study for t
 	And I should see "Link Account" button
 	And I should see "Create a New Account"
     And I should see "Choose a different Account"
+	And I take a screenshot
 	And I enter Password "<Rave user Password 1>"
 	And I select "Link Account"
 	And I am on Rave Study "<Study A>" home page
@@ -189,7 +220,7 @@ Scenario: If an iMedidata user accesses Rave through the Rave URL or study for t
 	And I take a screenshot
 	 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0 
 @PB2.5.1.76-01
 @Validation
 Scenario: If an iMedidata user accesses Rave through the Rave URL or study for the first time with a single EDC role and there is a single
@@ -211,7 +242,7 @@ Scenario: If an iMedidata user accesses Rave through the Rave URL or study for t
     And the iMedidata Study  "<Study B>" is linked to the Rave Study "<Study B>"
     And I have an assignment to the iMedidata Study "<Study B>"  for the App link  "<EDC App>" with Role "<EDC Role 1>" App "<Modules App>" with Role "<Modules Role 1>"
     And I am on the iMedidata Home page
-	When I click on app link "<EDC App>" next to the Study  "<Study A>"
+	When I click on app link "<EDC App>" next to the Study  "<Study B>"
     Then I should be on the Rave Connection page
 	And I should see text "To permanently link your Rave account with your "<First Name 1>" "<Last Name 1>"(<iMedidata User 1 id>, <iMedidata User 1 Email>) iMedidata account, please enter your Rave Password."
     And I should see "Connect your Rave account to iMedidata"
@@ -221,16 +252,18 @@ Scenario: If an iMedidata user accesses Rave through the Rave URL or study for t
     And I should see "Link Account" button
 	And I should see "Choose a different Account" link
 	And I should see "Create a New Account" button
+	And I take a screenshot
 	And I enter Password "<Rave user Password 1>"
 	And I select "Link Account" button
-	And I am on Rave Study "<Study A>" home page
+	And I am on Rave Study "<Study B>" home page
     And I click on User Admin
     And I enter Username "<iMedidata User 1 id>" in Login text field
     And I select "iMedidata" as Authenticator
     And I click the search link
     And I should see my name "<First Name 1>" "<Last Name 1>"
-	And I navigate to user details page for user "<iMedidata User 1 id>"
-	And I should see "<Study A>"in Studies pane
+	And I take a screenshot
+    And I navigate to user details page for user "<iMedidata User 1 id>"
+	And I should see "<Study B>"in Studies pane
 	And I should see Log in "<iMedidata User 1 id>"
 	And I take a screenshot
 	And I navigate to User Administration
@@ -274,9 +307,11 @@ Scenario: If an iMedidata user accesses Rave through the Rave URL or study for t
     And I should see "Link Account" button
 	And I should see "Create a New Account"
 	And I should see "Choose a different account"
+	And I take a screenshot
 	And I enter Password "<Rave Password 1>"
 	And I follow "Link Account"
 	And I am on Rave Study "<Study B>" home page
+	And I take a screenshot
 	And I navigate to User Adminstration
 	And I search for user "<iMedidata User 1 id>" with Authenticator "iMedidata"
 	And I navigate to user details page for user "<iMedidata User 1 id>"
@@ -286,7 +321,7 @@ Scenario: If an iMedidata user accesses Rave through the Rave URL or study for t
 	And I should see Email "<iMedidata User 1 Email>"
 	And I take a screenshot
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.1.78-01
 @Validation
 Scenario: If an unconnected iMedidata user accesses Rave through a study application link for the first time with multiple EDC roles
@@ -309,7 +344,7 @@ Scenario: If an unconnected iMedidata user accesses Rave through a study applica
     And there is a Rave Study  "<Study B>"
     And the iMedidata Study  "<Study B>" is linked to the Rave Study "<Study B>"
     And I have an assignment to the iMedidata Study "<Study B>" for the App link  "<EDC App>" with Role "<EDC Role 1>" with Role "<EDC Role 2>" for app "<Modules App>" with Role "<Modules Role 1>"
-	And I click on app link "<EDC App>" next to the Study  "<Study A>"
+	And I click on app link "<EDC App>" next to the Study  "<Study B>"
     And I am on the Rave Connection page
 	And I fill in "Password" with "<Rave Password 1>"
     When I click on "Link Account"
@@ -333,11 +368,12 @@ Scenario: If an unconnected iMedidata user accesses Rave through a study applica
 	And I navigate to "<EDC Role 2>" user details page for User "<iMedidata User 1 id>"
 	And I should see "Authenticator" :iMedidata
 	And I should see Login:"<iMedidata User 1 id>2"
-
+	And I take a screenshot
 
 
 @Rave 564 Patch 13
-@PB2.5.1.79-01
+
+ @PB2.5.1.79-01
 @Validation
 Scenario: If an unconnected iMedidata user accesses Rave through a study application link for the first time with multiple EDC roles for
              that study and there is a single Rave account with matching username then Rave will display the Rave Connection
@@ -446,7 +482,7 @@ Scenario: If an unconnected iMedidata user accesses Rave through URL, study for 
 @Validation
 Scenario Outline: When a user views the Rave Connection page, the following attributes and text that shows the possible options.
 
-Examples:
+ Examples:
     | Field       | Text                                            | 
     | Page Title  | Connect your Rave account to iMedidata          | 
     | Text        | To permanently link your Rave account with your "<iMedidata User First Name>""<iMedidata User last Name>" ("<iMedidata Username>", "<iMedidata User Email>") iMedidata account, please enter your Rave Password.                  | 
@@ -484,7 +520,7 @@ Examples:
 	And I should see Rave user Name "<Rave user Name 1>"
 	And I take a screenshot
 
-@Rave 564 Patch 13
+ @Rave 564 Patch 13
 @PB2.5.8.28-103
 @Validation
 Scenario: When a user views the Rave Connection page, they will see the iMedidata First and Last Name displayed with the iMedidata
@@ -508,12 +544,13 @@ Scenario: When a user views the Rave Connection page, they will see the iMedidat
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
-@PB2.5.8.28-104
-@Validation
-Scenario: When a user views the Rave Connection page, they will see text prompting them to link their account if they have only
-           one non-transitioned Rave account with a matching email address . "To permanently link your Rave account with your  "<First Name >""<Last Name >" ("<iMedidata User id>", "<iMedidata User Email>") iMedidata account,
-         please enter your Rave Password."
+ @Rave 564 Patch 13
+
+  @PB2.5.8.28-104
+  @Validation
+  Scenario: When a user views the Rave Connection page, they will see text prompting them to link their account if they have only
+           one non-transitioned Rave account with a matching email address . "To permanently link your Rave account with your  "<First Name >""<Last Name >"
+		   ("<iMedidata User id>", "<iMedidata User Email>") iMedidata account,please enter your Rave Password."
 
 	Given I am an iMedidata User
     And I am logged in
@@ -609,11 +646,11 @@ Scenario: If on the Rave Connection page the unconnected iMedidata user enters a
 
   
 @Rave 564 Patch 13
+
 @PB2.5.1.95-01
 @Validation
 Scenario: If on the Rave Connection page the externally unconnected iMedidata user submits Password incorrectly more
-          times than the number specified in the configuration module of Rave, then Rave will display message “User is Locked Out” 
-		  and the Rave user account will be locked.
+          times than the number specified in the configuration module of Rave, then Rave will display message “User is Locked Out” and the Rave user account will be locked.
 
 	Given I am an iMedidata User
     And I am logged in
@@ -740,10 +777,10 @@ Examples:
 	And I should see "Password" editable text field
 	And I should see "Link to an Existing Account"
 	And I should see "To link your iMedidata account with a new account on this URL, click 'Create a New Account' button."
-	And I should see "Create a New Account"
+	And I should see "Create a New Account" button
    	And I take a screenshot	
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.1.98-01
 @Validation
 Scenario: If the unconnected iMedidata user enters correct Rave user Name and Password, when the user clicks “Link to Existing Account”
@@ -757,8 +794,8 @@ Scenario: If the unconnected iMedidata user enters correct Rave user Name and Pa
     And my Email is "<iMedidata User 1 Email>"
 	And my iMedidata Account is not connected to Rave
 	And there is a Rave user "<Rave user 1>"
-    And the Rave user "<Rave user 1>" has a Username "<Rave user Name 1>"
-    And the Rave user "<Rave user 1>" has an Email of "<Rave user 1 Email>"
+    And the Rave user "<Rave user 1>" has a Username "<Rave User Name 1>"
+    And the Rave user "<Rave user 1>" has an Email of "<iMedidata User 1 Email>"
     And the Rave user "<Rave user 1>" has a Password "<Rave Password 1>"
 	And there is an iMedidata Study  "<Study A>"
     And I have an assignment to the iMedidata Study "<Study A>" for the App link  "<EDC App>" with Role "<EDC Role 1>"
@@ -781,8 +818,9 @@ Scenario: If the unconnected iMedidata user enters correct Rave user Name and Pa
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
-@PB2.5.1.99-01
+@Rave 2013.2.0
+
+ @PB2.5.1.99-01
 @Validation
 Scenario: If the unconnected iMedidata user enters incorrect Rave user Name or Password and clicks “Link to Existing Account”
  button on the Choose Different Account page, then Rave will display a message “Incorrect Username and/or Password”.
@@ -813,7 +851,7 @@ Scenario: If the unconnected iMedidata user enters incorrect Rave user Name or P
     Then I should see "Incorrect Username and/or Password"
     And I take a screenshot 
 	And I should be on the Choose Different Account page
-	And I fill in "Password" with "<Rave Password 1>"
+	And I fill in "Password" with "<Rave Password 1>xx"
 	And I click on "Link to an Existing Account"
 	And I Should see "Incorrect Username and/or Password"
 	And I should not be on Rave Study "<Study A>" home page
@@ -862,7 +900,7 @@ Scenario: If the unconnected iMedidata user enters correct credentials of an alr
     And I take a screenshot 
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.1.100-01
 @Validation
 Scenario: When on the Choose Different Account page, if the unconnected iMedidata user submits Password incorrectly more times than the
@@ -877,7 +915,7 @@ Scenario: When on the Choose Different Account page, if the unconnected iMedidat
 	And my iMedidata Account is not connected to Rave
 	And there is a Rave user "<Rave user 1>"
     And the Rave user "<Rave user 1>" has a Username "<Rave user Name 1>"
-    And the Rave user "<Rave user 1>" has an Email of "<Rave user 1 Email>"
+    And the Rave user "<Rave user 1>" has an Email of "<iMedidata user 1 Email>"
     And the Rave user "<Rave user 1>" has a Password "<Rave Password 1>"
 	And there is an iMedidata Study  "<Study A>"
 	And the "Number of Failed User Login Attempts" is set  to"3" in Other Settings section of the "Configuration" module 
@@ -893,7 +931,7 @@ Scenario: When on the Choose Different Account page, if the unconnected iMedidat
     And I click on "Link to an Existing Account"
     And I should see "Incorrect Username and/or Password"
     And I should be on the Choose Different Account page 
-    And I fill in "Password" with "<Rave Password 1>"
+    And I fill in "Password" with "<Rave Password 1>xx"
     And I click on "Link to an Existing Account"
     And I should see "Incorrect Username and/or Password"
     And I fill in "Password" with "<Rave Password 1>xx"
@@ -908,7 +946,7 @@ Scenario: When on the Choose Different Account page, if the unconnected iMedidat
 	And I see "Locked Out" Checked
 	And I take a screenshot	
 	
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.1.102-01
 @Validation
 Scenario: If the iMedidata user clicks on “Create a New Account” button on Rave Connection page, then the system will take the user to relevant home page, study page with the relevant role, using the
@@ -922,7 +960,7 @@ Scenario: If the iMedidata user clicks on “Create a New Account” button on R
 	And my iMedidata account is not connected to Rave
 	And there is a Rave user "<Rave user name 1>"
 	And the Rave user "<Rave user Name 1>" Email "<iMedidata User 1 Email>"
-	And the Rave user "<Rave user Name 1>" is not connected to Rave
+	And the Rave user "<Rave user Name 1>" is not connected to iMedidata
 	And there is an iMedidata Study  "<Study A>"
     And there is a Rave Study  "<Study A>"
     And the iMedidata Study  "<Study A>" is linked to the Rave Study "<Study A>"
@@ -946,7 +984,8 @@ Scenario: If the iMedidata user clicks on “Create a New Account” button on R
 
 	
 @Rave 564 Patch 13
-@PB2.5.1.74-01
+
+ @PB2.5.1.74-01
 @Validation
 Scenario: When merging iMedidata created and non-transitioned accounts, If the iMedidata user has one or more EDC Roles in a specific study, all Rave study assignments and studysite assignments of that internal user account will not be copied to each newly created external user role in Rave. 
 
@@ -1022,7 +1061,8 @@ Scenario: When merging iMedidata created and non-transitioned accounts, if a use
 	And I take a screenshot
 
 @Rave 564 Patch 13
-@PB2.5.1.74-05
+
+ @PB2.5.1.74-05
 @Validation
 @BUG
 Scenario: When merging iMedidata created and non-transitioned accounts, if a user has more than one EDC Role in a specific study, all Rave eLearning of that internal user account should be copied to each newly created external user role in Rave.  The handling of account data should be fully transparent to the user.
@@ -1091,7 +1131,8 @@ Scenario: When merging iMedidata created and non-transitioned accounts, if a use
     And I take a screenshot
 
 @Rave 564 Patch 13
-@PB2.5.1.74-02(B)
+
+ @PB2.5.1.74-02(B)
 @Validation
 @BUG
 Scenario: When merging iMedidata created and non-transitioned accounts, all Rave user Saved Report assignments of that internal user account should be
@@ -1137,7 +1178,7 @@ Scenario: When merging iMedidata created and non-transitioned accounts, all Rave
 	And I have assigned "<USReport>" with "<Study B>"
 	And "<Study B>" doesnt exists in iMedidata
 	And "<Study B>" is not a linked study
-	And I have a invitation to join study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>" for App "<Modules App>" with Role "<modules Role 1>"
+	And I have an invitation to join study "<Study A>" for App "<EDC App>" with Role "<EDC Role 1>" for App "<Modules App>" with Role "<modules Role 1>"
 	And I activate my account in iMedidata
 	And I am logged in to iMedidata as "<iMedidata User 1 id>"
 	And I accept the Invitation to Study "<Study A>"
@@ -1184,7 +1225,8 @@ Scenario: If the user is an Transitioned user, and Training is not checked for t
 @Rave 564 Patch 13
 @PB2.5.1.76-77
 @Validation
-Scenario: If an already connected iMedidata user accesses the Rave URL for the first time with a single Rave Modules role (User Group) and then gets an invitation to Rave EDC App, the iMedidata user will be taken directly to the Rave Study page.
+Scenario: If an already connected iMedidata user accesses the Rave URL for the first time with a single Rave Modules role (User Group) and then
+               gets an invitation to Rave EDC App, the iMedidata user will be taken directly to the Rave Study page.
 
     Given I am an iMedidata User "<iMedidata User 1 id>"
     And there is an iMedidata Study "<Study A>" in Study Group "<Study Group>"
@@ -1193,13 +1235,14 @@ Scenario: If an already connected iMedidata user accesses the Rave URL for the f
     And I have an assignment to only iMedidata Study "<Study A>" for the App "<Modules App>" Role "<Modules Role 1>"
 	When I click the App  "<Modules App>" associated with study "<Study A>"
     Then I should be on Rave Home page
-	And I take a screen shot
+	And I take a screenshot
 	And I see All Modules listed on the left hand side
 	And I follow iMedidata Link
 	And I am on iMedidata Home page	
 	And I am invited to Rave EDC App  "<EDC App>" the Role "<EDC Role 1>" for study "<Study A>"
 	And I select App named "<EDC App>" associated with study "<Study A>"
-	And I am on Study "<Study A>" Home page 
+	And I am on Study "<Study A>" Home page
+	And I take a screenshot
 	And I navigate to Rave Home page
     And I select link "User Administration"
 	And I enter in text box "Log In " with User id "<iMedidata User 1 id>"
@@ -1216,7 +1259,8 @@ Scenario: If an already connected iMedidata user accesses the Rave URL for the f
 
 
 @Rave 564 Patch 13
-@PB2.5.1.76-03
+
+ @PB2.5.1.76-03
 @Validation
 Scenario: When merging iMedidata created and non-transitioned accounts, the iMedidata account information will take precedence over the Rave account details.
 
@@ -1225,7 +1269,7 @@ Scenario: When merging iMedidata created and non-transitioned accounts, the iMed
     And my Name is "<First Name 1>" "<Last Name 1>"
 	And my username is "<iMedidata User 1 id>"
     And my Email is "<iMedidata User 1 Email>"
-	And my iMedidata Account is not connected to RavePass-KS
+	And my iMedidata Account is not connected to Rave
 	And there is a Rave user "<Rave user 1>"
     And the Rave user "<Rave user 1>" has a Username "<Rave user Name 1>"
     And the Rave user "<Rave user 1>" has an Email of "<iMedidata User 1 Email>"
@@ -1237,10 +1281,10 @@ Scenario: When merging iMedidata created and non-transitioned accounts, the iMed
 	And I note Username "iMedidata User 1 id"
 	And I note Email "iMedidata User 1 Email"
 	And I note First Name "iMedidata User 1 SQA"
-	And I note Last Name "iMedidata User 1 SQA
+	And I note Last Name "iMedidata User 1 SQA"
 	And I fill in Middle name with " "
 	And I fill in Title with "SQA TESTER"
-	And I fill in Department with "Department 1"
+	And I fill in Department with "Blank"
 	And I fill in Address Line 1 with "79 Fifth Avenue"
 	And I fill in Address Line 2 with "iMedidata"
 	And I fill in Address Line 3 with "Blank"
@@ -1266,7 +1310,6 @@ Scenario: When merging iMedidata created and non-transitioned accounts, the iMed
 	And I note First Name "<Rave user Name 1>"
 	And I note Last Name "<Rave user Name 1>"
 	And I fill in Title with "Rave SQA TESTER"
-	And I fill in Department with "Rave Department 1"
 	And I fill in Address Line 1 with "Rave 79 Fifth Avenue"
 	And I fill in Address Line 2 with "Rave"
 	And I fill in Address Line 3 with "Rave"
@@ -1274,7 +1317,7 @@ Scenario: When merging iMedidata created and non-transitioned accounts, the iMed
 	And I fill in Postal Code with "Rave"
 	And I fill in State with "Rave"
 	And I fill in Country with "Rave"
-	And I fill in Time Zone with "Rave"
+	And I fill in Time Zone with "Casablanca, Monrovia"
 	And I fill in Locale with "English"
 	And I fill in Phone with "545"
 	And I fill in Mobile Phone with "234"
@@ -1298,7 +1341,6 @@ Scenario: When merging iMedidata created and non-transitioned accounts, the iMed
 	And I should see text  Middle Name " "
 	And I should see text Last Name "iMedidata User 1 SQA"
 	And I should see Title with "SQA TESTER"
-	And I should see Department with "Department 1"
 	And I should see Address Line 1 with "79 Fifth Avenue"
 	And I should see Address Line 2 with "iMedidata"
 	And I should see Address Line 3 with "Blank"
@@ -1349,7 +1391,7 @@ Scenario: When merging iMedidata created (first time with a single EDC role) and
 	And I should see no Results
 	And I take a screenshot
 	And I search for User "<iMedidata User 1 id>" Authenticator "iMedidata" with "Include Inactive Records" checked
-	When I navigate to the User details page for the User "<iMedidata User 1 id>"
+	When I navigate to the User details page for the User "<iMedidata User 1 id>" without Role
 	Then I see the "Active" check box is unchecked
 	And I should see Login "<Rave user Name 1>"
     And I see the User Details section shows grayed out fields
@@ -1380,11 +1422,14 @@ Scenario: When merging iMedidata created and non-transitioned accounts, if there
     And there is a Rave Study  "<Study B>"
     And the iMedidata Study  "<Study B>" is linked to the Rave Study "<Study B>"
 	And I have an assignment to the iMedidata Study "<Study B>" for the App "<EDC App>" with one Role "<EDC Role 1>" Modules App "<Modules App>" for Role "<Modules Role1>"
-	And Rave user "<Rave user 1>" an assigment to iMedidata Study "<Study B>" with Role "<EDC Role 2>" in Rave as Internal user
+	And I take a screenshot
+	And Rave user "<Rave user 1>" has an assigment to iMedidata Study "<Study B>" with Role "<EDC Role 2>" in Rave as Internal user
+	And I take a screenshot
     And I am on the iMedidata Home page
 	And I click on app link "<EDC App>" next to the Study  "<Study B>"
 	And I am on the Rave Connection Page 
 	And I enter Rave user password into the "Password" text field
+	And I take a screenshot
 	And I select "Link Account" button
     And I am on the Rave Study page for the Study  "<Study B>"
     And I navigate to the User Administration Module
@@ -1395,11 +1440,11 @@ Scenario: When merging iMedidata created and non-transitioned accounts, if there
 	And I take a screenshot
 
 
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.1.76-07
 @Validation
 Scenario: When merging iMedidata created and non-transitioned accounts, if there are conflicting study-site assignments between
- the iMedidata-created account and the Rave account, the iMedidata account study-site assignments will take precendence, provided the Role assigned to the user does not have "ViewAllSiteinSiteGroup"action assigned.
+ the iMedidata-created account and the Rave account, the iMedidata account study-site assignments will take precendence, provided the Role assigned to the user does not have "ViewAllSiteinSiteGroup" action assigned.
 
     Given I am an iMedidata User
     And I am logged in
@@ -1416,22 +1461,27 @@ Scenario: When merging iMedidata created and non-transitioned accounts, if there
     And there is a Rave Study "<Study B>"
 	And there is a Rave Site  "<Site A>" assigned to Study "<Study B>"
 	And there is a Rave Study "<Study C>" which is not connected to iMedidata
-	Adn there is a Rave Site "<Site C>" assigned to Rave Study "<study C>"
-	And Rave user "<Rave user Name 1>" has a Rave assignment to Study "<Study C>" with Site "<site C>"
+	And there is a Rave Site "<Site C>" assigned to Rave Study "<study C>"
+	And Rave user "<Rave user Name 1>" has a Rave assignment to Study "<Study C>" with Site "<site C>" with "<EDC Role 1>"
 	And the iMedidata Study "<Study B>" is linked to the Rave Study "<Study B>"
 	And I have an assignment to the iMedidata Study "<Study B>" and Site  "<Site B>" for the App link  "<EDC App>" with "<EDC Role 1>" Modules App "<Modules App>" with Role "<Modules Role 1>"
+	And I take a screenshot
 	And Rave user "<Rave user Name 1>" has a Rave assigment to Study "<Study B>" Site  "<Site A>" with "<EDC Role 1>"
+	And I take a screenshot
     And I am on the iMedidata Home page
 	And I click on app link "<EDC App>" next to the Study  "<Study B>"
 	And I am on the Rave Connection Page 
 	And I enter Rave user password into the "Password" text field
+	And I take a screenshot
 	And I select "Link Account" button
     And I am on the Rave Site "<Site B>" home page for Study "<Study B>"
 	And I should not see Rave Site "<Site A>" for Study "<Study B>"
+	And I should not see Rave Study "<Study C>" with Site "<Site C>" 
 	And I take a screenshot
 
 
 @Rave 564 Patch 13
+
 @PB2.5.1.76-11
 @Validation
 Scenario: When merging iMedidata created and non-transitioned accounts, if there are conflicting study-site assignments between
@@ -1454,7 +1504,7 @@ the iMedidata-created account and the Rave account, the iMedidata account study-
 	And there is a Rave Site "<Site A>"
 	And the iMedidata Study "<Study B>" is linked to the Rave Study "<Study B>"
 	And I have an assignment to the iMedidata Study "<Study B>" and Site  "<Site B>" for the App link  "<EDC App>" with "<Edc Role RM Monitor>" Modules App "<Modules App>" Role "<Modules Role 1>"
-	And Rave user "<Rave user Name 1>" has an  assigment to Study "<Study B>" and Site  "<Site A>" in Rave 
+	And Rave user "<Rave user Name 1>" has an  assigment to Study "<Study B>" and Site "<Site A>" in Rave 
     And I am on the iMedidata Home page
 	And I click on app link "<EDC App>" next to the Study  "<Study B>"
 	And I am on the Rave Connection Page 
@@ -1540,16 +1590,17 @@ Scenario:  When merging iMedidata created and non-transitioned accounts, if ther
 	And I take a screenshot
 
 @Rave 564 Patch 13
-@PB2.5.1.76-12
+
+ @PB2.5.1.76-12
 @Validation
-DT # 14191
+ DT # 14191
 Scenario: If an existing iMedidata user is invited to a new Study Group without studies, a duplicate user is not created in Rave when
              the user navigates to Rave from iMedidata.
 
 	
 	Given I am a Study Group Owner "<iMediata Administrator>"
 	And I created a new Study named "<Study A>"
-    And I have invited a new iMedidata user with Email "<iMedidata User 2 Email>" to the Study "<Study A>" for app "<EDC App>" with Role "<EDC Role 2>" 
+    And I have invited a new iMedidata user with Email "<iMedidata User 2 Email>" to the Study "<Study A>" for app "<EDC App>" with Role "<EDC Role 2>" Modules App "<Modules App>" Role "<Modules Role 2>"
 	And the new iMedidata user's username is "<iMedidata User 2 ID>"
 	And the "<iMedidatat User 2 ID>" has activated account
 	And I log out
@@ -1560,14 +1611,14 @@ Scenario: If an existing iMedidata user is invited to a new Study Group without 
     And I access the Rave Home module
 	And I select link "User Administration"
 	And I search for user "<iMedidata User 2 ID>" with iMedidata as "Authenticator"	
-	And I see one rows in the search results table
+	And I see one row in the search results table
 	And I should not see a duplicate user
 	And I follow link iMedidata
 	And I am on the iMedidata home page
 	And I Logout
 	And I login as Study Group Owner  "<iMediata Administrator>"
 	And I create a new Study Group "<Study Group A>" with EDC App
-	And I invite iMedidata user with Email "<iMedidata User 2 Email>" to the Study Group "<Study Group A>" for app "<EDC App>" with Role "<EDC Role 1>" 
+	And I invite iMedidata user with Email "<iMedidata User 2 Email>" to the Study Group "<Study Group A>" for app "<EDC App>" with Role "<EDC Role 1>" Modules App "<Modules App>" Role "<Modules Role 1>"
 	And the "<iMedidata User 2 Email>" accepts invitation
 	And I click on EDC App "<EDC App>" next to the Study Group "<Study Group A>"
     And I am on the Rave Home page
@@ -1667,27 +1718,32 @@ Scenario: When an internal user with assignments to External iMedidata Studies i
 	And I should see Linked to iMedidata is checked
 	And I take a screenshot
 
+
+	####################################   E-LEARNINIG  ### iMedidata <eLearning Course> NOT linked to Rave <eLearning Course> ##################################################
+
 @Rave 564 Patch 13
-@PB2.5.1.76-92
+
+ @PB2.5.1.76-92
 @Validation
 @Build 181
-Scenario: As a Rave user I complete an eLearning course and my account is merged with iMedidata,then the course should be still shown as completed
+Scenario: As a Rave user I complete an eLearning course and my account is merged with iMedidata,then the course should still be shown as completed
 
-   Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>" rave password "<rave password>"
-         email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
+#Rave
+   Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>" rave password "<rave password>" email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
    And Rave User "<Rave User Name 1>"  is not connected to iMedidata
-   And I am logged in to the Rave
-   And new Rave Study "<Study A>" is created
+   And I am logged in to Rave
+   And a new Rave Study "<Study A>" is created
    And new Rave "<New Site A1>" is created with site number "<Unique number1>"
    And I am assigned to study "<Study A>" with  "<New Site A1>" with role "<EDC Role 1>"
    And I am assigned User Group "<Modules Role 1>"
    And there exists Security Group "<Security Group 1>" and Security Role "<Security Role 1>" associated with Study "<Study A>"
    And I have assigned Security Role "<Security Role 1>" to Project "<Study A>"
-   And I have assigned to eLearning Course "<Course 1>" on Study Role Assignments: "<Study A>" for EDC Role "<EDC Role 1>"
+   And I have assigned an eLearning Course "<Course 1>" on Study Role Assignments to "<Study A>" for EDC Role "<EDC Role 1>"
    And I navigate to "User Administration" Module
    And I search for user "<Rave User Name 1>"
    And I go to the User Details page for user "<Rave User Name 1>"
    And I see course status as "Not Started" under eLearning section on User Details page
+   And I take a screenshot
    And I select "Home" icon
    And I see the "eLearning Home" page 
    And I take a screenshot
@@ -1702,6 +1758,8 @@ Scenario: As a Rave user I complete an eLearning course and my account is merged
    And I do not see the "eLearning Home" page 
    And I see the site "<New Site A1>" home page for "<Study A>"
    And I logout of Rave
+
+#iMedidata
    And I am an iMedidata User
    And I am logged in as "<iMedidata User 1 ID>"
    And my username is "<iMedidata User 1 ID>"
@@ -1711,12 +1769,15 @@ Scenario: As a Rave user I complete an eLearning course and my account is merged
    And I am assigned to study "<Study A>" with app "<Edc App>" with role "<EDC Role 1>"
    And I am assigned to study "<Study A>" with app "<Modules App>" with role "<Modules Role 1>"
    And I am assigned to study "<Study A>" with app "<Security App>" with role "<Security Group 1>"
+   And  I except the Study and Site invitations as owner
    And I follow the link "<EDC App>" associated with study "<Study A>"
    And I see the "Rave Connection" Page
+   And I take a screenshot
    And I enter the Rave password "<Rave Password 1>"
    When I select link "Link Account"
    Then I see the site "<Site A1>" home page for "<Study A>"
    And I do not see the eLearning Home page
+   And I take a screenshot
    And I navigate to "User Administration" Module
    And I search for user "<iMedidata User 1 ID>"
    And I go to the User Details page for user "<iMedidata User 1 ID>"
@@ -1727,16 +1788,15 @@ Scenario: As a Rave user I complete an eLearning course and my account is merged
    And I take a screenshot
 
 		
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.1.76-93
 @Validation
-@Build 181
+
 Scenario: If Internal Rave user has not completed an eLearning course and account is merged with iMedidata,then the course is required for Access.
 
-    Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>" with rave password "<rave password>"
-	 email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
+    Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>" with rave password "<rave password>" email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
     And Rave User "<Rave User Name 1>"  is not connected to iMedidata
-    And I am logged in to the Rave
+    And I am logged in to Rave
     And new Rave Study "<Study A>" is created
     And new Rave "<New Site A1>" is created with site number "<Unique number2>"
     And I am assigned to study "<Study A>" with  "<New Site A1>" with role "<EDC Role 1>"
@@ -1758,9 +1818,11 @@ Scenario: If Internal Rave user has not completed an eLearning course and accoun
     And the eLearning Course "<Course 1>" is not removed from the User Details page
     And the Status is "Incomplete"
     And I take a screenshot
-    And  I select link "Home"
+    And I select link "Home"
     And I see the "eLearning Home" page with eLearning Course Status "Incomplete"
     And I take a screenshot
+	
+ #iMedidata
     And I am an iMedidata User
     And I am logged in as "<iMedidata User 1 ID>"
     And my username is "<iMedidata User 1 ID>"
@@ -1770,8 +1832,8 @@ Scenario: If Internal Rave user has not completed an eLearning course and accoun
     And I am assigned to study "<Study A>" with app "<Edc App>" with role "<EDC Role 1>"
     And I am assigned to study "<Study A>" with app "<Modules App>" with role "<Modules Role 1>"
     And I am assigned to study "<Study A>" with app "<Security App>" with role "<Security Group 1>"
-	And I follow the link "<EDC App>" associated with study "<Study A>"
-	And I see the "Rave Connection" Page
+	And I except the Study and Site invitations
+    And I see the "Rave Connection" Page
 	And I enter the Rave password "<Rave Password 1>"
 	When I follow link "Link Account"
 	Then I  see the "eLearning Home" page
@@ -1785,9 +1847,11 @@ Scenario: If Internal Rave user has not completed an eLearning course and accoun
     And I see elearning course is required on eLearning section
 	And I see the eLearning Course Status "Incomplete"
     And I take a screenshot
+	
 
-@Rave 564 Patch 13
-@PB2.5.1.76-94
+@Rave 2013.2.0
+
+ @PB2.5.1.76-94
 @Validation
 Scenario: If internal Rave user do not start an eLearning course and account is merged with iMedidata,
           then the course is still shown as "Not Started"
@@ -1810,6 +1874,8 @@ Scenario: If internal Rave user do not start an eLearning course and account is 
    And I select link "Home"
    And I see the "eLearning Home" page with Status "Not Started"
    And I take a screenshot
+   
+  #iMedidata
    And I am an iMedidata User
    And I am logged in as "<iMedidata User 1 ID>"
    And my username is "<iMedidata User 1 ID>"
@@ -1833,9 +1899,8 @@ Scenario: If internal Rave user do not start an eLearning course and account is 
    And I see assigned Security Role "<Security Role 1>" associated with Study "<Study C>"
    And I see the eLearning section with Status "Not Started" for eLearning course "<Course 1>"
    And I take a screenshot
-
 		
-@Rave 564 Patch 13
+@Rave 2013.2.0
 @PB2.5.1.76-95
 @Validation
 Scenario: As Internal Rave user I am assigned to eLearning course for a particular edc role which has a status of Not Started. When my account is merged with iMedidata,
@@ -1843,8 +1908,7 @@ Scenario: As Internal Rave user I am assigned to eLearning course for a particul
 		  not required for the second role , user should be able to access Rave with the second role.
 
  
-   Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>"
-                with rave password "<rave password>" with email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
+   Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>" with rave password "<rave password>" with email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
    And Rave User "<Rave User Name 1>"  is not connected to iMedidata
    And I am logged in to the Rave
    And new Rave Study "<Study C>" is created
@@ -1858,9 +1922,12 @@ Scenario: As Internal Rave user I am assigned to eLearning course for a particul
    And I search for user "<Rave User Name 1>"
    And I go to the User Details page for user "<Rave User Name 1>"
    And I see status "Not Started" under eLearning section under User Details page
+   And I take a screenshot
    And I select link "Home"
    And I see the "eLearning Home" page with Status "Not Started"
    And I take a screenshot
+   
+  #iMedidata
    And I am an iMedidata User
    And I am logged in as "<iMedidata User 1 ID>"
    And my username is "<iMedidata User 1 ID>"
@@ -1903,14 +1970,13 @@ Scenario: As Internal Rave user I am assigned to eLearning course for a particul
    And I take a screenshot
 		
 @Rave 564 Patch 13
-@PB2.5.1.76-96
+
+ @PB2.5.1.76-96
 @Validation
 @Build 182
-Scenario: If internal Rave user has not started eLearning course and  overide the course when account is merged with iMedidata,
-          then the course should not be shown as "Not Started" and not required.
+Scenario: If internal Rave user has not started eLearning course and  overide the course when account is merged with iMedidata, then the course should not be shown as "Not Started" and not required.
 
-   Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>"
-                with rave password "<rave password>" with email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
+   Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>" with rave password "<rave password>" with email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
    And Rave User "<Rave User Name 1>"  is not connected to iMedidata
    And I am logged in to the Rave
    And new Rave Study "<Study C>" is created
@@ -1925,12 +1991,14 @@ Scenario: If internal Rave user has not started eLearning course and  overide th
    And I go to the User Details page for user "<Rave User Name 1>"
    And I see status "Not Started" under eLearning section of User Details page
    And I check the "Override" check box 
-   And I save changes
+   And I select Update link to save changes
+   And I take a screenshot
    And I select link "Home"
    And I do not see the "eLearning Home" page with Status "Not Started"
    And I am on Study Site "<New Site C1>" page
    And I take a screenshot
-   And I am an iMedidata User
+
+  And I am an iMedidata User
    And I am logged in as "<iMedidata User 1 ID>"
    And my username is "<iMedidata User 1 ID>"
    And my Email is "<iMedidata New User 1 Email>"
@@ -1962,8 +2030,7 @@ Scenario: If internal Rave user has not started eLearning course and  overide th
 Scenario: If Internal Rave user has not completed (Incomplete) an eLearning course and override the course,when account is merged
            with iMedidata,then the course is not required
 
-   Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>"
-               with rave password "<rave password>" with email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
+   Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>" with rave password "<rave password>" with email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
    And Rave User "<Rave User Name 1>"  is not connected to iMedidata
    And I am logged in to the Rave
    And new Rave Study "<Study A>" is created
@@ -1972,7 +2039,7 @@ Scenario: If Internal Rave user has not completed (Incomplete) an eLearning cour
    And I am assigned User Group "<Modules Role 1>"
    And there exists Security Group "<Security Group 1>" and Security Role "<Security Role 1>" associated with Study "<Study A>"
    And I have assigned Security Role "<Security Role 1>" to Project "<Study A>"
-   And I have assigned to eLearning Course "<Course 1>" on Study Role Assignments: "<Study A>" for EDC Role "<EDC Role 1>"
+   And I am assigned to eLearning Course "<Course 1>" on Study Role Assignments: "<Study A>" for EDC Role "<EDC Role 1>"
    And I navigate to "User Administration Module
    And I search for user "<Rave User Name 1>"
    And I go to the User Details page for user "<Rave User Name 1>"
@@ -1987,12 +2054,13 @@ Scenario: If Internal Rave user has not completed (Incomplete) an eLearning cour
    And the eLearning Course "<Course 1>" is not removed from the User Details page
    And the Status is "Incomplete"
    And I check the "Override" check box
-   And I save changes.
+   And I select Update link to save changes.
    And I take a screenshot
    And  I select link "Home"
    And I should not see the "eLearning Home" page with eLearning Course Status "Incomplete"
    And I should be on Study Site "<New Site A1>" page
    And I take a screenshot
+
    And I am an iMedidata User
    And I am logged in as "<iMedidata User 1 ID>"
    And my username is "<iMedidata User 1 ID>"
@@ -2018,14 +2086,14 @@ Scenario: If Internal Rave user has not completed (Incomplete) an eLearning cour
    And I see elearning course is not required on eLearning section
    And I take a screenshot
 		
-@Rave 564 Patch 13
-@PB2.5.1.76-98
+@Rave 2013.2.0
+
+ @PB2.5.1.76-98
 @Validation
 @Build 181
 Scenario: If Internal Rave user has not passed the eLearning course and account is merged with iMedidata, then the course is still required.
 
-   Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>"
-                and rave password "<rave password>" and email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
+   Given I have a Rave account as Rave User "<Rave User 1>" with rave username "<Rave User Name 1>" and rave password "<rave password>" and email "<iMedidata New User 1 Email>" with Trained Date and "Training Signed" checkbox checked
    And Rave User "<Rave User Name 1>"  is not connected to iMedidata
    And I am logged in to the Rave
    And new Rave Study "<Study A>" is created
@@ -2043,18 +2111,20 @@ Scenario: If Internal Rave user has not passed the eLearning course and account 
    And I see the "eLearning Home" page 
    And I take a screenshot
    And I select "Start" button to start the eLearning Course "<Course 1>"
-   And I completed the eLearning Course "<Course 1>"
-   And I failed the eLearning Course
+   And I finish the eLearning Course "<Course 1>"
+   And I failed the eLearning Course test
+   And I take a screenshot
+   And I select link "Home"
+   And I should see the "eLearning Home" page with eLearning Course Status "Incomplete"
+   And I should not be on Study Site "<New Site A1>" page
    And I take a screenshot
    And I navigate to "User Administration" Module
    And I search for user "<Rave User Name 1>"
    And the eLearning Course "<Course 1>" is not removed from the User Details page
    And the Status is "Incomplete"
    And I take a screenshot
-   And  I select link "Home"
-   And I should see the "eLearning Home" page with eLearning Course Status "Incomplete"
-   And I should not be on Study Site "<New Site A1>" page
-   And I am logged out as Rave User "<Rave User Name 1>" 
+   And I am logged out as Rave User "<Rave User Name 1>"
+
    And I am an iMedidata User
    And I am logged in as "<iMedidata User 1 ID>"
    And my username is "<iMedidata User 1 ID>"
@@ -2079,8 +2149,8 @@ Scenario: If Internal Rave user has not passed the eLearning course and account 
    And I see eLearning course is required on eLearning section
    And I see eLearning course status as 'Incomplete'
    And I take a screenshot
-
-
+   
+   
 @Future
 @PB2.5.1.XXX
 @Draft
@@ -2093,3 +2163,854 @@ Scenario: If an iMedidata user accesses Rave through the Rave URL or study for t
 @Draft
 Scenario: When merging iMedidata created and non-transitioned accounts, if there are conflicting assignments between multipl
           e non-transitioned Rave accounts, the most-recently modified Rave account will take precendence.
+
+
+
+	
+
+	#******************************************** @MCC42822-01 ***iMedidata <eLearning Course> LINKED to Rave <eLearning Course>*************************************
+	#********************************************(Note:  This happens when eLearning is copied from Rave to iMedidata using TCP)****************
+	
+@MCC42822-01
+@Rave 2013.2.0
+@MCC2.7.1.3-05
+@Validation
+Scenario: When an eLearning course that is assigned to a user in Rave with status "Not Started" is moved from Rave to iMedidata
+          and the course has the same UUID in Rave and iMedidata,then the user should take the eLearning course in iMedidata
+		  but not more than 1 time.  
+
+  #Rave	
+	Given I am a Rave User
+	And I am logged in to Rave
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<Rave User Name 1>"
+	And my Email is "<iMedidata User 2 Email>"
+	And there is Rave Study  "<Study A>"
+    And there is Rave Site  "<Site A>"
+	And I am assigned to "<Study A>" 
+	And I am assigned to "<Site A>"
+	And I am not connected to iMedidata
+	And I have eLearning course assigned to "<Study A>" and Role "<EDC Role 1>"
+	And the e-Learning Course has the same UUID in Rave and iMedidata
+	And I have not started the eLearning course
+	When I select link "Home"
+	Then I should see (eLearning Required) for "<Study A>"
+	And I see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC. For more help accessing eLearning courses, click on the Rave Help link above'
+	And I verify that eLearning Course Status is "Not Started"
+	And I take a screenshot
+	And I navigate to "User Administration" Module
+    And I search for user "<Rave User Name 1>"
+    And I go to the User Details page for user "<Rave User Name 1>"
+    And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
+    And I verify from the eLearning section that the Status is "Not Started" for eLearning course "<Course 1>"
+    And I take a screenshot
+	And I log out as Rave user
+  
+	#iMedidata
+	And I log in into iMedidata as Admin User "<iMedidata User 1 ID>"
+	And there is iMedidata Study Group
+	And I creat new iMedidata Study "<Study A>" that is linked to Rave Study "<Study A>"
+	And I creat new iMedidata Site "<Site A>" that is linked to Rave Site "<Site A>"	
+	And I invite a new iMedidata user with email "<iMedidata New User 2 Email>" to Study "<Study A>", Site "<Site A>"
+	And I assign Module App "<Modules App>" with role "<Modules Role 1>" to new iMedidata user.
+    And the new iMedidata Username is "<iMedidata User 2 ID>"
+	And I logout of iMedidata
+	
+	And I login to iMedidata as "<iMedidata User 2 ID>"
+	And I accept the invitation
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to Rave as "Defuser" user
+	And I navigate to User Admin
+	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I verify that the user "<iMedidata User 2 ID>" is displayed
+	And I take a screenshot
+	And I logout of Rave
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I assign "<iMedidata User 2 ID>" to study "<Study A>" with app "<Edc App>" with role "<EDC Role 1>" requiring eLearing Course
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to iMedidata as "<iMedidata User 2 ID>"
+	And I see "<eLearnig Course> is required for access" text
+	And I do not see the link "<Modules App>" associated with study "<Study A>"
+	And I do not see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the eLearning Course name "<eLearning Course>" to start the course
+	When I complete the eLearning course
+	Then I should be on the iMedidata home page
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I should see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page with Status "Not Started"
+	And I should not see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC.
+        For more help accessing eLearning courses, click on the Rave Help link above'
+    And I take a screenshot
+    And I navigate to "User Administration" Module
+    And I search for user "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I go to the User Details page for user "<iMedidata User 2 ID>"
+    And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
+    And I see elearning course is not required on eLearning section
+	And I verify that the status of the eLearning course is "Completed"
+    And I take a screenshot	
+
+		
+@MCC42822-01
+@Rave 2013.2.0
+@MCC2.7.1.3-05-1
+@Validation
+Scenario: When an eLearning course that is assigned to a user in Rave with status "Incomplete" is moved from Rave to iMedidata
+           and the course has the same UUID in Rave and iMedidata,then the user should take the eLearning course in iMedidata
+		   but not more than 1 time.  
+
+  #Rave	
+	Given I am a Rave User
+	And I am logged in to Rave
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<Rave User Name 1>"
+	And my Email is "<iMedidata User 2 Email>"
+	And there is Rave Study  "<Study A>"
+    And there is Rave Site  "<Site A>"
+	And I am assigned to "<Study A>" 
+	And I am assigned to "<Site A>"
+	And I am not connected to iMedidata
+	And I have eLearning course assigned to "<Study A>" and Role "<EDC Role 1>"
+	And the e-Learning Course has the same UUID in Rave and iMedidata
+	And I have not started the eLearning course
+	When I select link "Home"
+	Then I should see (eLearning Required) for "<Study A>"
+	And I see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC. For more help accessing eLearning courses, click on the Rave Help link above'
+	And I verify that eLearning Course Status is "Not Started"
+	And I start the eLearning course but not completed
+	When I select link "Home"
+	Then I should see the eLearning Courses section
+	And I see the eLearning Course Status "Incomplete"
+	And I take a screenshot	
+	And I navigate to "User Administration" Module
+    And I search for user "<Rave User Name 1>"
+    And I go to the User Details page for user "<Rave User Name 1>"
+    And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
+    And I verify from the eLearning section that the Status is "Incomplete" for eLearning course "<Course 1>"
+    And I take a screenshot
+	And I log out as Rave user
+  
+	#iMedidata
+	And I log in into iMedidata as Admin User "<iMedidata User 1 ID>"
+	And there is iMedidata Study Group
+	And I creat new iMedidata Study "<Study A>" that is linked to Rave Study "<Study A>"
+	And I creat new iMedidata Site "<Site A>" that is linked to Rave Site "<Site A>"	
+	And I invite a new iMedidata user with email "<iMedidata New User 2 Email>" to Study "<Study A>", Site "<Site A>"
+	And I assign Module App "<Modules App>" with role "<Modules Role 1>" to new iMedidata user.
+    And the new iMedidata Username is "<iMedidata User 2 ID>"
+	And I logout of iMedidata
+	
+	And I login to iMdidata as "<iMedidata User 2 ID>"
+	And I accept the invitation
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to Rave as "Defuser" user
+	And I navigate to User Admin
+	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I verify that the user "<iMedidata User 2 ID>" is displayed
+	And I take a screenshot
+	And I logout of Rave
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I assign "<iMedidata User 2 ID>" to study "<Study A>" with app "<Edc App>" with role "<EDC Role 1>" requiring eLearing Course
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to iMedidata as "<iMedidata User 2 ID>"
+	And I see "<eLearnig Course> is required for access" text
+	And I do not see the link "<Modules App>" associated with study "<Study A>"
+	And I do not see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the eLearning Course name "<eLearning Course>" to start the course
+	When I complete the eLearning course
+	Then I should be on the iMedidata home page
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I should see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page with Status "Not Started"
+	And I should not see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC.
+    For more help accessing eLearning courses, click on the Rave Help link above'
+    And I take a screenshot
+    And I navigate to "User Administration" Module
+    And I search for user "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I go to the User Details page for user "<iMedidata User 2 ID>"
+    And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
+	And I verify that the status of the eLearning course is "Completed"
+	And I take a screenshot
+
+ 
+ @MCC42822-01
+@Rave 2013.2.0
+@MCC2.7.1.3-05-2
+@Validation
+Scenario: When an eLearning course that is assigned to a user in Rave with Status "Not Started" is moved from Rave to iMedidata 
+          and the course has the same UUID in Rave and iMedidata,and course has been overrided in iMedidata,then user should not
+		  have to take the eLearning course more than 1 time.
+		 
+
+  #Rave	
+	Given I am a Rave User
+	And I am logged in to Rave
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<Rave User Name 1>"
+	And my Email is "<iMedidata User 2 Email>"
+	And there is Rave Study  "<Study A>"
+    And there is Rave Site  "<Site A>"
+	And I have assigned to the "<Study A>" 
+	And I have assigned to the "<Site A>"
+	And I am not connected to iMedidata
+	And I have eLearning course created
+	And I have eLearning course assigned to the "<Study A>" and Role "<EDC Role 1>"
+	And the e-Learning Course has the same UUID in Rave and iMedidata
+	And I have not started the eLearning course
+	And I navigate to "User Administration" Module
+    And I search for user "<Rave User Name 1>"
+    And I go to the User Details page for user "<Rave User Name 1>"	
+	And the "Override" check box is NOT checked in the eLearning Course section
+	And I take a screenshot
+	And I navigate to Rave Home page
+	And I do see the required eLearning Course
+	And I take a screenshot
+	And I log out as Rave user
+  
+   #iMedidata
+	And I log in into iMedidata as Admin User "<iMedidata User 1 ID>"
+	And there is iMedidata Study Group
+	And I creat new iMedidata Study "<Study A>" that is linked to Rave Study "<Study A>"
+	And I creat new iMedidata Site "<Site A>" that is linked to Rave Site "<Site A>"	
+	And I invite a new iMedidata user with email "<iMedidata New User 2 Email>" to Study "<Study A>", Site "<Site A>"
+	And I assign Module App "<Modules App>" with role "<Modules Role 1>" to new iMedidata user.
+    And the new iMedidata Username is "<iMedidata User 2 ID>"
+	And I logout of iMedidata
+	
+	And I login to iMdidata as "<iMedidata User 2 ID>"
+	And I accept the invitation
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to Rave as "Defuser" user
+	And I navigate to User Admin
+	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I verify that the user "<iMedidata User 2 ID>" is displayed
+	And I take a screenshot
+	And I logout of Rave
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I assign "<iMedidata User 2 ID>" to study "<Study A>" with app "<Edc App>" with role "<EDC Role 1>" requiring eLearing Course
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to Rave as "Defuser" user
+	And I navigate to User Admin
+	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I verify that the user "<iMedidata User 2 ID>" is not displayed
+	And I take a screenshot
+	And I logout of Rave	
+	
+	And I login to iMedidata as "<iMedidata User 2 ID>"
+	And I see "<eLearnig Course> is required for access" text
+	And I do not see the link "<Modules App>" associated with study "<Study A>"
+	And I do not see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I logout of iMedidata	
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I navigate to study "<Study A>"
+	And I search for User "<iMedidata User 2 ID>"
+	And I select Course under eLearning
+	And I check the Override checkbox
+	And I provide Reason / Training Date
+	And I take a screenshot
+	And I select button "Save"
+	And I logout of iMedidata	
+	
+	When I login to iMedidata as "<iMedidata User 2 ID>"
+	Then I should be on the iMedidata home page
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I should see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page with Status "Not Started"
+	And I should not see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC.
+              For more help accessing eLearning courses, click on the Rave Help link above'
+    And I take a screenshot
+    And I navigate to "User Administration" Module
+    And I search for user "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I go to the User Details page for user "<iMedidata User 2 ID>"
+    And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
+    And I see elearning course status is "Not Started" on eLearning section
+	And I verify that the "Override" check box is checked
+	And I take a screenshot
+
+
+ @MCC42822-01
+@Rave 2013.2.0
+@MCC2.7.1.3-05-3
+@Validation
+Scenario: When an eLearning course that is assigned to a user in Rave with Status "Completed" is moved from Rave to iMedidata
+         and the course has the same UUID in Rave and iMedidata,then the user should not have to take the eLearning course
+		 more than 1 time.  
+
+  #Rave	
+	Given I am a Rave User
+	And I am logged in to Rave
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<Rave User Name 1>"
+	And my Email is "<iMedidata User 1 Email>"	
+	And there is Rave Study  "<Study A>"
+    And there is Rave Site  "<Site A>"
+	And I have assigned to the "<Study A>" 
+	And I have assigned to the "<Site A>"
+	And I am not connected to iMedidata
+	And I have eLearning course created
+	And I have eLearning course assigned to the "<Study A>" and Role "<EDC Role 1>"
+	And the e-Learning Course has the same UUID in Rave and iMedidata
+	And I have completed the eLearning course
+	And I am on eLearning Home page
+	And I see eLearning Course status "Completed"
+	And I take a screenshot
+	And I navigate to Rave Sudy Home page
+	And I am on the Study Site Home page
+	And I do not see the eLearning Courses section
+	And I take a screenshot
+	And I navigate to User Administration Module
+	And I search for the Rave User "<Rave User Name 1>"
+	And I navigate to the User Details page
+	And I see the eLearning Courses section
+	And I see the eLearning Course Status "Completed"
+	And I take a screenshot
+	And I log out as Rave user
+  
+   #iMedidata
+	When I log in into iMedidata as invited New User "<iMedidata User 1 ID>" and email "<iMedidata User 1 Email>"
+	Then I accept the invitation
+	And there is iMedidata Study "<Study A>" linked to Rave Study "<Study A>"
+	And there is iMedidata Site "<Site A>" linked to Rave Site "<Site A>"
+    And I have an assignment to a iMedidata Study "<Study A>" for EDC App "<EDC App>" with Role "<EDC Role 1>"
+	And I have an assignment to a Study "<Study A>"  for Modules App "<Modules App>" with Role "<Modules Role 1>"
+	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page
+	And I take a screenshot
+	And I navigate to User Administration Module
+	And I search for the iMedidata User "<iMedidata User 1 ID>"
+	And I navigate to the User Details page
+	And I see the eLearning Courses section
+	And I see the eLearning Course Status "Completed"
+	And I take a screenshot
+
+
+ 
+
+
+ 
+
+	@MCC42822-01
+@Rave 2013.2.0
+@MCC2.7.1.3-05-4
+@Validation
+Scenario: When an eLearning course in Rave with Status "Incomplete" (failed test) is moved to a user in iMedidata and the course has the same UUID in Rave and iMedidata, then the newly created iMedidata
+		   user that is assigned & takes the eLearning in iMedidata, should not take the eLearning course more than 1 time.  
+
+  #Rave	
+	Given I am a Rave User
+	And I am logged in to Rave
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<Rave User Name 1>"
+	And my Email is "<iMedidata User 2 Email>"
+	And there is Rave Study  "<Study A>"
+    And there is Rave Site  "<Site A>"
+	And I have assigned to the "<Study A>" 
+	And I have assigned to the "<Site A>"
+	And I am not connected to iMedidata
+	And I have eLearning course created
+	And I have eLearning course assigned to study "<Study A>" and Role "<EDC Role 1>"
+	And the e-Learning Course has the same UUID in Rave and iMedidata
+	And I start the eLearning course but not completed (test failed)
+	And I navigate to Rave Study Home page
+	And I see the eLearning Courses section
+	And I see the eLearning Course Status "Incomplete"
+	And I take a screenshot
+	And I log out as Rave user
+   
+   #iMedidata
+	And I log in into iMedidata as Admin User "<iMedidata User 1 ID>"
+	And there is iMedidata Study Group
+	And I creat new iMedidata Study "<Study A>" that is linked to Rave Study "<Study A>"
+	And I creat new iMedidata Site "<Site A>" that is linked to Rave Site "<Site A>"	
+	And I invite a new iMedidata user with email "<iMedidata New User 2 Email>" to Study "<Study A>", Site "<Site A>"
+	And I assign Module App "<Modules App>" with role "<Modules Role 1>" to new iMedidata user.
+    And the new iMedidata Username is "<iMedidata User 2 ID>"
+	And I logout of iMedidata
+	
+	And I login to iMdidata as "<iMedidata User 2 ID>"
+	And I accept the invitation
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to Rave as "Defuser" user
+	And I navigate to User Admin
+	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I verify that the user "<iMedidata User 2 ID>" is displayed
+	And I take a screenshot
+	And I logout of Rave
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I assign "<iMedidata User 2 ID>" to study "<Study A>" with app "<Edc App>" with role "<EDC Role 1>" requiring eLearing Course
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to iMedidata as "<iMedidata User 2 ID>"
+	And I see "<eLearnig Course> is required for access" text
+	And I do not see the link "<Modules App>" associated with study "<Study A>"
+	And I do not see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the eLearning Course name "<eLearning Course>" to start the course
+	When I complete the eLearning course
+	Then I should be on the iMedidata home page
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I should see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page with Status "Incomplete"
+    And I take a screenshot
+    And I navigate to "User Administration" Module
+    And I search for user "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I go to the User Details page for user "<iMedidata User 2 ID>"
+    And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
+    And I see elearning course "<eLearning Course>" on eLearning section
+	And I verify that the status of the eLearning course is "Completed"
+	And I take a screenshot
+
+
+	@MCC42822-01
+
+@Rave 2013.2.0
+@MCC2.7.1.3-05-5
+@Validation
+Scenario: When an eLearning course that is assigned to a user in Rave with Status "Incomplete" is moved from Rave to iMedidata 
+          and the course has the same UUID in Rave and iMedidata,and course has been overrided in iMedidata, then user should not
+		  take the eLearning course more than 1 time.
+		 
+
+  #Rave	
+	Given I am a Rave User
+	And I am logged in to Rave
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<Rave User Name 1>"
+	And my Email is "<iMedidata User 2 Email>"
+	And there is Rave Study  "<Study A>"
+    And there is Rave Site  "<Site A>"
+	And I have assigned to the "<Study A>" 
+	And I have assigned to the "<Site A>"
+	And I am not connected to iMedidata
+	And I have eLearning course created
+	And I have eLearning course assigned to the "<Study A>" and Role "<EDC Role 1>"
+	And the e-Learning Course has the same UUID in Rave and iMedidata
+	And I start the eLearning course but not completed
+	And I navigate to "User Administration" Module
+    And I search for user "<Rave User Name 1>"
+    And I go to the User Details page for user "<Rave User Name 1>"	
+	And the "Override" check box is NOT checked in the eLearning Course section
+	And I see elearning course status is "Incomplete" on eLearning section
+	And I take a screenshot
+	When I select link "Home"
+	Then I should be on the eLearning Home page
+	And I take a screenshot
+	And I log out as Rave user
+  
+   #iMedidata
+	And I log in into iMedidata as Admin User "<iMedidata User 1 ID>"
+	And there is iMedidata Study Group
+	And I creat new iMedidata Study "<Study A>" that is linked to Rave Study "<Study A>"
+	And I creat new iMedidata Site "<Site A>" that is linked to Rave Site "<Site A>"	
+	And I invite a new iMedidata user with email "<iMedidata New User 2 Email>" to Study "<Study A>", Site "<Site A>"
+	And I assign Module App "<Modules App>" with role "<Modules Role 1>" to new iMedidata user.
+    And the new iMedidata Username is "<iMedidata User 2 ID>"
+	And I logout of iMedidata
+	
+	And I login to iMdidata as "<iMedidata User 2 ID>"
+	And I accept the invitation
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to Rave as "Defuser" user
+	And I navigate to User Admin
+	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I verify that the user "<iMedidata User 2 ID>" is displayed
+	And I take a screenshot
+	And I logout of Rave
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I assign "<iMedidata User 2 ID>" to study "<Study A>" with app "<Edc App>" with role "<EDC Role 1>" requiring eLearing Course
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to Rave as "Defuser" user
+	And I navigate to User Admin
+	And I search for User "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I verify that the user "<iMedidata User 2 ID>" is not displayed
+	And I take a screenshot
+	And I logout of Rave	
+	
+	And I login to iMedidata as "<iMedidata User 2 ID>"
+	And I see "<eLearnig Course> is required for access" text
+	And I do not see the link "<Modules App>" associated with study "<Study A>"
+	And I do not see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I logout of iMedidata	
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I navigate to study "<Study A>"
+	And I search for User "<iMedidata User 2 ID>"
+	And I select Course under eLearning
+	And I check the Override checkbox
+	And I provide Reason / Training Date
+	And I take a screenshot
+	And I select button "Save"
+	And I logout of iMedidata	
+	
+	When I login to iMedidata as "<iMedidata User 2 ID>"
+	Then I should be on the iMedidata home page
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I should see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page
+    And I take a screenshot
+    And I navigate to "User Administration" Module
+    And I search for user "<iMedidata User 2 ID>" Authenticator "iMedidata"
+	And I go to the User Details page for user "<iMedidata User 2 ID>"
+    And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
+    And I see elearning course status is "Incomplete" on eLearning section
+	And I verify that the "Override" check box is checked
+	And I take a screenshot
+
+
+
+		#******************************************** @MCC42822-02 ****************************************
+
+@MCC42822-02
+@Rave 2013.2.0
+@MCC2.7.1.3-06
+@Validation
+Scenario:  When an eLearning course with Status "Not Started" is assigned to a user in Rave and is copied from Rave to iMedidata
+           and the course has the same UUID in Rave and iMedidata, and then if the course is overriden in iMedidata then
+		   the user should not have to take the course in Rave.
+           Note: This is what will happen when eLearning is copied from Rave to iMedidata using TCP.
+		 
+
+
+ #Rave	
+	Given I am a Rave User
+	And I am logged in to Rave
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<Rave User Name 1>"
+	And my Email is "<Rave User 1 Email>"
+	And there is Rave Study  "<Study A>"
+    And there is Rave Site  "<Site A>"
+	And I am assigned to Study "<Study A>" 
+	And I am assigned to Site "<Site A>"
+	And I am not connected to iMedidata
+	And I have eLearning course created
+	And I have eLearning course assigned to Study "<Study A>" and Role "<EDC Role 1>"
+	And the e-Learning Course has the same UUID in Rave and iMedidata
+	And the "Override" check box is NOT checked for the eLearning Course in the User details page
+	And I take a screenshot
+	And I navigate to Rave Home page
+	And I see the "<Study A>" with (eLearning Required) text
+	And I see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC.
+	    For more help accessing eLearning courses, click on the Rave Help link above'
+	And I see the eLearning Course Status "Not Started"
+	And I am not on the Rave Study Site Home page
+	And I take a screenshot
+	And I logout as Rave user
+  
+    
+#iMedidata
+	And I receive account activation email
+    And I activate invited New User "<iMedidata User 2 ID>"
+	And I log in to iMedidata as invited New User "<iMedidata User 2 ID>"
+	And I see "<eLearnig Course> is required for access" 
+	And I do not see the link "<Modules App>" associated with study "<Study A>"
+	And I do not see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I navigate to study "<Study A>"
+	And I search for User "<iMedidata User 2 ID>"
+	And I select Course under eLearning
+	And I check the Override checkbox
+	And I provide Reason / Training Date
+	And I take a screenshot
+	And I select button "Save"
+	And I logout of iMedidata
+	
+	When I login to iMedidata as "<iMedidata User 2 ID>"
+	Then I should be on the iMedidata home page
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I should see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page
+
+	And I navigate to User Administration Module
+	And I search for the iMedidata User "<iMedidata User 2 ID>"
+	And I navigate to the User Details page
+	And I see the eLearning Courses section with Status "Not Started"
+	And I see the "Override" check box is checked for the eLearning Course
+	And I take a screenshot
+
+@MCC42822-02
+
+@Rave 2013.2.0
+ @MCC2.7.1.3-06-1 
+@Validation
+Scenario: When an eLearning course with Status "Incomplete" that is assigned to a user in Rave is copied from Rave to iMedidata
+          and the course has the same UUID in Rave and iMedidata,then if the course is copleted and pass in iMedidata then the user should
+		  not have to take the course in Rave.  Note: This is what will happen when eLearning is copied from Rave to iMedidata using TCP.
+		 
+
+
+ #Rave	
+    Given I am a Rave User
+	And I am logged in to Rave
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<Rave User Name 1>"
+	And my Email is "<Rave User 1 Email>"
+	And there is Rave Study  "<Study A>"
+    And there is Rave Site  "<Site A>"
+	And I am assigned to "<Study A>" 
+	And I am assigned to "<Site A>"
+	And I am not connected to iMedidata
+	And I have eLearning course assigned to "<Study A>" and Role "<EDC Role 1>"
+	And the e-Learning Course has the same UUID in Rave and iMedidata
+	And I have started the eLearning course BUT not completed
+	And I take a screenshot
+	And I select link "Home"
+	And I should see (eLearning Required) for "<Study A>"
+	And I see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC. For more help accessing eLearning courses, click on the Rave Help link above'
+	And I verify that eLearning Course Status is "Incomplete"
+	And I take a screenshot
+	And I navigate to "User Administration" Module
+    And I search for user "<Rave User Name 1>"
+    And I go to the User Details page for user "<Rave User Name 1>"
+    And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
+    And I verify from the eLearning section that the Status is "Incomplete" for eLearning course "<Course 1>"
+    And I take a screenshot
+	And I log out as Rave user
+  
+
+
+#iMedidata
+	And I receive account activation email
+    And I activate invited New User "<iMedidata User 1 ID>"
+	And I log in to iMedidata as invited New User "<iMedidata User 1 ID>"
+	And I see "<eLearnig Course> is required for access" 
+	And I do not see the link "<Modules App>" associated with study "<Study A>"
+	And I do not see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	When I take the course in iMedata and complete the course
+	Then I should be on the iMedidata Home page 
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I should see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page
+	And I navigate to User Administration Module
+	And I search for the iMedidata User "<iMedidata User 1 ID>"
+	And I navigate to the User Details page
+	And I see the eLearning Courses section
+	And I see the eLearning Course status is "Completed" 
+	And I take a screenshot
+
+	@MCC42822-02
+@Rave 2013.2.0
+@MCC2.7.1.3-06-2 
+@Validation
+Scenario: When an eLearning course with Status "Not Started"that is assigned to a user in Rave is copied from Rave to iMedidata
+          and the course has the same UUID in Rave and iMedidata,then if the course is completed in iMedidata then the user should
+		  not have to take the course in Rave.  Note: This is what will happen when eLearning is copied from Rave to iMedidata using TCP.
+		 
+
+
+ #Rave	
+	Given I am a Rave User
+	And I am logged in to Rave
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<Rave User Name 1>"
+	And my Email is "<Rave User 1 Email>"
+	And there is Rave Study  "<Study A>"
+    And there is Rave Site  "<Site A>"
+	And I am assigned to "<Study A>" 
+	And I am assigned to "<Site A>"
+	And I am not connected to iMedidata
+	And I have eLearning course assigned to "<Study A>" and Role "<EDC Role 1>"
+	And the e-Learning Course has the same UUID in Rave and iMedidata
+	And I have Not Started the eLearning course
+	And I select link "Home"
+	And I should see (eLearning Required) for "<Study A>"
+	And I see message 'You must complete the eLearning course(s) listed below in order to gain access to the corresponding studies in Rave EDC. For more help accessing eLearning courses, click on the Rave Help link above'
+	And I verify that eLearning Course Status is "Not Started"
+	And I take a screenshot
+	And I navigate to "User Administration" Module
+    And I search for user "<Rave User Name 1>"
+    And I go to the User Details page for user "<Rave User Name 1>"
+    And I see assigned EDC role "<EDC Role 1>" associated with study "<Study A>"
+    And I verify from the eLearning section that the Status is "Not Started" for eLearning course "<Course 1>"
+    And I take a screenshot
+	And I log out as Rave user
+  
+   
+
+#iMedidata
+	And I receive account activation email
+	And I activate invited New User "<iMedidata User 1 ID>"
+	And I log in into iMedidata as invited New User "<iMedidata User 1 ID>"
+	And I see "<eLearnig Course> is required for access" 
+	And I do not see the link "<Modules App>" associated with study "<Study A>"
+	And I do not see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	When I take the course and pass in iMedidata
+	Then I am on iMedidata Home page 
+	And I accept the invitation
+	And I should be on the iMedidata home page
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I should see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I follow a "<Modules App>" associated with study "<Study A>"
+	And I am on Rave Study Site Home page
+	And I do not see the required eLearning section
+	And I take a screenshot
+	And I navigate to User Administration Module
+	And I search for the iMedidata User "<iMedidata User 1 ID>"
+	And I navigate to the User Details page
+	And I see the eLearning Courses section
+	And I see the eLearning Course status is "Completed" 
+	And I take a screenshot
+
+	
+
+
+@MCC42822-02
+@Rave 2013.2.0
+@MCC2.7.1.3-06-3
+@Validation
+Scenario: When an eLearning course with Status "Incompete" that is assigned to a user in Rave is copied from Rave to iMedidata
+	and the course has the same UUID in Rave and iMedidata,then if the course is overrided in iMedidata then the user should
+	not have to take the course in Rave.  Note: This is what will happen when eLearning is copied from Rave to iMedidata using TCP.
+
+ #Rave	
+	 Given I am a Rave User
+	And I am logged in to Rave
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<Rave User Name 1>"
+	And there is Rave Study  "<Study A>"
+    And there is Rave Site  "<Site A>"
+	And I have assigned to the "<Study A>" 
+	And I have assigned to the "<Site A>"
+	And I am not connected to iMedidata
+	And I have eLearning course assigned to Study "<Study A>" and Role "<EDC Role 1>"
+	And the e-Learning Course has the same UUID in Rave and iMedidata
+	And I see the eLearning course status as "Not Started"
+	And I start the e-Learning course BUT not completed
+	And I see the Status of the eLearning course is "Incomplete"
+    And the "Override" check box is NOT checked for the eLearning Course in the User details page
+	And I take a screenshot
+	And I navigate to Rave Home page
+	And I see the "<Study A>" with (eLearning Required) text
+	And I see the eLearning Course Status "Incomplete"
+	And I take a screenshot
+	And I am not on the Rave Study Site Home page
+	And I log out as Rave user
+
+  
+    
+#iMedidata
+
+	And I receive account activation email
+    And I activate invited New User "<iMedidata User 2 ID>"
+	And I log in to iMedidata as invited New User "<iMedidata User 2 ID>"
+	And I see "<eLearnig Course> is required for access" 
+	And I do not see the link "<Modules App>" associated with study "<Study A>"
+	And I do not see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I logout of iMedidata
+	
+	And I login to iMedidata as "<iMedidata User 1 ID>"
+	And I navigate to study "<Study A>"
+	And I search for User "<iMedidata User 2 ID>"
+	And I select Course under eLearning
+	And I check the Override checkbox
+	And I provide Reason / Training Date
+	And I take a screenshot
+	And I select button "Save"
+	And I logout of iMedidata
+	
+	When I login to iMedidata as "<iMedidata User 2 ID>"
+	Then I should be on the iMedidata home page
+	And I should see the link "<Modules App>" associated with study "<Study A>"
+	And I should see the link "<EDC App>" associated with study "<Study A>"
+	And I take a screenshot
+	And I select the link "<EDC App>" associated with study "<Study A>"
+    And I see the "Rave Connection" Page
+    And I enter the Rave password "<Rave Password 1>" for "<Rave User Name 1>"
+    When I follow link "Link Account"
+	Then I should be on the Study Site "<Site A>" page
+    And I should not see the eLearning Home page
+
+	And I navigate to User Administration Module
+	And I search for the iMedidata User "<iMedidata User 2 ID>"
+	And I navigate to the User Details page
+	And I see the eLearning Courses section with Status "Incomplete"
+	And I see the "Override" check box is checked for the eLearning Course
+	And I take a screenshot
+
+	#************************************************************************************

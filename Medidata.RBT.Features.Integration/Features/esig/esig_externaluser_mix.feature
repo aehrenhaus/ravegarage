@@ -78,28 +78,28 @@ Scenario: As an iMedidata user, I can sign a form using the new eSig format afte
 	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
 	And I see the current "|Timestamp|"
 	And I enter username textbox with User ID "<iMedidata User ID>"
-	And I enter password textbox with Password "<iMedidata User Password>"
+	And I enter Password textbox with Password "<iMedidata User Password>"
 	And I click button "eSign"
 	When I click icon "Complete" for form "<Form1>" in subject "<Subject>" 
 	Then I should see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"
-	And I should see the message "DataPage created." on the form level audit for form "<Form2>" in subject "<Subject>"
-	And I take a screenshot 1 of 38
+	And I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"
+	And I take a screenshot 1 of 40
 	And I go back to form "<Form1>"
 	When I click icon "Complete" on "Field 1A" on form "<Form1>" in subject "<Subject>"
 	Then I should see the message "User entered 'data'" on the audit for field "<Field 1A>" on form "<Form1>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the audit for field "<Field 1A>" on form "<Form1>"	in subject "<Subject>"
-	And I take a screenshot 2 of 38
+	And I take a screenshot 2 of 40
 	And I go back to form "<Form1>"
 	When I click icon "Complete" on "Field 2A" on form "<Form1>" in subject "<Subject>"
 	Then I should see the message "User entered 'data'" on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"
 	And I should see the message "User signature succeeded." on the audit for field "<Field 2A>" on form "<Form1>" in subject "<Subject>"	
-	And I take a screenshot 3 of 38		
+	And I take a screenshot 3 of 40		
 
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch11
@@ -115,29 +115,29 @@ Scenario: As an iMedidata user, I can sign a form using the old esig format afte
 	And I select form "<Form2>"
 	And I enter data in field "<Field 1B>" on "<Form2>" in subject "<Subject>"
 	And I enter data in field "<Field 2B>" on "<Form2>" in subject "<Subject>"
-	And I enter username textbox with User ID "<iMedidata User ID>"
-	And I enter password textbox with Password "<iMedidata User Password>"
-	When I click button "Sign"
+	And I enter iMedidata User Name textbox with User ID "<iMedidata User ID>"
+	And I enter Password textbox with Password "<iMedidata User Password>"
+	When I click button "Save"
 	Then I should see icon "Complete" for form "<Form2>" in subject "<Subject>" 
 	And I should see icon "Complete" on "Field 1B" on form "<Form2>" in subject "<Subject>"
 	And I should see icon "Complete" on "Field 2B" on form "<Form2>" in subject "<Subject>"
 	And I should see User's Name and Title
 	And I should see User's date and timezone
-	And I take a screenshot 4 of 38
+	And I take a screenshot 4 of 40
 	When I click icon "Complete" on "Field 1B" on form "<Form2>" in subject "<Subject>"
 	Then I should see the message "User entered 'data'" on the audit for field "<Field 1B>" on form "<Form2>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the audit for field "<Field 1B>" on form "<Form2>"	in subject "<Subject>"
-	And I take a screenshot 5 of 38
+	And I take a screenshot 5 of 40
 	And I go back to form "<Form2>"
 	When I click icon "Complete" on "Field 2B" on form "<Form2>" in subject "<Subject>"
 	Then I should see the message "User entered 'data'" on the audit for field "<Field 2B>" on form "<Form2>" in subject "<Subject>"
 	And I should see the message "User signature succeeded." on the audit for field "<Field 2B>" on form "<Form2>" in subject "<Subject>"	
-	And I take a screenshot 6 of 38		
+	And I take a screenshot 6 of 40		
 	And I go back to form "<Form2>"
-	When I click icon "Complete" on "Form" on form "<Form2>" in subject "<Subject>"
+	When I click icon "Complete" on form "<Form2>" in subject "<Subject>"
 	And I should see the message "DataPage created" on the audit for form "<Form2>" in subject "<Subject>"	
 	And I should see the message "User signature succeeded." on the audit for form "<Form2>" in subject "<Subject>"	
-	And I take a screenshot 7 of 38
+	And I take a screenshot 7 of 40
 		
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch11
@@ -153,14 +153,14 @@ Scenario: As an iMedidata user signing with the old esig format with a bad usern
 	And I select form "<Form2>"
 	And I enter data in field "<Field 1B>" on "<Form2>" in subject "<Subject>"
 	And I enter data in field "<Field 2B>" on "<Form2>" in subject "<Subject>"
-	And I enter iMedidata User Name "<iMedidata User ID>xx" and Password "< iMedidata User Password>" on "<Form2>" in subject "<Subject>"
+	And I enter iMedidata User Name "<iMedidata User ID>xx" and Password "<iMedidata User Password>" on "<Form2>" in subject "<Subject>"
 	When I click button "<Save>"
-	Then I should see the text "Signature attempt failed "
+	Then I should see the text "Signature attempt failed"
 	And I should see icon "Incomplete" for form "<Form2>" in subject "<Subject>" 
 	And I should see icon "Requires Signature" on "Field 1B" on form "<Form2>" in subject "<Subject>"
 	And I should see icon "Requires Signature" on "Field 2B" on form "<Form2>" in subject "<Subject>"
-	And I should see icon "Never Touched" on form "<Form2>" in subject "<Subject>"
-	And I take a screenshot 8 of 38
+	And I should see icon "Never Touched" on "Sign 2" on form "<Form2>" in subject "<Subject>"
+	And I take a screenshot 8 of 40
 
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch11
@@ -176,14 +176,14 @@ Scenario: Outline: As an iMedidata user signing with the old esig format with a 
 	And I select form "<Form2>"
 	And I enter data in field "<Field 1B>" on "<Form2>" in subject "<Subject>"
 	And I enter data in field "<Field 2B>" on "<Form2>" in subject "<Subject>"
-	And I enter iMedidata User Name "<iMedidata User ID>" and Password "< iMedidata User Password>xx" on "<Sign2>" in subject "<Subject>"
+	And I enter iMedidata User Name "<iMedidata User ID>" and Password "<iMedidata User Password>xx" on "<Sign 2>" in subject "<Subject>"
 	When I click button "<Save>"
 	Then I should see the text "Signature attempt failed"
 	And I should see icon "Incomplete" for form "<Form2>" in subject "<Subject>" 
 	And I should see icon "Requires Signature" on "Field 1B" on form "<Form2>" in subject "<Subject>"
 	And I should see icon "Requires Signature" on "Field 2B" on form "<Form2>" in subject "<Subject>"
-	And I should see icon "Never Touched" on form "<Form2>" in subject "<Subject>"
-	And I take a screenshot 9 of 38
+	And I should see icon "Never Touched" on "Sign 2" on form "<Form2>" in subject "<Subject>"
+	And I take a screenshot 9 of 40
 	
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch11
@@ -199,20 +199,20 @@ Scenario: As an iMedidata user that collects 3 failed signature attempts on a fo
 	And I select form "<Form2>"
 	And I enter data in field "<Field 1B>" on "<Form2>" in subject "<Subject>"
 	And I enter data in field "<Field 2B>" on "<Form2>" in subject "<Subject>"
-	And I enter username textbox with User ID "<iMedidata User ID>"
-	And I enter password textbox with Password "<iMedidata User Password>xx"
+	And I enter iMedidata User Name textbox with User ID "<iMedidata User ID>"
+	And I enter Password textbox with Password "<iMedidata User Password>xx"
 	When I click the button "Save"
 	Then I should see the text "Signature attempt failed"
-	And I enter username textbox with User ID "<iMedidata User ID>"
-	And I enter password textbox with Password "<iMedidata User Password>xx"
+	And I enter iMedidata User Name textbox with User ID "<iMedidata User ID>"
+	And I enter Password textbox with Password "<iMedidata User Password>xx"
 	When I click the button "Save"
 	Then I should see the text "Signature attempt failed"
-	And I enter username textbox with User ID "<iMedidata User ID>"
-	And I enter password textbox with Password "<iMedidata User Password>xx"
+	And I enter iMedidata User Name textbox with User ID "<iMedidata User ID>"
+	And I enter Password textbox with Password "<iMedidata User Password>xx"
 	When I click the button "Save"
 	Then I should see page "iMedidata Login Page"
 	And I should see text "Welcome to iMedidata"
-	And I take a screenshot 10 of 38
+	And I take a screenshot 10 of 40
 
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -228,7 +228,7 @@ Scenario: As an iMedidata user that collects 5 failed signature attempts on a fo
 	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
-	When I click button "Sign And Save"
+	When I click button "Sign and Save"
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -236,29 +236,29 @@ Scenario: As an iMedidata user that collects 5 failed signature attempts on a fo
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<iMedidata User Password>xx"
 	When I click button "eSign"
-	Then I should see the message "You tried to sign with a username and password that is not recognized" on the pop up on the pop up
+	Then I should see the message "You tried to sign with a username and password that is not recognized" on the pop up
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<iMedidata User Password>xx"
 	When I click button "eSign"
-	Then I should see the message "You tried to sign with a username and password that is not recognized" on the pop up on the pop up
+	Then I should see the message "You tried to sign with a username and password that is not recognized" on the pop up
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<iMedidata User Password>xx"
 	When I click button "eSign"
-	Then I should see the message "You tried to sign with a username and password that is not recognized" on the pop up on the pop up
+	Then I should see the message "You tried to sign with a username and password that is not recognized" on the pop up
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<iMedidata User Password>xx"
 	When I click button "eSign"
-	Then I should see the message "You tried to sign with a username and password that is not recognized" on the pop up on the pop up
-	And I take a screenshot 11 of 38
+	Then I should see the message "You tried to sign with a username and password that is not recognized" on the pop up
+	And I take a screenshot 11 of 40
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<iMedidata User Password>xx"
 	When I click button "eSign"
 	Then I should see pop up "Confirm" 
-	And I take a screenshot 12 of 38
+	And I take a screenshot 12 of 40
 	When I click "Leave Page"
 	Then I should see page "iMedidata Login Page"
 	And I should see text "Welcome to iMedidata"
-	And I take a screenshot 13 of 38
+	And I take a screenshot 13 of 40
 	
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch11
@@ -271,8 +271,8 @@ Scenario:When an iMedidata user with batch sign permissions creates a subject, t
 	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	When I create a subject
-	Then I should see button "Sign And Save"
-	And I take a screenshot 14 of 38
+	Then I should see button "Sign and Save"
+	And I take a screenshot 14 of 40
 
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -285,7 +285,7 @@ Scenario: When an imedidata user clicks the  "Sign and Save" button on the subje
 	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
-	When I click button "Sign And Save"
+	When I click button "Sign and Save"
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -294,7 +294,7 @@ Scenario: When an imedidata user clicks the  "Sign and Save" button on the subje
 	And I should see textbox with label "Password"
 	And I should see button with label "eSign"
 	And I see message "Some of the Case Report Forms require old style signatures. Case Report Forms with old style signatures can not be signed in batch."
-	And I take a screenshot 15 of 38
+	And I take a screenshot 15 of 40
 
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch11
@@ -309,8 +309,8 @@ Scenario Outline: When an iMedidata user with batch sign permissions creates a s
 	And I create a subject
 	And I select link "Grid View"
 	When I select link "All"
-	Then I should see button "Sign And Save"
-	And I take a screenshot 16 of 38
+	Then I should see button "Sign and Save"
+	And I take a screenshot 16 of 40
 	
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -325,7 +325,7 @@ Scenario: When an iMedidata user clicks the "Sign and Save" button on the Grid V
 	And I create a subject
 	And I select link "Grid View"
 	And I select link "All"
-	When I click button "Sign And Save"
+	When I click button "Sign and Save"
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -333,11 +333,11 @@ Scenario: When an iMedidata user clicks the "Sign and Save" button on the Grid V
 	And I should see textbox with label "Username"
 	And I should see textbox with label "Password"
 	And I should see button with label "eSign"
-	And I see message "Some of the Case Report Forms require old style signatures. Case Report Forms with old style signatures can not be signed in batch."
-	And I take a screenshot 17 of 38
+	And I see message "Some of the selected Case Report Forms require old style signatures. Case Report Forms with old style signatures can not be signed in batch."
+	And I take a screenshot 17 of 40
 
 #------------------------------------------------------------------------------------------------------------
-@release_564_patch12
+@release_564_2013.2.0
 @PB_US2.5.4.11
 @Validation
 Scenario: iMedidata user successfully batch signs and adds other forms to the subject in the calendar view via Subject Administration
@@ -357,7 +357,7 @@ Scenario: iMedidata user successfully batch signs and adds other forms to the su
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
 	And I click button "<Save>"
 	And I go to the subject homepage
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -365,44 +365,46 @@ Scenario: iMedidata user successfully batch signs and adds other forms to the su
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<iMedidata User Password>"
 	When I click button "eSign"
-	Then I should see text "Signature attempt was successful" on the subject homepage
+	Then I should see text "Your signature is being applied. You may continue working on other subjects." on the subject homepage
+	And I take a screenshot 18 of 40
+	And I wait for 20 seconds and Refresh the subject page
 	And I should see the icon "Complete" for form "<Form1>" in subject "<Subject>" 
 	And I should see the icon "Requires Signature" for form "<Form2>" in subject "<Subject>" 
-	And I take a screenshot 18 of 38
+	And I take a screenshot 19 of 40
 	And I follow link "Subject Administration"
 	And I select "Form1" from dropdown "Add Form"
 	And I click icon "Add" next to dropdown "Add Form"
 	And I select "Form2" from dropdown "Add Form"
-	And I click icon "Add" next to dopdown "Add Form"
+	And I click icon "Add" next to dropdown "Add Form"
 	And I click on button "Save"
 	When I navigate to the subject homepage
 	Then I should see form "<Form1>" added to the subject with no status icon
 	And I should see form "<Form1>" on the subject with icon "Complete"
 	And I should see form "<Form2>" added to the subject with no status icon
 	And I should see form "<Form2>" on the subject with icon "Requires Signature"
-	And I take a screenshot 19 of 38
+	And I take a screenshot 20 of 40
 	When I follow link "Form1" in subject with no status icon 
 	Then I should not see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"
-	And I take a screenshot 20 of 38	
+	And I take a screenshot 21 of 40	
 	And I navigate to the subject homepage
 	When I follow link "Form1" in subject with icon "Complete"
 	Then I should see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"	
-	And I take a screenshot 21 of 38
+	And I take a screenshot 22 of 40
 	And I navigate to the subject homepage	
 	When I follow link "Form2" in subject with no status icon 
 	Then I should not see the message "User signature succeeded." on the form level audit for form "<Form2>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form2>" in subject "<Subject>"
-	And I take a screenshot 22 of 38	
+	And I take a screenshot 23 of 40	
 	And I navigate to the subject homepage
 	When I follow link "Form2" in subject with icon "Requires Signature"
 	Then I should not see the message "User signature succeeded." on the form level audit for form "<Form2>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form2>" in subject "<Subject>"	
-	And I take a screenshot 23 of 38
+	And I take a screenshot 24 of 40
 
 #------------------------------------------------------------------------------------------------------------
-@release_564_patch12
+@release_564_2013.2.0
 @PB_2.5.4.12
 @Validation
 Scenario: As an iMedidata user, I can successfully batch sign and add other forms to the subject in the grid view via Subject Administration
@@ -424,7 +426,7 @@ Scenario: As an iMedidata user, I can successfully batch sign and add other form
 	And I go to the subject homepage
 	And I click link "Grid View"
 	And I click "All"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -432,15 +434,17 @@ Scenario: As an iMedidata user, I can successfully batch sign and add other form
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<iMedidata User Password>"
 	When I click button "eSign"
-	Then I should see text "Signature attempt was successful" on the subject homepage
+	Then I should see text "Your signature is being applied. You may continue working on other subjects." on the subject homepage
+	And I take a screenshot 25 of 40
+	And I wait for 20 seconds and Refresh the subject page
 	And I should see the icon "Complete" for form "<Form1>" in subject "<Subject>" 
 	And I should see the icon "Requires Signature" for form "<Form2>" in subject "<Subject>" 
-	And I take a screenshot 24 of 38
+	And I take a screenshot 26 of 40
 	And I follow link "Subject Administration"
 	And I select "Form1" from dropdown "Add Form"
 	And I click icon "Add" next to dropdown "Add Form"
 	And I select "Form2" from dropdown "Add Form"
-	And I click icon "Add" next to dopdown "Add Form"
+	And I click icon "Add" next to dropdown "Add Form"
 	And I click on button "Save"
 	When I navigate to the subject homepage
 	And I select link "Grid View"
@@ -448,26 +452,26 @@ Scenario: As an iMedidata user, I can successfully batch sign and add other form
 	And I should see form "<Form1>" on the subject with icon "Complete"
 	And I should see form "<Form2>" added to the subject with no status icon
 	And I should see form "<Form2>" on the subject with icon "Requires Signature"
-	And I take a screenshot 25 of 38
+	And I take a screenshot 27 of 40
 	When I follow link "Form1" in subject with no status icon 
 	Then I should not see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"
-	And I take a screenshot 26 of 38	
+	And I take a screenshot 28 of 40	
 	And I navigate to the subject homepage
 	When I follow link "Form1" in subject with icon "Complete"
 	Then I should see the message "User signature succeeded." on the form level audit for form "<Form1>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form1>" in subject "<Subject>"	
-	And I take a screenshot 27 of 38
+	And I take a screenshot 29 of 40
 	And I navigate to the subject homepage	
 	When I follow link "Form2" in subject with no status icon 
 	Then I should not see the message "User signature succeeded." on the form level audit for form "<Form2>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form2>" in subject "<Subject>"
-	And I take a screenshot 28 of 38	
+	And I take a screenshot 30 of 40	
 	And I navigate to the subject homepage
 	When I follow link "Form2" in subject with icon "Requires Signature"
 	Then I should not see the message "User signature succeeded." on the form level audit for form "<Form2>" in subject "<Subject>"
 	And I should see the message "DataPage created." on the form level audit for form "<Form2>" in subject "<Subject>"	
-	And I take a screenshot 29 of 38
+	And I take a screenshot 31 of 40
 	
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -480,7 +484,7 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
-	When I click button "Sign And Save"
+	When I click button "Sign and Save"
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -489,7 +493,7 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I should see textbox with label "Username"
 	And I should see textbox with label "Password"
 	And I should see button with label "eSign"
-	And I take a screenshot 30 of 38
+	And I take a screenshot 32 of 40
 
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -503,17 +507,17 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
 	And I select link "Grid View"
-	And i select "All"
-	When I click button "Sign And Save"
+	And I select "All"
+	When I click button "Sign and Save"
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
 	And I see the current "|Timestamp|"
-	And I should see text "Some of the Case Report Forms require old style signatures. Case Report Forms with old style signatures can not be signed in batch."
+	And I should see text "Some of the selected Case Report Forms require old style signatures. Case Report Forms with old style signatures can not be signed in batch."
 	And I should see textbox with label "Username"
 	And I should see textbox with label "Password"
 	And I should see button with label "eSign
-	And I take a screenshot 31 of 38
+	And I take a screenshot 33 of 40
 	
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -526,7 +530,7 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
-	When I click button "Sign And Save"
+	When I click button "Sign and Save"
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -535,7 +539,7 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I should see textbox with label "Username"
 	And I should see textbox with label "Password"
 	And I should see button with label "eSign"
-	And I take a screenshot 32 of 38
+	And I take a screenshot 34 of 40
 	
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -548,9 +552,10 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
+	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -558,9 +563,10 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<iMedidata User Password>"
 	And I click button "eSign"
+	And I select form "<Form1>" in folder "<Folder A>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in folder "<Folder A>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in folder "<Folder A>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -569,14 +575,14 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I enter password textbox with Password "<iMedidata User Password>"
 	And I click button "eSign"
 	And I navigate to the subject homepage
-	And I take a screenshot 33 of 38
-	When I click button "Sign And Save"
+	And I take a screenshot 35 of 40
+	When I click button "Sign and Save"
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
 	And I see the current "|Timestamp|"
 	And I should see text "All of the Case Report Forms require old style signatures. Case Report Forms with old style signatures can not be signed in batch."
-	And I take a screenshot 34 of 38
+	And I take a screenshot 36 of 40
 
 #------------------------------------------------------------------------------------------------------------
 @release_564_patch12
@@ -589,9 +595,10 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
+	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -599,9 +606,10 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<iMedidata User Password>"
 	And I click button "eSign"
+	And I select form "<Form1>" in folder "<Folder A>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in folder "<Folder A>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in folder "<Folder A>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -612,14 +620,14 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I navigate to the subject homepage
 	And I select link "Grid View"
 	And I select "All"
-	And I take a screenshot 35 of 38
-	When I click button "Sign And Save"
+	And I take a screenshot 37 of 40
+	When I click button "Sign and Save"
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
 	And I see the current "|Timestamp|"
-	And I should see text "All of the Case Report Forms require old style signatures. Case Report Forms with old style signatures can not be signed in batch."
-	And I take a screenshot 36 of 38
+	And I should see text "All of the selected Case Report Forms require old style signatures. Case Report Forms with old style signatures can not be signed in batch."
+	And I take a screenshot 38 of 40
 
 
 #------------------------------------------------------------------------------------------------------------
@@ -633,9 +641,10 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I select app "<App>"
 	And I select site "<Site A1>" that is in study "<Study A>"
 	And I create a subject
+	And I select form "<Form1>"
 	And I enter data in field "<Field 1A>" on "<Form1>" in subject "<Subject>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in subject "<Subject>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -643,9 +652,10 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I enter username textbox with User ID "<iMedidata User ID>"
 	And I enter password textbox with Password "<iMedidata User Password>"
 	And I click button "eSign"
+	And I select form "<Form1>" in folder "<Folder A>"	
 	And I enter data in field "<Field 1A>" on "<Form1>" in folder "<Folder A>"
 	And I enter data in field "<Field 2A>" on "<Form1>" in folder "<Folder A>"
-	And I click button "Sign And Save"
+	And I click button "Sign and Save"
 	And I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
@@ -654,11 +664,11 @@ Scenario: As an iMedidata user with batch sign permissions, I see a warning mess
 	And I enter password textbox with Password "<iMedidata User Password>"
 	And I click button "eSign"
 	And I navigate to the subject homepage
-	And I take a screenshot 37 of 38
-	When I click button "Sign And Save"
+	And I take a screenshot 39 of 40
+	When I click button "Sign and Save"
 	Then I should see "Pop Up" window
 	And in the window I see "|Reason for Signature|"
 	And I see my "|Name|"
 	And I see the current "|Timestamp|"
 	And I should see text "All of the Case Report Forms require old style signatures. Case Report Forms with old style signatures can not be signed in batch."
-	And I take a screenshot 38 of 38
+	And I take a screenshot 40 of 40

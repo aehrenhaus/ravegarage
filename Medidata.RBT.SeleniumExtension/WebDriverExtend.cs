@@ -14,22 +14,6 @@ namespace Medidata.RBT.SeleniumExtension
 {
 	public static class WebDriver
 	{
-		public static bool TryExecuteJavascript(this RemoteWebDriver driver, string script)
-		{
-			try
-			{
-				driver.ExecuteScript(script);
-			
-			}
-			catch
-			{
-				return false;
-			}
-
-			return true;
-		}
-
-
 		public static long GetPageOffsetX(this RemoteWebDriver driver)
 		{
 			IJavaScriptExecutor js = driver as IJavaScriptExecutor;
@@ -116,6 +100,26 @@ namespace Medidata.RBT.SeleniumExtension
 			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(SeleniumConfiguration.Default.WaitElementTimeout));
 			wait.Until(driver1 => ((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState").Equals("complete"));
 		}
+
+        public static void WaitForElementToCompleteDisplayOrDisplayWithWarning(this RemoteWebDriver driver, By elementBy, By warningBy)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(SeleniumConfiguration.Default.WaitElementTimeout));
+            wait.Until(driver1 => 
+                {
+                    //Check if the element is displayed
+                    IWebElement element = driver.TryFindElementBy(elementBy);
+                    string displayState = element.GetStyle("display");
+
+                    if (String.IsNullOrEmpty(displayState) || displayState.Equals("none"))
+                        return true;
+
+                    //If it is displayed maybe there is a warning, this is expected behavior
+                    if (displayState.Equals("block") && driver.TryFindElementBy(warningBy) != null)
+                            return true;
+
+                    return false;
+                });
+        }
 
         public static void WaitForPageToBeReady(this RemoteWebDriver driver, double timeoutSeconds = 180)
         {
