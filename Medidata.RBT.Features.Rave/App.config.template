@@ -38,9 +38,10 @@
 		UploadTimeout="400"
 		DownloadTimeout="400" 
     SeleniumServerUrl=""
-    RaveConfigurationName="default">
-    
-	</RBTConfiguration>
+    RaveConfigurationName="default"
+    UploadPath="..\..\..\Uploads"
+    DownloadPath="..\..\..\Downloads">
+  </RBTConfiguration>
 
   <unity xmlns="http://schemas.microsoft.com/practices/2010/unity">
     <namespace name="Medidata.RBT"/>

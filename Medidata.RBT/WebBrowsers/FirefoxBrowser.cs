@@ -40,7 +40,7 @@ namespace Medidata.RBT
         {
             _browserCapabilities = DesiredCapabilities.Firefox();
             FirefoxProfile p = GetFirefoxProfile();
-            _browserCapabilities.SetCapability(FirefoxDriver.ProfileCapabilityName, p);
+            _browserCapabilities.SetCapability(FirefoxDriver.ProfileCapabilityName, p.ToBase64String());
         }
 
         private FirefoxProfile GetFirefoxProfile()
