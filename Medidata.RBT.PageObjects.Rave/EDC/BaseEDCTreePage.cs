@@ -22,7 +22,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public IEDCFieldControl FindField(string fieldName, int? record = null)
         {
             WaitForPageLoads();
-            return new DataPageControl(this).FindField(fieldName);
+            return new DataPageControl(this).FindField(fieldName, record);
         }
 
         public BaseEDCPage ClickModify()
