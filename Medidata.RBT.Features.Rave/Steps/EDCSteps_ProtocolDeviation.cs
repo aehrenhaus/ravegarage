@@ -21,11 +21,11 @@ namespace Medidata.RBT.Features.Rave
         /// Add a Protocol Deviation on the field
         /// </summary>
         /// <param name="table">The field information to add Protocol Deviation on and the Protocol Deviation information</param>
-        [StepDefinition(@"I add Protocol Deviation")]
+        [StepDefinition(@"I add protocol deviations")]
         public void IAddProtocolDeviation(Table table)
         {
-            List<ProtocolDeviationModel> pdInfo = table.CreateSet<ProtocolDeviationModel>().ToList();
-            CurrentPage.As<CRFPage>().AddProtocolDeviations(pdInfo);
+            List<MarkingModel> pdInfo = table.CreateSet<MarkingModel>().ToList();
+            CurrentPage.As<CRFPage>().PlaceMarkings(pdInfo, MarkingType.ProtocolDeviation);
         }
 
         /// <summary>
@@ -48,6 +48,20 @@ namespace Medidata.RBT.Features.Rave
         public void IVerifyDeviationExistsInCRF(string pdComponent, string value)
         {
             Assert.IsTrue(CurrentPage.As<CRFPage>().VerifyDeviation(pdComponent, value, true));
+        }
+
+        /// <summary>
+        /// Verify sticky is placed on field
+        /// </summary>
+        /// <param name="message">The message the sticky displays</param>
+        /// <param name="fieldName">The name of the field which contains the sticky</param>
+        [StepDefinition(@"I verify Protocol Deviation with message ""([^""]*)"" is displayed on Field ""([^""]*)""")]
+        public void IVerifyProtocolDeviationWithMessage____IsDisplayedOnField____(string message, string fieldName)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            ResponseSearchModel filter = new ResponseSearchModel { Field = fieldName, Message = message };
+            bool canFind = page.CanFindMarking(filter, MarkingType.ProtocolDeviation);
+            Assert.IsTrue(canFind, "Can't find Protocol Deviation!");
         }
     }
 }

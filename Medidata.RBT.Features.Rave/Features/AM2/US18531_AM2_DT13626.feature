@@ -16,7 +16,7 @@ Given following Report assignments exist
 #And mixed form "Form A" exists
 #And form "Form A" has the following fields from the table below
 #	|Field Name	|VarOID	|Log Data	|Control Type	|Format	|Dictionary |
-#	|Field A	|FIELDA	|			|DropDownList	|$5 	|Yes/No     |
+#	|Field A	|FIELDA	|			|Dropdown   	|$5 	|Yes/No     |
 #	|Field B	|FIELDB	|Checked	|LongText		|$100	|           |
 #	|Field C	|FIELDC	|Checked	|LongText		|$100	|           |
 #And mixed form "Form B" exists

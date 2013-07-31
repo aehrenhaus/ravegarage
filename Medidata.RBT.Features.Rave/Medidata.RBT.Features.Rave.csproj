@@ -622,6 +622,7 @@
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
     <Compile Include="Steps\AuditPageSteps.cs" />
+    <Compile Include="Steps\EDCSteps_Comment.cs" />
     <Compile Include="Steps\EDCSteps_ProtocolDeviation.cs" />
     <Compile Include="Steps\FileSteps.cs" />
     <Compile Include="Steps\CacheFlushSteps.cs" />

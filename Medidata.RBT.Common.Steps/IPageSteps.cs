@@ -141,12 +141,16 @@ namespace Medidata.RBT.Common.Steps
 		}
 
 		/// <summary>
-		/// Navigate to an other page.
+		/// Navigate to another page.
 		/// 
-		/// Unlike "I select link", the argument here may not be a concrete link text. nIt can be some ame at business level.
-		/// And only the know how to implement it.
-		/// For example "I navigate to Home" does not require there is a "Home" link. but the page knows that Home means the hyperlink image on the left top corner.
-		/// 
+		/// Unlike "I select link", the intention of this step is to allow direct navigation to a portion of Rave.
+        /// For example, if you were to have:
+        /// And I select link "Configuration"
+        /// And I select link "Other Settings"
+        /// And I select link "Deviations"
+        /// 
+        /// You can instead have:
+        /// And I navigate to "Deviations"
 		/// </summary>
         /// <param name="identifier"></param>
         [StepDefinition(@"I navigate to ""([^""]*)"" module")]

@@ -8,11 +8,21 @@ using Medidata.RBT.SeleniumExtension;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
+    //TODO: Remove this class and roll it into BaseEDCFieldControl
+    //Anything that you want to add to this class will be better suited in NonLabFieldControl
+    [Obsolete]
     public class PortraitLogField
-		: BaseEDCFieldControl
+        : BaseEDCFieldControl
     {
         #region CLASS DATA
         private readonly string m_fieldName;
+        public override IEnumerable<IWebElement> ResponseTables
+        {
+            get
+            {
+                throw new NotSupportedException();
+            }
+        }
         #endregion
 
         #region CONSTRUCTORS
@@ -26,18 +36,18 @@ namespace Medidata.RBT.PageObjects.Rave
 
         #region FUNCTIONS
         #region INTERFACE IEDCLogFieldControl
-        public override bool IsElementFocused(ControlType type, int position) 
+        public override bool IsElementFocused(ControlType type, int position)
         {
             IWebElement currentElement = Page.Browser.TryFindElementBy(b =>
                 {
-					return Page.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
+                    return Page.GetFocusElement().FindElement(By.XPath(".[@id != '']"));
                 }, true, 30);
             IWebElement element = GetElementInRowByLabel(type, position);
 
             return currentElement.GetAttribute("ID") == element.GetAttribute("ID");
         }
 
-		public override void FocusElement(ControlType type, int position) 
+        public override void FocusElement(ControlType type, int position)
         {
             var element = GetElementInRowByLabel(type, position);
             this.Page.SetFocusElement(element);
@@ -59,7 +69,7 @@ namespace Medidata.RBT.PageObjects.Rave
             //In the case where ESigPage is missing the username textbox - ESigPage just converges into Text
             if (type == ControlType.ESigPage)
                 altSuffix = ControlTypeInformation.GetSuffixByControlType(ControlType.Text);
-            
+
             return GetElementBySuffixRow(this.m_fieldName, suffix, altSuffix);
         }
         private IWebElement GetElementBySuffixRow(string label, params string[] suffixParams)
@@ -69,10 +79,11 @@ namespace Medidata.RBT.PageObjects.Rave
                 .Where(item => !string.IsNullOrEmpty(item))
                 .ToArray();
 
-            var leftSideTd = Page.Browser.TryFindElementBy(w => {
+            var leftSideTd = Page.Browser.TryFindElementBy(w =>
+            {
                 var tDs = w.FindElements(By.XPath("//td[@class='crf_rowLeftSide']"));
                 var tD = tDs.FirstOrDefault(x =>
-                    x.Text.Split(new [] { "\r\n" }, StringSplitOptions.None)[0] == label);
+                    x.Text.Split(new[] { "\r\n" }, StringSplitOptions.None)[0] == label);
                 return tD;
             });
 
@@ -92,14 +103,14 @@ namespace Medidata.RBT.PageObjects.Rave
                 if (result != null)
                     break;
             }
-            
+
             return result;
         }
 
 
-      
+
         #endregion
 
 
-	}
+    }
 }

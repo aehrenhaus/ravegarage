@@ -43,12 +43,13 @@ namespace Medidata.RBT.PageObjects.Rave.PDF
             if (pageIndex == count)
                 return false;
 
-            while (!pageLinks[pageIndex].Text.Equals("...") && int.Parse(pageLinks[pageIndex].Text) <= lastValue && pageIndex <= count)
+            while (!(pageLinks[pageIndex].Text.Equals("...") || pageLinks[pageIndex].Text.Equals(">>")) 
+                && int.Parse(pageLinks[pageIndex].Text) <= lastValue && pageIndex <= count)
             {
                 pageIndex++;
             }
 
-            if (pageLinks[pageIndex].Text.Equals("..."))
+            if (pageLinks[pageIndex].Text.Equals("...") || pageLinks[pageIndex].Text.Equals(">>"))
             {
                 lastValue = int.Parse(pageLinks[pageIndex - 1].Text);
                 pageLinks[pageIndex].Click();

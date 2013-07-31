@@ -4,6 +4,7 @@ using Medidata.RBT.SeleniumExtension;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class SignatureBox : RavePageBase
@@ -18,13 +19,12 @@ namespace Medidata.RBT.PageObjects.Rave
             //If 1 is found it must be the password box
             //If 2 are found they both user and password are necessary
             //We get the both at the same time so that we don't encounter the default wait every time the user box doesn't exist.
-            List<IWebElement> userAndPasswordBox = Browser.TryFindElementsBy(By.XPath("*//input[@id = 'TwoPart' or @id='SignatureBox']")).ToList();
+            List<IWebElement> userAndPasswordBox = Browser.TryFindElementsBy(By.XPath("*//input[contains(@id,'TwoPart') or @id='SignatureBox' or @type='password']")).ToList();
 
-
-            UsernameBox = userAndPasswordBox.Count == 2 ? userAndPasswordBox.FirstOrDefault(x => x.GetAttribute("id") == "TwoPart") : null;
-            PasswordBox = userAndPasswordBox.Count == 2 ? userAndPasswordBox.FirstOrDefault(x => x.GetAttribute("id") == "SignatureBox") : userAndPasswordBox[0];
-            ValidateSignAndSave = Browser.TryFindElementById("ValidateSignAndSave");
-
+            UsernameBox = userAndPasswordBox.Count == 2 ? userAndPasswordBox.FirstOrDefault(x => x.GetAttribute("id").EndsWith("TwoPart")) : null;
+            PasswordBox = userAndPasswordBox.Count == 2 ? userAndPasswordBox.FirstOrDefault(x => x.GetAttribute("id").Equals("SignatureBox")
+                || x.GetAttribute("type").Equals("password")) : userAndPasswordBox[0];
+            ValidateSignAndSave = Browser.TryFindElementById("ValidateSignAndSave", isWait: false);
 		}
 
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
@@ -36,12 +36,13 @@ namespace Medidata.RBT.PageObjects.Rave
         public IWebElement PasswordBox { get; private set; }
         public IWebElement ValidateSignAndSave { get; private set; }
 
-		public void Sign(string userName, string password)
+		public void Sign(User user)
 		{
             if(UsernameBox != null)
-                UsernameBox.EnhanceAs<Textbox>().SetText(userName);
-			PasswordBox.EnhanceAs<Textbox>().SetText(password);
-			ValidateSignAndSave.Click();
+                UsernameBox.EnhanceAs<Textbox>().SetText(user.UniqueName);
+            PasswordBox.EnhanceAs<Textbox>().SetText(user.Password);
+            if(ValidateSignAndSave != null)
+                ValidateSignAndSave.Click();
             Browser.WaitForElementToCompleteDisplayOrDisplayWithWarning(By.Id("dialog"), By.ClassName("oddWarning"));
 		}
 

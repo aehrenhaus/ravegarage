@@ -87,12 +87,12 @@ Scenario: PB_US11305_DT10514_01 As an EDC user, I have a partially locked lab fo
 		| Field            | Data              | Control Type |
 		| Subject Number   | {RndNum<num1>(5)} | textbox      |
 		| Subject Initials | SUB               | textbox      |
-		| Pregancy Status  | NoREGAQT          | dropdownlist |
+		| Pregancy Status  | NoREGAQT          | Dropdown     |
 	And I select Form "Visit Date" in Folder "Visit 1"
 	And I enter data in CRF and save
 		| Field | Data         | Control Type |
 		| Age   | 22           | text         |
-		| Sex   | FemaleREGAQT | dropdownlist |
+		| Sex   | FemaleREGAQT | Dropdown     |
 	And I select Form "Hematology" in Folder "Visit 2"
 	And I choose "Mediflex Local Lab 1" from "Lab"
 	And I enter data in CRF and save
@@ -135,12 +135,12 @@ Scenario: PB_US11305_DT10514_02 As an EDC user, I have a partially locked lab fo
 		| Field            | Data              | Control Type |
 		| Subject Number   | {RndNum<num1>(5)} | textbox      |
 		| Subject Initials | SUB               | textbox      |
-		| Pregancy Status  | NoREGAQT          | dropdownlist |
+		| Pregancy Status  | NoREGAQT          | Dropdown     |
 	And I select Form "Visit Date" in Folder "Visit 1"
 	And I enter data in CRF and save
 		| Field | Data         | Control Type |
 		| Age   | 22           | text         |
-		| Sex   | FemaleREGAQT | dropdownlist |
+		| Sex   | FemaleREGAQT | Dropdown     |
 	And I select Form "Hematology" in Folder "Visit 2"
 	And I choose "Mediflex Local Lab 1" from "Lab"
 	And I enter data in CRF and save
@@ -183,12 +183,12 @@ Scenario: PB_US11305_DT10514_03 As an EDC user, I have a partially locked lab fo
 		| Field            | Data              | Control Type |
 		| Subject Number   | {RndNum<num1>(5)} | textbox      |
 		| Subject Initials | SUB               | textbox      |
-		| Pregancy Status  | NoREGAQT          | dropdownlist |
+		| Pregancy Status  | NoREGAQT          | Dropdown     |
 	And I select Form "Visit Date" in Folder "Visit 1"
 	And I enter data in CRF and save
 		| Field | Data         | Control Type |
 		| Age   | 22           | text         |
-		| Sex   | FemaleREGAQT | dropdownlist |
+		| Sex   | FemaleREGAQT | Dropdown     |
 	And I select Form "Hematology" in Folder "Visit 2"
 	And I choose "Mediflex Local Lab 1" from "Lab"
 	And I enter data in CRF and save
@@ -231,12 +231,12 @@ Scenario: PB_US11305_DT10514_04 As an EDC user, I have a partially locked lab fo
 		| Field            | Data              | Control Type |
 		| Subject Number   | {RndNum<num1>(5)} | textbox      |
 		| Subject Initials | SUB               | textbox      |
-		| Pregancy Status  | NoREGAQT          | dropdownlist |
+		| Pregancy Status  | NoREGAQT          | Dropdown     |
 	And I select Form "Visit Date" in Folder "Visit 1"
 	And I enter data in CRF and save
 		| Field | Data         | Control Type |
 		| Age   | 22           | text         |
-		| Sex   | FemaleREGAQT | dropdownlist |
+		| Sex   | FemaleREGAQT | Dropdown     |
 	And I select Form "Hematology" in Folder "Visit 2"
 	And I select Lab "Central - Mediflex Central Lab"
 	And I enter data in CRF and save
@@ -279,12 +279,12 @@ Scenario: PB_US11305_DT10514_05 As an EDC user, I have a partially locked lab fo
 		| Field            | Data              | Control Type |
 		| Subject Number   | {RndNum<num1>(5)} | textbox      |
 		| Subject Initials | SUB               | textbox      |
-		| Pregancy Status  | NoREGAQT          | dropdownlist |
+		| Pregancy Status  | NoREGAQT          | Dropdown     |
 	And I select Form "Visit Date" in Folder "Visit 1"
 	And I enter data in CRF and save
 		| Field | Data         | Control Type |
 		| Age   | 22           | text         |
-		| Sex   | FemaleREGAQT | dropdownlist |
+		| Sex   | FemaleREGAQT | Dropdown     |
 	And I select Form "Hematology" in Folder "Visit 2"
 	And I choose "Mediflex Local Lab 3" from "Lab"
 	And I enter data in CRF and save
@@ -341,7 +341,7 @@ Scenario: PB_US11305_DT10514_06 As an EDC user, I have a locked lab form, and I 
 	And I enter data in CRF and save
 		| Field | Data         | Control Type |
 		| Age   | 22           | text         |
-		| Sex   | FemaleREGAQT | dropdownlist |
+		| Sex   | FemaleREGAQT | Dropdown     |
 	And I select Form "Hematology" in Folder "Visit 2"
 	And I choose "Mediflex Local Lab 1" from "Lab"
 	And I enter data in CRF and save
@@ -366,8 +366,8 @@ Scenario: PB_US11305_DT10514_06 As an EDC user, I have a locked lab form, and I 
 	And I select link "SUB{Var(num1)}"
 	And I select link "SubjectEnrollment"
 	And I enter data in CRF and save
-		| Field            | Data        | Control Type |
-		| Pregancy Status  | NoREGAQT    | dropdownlist |
+		| Field           | Data     | Control Type |
+		| Pregancy Status | NoREGAQT | Dropdown     |
 	When I select Form "Hematology" in Folder "Visit 2"
 	Then I verify lab ranges
 		| Field       | Data | Range Status | Range | Unit           | Status Icon |

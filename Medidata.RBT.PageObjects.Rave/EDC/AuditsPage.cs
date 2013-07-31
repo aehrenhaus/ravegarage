@@ -71,6 +71,16 @@ namespace Medidata.RBT.PageObjects.Rave
 
             return base.ChooseFromDropdown(identifier, text, objectType, areaIdentifier);
         }
+
+        /// <summary>
+        /// Add a comment audit
+        /// </summary>
+        /// <param name="comment">The text of the comment</param>
+        public void AddComment(string comment)
+        {
+            Browser.TryFindElementByPartialID("CommentText").EnhanceAs<Textbox>().SetText(comment);
+            Browser.TryFindElementByPartialID("SubmitBut").Click();
+        }
         
         /// <summary>
         /// Checks if the specified audit exists in the audit trail

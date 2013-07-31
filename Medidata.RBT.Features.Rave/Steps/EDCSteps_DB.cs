@@ -182,12 +182,17 @@ namespace Medidata.RBT.Features.Rave
             var projectUniqueName = SeedingContext.GetExistingFeatureObjectOrMakeNew(project, () => new Project(project)).UniqueName;
             var sql = DBScripts.GenerateSQLForNumberOfRecordsThatNeedCVRefresh(projectUniqueName);
 			System.Data.DataTable dataTable;
+            int timeout = 30; //timeout if bulk signature does not finish in 30 seconds
 			do
 			{
 				System.Threading.Thread.Sleep(1000); //wait a second
 				dataTable = DbHelper.ExecuteDataSet(sql).Tables[0]; //run backend query to count records needing cv refresh.
+                timeout--;
 			}
-			while (((int)dataTable.Rows[0][0] != 0));
+            while (((int)dataTable.Rows[0][0] != 0) && timeout > 0);
+
+            if(timeout <= 0)
+                throw new TimeoutException("Clinical View refresh did not finish in timeout duration");
 		}
 
         /// <summary>

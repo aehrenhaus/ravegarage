@@ -168,9 +168,9 @@ Scenario: PB_MCC_41783_07 As an Rave user, when I uncheck Active checkbox for De
 	And I enter data in CRF and save
 	    | Field | Data |
 	    | Age   | 22   |
-	When I add Protocol Deviation
-		| Field | Class | Code | Text                    |
-		| Age   | 10    | A    | Protocol Deviation test |
+	When I add protocol deviations
+		| Field | Text                    | Code | Class |
+		| Age   | Protocol Deviation test | A    | 10    |
 	Then I verify deviation "class" with value "20" does not exist in CRF
 	And I verify deviation "class" with value "10" exists in CRF
 	And I take a screenshot
@@ -178,9 +178,9 @@ Scenario: PB_MCC_41783_07 As an Rave user, when I uncheck Active checkbox for De
 	And I enter data in CRF and save
 	    | Field  | Data |
 	    | COHORT | 6    |
-	When I add Protocol Deviation
-		| Field  | Class | Code | Text                    |
-		| COHORT | 10    | A    | Protocol Deviation test |
+	When I add protocol deviations
+		| Field  | Text                    | Code | Class |
+		| COHORT | Protocol Deviation test | A    | 10    |
 	Then I verify deviation "class" with value "20" does not exist in CRF
 	And I verify deviation "class" with value "10" exists in CRF
 	And I take a screenshot	
@@ -188,9 +188,9 @@ Scenario: PB_MCC_41783_07 As an Rave user, when I uncheck Active checkbox for De
 	And I enter data in CRF and save
 	    | Field   | Data |
 	    | COHORT2 | 6    |
-	When I add Protocol Deviation
-		| Field   | Class | Code | Text                    | Record |
-		| COHORT2 | 10    | A    | Protocol Deviation test | 1      |
+	When I add protocol deviations
+		| Field   | Text                    | Code | Class | Record |
+		| COHORT2 | Protocol Deviation test | A    | 10    | 1      |
 	Then I verify deviation "class" with value "20" does not exist in CRF
 	And I verify deviation "class" with value "10" exists in CRF
 	And I take a screenshot	
@@ -198,9 +198,9 @@ Scenario: PB_MCC_41783_07 As an Rave user, when I uncheck Active checkbox for De
 	And I enter data in CRF and save
 	    | Field   | Data |
 	    | COHORT4 | 6    |
-	When I add Protocol Deviation
-		| Field   | Class | Code | Text                    | Record |
-		| COHORT4 | 10    | A    | Protocol Deviation test | 1      |
+	When I add protocol deviations
+		| Field   | Text                    | Code | Class | Record |
+		| COHORT4 | Protocol Deviation test | A    | 10    | 1      |
 	Then I verify deviation "class" with value "20" does not exist in CRF
 	And I verify deviation "class" with value "10" exists in CRF
 	And I take a screenshot	
@@ -208,9 +208,9 @@ Scenario: PB_MCC_41783_07 As an Rave user, when I uncheck Active checkbox for De
 	And I enter data in CRF and save
 	    | Field   | Data |
 	    | COHORT5 | 6    |
-	When I add Protocol Deviation
-		| Field   | Class | Code | Text                    |
-		| COHORT5 | 10    | A    | Protocol Deviation test |
+	When I add protocol deviations
+		| Field   | Text                    | Code | Class |
+		| COHORT5 | Protocol Deviation test | A    | 10    |
 	Then I verify deviation "class" with value "20" does not exist in CRF
 	And I verify deviation "class" with value "10" exists in CRF
 	And I take a screenshot		
@@ -229,9 +229,9 @@ Scenario: PB_MCC_41783_08 As an Rave user, when I uncheck Active checkbox for De
 	And I enter data in CRF and save
 	    | Field | Data |
 	    | Age   | 22   |
-	When I add Protocol Deviation
-		| Field | Class | Code | Text                    |
-		| Age   | 10    | A    | Protocol Deviation test |
+	When I add protocol deviations
+		| Field | Text                    | Code | Class |
+		| Age   | Protocol Deviation test | A    | 10    |
 	Then I verify deviation "code" with value "B" does not exist in CRF
 	And I verify deviation "code" with value "A" exists in CRF
 	And I take a screenshot
@@ -239,9 +239,9 @@ Scenario: PB_MCC_41783_08 As an Rave user, when I uncheck Active checkbox for De
 	And I enter data in CRF and save
 	    | Field  | Data |
 	    | COHORT | 6    |
-	When I add Protocol Deviation
-		| Field  | Class | Code | Text                    |
-		| COHORT | 10    | A    | Protocol Deviation test |
+	When I add protocol deviations
+		| Field  | Text                    | Code | Class |
+		| COHORT | Protocol Deviation test | A    | 10    |
 	Then I verify deviation "code" with value "B" does not exist in CRF
 	And I verify deviation "code" with value "A" exists in CRF
 	And I take a screenshot	
@@ -249,9 +249,9 @@ Scenario: PB_MCC_41783_08 As an Rave user, when I uncheck Active checkbox for De
 	And I enter data in CRF and save
 	    | Field   | Data |
 	    | COHORT2 | 6    |
-	When I add Protocol Deviation
-		| Field   | Class | Code | Text                    | Record |
-		| COHORT2 | 10    | A    | Protocol Deviation test | 1      |
+	When I add protocol deviations
+		| Field   | Text                    | Code | Class | Record |
+		| COHORT2 | Protocol Deviation test | A    | 10    | 1      |
 	Then I verify deviation "code" with value "B" does not exist in CRF
 	And I verify deviation "code" with value "A" exists in CRF
 	And I take a screenshot	
@@ -259,9 +259,9 @@ Scenario: PB_MCC_41783_08 As an Rave user, when I uncheck Active checkbox for De
 	And I enter data in CRF and save
 	    | Field   | Data |
 	    | COHORT4 | 6    |
-	When I add Protocol Deviation
-		| Field   | Class | Code | Text                    | Record |
-		| COHORT4 | 10    | A    | Protocol Deviation test | 1      |
+	When I add protocol deviations
+		| Field   | Text                    | Code | Class | Record |
+		| COHORT4 | Protocol Deviation test | A    | 10    | 1      |
 	Then I verify deviation "code" with value "B" does not exist in CRF
 	And I verify deviation "code" with value "A" exists in CRF
 	And I take a screenshot	
@@ -269,9 +269,9 @@ Scenario: PB_MCC_41783_08 As an Rave user, when I uncheck Active checkbox for De
 	And I enter data in CRF and save
 	    | Field   | Data |
 	    | COHORT5 | 6    |
-	When I add Protocol Deviation
-		| Field   | Class | Code | Text                    |
-		| COHORT5 | 10    | A    | Protocol Deviation test |
+	When I add protocol deviations
+		| Field   | Text                    | Code | Class |
+		| COHORT5 | Protocol Deviation test | A    | 10    |
 	Then I verify deviation "code" with value "B" does not exist in CRF
 	And I verify deviation "code" with value "A" exists in CRF
 	And I take a screenshot	
@@ -440,9 +440,9 @@ Scenario: PB_MCC_41783_15 As an EDC user, Migrating Subject Verification for ina
 	    | Field      | Data        |
 	    | VISIT_DATE | 07 Jan 2000 |
 	And I take a screenshot
-	When I add Protocol Deviation
-		| Field      | Class | Code | Text                    |
-		| VISIT_DATE | 20    | B    | Protocol Deviation test |
+	When I add protocol deviations
+		| Field      | Text                    | Code | Class |
+		| VISIT_DATE | Protocol Deviation test | B    | 20    |
 	Then I verify deviation "code" with value "A" exists in CRF
 	And I verify deviation "code" with value "B" exists in CRF
 	And I verify deviation "class" with value "10" exists in CRF
@@ -477,9 +477,9 @@ Scenario: PB_MCC_41783_15 As an EDC user, Migrating Subject Verification for ina
 	And I navigate to "Home"
     And I select a Subject "sub{Var(num7)}"
 	And I select Form "VISIT_INFO"
-	When I add Protocol Deviation
-		| Field      | Class | Code | Text                    |
-		| VISIT_DATE | 10    | A    | Protocol Deviation test |
+	When I add protocol deviations
+		| Field      | Text                    | Code | Class |
+		| VISIT_DATE | Protocol Deviation test | A    | 10    |
 	Then I verify deviation "code" with value "B" does not exist in CRF
 	And I verify deviation "code" with value "A" exists in CRF
 	And I verify deviation "class" with value "20" does not exist in CRF
@@ -515,7 +515,7 @@ Scenario: PB_MCC_41783_16, As an user, When I run Protocol Deviation Report, the
 	    | Field      | Data        |
 	    | VISIT_DATE | 07 Jan 2000 |
 	And I take a screenshot
-	And I add Protocol Deviation
+	And I add protocol deviations
 		| Field      | Class | Code | Text               |
 		| VISIT_DATE | 20    | B    | Protocol Deviation |
 	And I save the CRF page
@@ -524,7 +524,7 @@ Scenario: PB_MCC_41783_16, As an user, When I run Protocol Deviation Report, the
 	And I select Form "VISIT_INFO"
 	When I click audit on Field "VISIT_DATE"
 	Then I verify last audit exist
-		| Audit Type         | Query Message                                                     |
+		| Audit Type         | Query Message                                                     | 
 		| Protocol Deviation | Protocol deviation created: Protocol Deviation Class: 20 Code: B. |
 	And I navigate to "Home"
 	And I navigate to "Configuration"
@@ -567,17 +567,17 @@ Scenario: PB_MCC_41783_17, As an EDC user, When I submit data in EDC, then edit 
 	    | Field      | Data        |
 	    | VISIT_DATE | 07 Jan 2000 |
 	And I take a screenshot
-	When I add Protocol Deviation
-		| Field      | Class | Code | Text                 |
-		| VISIT_DATE | 20    | B    | Protocol Deviation 1 |
+	When I add protocol deviations
+		| Field      | Text                 | Code | Class |
+		| VISIT_DATE | Protocol Deviation 1 | B    | 20    |
 	Then I verify deviation "code" with value "A" does not exist in CRF
 	And I verify deviation "class" with value "10" does not exist in CRF
 	And I take a screenshot	
 	And I select link "SUB{Var(num1)}" in "Header"	
 	And I select Form "VISIT_INFO"
-	And I add Protocol Deviation
-		| Field      | Class | Code | Text                 |
-		| VISIT_DATE | ...   | ...  | Protocol Deviation 2 |
+	And I add protocol deviations
+		| Field      | Text                 | Code | Class |
+		| VISIT_DATE | Protocol Deviation 2 | ...  | ...   |
 	When I save the CRF page
 	Then I verify text "Missing protocol deviation code or class." exists
 	And I take a screenshot

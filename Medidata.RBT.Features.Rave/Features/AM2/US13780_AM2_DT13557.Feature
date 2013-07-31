@@ -46,7 +46,7 @@ Scenario: PB_US13780_DT13557_01 When a user navigates to Architect, creates a mi
 	And I select Form "Demographics" in Folder "Baseline"
 	And I enter data in CRF and save
 	    | Field  | Data | Control Type |
-	    | Gender | Male | DropDownList |
+	    | Gender | Male | Dropdown     |
 	And I select link "SUB{Var(num1)}"
 	And I select Form "Demographics" in Folder "CYCLE (1)"
 	And I enter data in CRF and save

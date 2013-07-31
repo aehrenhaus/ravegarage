@@ -89,7 +89,7 @@ namespace Medidata.RBT.PageObjects.Rave
         public void EditEditCheck(string iconName, string editCheckName)
         {
             IWebElement eRow = this.Browser.TryFindElementById("_ctl0_Content_DisplayGrid").TryFindElementByXPath(string.Format("//*[contains(text(),'{0}')]/..",editCheckName));
-            IWebElement eEdit = eRow.TryFindElementBy(By.PartialLinkText("javascript:__doPostBack"));
+            IWebElement eEdit = eRow.TryFindElementBy(By.PartialLinkText("javascript:__doPostBack"), isWait: false);
             IWebElement eCheckSteps = eRow.TryFindElementByPartialID("_CheckDetailsLink");
             if (iconName == "Edit")
                 eEdit.Click();

@@ -10,11 +10,6 @@ namespace Medidata.RBT.PageObjects.Rave
 {
 	public abstract class BaseEDCPage : RavePageBase, IVerifyObjectExistence
 	{
-		public virtual IEDCFieldControl FindField(string fieldName)
-		{
-			throw new NotImplementedException();
-		}
-
 		public IWebElement GetTaskSummaryArea(string header)
 		{
 			var TRs = Browser.FindElementsByXPath("//span[@id='_ctl0_Content_TsBox_CBoxC']/table/tbody/tr[position()>1]");
@@ -24,7 +19,13 @@ namespace Medidata.RBT.PageObjects.Rave
 			return TR;
 		}
 
-		public BaseEDCPage ClickModify()
+        public IEDCFieldControl FindField(string fieldName, int? record = null)
+        {
+            WaitForPageLoads();
+            return new DataPageControl(this).FindField(fieldName, record);
+        }
+
+        public BaseEDCPage ClickModify()
 		{
 			IWebElement editButton = Browser.TryFindElementByPartialID("header_SG_PencilButton");
 			if (editButton == null)

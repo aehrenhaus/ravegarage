@@ -29,8 +29,8 @@ Scenario: PB_US18784_DT14321_01 As a Data Manager, when I Verify and Freeze a mi
 	And I select link "Demography"
 	And I enter data in CRF and save
 		| Field            | Data | Control Type |
-		| Sex              | Male | dropdownlist |
-		| Pregnancy Status | No   | dropdownlist |
+		| Sex              | Male | Dropdown     |
+		| Pregnancy Status | No   | Dropdown     |
 		| Age              | 55   | textbox      |
 	And I check "Verify" in "form level"
 	And I check "Freeze" in "form level"
@@ -52,13 +52,13 @@ Scenario: PB_US18784_DT14321_02 As a Data Manager, when I Verify and Freeze a mi
 	And I select link "Demography"
 	And I enter data in CRF and save
 		| Field            | Data | Control Type |
-		| Sex              | Male | dropdownlist |
-		| Pregnancy Status | No   | dropdownlist |
+		| Sex              | Male | Dropdown     |
+		| Pregnancy Status | No   | Dropdown     |
 		| Age              | 55   | textbox      |
 	And I add a new log line
 	And I enter data in CRF and save
 		| Field            | Data | Control Type |
-		| Pregnancy Status | No   | dropdownlist |
+		| Pregnancy Status | No   | Dropdown     |
 		| Age              | 55   | textbox      |
 	And I take a screenshot
 	And I check "Verify" in "form level"

@@ -131,9 +131,9 @@ Scenario: PB_US17415_DT14115_03 As an Investigator, when I sign the "Demographic
 	And I select link "Demographics"
 	And I enter data in CRF and save
 		| Field                 | Data        | Control Type |
-		| Gender                | Male        | dropdownlist |
-		| Ethnicity             | Asian       | dropdownlist |
-		| Country               | Canada      | dropdownlist |
+		| Gender                | Male        | Dropdown     |
+		| Ethnicity             | Asian       | Dropdown     |
+		| Country               | Canada      | Dropdown     |
 		| Informed Consent Date | 12 Jul 2012 | dateTime     |
 	And I take a screenshot
 	And I click button "Sign and Save"
@@ -210,9 +210,9 @@ Scenario: PB_US17415_DT14115_04 As an Investigator, when I sign the "Test Demogr
 	And I select link "Test Demographics"
 	And I enter data in CRF and save
 		| Field                 | Data        | Control Type |
-		| Gender                | Male        | dropdownlist |
-		| Ethnicity             | Asian       | dropdownlist |
-		| Country               | Canada      | dropdownlist |
+		| Gender                | Male        | Dropdown     |
+		| Ethnicity             | Asian       | Dropdown     |
+		| Country               | Canada      | Dropdown     |
 		| Informed Consent Date | 12 Jul 2012 | dateTime     |
 		| Derived Age           | 30          | textbox      |
 	And I take a screenshot
@@ -285,9 +285,9 @@ Scenario: PB_US17415_DT14115_05 As an Investigator, when I sign the "Demographic
 	And I select link "Demographics"
 	And I enter data in CRF and save
 		| Field                 | Data        | Control Type |
-		| Gender                | Male        | dropdownlist |
-		| Ethnicity             | Asian       | dropdownlist |
-		| Country               | Canada      | dropdownlist |
+		| Gender                | Male        | Dropdown     |
+		| Ethnicity             | Asian       | Dropdown     |
+		| Country               | Canada      | Dropdown     |
 		| Informed Consent Date | 12 Jul 2012 | dateTime     |
 	And I take a screenshot
 	And I click button "Sign and Save"
@@ -369,9 +369,9 @@ Scenario: PB_US17415_DT14115_06 As an Investigator, when I sign the "Test Demogr
 	And I select link "Test Demographics"
 	And I enter data in CRF and save
 		| Field                 | Data        | Control Type |
-		| Gender                | Male        | dropdownlist |
-		| Ethnicity             | Asian       | dropdownlist |
-		| Country               | Canada      | dropdownlist |
+		| Gender                | Male        | Dropdown     |
+		| Ethnicity             | Asian       | Dropdown     |
+		| Country               | Canada      | Dropdown     |
 		| Informed Consent Date | 12 Jul 2012 | dateTime     |
 		| Derived Age           | 30          | textbox      |
 	And I take a screenshot

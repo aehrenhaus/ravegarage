@@ -49,13 +49,13 @@ Scenario: MCC_55695_MCC_59261_02 As an Investigator, when I do batch sign on Sub
 		| Field   | Data        | Control Type |
 		| Field 1 | Sick        | textbox      |
 		| Field 2 | 12 Jan 2012 | datetime     |
-		| Field 3 | female      | dropdownlist |
+		| Field 3 | female      | Dropdown     |
 	And I add a new log line
 	And I enter data in CRF and save
-		| Field     | Data      	| Control Type |
-		| Field 1   | Sick     		| textbox      |
-		| Field 2  	| 12 Jan 2012	| datetime     |	
-		| Field 3   | female   		| dropdownlist |	
+		| Field   | Data        | Control Type |
+		| Field 1 | Sick        | textbox      |
+		| Field 2 | 12 Jan 2012 | datetime     |
+		| Field 3 | female      | Dropdown     |
 	And I select link "Inactivate"	
 	And I choose "2" from "Inactivate"
 	And I click button "Inactivate"
@@ -286,13 +286,13 @@ Scenario: MCC_55695_MCC_59261_05 As an Investigator, when I do batch sign on Sub
 		| Field   | Data        | Control Type |
 		| Field 1 | Sick        | textbox      |
 		| Field 2 | 12 Jan 2012 | datetime     |
-		| Field 3 | female      | dropdownlist |
+		| Field 3 | female      | Dropdown     |
 	And I add a new log line
 	And I enter data in CRF and save
-		| Field     | Data      	| Control Type |
-		| Field 1   | Sick     		| textbox      |
-		| Field 2  	| 12 Jan 2012	| datetime     |	
-		| Field 3   | female   		| dropdownlist |	
+		| Field   | Data        | Control Type |
+		| Field 1 | Sick        | textbox      |
+		| Field 2 | 12 Jan 2012 | datetime     |
+		| Field 3 | female      | Dropdown     |
 	And I select link "Inactivate"	
 	And I choose "2" from "Inactivate"
 	And I click button "Inactivate"

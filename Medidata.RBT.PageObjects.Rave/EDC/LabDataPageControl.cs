@@ -29,10 +29,7 @@ namespace Medidata.RBT.PageObjects.Rave
             if (area == null)
                 throw new Exception("Can't find field area:" + fieldText);
             var tds = area.Parent().Children();
-            return new LabFieldControl(Page, area, tds[tds.Count - 3])
-            {
-                FieldName = fieldText
-            };
+            return new LabFieldControl(Page, area, fieldText);
         }
 	}
 }
