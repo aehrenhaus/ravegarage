@@ -1,4 +1,5 @@
-﻿using TechTalk.SpecFlow;
+﻿using System;
+using TechTalk.SpecFlow;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
@@ -192,6 +193,25 @@ namespace Medidata.RBT.Common.Steps
         public void IHit____Key(string key)
         {
             CurrentPage.PressKey(key);
+        }
+
+        /// <summary>
+        /// Simulates the browser back button
+        /// </summary>
+        [Given(@"GoBack")]
+        public void GivenGoBack()
+        {
+            // Using version 2.33.0.0 of Selenium on .NET 4.0
+            // There are a number of issues with Selenium and Back Navigation
+            // However with future releases; hopefully this is resolved and scenarios using GoBack can be enabled 
+            // https://code.google.com/p/selenium/issues/detail?id=3611
+            // https://code.google.com/p/selenium/issues/detail?id=2181
+            // http://stackoverflow.com/questions/17958595/selenium-using-the-old-page-after-browser-back-button-action-and-not-showing-alt?noredirect=1#comment26296287_17958595
+            Browser.Navigate().Back();
+            /*
+            Browser.ExecuteScript("history.go(-1);", new Object[0]);
+            Browser.ExecuteScript("javascript: setTimeout(\"history.go(-1)\", 2000)");
+            */
         }
 	}
 }

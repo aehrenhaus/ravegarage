@@ -539,6 +539,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-52790_manual.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Translation Workbench\MCC-47508.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-47508.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\TSDV\MCC-46640.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -672,6 +677,7 @@
     <Compile Include="Steps\ExpandCollapseSteps.cs" />
     <Compile Include="Steps\Seeding\CoderDictionarySteps.cs" />
     <Compile Include="Steps\SubjectAdminPageSteps.cs" />
+    <Compile Include="Steps\TranslationGridPageSteps.cs" />
     <Compile Include="Steps\UserGroupSteps.cs" />
     <Compile Include="Steps\ReportAdminSteps.cs" />
     <Compile Include="Steps\LabUnitConversionSteps.cs" />
@@ -1064,6 +1070,10 @@
     <None Include="Features\Status Updater\MCC-52790_manual.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-52790_manual.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Translation Workbench\MCC-47508.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-47508.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\TSDV\MCC-46640.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
