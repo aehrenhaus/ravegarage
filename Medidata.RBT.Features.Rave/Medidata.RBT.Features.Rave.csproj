@@ -549,6 +549,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-47508.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Translation Workbench\MCC-71899.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-71899.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\TSDV\MCC-46640.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1083,6 +1088,10 @@
     <None Include="Features\Translation Workbench\MCC-47508.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-47508.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Translation Workbench\MCC-71899.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-71899.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\TSDV\MCC-46640.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

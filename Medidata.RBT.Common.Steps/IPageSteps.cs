@@ -207,8 +207,8 @@ namespace Medidata.RBT.Common.Steps
         /// <summary>
         /// Simulates the browser back button
         /// </summary>
-        [Given(@"GoBack")]
-        public void GivenGoBack()
+        [StepDefinition(@"GoBack")]
+        public void GoBack()
         {
             // Using version 2.33.0.0 of Selenium on .NET 4.0
             // There are a number of issues with Selenium and Back Navigation

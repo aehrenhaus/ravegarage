@@ -325,7 +325,7 @@ namespace Medidata.RBT.Common.Steps
         /// <summary>
         /// 
         /// </summary>
-        [Then(@"I verify results are present")]
+        [StepDefinition(@"I verify results are present")]
         public void ThenIVerifyResultsArePresent()
         {
             bool present = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "table", (string) null);
