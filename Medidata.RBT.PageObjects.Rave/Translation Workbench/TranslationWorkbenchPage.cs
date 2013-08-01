@@ -9,8 +9,12 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 {
     public class TranslationWorkbenchPage : RavePageBase
     {
-        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null,
+                                                     string listItem = null)
         {
+            if (identifier == "Source locale")
+                return Browser.DropdownById("_OriginalLocale");
+
             if (identifier == "Target locale")
                 return Browser.DropdownById("_TargetLocale");
 
@@ -26,9 +30,14 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
             return base.GetElementByName(identifier, areaIdentifier, listItem);
         }
 
+        #region implement members for RavePageBase
+
         public override string URL
         {
             get { return "Modules/Translations/TranslationWorkbench.aspx"; }
         }
+
+        #endregion
+
     }
 }

@@ -311,6 +311,7 @@
     <Compile Include="TableModels\UnitConversionModel.cs" />
     <Compile Include="Translation Workbench\TranslationGridPage.cs" />
     <Compile Include="Translation Workbench\TranslationWorkbenchPage.cs" />
+    <Compile Include="Translation Workbench\WhereUsedPage.cs" />
     <Compile Include="TSDV\BlockPlansPageBase.cs" />
     <Compile Include="TSDV\CustomTierPage.cs" />
     <Compile Include="TSDV\TiersPage.cs" />

@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 
 namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 {
-    public class TranslationGridPage : RavePageBase, IEnterValues
+    public class TranslationGridPage : RavePageBase, IEnterValues, IVerifyObjectExistence
     {
         public override IWebElement GetElementByName(string identifier, string areaIdentifier = null,
                                              string listItem = null)
@@ -20,9 +20,7 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 
         public IPage SelectTheFirstOfUsesLink()
         {
-            List<IWebElement> rows = Browser.FindElementById("_ctl0_Content_TranslationGridForm_Results").EnhanceAs<HtmlTable>().Rows().ToList();
-            IWebElement row = rows[1];
-            IWebElement element = row.TryFindElementByPartialID("WhereUsedDiv");
+            var element = GetTheFirstOfUsesLink();
             element.Click();
             return WaitForPageLoads();
         }
@@ -50,5 +48,53 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
         }
 
         #endregion
+
+        #region implement members for IVerifyObjectExistence
+
+        public bool VerifyObjectExistence(string areaIdentifier, string type, string identifier, bool exactMatch = false,
+                                          int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null,
+                                          bool shouldExist = true)
+        {
+            return String.IsNullOrEmpty(identifier)
+                       ? VerifyObjectExistenceByType(type)
+                       : VerifyObjectExistenceByIdentifier(identifier);
+        }
+
+        public bool VerifyObjectExistence(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false,
+                                          int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null,
+                                          bool shouldExist = true)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Helpers
+
+        private IWebElement GetTheFirstOfUsesLink()
+        {
+            List<IWebElement> rows = Browser.FindElementById("_ctl0_Content_TranslationGridForm_Results").EnhanceAs<HtmlTable>().Rows().ToList();
+            IWebElement row = rows[1];
+            IWebElement element = row.TryFindElementByPartialID("WhereUsedDiv");
+            return element;
+        }
+
+        private bool VerifyObjectExistenceByType(string type)
+        {
+            if (type == "table")
+            {
+                var element = GetTheFirstOfUsesLink();
+                return element != null;
+            }
+            return false;
+        }
+
+        private bool VerifyObjectExistenceByIdentifier(string identifier)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
     }
 }

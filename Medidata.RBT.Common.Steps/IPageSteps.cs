@@ -69,6 +69,15 @@ namespace Medidata.RBT.Common.Steps
 
 		}
 
+        /// <summary>
+        /// Click an image hyperlink
+        /// </summary>
+        [When(@"I select image ""(.*)""")]
+        public void WhenISelectImage(string textOrIdentifier)
+        {
+            CurrentPage = CurrentPage.ClickImageLink(textOrIdentifier);
+        }
+
 		/// <summary>
 		/// Click a hyperlink
 		/// </summary>
