@@ -197,7 +197,6 @@ And I verify the PDF text contains
 | <    |
 | >    |
 
-@ignore
 @release_2012.1.0
 @PB_US12175_DT8545_D
 @Validation
@@ -241,7 +240,6 @@ And I verify the PDF text contains
 | <    |
 | >    |
 
-@ignore
 @release_2012.1.0
 @PB_US12175_DT8545_E
 @Validation
@@ -315,6 +313,7 @@ And I enter data in CRF and save
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -333,6 +332,7 @@ And I enter data in CRF and save
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -351,17 +351,20 @@ And I enter data in CRF and save
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
-| LongText1 | [cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
+| LongText1 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
 | LongText2 | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] | Long Text    |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Lab Form &le &ge"
 And I select Lab "&le&geLab&lt &lt; &gt &gt; &le; &ge;"
 And I enter data in CRF and save
 | Field                            | Data | Control Type |
 | &le&ge\brWBC< < > > ≤ ≥•         | 20   | textbox      |
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
+And I take a screenshot
 And I navigate to "PDF Generator" module
 When I create Data PDF
 | Name                        | Profile     | Study          | Role         | Locale  | Site Groups | Sites    | Subjects     |
@@ -428,6 +431,7 @@ And I enter data in CRF and save
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -446,6 +450,7 @@ And I enter data in CRF and save
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -464,17 +469,20 @@ And I enter data in CRF and save
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
-| LongText1 | [cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
+| LongText1 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
 | LongText2 | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] | Long Text    |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Lab Form &le &ge"
 And I select Lab "&le&geLab&lt &lt; &gt &gt; &le; &ge;"
 And I enter data in CRF and save
 | Field                            | Data | Control Type |
 | &le&ge\brWBC< < > > ≤ ≥•         | 20   | textbox      |
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
+And I take a screenshot
 And I navigate to "PDF Generator" module
 When I create Data PDF
 | Name                        | Profile     | Study          | Role         | Locale  | Site Groups | Sites    | Subjects     |
@@ -574,6 +582,7 @@ And I select link "< < > > ≤ ≥ •\brPDF Standard Form &le &ge"
 And I enter data in CRF and save
 | Field                                    | Data         | Control Type |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge | SUPER USER 1 | Signature    |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -621,6 +630,7 @@ And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                    | Data         | Control Type |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge | SUPER USER 1 | Signature    |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -667,10 +677,11 @@ And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                    | Data         | Control Type |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge | SUPER USER 1 | Signature    |
+And I take a screenshot
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
-| LongText1 | [cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
+| LongText1 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
 | LongText2 | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] | Long Text    |
 And I add queries
 | Field     | Responder       | Text    |
@@ -690,6 +701,7 @@ And I verify Protocol Deviation with message "<PD>" is displayed on Field "LongT
 And I click audit on Field "LongText2"
 And I add comment "<Comment>"
 And I verify Comment with message "<Comment>" is displayed on Field "LongText2"
+And I take a screenshot
 And I select link "S{Var(num1)}" in "Header"
 And I select link "< < > > ≤ ≥ •\brPDF Folder &le &ge"
 And I select link "< < > > ≤ ≥ •\brPDF Lab Form &le &ge"
@@ -716,6 +728,7 @@ And I verify Protocol Deviation with message "<PD>" is displayed on Field "< < >
 And I click audit on Field "< < > > ≤ ≥•\brNEUTROPHILS&le&ge"
 And I add comment "<Comment>"
 And I verify Comment with message "<Comment>" is displayed on Field "< < > > ≤ ≥•\brNEUTROPHILS&le&ge"
+And I take a screenshot
 And I navigate to "PDF Generator" module
 When I create Data PDF
 | Name                        | Profile     | Study          | Role         | Locale  | Site Groups | Sites    | Subjects     |
@@ -785,6 +798,7 @@ And I enter data in CRF and save
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -803,6 +817,7 @@ And I enter data in CRF and save
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -821,17 +836,20 @@ And I enter data in CRF and save
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
-| LongText1 | [cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
+| LongText1 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
 | LongText2 | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] | Long Text    |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Lab Form &le &ge"
 And I select Lab "&le&geLab&lt &lt; &gt &gt; &le; &ge;"
 And I enter data in CRF and save
 | Field                            | Data | Control Type |
 | &le&ge\brWBC< < > > ≤ ≥•         | 20   | textbox      |
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
+And I take a screenshot
 And I navigate to "PDF Generator" module
 When I create Data PDF
 | Name                         | Profile     | Study          | Role         | Locale   | Site Groups | Sites    | Subjects     |
@@ -897,6 +915,7 @@ And I enter data in CRF and save
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -915,6 +934,7 @@ And I enter data in CRF and save
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -933,17 +953,20 @@ And I enter data in CRF and save
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
-| LongText1 | [cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
+| LongText1 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
 | LongText2 | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] | Long Text    |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Lab Form &le &ge"
 And I select Lab "&le&geLab&lt &lt; &gt &gt; &le; &ge;"
 And I enter data in CRF and save
 | Field                            | Data | Control Type |
 | &le&ge\brWBC< < > > ≤ ≥•         | 20   | textbox      |
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
+And I take a screenshot
 And I navigate to "PDF Generator" module
 When I create Data PDF
 | Name                         | Profile     | Study          | Role         | Locale   | Site Groups | Sites    | Subjects     |
@@ -1008,6 +1031,7 @@ And I enter data in CRF and save
 | &le &geSearch\rField< < > > ≤ ≥ •\br                 | <>≤ ≥DD2                                                           |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Log Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -1026,6 +1050,7 @@ And I enter data in CRF and save
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Mixed Form &le &ge"
 And I enter data in CRF and save
 | Field                                                | Data                                                               | AdditionalData                                  | Control Type         |
@@ -1044,17 +1069,20 @@ And I enter data in CRF and save
 | &le &ge\br Search\rField< < > > ≤ ≥ •                | &lt &lt; &gt &gt; &le; &ge; <li></li>DD1&le &ge                    |                                                 | Search List          |
 | < < > > ≤ ≥ •\br CheckBox\rField1&le &ge             | true                                                               |                                                 | CheckBox             |
 | < < > > ≤ ≥ •\br Signature\rField&le &ge             | SUPER USER 1                                                       |                                                 | Signature            |
+And I take a screenshot
 And I select link "PDF Unbold Form"
 And I enter data in CRF and save
 | Field     | Data                                                               | Control Type |
-| LongText1 | [cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
+| LongText1 | Test1[cmd:enter]Test2[cmd:enter]Test3[cmd:enter]                        | Long Text    |
 | LongText2 | Test1[cmd:shift+enter]Test2[cmd:shift+enter]Test3[cmd:shift+enter] | Long Text    |
+And I take a screenshot
 And I select link "< < > > ≤ ≥ •\brPDF Lab Form &le &ge"
 And I select Lab "&le&geLab&lt &lt; &gt &gt; &le; &ge;"
 And I enter data in CRF and save
 | Field                            | Data | Control Type |
 | &le&ge\brWBC< < > > ≤ ≥•         | 20   | textbox      |
 | < < > > ≤ ≥•\brNEUTROPHILS&le&ge | 45   | textbox      |
+And I take a screenshot
 And I navigate to "PDF Generator" module
 When I create Data PDF
 | Name                         | Profile     | Study          | Role         | Locale  | Site Groups | Sites    | Subjects     |
