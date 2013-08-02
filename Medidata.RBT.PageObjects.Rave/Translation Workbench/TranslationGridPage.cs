@@ -9,8 +9,7 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 {
     public class TranslationGridPage : RavePageBase, IEnterValues, IVerifyObjectExistence
     {
-        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null,
-                                             string listItem = null)
+        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
         {
             if (identifier == "SearchButtonImage")
                 return Browser.FindElementById("_ctl0_Content_TranslationGridForm_Search");
@@ -51,18 +50,12 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 
         #region implement members for IVerifyObjectExistence
 
-        public bool VerifyObjectExistence(string areaIdentifier, string type, string identifier, bool exactMatch = false,
-                                          int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null,
-                                          bool shouldExist = true)
+        public bool VerifyObjectExistence(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null, bool shouldExist = true)
         {
-            return String.IsNullOrEmpty(identifier)
-                       ? VerifyObjectExistenceByType(type)
-                       : VerifyObjectExistenceByIdentifier(identifier);
+            return String.IsNullOrEmpty(identifier) ? VerifyObjectExistenceByType(type) : VerifyObjectExistenceByIdentifier(identifier);
         }
 
-        public bool VerifyObjectExistence(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false,
-                                          int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null,
-                                          bool shouldExist = true)
+        public bool VerifyObjectExistence(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null, bool shouldExist = true)
         {
             throw new NotImplementedException();
         }
@@ -91,7 +84,13 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 
         private bool VerifyObjectExistenceByIdentifier(string identifier)
         {
-            throw new NotImplementedException();
+            if (identifier == "Generating results...")
+                return Browser.FindElementById("_ctl0_Content_TranslationGridForm_GeneratingResults").GetCssValue("display") == "block";
+
+            if (identifier == "SearchButtonImage")
+                return Browser.FindElementById("_ctl0_Content_TranslationGridForm_Search").GetCssValue("display") == "inline";
+
+            return false;
         }
 
         #endregion
