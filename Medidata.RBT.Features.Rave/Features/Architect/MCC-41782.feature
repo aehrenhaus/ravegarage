@@ -398,7 +398,8 @@ Scenario: MCC-41782-011  When a user upload an Architect draft with View and Ent
 	Given I login to Rave with user "SUPER USER 1"
 	And I delete Architect Audits for user "SUPER USER 1"
 	When I navigate to "Architect"
-	When xml draft "MCC-41782-011.xml" is Uploaded without redirecting
+	When I select link "Upload Draft"
+	When I upload draft "MCC-41782-011.xml"
 	Then I verify text "Save successful" exists
 	And I take a screenshot
 	And I verify the following Architect audits exist for user "SUPER USER 1", project "MCC-41782", draft "Draft 1" 
@@ -447,8 +448,9 @@ Scenario: MCC-41782-012 When a user copy an Architect draft by using Copy to Dra
 
  	Given I login to Rave with user "SUPER USER 1"
 	And I delete Architect Audits for user "SUPER USER 1"
-	And I navigate to "Architect"
-	And xml draft "MCC-41782-012.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-41782-012.xml"
 	And I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Home"
@@ -535,8 +537,9 @@ Scenario: MCC-41782-014 When a user copy Architect draft by using Propose Object
 
 	Given I login to Rave with user "SUPER USER 1"
 	And I delete Architect Audits for user "SUPER USER 1"
-	And I navigate to "Architect"
-	And xml draft "MCC-41782-014.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-41782-014.xml"
 	And I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Home"
@@ -1022,7 +1025,8 @@ Scenario: MCC-41782-026 When a user upload a Global Library draft with View and 
 	Given I login to Rave with user "SUPER USER 1"
 	And I delete Architect Audits for user "SUPER USER 1"
 	When I navigate to "Architect"
-	When xml draft "MCC-41782-026.xml" is Uploaded without redirecting
+	When I select link "Upload Draft"
+	When I upload draft "MCC-41782-026.xml"
 	Then I verify text "Save successful" exists
 	And I take a screenshot
 	And I verify the following Architect audits exist for user "SUPER USER 1", project "MCC-41782", draft "Draft 1" 
@@ -1072,8 +1076,9 @@ Scenario: MCC-41782-027 When a user copy a Global Library draft by using Copy to
 
 	Given I login to Rave with user "SUPER USER 1"
 	And I delete Architect Audits for user "SUPER USER 1"
-	And I navigate to "Architect"
-	And xml draft "MCC-41782-027.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-41782-027.xml"
 	And I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Home"

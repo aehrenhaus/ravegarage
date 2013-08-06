@@ -14,31 +14,68 @@ using Medidata.RBT.ConfigurationHandlers;
 namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
 {
 	///<summary>
-    ///All objects which can seed should implement this class. 
-    ///The seedable objects should be marked for seeding when created.
+    ///All objects which seed using RWS must inherit from this class
     ///</summary>
     public abstract class RWSSeededObject : UniquedSeedableObject
 	{
-        protected const string UrlEncodedContentType = "application/x-www-form-urlencoded";
+        /// <summary>
+        /// The method (POST, GET, etc) of the web request
+        /// </summary>
         public string WebRequestMethod { get; set; }
-        public string ContentType { get; set; }
-        public int? ContentLength { get; set; }
-        protected WebResponse WebResponse { get; set; }
-        protected string BodyData { get; set; }
 
+        /// <summary>
+        /// The type of content for the WebRequest
+        /// </summary>
+        public string ContentType { get; set; }
+
+        /// <summary>
+        /// The length of the content for the WebRequest
+        /// </summary>
+        public int? ContentLength { get; set; }
+
+        /// <summary>
+        /// The response returned from the RWS call
+        /// </summary>
+        protected WebResponse WebResponse { get; set; }
+
+        /// <summary>
+        /// The data in the body of the request
+        /// </summary>
+        protected byte[] BodyData { get; set; }
+
+        /// <summary>
+        /// The RWS URL to make the request to
+        /// </summary>
         protected string RaveWebServicesUrl { get; set; }
         protected string PartialRaveWebServiceUrl { get; set; }
+
+        protected RWSSeededObject(bool uploadAfterMakingUnique = true)
+            : base(uploadAfterMakingUnique)
+        {
+        }
 
         public override void Seed()
         {
             base.Seed();
-            if(WebRequestMethod == "POST")
+            if (UploadAfterMakingUnique)
+            {
                 SetBodyData();
-            SetRaveWebServicesURL();
-            MakeRWSCall();
-            TakeActionAsAResultOfRWSCall();
+                if (WebRequestMethod == "POST" && BodyData == null)
+                    throw new Exception("Object is a POST and SetBodyData method did not set the BodyData property");
+                SetRaveWebServicesURL();
+                MakeRWSCall();
+                TakeActionAsAResultOfRWSCall();
+            }
         }
 
+        /// <summary>
+        /// Set the data that will be in the body of the WebRequest, should be overridden for POST requests
+        /// </summary>
+        protected virtual void SetBodyData() { throw new NotImplementedException("If element is a POST, you must set the BodyData property"); }
+
+        /// <summary>
+        /// Set the RWS URL that the call will be made to
+        /// </summary>
         protected virtual void SetRaveWebServicesURL()
         {
             if (PartialRaveWebServiceUrl == null)
@@ -48,7 +85,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         }
 
         /// <summary>
-        /// Create a unique version of the object, usually by uploading the object.
+        /// Make a call to RWS using the specified settings
         /// </summary>
         protected virtual void MakeRWSCall()
         {
@@ -60,11 +97,10 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
                 throw new Exception("Could not sign web request");
         }
 
-        protected virtual void SetBodyData()
-        {
-            throw new NotImplementedException("If element is a POST, you must set the BodyData property");
-        }
-
+        /// <summary>
+        /// After the RWS call is made you may want to set some variables in the object or throw exceptions if something went wrong
+        /// this is the place to put that code.
+        /// </summary>
         protected virtual void TakeActionAsAResultOfRWSCall() { }
 	}
 }

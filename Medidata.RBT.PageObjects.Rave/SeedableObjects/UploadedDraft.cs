@@ -13,6 +13,7 @@ using System.Reflection;
 using Medidata.RBT.SharedObjects;
 using System.Text.RegularExpressions;
 using Medidata.RBT.ConfigurationHandlers;
+using System.Xml.Linq;
 
 namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
 {
@@ -21,42 +22,48 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
     ///It contains both a Project and a Draft, and anything else that is part of an uploaded draft.
     ///These sit in Uploads/Drafts.
     ///</summary>
-    public class UploadedDraft : RaveUISeededObject, IRemoveableObject
+    public class UploadedDraft : RWSSeededPostObject, IRemoveableObject
     {
         public Project Project { get; set; }
         public Draft Draft { get; set; }
-
 
         /// <summary>
         ///The uploaded draft constructor
         ///</summary>
         ///<param name="name">The feature defined name of the UploadedDraft</param>
-		public UploadedDraft(string name, bool redirectAfterSeed = true)
+        public UploadedDraft(string name, bool uploadAfterMakingUnique = true)
+            : base(uploadAfterMakingUnique)
         {
 			UniqueName = name;
-			this.RedirectAfterSeed = redirectAfterSeed;
+            PartialRaveWebServiceUrl = "private/architectLoader/upload";
         }
 
-
-        /// <summary>
-        /// Navigate to the upload draft page.
-        /// </summary>
-		protected override void NavigateToSeedPage()
+        protected override void SetBodyData()
         {
-            WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
-            WebTestContext.Browser.WaitForPageToBeReady();
-            WebTestContext.CurrentPage.As<ArchitectPage>().ClickLink("Upload Draft");
-            WebTestContext.Browser.WaitForPageToBeReady();
+            byte[] bytesResult = null;
+            using (FileStream fileStream = new FileStream(UniqueFileLocation, FileMode.Open, FileAccess.Read))
+            {
+                byte[] bytes = new byte[fileStream.Length];
+                int bytesRead = 0;
+                while ((bytesRead = fileStream.Read(bytes, 0, (int)fileStream.Length)) != 0)
+                {
+                    bytesResult = bytes;
+                }
+            }
+
+            BodyData = bytesResult;
         }
 
-        /// <summary>
-        /// Upload the unique version of the UploadDraft. Mark it for deletion after scenario completion.
-        /// </summary>
-		protected override void CreateObject()
+        protected override void TakeActionAsAResultOfRWSCall()
         {
-            WebTestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
             Project.SetProjectID(Project.UniqueName);
             Factory.FeatureObjectsForDeletion.Add(this);
+            using (StreamReader sr = new StreamReader(WebResponse.GetResponseStream()))
+            {
+                string error = sr.ReadToEnd();
+                if (!String.IsNullOrEmpty(error))
+                    throw new InvalidDataException(String.Format("Error Uploading Architect Loader Spreadsheet:" + Environment.NewLine + "{0}", error));
+            }
         }
 
         /// <summary>
@@ -78,7 +85,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
 				//project 
 				var projectName = draftTable[1, "ProjectName"].ToString();
                 if (Project == null)
-					Project = SeedingContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName, true));
+					Project = SeedingContext.GetExistingFeatureObjectOrMakeNew(projectName, () => new Project(projectName, uploadAfterMakingUnique:false));
 
 				draftTable[1, "ProjectName"] = Project.UniqueName;
 

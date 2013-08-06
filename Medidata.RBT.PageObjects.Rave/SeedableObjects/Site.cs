@@ -38,8 +38,8 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         /// <param name="siteName">The feature defined name of the Site. </param>
         /// <param name="siteGroup">Name of site group. Creates one with the name defaultSiteGroup+TID if none is specified</param>
         /// <param name="siteNumber">The number of the site</param>
-        public Site(string siteName, string siteGroup = "defaultSiteGroup", string siteNumber = null) 
-            : base()
+        public Site(string siteName, string siteGroup = "defaultSiteGroup", string siteNumber = null, bool uploadAfterMakingUnique = true)
+            : base(uploadAfterMakingUnique)
         {
             PartialRaveWebServiceUrl = "private/sites/create";
             UniqueName = siteName;
@@ -57,7 +57,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
             siteXElement.Add(new XElement("siteGroupID") { Value = SiteGroup.ID.ToString() });
             siteXElement.Add(new XElement("active") { Value = Active.ToString() });
 
-            BodyData = siteXElement.ToString();
+            BodyData = Encoding.UTF8.GetBytes(siteXElement.ToString());
         }
 
         protected override void TakeActionAsAResultOfRWSCall()

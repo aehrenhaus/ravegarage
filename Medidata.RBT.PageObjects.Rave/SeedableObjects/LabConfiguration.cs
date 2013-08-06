@@ -369,7 +369,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
                 if (!string.IsNullOrEmpty(studyString))
                 {
                     Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(studyString.Trim(),
-                        () => new Project(studyString.Trim(), true));
+                        () => new Project(studyString.Trim(), uploadAfterMakingUnique: false));
                     analyteRangesTable[row, "Study"] = project.UniqueName.ToString();
                 }
                 //Site
@@ -423,7 +423,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
                 if (!string.IsNullOrEmpty(studyString))
                 {
                     Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew<Project>(studyString.Trim(),
-                        () => new Project(studyString.Trim(), true));
+                        () => new Project(studyString.Trim(), uploadAfterMakingUnique:false));
                     labsTable[row, "Study"] = project.UniqueName.ToString();
                 }
                 //Site

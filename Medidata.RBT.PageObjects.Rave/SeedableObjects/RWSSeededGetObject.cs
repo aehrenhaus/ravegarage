@@ -11,6 +11,9 @@ using Medidata.RBT.Helpers;
 
 namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
 {
+    /// <summary>
+    /// All RWS objects which make calls via GET should inherit from this class
+    /// </summary>
     public abstract class RWSSeededGetObject : RWSSeededObject
     {
         protected RWSSeededGetObject()

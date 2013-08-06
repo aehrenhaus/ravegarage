@@ -21,7 +21,6 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
     public class Project : RaveUISeededObject
     {
         public string Number { get; set; }
-        public bool SkipUpload { get; set; }
         public List<MatrixAssignment> MatrixAssignments { get; set; }
         public ExternalSystem ExternalSystem { get; set; } //External sytem associated with this project
 
@@ -30,10 +29,10 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         /// </summary>
         /// <param name="projectName">Feature defined name of the project</param>
         /// <param name="skipUpload">Skip upload portion of the seeding, so that you upload drafts don't </param>
-        public Project(string projectName, bool skipUpload = false)
+        public Project(string projectName, bool uploadAfterMakingUnique = true)
+            : base(uploadAfterMakingUnique)
         {
             UniqueName = projectName;
-            SkipUpload = skipUpload;
         }
 
         /// <summary>
@@ -43,11 +42,8 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         /// </summary>
         protected override void NavigateToSeedPage()
         {
-            if (!SkipUpload)
-            {
-                WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
-                WebTestContext.CurrentPage = new ArchitectPage();
-            }
+            WebTestContext.CurrentPage.As<HomePage>().ClickLink("Architect");
+            WebTestContext.CurrentPage = new ArchitectPage();
         }
 
         /// <summary>
@@ -57,12 +53,9 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         /// </summary>
         protected override void  CreateObject()
         {
-            if (!SkipUpload)
-            {
-                WebTestContext.Browser.TryFindElementByPartialID("NewProjectName").EnhanceAs<Textbox>().SetText(UniqueName);
-                WebTestContext.CurrentPage.ClickLink("Add Project");
-                SetProjectID(UniqueName);
-            }
+            WebTestContext.Browser.TryFindElementByPartialID("NewProjectName").EnhanceAs<Textbox>().SetText(UniqueName);
+            WebTestContext.CurrentPage.ClickLink("Add Project");
+            SetProjectID(UniqueName);
         }
 
         /// <summary>
