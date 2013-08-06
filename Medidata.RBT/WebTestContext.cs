@@ -34,7 +34,6 @@ namespace Medidata.RBT
 			POFactory = new PageObjectFactory(this);
             var assem = Assembly.Load(RBTConfiguration.Default.POAssembly);
 			POFactory.AddAssembly(assem);
-            ResolveBrowser();
 			
 		}
 
@@ -291,8 +290,14 @@ namespace Medidata.RBT
 			//Close browser
 			if (Browser != null)
 			{
-                Browser.Quit(); //close all the open windows and calls dispose so temp profile is deleted
-                Browser = null;
+                try
+                {
+                    Browser.Quit(); //close all the open windows and calls dispose so temp profile is deleted
+                }
+                finally
+                {
+                    Browser = null;
+                }
 			}
 		}
 
@@ -306,11 +311,13 @@ namespace Medidata.RBT
 		{
 			if (Browser == null)
 			{
-				RemoteWebDriver _webdriver = null;
+                ResolveBrowser();
+
+				RemoteWebDriver webdriver = null;
 					
 				const int maxAttempts = 5;	//Number of times to try to create the FirefoxDriver without WebDriverException being thrown.
 						
-				_webdriver = Misc.SafeCall(() =>
+				webdriver = Misc.SafeCall(() =>
 				{
 					RemoteWebDriver result = null;
 					try
@@ -344,12 +351,12 @@ namespace Medidata.RBT
 				(driver) => driver != null,
 				maxAttempts);
 
-				if (_webdriver == null)
+				if (webdriver == null)
 					throw new WebDriverException(string.Format("-> WebTestContext.OpenBrowser -> Unable to create FirefoxDriver instance after [{0}] attempts", maxAttempts));
 
                     
 
-				Browser = _webdriver;
+				Browser = webdriver;
 			}
 
 		}

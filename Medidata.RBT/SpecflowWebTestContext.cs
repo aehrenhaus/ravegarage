@@ -87,11 +87,14 @@ namespace Medidata.RBT
 		public override void BeforeScenario()
 		{
 			base.BeforeScenario();
+
+            WebTestContext.CurrentUser = null;
+            WebTestContext.CurrentUserPassword = null;
+            WebTestContext.CurrentPage = null;
+            Storage.Clear();
+
             WebTestContext.OpenBrowser();
 
-			WebTestContext.CurrentUser = null;
-
-			Storage.Clear();
             WebTestContext.ClearDownloads();
 
 			//start time
@@ -116,9 +119,7 @@ namespace Medidata.RBT
 			TrySaveScreenShot();
 
 			Factory.DeleteObjectsMarkedForScenarioDeletion();
-
-            if (RBTConfiguration.Default.AutoCloseBrowser)
-                WebTestContext.CloseBrowser();
+            WebTestContext.CloseBrowser();
 		}
 
 		public override void AfterStep()

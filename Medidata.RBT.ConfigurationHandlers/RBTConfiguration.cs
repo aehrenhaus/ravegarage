@@ -37,17 +37,6 @@ namespace Medidata.RBT.ConfigurationHandlers
             set { this["TestResultPath"] = value; }
         }
 
-		[ConfigurationProperty("AutoCloseBrowser", DefaultValue = true, IsRequired = true)]
-        public bool AutoCloseBrowser
-        {
-
-            get
-            {
-                return (bool)this["AutoCloseBrowser"];
-            }
-            set { this["AutoCloseBrowser"] = value; }
-        }
-
         [ConfigurationProperty("TakeScreenShotsEveryStep", DefaultValue = true, IsRequired = true)]
         public bool TakeScreenShotsEveryStep
         {

@@ -13,6 +13,8 @@
   <DeploymentTransformation>
     <Steps>
       <Relocate targetFolder="%TMP%\RaveGarage{TestThreadId}\Medidata.RBT.Features.Rave\bin\build"/>
+      <CopyFolder source="{OriginalBaseFolder}\..\..\..\Uploads" target="..\..\..\Uploads"/>
+      <CopyFolder source="{OriginalBaseFolder}\..\..\..\Downloads" target="..\..\..\Downloads"/>
       <CopyFolder source="{OriginalBaseFolder}\..\..\..\Firefox" target="..\..\..\Firefox"/>
       <CopyFolder source="{OriginalBaseFolder}\..\..\..\ExternalDlls" target="..\..\..\ExternalDlls"/>
       <ConfigFileTransformation configFile="App.config">
