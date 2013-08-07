@@ -7,6 +7,7 @@ using Medidata.Rave.Integration.Logging;
 using Medidata.Rave.Integration.Objects.Brokers.Objects;
 using Medidata.Rave.Integration.Service;
 using Newtonsoft.Json;
+using Medidata.Interfaces.Logging;
 
 namespace Medidata.RBT.Objects.Integration.Helpers
 {

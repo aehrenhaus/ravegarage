@@ -21,7 +21,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void ThenIShouldSeeTheStudyInTheRaveDatabase()
         {
             var uuid = ScenarioContext.Current.Get<String>("studyUuid");
-            var study = Study.FindByUuid(uuid, 1, SystemInteraction.Use());
+            var study = Study.FindByUuid(uuid, SystemInteraction.Use(), 1);
 
             Assert.IsNotNull(study);
             ScenarioContext.Current.Set(study, "study");

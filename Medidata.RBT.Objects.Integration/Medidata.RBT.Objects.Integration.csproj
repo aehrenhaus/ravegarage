@@ -106,9 +106,13 @@
       <Project>{9AF5B9A2-B80E-4D99-87F7-343C4E932539}</Project>
       <Name>Medidata.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Medidata.Rave.Authentication\Medidata.Rave.Authentication.csproj">
-      <Project>{701BBDEA-EC65-4235-97DD-5E5AC1075688}</Project>
-      <Name>Medidata.Rave.Authentication</Name>
+    <ProjectReference Include="..\..\Medidata.Interfaces\Medidata.Interfaces\Medidata.Interfaces.csproj">
+      <Project>{B61CDF83-0D27-47F4-A158-D2CA85A9365D}</Project>
+      <Name>Medidata.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Logging\Medidata.Logging.csproj">
+      <Project>{233C0D82-0EBB-490C-AD0E-9C9CAA636DA6}</Project>
+      <Name>Medidata.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.Common\Medidata.Rave.Integration.Common.csproj">
       <Project>{D6B792F2-087C-4D79-88BE-9A1A05D74EE6}</Project>
@@ -133,10 +137,6 @@
     <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.Service\Medidata.Rave.Integration.Service.csproj">
       <Project>{16DD2687-9732-40EE-8506-0E5F19FF5FD5}</Project>
       <Name>Medidata.Rave.Integration.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Medidata.Utilities\Medidata.Utilities.csproj">
-      <Project>{CF46277D-7473-44E6-8472-2B6DFAEC3601}</Project>
-      <Name>Medidata.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

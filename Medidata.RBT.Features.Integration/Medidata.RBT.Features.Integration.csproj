@@ -12,6 +12,7 @@
     <AssemblyName>Medidata.RBT.Features.Integration</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -36,10 +37,12 @@
     <Reference Include="BouncyCastle.Crypto">
       <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ExternalAssemblies\log4net.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Medidata.MEF.PluginFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Medidata.MEF.PluginFramework.1.0.0.0\lib\net40\Medidata.MEF.PluginFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -109,6 +112,7 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="connections.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -156,17 +160,13 @@
       <Project>{D593442C-DC75-4279-B3D5-B203D292C9B4}</Project>
       <Name>Medidata.Core.Objects</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Medidata.Data\Medidata.Data.csproj">
-      <Project>{9AF5B9A2-B80E-4D99-87F7-343C4E932539}</Project>
-      <Name>Medidata.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Medidata.ExternalSystems.iMedidata\Medidata.ExternalSystems.iMedidata.csproj">
       <Project>{60A94FE2-5789-4857-A70D-BF348C2B86FC}</Project>
       <Name>Medidata.ExternalSystems.iMedidata</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Medidata.Rave.Authentication\Medidata.Rave.Authentication.csproj">
-      <Project>{701BBDEA-EC65-4235-97DD-5E5AC1075688}</Project>
-      <Name>Medidata.Rave.Authentication</Name>
+    <ProjectReference Include="..\..\Medidata.Interfaces\Medidata.Interfaces\Medidata.Interfaces.csproj">
+      <Project>{B61CDF83-0D27-47F4-A158-D2CA85A9365D}</Project>
+      <Name>Medidata.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Medidata.Rave.Integration\Medidata.Rave.Integration.Common\Medidata.Rave.Integration.Common.csproj">
       <Project>{D6B792F2-087C-4D79-88BE-9A1A05D74EE6}</Project>
@@ -192,16 +192,17 @@
       <Project>{16DD2687-9732-40EE-8506-0E5F19FF5FD5}</Project>
       <Name>Medidata.Rave.Integration.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Medidata.Utilities\Medidata.Utilities.csproj">
-      <Project>{CF46277D-7473-44E6-8472-2B6DFAEC3601}</Project>
-      <Name>Medidata.Utilities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.Objects.Integration\Medidata.RBT.Objects.Integration.csproj">
       <Project>{63CCCE89-9E7D-4F5A-B7CA-0BEE1297B902}</Project>
       <Name>Medidata.RBT.Objects.Integration</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)Plugins" "$(TargetDir)Plugins\" /Q /Y /S </PostBuildEvent>
+  </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
