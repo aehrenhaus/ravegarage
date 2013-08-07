@@ -352,7 +352,7 @@ namespace Medidata.RBT
 				maxAttempts);
 
 				if (webdriver == null)
-					throw new WebDriverException(string.Format("-> WebTestContext.OpenBrowser -> Unable to create FirefoxDriver instance after [{0}] attempts", maxAttempts));
+					throw new WebDriverException(string.Format("-> WebTestContext.OpenBrowser -> Unable to create Web Driver instance after [{0}] attempts", maxAttempts));
 
                     
 
