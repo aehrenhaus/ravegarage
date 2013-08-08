@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
-    public class AuditSteps
+    public class AuditSteps : BaseClassSteps
     {
         [Then(@"I should see the site has audits in the Rave database")]
         public void ThenIShouldSeeTheSiteHasAuditsInTheRaveDatabase()

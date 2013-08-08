@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
-    public class ExternalSystemSteps
+    public class ExternalSystemSteps : BaseClassSteps
     {
         
 

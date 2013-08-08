@@ -99,6 +99,7 @@
     <Compile Include="Hooks\IntegrationTestRunHooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\AuditSteps.cs" />
+    <Compile Include="Steps\BaseClassSteps.cs" />
     <Compile Include="Steps\ExternalSystemSteps.cs" />
     <Compile Include="Steps\RoleSteps.cs" />
     <Compile Include="Steps\SiteSteps.cs" />

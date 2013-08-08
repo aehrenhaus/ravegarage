@@ -11,24 +11,11 @@ using Medidata.MEF.PluginFramework;
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
-    public class SQSSteps
+    public class SQSSteps : BaseClassSteps
     {
-        static bool initializedPluginFramework;
-
         [StepDefinition(@"I send the following (.*) message(?:s)? to SQS")]
         public void ISendTheFollowing____MessagesToSQS(string resourceName, Table table)
         {
-            if (!initializedPluginFramework) // get plugins since they don't exist at first
-            {
-                initializedPluginFramework = true;
-                string pluginDir = ConfigurationManager.AppSettings["PluginDirectory"];
-                if (!Path.IsPathRooted(pluginDir))
-                {
-                    pluginDir = Path.Combine(Path.GetDirectoryName(Assembly.GetAssembly(this.GetType()).Location), pluginDir);
-                }
-                ServiceManager.InitializeServiceManager(new PluginEnvironment(pluginDir));
-            }
-
             switch(resourceName.ToLowerInvariant())
             {
                 case ResourceNames.STUDY:
