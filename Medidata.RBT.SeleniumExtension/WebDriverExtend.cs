@@ -107,16 +107,12 @@ namespace Medidata.RBT.SeleniumExtension
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(SeleniumConfiguration.Default.WaitElementTimeout));
             wait.Until(driver1 => 
                 {
-                    //Check if the element is displayed
-                    IWebElement element = driver.TryFindElementBy(elementBy);
-                    string displayState = element.GetStyle("display");
-
-                    if (String.IsNullOrEmpty(displayState) || displayState.Equals("none"))
+                    if (driver.TryFindElementBy(elementBy) != null)
                         return true;
 
                     //If it is displayed maybe there is a warning, this is expected behavior
-                    if (displayState.Equals("block") && driver.TryFindElementBy(warningBy) != null)
-                            return true;
+                    if (driver.TryFindElementBy(warningBy) != null)
+                        return true;
 
                     return false;
                 });

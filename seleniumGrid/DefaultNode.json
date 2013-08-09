@@ -5,6 +5,8 @@
           "browserName": "firefox",
           "maxInstances": 1,
           "seleniumProtocol": "WebDriver",
+		  "platform": "WINDOWS",
+		  "firefox_binary": "C:\\Firefox\\firefox.exe"
         },
         {
           "browserName": "chrome",
@@ -17,10 +19,10 @@
     "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
     "maxSession": 5,
     "port": 5555,
-    "host": ip,
+    "host": "localhost",
     "register": true,
     "registerCycle": 5000,
     "hubPort": 4444,
-    "hubHost": ip
+    "hubHost": "localhost"
   }
 }

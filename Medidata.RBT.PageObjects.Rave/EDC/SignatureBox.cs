@@ -43,7 +43,9 @@ namespace Medidata.RBT.PageObjects.Rave
             PasswordBox.EnhanceAs<Textbox>().SetText(user.Password);
             if(ValidateSignAndSave != null)
                 ValidateSignAndSave.Click();
-            Browser.WaitForElementToCompleteDisplayOrDisplayWithWarning(By.Id("dialog"), By.ClassName("oddWarning"));
+            Browser.WaitForElementToCompleteDisplayOrDisplayWithWarning(
+                By.XPath("//div[@id='dialog' and (contains(@style,'display: none') or not(contains(@style,'display: block')))]"),
+                By.XPath("//div[@id='dialog' and contains(@class,'oddWarning') and contains(@style,'display: block')]"));
 		}
 
         public override string URL { get { return "NOT USED"; } }
