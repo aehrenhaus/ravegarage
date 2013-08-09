@@ -54,5 +54,20 @@ namespace Medidata.RBT
 			return (T)seedable;
 		}
 
+        /// <summary>
+        /// Method to get a FeatureObject that already exists
+        /// </summary>
+        /// <typeparam name="T">A feature object typ</typeparam>
+        /// <param name="originalName">The feature name of the object, the name the object is referred to as in the feature file.</param>
+        /// <returns></returns>
+        public static T TryGetExistingFeatureObject<T>(string originalName) where T : ISeedableObject
+        {
+            ISeedableObject seedable = null;
+
+            SeedableObjects.TryGetValue(originalName, out seedable);
+
+            return seedable == null ? default(T) : (T)seedable;
+        }
+
 	}
 }

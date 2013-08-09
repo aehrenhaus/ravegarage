@@ -80,8 +80,10 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         public void DeleteSelf()
         {
             File.Delete(UniqueFileLocation);
-            GlobalConfiguration clearedConfig = SeedingContext.GetExistingFeatureObjectOrMakeNew<GlobalConfiguration>(DEFAULT_CONFIGURATION, () => new GlobalConfiguration(DEFAULT_CONFIGURATION));
-            File.Delete(clearedConfig.UniqueFileLocation);
+            GlobalConfiguration clearedConfig = SeedingContext.TryGetExistingFeatureObject<GlobalConfiguration>(DEFAULT_CONFIGURATION);
+
+            if (clearedConfig != null)
+                File.Delete(clearedConfig.UniqueFileLocation);
         }
     }
 }
