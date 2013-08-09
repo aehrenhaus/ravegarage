@@ -182,3 +182,25 @@ And I select link "LABFORM (LABFORM)"
 And I select link "LABFORM (LABFORM) details"
 When I select link "Form Preview"
 Then I should see the Preview of the Portrait view
+
+@Release_2013.3.0
+@PBMCC46334-011
+@RR01.AUG.2013
+@Draft
+Scenario: MCC46334-011  As an Rave Study Builder, On the EDC CRF page when I enter data on a form and try to navigate to a different form, then I see the pop-up confirmation message to leave page or stay on page.
+
+Given I login to Rave with user "SUPER USER 1"
+And I select Study "MCC-46334" and Site "Site_A"
+And I create a Subject
+ |Field               |Data              |Control Type |
+ |Subject Initials    |SUB               |textbox      |
+ |Subject Number      |{RndNum<num1>(3)} |textbox      |
+ |Subject ID 	      |SUB {Var(num1)}   |textbox      |
+And I select Form "LOGPORT"
+And I enter data in CRF
+ |Field                                      |Data           |Control Type |
+ |Is this Adverse Event Serious?             |migrane        |longtext     |
+ |Date of First Occurrence of Adverse Event. |01 Jan 2012    |datetime     |
+ |Is this Adverse Event Serious?             |YES            |dropdownlist |
+When I select link "SUB {Var(num1)}"
+Then I should see pop-up confirmation message to leave page or stay on page
