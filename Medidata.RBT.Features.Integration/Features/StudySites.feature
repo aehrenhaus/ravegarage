@@ -45,9 +45,9 @@ Scenario: When a StudySite PUT message gets put onto the queue, the studysite is
 Scenario: When a StudySite DELETE message gets put onto the queue, the studysite is inactivated in Rave.
 	Given the study with name "TestStudy" and environment "Prod" with ExternalId "6" exists in the Rave database
 	And I send the following StudySite messages to SQS
-	| EventType | StudySiteId | StudySiteName     | StudySiteNumber | StudyId | SiteId | SiteName     | SiteNumber | Timestamp           |
-	| POST      | 33          | TestStudySiteName | 5243534         | 6       | 10     | TestSiteName | delete001  | 2012-10-12 12:00:00 |
-	| DELETE    |             |                   |                 |         |        |              | delete001  | 2012-10-12 13:00:00 |
+	| EventType | StudySiteId | StudySiteName     | StudySiteNumber | StudyId | SiteId | SiteName      | SiteNumber | Timestamp           |
+	| POST      | 34          | TestStudySiteName | 5243535         | 6       | 11     | TestSiteName1 | delete002  | 2012-10-12 12:00:00 |
+	| DELETE    |             |                   |                 |         |        |               | delete002  | 2012-10-12 13:00:00 |
 	When the messages are successfully processed
 	Then I should see the site in the Rave database
 	And I should see the studysite in the Rave database
