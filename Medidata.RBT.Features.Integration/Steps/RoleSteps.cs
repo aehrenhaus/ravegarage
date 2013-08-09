@@ -14,7 +14,7 @@ using TechTalk.SpecFlow.Assist;
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
-    public class RoleSteps
+    public class RoleSteps : BaseClassSteps
     {
         [Given(@"the current User is assigned to the current Study with current Role")]
         public void CurrentUserAssignedToCurrentStudyWithCurrentRole()

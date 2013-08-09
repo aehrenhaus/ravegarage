@@ -4,11 +4,14 @@ using System.Threading;
 using Medidata.RBT.Objects.Integration.Configuration;
 using Medidata.RBT.Objects.Integration.Helpers;
 using TechTalk.SpecFlow;
+using System.IO;
+using System.Reflection;
+using Medidata.MEF.PluginFramework;
 
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
-    public class SQSSteps
+    public class SQSSteps : BaseClassSteps
     {
         [StepDefinition(@"I send the following (.*) message(?:s)? to SQS")]
         public void ISendTheFollowing____MessagesToSQS(string resourceName, Table table)

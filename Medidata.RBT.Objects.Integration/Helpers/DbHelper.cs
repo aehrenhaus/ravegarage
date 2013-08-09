@@ -51,14 +51,30 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 restoreQuery.AppendFormat("alter database {0} set single_user with rollback immediate", catalog);
                 restoreQuery.AppendLine();
             }
+
+            var dataPath = AppDomain.CurrentDomain.BaseDirectory + "\\data";
+            var logPath = AppDomain.CurrentDomain.BaseDirectory + "\\log";
+
+            // create directories for mdf and ldf files
+            if (!Directory.Exists(dataPath))
+            {
+                DirectoryInfo di = Directory.CreateDirectory(dataPath);
+            }
+
+            if (!Directory.Exists(logPath))
+            {
+                DirectoryInfo di = Directory.CreateDirectory(logPath);
+            }
+
+
             restoreQuery.AppendFormat(
 @"
 RESTORE DATABASE {0} FROM DISK = '{1}' 
-WITH MOVE 'rave564gold' TO 'C:\data\{0}.mdf',
-     MOVE 'rave564gold_log' TO 'C:\log\{0}_log.ldf',
+WITH MOVE 'rave564gold' TO '{2}\{0}.mdf',
+     MOVE 'rave564gold_log' TO '{3}\{0}_log.ldf',
      REPLACE
 ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
-                                                          catalog, snapshot);
+                                                          catalog, snapshot, dataPath, logPath);
 
             builder.InitialCatalog = "master";
             var cmd = new SqlCommand(restoreQuery.ToString(), new SqlConnection(builder.ToString()));

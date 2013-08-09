@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
-    public class StudySteps
+    public class StudySteps : BaseClassSteps
     {
         // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
 
@@ -21,7 +21,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void ThenIShouldSeeTheStudyInTheRaveDatabase()
         {
             var uuid = ScenarioContext.Current.Get<String>("studyUuid");
-            var study = Study.FindByUuid(uuid, 1, SystemInteraction.Use());
+            var study = Study.FindByUuid(uuid, SystemInteraction.Use(), 1);
 
             Assert.IsNotNull(study);
             ScenarioContext.Current.Set(study, "study");

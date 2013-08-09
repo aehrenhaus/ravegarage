@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
-    public class UserStudySiteSteps
+    public class UserStudySiteSteps : BaseClassSteps
     {
         [Given(@"the current User is assigned to the the current StudySite")]
         public void GivenTheCurrentUserIsAssignedToTheTheCurrentStudySite()

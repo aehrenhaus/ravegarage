@@ -10,7 +10,7 @@ using TechTalk.SpecFlow;
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
-    public class SiteSteps
+    public class SiteSteps : BaseClassSteps
     {
         [Given(@"the Site with site number ""(.*)"" exists in the Rave database")]
         public void TheSiteWithSiteNumber____ExistsInTheRaveDatabase(string siteNumber)

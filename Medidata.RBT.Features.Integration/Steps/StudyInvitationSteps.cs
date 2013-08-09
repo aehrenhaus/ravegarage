@@ -12,7 +12,7 @@ using TechTalk.SpecFlow.Assist;
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
-    public class StudyInvitationSteps
+    public class StudyInvitationSteps : BaseClassSteps
     {
         [Given(@"I have an EDC app assignment with the following roles?")]
         public void GivenIHaveAnEDCAppAssignmentWithTheFollowingRoles(Table table)

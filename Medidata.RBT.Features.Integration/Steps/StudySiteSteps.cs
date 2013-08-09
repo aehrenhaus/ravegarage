@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
-    public class StudySiteSteps
+    public class StudySiteSteps : BaseClassSteps
     {
         // For additional details on SpecFlow step definitions see http://go.specflow.org/doc-stepdef
         
