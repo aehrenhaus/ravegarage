@@ -31,9 +31,15 @@ And I select "Project" link "MCC-46334" in "Active Projects"
 And I select Draft "Draft 1"
 And I navigate to "Forms"
 And I select Fields for Form "LOGPORT"
-When I select link "Preview"
-And I select link "Data" in "Form Preview"
-Then I should see the Preview of the Portrait view
+And I take a screenshot
+And I select link "Preview"
+And I take a screenshot
+When I select link "Data" in "Form Preview"
+Then I verify link "Click here to return to "Complete View"." exists
+And I verify image "LogPic.gif" exists
+And I verify text "Currently viewing line 1 of 1." exists
+And I verify link "Add a new Log line" does not exist
+And I take a screenshot
 
 @Release_2013.3.0
 @PBMCC46334-002
@@ -47,8 +53,13 @@ And I select "Project" link "MCC-46334" in "Active Projects"
 And I select Draft "Draft 1"
 And I navigate to "Forms"
 And I select Fields for Form "LOGLAND"
+And I take a screenshot
 When I select link "Preview"
-Then I should see the Preview of the Landscape view
+Then I verify link "Add a new Log line" exists
+And I verify image "LogPic.gif" does not exists
+And I verify text "Currently viewing line 1 of 1."does not exists
+And I verify link "Click here to return to "Complete View"." does not exist
+And I take a screenshot
 
 @Release_2013.3.0
 @PBMCC46334-003
@@ -62,9 +73,15 @@ And I select "Project" link "MCC-46334" in "Active Projects"
 And I select Draft "Draft 1"
 And I navigate to "Forms"
 And I select Fields for Form "MIXEDPORT"
-When I select link "Preview"
-And I select link "Data" in "Form Preview"
-Then I should see the Preview of the Portrait view
+And I take a screenshot
+And I select link "Preview"
+And I take a screenshot
+When I select link "Data" in "Form Preview"
+Then I verify link "Click here to return to "Complete View"." exists
+And I verify image "LogPic.gif" exists
+And I verify text "Currently viewing line 1 of 1." exists
+And I verify link "Add a new Log line" does not exist
+And I take a screenshot
 
 @Release_2013.3.0
 @PBMCC46334-004
@@ -78,8 +95,13 @@ And I select "Project" link "MCC-46334" in "Active Projects"
 And I select Draft "Draft 1"
 And I navigate to "Forms"
 And I select Fields for Form "MIXEDLAND"
+And I take a screenshot
 When I select link "Preview"
-Then I should see the Preview of the Landscape view
+Then I verify link "Add a new Log line" exists
+And I verify image "LogPic.gif" does not exists
+And I verify text "Currently viewing line 1 of 1."does not exists
+And I verify link "Click here to return to "Complete View"." does not exist
+And I take a screenshot
 
 @Release_2013.3.0
 @PBMCC46334-005
@@ -93,8 +115,13 @@ And I select "Project" link "MCC-46334" in "Active Projects"
 And I select Draft "Draft 1"
 And I navigate to "Forms"
 And I select Fields for Form "LABFORM"
+And I take a screenshot
 When I select link "Preview"
-Then I should see the Preview of the Portrait view
+Then I verify link "Add a new Log line" does not exists
+And I verify image "LogPic.gif" does not exists
+And I verify text "Currently viewing line 1 of 1."does not exists
+And I verify link "Click here to return to "Complete View"." does not exist
+And I take a screenshot
 
 @Release_2013.3.0
 @PBMCC46334-006
@@ -110,9 +137,15 @@ And I select link "Propose Objects" located in "Left Nav"
 And I check "LOGPORT (LOGPORT)"
 And I select link "LOGPORT (LOGPORT)"
 And I select link "LOGPORT (LOGPORT) details"
-When I select link "Form Preview"
-And I select link "Data" in "Form Preview"
-Then I should see the Preview of the Portrait view
+And I take a screenshot
+And I select link "Form Preview"
+And I take a screenshot
+When I select link "Data" in "Form Preview"
+Then I verify link "Click here to return to "Complete View"." exists
+And I verify image "LogPic.gif" exists
+And I verify text "Currently viewing line 1 of 1." exists
+And I verify link "Add a new Log line" does not exist
+And I take a screenshot
 
 @Release_2013.3.0
 @PBMCC46334-007
@@ -128,8 +161,13 @@ And I select link "Propose Objects" located in "Left Nav"
 And I check "LOGLAND (LOGLAND)"
 And I select link "LOGLAND (LOGLAND)"
 And I select link "LOGLAND (LOGLAND) details"
+And I take a screenshot
 When I select link "Form Preview"
-Then I should see the Preview of the Landscape view
+Then I verify link "Add a new Log line" exists
+And I verify image "LogPic.gif" does not exists
+And I verify text "Currently viewing line 1 of 1."does not exists
+And I verify link "Click here to return to "Complete View"." does not exist
+And I take a screenshot
 
 @Release_2013.3.0
 @PBMCC46334-008
@@ -145,9 +183,15 @@ And I select link "Propose Objects" located in "Left Nav"
 And I check "MIXEDPORT (MIXEDPORT)"
 And I select link "MIXEDPORT (MIXEDPORT)"
 And I select link "MIXEDPORT (MIXEDPORT) details"
-When I select link "Form Preview"
-And I select link "Data" in "Form Preview"
-Then I should see the Preview of the Portrait view
+And I take a screenshot
+And I select link "Form Preview"
+And I take a screenshot
+When I select link "Data" in "Form Preview"
+Then I verify link "Click here to return to "Complete View"." exists
+And I verify image "LogPic.gif" exists
+And I verify text "Currently viewing line 1 of 1." exists
+And I verify link "Add a new Log line" does not exist
+And I take a screenshot
 
 @Release_2013.3.0
 @PBMCC46334-009
@@ -163,8 +207,13 @@ And I select link "Propose Objects" located in "Left Nav"
 And I check "MIXEDLAND (MIXEDLAND)"
 And I select link "MIXEDLAND (MIXEDLAND)"
 And I select link "MIXEDLAND (MIXEDLAND) details"
+And I take a screenshot
 When I select link "Form Preview"
-Then I should see the Preview of the Landscape view
+Then I verify link "Add a new Log line" exists
+And I verify image "LogPic.gif" does not exists
+And I verify text "Currently viewing line 1 of 1."does not exists
+And I verify link "Click here to return to "Complete View"." does not exist
+And I take a screenshot
 
 @Release_2013.3.0
 @PBMCC46334-010
@@ -180,8 +229,13 @@ And I select link "Propose Objects" located in "Left Nav"
 And I check "LABFORM (LABFORM)"
 And I select link "LABFORM (LABFORM)"
 And I select link "LABFORM (LABFORM) details"
+And I take a screenshot
 When I select link "Form Preview"
-Then I should see the Preview of the Portrait view
+Then I verify link "Add a new Log line" does not exists
+And I verify image "LogPic.gif" does not exists
+And I verify text "Currently viewing line 1 of 1."does not exists
+And I verify link "Click here to return to "Complete View"." does not exist
+And I take a screenshot
 
 @Release_2013.3.0
 @PBMCC46334-011
@@ -204,3 +258,4 @@ And I enter data in CRF
  |Is this Adverse Event Serious?             |YES            |dropdownlist |
 When I select link "SUB {Var(num1)}"
 Then I should see pop-up confirmation message to leave page or stay on page
+And I take a screenshot
