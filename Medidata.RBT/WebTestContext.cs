@@ -8,11 +8,9 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.ConfigurationHandlers;
 
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 
 
@@ -26,6 +24,8 @@ namespace Medidata.RBT
 	/// </summary>
 	public class WebTestContext
 	{
+        IWebBrowser _webBrowser;
+
 		#region Some context variables that may be used durnig test.
 
 		public WebTestContext()
@@ -36,6 +36,16 @@ namespace Medidata.RBT
 			POFactory.AddAssembly(assem);
 			
 		}
+
+        private void ResolveBrowser()
+        {
+            BrowserNames browserEnum;
+
+            browserEnum = (BrowserNames)Enum.Parse(typeof(BrowserNames), RBTConfiguration.Default.BrowserName.ToLower());
+
+            _webBrowser = ((IBrowserFactory)RBTModule.Instance.Container.Resolve(typeof(IBrowserFactory), ""))
+                .CreateWebBrowser(browserEnum);
+        }
 
 		public FileInfo LastDownloadedFile { get; set; }
 
@@ -280,8 +290,14 @@ namespace Medidata.RBT
 			//Close browser
 			if (Browser != null)
 			{
-                Browser.Quit(); //close all the open windows and calls dispose so temp profile is deleted
-                Browser = null;
+                try
+                {
+                    Browser.Quit(); //close all the open windows and calls dispose so temp profile is deleted
+                }
+                finally
+                {
+                    Browser = null;
+                }
 			}
 		}
 
@@ -291,75 +307,56 @@ namespace Medidata.RBT
 		/// </summary>
 		/// <param name="browserName"></param>
 		/// <returns></returns>
-		public void OpenBrowser(string browserName = null)
+		public void OpenBrowser()
 		{
 			if (Browser == null)
 			{
-				RemoteWebDriver _webdriver = null;
+                ResolveBrowser();
 
-				var driverPath = RBTConfiguration.Default.WebDriverPath;
-				if (!Path.IsPathRooted(driverPath))
-					driverPath = new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, driverPath)).FullName;
-
-				switch (RBTConfiguration.Default.BrowserName.ToLower())
-				{
-					case "firefox":
-						const int maxAttempts = 5;	//Number of times to try to create the FirefoxDriver without WebDriverException being thrown.
+				RemoteWebDriver webdriver = null;
+					
+				const int maxAttempts = 5;	//Number of times to try to create the FirefoxDriver without WebDriverException being thrown.
 						
-						_webdriver = Misc.SafeCall(() =>
+				webdriver = Misc.SafeCall(() =>
+				{
+					RemoteWebDriver result = null;
+					try
+					{
+                        //Only use remote web browser when selenium server url is string is specified
+                        //as we would be using selenium's grid capabilities else just create an insatnce of specific browser
+						if (string.IsNullOrWhiteSpace(RBTConfiguration.Default.SeleniumServerUrl))
+                            result = _webBrowser.CreateLocalWebDriver();
+						else
+                            result = _webBrowser.CreateRemoteWebDriver();
+					}
+					catch (WebDriverException wdex)
+					{
+						Console.WriteLine("-> WebTestContext.OpenBrowser failed while attempting to instantiate FirefoxDriver");
+						Console.WriteLine(string.Format("-> WebDriverException was : {0}", wdex.Message));
+						if (result != null)
 						{
-							FirefoxDriver result = null;
-							try
-							{
-								FirefoxProfile p = new FirefoxProfile();
-								FirefoxBinary bin = new FirefoxBinary(RBTConfiguration.Default.BrowserPath);
-								p.SetPreference("browser.download.folderList", 2);
-								p.SetPreference("browser.download.manager.showWhenStarting", false);
-								p.SetPreference("browser.download.dir", RBTConfiguration.Default.DownloadPath.ToUpper());
-								p.SetPreference("browser.helperApps.neverAsk.saveToDisk", RBTConfiguration.Default.AutoSaveMimeTypes);
+							Console.WriteLine("-> WebTestContext.OpenBrowser -> result was not null -> attempting call result.Quit()");
+							result.Quit();
+						}
+						else
+						{
+							Console.WriteLine("-> WebTestContext.OpenBrowser -> result was null");
+						}
 
-								result = new FirefoxDriver(bin, p, TimeSpan.FromMinutes(2));
-							}
-							catch (WebDriverException wdex)
-							{
-								Console.WriteLine("-> WebTestContext.OpenBrowser failed while attempting to instantiate FirefoxDriver");
-								Console.WriteLine(string.Format("-> WebDriverException was : {0}", wdex.Message));
-								if (result != null)
-								{
-									Console.WriteLine("-> WebTestContext.OpenBrowser -> result was not null -> attempting call result.Quit()");
-									result.Quit();
-								}
-								else
-								{
-									Console.WriteLine("-> WebTestContext.OpenBrowser -> result was null");
-								}
+						result = null;
+					}
 
-								result = null;
-							}
+					return result;
+				},
+				(driver) => driver != null,
+				maxAttempts);
 
-							return result;
-						},
-						(driver) => driver != null,
-						maxAttempts);
+				if (webdriver == null)
+					throw new WebDriverException(string.Format("-> WebTestContext.OpenBrowser -> Unable to create Web Driver instance after [{0}] attempts", maxAttempts));
 
-						if (_webdriver == null)
-							throw new WebDriverException(string.Format("-> WebTestContext.OpenBrowser -> Unable to create FirefoxDriver instance after [{0}] attempts", maxAttempts));
+                    
 
-						break;
-
-
-					case "chrome":
-						_webdriver = new ChromeDriver(driverPath);
-						break;
-
-
-					case "ie":
-						_webdriver = new InternetExplorerDriver(driverPath);
-						break;
-
-				}
-
-				Browser = _webdriver;
+				Browser = webdriver;
 			}
 
 		}

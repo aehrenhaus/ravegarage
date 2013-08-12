@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Specialized;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.ConfigurationHandlers;
 
 
 namespace Medidata.RBT.PageObjects.Rave
@@ -71,7 +72,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             get 
             {
-                return RaveConfiguration.Default.RaveURL;
+                return RaveConfigurationGroup.Default.RaveURL;
             }
         }
 

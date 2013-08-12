@@ -325,7 +325,7 @@ namespace Medidata.RBT
 		public virtual IPage NavigateToSelf(NameValueCollection parameters = null)
         {
 			string contextSessionIdstring = Context.Storage["UrlSessionID"] as string;
-            string url = string.Format("{0}{1}{2}", BaseURL, string.IsNullOrEmpty(contextSessionIdstring) ? string.Empty : contextSessionIdstring + "/", URL);
+            string url = string.Format("{0}{1}{2}", BaseURL, string.IsNullOrWhiteSpace(contextSessionIdstring) ? string.Empty : contextSessionIdstring + "/", URL);
             string querystring = string.Empty;
 
 			if(parameters != null)

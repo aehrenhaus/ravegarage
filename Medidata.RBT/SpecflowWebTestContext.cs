@@ -9,6 +9,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Collections.Specialized;
 using System.Collections;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT
 {
@@ -23,30 +24,22 @@ namespace Medidata.RBT
 
 		public override void AfterTestRun()
 		{
-			base.AfterTestRun();
 
 			//do clean up both before and after test run :)
 			WebTestContext.ClearTempFiles();
 			WebTestContext.ClearDownloads();
 
-			if (RBTConfiguration.Default.AutoCloseBrowser)
-				WebTestContext.CloseBrowser();
-
-			GernerateReport();
+            if (!SpecflowSectionHandler.UnitTestProvider.Name.Contains("SpecRun")
+                && SpecflowSectionHandler.UnitTestProvider.Name.Contains("MsTest"))
+                GernerateReport();
 		}
 
 		public override void BeforeTestRun()
 		{
-			base.BeforeTestRun();
-
-
-
 			WebTestContext = new RBT.WebTestContext();
 
 			//do clean up both before and after test run :)
 			WebTestContext.ClearTempFiles();
-
-			WebTestContext.OpenBrowser();
 
 
 			SeedingContext.DefaultSeedingOption = new SeedingOptions(
@@ -62,8 +55,6 @@ namespace Medidata.RBT
 
 		public override void BeforeFeature()
 		{
-			base.BeforeFeature();
-
 			Storage.Clear();
 			HandleFeatureTags();
 			CurrentFeatureStartTime = DateTime.Now;
@@ -76,7 +67,6 @@ namespace Medidata.RBT
 		{
             try
             {
-                base.AfterFeature();
                 SeedingContext.FeatureSeedingOption = null;
             }
             finally
@@ -89,9 +79,14 @@ namespace Medidata.RBT
 		public override void BeforeScenario()
 		{
 			base.BeforeScenario();
-			WebTestContext.CurrentUser = null;
 
-			Storage.Clear();
+            WebTestContext.CurrentUser = null;
+            WebTestContext.CurrentUserPassword = null;
+            WebTestContext.CurrentPage = null;
+            Storage.Clear();
+
+            WebTestContext.OpenBrowser();
+
             WebTestContext.ClearDownloads();
 
 			//start time
@@ -111,17 +106,24 @@ namespace Medidata.RBT
 
 		public override void AfterScenario()
 		{
-			base.AfterScenario();
-			//take a snapshot after every scenario
-			TrySaveScreenShot();
-
-			Factory.DeleteObjectsMarkedForScenarioDeletion();
+            try //if a web driver exception with inner exception on HTTP Response has happen then this step will fail preventing a cleanup hence a try block is required
+            {
+                //take a snapshot after every scenario
+                TrySaveScreenShot();
+            }
+            catch (OpenQA.Selenium.WebDriverException ex)
+            {
+                Console.WriteLine(string.Format("Web driver failed and snap-shot attempt did not work. Exception: [{0}]", ex.Message));
+            }
+            finally
+            {
+                Factory.DeleteObjectsMarkedForScenarioDeletion();
+                WebTestContext.CloseBrowser();
+            }
 		}
 
 		public override void AfterStep()
 		{
-			base.AfterStep();
-
 			if (RBTConfiguration.Default.TakeScreenShotsEveryStep)
 			{
 				TrySaveScreenShot();

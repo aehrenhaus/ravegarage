@@ -3,14 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using TechTalk.SpecFlow.Configuration;
+using System.Configuration;
 
 namespace Medidata.RBT
 {
 	public abstract class SpecflowContextBase
 	{
+        ConfigurationSectionHandler m_specflowSectionHandler;
+        public ConfigurationSectionHandler SpecflowSectionHandler
+        {
+            get
+            {
+                return m_specflowSectionHandler;
+            }
+        }
+
 		public SpecflowContextBase()
 		{
 			Storage = new Hashtable();
+            m_specflowSectionHandler = (ConfigurationSectionHandler)ConfigurationManager.GetSection("specFlow");
 		}
 
 		private MultipleStreamWriter consoleWriter;
@@ -51,7 +63,9 @@ namespace Medidata.RBT
 		public virtual void BeforeScenario()
 		{ 
             #if DEBUG
-			SetOutput();
+            if (!SpecflowSectionHandler.UnitTestProvider.Name.Contains("SpecRun") 
+                && SpecflowSectionHandler.UnitTestProvider.Name.Contains("MsTest"))
+                SetOutput();
             #endif
 		}
 

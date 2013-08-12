@@ -3,6 +3,7 @@ using Medidata.RBT.PageObjects.Rave;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.ConfigurationHandlers;
 
 
 namespace Medidata.RBT.Features.Rave
@@ -31,8 +32,8 @@ namespace Medidata.RBT.Features.Rave
 		/// </summary>
         public void ILoginToRaveWithDefaultAccount()
         {
-            ILoginToRaveWithUsername____AndPassword____(RaveConfiguration.Default.DefaultUser,
-                                            RaveConfiguration.Default.DefaultUserPassword);
+            ILoginToRaveWithUsername____AndPassword____(RaveConfigurationGroup.Default.DefaultUser,
+                                            RaveConfigurationGroup.Default.DefaultUserPassword);
         }
 
 		/// <summary>

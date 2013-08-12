@@ -64,6 +64,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RaveWebServices.Ou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMedidataIDtoUUID", "..\Medidata.Rave.Integration\iMedidataIDtoUUID\iMedidataIDtoUUID.csproj", "{04425E41-1A80-4664-9B3F-2F22B4CE70F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.ConfigurationHandlers", "Medidata.RBT.ConfigurationHandlers\Medidata.RBT.ConfigurationHandlers.csproj", "{11731335-E462-47EA-8DC9-E668A7C183C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CruiseControl|Any CPU = CruiseControl|Any CPU
@@ -384,6 +386,21 @@ Global
 		{04425E41-1A80-4664-9B3F-2F22B4CE70F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04425E41-1A80-4664-9B3F-2F22B4CE70F7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{04425E41-1A80-4664-9B3F-2F22B4CE70F7}.Release|x86.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.CruiseControl|Any CPU.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.CruiseControl|Any CPU.Build.0 = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.CruiseControl|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.CruiseControl|Mixed Platforms.Build.0 = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.CruiseControl|x86.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

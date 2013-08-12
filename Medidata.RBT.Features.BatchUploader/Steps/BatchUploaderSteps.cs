@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.Features.BatchUploader.Steps
 {

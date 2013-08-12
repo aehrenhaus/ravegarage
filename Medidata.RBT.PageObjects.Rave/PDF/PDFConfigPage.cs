@@ -6,6 +6,7 @@ using Medidata.RBT.SeleniumExtension;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 using TechTalk.SpecFlow;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.PageObjects.Rave.PDF
 {

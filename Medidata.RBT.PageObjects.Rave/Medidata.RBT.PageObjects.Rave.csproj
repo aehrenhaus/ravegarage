@@ -240,7 +240,6 @@
     <Compile Include="SharedRaveObjects\User.cs" />
     <Compile Include="SharedRaveObjects\UploadedDraft.cs" />
     <Compile Include="SharedRaveObjects\PDFSpecific.cs" />
-    <Compile Include="RaveConfiguration.cs" />
     <Compile Include="Reports\DataListingReportPage.cs" />
     <Compile Include="Reports\StreamReportPage.cs" />
     <Compile Include="Reports\CrystalReportPage.cs" />
@@ -323,6 +322,10 @@
     <Compile Include="EDC\SubjectPage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Medidata.RBT.ConfigurationHandlers\Medidata.RBT.ConfigurationHandlers.csproj">
+      <Project>{11731335-E462-47EA-8DC9-E668A7C183C7}</Project>
+      <Name>Medidata.RBT.ConfigurationHandlers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.SeleniumExtension\Medidata.RBT.SeleniumExtension.csproj">
       <Project>{22945718-331A-4CC1-A98A-A7E7500FAF76}</Project>
       <Name>Medidata.RBT.SeleniumExtension</Name>

@@ -43,6 +43,15 @@
       <HintPath>..\ExternalDlls\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ExternalDlls\Newtonsoft.Json.dll</HintPath>
@@ -53,6 +62,9 @@
     </Reference>
     <Reference Include="Selenium.WebDriverBackedSelenium, Version=2.33.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriverBackedSelenium.2.33.0\lib\net40\Selenium.WebDriverBackedSelenium.dll</HintPath>
+    </Reference>
+    <Reference Include="SpecRun.SpecFlowPlugin">
+      <HintPath>..\packages\SpecRun.SpecFlow.1.1.0\lib\net40\SpecRun.SpecFlowPlugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -67,6 +79,9 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="TechTalk.SpecFlow">
       <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="TechTalk.SpecRun">
+      <HintPath>..\packages\SpecRun.SpecFlow.1.1.0\lib\net40\TechTalk.SpecRun.dll</HintPath>
     </Reference>
     <Reference Include="ThoughtWorks.Selenium.Core, Version=2.33.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.RC.2.33.0\lib\net40\ThoughtWorks.Selenium.Core.dll</HintPath>
@@ -671,6 +686,10 @@
       <Project>{45796EAF-4C33-4410-A85E-D5EF7EBE7EFE}</Project>
       <Name>Medidata.RBT.Common.Steps</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Medidata.RBT.ConfigurationHandlers\Medidata.RBT.ConfigurationHandlers.csproj">
+      <Project>{11731335-E462-47EA-8DC9-E668A7C183C7}</Project>
+      <Name>Medidata.RBT.ConfigurationHandlers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Medidata.RBT.PageObjects.Rave\Medidata.RBT.PageObjects.Rave.csproj">
       <Project>{14989202-B55D-4273-85E2-1BFD95A4BB80}</Project>
       <Name>Medidata.RBT.PageObjects.Rave</Name>
@@ -690,6 +709,12 @@
     </None>
     <None Include="App.config.template">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Parallel.srprofile">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Default.srprofile">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Features\AM2\US12996_AM2_DT13997StandardField.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -1124,6 +1149,10 @@
       <LastGenOutput>US18812.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="runtests.cmd" />
+    <None Include="SpecRunTestProfile.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

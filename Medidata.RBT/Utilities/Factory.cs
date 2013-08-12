@@ -54,7 +54,16 @@ namespace Medidata.RBT
         public static void DeleteObjectsMarkedForScenarioDeletion()
         {
             foreach (IRemoveableObject obj in ScenarioObjectsForDeletion)
-                obj.DeleteSelf();
+            {
+                try
+                {
+                    obj.DeleteSelf();
+                }
+                catch (OpenQA.Selenium.WebDriverException ex)
+                {
+                    Console.WriteLine(string.Format("An attempt was made to access not responding web driver during object clean up. Exception: [{0}]", ex.Message));
+                }
+            }
 
             ScenarioObjectsForDeletion = new List<IRemoveableObject>();
         }

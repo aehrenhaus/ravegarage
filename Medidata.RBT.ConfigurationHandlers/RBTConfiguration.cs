@@ -5,7 +5,7 @@ using System.Text;
 using System.Configuration;
 using System.IO;
 
-namespace Medidata.RBT
+namespace Medidata.RBT.ConfigurationHandlers
 {
     public class RBTConfiguration : ConfigurationSection
     {
@@ -35,17 +35,6 @@ namespace Medidata.RBT
         {
             get { return (String)this["TestResultPath"]; }
             set { this["TestResultPath"] = value; }
-        }
-
-		[ConfigurationProperty("AutoCloseBrowser", DefaultValue = true, IsRequired = true)]
-        public bool AutoCloseBrowser
-        {
-
-            get
-            {
-                return (bool)this["AutoCloseBrowser"];
-            }
-            set { this["AutoCloseBrowser"] = value; }
         }
 
         [ConfigurationProperty("TakeScreenShotsEveryStep", DefaultValue = true, IsRequired = true)]
@@ -100,12 +89,21 @@ namespace Medidata.RBT
             get { return (String)this["BrowserPath"]; }
             set { this["BrowserPath"] = value; }
         }
- 
+
+        [ConfigurationProperty("DownloadPath", DefaultValue = @"..\..\..\Downloads", IsRequired = true)]
         public String DownloadPath
         {
             get
             {
-                return (new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Downloads"))).FullName;
+                string downloadPath = (string)this["DownloadPath"];
+                if (Path.IsPathRooted(downloadPath))
+                    return downloadPath;
+                else
+                    return (new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, downloadPath))).FullName;
+            }
+            set
+            {
+                this["DownloadPath"] = value;
             }
         }
 
@@ -115,14 +113,19 @@ namespace Medidata.RBT
             get { return (String)this["AutoSaveMimeTypes"]; }
             set { this["AutoSaveMimeTypes"] = value; }
         }
-		
 
+        [ConfigurationProperty("UploadPath", DefaultValue = @"..\..\..\Uploads", IsRequired = true)]
         public String UploadPath
         {
             get 
             {
-                return (new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Uploads"))).FullName;
+                string uploadPath = (string)this["UploadPath"];
+                if (Path.IsPathRooted(uploadPath))
+                    return uploadPath;
+                else
+                    return (new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, uploadPath))).FullName;
             }
+            set { this["UploadPath"] = value; }
         }
 
 		[ConfigurationProperty("SqlScriptsPath", DefaultValue = "", IsRequired = true)]
@@ -222,5 +225,18 @@ namespace Medidata.RBT
 			set { this["FtpPassword"] = value; }
 		}
 
+        [ConfigurationProperty("SeleniumServerUrl", DefaultValue = "")]
+        public string SeleniumServerUrl
+        {
+            get { return (string)this["SeleniumServerUrl"];}
+            set { this["SeleniumServerUrl"] = value;}
+        }
+
+        [ConfigurationProperty("RaveConfigurationName", DefaultValue = "default")]
+        public string RaveConfigurationName
+        {
+            get { return (string)this["RaveConfigurationName"]; }
+            set { this["RaveConfigurationName"] = value; }
+        }
     }
 }

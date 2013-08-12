@@ -14,6 +14,7 @@ using Medidata.RBT.PageObjects.Rave.Configuration;
 using Medidata.RBT.SharedObjects;
 using Medidata.RBT.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave.Lab;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 using System.Data.SqlClient;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT
 {

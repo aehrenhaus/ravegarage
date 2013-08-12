@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using Medidata.RBT.SeleniumExtension;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -28,8 +29,8 @@ namespace Medidata.RBT.PageObjects.Rave
 		public static void LoginToHomePageIfNotAlready(WebTestContext context, string userName = null, string password = null)
 		{
 			//user default if not assigned
-			userName = userName ?? RaveConfiguration.Default.DefaultUser;
-			password = password ?? RaveConfiguration.Default.DefaultUserPassword;
+            userName = userName ?? RaveConfigurationGroup.Default.DefaultUser;
+            password = password ?? RaveConfigurationGroup.Default.DefaultUserPassword;
 
 			//if not the user
 			if (context.CurrentUser != userName)

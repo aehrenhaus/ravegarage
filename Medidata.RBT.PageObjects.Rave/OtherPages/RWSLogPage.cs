@@ -7,6 +7,7 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using System.Diagnostics;
 using System.Collections.Specialized;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -31,7 +32,7 @@ namespace Medidata.RBT.PageObjects.Rave
             //System.Runtime.getRuntime().exec("C:\\Program Files\\AutoIt3\\Examples\\authenticationFF.exe");
 
 
-            string filename = RaveConfiguration.Default.RWSAuthanticationFilePath;
+            string filename = RaveConfigurationGroup.Default.RWSAuthanticationFilePath;
             ProcessStartInfo procStartInfo = new ProcessStartInfo(filename);
             procStartInfo.Arguments = string.Format("\"{0}\" \"{1}\" \"{2}\"", dialogTitle, username, password);
             Process proc = new Process();
