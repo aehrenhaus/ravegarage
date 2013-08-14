@@ -22,7 +22,7 @@
 
 @set TIMESTAMP=%DATE:~10,4%_%DATE:~4,2%_%DATE:~7,2%_%TIME:~0,2%_%TIME:~3,2%_%TIME:~6,2%
 
-SpecRun.exe run %profile%.srprofile "/baseFolder:%~dp0\bin\Debug" /log:"%~dp0\..\TestResults\%TIMESTAMP%\specrun.log" %2 %3 %4 %5
+SpecRun.exe run %profile%.srprofile "/baseFolder:%~dp0\bin\Debug" /log:"%~dp0\..\TestResults\%TIMESTAMP%\specrun.log" %3 %4 %5 %6
 
 @popd
 
@@ -34,7 +34,7 @@ SpecRun.exe run %profile%.srprofile "/baseFolder:%~dp0\bin\Debug" /log:"%~dp0\..
 
 @move %~dp0\bin\Debug\*.html "..\TestResults\%TIMESTAMP%"
 @move %~dp0\bin\Debug\Output\*.jpg "..\TestResults\%TIMESTAMP%\Output"
-@move %~dp0\bin\Debug\flags\*.failure "..\TestResults\flags"
+@move %~dp0\bin\Debug\flags\*.failure "%2\flags"
 
 :end
 
