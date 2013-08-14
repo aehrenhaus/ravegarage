@@ -1,10 +1,11 @@
-using System;using System.Collections.Generic;
+using System;
 using System.Linq;
-using System.Text;
 using Medidata.RBT.Objects.Integration.Helpers;
 using Medidata.Core.Objects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
+using Medidata.RBT.Objects.Integration.Configuration.Models;
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Integration.Steps
 {
@@ -93,6 +94,44 @@ namespace Medidata.RBT.Features.Integration.Steps
             var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
 
             Assert.AreEqual(true, studySite.Active);
+        }
+
+        [Then(@"the studysite should exist with the following properties")]
+        public void ThenTheSiteShouldExistWithTheFollowingProperties(Table table)
+        {
+            var messageConfigs = table.CreateSet<StudySiteMessageModel>().ToList();
+
+            foreach (var config in messageConfigs)
+            {
+                if (config.ExternalID != 0)
+                    ThenTheStudysiteShouldHaveExternalID____(config.ExternalID);
+                if (config.StudySiteName != null)
+                    ThenTheStudysiteShouldHaveTheStudySiteName____(config.StudySiteName);
+                if (config.StudySiteNumber != null)
+                    ThenTheStudysiteShouldHaveTheStudySiteNumber____(config.StudySiteNumber);
+                if (config.ExternalStudyId != 0)
+                    ThenTheStudysiteShouldHaveTheExternalStudyId(config.ExternalStudyId);
+                if (!config.LastExternalUpdateDate.Equals(new DateTime(1, 1, 1)))
+                    ThenTheStudysiteShouldHaveALastExternalUpdateDate____(config.LastExternalUpdateDate);
+                if (config.Source != null)
+                {
+                    if (config.Source.ToLower().Equals("imedidata"))
+                    {
+                        var ext = new ExternalSystemSteps();
+                        ext.ThenTheSiteShouldHaveTheSourceIMedidata();
+                    }
+                    else
+                        throw new NotImplementedException("Can't check for Source other than iMedidata.");
+                }
+                if (config.Active != null)
+                {
+                    var active = bool.Parse(config.Active);
+                    if (active)
+                        ThenTheStudysiteShouldBeActive();
+                    else
+                        ThenTheStudysiteShouldBeInactive();
+                }
+            }
         }
     }
 }

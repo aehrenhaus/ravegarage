@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
-using Medidata.Core.Common.Utilities;
 using Medidata.Core.Objects;
 using Medidata.RBT.Objects.Integration.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
+using Medidata.RBT.Objects.Integration.Configuration.Models;
+using TechTalk.SpecFlow.Assist;
 
 namespace Medidata.RBT.Features.Integration.Steps
 {
@@ -118,10 +119,10 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [StepDefinition(@"the user should have Telephone ""(.*)""")]
-        public void TheUserShouldHaveTelephone____(string telephone)
+        public void TheUserShouldHaveTelephone____(string Telephone)
         {
             var user = ScenarioContext.Current.Get<User>("user");
-            Assert.AreEqual(telephone, user.Telephone);
+            Assert.AreEqual(Telephone, user.Telephone);
         }
 
         [StepDefinition(@"the user should have Locale ""(.*)""")]
@@ -139,7 +140,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.IsTrue(userTimeZone.TimezoneDisplay.Contains(timeZone));
         }
 
-        [Then(@"the user should have the ExternalSystem iMedidata")]
+        [Then(@"user's ExternalSystem value corresponds to iMedidata")]
         public void ThenTheUserShouldHaveTheExternalSystemIMedidata()
         {
             var user = ScenarioContext.Current.Get<User>("user");
@@ -170,7 +171,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the user should have Institution ""(.*)""")]
-        public void ThenTheUserShouldHaveInstitutionBeekmanUniversity(string institution)
+        public void ThenTheUserShouldHaveInstitution____(string institution)
         {
             var user = ScenarioContext.Current.Get<User>("user");
             Assert.AreEqual(institution, user.InstitutionName);
@@ -202,6 +203,54 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             var user = ScenarioContext.Current.Get<User>("user");
             Assert.AreEqual(lastExternalUpdateDate, user.LastExternalUpdateDate);
+        }
+
+        [Then(@"the user should exist with the following properties")]
+        public void ThenTheSiteShouldExistWithTheFollowingProperties(Table table)
+        {
+            var messageConfigs = table.CreateSet<UserMessageModel>().ToList();
+
+            foreach (var config in messageConfigs)
+            {
+                if (config.Email != null)
+                    TheUserShouldHaveEmail____(config.Email);
+                if (config.Login != null)
+                    TheUserShouldHaveLogin____(config.Login);
+                if (config.FirstName != null)
+                    TheUserShouldHaveFirstName____(config.FirstName);
+                if (config.MiddleName != null)
+                    TheUserShouldHaveMiddleName____(config.MiddleName);
+                if (config.LastName != null)
+                    TheUserShouldHaveLastName____(config.LastName);
+                if (config.Address1 != null)
+                    TheUserShouldHaveAddress1____(config.Address1);
+                if (config.Address2 != null)
+                    TheUserShouldHaveAddress2____(config.Address2);
+                if (config.Address3 != null)
+                    TheUserShouldHaveAddress3____(config.Address3);
+                if (config.City != null)
+                    TheUserShouldHaveCity____(config.City);
+                if (config.State != null)
+                    TheUserShouldHaveState____(config.State);
+                if (config.PostalCode != null)
+                    TheUserShouldHavePostalCode____(config.PostalCode);
+                if (config.Country != null)
+                    TheUserShouldHaveCountry____(config.Country);
+                if (config.Telephone != null)
+                    TheUserShouldHaveTelephone____(config.Telephone);
+                if (config.Locale != null)
+                    TheUserShouldHaveLocale____(config.Locale);
+                if (config.TimeZone != null)
+                    TheUserShouldHaveTimeZone____(config.TimeZone);
+                if (config.Title != null)
+                    ThenTheUserShouldHaveTitle____(config.Title);
+                if (config.Institution != null)
+                    ThenTheUserShouldHaveInstitution____(config.Institution);
+                if (config.Fax != null)
+                    ThenTheUserShouldHaveFax____(config.Fax);
+                if (!config.LastExternalUpdateDate.Equals(new DateTime(1, 1, 1)))
+                    ThenTheUserShouldHaveLastExternalUpdateDate____(config.LastExternalUpdateDate);
+            }
         }
     }
 }

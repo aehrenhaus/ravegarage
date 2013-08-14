@@ -28,7 +28,7 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Templates
                                                             "\"type\": \"Site\",\r\n" +
                                                             "\"address_line_1\": \"{{Address1}}\",\r\n" +
                                                             "\"address_line_2\": \"{{Address2}}\",\r\n" +
-                                                            "\"phone\": \"{{Phone}}\",\r\n" +
+                                                            "\"phone\": \"{{Telephone}}\",\r\n" +
                                                             "\"fax\": \"{{Fax}}\",\r\n" +
                                                             "\"address_line_3\": \"{{Address3}}\",\r\n" +
                                                             "\"state\": \"{{State}}\"\r\n" +                                            
@@ -56,7 +56,7 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Templates
                                                             "\"type\": \"Site\",\r\n" +
                                                             "\"address_line_1\": \"{{Address1}}\",\r\n" +
                                                             "\"address_line_2\": \"{{Address2}}\",\r\n" +
-                                                            "\"phone\": \"{{Phone}}\",\r\n" +
+                                                            "\"phone\": \"{{Telephone}}\",\r\n" +
                                                             "\"fax\": \"{{Fax}}\",\r\n" +
                                                             "\"address_line_3\": \"{{Address3}}\",\r\n" +
                                                             "\"state\": \"{{State}}\"\r\n" +

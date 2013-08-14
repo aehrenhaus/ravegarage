@@ -133,7 +133,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             }
         }
 
-        [Then(@"the user should have the iMedidataEDC user group assigned")]
+        [Then(@"the user should be assigned to iMedidataEDC user group")]
         public void ThenTheUserShouldHaveTheIMedidataEDCUserGroupAssigned()
         {
             int iMedidataEdcUserGroupId;
@@ -165,7 +165,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             }
         }
 
-        [Then(@"the user should be assigned to the following UserGroups? on the study")]
+        [Then(@"the user should be assigned to the following UserGroup? on the study")]
         public void ThenTheUserShouldBeAssignedToTheFollowingUserGroupsOnTheStudy(Table table)
         {
             var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
@@ -245,7 +245,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             }
         }
 
-        [Then(@"the user should not be assigned to the following UserGroups? on the study")]
+        [Then(@"the user should not be assigned to the following UserGroup? on the study")]
         public void ThenTheUserShouldNotBeAssignedToTheFollowingUserGroupsOnTheStudy(Table table)
         {
             var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);
@@ -271,7 +271,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             var studies = table.CreateSet<StudyModel>().ToList();
             foreach (var studyModel in studies)
             {
-                var study = Study.FindByUuid(studyModel.Uuid, 1, SystemInteraction.Use());
+                var study = Study.FindByUuid(studyModel.Uuid, SystemInteraction.Use(), 1);
                 Assert.IsTrue(user.IsUserAssociatedWithStudy(study));
             }
         }
@@ -287,7 +287,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             var studies = table.CreateSet<StudyModel>().ToList();
             foreach (var studyModel in studies)
             {
-                var study = Study.FindByUuid(studyModel.Uuid, 1, SystemInteraction.Use());
+                var study = Study.FindByUuid(studyModel.Uuid, SystemInteraction.Use(), 1);
                 Assert.IsFalse(user.IsUserAssociatedWithStudy(study));
             }
         }
@@ -339,7 +339,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             }
         }
 
-        [Then(@"the user with EDC Role ""(.*)"" should be assigned to the following UserGroups?")]
+        [Then(@"the user with EDC Role ""(.*)"" should be assigned to the following UserGroup?")]
         public void ThenTheUserWithEDCRoleShouldBeAssignedToTheFollowingUserGroups(string roleName, Table table)
         {
             var externalUser = ExternalUser.GetByExternalUUID(ScenarioContext.Current.Get<string>("externalUserUUID"), 1);

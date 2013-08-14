@@ -165,6 +165,10 @@
       <Project>{D593442C-DC75-4279-B3D5-B203D292C9B4}</Project>
       <Name>Medidata.Core.Objects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Medidata.Data\Medidata.Data.csproj">
+      <Project>{9AF5B9A2-B80E-4D99-87F7-343C4E932539}</Project>
+      <Name>Medidata.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Medidata.ExternalSystems.iMedidata\Medidata.ExternalSystems.iMedidata.csproj">
       <Project>{60A94FE2-5789-4857-A70D-BF348C2B86FC}</Project>
       <Name>Medidata.ExternalSystems.iMedidata</Name>

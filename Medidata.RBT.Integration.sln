@@ -12,7 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{66B536D7-0359-4A66-B87B-FF4FFF73165B}"
 	ProjectSection(SolutionItems) = preProject
 		Default.testsettings = Default.testsettings
-		Medidata.RBT2.vsmdi = Medidata.RBT2.vsmdi
+		Medidata.RBT.Integration.vsmdi = Medidata.RBT.Integration.vsmdi
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.Features.Integration", "Medidata.RBT.Features.Integration\Medidata.RBT.Features.Integration.csproj", "{F2412C15-9328-41D5-B71C-26C66C00C601}"
@@ -53,7 +53,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.Utilities", "..\Me
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = Medidata.RBT2.vsmdi
+		CategoryFile = Medidata.RBT.Integration.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CruiseControl|Any CPU = CruiseControl|Any CPU

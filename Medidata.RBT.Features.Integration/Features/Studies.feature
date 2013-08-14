@@ -4,17 +4,14 @@
 
 @mytag
 Scenario: When a Study POST message gets put onto the queue, the study is created in Rave.
-	Given I send the following Study message to SQS
-	| EventType | Name          | IsProd | Description | ID   | Timestamp           |
+	Given I send the following Study messages to SQS
+	| EventType | Name           | IsProd | Description     | ID   | Timestamp           |
 	| POST      | TestSqsStudy29 | true   | TestDescription | 1252 | 2012-10-12 12:00:00 |
 	When the message is successfully processed
 	Then I should see the study in the Rave database
-	And the study should have Name "TestSqsStudy29"
-	And the study should have Environment "Prod"
-	And the study should have Description "TestDescription"
-	And the study should have LastExternalUpdateDate "2012-10-12 12:00:00"
-	And the study should not be TestStudy
-	And the study should have ExternalID "1252"
+	And the study should exist with the following properties
+	| Name           | Environment | Description     | LastExternalUpdateDate | TestStudy | ExternalID | 
+	| TestSqsStudy29 | Prod        | TestDescription | 2012-10-12 12:00:00    | False     | 1252       |
 	
 Scenario: When a Study PUT message gets put onto the queue, the study is updated in Rave.
 	Given I send the following Study messages to SQS
@@ -23,13 +20,9 @@ Scenario: When a Study PUT message gets put onto the queue, the study is updated
 	| PUT       | TestSqsStudy30Updated | true   | TestDescriptionUpdated | 1253 | 2                | 2012-10-12 14:00:00 |
 	When the messages are successfully processed
 	Then I should see the study in the Rave database
-	And the study should have Name "TestSqsStudy30Updated"
-	And the study should have Environment "Prod"
-	And the study should have Description "TestDescriptionUpdated"
-	And the study should have LastExternalUpdateDate "2012-10-12 14:00:00"
-	And the study should not be TestStudy
-	And the study should have ExternalID "1253"
-	And the study should have EnrollmentTarget "2"
+	And the study should exist with the following properties
+	| Name                  | Environment | Description            | LastExternalUpdateDate | TestStudy | ExternalID | EnrollmentTarget |
+	| TestSqsStudy30Updated | Prod        | TestDescriptionUpdated | 2012-10-12 14:00:00    | False     | 1253       | 2                |
 
 @PB2.5.8.20-01
 Scenario: If I have a project + environment in Rave that is not linked to a study in iMedidata . When the study is created in iMedidata, Rave should link that Project and Environment.
@@ -41,12 +34,10 @@ Scenario: If I have a project + environment in Rave that is not linked to a stud
 	When the message is successfully processed
 	Then I should see the study in the Rave database
 	And the study with ExternalId "0" should not be in the Rave database
-	And the study should have Name "TestSqsStudy31"
-	And the study should have Environment "TestEnvironment"
-	And the study should have Description "TestDescription"
-	And the study should have LastExternalUpdateDate "2012-10-12 12:00:00"
-	And the study should have ExternalID "1254"
-	And the study should have EnrollmentTarget "3"
+	And the study should exist with the following properties
+	| Name           | Environment     | Description     | LastExternalUpdateDate | ExternalID | EnrollmentTarget |
+	| TestSqsStudy31 | TestEnvironment | TestDescription | 2012-10-12 12:00:00    | 1254       | 3                |
+
 
 @PB2.5.8.16-01
 Scenario: If I have an unlinked study in iMedidata, when the study is created in iMedidata, Rave should do a UUID match, 
@@ -59,19 +50,16 @@ Scenario: If I have an unlinked study in iMedidata, when the study is created in
 	| POST      | TestSqsStudy32 (TestEnvironment2) | false  | TestDescription | 1255 | 4                | 2012-10-12 12:00:00 |
 	When the message is successfully processed
 	Then I should see the study in the Rave database
-	And the study should have Name "TestSqsStudy32"
-	And the study should have Environment "TestEnvironment2"
-	And the study should have Description "TestDescription"
-	And the study should have LastExternalUpdateDate "2012-10-12 12:00:00"
-	And the study should have ExternalID "1255"
-	And the study should have EnrollmentTarget "4"
+	And the study should exist with the following properties
+	| Name           | Environment      | Description     | LastExternalUpdateDate | ExternalID | EnrollmentTarget |
+	| TestSqsStudy32 | TestEnvironment2 | TestDescription | 2012-10-12 12:00:00"   | 1255       | 4                |
 	And I should see a study named "TestSqsStudy32" with environment "TestEnvironment1" and ExternalId "117" in the Rave database
 
 @PB2.5.8.28-04B
 Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited in the 'name' 
           of the system user.
 
-	Given I send the following Study message to SQS
+	Given I send the following Study messages to SQS
 	| EventType | Name           | IsProd | Description     | ID   | EnrollmentTarget | Timestamp           |
 	| POST      | TestSqsStudy33 | true   | TestDescription | 1256 | 5                | 2012-10-12 12:00:00 |
 	When the message is successfully processed

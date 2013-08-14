@@ -3,6 +3,9 @@ using Medidata.Core.Objects;
 using Medidata.RBT.Objects.Integration.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.Objects.Integration.Configuration.Models;
+using System.Linq;
 
 namespace Medidata.RBT.Features.Integration.Steps
 {
@@ -34,7 +37,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         {
             StudyHelper.CreateStudy(name, environment, new Random().Next(int.MaxValue), Guid.NewGuid().ToString(), true);
         }
-        
+
         [Then(@"I should see the study in the Rave database")]
         public void ThenIShouldSeeTheStudyInTheRaveDatabase()
         {
@@ -122,8 +125,38 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void ThenTheStudyShouldHaveEnrollmentTarget____(int enrollmentTarget)
         {
             var study = ScenarioContext.Current.Get<Study>("study");
-            
+
             Assert.AreEqual(enrollmentTarget, study.EnrollmentTarget);
+        }
+
+        [Then(@"the study should exist with the following properties")]
+        public void ThenTheStudyShouldExistWithTheFollowingProperties(Table table)
+        {
+            var messageConfigs = table.CreateSet<StudyMessageModel>().ToList();
+
+            foreach (var config in messageConfigs)
+            {
+                if (config.Name != null)
+                    ThenTheStudyShouldHaveName____(config.Name);
+                if (config.Environment != null)
+                    ThenTheStudyShouldHaveEnvironment____(config.Environment);
+                if (config.Description != null)
+                    ThenTheStudyShouldHaveDescription____(config.Description);
+                if (!config.LastExternalUpdateDate.Equals(new DateTime(1, 1, 1)))
+                    ThenTheStudyShouldHaveLastExternalUpdateDate____(config.LastExternalUpdateDate);
+                if (config.TestStudy != null)
+                {
+                    var boolvalue = bool.Parse(config.TestStudy);
+                    if (!boolvalue)
+                        ThenTheStudyShouldNotBeTestStudy();
+                    else
+                        throw new NotImplementedException("Verification for Test Study not implemented yet");
+                }
+                if (config.ExternalID != 0)
+                    ThenTheStudyShouldHaveExternalId____(config.ExternalID);
+                if (config.EnrollmentTarget != 0)
+                    ThenTheStudyShouldHaveEnrollmentTarget____(config.EnrollmentTarget);
+            }
         }
     }
 }
