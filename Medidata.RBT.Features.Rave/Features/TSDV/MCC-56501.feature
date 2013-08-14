@@ -27,9 +27,9 @@ Background:
 	Given I login to Rave with user "SUPER USER 1"
 
 @Release_2013.4.0
-@PBMCC-MCC-56501-001
-@SJ12.AUG.2013
-@Draft
+@PB_MCC-MCC-56501-001
+@SJ14.AUG.2013
+@Validation
 
 Scenario: MCC56501-001 When I move a subject from filled non-Repeating block into the Repeating block, then all new created subject(s) will be allocated to the tier in the original non-Repeating block first
 
@@ -116,9 +116,9 @@ Scenario: MCC56501-001 When I move a subject from filled non-Repeating block int
 
 
 @Release_2013.4.0
-@PBMCC-MCC-56501-002
-@SJ12.AUG.2013
-@Draft
+@PB_MCC-MCC-56501-002
+@SJ14.AUG.2013
+@Validation
 
 Scenario: MCC56501-002 When I move a subject from filled non-Repeating block into the Repeating block, then included subject(s) will be allocated to the tier in the original non-Repeating block first
 
