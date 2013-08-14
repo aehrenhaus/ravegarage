@@ -549,6 +549,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-67068.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\TSDV\MCC-46642.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-46642.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\TSDV\US19017.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1047,6 +1052,10 @@
     <None Include="Features\TSDV\MCC-67068.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-67068.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TSDV\MCC-46642.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-46642.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\TSDV\US19017.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
