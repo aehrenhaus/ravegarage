@@ -109,7 +109,7 @@ namespace Medidata.RBT
             try //if a web driver exception with inner exception on HTTP Response has happen then this step will fail preventing a cleanup hence a try block is required
             {
                 //take a snapshot after every scenario
-                TrySaveScreenShot();
+                TrySaveScreenShot(); 
             }
             catch (OpenQA.Selenium.WebDriverException ex)
             {
@@ -119,6 +119,12 @@ namespace Medidata.RBT
             {
                 Factory.DeleteObjectsMarkedForScenarioDeletion();
                 WebTestContext.CloseBrowser();
+
+                if (ScenarioContext.Current.TestError != null)
+                {
+                    CreateScenarioFailureFile();
+                }
+                
             }
 		}
 
@@ -213,6 +219,41 @@ namespace Medidata.RBT
 
 
 		}
+
+        private void CreateScenarioFailureFile()
+        {
+            StringBuilder failedScenarioPathBuilder = new StringBuilder();
+            failedScenarioPathBuilder.Append("flags\\");
+            failedScenarioPathBuilder.Append(FeatureContext.Current.FeatureInfo.Tags.
+                FirstOrDefault(tag => tag.StartsWith("FT_")));
+            failedScenarioPathBuilder.Append("_");
+            failedScenarioPathBuilder.Append(CurrentScenarioName);
+            failedScenarioPathBuilder.Append(".failure");
+
+            string failedScenarioPath = failedScenarioPathBuilder.ToString();
+
+            if (!File.Exists(failedScenarioPath))
+            {
+                FileStream fs = null;
+                try
+                {
+                    FileInfo fInfo = new FileInfo(failedScenarioPath);
+                    if (!Directory.Exists(fInfo.DirectoryName))
+                        Directory.CreateDirectory(fInfo.DirectoryName);
+                    fs = File.Create(failedScenarioPath);
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    Console.WriteLine(string.Format(
+                        "An attempt was made to create or access scenario failure file [{0}] concurrently.", failedScenarioPath));
+                }
+                finally
+                {
+                    if (fs != null)
+                        fs.Close();
+                }
+            }
+        }
 
 	}
 }
