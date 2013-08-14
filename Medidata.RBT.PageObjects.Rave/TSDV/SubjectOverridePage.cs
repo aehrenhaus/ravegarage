@@ -232,6 +232,45 @@ declare
 		
 		#endregion
 
-	
-	}
+        public IPage OverrideSubject(Table overrideTable)
+        {
+            foreach (var overrideRow in overrideTable.Rows)
+            {
+                var subjectName = SpecialStringHelper.Replace(overrideRow[0]);
+                var newTierName = overrideRow[1];
+                var overrideReason = overrideRow[2];
+
+                int tableIndex;
+                var table = GetSubjectTable(subjectName, out tableIndex);
+                if (table == null) throw new ApplicationException(string.Format("Subject {0} not found", subjectName));
+
+                var dropdown = table.TryFindElementByPartialID(String.Format("__ctl{0}_NewSubjectTierDDL", tableIndex)).EnhanceAs<Option>();
+                var option = dropdown.Children().SingleOrDefault(c => c.Text == newTierName);
+                if (option == null) throw new ApplicationException(string.Format("Requested Tier {0} not found", newTierName));
+                dropdown.SendKeys(newTierName);
+
+                IWebElement reason = table.TryFindElementByPartialID(String.Format("__ctl{0}_OverrideReasonText", tableIndex)).EnhanceAs<Textbox>();
+                reason.SendKeys(overrideReason);
+            }
+
+            var overrideButton = Browser.FindElementById("_ctl0_Content_ProcessSubjectOverrideDiv");
+            overrideButton.Click();
+            Browser.GetAlertWindow().Accept();
+            return this;
+        }
+
+        private HtmlTable GetSubjectTable(string subjectName, out int tableIndex)
+        {
+            IWebElement subjectsDiv = Browser.TryFindElementBy(By.Id("SubjectOverrideDiv"));
+            IEnumerable<HtmlTable> tables = subjectsDiv.Tables().Where(t => t.Id.Contains("_SubjectOverrideItemsTable"));
+            tableIndex = 1;
+            foreach (var table in tables)
+            {
+                var name = table.TryFindElementByPartialID(String.Format("__ctl{0}_SubjectNameLabel", tableIndex)).Text;
+                if (name == subjectName) return table;
+                tableIndex++;
+            }
+            return null;
+        }
+    }
 }
