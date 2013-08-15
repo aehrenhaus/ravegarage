@@ -57,8 +57,8 @@ Given following PDF Configuration Profile Settings exist
 |Profile Name           |
 |Default PDF Profile 1  |
 
-Note: Study "US12607DataPDFStudy" is set up with 4 forms "Adverse Events1" in "Landscape" mode, "Adverse Events2" in "Portrait" mode,
-"Medical History1" in "Landscape" mode with no default values and "Medical History2" in "Landscape" mode with default values.
+#Note: Study "US12607DataPDFStudy" is set up with 4 forms "Adverse Events1" in "Landscape" mode, "Adverse Events2" in "Portrait" mode,
+#"Medical History1" in "Landscape" mode with no default values and "Medical History2" in "Landscape" mode with default values.
 
   Given I log in to Rave with user "US12607_user1"
   And I select Study "US12607DataPDFStudy" and Site "Site_A"

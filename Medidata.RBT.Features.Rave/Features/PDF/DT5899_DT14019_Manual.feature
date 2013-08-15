@@ -21,14 +21,14 @@ Background:
 	|BLOODWORK	      |1 		   |Normal Abnormal | 				 |BLOODWORK	        |BLOODWORK	     |true	 |true				|true			|BloodWork                         |Dropdown    	|                                   |					|	
 	|CHLDBEAR	      |1 		   |Normal Abnormal | 				 |CHLDBEAR	        |CHLDBEAR	     |true	 |true				|true			|Child bearing potential           |Dropdown    	|                                   |					|	
 	|RACE	          |$1		   |Race            | 				 |RACE	            |RACE	         |true	 |true				|true			|Ethnicity                         |Dropdown    	|                                   |					|	
-	|BODYSYS_INDIC	  |$1 		   |Body System     | 				 |BODYSYS_INDIC	    |BODYSYS_INDIC	 |true	 |true				|true			|Body System Indication            |Dropdown    	|H|C|R|G|T|S|E|P|M|L|N|I|U|D|B|O|   |					|	
+	#|BODYSYS_INDIC	  |$1 		   |Body System     | 				 |BODYSYS_INDIC	    |BODYSYS_INDIC	 |true	 |true				|true			|Body System Indication            |Dropdown    	|H|C|R|G|T|S|E|P|M|L|N|I|U|D|B|O|   |					|	
 	|SPECIFY	      |$200 	   |                | 				 |SPECIFY	        |SPECIFY	     |true	 |true				|true			|Specify race                      |LongText		|                                   |					|		
 	And form "Medical History" has log direction "Landscape"
 	And form "Medical History" has varOID "<VarOID>" has format "<Format>" has data dictionary "<Dictionary>" has Unit dictionary "<Unit Dictionary>" has field name "<Field Name>" has field OID "<Field OID>" has status "<Active>" has visible status "<Is Visible Field>" has log data entry "<Log Data Entry>" has field label "<Field Label>" has control type "<Control Type>" has value "<Default Value>" has field help text "<Field Help Text>"
 	|VarOID		    |Format		   |Dictionary	    |Unit Dictionary |Field Name	 |Field OID		 |Active|Is Visible Field|Log Data Entry|Field Label        |Control Type           |Default Value                       |Field Help Text	|
 	|VISITDT	    |dd MMM yyyy   |                |				 |VISITDT		 |VISITDT		 |true	|true			 |			    |Visit Date:       	|DateTime    			|				                     |					|
 	|GENDER	        |$1            |Gender          | 				 |GENDER		 |GENDER		 |true	|true			 |			    |Gender             |RadioButton			|							         |                  |
-	|BODYSYS	    |$1		       |Body System     | 				 |BODYSYS		 |BODYSYS		 |true	|true			 |true			|Body System:       |Dropdown    			|H|C|R|G|T|S|E|P|M|L|N|I|U|D|B|O|    |					|
+	#|BODYSYS	    |$1		       |Body System     | 				 |BODYSYS		 |BODYSYS		 |true	|true			 |true			|Body System:       |Dropdown    			|H|C|R|G|T|S|E|P|M|L|N|I|U|D|B|O|    |					|
 	|NORMALABNORMAL |$1            |Normal Abnormal | 				 |NORMALABNORMAL |NORMALABNORMAL |true	|true			 |true			|Result:            |Dropdown    			|							         |                  |
 	|DESC	        |$200 		   |                | 				 |DESC           |DESC	         |true	|true			 |true			|Description:       |LongText			    |                                    |					|	
 	And data dictionary "Body System" has entries
@@ -79,8 +79,8 @@ Background:
 	And I navigate to "Home"
 	When I navigate to "PDF Generator" module
 
-	Note: Both forms "Demographics" with log direction "Portrait" and "Medical History" with log direction "Landscape" are tested in the below scenarios on the generated PDF's. 
-    Note: Three user stories are linked with this feature file US15841, US17279 and US17414
+	#Note: Both forms "Demographics" with log direction "Portrait" and "Medical History" with log direction "Landscape" are tested in the below scenarios on the generated PDF's. 
+    #Note: Three user stories are linked with this feature file US15841, US17279 and US17414
 	
 @release_2012.1.0
 @PB_US15841_US17279_US17414_DT5899_DT14019A

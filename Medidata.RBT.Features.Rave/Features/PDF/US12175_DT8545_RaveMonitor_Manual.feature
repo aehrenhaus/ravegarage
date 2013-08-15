@@ -14,8 +14,8 @@ Feature: US12175_DT8545_Rave Monitor. When an EDC form contains special characte
 	|&ge				|≥                 |
 	|<li>	            |•                 |
 	|<br>               |line break        |
-    This rendering should be implemented for blank PDFs, annotated PDFs, data populated PDFs, Rave Monitor Trip Report PDFs. 
-	This rendering should be implemented for all parts of the PDFs.
+    #This rendering should be implemented for blank PDFs, annotated PDFs, data populated PDFs, Rave Monitor Trip Report PDFs. 
+	#This rendering should be implemented for all parts of the PDFs.
 
 Background:
     Given I login to Rave with user "defuser" and password "password"

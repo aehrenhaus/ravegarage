@@ -16,11 +16,11 @@ Given following Project assignments exist
 | SUPER USER 1  | MCC-50826 | Live: Prod  | SUPER ROLE 1 | Site_A | Project Admin Default |
 | MCC50826user2 | MCC-50826 | Live: Prod  | SUPER ROLE 1 | Site_B | Project Admin Default |
 
-Note: 1) ELIGMIXEDPORT - mixed form in Portrait direction 
-Note: 2) ELIGMIXEDLAND - mixed form in Landscape direction 
-Note: 3) ELIGLOGPORT - log form in Portrait direction 
-Note: 4) ELIGLOGLAND - log form in Landscape direction 
-Note: 5) ELIGSTANDARD - standard form
+#Note: 1) ELIGMIXEDPORT - mixed form in Portrait direction 
+#Note: 2) ELIGMIXEDLAND - mixed form in Landscape direction 
+#Note: 3) ELIGLOGPORT - log form in Portrait direction 
+#Note: 4) ELIGLOGLAND - log form in Landscape direction 
+#Note: 5) ELIGSTANDARD - standard form
 
 @Release_2013.1.0
 @PB_MCC-50826-006
