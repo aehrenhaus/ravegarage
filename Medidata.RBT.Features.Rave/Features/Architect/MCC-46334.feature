@@ -19,8 +19,8 @@ Given following Project assignments exist
 #Note: 4) MIXEDLAND - mixed form in Landscape direction 
 #Note: 5) LABFORM - Lab Form
 
-@Release_2013.3.0
-@PBMCC46334-001
+@Release_2013.4.0
+@PB_MCC-46334-01
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-001 As an Rave Study Builder, when I select Preview on a Portrait log form, and then select Data on the Preview page, I see the Preview of the Portrait view.
@@ -41,8 +41,8 @@ And I verify text "Currently viewing line 1 of 1." exists
 And I verify link "Add a new Log line" does not exist
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC46334-002
+@Release_2013.4.0
+@PB_MCC-46334-02
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-002 As an Rave Study Builder, when I select Preview on a Landscape log form, I see the Preview of the Landscape view.
@@ -61,8 +61,8 @@ And I verify text "Currently viewing line 1 of 1."does not exists
 And I verify link "Click here to return to "Complete View"." does not exist
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC46334-003
+@Release_2013.4.0
+@PB_MCC-46334-03
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-003 As an Rave Study Builder, when I select Preview on a Portrait mixed form (standard fields and log fields), and then select Data on the Preview page, I see the Preview of the Portrait view.
@@ -83,8 +83,8 @@ And I verify text "Currently viewing line 1 of 1." exists
 And I verify link "Add a new Log line" does not exist
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC46334-004
+@Release_2013.4.0
+@PB_MCC-46334-04
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-004 As an Rave Study Builder, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Preview of the Landscape view.
@@ -103,8 +103,8 @@ And I verify text "Currently viewing line 1 of 1."does not exists
 And I verify link "Click here to return to "Complete View"." does not exist
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC46334-005
+@Release_2013.4.0
+@PB_MCC-46334-05
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-005 As an Rave Study Builder, when I select Preview on a Lab form, I see the Preview of the Portrait view.
@@ -123,8 +123,8 @@ And I verify text "Currently viewing line 1 of 1."does not exists
 And I verify link "Click here to return to "Complete View"." does not exist
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC46334-006
+@Release_2013.4.0
+@PB_MCC-46334-06
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-006 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Portrait log form, and then select Data on the Preview page, I see the Preview of the Portrait view.
@@ -147,8 +147,8 @@ And I verify text "Currently viewing line 1 of 1." exists
 And I verify link "Add a new Log line" does not exist
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC46334-007
+@Release_2013.4.0
+@PB_MCC-46334-07
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-007 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape log form, I see the Preview of the Landscape view.
@@ -169,8 +169,8 @@ And I verify text "Currently viewing line 1 of 1."does not exists
 And I verify link "Click here to return to "Complete View"." does not exist
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC46334-008
+@Release_2013.4.0
+@PB_MCC-46334-08
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-008 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Portrait mixed form (standard fields and log fields), and then select Data on the Preview page, I see the Preview of the Portrait view.
@@ -193,8 +193,8 @@ And I verify text "Currently viewing line 1 of 1." exists
 And I verify link "Add a new Log line" does not exist
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC46334-009
+@Release_2013.4.0
+@PB_MCC-46334-09
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-009 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Preview of the Landscape view.
@@ -215,8 +215,8 @@ And I verify text "Currently viewing line 1 of 1."does not exists
 And I verify link "Click here to return to "Complete View"." does not exist
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC46334-010
+@Release_2013.4.0
+@PB_MCC-46334-010
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-010 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Lab form, I see the Preview of the Portrait view.
@@ -237,8 +237,8 @@ And I verify text "Currently viewing line 1 of 1."does not exists
 And I verify link "Click here to return to "Complete View"." does not exist
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC46334-011
+@Release_2013.4.0
+@PB_MCC-46334-011
 @RR01.AUG.2013
 @Draft
 Scenario: MCC46334-011  As an Rave Study Builder, On the EDC CRF page when I enter data on a form and try to navigate to a different form, then I see the pop-up confirmation message to leave page or stay on page.
