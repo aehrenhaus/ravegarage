@@ -149,17 +149,25 @@ namespace Medidata.RBT
 
 		public IPage WaitForPageLoads()
 		{
-            try
-            {
-                Browser.SwitchTo().Alert();
-            }
-            catch (NoAlertPresentException)
-            {
-            }
+			IPage result = null;
+			IAlert alertWindow = null;
+			
+			try { alertWindow = Browser.GetAlertWindow(); }
+			catch (NoAlertPresentException) { }
 
-			Browser.WaitForDocumentLoad();
-			var uri = new Uri(Browser.Url);
-			return Context.POFactory.GetPageByUrl(uri);
+			//NOTE : If there is an alert window present, we cannot execute javascript on this page.
+			if (alertWindow != null)
+			{
+				result = this;
+			}
+			else
+			{
+				Browser.WaitForDocumentLoad();
+				var uri = new Uri(Browser.Url);
+				result = Context.POFactory.GetPageByUrl(uri);
+			}
+
+			return result;
 		}
 
         /// <summary>
