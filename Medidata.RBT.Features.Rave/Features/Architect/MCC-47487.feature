@@ -19,8 +19,8 @@ Given following Project assignments exist
 #Note: 4) MIXEDLAND - mixed form in Landscape direction 
 #Note: 5) LABFORM - Lab Form
 
-@Release_2013.3.0
-@PBMCC47487-001
+@Release_2013.4.0
+@PB_MCC-47487-01
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-001 As an Rave Study Builder, when I select Click here to return to "Complete View" on a Portrait log form, I see the Portrait log form is returned to Complete View.
@@ -47,8 +47,8 @@ And I verify image "LogPic.gif" does not exists
 And I verify text "Currently viewing line 1 of 1."does not exists
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC47487-002
+@Release_2013.4.0
+@PB_MCC-47487-02
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-002 As an Rave Study Builder, when I select Preview on a Landscape log form, I see the Click here to return to "Complete View" link is not displayed.
@@ -67,8 +67,8 @@ And I verify image "LogPic.gif" does not exists
 And I verify text "Currently viewing line 1 of 1."does not exists
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC47487-003
+@Release_2013.4.0
+@PB_MCC-47487-03
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-003 As an Rave Study Builder, when I select Click here to return to "Complete View" on a Portrait mixed form (standard fields and log fields), I see the Portrait mixed form is returned to Complete View.
@@ -95,8 +95,8 @@ And I verify image "LogPic.gif" does not exists
 And I verify text "Currently viewing line 1 of 1."does not exists
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC47487-004
+@Release_2013.4.0
+@PB_MCC-47487-04
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-004 As an Rave Study Builder, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Click here to return to "Complete View" link is not displayed.
@@ -115,8 +115,8 @@ And I verify image "LogPic.gif" does not exists
 And I verify text "Currently viewing line 1 of 1."does not exists
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC47487-005
+@Release_2013.4.0
+@PB_MCC-47487-05
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-005 As an Rave Study Builder, when I select Preview on a Lab form, I see the Click here to return to "Complete View" link is not displayed.
@@ -135,8 +135,8 @@ And I verify text "Currently viewing line 1 of 1."does not exists
 And I verify link "Click here to return to "Complete View"." does not exists
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC47487-006
+@Release_2013.4.0
+@PB_MCC-47487-06
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-006 As an Rave Study Builder, On the Global Library Wizard, when I select Click here to return to "Complete View" on a Portrait log form, I see the Portrait log form is returned to Complete View.
@@ -165,8 +165,8 @@ And I verify image "LogPic.gif" does not exists
 And I verify text "Currently viewing line 1 of 1."does not exists
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC47487-007
+@Release_2013.4.0
+@PB_MCC-47487-07
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-007 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape log form, I see the Click here to return to "Complete View" link is not displayed.
@@ -187,8 +187,8 @@ And I verify image "LogPic.gif" does not exists
 And I verify text "Currently viewing line 1 of 1."does not exists
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC47487-008
+@Release_2013.4.0
+@PB_MCC-47487-08
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-008 As an Rave Study Builder, On the Global Library Wizard, when I select Click here to return to "Complete View" on a Portrait mixed form (standard fields and log fields), I see the Portrait mixed form is returned to Complete View.
@@ -217,8 +217,8 @@ And I verify image "LogPic.gif" does not exists
 And I verify text "Currently viewing line 1 of 1."does not exists
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC47487-009
+@Release_2013.4.0
+@PB_MCC-47487-09
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-009 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Click here to return to "Complete View" link is not displayed.
@@ -239,8 +239,8 @@ And I verify image "LogPic.gif" does not exists
 And I verify text "Currently viewing line 1 of 1."does not exists
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC47487-010
+@Release_2013.4.0
+@PB_MCC-47487-010
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-010 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Lab form, I see the Click here to return to "Complete View" link is not displayed.
@@ -261,8 +261,8 @@ And I verify text "Currently viewing line 1 of 1."does not exists
 And I verify link "Click here to return to "Complete View"." does not exists
 And I take a screenshot
 
-@Release_2013.3.0
-@PBMCC47487-011
+@Release_2013.4.0
+@PB_MCC-47487-011
 @RR06.AUG.2013
 @Draft
 Scenario: MCC47487-011  As an Rave Study Builder, On the EDC CRF page when I enter data on a form and try to navigate to a different form, then I see the pop-up confirmation message to leave page or stay on page.
