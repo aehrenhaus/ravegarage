@@ -51,7 +51,7 @@ namespace Medidata.RBT.SeleniumExtension
             if (!this.Enabled)
             {
                 var parent = this.Parent();
-                var message = String.Format("{'0'} is disabled", parent != null ? parent.Text : this.Id);
+                var message = String.Format("Checkbox with ID [{0}] is disabled with parent control text [{1}]", this.Id, parent.Text);
                 throw new ControlDisabledException(message);
             }
         }
