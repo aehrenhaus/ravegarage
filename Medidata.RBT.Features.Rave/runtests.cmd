@@ -9,6 +9,9 @@
 @set profile=%1
 @if "%profile%" == "" set profile=Default
 
+@set FlagLocation=%2
+@if "%FlagLocation%" == "" set FlagLocation="..\TestResults"
+
 @echo "Deleting any result html file in base folder"
 @del %~dp0\bin\Debug\*.html
 @echo "Deleting any images in the base folder's image directory"
@@ -34,7 +37,7 @@ SpecRun.exe run %profile%.srprofile "/baseFolder:%~dp0\bin\Debug" /log:"%~dp0\..
 
 @move %~dp0\bin\Debug\*.html "..\TestResults\%TIMESTAMP%"
 @move %~dp0\bin\Debug\Output\*.jpg "..\TestResults\%TIMESTAMP%\Output"
-@move %~dp0\bin\Debug\flags\*.failure "%2\flags"
+@move %~dp0\bin\Debug\flags\*.failure "%FlagLocation%\flags"
 
 :end
 
