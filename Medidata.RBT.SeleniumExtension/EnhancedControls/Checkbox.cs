@@ -28,25 +28,29 @@ namespace Medidata.RBT.SeleniumExtension
 
 		public void Check()
 		{
-            VerifyIfCheckBoxEnabled();
+            ValidateCheckBoxEnabledAndThrow();
             if (!this.Selected)
                 this.Click();
 		}
 
 		public void Uncheck()
 		{
-            VerifyIfCheckBoxEnabled();
+            ValidateCheckBoxEnabledAndThrow();
             if (this.Selected)
                 this.Click();
 		}
 
 		public void Toggle()
 		{
-              VerifyIfCheckBoxEnabled();
+            ValidateCheckBoxEnabledAndThrow();
               this.Click();
            
 		}
-        private void VerifyIfCheckBoxEnabled()
+        /// <summary>
+        /// This method will check if checkbox is enabled, before we can perform check on it. 
+        /// If control is disabled ControlDisabledException will be thrown 
+        /// </summary>
+        private void ValidateCheckBoxEnabledAndThrow()
         {
             if (!this.Enabled)
             {
