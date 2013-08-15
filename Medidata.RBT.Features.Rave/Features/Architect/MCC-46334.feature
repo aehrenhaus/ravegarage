@@ -23,7 +23,7 @@ Given following Project assignments exist
 @PB_MCC-46334-01
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-001 As an Rave Study Builder, when I select Preview on a Portrait log form, and then select Data on the Preview page, I see the Preview of the Portrait view.
+Scenario: MCC-46334-01 As an Rave Study Builder, when I select Preview on a Portrait log form, and then select Data on the Preview page, I see the Preview of the Portrait view.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -45,7 +45,7 @@ And I take a screenshot
 @PB_MCC-46334-02
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-002 As an Rave Study Builder, when I select Preview on a Landscape log form, I see the Preview of the Landscape view.
+Scenario: MCC-46334-02 As an Rave Study Builder, when I select Preview on a Landscape log form, I see the Preview of the Landscape view.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -65,7 +65,7 @@ And I take a screenshot
 @PB_MCC-46334-03
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-003 As an Rave Study Builder, when I select Preview on a Portrait mixed form (standard fields and log fields), and then select Data on the Preview page, I see the Preview of the Portrait view.
+Scenario: MCC-46334-03 As an Rave Study Builder, when I select Preview on a Portrait mixed form (standard fields and log fields), and then select Data on the Preview page, I see the Preview of the Portrait view.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -87,7 +87,7 @@ And I take a screenshot
 @PB_MCC-46334-04
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-004 As an Rave Study Builder, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Preview of the Landscape view.
+Scenario: MCC-46334-04 As an Rave Study Builder, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Preview of the Landscape view.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -107,7 +107,7 @@ And I take a screenshot
 @PB_MCC-46334-05
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-005 As an Rave Study Builder, when I select Preview on a Lab form, I see the Preview of the Portrait view.
+Scenario: MCC-46334-05 As an Rave Study Builder, when I select Preview on a Lab form, I see the Preview of the Portrait view.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -127,7 +127,7 @@ And I take a screenshot
 @PB_MCC-46334-06
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-006 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Portrait log form, and then select Data on the Preview page, I see the Preview of the Portrait view.
+Scenario: MCC-46334-06 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Portrait log form, and then select Data on the Preview page, I see the Preview of the Portrait view.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -151,7 +151,7 @@ And I take a screenshot
 @PB_MCC-46334-07
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-007 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape log form, I see the Preview of the Landscape view.
+Scenario: MCC-46334-07 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape log form, I see the Preview of the Landscape view.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -173,7 +173,7 @@ And I take a screenshot
 @PB_MCC-46334-08
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-008 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Portrait mixed form (standard fields and log fields), and then select Data on the Preview page, I see the Preview of the Portrait view.
+Scenario: MCC-46334-08 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Portrait mixed form (standard fields and log fields), and then select Data on the Preview page, I see the Preview of the Portrait view.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -197,7 +197,7 @@ And I take a screenshot
 @PB_MCC-46334-09
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-009 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Preview of the Landscape view.
+Scenario: MCC-46334-09 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Preview of the Landscape view.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -219,7 +219,7 @@ And I take a screenshot
 @PB_MCC-46334-010
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-010 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Lab form, I see the Preview of the Portrait view.
+Scenario: MCC-46334-010 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Lab form, I see the Preview of the Portrait view.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -241,7 +241,7 @@ And I take a screenshot
 @PB_MCC-46334-011
 @RR01.AUG.2013
 @Draft
-Scenario: MCC46334-011  As an Rave Study Builder, On the EDC CRF page when I enter data on a form and try to navigate to a different form, then I see the pop-up confirmation message to leave page or stay on page.
+Scenario: MCC-46334-011  As an Rave Study Builder, On the EDC CRF page when I enter data on a form and try to navigate to a different form, then I see the pop-up confirmation message to leave page or stay on page.
 
 Given I login to Rave with user "SUPER USER 1"
 And I select Study "MCC-46334" and Site "Site_A"
