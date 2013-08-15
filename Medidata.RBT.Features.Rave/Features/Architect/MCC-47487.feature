@@ -23,7 +23,7 @@ Given following Project assignments exist
 @PB_MCC-47487-01
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-001 As an Rave Study Builder, when I select Click here to return to "Complete View" on a Portrait log form, I see the Portrait log form is returned to Complete View.
+Scenario: MCC-47487-01 As an Rave Study Builder, when I select Click here to return to "Complete View" on a Portrait log form, I see the Portrait log form is returned to Complete View.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -51,7 +51,7 @@ And I take a screenshot
 @PB_MCC-47487-02
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-002 As an Rave Study Builder, when I select Preview on a Landscape log form, I see the Click here to return to "Complete View" link is not displayed.
+Scenario: MCC-47487-02 As an Rave Study Builder, when I select Preview on a Landscape log form, I see the Click here to return to "Complete View" link is not displayed.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -71,7 +71,7 @@ And I take a screenshot
 @PB_MCC-47487-03
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-003 As an Rave Study Builder, when I select Click here to return to "Complete View" on a Portrait mixed form (standard fields and log fields), I see the Portrait mixed form is returned to Complete View.
+Scenario: MCC-47487-03 As an Rave Study Builder, when I select Click here to return to "Complete View" on a Portrait mixed form (standard fields and log fields), I see the Portrait mixed form is returned to Complete View.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -99,7 +99,7 @@ And I take a screenshot
 @PB_MCC-47487-04
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-004 As an Rave Study Builder, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Click here to return to "Complete View" link is not displayed.
+Scenario: MCC-47487-04 As an Rave Study Builder, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Click here to return to "Complete View" link is not displayed.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -119,7 +119,7 @@ And I take a screenshot
 @PB_MCC-47487-05
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-005 As an Rave Study Builder, when I select Preview on a Lab form, I see the Click here to return to "Complete View" link is not displayed.
+Scenario: MCC-47487-05 As an Rave Study Builder, when I select Preview on a Lab form, I see the Click here to return to "Complete View" link is not displayed.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -139,7 +139,7 @@ And I take a screenshot
 @PB_MCC-47487-06
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-006 As an Rave Study Builder, On the Global Library Wizard, when I select Click here to return to "Complete View" on a Portrait log form, I see the Portrait log form is returned to Complete View.
+Scenario: MCC-47487-06 As an Rave Study Builder, On the Global Library Wizard, when I select Click here to return to "Complete View" on a Portrait log form, I see the Portrait log form is returned to Complete View.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -169,7 +169,7 @@ And I take a screenshot
 @PB_MCC-47487-07
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-007 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape log form, I see the Click here to return to "Complete View" link is not displayed.
+Scenario: MCC-47487-07 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape log form, I see the Click here to return to "Complete View" link is not displayed.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -191,7 +191,7 @@ And I take a screenshot
 @PB_MCC-47487-08
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-008 As an Rave Study Builder, On the Global Library Wizard, when I select Click here to return to "Complete View" on a Portrait mixed form (standard fields and log fields), I see the Portrait mixed form is returned to Complete View.
+Scenario: MCC-47487-08 As an Rave Study Builder, On the Global Library Wizard, when I select Click here to return to "Complete View" on a Portrait mixed form (standard fields and log fields), I see the Portrait mixed form is returned to Complete View.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -221,7 +221,7 @@ And I take a screenshot
 @PB_MCC-47487-09
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-009 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Click here to return to "Complete View" link is not displayed.
+Scenario: MCC-47487-09 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Landscape mixed form (standard fields and log fields), I see the Click here to return to "Complete View" link is not displayed.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -243,7 +243,7 @@ And I take a screenshot
 @PB_MCC-47487-010
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-010 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Lab form, I see the Click here to return to "Complete View" link is not displayed.
+Scenario: MCC-47487-010 As an Rave Study Builder, On the Global Library Wizard, when I select Preview on a Lab form, I see the Click here to return to "Complete View" link is not displayed.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -265,7 +265,7 @@ And I take a screenshot
 @PB_MCC-47487-011
 @RR06.AUG.2013
 @Draft
-Scenario: MCC47487-011  As an Rave Study Builder, On the EDC CRF page when I enter data on a form and try to navigate to a different form, then I see the pop-up confirmation message to leave page or stay on page.
+Scenario: MCC-47487-011 As an Rave Study Builder, On the EDC CRF page when I enter data on a form and try to navigate to a different form, then I see the pop-up confirmation message to leave page or stay on page.
 
 Given I login to Rave with user "SUPER USER 1"
 And I select Study "MCC-47487" and Site "Site_A"
