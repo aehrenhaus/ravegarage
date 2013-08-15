@@ -464,10 +464,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DT11249_US12607_US19066_DataPDF_manual.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\PDF\DT5899_DT14019.feature.cs">
+    <Compile Include="Features\PDF\DT5899_DT14019_Manual.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DT5899_DT14019.feature</DependentUpon>
+      <DependentUpon>DT5899_DT14019_Manual.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\PDF\MCC46591.feature.cs">
       <AutoGen>True</AutoGen>
@@ -489,10 +489,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US12175_DT8545_lessthangreaterthaninPDF.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature.cs">
+    <Compile Include="Features\PDF\US12175_DT8545_RaveMonitor_Manual.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature</DependentUpon>
+      <DependentUpon>US12175_DT8545_RaveMonitor_Manual.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Status Updater\MCC-40918_manual.feature.cs">
       <AutoGen>True</AutoGen>
@@ -985,9 +985,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DT11249_US12607_US19066_DataPDF_manual.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\PDF\DT5899_DT14019.feature">
+    <None Include="Features\PDF\DT5899_DT14019_Manual.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>DT5899_DT14019.feature.cs</LastGenOutput>
+      <LastGenOutput>DT5899_DT14019_Manual.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\PDF\MCC46591.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -1005,9 +1005,9 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>US12175_DT8545_lessthangreaterthaninPDF.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\PDF\US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature">
+    <None Include="Features\PDF\US12175_DT8545_RaveMonitor_Manual.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>US12175_DT8545_lessthangreaterthaninPDF_RaveMonitor.feature.cs</LastGenOutput>
+      <LastGenOutput>US12175_DT8545_RaveMonitor_Manual.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Status Updater\MCC-40918_manual.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
