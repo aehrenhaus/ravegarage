@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using OpenQA.Selenium.Support.PageObjects;
@@ -91,6 +92,18 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
+        public IPage TiersEdit(Table table)
+        {
+            foreach (var row in table.Rows)
+            {
+                string block = row[0];
+                string tier = row[1];
+                string count = row[2];
+                ModifyTier(block, tier, count);
+            }
+            return this;
+        }
+
         public IPage AddBlocks(IEnumerable<TSDVBlockModel> blocks)
         {
             foreach (var block in blocks)
@@ -120,11 +133,30 @@ namespace Medidata.RBT.PageObjects.Rave
 
         public void ModifyBlock(string blockName, int subjectCount = -1)
         {
-			var container = Browser.TryFindElementByLinkText("Architect Defined").Parent().Parent();
+            var container = Browser.TryFindElementByLinkText(blockName).Parent().Parent();
 			container.Images()[0].Click();
-            Browser.TryFindElementByPartialID("EditBlockNameTextBox").EnhanceAs<Textbox>().SetText(blockName);
-			Browser.TryFindElementByPartialID("EditBlockSizeTextBox").EnhanceAs<Textbox>().SetText(subjectCount.ToString());
-			Browser.TryFindElementByPartialID("EditBlockSizeTextBox").Parent().Parent().Parent().Images()[2].Click();
+            container.TryFindElementByPartialID("EditBlockSizeTextBox").EnhanceAs<Textbox>().SetText(subjectCount.ToString());
+            container.TryFindElementByPartialID("EditBlockSizeTextBox").Parent().Parent().Parent().Images()[2].Click();
+        }
+
+        public void ModifyTier(string blockName, string tierName, string subjectCount)
+        {
+            var tierList = Browser.FindElementsByPartialId("_TierName");
+            foreach (var tier in tierList)
+            {
+                if (tier.Text.Contains(tierName))
+                {
+                    var outerContainer = tier.Parent().Parent().Parent().Parent().Parent().Parent();
+                    if (outerContainer.TryFindElementByPartialID("BlockNameLabel").EnhanceAs<Textbox>().Text == blockName)
+                    {
+                        var container = tier.Parent().Parent();
+                        container.Images()[0].Click();
+                        container.TryFindElementByPartialID("EditTierSizeTextBox").EnhanceAs<Textbox>().SetText(subjectCount);
+                        container.TryFindElementByPartialID("EditTierSizeTextBox").Parent().Parent().Parent().Images()[2].Click();
+                        break;
+                    }
+                }
+            }
         }
 
 		/// <summary>

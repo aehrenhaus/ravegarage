@@ -599,10 +599,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-67068.feature</DependentUpon>
     </Compile>
+
     <Compile Include="Features\TSDV\MCC-46642.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-46642.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\TSDV\MCC-70487.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-70487.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\TSDV\US19017.feature.cs">
       <AutoGen>True</AutoGen>
@@ -785,6 +791,10 @@
     <None Include="Features\TSDV\MCC-56501.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-56501.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TSDV\MCC-70487.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-70487.feature.cs</LastGenOutput>
     </None>
     <None Include="Parallel.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
