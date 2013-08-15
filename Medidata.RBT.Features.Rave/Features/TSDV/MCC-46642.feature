@@ -54,7 +54,7 @@ Background:
 
 
 @Release_2013.4.0
-@PBMCC-46642-001
+@PB_MCC-46642-001
 @SJ08.AUG.2013
 @Validation	
 
@@ -99,7 +99,7 @@ Scenario: MCC46642-001 When a custom tier is only linked to an Aux (Dev) study,T
 
 
 @Release_2013.4.0
-@PBMCC-46642-002
+@PB_MCC-46642-002
 @SJ08.AUG.2013
 @Validation	
 
@@ -142,7 +142,7 @@ Scenario: MCC46642-002 When a custom tier is only linked to a Prod study,TSDV Co
 
 
 @Release_2013.4.0
-@PBMCC-46642-003
+@PB_MCC-46642-003
 @SJ08.AUG.2013
 @Validation	
 
@@ -203,7 +203,7 @@ Scenario: MCC46642-003 When a custom tier is linked to a Prod and an Aux (Dev) s
 
 
 @Release_2013.4.0
-@PBMCC-46642-004
+@PB_MCC-46642-004
 @SJ08.AUG.2013
 @Validation	
 
@@ -250,7 +250,7 @@ Scenario: MCC46642-004 When a custom tier is only linked to an Aux (Dev) study i
 
 
 @Release_2013.4.0
-@PBMCC-46642-005
+@PB_MCC-46642-005
 @SJ08.AUG.2013
 @Validation	
 

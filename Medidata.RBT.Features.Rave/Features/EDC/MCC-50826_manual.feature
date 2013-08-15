@@ -24,7 +24,7 @@ Given following Project assignments exist
 #Note: 5) ELIGSTANDARD - standard form
 
 @Release_2013.1.0
-@PBMCC50826-006
+@PB_MCC50826-006
 @RR21.FEB.2013
 @Manual
 @Validation
@@ -102,7 +102,7 @@ And I click Cancel
 And I take a screenshot 
 
 @Release_2013.1.0
-@PBMCC50826-007
+@PB_MCC50826-007
 @RR21.FEB.2013
 @Manual
 @Validation
@@ -180,7 +180,7 @@ And I click Cancel
 And I take a screenshot 
 
 @Release_2013.1.0
-@PBMCC50826-008
+@PB_MCC50826-008
 @RR21.FEB.2013
 @Manual
 @Validation
@@ -255,7 +255,7 @@ And I click Cancel
 And I take a screenshot 
 
 @Release_2013.1.0
-@PBMCC50826-009
+@PB_MCC50826-009
 @RR21.FEB.2013
 @Manual
 @Validation
@@ -330,7 +330,7 @@ And I click Cancel
 And I take a screenshot 
 
 @Release_2013.1.0
-@PBMCC50826-010
+@PB_MCC50826-010
 @RR21.FEB.2013
 @Manual
 @Validation

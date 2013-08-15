@@ -15,7 +15,7 @@ Background:
 	
 
 @Release_2013.2.0
-@PBMCC46594-001
+@PB_MCC46594-001
 @SJ4.APR.2013
 @Validation
 
@@ -43,7 +43,7 @@ Scenario: PBMCC46594-001 When I Save a new check using Quick Edit in Architect D
 
 
 @Release_2013.2.0
-@PBMCC46594-002
+@PB_MCC46594-002
 @SJ4.APR.2013
 @Validation
 Scenario: PBMCC46594-002 When I Save an existing edit check using Quick Edit in Architect Draft, I am brought to the Check Steps for the existing check.
@@ -68,7 +68,7 @@ Scenario: PBMCC46594-002 When I Save an existing edit check using Quick Edit in 
 
 
 @Release_2013.2.0
-@PBMCC46594-003
+@PB_MCC46594-003
 @SJ4.APR.2013
 @Validation
 
@@ -96,7 +96,7 @@ Scenario: PBMCC46594-003 When I Save a new check using Quick Edit in Global Libr
 
 
 @Release_2013.2.0
-@PBMCC46594-004
+@PB_MCC46594-004
 @SJ4.APR.2013
 @Validation
 Scenario: PBMCC46594-004 When I Save an existing edit check using Quick Edit in Global Library Volumes Draft, I am brought to the Check Steps for the existing check.

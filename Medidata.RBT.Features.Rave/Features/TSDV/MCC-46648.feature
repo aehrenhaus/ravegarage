@@ -21,7 +21,7 @@ Background:
 
 
 @Release_2013.2.0
-@PBMCC-46648-001
+@PB_MCC-46648-001
 @SJ22.MAY.2013
 @Validation	
 
@@ -66,7 +66,7 @@ Scenario: MCC46648-001 When fields with same OID are in use in multiple forms an
 
 
 @Release_2013.2.0
-@PBMCC-46648-002
+@PB_MCC-46648-002
 @SJ22.MAY.2013
 @Validation	
 

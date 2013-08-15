@@ -20,7 +20,7 @@ Given following Project assignments exist
 #Note: 4) ECGMixedPortrait - mixed form with "Signature Required" in Portrait direction 
 
 @Release_2013.2.0
-@PBMCC41854-001
+@PB_MCC41854-001
 @RR28.MAR.2013
 @Draft
 Scenario: MCC41854-001 Log form in Landscape direction - verify signature is not broken incorrectly from log line inactivation and audited correctly on log lines.
@@ -163,7 +163,7 @@ And I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-002
+@PB_MCC41854-002
 @RR28.MAR.2013
 @Draft
 Scenario: MCC41854-002 Log form in Portrait direction - verify signature is not broken incorrectly from log line inactivation and audited correctly on log lines.
@@ -306,7 +306,7 @@ And I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-003
+@PB_MCC41854-003
 @RR28.MAR.2013
 @Draft
 Scenario: MCC41854-003 Mixed form in Landscape direction - verify signature is not broken incorrectly from log line inactivation and audited correctly on log lines.
@@ -516,7 +516,7 @@ And I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-004
+@PB_MCC41854-004
 @RR28.MAR.2013
 @Draft
 Scenario: MCC41854-004 Mixed form in Portrait direction - verify signature is not broken incorrectly from log line inactivation and audited correctly on log lines.
@@ -726,7 +726,7 @@ And I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-005
+@PB_MCC41854-005
 @RR29.MAR.2013
 @Draft
 Scenario: MCC41854-005 Log form in Landscape direction - verify signature is not broken incorrectly from log line inactivation, reactivation after applying signature.
@@ -833,7 +833,7 @@ Then I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-006
+@PB_MCC41854-006
 @RR29.MAR.2013
 @Draft
 Scenario: MCC41854-006 Log form in Portrait direction - verify signature is not broken incorrectly from log line inactivation, reactivation after applying signature.
@@ -939,7 +939,7 @@ Then I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-007
+@PB_MCC41854-007
 @RR29.MAR.2013
 @Draft
 Scenario: MCC41854-007 Mixed form in Landscape direction - verify signature is not broken incorrectly from log line inactivation, reactivation after applying signature.
@@ -1079,7 +1079,7 @@ Then I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-008
+@PB_MCC41854-008
 @RR29.MAR.2013
 @Draft
 Scenario: MCC41854-008 Mixed form in Portrait direction - verify signature is not broken incorrectly from log line inactivation, reactivation after applying signature.
@@ -1220,7 +1220,7 @@ Then I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-009
+@PB_MCC41854-009
 @RR29.MAR.2013
 @Draft
 Scenario: MCC41854-009 Log form in Landscape direction - verify signature is not broken incorrectly from log line inactivation, signing and reactivation.
@@ -1329,7 +1329,7 @@ Then I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-010
+@PB_MCC41854-010
 @RR29.MAR.2013
 @Draft
 Scenario: MCC41854-010 Log form in Portrait direction - verify signature is not broken incorrectly from log line inactivation, signing and reactivation.
@@ -1438,7 +1438,7 @@ Then I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-011
+@PB_MCC41854-011
 @RR29.MAR.2013
 @Draft
 Scenario: MCC41854-011 Mixed form in Landscape direction - verify signature is not broken incorrectly from log line inactivation, signing and reactivation.
@@ -1549,7 +1549,7 @@ Then I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-012
+@PB_MCC41854-012
 @RR29.MAR.2013
 @Draft
 Scenario: MCC41854-012 Mixed form in Portrait direction - verify signature is not broken incorrectly from log line inactivation, signing and reactivation.
@@ -1660,7 +1660,7 @@ Then I verify Audits exist
 And I take a screenshot
 
 @Release_2013.2.0
-@PBMCC41854-013
+@PB_MCC41854-013
 @RR28.MAR.2013
 @Draft
 Scenario: MCC41854-013 Log form in Portrait direction - verify signature is broken after inactivating all log lines.

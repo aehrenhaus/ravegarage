@@ -11,7 +11,7 @@ Background:
 
 
 @Release_2013.2.0
-@PBMCC-53645-001
+@PB_MCC-53645-001
 @SJ22.MAY.2013
 @Validation
 
@@ -51,7 +51,7 @@ Scenario: MCC53645-001 When users are modified in User Administration with same 
 
 
 @Release_2013.2.0
-@PBMCC-53645-002
+@PB_MCC-53645-002
 @SJ22.MAY.2013
 @Validation
 
@@ -87,7 +87,7 @@ Scenario: MCC53645-002 When users are uploaded with same Last Name, an error mes
 
 
 @Release_2013.2.0
-@PBMCC-53645-003
+@PB_MCC-53645-003
 @SJ22.MAY.2013
 @Validation
 
@@ -129,7 +129,7 @@ Scenario: MCC53645-003 When users are modified in User Administration with same 
 
 
 @Release_2013.2.0
-@PBMCC-53645-004
+@PB_MCC-53645-004
 @SJ22.MAY.2013
 @Validation
 
@@ -167,7 +167,7 @@ Scenario: MCC53645-004 When users are uploaded with same First Name, an error me
 
 
 @Release_2013.2.0
-@PBMCC-53645-005
+@PB_MCC-53645-005
 @SJ22.MAY.2013
 @Validation
 
@@ -197,7 +197,7 @@ Scenario: MCC53645-005 When users are modified in User Administration with same 
 
 
 @Release_2013.2.0
-@PBMCC-53645-006
+@PB_MCC-53645-006
 @SJ22.MAY.2013
 @Validation
 
@@ -228,7 +228,7 @@ Scenario: MCC53645-006 When users are uploaded with same PIN, an error message s
 
 
 @Release_2013.2.0
-@PBMCC-53645-007
+@PB_MCC-53645-007
 @SJ22.MAY.2013
 @Validation
 
@@ -276,7 +276,7 @@ Scenario: MCC53645-007 When a user's First Name or Lat Name is updated, an error
 
 
 @Release_2013.2.0
-@PBMCC-53645-008
+@PB_MCC-53645-008
 @SJ22.MAY.2013
 @Validation
 

@@ -20,7 +20,7 @@ Background:
 
 
 @Release_2013.2.0
-@PBMCC-41782-001
+@PB_MCC-41782-001
 @SJ13.MAY.2013
 @Validation
 
@@ -54,7 +54,7 @@ Scenario: MCC-41782-001 When a user add and remove Form View Restrictions in an 
 
 
 @Release_2013.2.0
-@PBMCC-41782-002
+@PB_MCC-41782-002
 @SJ13.MAY.2013
 @Validation
 
@@ -86,7 +86,7 @@ Scenario: MCC-41782-002 When a user add and remove Form Entry Restrictions in an
 
 
 @Release_2013.2.0
-@PBMCC-41782-003
+@PB_MCC-41782-003
 @SJ13.MAY.2013
 @Validation
 
@@ -127,7 +127,7 @@ Scenario: MCC-41782-003 When a user add and remove both Form View and  Form Entr
 
 
 @Release_2013.2.0
-@PBMCC-41782-004
+@PB_MCC-41782-004
 @SJ13.MAY.2013
 @Validation
 
@@ -160,7 +160,7 @@ Scenario: MCC-41782-004 When a user add and remove Field View Restrictions in an
 
 
 @Release_2013.2.0
-@PBMCC-41782-005
+@PB_MCC-41782-005
 @SJ13.MAY.2013
 @Validation
 
@@ -193,7 +193,7 @@ Scenario: MCC-41782-005 When a user add and remove Field Entry Restrictions in a
 
 
 @Release_2013.2.0
-@PBMCC-41782-006
+@PB_MCC-41782-006
 @SJ13.MAY.2013
 @Validation
 
@@ -234,7 +234,7 @@ Scenario: MCC-41782-006 When a user add and remove both field View and field Ent
 
 
 @Release_2013.2.0
-@PBMCC-41782-007
+@PB_MCC-41782-007
 @SJ13.MAY.2013
 @Validation
 
@@ -274,7 +274,7 @@ Scenario: MCC-41782-007 When a user add and remove Global View Restrictions in a
 
 
 @Release_2013.2.0
-@PBMCC-41782-008
+@PB_MCC-41782-008
 @SJ13.MAY.2013
 @Validation
 
@@ -315,7 +315,7 @@ Scenario: MCC-41782-008 When a user add and remove Global Entry Restrictions in 
 
 
 @Release_2013.2.0
-@PBMCC-41782-009
+@PB_MCC-41782-009
 @SJ13.MAY.2013
 @Validation
 
@@ -351,7 +351,7 @@ Scenario: MCC-41782-009 When a user add and remove View Restrictions through Fie
 
 
 @Release_2013.2.0
-@PBMCC-41782-010
+@PB_MCC-41782-010
 @SJ13.MAY.2013
 @Validation
 
@@ -386,7 +386,7 @@ Scenario: MCC-41782-010  When a user add and remove Entry Restrictions through F
 
 
 @Release_2013.2.0
-@PBMCC-41782-011
+@PB_MCC-41782-011
 @SJ13.MAY.2013
 @Validation
 
@@ -439,7 +439,7 @@ Scenario: MCC-41782-011  When a user upload an Architect draft with View and Ent
 
 
 @Release_2013.2.0
-@PBMCC-41782-012
+@PB_MCC-41782-012
 @SJ13.MAY.2013
 @Validation
 
@@ -486,7 +486,7 @@ Scenario: MCC-41782-012 When a user copy an Architect draft by using Copy to Dra
 
 
 @Release_2013.2.0
-@PBMCC-41782-013
+@PB_MCC-41782-013
 @SJ13.MAY.2013
 @Validation
 
@@ -526,7 +526,7 @@ Scenario: MCC-41782-013 When a user add a new field in an Architect draft with V
 
 
 @Release_2013.2.0
-@PBMCC-41782-014
+@PB_MCC-41782-014
 @SJ13.MAY.2013
 @Validation
 
@@ -572,7 +572,7 @@ Scenario: MCC-41782-014 When a user copy Architect draft by using Propose Object
 
 
 @Release_2013.2.0
-@PBMCC-41782-015
+@PB_MCC-41782-015
 @SJ13.MAY.2013
 @Validation
 
@@ -644,7 +644,7 @@ Scenario: MCC-41782-015 When multiple users take actions to restrict view and en
 
 
 @Release_2013.2.0
-@PBMCC-41782-016
+@PB_MCC-41782-016
 @SJ13.MAY.2013
 @Validation
 
@@ -677,7 +677,7 @@ Scenario: MCC-41782-016 When a user add and remove Form View Restrictions in a G
 
 
 @Release_2013.2.0
-@PBMCC-41782-017
+@PB_MCC-41782-017
 @SJ13.MAY.2013
 @Validation
 
@@ -712,7 +712,7 @@ Scenario: MCC-41782-017 When a user add and remove Form Entry Restrictions in a 
 
 
 @Release_2013.2.0
-@PBMCC-41782-018
+@PB_MCC-41782-018
 @SJ13.MAY.2013
 @Validation
 
@@ -754,7 +754,7 @@ Scenario: MCC-41782-018 When a user add and remove both Form View and  Form Entr
 
 
 @Release_2013.2.0
-@PBMCC-41782-019
+@PB_MCC-41782-019
 @SJ13.MAY.2013
 @Validation
 
@@ -787,7 +787,7 @@ Scenario: MCC-41782-019 When a user add and remove Field View Restrictions in a 
 
 
 @Release_2013.2.0
-@PBMCC-41782-020
+@PB_MCC-41782-020
 @SJ13.MAY.2013
 @Validation
 
@@ -821,7 +821,7 @@ Scenario: MCC-41782-020 When a user add and remove Field Entry Restrictions in a
 
 
 @Release_2013.2.0
-@PBMCC-41782-021
+@PB_MCC-41782-021
 @SJ13.MAY.2013
 @Validation
 
@@ -864,7 +864,7 @@ Scenario: MCC-41782-021 When a user add and remove both field View and field Ent
 
 
 @Release_2013.2.0
-@PBMCC-41782-022
+@PB_MCC-41782-022
 @SJ13.MAY.2013
 @Validation
 
@@ -903,7 +903,7 @@ Scenario: MCC-41782-022 When a user add and remove Global View Restrictions in a
 
 
 @Release_2013.2.0
-@PBMCC-41782-023
+@PB_MCC-41782-023
 @SJ13.MAY.2013
 @Validation
 
@@ -942,7 +942,7 @@ Scenario: MCC-41782-023 When a user add and remove Global Entry Restrictions in 
 
 
 @Release_2013.2.0
-@PBMCC-41782-024
+@PB_MCC-41782-024
 @SJ13.MAY.2013
 @Validation
 
@@ -977,7 +977,7 @@ Scenario: MCC-41782-024 When a user add and remove View Restrictions through Fie
 
 
 @Release_2013.2.0
-@PBMCC-41782-025
+@PB_MCC-41782-025
 @SJ13.MAY.2013
 @Validation
 
@@ -1011,7 +1011,7 @@ Scenario: MCC-41782-025  When a user add and remove Entry Restrictions through F
 
 
 @Release_2013.2.0
-@PBMCC-41782-026
+@PB_MCC-41782-026
 @SJ13.MAY.2013
 @Validation
 
@@ -1064,7 +1064,7 @@ Scenario: MCC-41782-026 When a user upload a Global Library draft with View and 
 
 
 @Release_2013.2.0
-@PBMCC-41782-027
+@PB_MCC-41782-027
 @SJ13.MAY.2013
 @Validation
 
@@ -1109,7 +1109,7 @@ Scenario: MCC-41782-027 When a user copy a Global Library draft by using Copy to
 
 
 @Release_2013.2.0
-@PBMCC-41782-028
+@PB_MCC-41782-028
 @SJ13.MAY.2013
 @Validation
 
@@ -1149,7 +1149,7 @@ Scenario: MCC-41782-028 When a user add a new field in a Global Library draft wi
 
 
 @Release_2013.2.0
-@PBMCC-41782-029
+@PB_MCC-41782-029
 @SJ13.MAY.2013
 @Validation
 

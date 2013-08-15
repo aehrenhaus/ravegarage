@@ -21,7 +21,7 @@ Given following Project assignments exist
 #Note: 5) ELIGSTANDARD - standard form
 
 @Release_2013.1.0
-@PBMCC50826-001
+@PB_MCC50826-001
 @RR21.FEB.2013
 @Validation
 Scenario: MCC50826-001 Verify mixed form in Portrait direction populates DSLs on standard field correctly in EDC
@@ -56,7 +56,7 @@ And I save the CRF page
 And I take a screenshot
 	
 @Release_2013.1.0
-@PBMCC50826-002
+@PB_MCC50826-002
 @RR21.FEB.2013
 @Validation
 Scenario: MCC50826-002 Verify mixed form in Landscape direction populates DSLs on standard field correctly in EDC
@@ -91,7 +91,7 @@ And I save the CRF page
 And I take a screenshot
 
 @Release_2013.1.0
-@PBMCC50826-003
+@PB_MCC50826-003
 @RR21.FEB.2013
 @Validation
 Scenario: MCC50826-003 Verify log form in Portrait direction populates DSLs on log field correctly in EDC
@@ -126,7 +126,7 @@ And I save the CRF page
 And I take a screenshot
 
 @Release_2013.1.0
-@PBMCC50826-004
+@PB_MCC50826-004
 @RR21.FEB.2013
 @Validation
 Scenario: MCC50826-004 Verify log form in Landscape direction populates DSLs on log field correctly in EDC
@@ -163,7 +163,7 @@ And I save the CRF page
 And I take a screenshot
 
 @Release_2013.1.0
-@PBMCC50826-005
+@PB_MCC50826-005
 @RR21.FEB.2013
 @Validation
 Scenario: MCC50826-005 Verify standard form populates DSLs on standard field correctly in EDC
