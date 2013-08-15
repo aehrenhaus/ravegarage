@@ -1,7 +1,6 @@
 @MCC-50826
-
 @ignore
-Feature: MCC-50826 DSLs on mixed forms do not get populated correctly on standard fields part 2
+Feature: MCC-50826 DSLs on mixed forms do not get populated correctly on standard fields (part 2)
 
 Background:
 
@@ -17,18 +16,17 @@ Given following Project assignments exist
 | SUPER USER 1  | MCC-50826 | Live: Prod  | SUPER ROLE 1 | Site_A | Project Admin Default |
 | MCC50826user2 | MCC-50826 | Live: Prod  | SUPER ROLE 1 | Site_B | Project Admin Default |
 
-#Note: 1) ELIGMIXEDPORT - mixed form in Portrait direction 
-#Note: 2) ELIGMIXEDLAND - mixed form in Landscape direction 
-#Note: 3) ELIGLOGPORT - log form in Portrait direction 
-#Note: 4) ELIGLOGLAND - log form in Landscape direction 
-#Note: 5) ELIGSTANDARD - standard form
+Note: 1) ELIGMIXEDPORT - mixed form in Portrait direction 
+Note: 2) ELIGMIXEDLAND - mixed form in Landscape direction 
+Note: 3) ELIGLOGPORT - log form in Portrait direction 
+Note: 4) ELIGLOGLAND - log form in Landscape direction 
+Note: 5) ELIGSTANDARD - standard form
 
 @Release_2013.1.0
-@PBMCC50826-006
+@PB_MCC-50826-006
 @RR21.FEB.2013
-@Manual
 @Validation
-Scenario: MCC50826-006 Verify mixed form in Portrait direction populates DSLs on standard field correctly in DDE on Reconciliation page
+Scenario: PB_MCC-50826-006 Verify mixed form in Portrait direction populates DSLs on standard field correctly in DDE on Reconciliation page
 
 #Given I have a mixed form in Portrait direction
 #When I select standard field with DSL 
@@ -102,11 +100,10 @@ And I click Cancel
 And I take a screenshot 
 
 @Release_2013.1.0
-@PBMCC50826-007
+@PB_MCC-50826-007
 @RR21.FEB.2013
-@Manual
 @Validation
-Scenario: MCC50826-007 Verify mixed form in Landscape direction populates DSLs on standard field correctly in DDE on Reconciliation page
+Scenario: PB_MCC-50826-007 Verify mixed form in Landscape direction populates DSLs on standard field correctly in DDE on Reconciliation page
 
 #Given I have a mixed form in Landscape direction
 #When I select standard field with DSL 
@@ -180,11 +177,10 @@ And I click Cancel
 And I take a screenshot 
 
 @Release_2013.1.0
-@PBMCC50826-008
+@PB_MCC-50826-008
 @RR21.FEB.2013
-@Manual
 @Validation
-Scenario: MCC50826-008 Verify log form in Portrait direction populates DSLs on log field correctly in DDE on Reconciliation page
+Scenario: PB_MCC-50826-008 Verify log form in Portrait direction populates DSLs on log field correctly in DDE on Reconciliation page
 
 #Given I have a log form in Portrait direction
 #When I select log field with DSL 
@@ -255,11 +251,10 @@ And I click Cancel
 And I take a screenshot 
 
 @Release_2013.1.0
-@PBMCC50826-009
+@PB_MCC-50826-009
 @RR21.FEB.2013
-@Manual
 @Validation
-Scenario: MCC50826-009 Verify log form in Landscape direction populates DSLs on log field correctly in DDE on Reconciliation page
+Scenario: PB_MCC-50826-009 Verify log form in Landscape direction populates DSLs on log field correctly in DDE on Reconciliation page
 
 #Given I have a log form in Landscape direction
 #When I select log field with DSL 
@@ -330,11 +325,10 @@ And I click Cancel
 And I take a screenshot 
 
 @Release_2013.1.0
-@PBMCC50826-010
+@PB_MCC-50826-010
 @RR21.FEB.2013
-@Manual
 @Validation
-Scenario: MCC50826-010 Verify standard form populates DSLs on standard field correctly in DDE on Reconciliation page
+Scenario: PB_MCC-50826-010 Verify standard form populates DSLs on standard field correctly in DDE on Reconciliation page
 
 #Given I have a standard form
 #When I select standard field with DSL 
