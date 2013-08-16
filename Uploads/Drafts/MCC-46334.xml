@@ -999,7 +999,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:StyleID="s65"><Data ss:Type="String">LOGPORT</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">FIRST_DATE1</Data><NamedCell
@@ -1199,7 +1199,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:StyleID="s64"><Data ss:Type="String">LOGLAND</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">FIRST_DATE2</Data><NamedCell
@@ -1381,7 +1381,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:StyleID="s65"><Data ss:Type="String">MIXEDPORT</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">FIRST_DATE3</Data><NamedCell
@@ -1581,7 +1581,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:StyleID="s64"><Data ss:Type="String">MIXEDLAND</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">FIRST_DATE4</Data><NamedCell
@@ -1636,7 +1636,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s64"><Data ss:Type="String">MIXEDLAND</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">AE_SERIOUS4</Data><NamedCell
@@ -1691,7 +1691,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s65"><Data ss:Type="String">LABFORM</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">WBC1</Data><NamedCell
@@ -1765,7 +1765,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:StyleID="s65"><Data ss:Type="String">LABFORM</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">NEUTROPHILS1</Data><NamedCell
@@ -1839,7 +1839,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geNEUTROPHILS&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/1/2013 3@44@32 PM##15</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1849,7 +1849,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geWBC&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/1/2013 4@38@59 PM##14</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1859,7 +1859,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geNEUTROPHILS&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/1/2013 4@38@59 PM##15</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1869,7 +1869,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geWBC&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/1/2013 5@20@43 PM##14</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1879,7 +1879,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geNEUTROPHILS&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/1/2013 5@20@43 PM##15</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1889,7 +1889,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geWBC&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/1/2013 6@30@57 PM##14</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1899,7 +1899,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geNEUTROPHILS&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/1/2013 6@30@57 PM##15</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1929,7 +1929,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geWBC&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/2/2013 1@54@39 PM##14</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1939,7 +1939,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geNEUTROPHILS&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/2/2013 1@54@39 PM##15</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1949,7 +1949,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geWBC&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/2/2013 3@02@12 PM##14</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1959,7 +1959,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geNEUTROPHILS&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/2/2013 3@02@12 PM##15</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1989,7 +1989,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">AnNeutrophilsMCC-55695#8/6/2013 5@13@51 PM##9</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -1999,7 +1999,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">AnWBCMCC-55695#8/6/2013 5@13@51 PM##10</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -2009,7 +2009,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geWBC&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/7/2013 5@43@29 PM##14</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -2019,7 +2019,7 @@
     <Cell ss:Formula="=IF(LEN(UnitDictionaries!RC1)&gt;0,UnitDictionaries!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="52" ss:StyleID="s64"><Data ss:Type="String">&amp;le&amp;geNEUTROPHILS&amp;lt &amp;lt; &amp;gt &amp;gt; &amp;le; &amp;ge;#8/7/2013 5@43@29 PM##15</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -3340,7 +3340,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">SourceUrlId</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:Height="51">
+   <Row ss:AutoFitHeight="0" ss:Height="51">
     <Cell ss:StyleID="s64"><Data ss:Type="String">SetSubjectName</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">TRUE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5816,7 +5816,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">NEUTROPHILS1</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC7)&gt;0,Fields!RC7,&quot;&quot;)"><Data
@@ -6621,7 +6621,7 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WBC1</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
     <Cell ss:Formula="=IF(LEN(Derivations!RC1)&gt;0,Derivations!RC1,&quot;&quot;)"><Data
@@ -7896,7 +7896,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="6" ss:StyleID="s64"><Data ss:Type="String">AgeMCC-55695#8/6/2013 5@13@51 PM##2</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -7966,7 +7966,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="38.25">
+   <Row ss:AutoFitHeight="0" ss:Height="38.25">
     <Cell ss:Index="6" ss:StyleID="s64"><Data ss:Type="String">Pregnancy StatusMCC-55695#8/6/2013 5@13@51 PM##3</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -7976,7 +7976,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="6" ss:StyleID="s64"><Data ss:Type="String">Pregnancy StatusREG_201320val11</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -7986,7 +7986,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="6" ss:StyleID="s64"><Data ss:Type="String">Pregnancy StatusREG_201320val12</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -8056,7 +8056,7 @@
     <Cell ss:Formula="=IF(LEN(Folders!RC1)&gt;0,Folders!RC1,&quot;&quot;)"><Data
       ss:Type="String"></Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="6" ss:StyleID="s64"><Data ss:Type="String">sexMCC-55695#8/6/2013 5@13@51 PM##4</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Forms!RC1)&gt;0,Forms!RC1,&quot;&quot;)"><Data
@@ -8827,13 +8827,13 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AE_SERIOUS4</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC1)&gt;0,Fields!RC1,&quot;&quot;)"><Data
       ss:Type="String">LABFORM</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WBC1</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC1)&gt;0,Fields!RC1,&quot;&quot;)"><Data
       ss:Type="String">LABFORM</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -9353,13 +9353,13 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AE_SERIOUS4</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC1)&gt;0,Fields!RC1,&quot;&quot;)"><Data
       ss:Type="String">LABFORM</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WBC1</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC1)&gt;0,Fields!RC1,&quot;&quot;)"><Data
       ss:Type="String">LABFORM</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
@@ -9875,13 +9875,13 @@
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">AE_SERIOUS4</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC1)&gt;0,Fields!RC1,&quot;&quot;)"><Data
       ss:Type="String">LABFORM</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
       ss:Type="String">WBC1</Data></Cell>
    </Row>
-   <Row ss:Height="25.5">
+   <Row ss:AutoFitHeight="0" ss:Height="25.5">
     <Cell ss:Index="200" ss:Formula="=IF(LEN(Fields!RC1)&gt;0,Fields!RC1,&quot;&quot;)"><Data
       ss:Type="String">LABFORM</Data></Cell>
     <Cell ss:Formula="=IF(LEN(Fields!RC2)&gt;0,Fields!RC2,&quot;&quot;)"><Data
