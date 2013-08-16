@@ -22,7 +22,6 @@
   <WindowWidth>10005</WindowWidth>
   <WindowTopX>120</WindowTopX>
   <WindowTopY>135</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -113,7 +112,7 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row>
-    <Cell><Data ss:Type="String">Draft1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Draft 1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">FALSE</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">MCC-46334</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -234,6 +233,7 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -253,6 +253,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>True</ProtectObjects>
@@ -2191,7 +2192,6 @@
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
