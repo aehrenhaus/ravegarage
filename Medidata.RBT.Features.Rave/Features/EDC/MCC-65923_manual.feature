@@ -5,7 +5,7 @@ Feature: MCC-65923 User who previously had their cookies disabled and got an err
 
 
 @Release_2013.2.0
-@PBMCC65923-001
+@PB_MCC65923-001
 @VY12.JUN.2013
 @Manual
 @Validation
@@ -30,7 +30,7 @@ And I take a screenshot
 
 
 @Release_2013.2.0
-@PBMCC65923-002
+@PB_MCC65923-002
 @VY12.JUN.2013
 @Manual
 @Validation

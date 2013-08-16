@@ -68,7 +68,7 @@ Background:
 
 
 @Release_2013.1.0
-@PBMCC-42701-01
+@PB_MCC-42701-01
 @SJ15.FEB.2013
 @Validation
     
@@ -122,7 +122,7 @@ Scenario: PBMCC-42701-01 When downloading an architect spreadsheet for a URL tha
 
 
 @Release_2013.1.0
-@PBMCC-42701-02
+@PB_MCC-42701-02
 @SJ15.FEB.2013
 @Validation
     
@@ -221,7 +221,7 @@ Scenario: PBMCC-42701-02 When delete Supplemental and Component terms and downlo
 	And I take a screenshot
 
 @Release_2013.1.0
-@PBMCC-42701-03
+@PB_MCC-42701-03
 @SJ15.FEB.2013
 @Validation
 
@@ -244,7 +244,7 @@ Scenario: PBMCC-42701-03 When downloading an architect draft template for a URL 
 	And I take a screenshot 	
 
 @Release_2013.1.0
-@PBMCC-42701-04
+@PB_MCC-42701-04
 @SJ15.FEB.2013
 @Validation
 

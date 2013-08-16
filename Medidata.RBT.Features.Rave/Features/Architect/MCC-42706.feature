@@ -49,7 +49,7 @@ Background:
 #Note: Global Library Project "MCC-42706A GL" does not contain Coder settings
 
 @Release2013.1.0
-@PBMCC42706-001
+@PB_MCC42706-001
 @VER2013.1.0
 @VR23.Jan.2013
 @Validation
@@ -124,7 +124,7 @@ Scenario: PBMCC42706-001 When I copy a form from draft that contains Coder setti
 	And I take a screenshot
 
 @Release2013.1.0
-@PBMCC42706-002
+@PB_MCC42706-002
 @VER2013.1.0
 @VR23.Jan.2013
 @Validation
@@ -177,7 +177,7 @@ Scenario: PBMCC42706-002 When I copy a form from versions that contains Coder se
 	And I take a screenshot
 	
 @Release2013.1.0
-@PBMCC42706-003
+@PB_MCC42706-003
 @VER2013.1.0
 @VR23.Jan.2013
 @Validation
@@ -242,7 +242,7 @@ Scenario: PBMCC42706-003 When I search and copy a form that contains Coder setti
 	And I take a screenshot	
 
 @Release2013.1.0
-@PBMCC42706-004
+@PB_MCC42706-004
 @VER2013.1.0
 @VR23.Jan.2013
 @Validation
@@ -295,7 +295,7 @@ Scenario: PBMCC42706-004 When I copy a form that contains Coder settings to anot
 	And I take a screenshot
 	
 @Release2013.1.0
-@PBMCC42706-005
+@PB_MCC42706-005
 @VER2013.1.0
 @VR23.Jan.2013
 @Validation
@@ -375,7 +375,7 @@ Scenario: PBMCC42706-005 When I copy a form that contains Coder settings to a Ar
 	And I take a screenshot
 	
 @Release2013.1.0
-@PBMCC42706-006
+@PB_MCC42706-006
 @VER2013.1.0
 @VR23.Jan.2013
 @Validation
@@ -454,7 +454,7 @@ Scenario: PBMCC42706-006 When I copy a form from an Architect Project that conta
 	And I take a screenshot
 
 @Release2013.1.0
-@PBMCC42706-007
+@PB_MCC42706-007
 @VER2013.1.0
 @VR23.Jan.2013
 @Validation    
@@ -534,7 +534,7 @@ Scenario: PBMCC42706-007 When I copy a form from an Architect Project that conta
 	And I take a screenshot
 	
 @Release2013.1.0
-@PBMCC42706-008
+@PB_MCC42706-008
 @VER2013.1.0
 @VR23.Jan.2013
 @Validation	
@@ -614,7 +614,7 @@ Scenario: PBMCC42706-008 When I copy a form from an Architect Project that conta
 	And I take a screenshot
 	
 @Release2013.1.0
-@PBMCC42706-009
+@PB_MCC42706-009
 @VER2013.1.0
 @VR23.Jan.2013
 @Validation

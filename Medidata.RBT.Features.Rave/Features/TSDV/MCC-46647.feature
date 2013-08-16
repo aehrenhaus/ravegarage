@@ -23,7 +23,7 @@ Background:
 
 
 @Release_2013.2.0
-@PBMCC-46647-001
+@PB_MCC-46647-001
 @SJ15.MAY.2013
 @Validation
 

@@ -68,7 +68,7 @@ Background:
 
 
 @Release_2013.1.0
-@PBMCC-42707-001
+@PB_MCC-42707-001
 @SJ06.FEB.2013
 @Validation
 
@@ -130,7 +130,7 @@ Scenario: PBMCC-42707-001 Verify Coder settings are maintained after changing fi
 
 
 @Release_2013.1.0
-@PBMCC-42707-002
+@PB_MCC-42707-002
 @SJ06.FEB.2013
 @Validation
 
@@ -191,7 +191,7 @@ Scenario: PBMCC-42707-002 Verify Coder settings are maintained after changing fi
 	And I take a screenshot
 
 @Release_2013.1.0
-@PBMCC-42707-003
+@PB_MCC-42707-003
 @SJ06.FEB.2013
 @Validation
 Scenario: PBMCC-42707-003 Verify Coder settings are maintained after changing Coding Dictionary on a log form designer.
@@ -250,7 +250,7 @@ Scenario: PBMCC-42707-003 Verify Coder settings are maintained after changing Co
 	And I take a screenshot
 
 @Release_2013.1.0
-@PBMCC-42707-004
+@PB_MCC-42707-004
 @SJ06.FEB.2013
 @Validation
 Scenario: PBMCC-42707-004 Verify local setting in Coder is maintained after changing format on a log form designer.
@@ -284,7 +284,7 @@ Scenario: PBMCC-42707-004 Verify local setting in Coder is maintained after chan
 	And I take a screenshot
 
 @Release_2013.1.0
-@PBMCC-42707-005
+@PB_MCC-42707-005
 @SJ06.FEB.2013
 @Validation
 Scenario: PBMCC-42707-005 Verify Locale setting in Coder is maintained after changing Coding Dictionary on a log form designer.
