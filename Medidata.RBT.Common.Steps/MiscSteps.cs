@@ -1,5 +1,6 @@
 ﻿using System;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using System.Threading;
@@ -8,6 +9,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.SeleniumExtension;
 using System.IO;
 using Medidata.RBT.ConfigurationHandlers;
+using System.Linq;
+using Medidata.RBT.GenericModels;
 
 namespace Medidata.RBT.Common.Steps
 {
@@ -75,6 +78,25 @@ namespace Medidata.RBT.Common.Steps
 			Browser.WaitForDocumentLoad();
 			CurrentPage = WebTestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
         }
+
+		/// <summary>
+		/// Check if a browser specific javascript alert window is present and has
+		/// one of the specified messages.
+		/// </summary>
+		/// <param name="table"></param>
+		[Then(@"I should see alert window with one of the messages")]
+		public void ThenIShouldSeeAlertWindowWithOneOfTheMessages____(Table table)
+		{
+			var message = Browser.GetAlertWindow().Text;
+			var result =
+				from data in table.CreateSet<GenericDataModel<string>>()
+				where data.Data == message
+				select 0;
+
+			Assert.IsTrue(result.Any(),
+				string.Format("The alert window message [{0}] does not match any of the specified messages", message));
+		}
+
 
 		/// <summary>
 		/// Click cancel if alert window presents.
