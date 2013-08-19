@@ -194,7 +194,7 @@ namespace Medidata.RBT.Common.Steps
 		/// 
 		/// </summary>
 		/// <param name="linkText"></param>
-		[StepDefinition(@"I verify link ""([^""]*)"" does not exist")]
+		[StepDefinition(@"I verify link ""(.*?)"" does not exist")]
 		public void IVerifyLink____DoesNotExist(string linkText)
 		{
 			IWebElement link = Browser.TryFindElementByLinkText(linkText);
@@ -256,7 +256,7 @@ namespace Medidata.RBT.Common.Steps
         /// Verify a link with the text passed in exists
         /// </summary>
         /// <param name="linkText">The link text</param>
-        [StepDefinition(@"I verify link ""([^""]*)"" exists")]
+        [StepDefinition(@"I verify link ""(.*?)"" exists")]
         public void IVerifyLink____Exists(string linkText)
         {
             IWebElement link = Browser.TryFindElementByLinkText(linkText);
@@ -307,6 +307,20 @@ namespace Medidata.RBT.Common.Steps
             bool visible = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "button", buttonName);
             Assert.IsTrue(visible, String.Format("Is not visible :[{0}] button", buttonName));
         }
+
+		[StepDefinition(@"I verify image ""([^""]*)"" exists")]
+		public void IVerifyImage____Exists(string fileName)
+		{
+			bool exists = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "image", fileName);
+			Assert.IsTrue(exists, string.Format("Does not exist :[{0}] image", fileName));
+		}
+
+		[StepDefinition(@"I verify image ""([^""]*)"" does not exists")]
+		public void IVerifyImage____DoesNotExists(string fileName)
+		{
+			bool exists = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "image", fileName);
+			Assert.IsFalse(exists, string.Format("Does exist :[{0}] image", fileName));
+		}
 
         #region Helper methods
 

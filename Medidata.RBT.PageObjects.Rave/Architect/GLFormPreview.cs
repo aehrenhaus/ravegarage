@@ -34,11 +34,17 @@ namespace Medidata.RBT.PageObjects.Rave
             bool shouldExist = true)
 		{
             bool retVal = false;
-            if (string.IsNullOrEmpty(type) || type.Equals("text", StringComparison.InvariantCultureIgnoreCase))
+			if ("text".Equals(type, StringComparison.InvariantCultureIgnoreCase))
             {
                 if (!exactMatch && Browser.FindElementByTagName("body").Text.Contains(identifier))
                     retVal = true;
             }
+			else if ("image".Equals(type, StringComparison.InvariantCultureIgnoreCase))
+			{
+				var image = Browser.TryFindElementBy(By.XPath(string.Format("//img[contains(@src, '{0}')]", identifier)));
+				retVal = image != null;
+			}
+
             return retVal;
 		}
 
