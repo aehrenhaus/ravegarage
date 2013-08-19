@@ -25,7 +25,7 @@ Background:
 	
 
 @Release_2013.1.0
-@PBMCC50622-001
+@PB_MCC50622-001
 @SJ04.MAR.2013
 @Validation
 
@@ -114,7 +114,7 @@ Scenario: PBMCC50622-001 verify audit Trail does not contain extra activity when
 
 
 @Release_2013.1.0
-@PBMCC50622-002
+@PB_MCC50622-002
 @SJ04.MAR.2013
 @Validation
 
@@ -173,7 +173,7 @@ Scenario: PBMCC50622-002 verify Data Listing Report does not contain NULL values
 
 
 @Release_2013.1.0
-@PBMCC50622-003
+@PB_MCC50622-003
 @SJ04.MAR.2013
 @Validation
 

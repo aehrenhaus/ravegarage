@@ -35,7 +35,7 @@ Given I publish and push eCRF "BlankPDF Study.xml" to "Version 1"
  
 
 @Release_2013.1.0
-@PBMCC46591-001
+@PB_MCC46591-001
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-001 Verify log form without default values in Landscape direction display all log lines on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
@@ -76,7 +76,7 @@ Then I verify PDF bookmarks exist
 | Adverse Events1 |
 
 @Release_2013.1.0
-@PBMCC46591-002
+@PB_MCC46591-002
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-002 Verify log form without default values in Portrait direction display all log lines on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
@@ -117,7 +117,7 @@ Then I verify PDF bookmarks exist
 | Adverse Events2 |
 
 @Release_2013.1.0
-@PBMCC46591-003
+@PB_MCC46591-003
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-003 Verify mixed form without default values in Landscape direction display all fields standard and log on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
@@ -151,7 +151,7 @@ Then I verify PDF bookmarks exist
 | Adverse Events3 |
 
 @Release_2013.1.0
-@PBMCC46591-004
+@PB_MCC46591-004
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-004 Verify mixed form without default values in Portrait direction display all fields standard and log on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
@@ -185,7 +185,7 @@ Then I verify PDF bookmarks exist
 | Adverse Events4 |
 
 @Release_2013.1.0
-@PBMCC46591-005
+@PB_MCC46591-005
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-005 Verify standard form without default values display all fields on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
@@ -214,7 +214,7 @@ Then I verify PDF bookmarks exist
 | Demographics1 |
 
 @Release_2013.1.0
-@PBMCC46591-006
+@PB_MCC46591-006
 @RR24.JAN.2013
 Scenario: MCC46591-006 Verify log form without default values in Landscape direction display all log lines on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
 
@@ -277,7 +277,7 @@ Then I verify PDF bookmarks exist
 | Annotations     |
 
 @Release_2013.1.0
-@PBMCC46591-007
+@PB_MCC46591-007
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-007 Verify log form without default values in Portrait direction display all log lines on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
@@ -341,7 +341,7 @@ Then I verify PDF bookmarks exist
 | Annotations     |
 
 @Release_2013.1.0
-@PBMCC46591-008
+@PB_MCC46591-008
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-008 Verify mixed form without default values in Landscape direction display all fields standard and log on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
@@ -391,7 +391,7 @@ Then I verify PDF bookmarks exist
 | Annotations     |
 
 @Release_2013.1.0
-@PBMCC46591-009
+@PB_MCC46591-009
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-009 Verify mixed form without default values in Portrait direction display all fields standard and log on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
@@ -441,7 +441,7 @@ Then I verify PDF bookmarks exist
 | Annotations     |
 
 @Release_2013.1.0
-@PBMCC46591-010
+@PB_MCC46591-010
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-010 Verify standard form without default values display all fields on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
@@ -481,7 +481,7 @@ Then I verify PDF bookmarks exist
 | Annotations   |
 
 @Release_2013.1.0
-@PBMCC46591-011
+@PB_MCC46591-011
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-011 Verify log form without default values in Landscape direction display all log lines on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
@@ -545,7 +545,7 @@ Then I verify PDF bookmarks exist
 | Annotations     |
 
 @Release_2013.1.0
-@PBMCC46591-012
+@PB_MCC46591-012
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-012 Verify log form without default values in Portrait direction display all log lines on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
@@ -609,7 +609,7 @@ Then I verify PDF bookmarks exist
 | Annotations     |
 
 @Release_2013.1.0
-@PBMCC46591-013
+@PB_MCC46591-013
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-013 Verify mixed form without default values in Landscape direction display all fields standard and log on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
@@ -659,7 +659,7 @@ Then I verify PDF bookmarks exist
 | Annotations     |
 
 @Release_2013.1.0
-@PBMCC46591-014
+@PB_MCC46591-014
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-014 Verify mixed form without default values in Portrait direction display all fields standard and log on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
@@ -709,7 +709,7 @@ Then I verify PDF bookmarks exist
 | Annotations     |
 
 @Release_2013.1.0
-@PBMCC46591-015
+@PB_MCC46591-015
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-015 Verify standard form without default values display all fields on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
@@ -767,7 +767,7 @@ Then I verify PDF bookmarks exist
 #| GENDER3           |
 
 @Release_2013.1.0
-@PBMCC46591-016
+@PB_MCC46591-016
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-016 Verify log form with default values in Portrait direction display all log lines with default values on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
@@ -827,7 +827,7 @@ Then I verify PDF bookmarks exist
 | Medical History1 |
 
 @Release_2013.1.0
-@PBMCC46591-017
+@PB_MCC46591-017
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-017 Verify log form with default values in Landscape direction display all log lines with default values on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
@@ -887,7 +887,7 @@ Then I verify PDF bookmarks exist
 | Medical History2 |
 
 @Release_2013.1.0
-@PBMCC46591-018
+@PB_MCC46591-018
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-018 Verify log form with default values in Portrait direction display all log lines with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
@@ -954,7 +954,7 @@ Then I verify PDF bookmarks exist
 | Annotations      |
 
 @Release_2013.1.0
-@PBMCC46591-019
+@PB_MCC46591-019
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-019 Verify log form with default values in Landscape direction display all log lines with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
@@ -1021,7 +1021,7 @@ Then I verify PDF bookmarks exist
 | Annotations      |
 
 @Release_2013.1.0
-@PBMCC46591-020
+@PB_MCC46591-020
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-020 Verify log form with default values in Portrait direction display all log lines with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
@@ -1088,7 +1088,7 @@ Then I verify PDF bookmarks exist
 | Annotations      |
 
 @Release_2013.1.0
-@PBMCC46591-021
+@PB_MCC46591-021
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-021 Verify log form with default values in Landscape direction display all log lines with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
@@ -1155,7 +1155,7 @@ Then I verify PDF bookmarks exist
 | Annotations      |
 
 @Release_2013.1.0
-@PBMCC46591-022
+@PB_MCC46591-022
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-022 Verify mixed form with default values in Portrait direction display all fields standard and log with default values on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
@@ -1215,7 +1215,7 @@ Then I verify PDF bookmarks exist
 | Medical History3 |
 
 @Release_2013.1.0
-@PBMCC46591-023
+@PB_MCC46591-023
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-023 Verify mixed form with default values in Landscape direction display all fields standard and log with default values on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
@@ -1275,7 +1275,7 @@ Then I verify PDF bookmarks exist
 | Medical History4 |
 
 @Release_2013.1.0
-@PBMCC46591-024
+@PB_MCC46591-024
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-024 Verify mixed form with default values in Portrait direction display all fields standard and log with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
@@ -1342,7 +1342,7 @@ Then I verify PDF bookmarks exist
 | Annotations      |
 
 @Release_2013.1.0
-@PBMCC46591-025
+@PB_MCC46591-025
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-025 Verify mixed form with default values in Landscape direction display all fields standard and log with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
@@ -1409,7 +1409,7 @@ Then I verify PDF bookmarks exist
 | Annotations      |
 
 @Release_2013.1.0
-@PBMCC46591-026
+@PB_MCC46591-026
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-026 Verify mixed form with default values in Portrait direction display all fields standard and log with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
@@ -1476,7 +1476,7 @@ Then I verify PDF bookmarks exist
 | Annotations      |
 
 @Release_2013.1.0
-@PBMCC46591-027
+@PB_MCC46591-027
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-027 Verify mixed form with default values in Landscape direction display all fields standard and log with default values on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
@@ -1543,7 +1543,7 @@ Then I verify PDF bookmarks exist
 | Annotations      |
 
 @Release_2013.1.0
-@PBMCC46591-028
+@PB_MCC46591-028
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-028 Verify standard form with default values display all fields on blank PDF with default PDF Configuration Profile (MCC46591PDF1).
@@ -1574,7 +1574,7 @@ Then I verify PDF bookmarks exist
 | Demographics2 |
 
 @Release_2013.1.0
-@PBMCC46591-029
+@PB_MCC46591-029
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-029 Verify standard form with default values display all fields on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF2).
@@ -1612,7 +1612,7 @@ Then I verify PDF bookmarks exist
 | Annotations   |
 
 @Release_2013.1.0
-@PBMCC46591-030
+@PB_MCC46591-030
 @RR24.JAN.2013
 @Validation
 Scenario: MCC46591-030 Verify standard form with default values display all fields on blank PDF with Annotated PDF Configuration Profile (MCC46591PDF3).
