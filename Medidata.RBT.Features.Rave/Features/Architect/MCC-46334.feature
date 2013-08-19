@@ -143,7 +143,7 @@ And I select Draft "Draft 1"
 And I select link "Propose Objects" located in "Left Nav"
 And I check "LOGPORT (LOGPORT)"
 And I select link "LOGPORT (LOGPORT)"
-And I select link "LOGPORT (LOGPORT) details"
+And I expand "LOGPORT (LOGPORT) details"
 And I take a screenshot
 And I select link "Form Preview"
 And I switch to "Global Draft Preview" window
@@ -168,7 +168,7 @@ And I select Draft "Draft 1"
 And I select link "Propose Objects" located in "Left Nav"
 And I check "LOGLAND (LOGLAND)"
 And I select link "LOGLAND (LOGLAND)"
-And I select link "LOGLAND (LOGLAND) details"
+And I expand "LOGLAND (LOGLAND) details"
 And I take a screenshot
 When I select link "Form Preview"
 And I switch to "Global Draft Preview" window
@@ -241,7 +241,7 @@ And I select Draft "Draft 1"
 And I select link "Propose Objects" located in "Left Nav"
 And I check "LABFORM (LABFORM)"
 And I select link "LABFORM (LABFORM)"
-And I select link "LABFORM (LABFORM) details"
+And I expand "LABFORM (LABFORM) details"
 And I take a screenshot
 When I select link "Form Preview"
 And I switch to "Global Draft Preview" window
