@@ -15,6 +15,9 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Models
         public string Name { get; set; }
         public string Number { get; set; }
         public Guid Uuid { get; set; }
+        public int ExternalID { get; set; }
+        public string Source { get; set; }
+        public DateTime LastExternalUpdateDate { get; set; }
 
         public string City { get; set; }
         public string Country { get; set; }
@@ -23,7 +26,7 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Models
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }
-        public string Phone { get; set; }
+        public string Telephone { get; set; }
         public string Fax { get; set; }
         public DateTime UpdatedAt { get; set; }     
     }

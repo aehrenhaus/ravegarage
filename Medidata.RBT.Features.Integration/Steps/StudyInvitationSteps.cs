@@ -31,6 +31,17 @@ namespace Medidata.RBT.Features.Integration.Steps
             ScenarioContext.Current.Set(edcAppAssignments, "edcAppAssignments");
         }
 
+        [Given(@"I have an EDC app assignment only with the following roles?")]
+        public void GivenIHaveAnEDCAppAssignmentOnlyWithTheFollowingRole(Table table)
+        {
+            // Make sure to clear any existing assignments from the other apps
+            if (ScenarioContext.Current.ContainsKey("architectAppAssignments"))
+                ScenarioContext.Current.Remove("architectAppAssignments");
+            if (ScenarioContext.Current.ContainsKey("modulesAppAssignments"))
+                ScenarioContext.Current.Remove("modulesAppAssignments");
+            GivenIHaveAnEDCAppAssignmentWithTheFollowingRoles(table);
+        }
+
         [Given(@"I have an Architect Security app assignment with the following roles?")]
         public void GivenIHaveAnArchitectSecurityAppAssignmentWithTheFollowingRoles(Table table)
         {
@@ -64,6 +75,5 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             ScenarioContext.Current.Set(modulesAppAssignments, "modulesAppAssignments");
         }
-
     }
 }

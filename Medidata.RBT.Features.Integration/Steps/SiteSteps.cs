@@ -6,6 +6,8 @@ using Medidata.Core.Objects;
 using Medidata.RBT.Objects.Integration.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.Objects.Integration.Configuration.Models;
 
 namespace Medidata.RBT.Features.Integration.Steps
 {
@@ -16,6 +18,12 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void TheSiteWithSiteNumber____ExistsInTheRaveDatabase(string siteNumber)
         {
             SiteHelper.CreateRaveSite(siteNumber);
+        }
+
+        [Given(@"the Site with Name ""(.*)"" and site number ""(.*)"" exists in the Rave database")]
+        public void TheSiteWithName____AndSiteNumber____ExistsInTheRaveDatabase(string siteName, string siteNumber)
+        {
+            SiteHelper.CreateRaveSite(siteNumber, siteName);
         }
 
         [Then(@"I should see the site in the Rave database")]
@@ -49,7 +57,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.AreEqual(externalId, site.ExternalID);
         }
 
-        [Then(@"the site should have the name ""(.*)""")]
+        [Then(@"the site should have the Name ""(.*)""")]
         public void ThenTheSiteShouldHaveTheName____(string siteName)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
@@ -107,11 +115,11 @@ namespace Medidata.RBT.Features.Integration.Steps
         }
 
         [Then(@"the site should have Telephone ""(.*)""")]
-        public void ThenTheSiteShouldHaveTelephone____(string telephone)
+        public void ThenTheSiteShouldHaveTelephone____(string Telephone)
         {
             var site = ScenarioContext.Current.Get<Site>("site");
 
-            Assert.AreEqual(telephone, site.Telephone);
+            Assert.AreEqual(Telephone, site.Telephone); //remove this
         }
 
         [Then(@"the site should have the UUID ""(.*)""")]
@@ -120,6 +128,51 @@ namespace Medidata.RBT.Features.Integration.Steps
             var site = ScenarioContext.Current.Get<Site>("site");
 
             Assert.AreEqual(uuid, site.Uuid);
+        }
+
+        [Then(@"the site should exist with the following properties")]
+        public void ThenTheSiteShouldExistWithTheFollowingProperties(Table table)
+        {
+            var messageConfigs = table.CreateSet<SiteMessageModel>().ToList();
+
+            foreach (var config in messageConfigs)
+            {
+                if (config.Name != null)
+                    ThenTheSiteShouldHaveTheName____(config.Name);
+                if (config.Number != null)
+                    ThenTheSiteShouldHaveTheSiteNumber____(config.Number);
+                if (config.Address1 != null)
+                    ThenTheSiteShouldHaveAddress1____(config.Address1);
+                if (config.City != null)
+                    ThenTheSiteShouldHaveCity____(config.City);
+                if (config.State != null)
+                    ThenTheSiteShouldHaveState____(config.State);
+                if (config.Country != null)
+                    ThenTheSiteShouldHaveCountry____(config.Country);
+                if (config.PostalCode != null)
+                    ThenTheSiteShouldHavePostalCode____(config.PostalCode);
+                if (config.Country != null)
+                    ThenTheSiteShouldHaveCountry____(config.Country);
+                if (config.Telephone != null)
+                    ThenTheSiteShouldHaveTelephone____(config.Telephone);
+                if (!config.Uuid.Equals(new Guid("00000000-0000-0000-0000-000000000000")))
+                    ThenTheSiteShouldHaveTheUUID____(config.Uuid.ToString());
+                if (config.ExternalID != 0)
+                    ThenTheSiteShouldHaveTheExternalId____(config.ExternalID);
+                if (config.Source != null)
+                {
+                    if (config.Source.ToLower().Equals("imedidata"))
+                    {
+                        var ext = new ExternalSystemSteps();
+                        ext.ThenTheSiteShouldHaveTheSourceIMedidata();
+                    }
+                    else
+                        throw new NotImplementedException("Can't check for Source other than iMedidata.");
+                }
+                if (!config.LastExternalUpdateDate.Equals(new DateTime(1, 1, 1)))
+                    ThenTheSiteShouldHaveALastExternalUpdateDate____(config.LastExternalUpdateDate);
+            }
+
         }
     }
 }

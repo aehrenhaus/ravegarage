@@ -10,6 +10,10 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Models
         public string EventType { get; set; }
         public string StudySiteName { get; set; }
         public string StudySiteNumber { get; set; }
+        public int ExternalStudyId { get; set; }
+        public DateTime LastExternalUpdateDate { get; set; }
+        public string Source { get; set; }
+        public string Active { get; set; }
         public string SiteName { get; set; }
         public string SiteNumber { get; set; }
         public int StudySiteId { get; set; }
@@ -20,5 +24,6 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Models
         public Guid SiteUuid { get; set; }
         public DateTime Timestamp { get; set; }
         public Guid MessageId { get; set; }
+        public int ExternalID { get; set; }
     }
 }

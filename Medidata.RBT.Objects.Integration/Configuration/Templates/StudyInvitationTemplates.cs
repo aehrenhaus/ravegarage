@@ -5,7 +5,7 @@
         public const string POST_PUT_TEMPLATE = "{\r\n" +
                                                     "{{#config}}\r\n" +
                                                         "\"timestamp\": \"{{Timestamp}}\",\r\n" +
-                                                        "\"resource\": \"com:mdsol:study_invitation:~~\",\r\n" +
+                                                        "\"resource\": \"com:mdsol:{{Resource}}:~~\",\r\n" +
                                                         "\"event\": \"{{EventType}}\",\r\n" +
                                                         "\"source_id\": \"93f46ac9-fcd4-4c45-ac9a-7f1553409c00\",\r\n" +
                                                         "\"source\": \"http://localhost:3001\",\r\n" +
@@ -73,7 +73,7 @@
                                                                "{} \r\n" +
                                                             "], \r\n" +
                                                             "\"accepted_at\": \"2012-11-19T12:57:04-05:00\",\r\n" +
-                                                            "\"study\": {\r\n" +
+                                                            "\"{{ObjectType}}\": {\r\n" +
                                                                 "\"type\": null,\r\n" +
                                                                 "\"uuid\": \"{{StudyUuid}}\"\r\n" +
                                                             "},\r\n" +
@@ -86,7 +86,7 @@
         public const string DELETE_TEMPLATE = "{\r\n" +
                                                 "{{#config}}\r\n" +
                                                     "\"timestamp\": \"{{Timestamp}}\",\r\n" +
-                                                    "\"resource\": \"com:mdsol:study_invitation:~~\",\r\n" +
+                                                    "\"resource\": \"com:mdsol:{{Resource}}:~~\",\r\n" +
                                                     "\"event\": \"{{EventType}}\",\r\n" +
                                                     "\"source_id\": \"93f46ac9-fcd4-4c45-ac9a-7f1553409c00\",\r\n" +
                                                     "\"source\": \"http://localhost:3001\",\r\n" +
@@ -103,7 +103,7 @@
                                                             "\"id\": {{UserId}},\r\n" +
                                                         "},\r\n" +
                                                         "\"app_assignments\": [ ], \r\n" +
-                                                        "\"study\": {\r\n" +
+                                                        "\"{{ObjectType}}\": {\r\n" +
                                                             "\"type\": null,\r\n" +
                                                             "\"uuid\": \"{{StudyUuid}}\"\r\n" +
                                                         "},\r\n" +
