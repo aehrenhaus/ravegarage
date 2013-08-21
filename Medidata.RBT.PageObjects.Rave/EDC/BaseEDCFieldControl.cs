@@ -101,7 +101,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 	    protected void EnterFileUploadValue(string text)
 	    {
-            FieldDataGeneric.FindElementsByPartialId("_CRFControl_CRFFileUpload")[0].SendKeys(text);
+            FieldDataGeneric.FindElementsByPartialId("_CRFFileUpload")[0].SendKeys(text);
 	    }
 
 	    public virtual void Check(string checkName)
