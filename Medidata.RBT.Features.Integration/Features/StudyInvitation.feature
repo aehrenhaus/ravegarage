@@ -14,7 +14,7 @@ Scenario: When a StudyInvitation POST message gets put onto the queue, the study
 	And I have a Modules app assignment with the following roles
 	| RoleName          |
 	| Post1 All Modules |
-	And I send the following StudyInvitation messages to SQS
+	And I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | Email            | Login                       | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | testUser@test.cx | testPOSTstudyInvitationUser | 101    | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
 	When the message is successfully processed
@@ -49,7 +49,7 @@ Scenario: When a StudyInvitation PUT message gets put onto the queue, the study 
 	And I have a Modules app assignment with the following roles
 	| RoleName        |
 	| Put1 User Admin |
-	And I send the following StudyInvitation messages to SQS
+	And I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | Email            | Login                      | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| PUT       | StudyInvitation | testUser@test.cx | testPUTstudyinvitationuser | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
 	When the message is successfully processed
@@ -157,7 +157,7 @@ Scenario: If an iMedidata user has a study assignment removed in iMedidata, that
 	And the user with EDC Role "PB2582810 EDC Role 3" should be assigned to the following UserGroup
 	| RoleName                 |
 	| PB2582810 Modules Role 1 |
-	When I send the following StudyInvitation messages to SQS
+	When I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Timestamp          |
 	| DELETE    | StudyInvitation | A0D8B069-7961-4FA3-A4CE-6ABB5D62E210 | 2013-01-01 13:00PM |
 	And the message is successfully processed
@@ -220,7 +220,7 @@ Scenario: If an iMedidata user has a  new study assignment added in iMedidata, t
 	And the user with EDC Role "PB2582811 EDC Role 1" should be assigned to the following UserGroup
 	| RoleName                 |
 	| PB2582811 Modules Role 1 |
-	When I send the following StudyInvitation messages to SQS
+	When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | DACEC000-CD7B-4CD7-B51E-0BA924488FF6 | pb2582811user@test.cx | pb2582811user | 2811   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
 	And the message is successfully processed
@@ -236,7 +236,7 @@ Scenario: If a user is only assigned to ‘Rave EDC’ application on iMedidata, the
 	And I have an EDC app assignment with the following roles
 	| RoleName            |
 	| PB275501 EDC Role 1 |
-	And I send the following StudyInvitation messages to SQS
+	And I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Email                | Login    | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | B942ED64-44FE-4C68-A47A-4CB77C2BE5B6 | pb275501user@test.cx | pb275501 | 275501 | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
 	When the message is successfully processed
@@ -252,7 +252,7 @@ Scenario: If a Users Modules App invitation is changed, then that should be refl
 	And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2752856 Modules Role 1 |
-	And I send the following StudyInvitation messages to SQS
+	And I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | F04C5342-2005-42F6-BE60-21EF67BBAEF0 | pb2752856user@test.cx | pb2752856 | 2856   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
 	When the message is successfully processed
@@ -263,7 +263,7 @@ Scenario: If a Users Modules App invitation is changed, then that should be refl
     Given I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2752856 Modules Role 4 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| PUT       | StudyInvitation | F04C5342-2005-42F6-BE60-21EF67BBAEF0 | pb2752856user@test.cx | pb2752586 | 2856   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
     When the message is successfully processed
@@ -281,7 +281,7 @@ Scenario: If an iMedidata user with one EDC Role1 in a study linked to Rave and 
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2582802 EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 1D696B2F-947B-40B2-8052-A58E483F6611 | pb2582802user@test.cx | pb2582802 | 2802   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     When the message is successfully processed
@@ -292,7 +292,7 @@ Scenario: If an iMedidata user with one EDC Role1 in a study linked to Rave and 
     Given I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2582802 EDC Role 2 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | PUT       | StudyInvitation | 1D696B2F-947B-40B2-8052-A58E483F6611 | pb2582802user@test.cx | pb2582802 | 2802   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
     When the message is successfully processed
@@ -316,7 +316,7 @@ Scenario: When an externally authenticated user accesses Rave for the first time
     And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2582301 Modules Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | D5815E4F-4746-4EE7-9D25-4FD71F3FE93C | pb2582301user@test.cx | pb2582301 | 2301   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     When the message is successfully processed
@@ -365,7 +365,7 @@ Scenario: When iMedidata is used to assign specific access to a study, If user i
     And I have an Architect Security app assignment with the following roles
     | RoleName                   |
     | PB2582701 Security Group 2 |
-    Then I send the following StudyInvitation messages to SQS
+    Then I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | PUT       | StudyInvitation | 74D2BE66-439C-44D9-B7C9-54DA11DFE25E | pb2582701user@test.cx | pb2582701 | 2701   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
     When the message is successfully processed
@@ -387,7 +387,7 @@ Scenario: If an existing iMedidata user is invited to a new Study Group without 
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517612 EDC Role 2 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | E8CA5368-62C6-40AC-8465-22668BD89291 | pb2517612user@test.cx | pb2517612 | 7612   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     When the message is successfully processed
@@ -397,7 +397,7 @@ Scenario: If an existing iMedidata user is invited to a new Study Group without 
     Given I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517612 EDC Role 2 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType       | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyGroupInvitation | D7797EED-6598-4FA5-AFE2-46A340F5BD12 | pb2517612user@test.cx | pb2517612 | 7612   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
     When the message is successfully processed
@@ -417,7 +417,7 @@ Scenario: When a user is created in iMedidata with EDC roles, one and only one u
     And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2751320 Modules Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 45D66EC9-2EF3-44F2-B3B5-4BECAB61F8B7 | pb2751320user@test.cx | pb2751320 | 1320   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     When the message is successfully processed
@@ -479,7 +479,7 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
     Given I have an EDC app assignment only with the following role
     | RoleName            |
     | PB257503 EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType       | StudyUuid                            | Email                 | Login    | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation      | 72CF3768-402F-4EA7-8262-01D1AC323133 | pb257503user@test.cx  | pb257503 | 503    | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 14:00PM |
     When the message is successfully processed
@@ -498,7 +498,7 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2593306 EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 9E26D64B-474D-4DD4-A368-F3EC82E505B3 | pb2593306user@test.cx | pb2593306 | 3306   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     When the message is successfully processed
@@ -513,7 +513,7 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
     And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2593306 Modules Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | PUT       | StudyInvitation | 9E26D64B-474D-4DD4-A368-F3EC82E505B3 | pb2593306user@test.cx | pb2593306 | 3306   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
     When the message is successfully processed
@@ -531,7 +531,7 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2593307 EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 217B8DB6-CA4D-4839-837A-A78BB229D321 | pb2593307user@test.cx | pb2593307 | 3307   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     When the message is successfully processed
@@ -543,7 +543,7 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
     Given I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2593307 EDC Role 2 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | PUT       | StudyInvitation | 217B8DB6-CA4D-4839-837A-A78BB229D321 | pb2593307user@test.cx | pb2593307 | 3307   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
     When the message is successfully processed
@@ -567,12 +567,12 @@ Scenario: If the user has access to a Study Site in Rave that is linked with iMe
     And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2593307 Modules Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 4DCFC098-13CA-46D3-8148-2EEA10923872 | pb2592904user@test.cx | pb2592904 | 2904   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |   
     When the message is successfully processed
     Then an internal user with role "PB2593307 EDC Role 1" exists
-    Given I send the following UserStudySite messages to SQS
+    Given I send the following UserStudySite message to SQS
     | EventType | Timestamp          |
     | POST      | 2013-01-01 13:00PM |
     When the message is successfully processed
@@ -580,7 +580,7 @@ Scenario: If the user has access to a Study Site in Rave that is linked with iMe
     Given I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2593307 EDC Role 2 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 4DCFC098-13CA-46D3-8148-2EEA10923872 | pb2592904user@test.cx | pb2592904 | 2904   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |  
     When the message is successfully processed
@@ -673,7 +673,7 @@ Scenario: When merging iMedidata created and non-transitioned accounts, all Rave
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517402 EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                  | Login      | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 39CCB4A6-D154-43CB-A235-16CAAFC0E890 | pb2592904Buser@test.cx | pb2592904B | 2904   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     When the message is successfully processed
@@ -694,7 +694,7 @@ Scenario: When merging iMedidata created and non-transitioned accounts, all Rave
 	And I have an EDC app assignment with the following roles
     | RoleName              |
     | PB2517402C EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                  | Login      | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 4F7E9F24-FB97-47EC-8D49-19953EED5E1A | pb2517402Cuser@test.cx | pb2517402C | 7402   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     When the message is successfully processed
@@ -716,7 +716,7 @@ Scenario: As a Rave user I complete an eLearning course and my account is merged
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517692 EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | FF1DDBF2-7661-4471-B521-41C75A35283C | pb2517692user@test.cx | pb2517692 | 7692   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
     When the message is successfully processed
@@ -736,7 +736,7 @@ Scenario: If Internal Rave user has not completed an eLearning course and accoun
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517693 EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 6DC4FEA8-F783-44D0-9668-D806A25D23E2 | pb2517693user@test.cx | pb2517693 | 7693   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
     When the message is successfully processed
@@ -756,7 +756,7 @@ Scenario: If internal Rave user does not start an eLearning course and account i
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517694 EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 6FFCC5D7-D2D7-4602-AA97-865FAF48E42A | pb2517694user@test.cx | pb2517694 | 7694   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
     When the message is successfully processed
@@ -780,7 +780,7 @@ Scenario: As Internal Rave user I am assigned to eLearning course for a particul
     | RoleName             |
     | PB2517695 EDC Role 1 |
     | PB2517695 EDC Role 2 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 9DC317CE-3FE6-443A-A987-5C59B5BA5E48 | pb2517695user@test.cx | pb2517695 | 7695   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
     When the message is successfully processed
@@ -803,7 +803,7 @@ Scenario: If internal Rave user has not started eLearning course and the course 
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517696 EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | A01A0BA9-2B88-430F-9FC8-1D9C9903F8F2 | pb2517696user@test.cx | pb2517696 | 7696   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
     When the message is successfully processed
@@ -825,7 +825,7 @@ Scenario: If Internal Rave user has not completed (Incomplete) an eLearning cour
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517697 EDC Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | A0CC794C-9F02-4F5D-A0D7-85B2A8F12D08 | pb2517697user@test.cx | pb2517697 | 7697   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
     When the message is successfully processed

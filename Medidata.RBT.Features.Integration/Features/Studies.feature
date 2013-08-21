@@ -4,7 +4,7 @@
 
 @mytag
 Scenario: When a Study POST message gets put onto the queue, the study is created in Rave.
-	Given I send the following Study messages to SQS
+	Given I send the following Study message to SQS
 	| EventType | Name           | IsProd | Description     | ID   | Timestamp           |
 	| POST      | TestSqsStudy29 | true   | TestDescription | 1252 | 2012-10-12 12:00:00 |
 	When the message is successfully processed
@@ -28,7 +28,7 @@ Scenario: When a Study PUT message gets put onto the queue, the study is updated
 Scenario: If I have a project + environment in Rave that is not linked to a study in iMedidata . When the study is created in iMedidata, Rave should link that Project and Environment.
 	
 	Given the study with name "TestSqsStudy31" and environment "TestEnvironment" with ExternalId "0" exists in the Rave database
-	And I send the following Study messages to SQS
+	And I send the following Study message to SQS
 	| EventType | Name                             | IsProd | Description     | ID   | EnrollmentTarget | Timestamp           |
 	| POST      | TestSqsStudy31 (TestEnvironment) | false  | TestDescription | 1254 | 3                | 2012-10-12 12:00:00 |
 	When the message is successfully processed
@@ -45,7 +45,7 @@ Scenario: If I have an unlinked study in iMedidata, when the study is created in
 			link the found project and create the new environment that maps to that study.
 
 	Given the study with name "TestSqsStudy32" and environment "TestEnvironment1" with ExternalId "117" exists in the Rave database
-	And I send the following Study messages to SQS
+	And I send the following Study message to SQS
 	| EventType | Name                              | IsProd | Description     | ID   | EnrollmentTarget | Timestamp           |
 	| POST      | TestSqsStudy32 (TestEnvironment2) | false  | TestDescription | 1255 | 4                | 2012-10-12 12:00:00 |
 	When the message is successfully processed
@@ -59,7 +59,7 @@ Scenario: If I have an unlinked study in iMedidata, when the study is created in
 Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited in the 'name' 
           of the system user.
 
-	Given I send the following Study messages to SQS
+	Given I send the following Study message to SQS
 	| EventType | Name           | IsProd | Description     | ID   | EnrollmentTarget | Timestamp           |
 	| POST      | TestSqsStudy33 | true   | TestDescription | 1256 | 5                | 2012-10-12 12:00:00 |
 	When the message is successfully processed

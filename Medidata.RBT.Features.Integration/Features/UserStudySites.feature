@@ -10,7 +10,7 @@ Scenario: When a UserStudySite message gets put onto the queue, and the user alr
 	And the current User is assigned to the current Study with current Role
 	And the Site with site number "1" exists in the Rave database
 	And the StudySite with ExternalId "1" exists in the Rave database
-	And I send the following UserStudySite messages to SQS	
+	And I send the following UserStudySite message to SQS	
 	| EventType | Timestamp           |
 	| POST      | 2012-10-12 12:00:00 |
 	When the message is successfully processed

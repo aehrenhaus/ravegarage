@@ -5,7 +5,7 @@
 @post_scenario_1
 Scenario: When a StudySite POST message gets put onto the queue, the studysite is created in Rave.
 	Given the study with name "TestPost Study" and environment "Prod" with ExternalId "1" exists in the Rave database
-	And I send the following StudySite messages to SQS
+	And I send the following StudySite message to SQS
 	| EventType | StudySiteId | StudySiteName         | StudySiteNumber | StudyId | SiteId | SiteName         | SiteNumber | Timestamp           |
 	| POST      | 11          | TestPostStudySiteName | post001         | 1       | 10     | TestPostSiteName | post001    | 2012-10-12 12:00:00 |
 	When the message is successfully processed
@@ -78,7 +78,7 @@ Scenario:  When a Site is added back to a Study in iMedidata, the studysite in R
 	Then I should see the site in the Rave database
 	And I should see the studysite in the Rave database
 	And the studysite should be inactive
-	When I send the following StudySite messages to SQS
+	When I send the following StudySite message to SQS
 	| EventType | StudySiteId | StudySiteName       | StudySiteNumber | StudyId | SiteId | SiteName       | SiteNumber | Timestamp           |
 	| POST      | 55          | PB2593801 StudySite | PB2593801       | 3801    | 50     | PB2593801 Site | PB2593801  | 2012-10-12 14:00:00 |
 	And the message is successfully processed
@@ -88,14 +88,14 @@ Scenario:  When a Site is added back to a Study in iMedidata, the studysite in R
 @PB2.5.9.37-01
 Scenario: If I have a linked site in iMedidata, and I delete a studysite in iMedidata that is linked to that site, when Rave receives the updated studysite, it will inactivate the studysite in Rave.
 	Given the study with name "Study 3701 A" and environment "Prod" with ExternalId "3701" exists in the Rave database
-	And I send the following StudySite messages to SQS
+	And I send the following StudySite message to SQS
 	| EventType | StudySiteId | StudySiteName       | StudySiteNumber | StudyId | SiteId | SiteName       | SiteNumber | Timestamp           |
 	| POST      | 66          | PB2693701 StudySite | PB2693701       | 3701    | 60     | PB2693701 Site | PB2693701  | 2012-10-12 12:00:00 |
 	When the messages are successfully processed
 	Then I should see the site in the Rave database
 	And I should see the studysite in the Rave database
 	And the studysite should be active
-	When I send the following StudySite messages to SQS
+	When I send the following StudySite message to SQS
 	| EventType | StudySiteId | StudySiteName | StudySiteNumber | StudyId | SiteId | SiteName | SiteNumber | Timestamp           |
 	| DELETE    |             |               |                 |         |        |          | PB2693701  | 2012-10-12 13:00:00 |
 	And the messages are successfully processed
