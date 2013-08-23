@@ -343,7 +343,7 @@ Scenario: PendingWhen an externally authenticated user accesses Rave for the fir
     And I have a Modules app assignment with the following roles 
     | RoleName                 | 
     | PB2582302 Modules Role 1 | 
-    And I send the following StudyInvitation messages to SQS 
+    And I send the following StudyInvitation message to SQS 
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          | 
     | POST      | StudyInvitation | 92e958cf-1a25-4498-8829-3494e0ee7ed2 | pb2582302user1@test.cx | pb2582302 | 2302   | Test1      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567891 | eng    | New Delhi | 2013-01-01 12:00PM | 
     When the message is successfully processed
@@ -363,7 +363,7 @@ Scenario: PendingWhen an externally authenticated user accesses Rave for the fir
     And I have a Modules app assignment with the following roles 
     | RoleName                 | 
 	| PB2582302 Modules Role 2 | 
-    And I send the following StudyInvitation messages to SQS 
+    And I send the following StudyInvitation message to SQS 
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          | 
 	| POST      | StudyInvitation | 7c0946d9-43cd-44d9-9652-1530b28afcfc | pb2582302user1@test.cx | pb2582302 | 2302   | Test1      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567891 | eng    | New Delhi | 2013-01-01 12:00PM | 
     When the message is successfully processed
@@ -383,7 +383,7 @@ Scenario: PendingWhen an externally authenticated user accesses Rave for the fir
     And I have a Modules app assignment with the following roles 
     | RoleName                 | 
 	| PB2582302 Modules Role 3 | 
-    And I send the following StudyInvitation messages to SQS 
+    And I send the following StudyInvitation message to SQS 
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          | 
 	| POST      | StudyInvitation | 0f6ff990-a862-438b-88a9-c9b7f6757614 | pb2582302user1@test.cx | pb2582302 | 2302   | Test1      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567891 | eng    | New Delhi | 2013-01-01 12:00PM | 
     When the messages are successfully processed 
