@@ -329,6 +329,73 @@ Scenario: When an externally authenticated user accesses Rave for the first time
     | PB2582301 Modules Role 1 |
     And the user should have the default architect security role assigned
 
+
+
+
+@PB2.5.8.23-02Pending 
+Scenario: PendingWhen an externally authenticated user accesses Rave for the first time with access to the Architect module and EDC of multiple studies provided through iMedidata,  
+            Rave will assign that user the default Architect Security Role defined in Rave for all of the studies.  
+	Given the study with name "Study 2302 A" and environment "Prod" with UUID "92e958cf-1a25-4498-8829-3494e0ee7ed2" exists in the Rave database 
+    And a UserGroup Role with Name "PB2582302 Modules Role 1" and Architect permissions exists in the Rave database 
+    And I have an EDC app assignment with the following roles 
+    | RoleName             | 
+    | PB2582302 EDC Role 1 | 
+    And I have a Modules app assignment with the following roles 
+    | RoleName                 | 
+    | PB2582302 Modules Role 1 | 
+    And I send the following StudyInvitation messages to SQS 
+    | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          | 
+    | POST      | StudyInvitation | 92e958cf-1a25-4498-8829-3494e0ee7ed2 | pb2582302user1@test.cx | pb2582302 | 2302   | Test1      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567891 | eng    | New Delhi | 2013-01-01 12:00PM | 
+    When the message is successfully processed
+    Then I should see the user in the Rave database  
+    And the user should be assigned to the study with the following EDC roles 
+    | RoleName             |
+    | PB2582302 EDC Role 1 | 
+    And the user should be assigned to the following UserGroup on the study 
+    | RoleName                 |
+    | PB2582302 Modules Role 1 | 
+    And the user should have the default architect security role assigned 
+	##########################
+	Given the study with name "Study 2302 B" and environment "Prod" with UUID "7c0946d9-43cd-44d9-9652-1530b28afcfc" exists in the Rave database 
+    And I have an EDC app assignment with the following roles 
+    | RoleName             | 
+	| PB2582302 EDC Role 2 | 
+    And I have a Modules app assignment with the following roles 
+    | RoleName                 | 
+	| PB2582302 Modules Role 2 | 
+    And I send the following StudyInvitation messages to SQS 
+    | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          | 
+	| POST      | StudyInvitation | 7c0946d9-43cd-44d9-9652-1530b28afcfc | pb2582302user1@test.cx | pb2582302 | 2302   | Test1      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567891 | eng    | New Delhi | 2013-01-01 12:00PM | 
+    When the message is successfully processed
+    Then I should see the user in the Rave database  
+    And the user should be assigned to the study with the following EDC roles 
+    | RoleName             |
+    | PB2582302 EDC Role 2 | 
+    And the user should be assigned to the following UserGroup on the study 
+    | RoleName                 |
+    | PB2582302 Modules Role 2 | 
+    And the user should have the default architect security role assigned 
+	###########################
+	Given the study with name "Study 2302 C" and environment "Prod" with UUID "0f6ff990-a862-438b-88a9-c9b7f6757614" exists in the Rave database 
+    And I have an EDC app assignment with the following roles 
+    | RoleName             | 
+	| PB2582302 EDC Role 3 | 
+    And I have a Modules app assignment with the following roles 
+    | RoleName                 | 
+	| PB2582302 Modules Role 3 | 
+    And I send the following StudyInvitation messages to SQS 
+    | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          | 
+	| POST      | StudyInvitation | 0f6ff990-a862-438b-88a9-c9b7f6757614 | pb2582302user1@test.cx | pb2582302 | 2302   | Test1      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567891 | eng    | New Delhi | 2013-01-01 12:00PM | 
+    When the messages are successfully processed 
+    Then I should see the user in the Rave database  
+    And the user should be assigned to the study with the following EDC roles 
+    | RoleName             |
+    | PB2582302 EDC Role 3 | 
+    And the user should be assigned to the following UserGroup on the study 
+    | RoleName                 |
+    | PB2582302 Modules Role 3 | 
+    And the user should have the default architect security role assigned 
+
 @PB2.5.8.27-01
 Scenario: When iMedidata is used to assign specific access to a study, If user is assigned to more than one EDC role, 
             All the User accounts will have all the Architect security Group assignments.       
