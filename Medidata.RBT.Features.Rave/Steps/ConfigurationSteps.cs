@@ -9,10 +9,10 @@ using TechTalk.SpecFlow;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.SeleniumExtension;
 using Medidata.RBT.PageObjects.Rave.TableModels;
 using Medidata.RBT.ConfigurationHandlers;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 
 namespace Medidata.RBT.Features.Rave.Steps
@@ -119,7 +119,7 @@ namespace Medidata.RBT.Features.Rave.Steps
         [StepDefinition(@"following Project assignments exist")]
         public void FollowingProjectAssignmentsExist(Table table)
         {
-			using (var session = new LoginSession(WebTestContext, restoreOriginalUser:false))
+			using (var session = new LoginSession(WebTestContext))
 			{
 
 				List<ConfigurationCreationModel> configurations = table.CreateSet<ConfigurationCreationModel>().ToList();
@@ -179,7 +179,7 @@ namespace Medidata.RBT.Features.Rave.Steps
         public void FollowingProjectAssignmentsExist(string userFeature, string securityRoleFeature)
         {
 
-			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
+			using (var session = new LoginSession(WebTestContext))
             {
                 User user = SeedingContext.GetExistingFeatureObjectOrMakeNew(userFeature, () => new User(userFeature));
                 SecurityRole securityRole = SeedingContext.GetExistingFeatureObjectOrMakeNew

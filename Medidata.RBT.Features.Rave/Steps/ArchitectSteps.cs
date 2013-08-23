@@ -4,7 +4,7 @@ using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.PageObjects.Rave.AmendmentManager;
 using System.Collections.Generic;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 namespace Medidata.RBT.Features.Rave
 {

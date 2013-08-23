@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using Medidata.RBT.SeleniumExtension;

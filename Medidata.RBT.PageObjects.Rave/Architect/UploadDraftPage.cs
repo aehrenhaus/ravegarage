@@ -9,7 +9,7 @@ using Medidata.RBT.SeleniumExtension;
 using System.IO;
 using System.Threading;
 using TechTalk.SpecFlow;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class UploadDraftPage : 

@@ -1,7 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Collections.Generic;
 using Medidata.RBT.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,6 +11,7 @@ using Medidata.RBT.PageObjects.Rave.PDF;
 using Medidata.RBT.PageObjects.Rave.TableModels;
 using Medidata.RBT.PageObjects.Rave.TableModels.PDF;
 using Medidata.RBT.GenericModels;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 namespace Medidata.RBT.Features.Rave
 {

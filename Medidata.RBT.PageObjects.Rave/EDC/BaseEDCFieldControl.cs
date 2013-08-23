@@ -7,7 +7,7 @@ using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
 using System.Text.RegularExpressions;
 using System.Collections.ObjectModel;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using Medidata.RBT.PageObjects.Rave.TableModels;
 using System.Reflection;
 

@@ -9,7 +9,7 @@ using OpenQA.Selenium.Remote;
 using System.Collections.Specialized;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using Medidata.RBT.PageObjects.Rave.UserAdministrator;
 namespace Medidata.RBT.PageObjects.Rave
 {

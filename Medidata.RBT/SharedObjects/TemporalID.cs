@@ -13,7 +13,7 @@ namespace Medidata.RBT
         /// <returns>Returns a TID string</returns>
         public static string GetNewTID()
         {
-            string tid = "#" + DateTime.UtcNow.Ticks.ToString() + "#" + DraftCounter.Counter.ToString();
+            string tid = "_" + DateTime.UtcNow.Ticks.ToString() + "_" + DraftCounter.Counter.ToString();
             DraftCounter.IncrementCounter();
             return tid;
         }
