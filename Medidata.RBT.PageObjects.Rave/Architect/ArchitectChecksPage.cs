@@ -97,6 +97,38 @@ namespace Medidata.RBT.PageObjects.Rave
                 eCheckSteps.Click();
         }
 
+		public void EditCheckActionAtIndex(int index)
+		{
+			index++;	//Offset by one to skip the header;
+			var checkActionEditLink = Browser.TryFindElementBy(By.XPath(string.Format(
+				"//table[@id='_ctl0_Content_ActionGrid']//tr[{0}]/td[3]/a", 
+				index)));
+
+			checkActionEditLink.Click();
+		}
+
+		public bool IsOptionSelected(string optionText, string dropdown)
+		{
+			bool result = false;
+			if ("Action Type".Equals(dropdown))
+			{
+				Dropdown enhancedDropdownElement = null;
+				var dropdownElement = Browser.TryFindElementBy(By.XPath(
+					"//select[contains(@id, '_ActionTypeDDL')]"));
+				
+				if (dropdownElement != null)
+					enhancedDropdownElement = dropdownElement
+						.EnhanceAs<Dropdown>();
+
+				if (enhancedDropdownElement != null)
+					result = enhancedDropdownElement
+						.SelectedText
+						.Equals(optionText);
+			}
+
+			return result;
+		}
+
 		public override string URL
 		{
 			get
