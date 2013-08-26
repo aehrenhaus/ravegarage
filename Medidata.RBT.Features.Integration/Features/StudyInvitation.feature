@@ -332,8 +332,8 @@ Scenario: When an externally authenticated user accesses Rave for the first time
 
 
 
-@PB2.5.8.23-02Pending 
-Scenario: PendingWhen an externally authenticated user accesses Rave for the first time with access to the Architect module and EDC of multiple studies provided through iMedidata,  
+@PB2.5.8.23-02
+Scenario: When an externally authenticated user accesses Rave for the first time with access to the Architect module and EDC of multiple studies provided through iMedidata,  
             Rave will assign that user the default Architect Security Role defined in Rave for all of the studies.  
 	Given the study with name "Study 2302 A" and environment "Prod" with UUID "92e958cf-1a25-4498-8829-3494e0ee7ed2" exists in the Rave database 
     And a UserGroup Role with Name "PB2582302 Modules Role 1" and Architect permissions exists in the Rave database 
