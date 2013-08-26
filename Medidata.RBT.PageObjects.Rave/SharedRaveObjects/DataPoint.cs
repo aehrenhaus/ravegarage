@@ -40,12 +40,13 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// <param name="codingDictionaryVersion">The version of the coding dictionary</param>
         /// <param name="currentUserID">The ID of the current user</param>
         /// <param name="userName">The name of the user that does the coding</param>
-        public void CodeDataPoint(string codedData, string codingDictionaryVersion, int currentUserID, string userName)
+        public void CodeDataPoint(string codedData, CodingDictionary codingDictionary, int currentUserID, string userName)
         {
             string sql = string.Format(DataPoint.CODE_DATAPOINT,
                 DataPointID,
                 codedData,
-                codingDictionaryVersion);
+                codingDictionary.DictionaryVersion,
+                codingDictionary.CodingColumns.First().CodingColumnID);
 
             DbHelper.ExecuteDataSet(sql);
 
@@ -53,7 +54,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             StatusManagement.RefreshStatus(DataPageID, DataPage.ObjectTypeID);
             StatusManagement.RefreshStatus(RecordID, Record.ObjectTypeID);
 
-            CoderManagement.AddCoderCodedAudit(DataPointID, ObjectTypeID, currentUserID, userName, "DataPoint", codingDictionaryVersion);
+            CoderManagement.AddCoderCodedAudit(DataPointID, ObjectTypeID, currentUserID, userName, "DataPoint", codingDictionary.DictionaryVersion);
         }
 
         /// <summary>
@@ -138,12 +139,15 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             declare @codedData nvarchar(256);
             set @dataPointID = {0}
             set @codedData = '{1}'
-            update DataPoints set ReqCoderCoding = 0, Data = @codedData where DataPointID = @dataPointID and ReqCoderCoding = 1
+            update DataPoints set ReqCoderCoding = 0 where DataPointID = @dataPointID and ReqCoderCoding = 1
 
             DECLARE	@return_value int,
             		@CoderDecisionID int,
             		@created datetime,
-            		@updated datetime
+            		@updated datetime,
+                    @CodingColumnID int = {3},
+                    @CoderValueID int,
+                    @Term varchar(255) = (select data from DataPoints where DataPointID = @dataPointID)
             
             EXEC	@return_value = [dbo].[spCoderDecisionInsert]
             		@CoderDecisionID = @CoderDecisionID OUTPUT,
@@ -152,6 +156,8 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             		@created = @created OUTPUT,
             		@updated = @updated OUTPUT
             
+            EXEC spCoderValueInsert @CoderValueID, @CoderDecisionID, @CodingColumnID, @codedData, @Term, @created, @updated
+
             SELECT	@CoderDecisionID as N'@CoderDecisionID',
             		@created as N'@created',
             		@updated as N'@updated'
