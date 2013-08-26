@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT", "Medidata.RBT\Medidata.RBT.csproj", "{89C8F41A-E7F8-4D94-BE93-C2C5B8097A32}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.Common.Steps", "Medidata.RBT.Common.Steps\Medidata.RBT.Common.Steps.csproj", "{45796EAF-4C33-4410-A85E-D5EF7EBE7EFE}"
@@ -50,6 +50,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.Data", "..\Medidata.Data\Medidata.Data.csproj", "{9AF5B9A2-B80E-4D99-87F7-343C4E932539}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.Utilities", "..\Medidata.Utilities\Medidata.Utilities.csproj", "{CF46277D-7473-44E6-8472-2B6DFAEC3601}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.ConfigurationHandlers", "Medidata.RBT.ConfigurationHandlers\Medidata.RBT.ConfigurationHandlers.csproj", "{11731335-E462-47EA-8DC9-E668A7C183C7}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -309,6 +311,21 @@ Global
 		{CF46277D-7473-44E6-8472-2B6DFAEC3601}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{CF46277D-7473-44E6-8472-2B6DFAEC3601}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CF46277D-7473-44E6-8472-2B6DFAEC3601}.Release|x86.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.CruiseControl|Any CPU.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.CruiseControl|Any CPU.Build.0 = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.CruiseControl|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.CruiseControl|Mixed Platforms.Build.0 = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.CruiseControl|x86.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{11731335-E462-47EA-8DC9-E668A7C183C7}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
