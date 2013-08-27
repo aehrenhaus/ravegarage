@@ -16,8 +16,10 @@ Given I create a Subject
 |Field               |Data              |Control Type |
 |NAME				 |SUB               |textbox      |
 
-@PB_MCC47502-001
-@draft
+@Release_2013.4.0
+@PB_MCC-47502-001
+@PS09.AUG.2013
+@Draft
 Scenario: PB_MCC47502-001 As a Rave user, when I upload a large Zip file greater than 50mb into the system via the File Upload control on a Standard CRF page, then I should be able to download the file back within a reasonable time.
 Given I select Form "FILEUPLOAD"
 And I enter data in CRF and save
@@ -28,8 +30,10 @@ When I click the "MCC-47502.zip" button to download
 Then I verify file "MCC-47502.zip" was downloaded
 And I take a screenshot
 
+@Release_2013.4.0
 @PB_MCC47502-002
-@draft
+@PS09.AUG.2013
+@Draft
 Scenario: PB_MCC47502-002 As a Rave user, when I upload a large Excel file greater than 50mb into the system via the File Upload control on a Portrait Log CRF page, then I should be able to download the file back within a reasonable time.
 Given I select Form "FILEUPLOAD_PORTLOG"
 And I enter data in CRF and save
@@ -40,8 +44,10 @@ When I click the "MCC-47502.xls" button to download
 Then I verify file "MCC-47502.xls" was downloaded
 And I take a screenshot
 
+@Release_2013.4.0
 @PB_MCC47502-003
-@draft
+@PS09.AUG.2013
+@Draft
 Scenario: PB_MCC47502-003 As a Rave user, when I upload a large Pdf file greater than 50mb into the system via the File Upload control on a Mixed Log CRF page, then I should be able to download the file back within a reasonable time.
 Given I select Form "FILEUPLOAD_MIXED"
 And I enter data in CRF and save
@@ -52,8 +58,10 @@ When I click the "MCC-47502.pdf" button to download
 Then I verify file "MCC-47502.pdf" was downloaded
 And I take a screenshot
 
+@Release_2013.4.0
 @PB_MCC47502-004
-@draft
+@PS09.AUG.2013
+@Draft
 Scenario: PB_MCC47502-004 As a Rave user, when I upload a large jpg file greater than 50mb into the system via the File Upload control on a Landscape Log CRF page, then I should be able to download the file back within a reasonable time.
 Given I select Form "FILEUPLOAD_LANDLOG"
 And I enter data in CRF and save
