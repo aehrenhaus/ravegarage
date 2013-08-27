@@ -36,13 +36,10 @@ Background:
 	| Coding Column Name |
 	| PRODUCT            |
 	| ATC                |
+	| SOC                |
 	Given coding dictionary "MedDRA" coding column "PRODUCT" has following coding level components
 	| OID              |
 	| DRUGRECORDNUMBER |
-	Given coding dictionary "MedDRA" coding column "PRODUCT" has following coding level components
-	| OID |
-	| SOC |
-
 	Given coding dictionary "WHODRUGB2" version "Coder" exists with following coding columns
 	| Coding Column Name |
 	| PRODUCT            |
