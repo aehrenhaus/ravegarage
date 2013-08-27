@@ -129,7 +129,7 @@ Scenario: MCC-57733-001 As a Rave Study Administor, when I update the Coder Conf
 	And I take a screenshot
 	And I select link "Draft 1"
 	And I overwrite CRF Version "Version1"
-	And I verify message is displayed "Overwrite of Version1 completed."
+	And I verify text "Overwrite of Version1 completed." exists
 	And I take a screenshot
 	And I select "Study" link "MCC-57733-001" in "Header"
 	And I select link(partial) "Version1 "
@@ -185,7 +185,7 @@ Scenario: MCC-57733-002 As a Rave Study Administor, when I associate a field wit
 	And I take a screenshot
 	And I select link "Draft 1"
 	And I overwrite CRF Version "Version1"
-	And I verify message is displayed "Overwrite of Version1 completed."
+	And I verify text "Overwrite of Version1 completed." exists
 	And I take a screenshot
 	And I select "Study" link "MCC-57733-002" in "Header"
 	And I select link(partial) "Version1 "
@@ -272,7 +272,7 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 	And I take a screenshot
 	And I select link "Draft 1"
 	And I overwrite CRF Version "Version1"
-	And I verify message is displayed "Overwrite of Version1 completed."
+	And I verify text "Overwrite of Version1 completed." exists
 	And I take a screenshot
 	And I select "Study" link "MCC-57733-003" in "Header"
 	And I select link(partial) "Version1 "
@@ -314,7 +314,7 @@ Scenario: MCC-57733-004 As a Rave Study Administor, when I delete the Coder Conf
 	And I take a screenshot
 	And I select link "Draft 1"
 	And I overwrite CRF Version "Version1"
-	And I verify message is displayed "Overwrite of Version1 completed."
+	And I verify text "Overwrite of Version1 completed." exists
 	And I take a screenshot
 	And I select "Study" link "MCC-57733-004" in "Header"
 	And I select link(partial) "Version1 "
