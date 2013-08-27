@@ -221,7 +221,7 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 	And I publish CRF Version "Version1"
 	And I navigate to "Forms"
 	And I select link "Add Form"
-	And I select "Bottom" from "Add Form" dropdown
+	And I choose "Bottom" from "Add Form"
 	And I enter data in Architect Form and save
 		| Form Name | OID       | Active  |
 		| MCC577333 | MCC577333 | checked |
