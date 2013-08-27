@@ -44,7 +44,7 @@ namespace Medidata.RBT.Features.Rave
                 User currentUser = SeedingContext.GetExistingFeatureObjectOrMakeNew<User>(dpm.CurrentUser, () => { throw new Exception("User is not seeded"); });
 
                 DataPoint dp = new DataPoint(proj.UniqueName, SpecialStringHelper.Replace(dpm.Subject), dpm.Field, dpm.UncodedData, "eng");
-                dp.CodeDataPoint(dpm.CodedData, codingDictionary.DictionaryVersion, currentUser.UserID, currentUser.UniqueName);
+                dp.CodeDataPoint(dpm.CodedData, codingDictionary, currentUser.UserID, currentUser.UniqueName);
             }
 
             this.Browser.Navigate().Refresh();
