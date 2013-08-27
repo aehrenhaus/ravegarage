@@ -9,6 +9,7 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using TechTalk.SpecFlow;
 using Medidata.RBT.Objects.Integration.Configuration;
+using TechTalk.SpecFlow.Configuration;
 
 namespace Medidata.RBT.Features.Integration.Hooks
 {
@@ -20,6 +21,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
+            //TODO: re-enable this
             DbHelper.RestoreDatabase();
 
             IntegrationTestContext.TestFailed = false;
@@ -78,6 +80,9 @@ namespace Medidata.RBT.Features.Integration.Hooks
             {
                 
             }
+
+            //TODO: replace this temporary copy of report generation with a shared class
+            GenerateReport();
         }
 
         [BeforeScenario]
@@ -92,6 +97,45 @@ namespace Medidata.RBT.Features.Integration.Hooks
             if(ScenarioContext.Current.TestError != null)
             {
                 IntegrationTestContext.TestFailed = true;
+            }
+        }
+
+        private static void GenerateReport()
+        {
+
+            //TODO: remove this duplicated logic from SpecflowWebTestContext for checking the UnitTestProvider 
+            var specflowSectionHandler = (ConfigurationSectionHandler)ConfigurationManager.GetSection("specFlow");
+
+            if (!specflowSectionHandler.UnitTestProvider.Name.Contains("SpecRun")
+                && specflowSectionHandler.UnitTestProvider.Name.Contains("MsTest"))
+            {
+
+                var ravePath = ConfigurationManager.AppSettings["RavePath"];
+
+                var scriptPath = Path.Combine(ravePath, @"ravegarage\reportGen.ps1");
+
+                var projectPath = Path.Combine(ravePath, @"ravegarage\Medidata.RBT.Features.Integration\Medidata.RBT.Features.Integration.csproj");
+
+                var arguments = string.Format("-executionpolicy unrestricted -file \"{0}\" \"{1}\"", scriptPath, projectPath);
+
+                System.Diagnostics.Process p = new System.Diagnostics.Process();
+
+                p.StartInfo = new System.Diagnostics.ProcessStartInfo(
+                   @"powershell.exe",
+                   arguments);
+
+                //TODO: gerrard debug code
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.RedirectStandardOutput = true;
+
+                p.Start();
+
+                //TODO: gerrard debug code
+                string output = p.StandardOutput.ReadToEnd();
+
+#if DEBUG
+                //p.WaitForExit();
+#endif
             }
         }
     }
