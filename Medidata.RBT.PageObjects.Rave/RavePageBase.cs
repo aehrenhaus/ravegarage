@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Medidata.RBT.PageObjects;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using System.Text.RegularExpressions;
@@ -143,7 +143,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			}
 			else if (type == "Lab")
 			{
-				SharedRaveObjects.Lab lab = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () =>new SharedRaveObjects.Lab(name));
+				SeedableObjects.Lab lab = SeedingContext.GetExistingFeatureObjectOrMakeNew(name, () =>new SeedableObjects.Lab(name));
 				name = lab.UniqueName;
 			}
             else if (string.Equals(type, "Proposal", StringComparison.InvariantCultureIgnoreCase))

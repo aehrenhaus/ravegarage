@@ -1,7 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using System.Collections.Generic;
 using Medidata.RBT.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,6 +8,8 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Medidata.RBT.PageObjects.Rave.EDC.Models;
+using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -43,7 +44,7 @@ namespace Medidata.RBT.Features.Rave
                 User currentUser = SeedingContext.GetExistingFeatureObjectOrMakeNew<User>(dpm.CurrentUser, () => { throw new Exception("User is not seeded"); });
 
                 DataPoint dp = new DataPoint(proj.UniqueName, SpecialStringHelper.Replace(dpm.Subject), dpm.Field, dpm.UncodedData, "eng");
-                dp.CodeDataPoint(dpm.CodedData, codingDictionary.DictionaryVersion, currentUser.UserID, currentUser.UniqueName);
+                dp.CodeDataPoint(dpm.CodedData, codingDictionary, currentUser.UserID, currentUser.UniqueName);
             }
 
             this.Browser.Navigate().Refresh();

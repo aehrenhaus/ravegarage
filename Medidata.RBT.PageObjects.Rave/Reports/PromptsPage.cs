@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 using System.Collections.ObjectModel;
 using System.Threading;
 using Medidata.RBT.SeleniumExtension;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using System.IO;
 
 

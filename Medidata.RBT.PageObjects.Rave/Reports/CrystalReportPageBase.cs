@@ -8,7 +8,7 @@ using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.ConfigurationHandlers;

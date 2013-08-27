@@ -5,7 +5,7 @@ using System.Text;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave.Architect.Models;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using Medidata.RBT.PageObjects.Rave;
 
 namespace Medidata.RBT.Features.Rave.Steps.Seeding

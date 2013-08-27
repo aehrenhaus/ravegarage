@@ -8,6 +8,7 @@ using System.IO;
 using TechTalk.SpecFlow.Assist;
 using System.Linq;
 using Medidata.RBT.ConfigurationHandlers;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 
 namespace Medidata.RBT.Common.Steps

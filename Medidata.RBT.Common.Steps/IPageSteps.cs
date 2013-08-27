@@ -79,6 +79,18 @@ namespace Medidata.RBT.Common.Steps
 		}
 
         /// <summary>
+        /// Click a hyperlink when the linkname itself contains double quotes
+        /// </summary>
+        /// <param name="linkText"></param>
+        [StepDefinition(@"I select link containing quotes ""(.*?)""")]
+        public void WhenISelectLinkContainingDoubleQuotes____(string linkText)
+        {
+            linkText = SpecialStringHelper.Replace(linkText);
+            CurrentPage = CurrentPage.ClickLink(linkText);
+        }
+
+
+        /// <summary>
         /// Click a partial hyperlink
         /// </summary>
         [StepDefinition(@"I select link\(partial\) ""([^""]*)""")]

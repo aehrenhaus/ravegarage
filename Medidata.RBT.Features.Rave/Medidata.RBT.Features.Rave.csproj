@@ -159,6 +159,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-41782.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Architect\MCC-47487.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-47487.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Architect\MCC-57733.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -233,6 +238,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-52165.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\MCC-52852.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-52852.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\MCC-62856.feature.cs">
       <AutoGen>True</AutoGen>
@@ -724,6 +734,14 @@
     </None>
     <None Include="App.config.template">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Features\Architect\MCC-47487.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-47487.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-52852.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-52852.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Architect\MCC-57733.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

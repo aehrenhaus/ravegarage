@@ -1,6 +1,8 @@
 ﻿
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Medidata.Core.Common.Utilities;
 using Medidata.Core.Objects;
 using Medidata.Core.Objects.Security;
@@ -66,29 +68,43 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             ScenarioContext.Current.Set(securityGroup, "securityGroup");
         }
 
-        public static void AddUserGroupToDB(string name)
+        public static void AddUserGroupToDB(string name, bool needsArchitect = false)
         {
             var userGroup = UserGroup.FetchByName(name, locale);
 
             if (userGroup == null)
             {
                 userGroup = new UserGroup() {GroupName = name};
+                if (needsArchitect) userGroup.SetPermissions(new ArrayList() {UserGroupPermissionsEnum.SeeAllModules});
                 userGroup.Save();
+
+                if (needsArchitect)
+                {
+                    UserModule.NewUserModule(InstalledModule.Load().FindByModuleName("ARCH").ID, userGroup.ID);
+                }
             }
             ScenarioContext.Current.Set(userGroup, "userGroup");
         }
 
         public static void AssignUserToStudyWithCurrentRole()
         {
-            var externalUserId = ScenarioContext.Current.Get<int>("externalUserID");
-            var studyUuid = ScenarioContext.Current.Get<Study>("study").Uuid;
+            var externalUserId = ScenarioContext.Current.ContainsKey("externalUserID")
+                                     ? ScenarioContext.Current.Get<int>("externalUserID")
+                                     : 0;
+            var study = ScenarioContext.Current.Get<Study>("study");
             var role = ScenarioContext.Current.Get<Role>("role");
             var user = ScenarioContext.Current.Get<User>("user");
 
             user.EdcRole = role;
             user.Save();
 
-            ExternalUserRole.StudySave(1, externalUserId, 0, studyUuid, role.ID, DateTime.Now);
+            if (externalUserId > 0) ExternalUserRole.StudySave(1, externalUserId, 0, study.Uuid, role.ID, DateTime.Now);
+            else user.AddUserToStudy(study, role);
+        }
+
+        public static bool IsUserAssignedToSecurityGroup(List<SecurityGroup> securityGroups, string roleName)
+        {
+            return securityGroups.FirstOrDefault(x => x.Name == roleName) != null;
         }
     }
 }

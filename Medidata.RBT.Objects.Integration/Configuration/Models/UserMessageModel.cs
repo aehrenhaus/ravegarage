@@ -29,5 +29,6 @@ namespace Medidata.RBT.Objects.Integration.Configuration.Models
         public string Institution { get; set; }
         public DateTime Timestamp { get; set; }
         public Guid MessageId { get; set; }
+        public DateTime LastExternalUpdateDate { get; set; }
     }
 }
