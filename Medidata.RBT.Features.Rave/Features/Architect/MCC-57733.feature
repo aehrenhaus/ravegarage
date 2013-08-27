@@ -47,6 +47,9 @@ Background:
 	Given coding dictionary "WHODRUGB2" coding column "PRODUCT" has following coding level components
 	| OID              |
 	| DRUGRECORDNUMBER |
+	Given coding dictionary "WHODRUGB2" coding column "ATC" has following coding level components
+	| OID    |
+	| SOURCE |
 	Given following locales exist for the coding dictionary
 	| Coding Dictionary Name | Locale |
 	| AZDD                   | eng    |
@@ -161,7 +164,7 @@ Scenario: MCC-57733-002 As a Rave Study Administor, when I associate a field wit
 	And I publish CRF Version "Version1"
 	And I navigate to "Forms"
 	And I select Fields for Form "ETE2"
-	And I edit Field "CODERFIELD2"
+	And I edit Field "CoderField"
 	And I choose "CODER- WHODRUGB2" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
@@ -192,7 +195,7 @@ Scenario: MCC-57733-002 As a Rave Study Administor, when I associate a field wit
 		| ETE1     | CODERTERM1  | SOC         | 1        | eng    | False              | True           |
 		| ETE1     | JDT         | ATC         | 1        | eng    | False              | True           |
 		| ETE2     | CODERFIELD2 | ATC         | 4        | eng    | True               | True           |
-		| TESTFORM | VARCHECKBX3 | PRODUCT     | 2        | eng    | False              | False          |
+		| TESTFORM | VARCHECKBX3 | ATC         | 1        | eng    | False              | False          |
 	And I take a screenshot				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
 		| FormOID | FieldOID    | SupplementalTerm |
@@ -278,17 +281,15 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 		| FormOID   | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
 		| ETE1      | CODERTERM1  | SOC         | 1        | eng    | False              | True           |
 		| ETE1      | JDT         | ATC         | 1        | eng    | False              | True           |
-		| TESTFORM  | VARCHECKBX3 | PRODUCT     | 2        | eng    | True               | True           |
+		| TESTFORM  | VARCHECKBX3 | ATC         | 1        | eng    | False              | False          |
 		| MCC577333 | Code        | PRODUCT     | 3        | eng    | True               | False          |
 	And I take a screenshot				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
 		| FormOID   | FieldOID    | SupplementalTerm |
-		| TESTFORM  | VARCHECKBX3 | TEST1            |
 		| MCC577333 | Code        | Supp             |
 	And I take a screenshot	
 	And I verify "CoderComponentTerms" spreadsheet data
-		| FormOID   | FieldOID    | ComponentTerm | ComponentName    |
-		| TESTFORM  | VARCHECKBX3 | VARCHECKBX    | DRUGRECORDNUMBER |
+		| FormOID | FieldOID | ComponentTerm | ComponentName |
 		| MCC577333 | Code        | Comp          | DRUGRECORDNUMBER |
 	And I take a screenshot
 
@@ -310,7 +311,6 @@ Scenario: MCC-57733-004 As a Rave Study Administor, when I delete the Coder Conf
 	And I edit Field "varcheckbx3"
 	And I choose "..." from "Coding Dictionary:"
 	And I select link "Save"
-	And I click button "Coder Configuration"
 	And I take a screenshot
 	And I select link "Draft 1"
 	And I overwrite CRF Version "Version1"
