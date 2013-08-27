@@ -39,6 +39,9 @@ Background:
 	Given coding dictionary "MedDRA" coding column "PRODUCT" has following coding level components
 	| OID              |
 	| DRUGRECORDNUMBER |
+	Given coding dictionary "MedDRA" coding column "PRODUCT" has following coding level components
+	| OID |
+	| SOC |
 
 	Given coding dictionary "WHODRUGB2" version "Coder" exists with following coding columns
 	| Coding Column Name |
@@ -56,13 +59,28 @@ Background:
 	| WHODRUGB2              | eng    |
 
 	Given following coding dictionary assignments exist
-	| Project   | Coding Dictionary |
-	| MCC-57733 | AZDD              |
-	| MCC-57733 | JDrug             |
-	| MCC-57733 | MedDRA            |
-	| MCC-57733 | WHODRUGB2         |
+	| Project       | Coding Dictionary |
+	| MCC-57733-001 | AZDD              |
+	| MCC-57733-001 | JDrug             |
+	| MCC-57733-001 | MedDRA            |
+	| MCC-57733-001 | WHODRUGB2         |
+	| MCC-57733-002 | AZDD              |
+	| MCC-57733-002 | JDrug             |
+	| MCC-57733-002 | MedDRA            |
+	| MCC-57733-002 | WHODRUGB2         |
+	| MCC-57733-003 | AZDD              |
+	| MCC-57733-003 | JDrug             |
+	| MCC-57733-003 | MedDRA            |
+	| MCC-57733-003 | WHODRUGB2         |
+	| MCC-57733-004 | AZDD              |
+	| MCC-57733-004 | JDrug             |
+	| MCC-57733-004 | MedDRA            |
+	| MCC-57733-004 | WHODRUGB2         |
 	
-    Given study "MCC-57733" is assigned to Site "Site 1"
+    Given study "MCC-57733-001" is assigned to Site "Site 1"
+	Given study "MCC-57733-002" is assigned to Site "Site 1"
+	Given study "MCC-57733-003" is assigned to Site "Site 1"
+	Given study "MCC-57733-004" is assigned to Site "Site 1"
 	Given xml draft "MCC-57733-001.xml" is Uploaded
 	Given xml draft "MCC-57733-002.xml" is Uploaded
 	Given xml draft "MCC-57733-003.xml" is Uploaded
@@ -111,8 +129,9 @@ Scenario: MCC-57733-001 As a Rave Study Administor, when I update the Coder Conf
 	And I take a screenshot
 	And I select link "Draft 1"
 	And I overwrite CRF Version "Version1"
-	And I verify message is displayed "Ovewrite Successful"
+	And I verify message is displayed "Ovewrite of Version1 completed."
 	And I take a screenshot
+	And I select link "MCC-57733-001"
 	And I select link "Version1"
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
@@ -166,8 +185,9 @@ Scenario: MCC-57733-002 As a Rave Study Administor, when I associate a field wit
 	And I take a screenshot
 	And I select link "Draft 1"
 	And I overwrite CRF Version "Version1"
-	And I verify message is displayed "Ovewrite Successful"
+	And I verify message is displayed "Ovewrite of Version1 completed."
 	And I take a screenshot
+	And I select link "MCC-57733-002"
 	And I select link "Version1"
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
@@ -252,8 +272,9 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 	And I take a screenshot
 	And I select link "Draft 1"
 	And I overwrite CRF Version "Version1"
-	And I verify message is displayed "Ovewrite Successful"
+	And I verify message is displayed "Ovewrite of Version1 completed."
 	And I take a screenshot
+	And I select link "MCC-57733-003"
 	And I select link "Version1"
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
@@ -296,8 +317,9 @@ Scenario: MCC-57733-004 As a Rave Study Administor, when I delete the Coder Conf
 	And I take a screenshot
 	And I select link "Draft 1"
 	And I overwrite CRF Version "Version1"
-	And I verify message is displayed "Ovewrite Successful"
+	And I verify message is displayed "Ovewrite of Version1 completed."
 	And I take a screenshot
+	And I select link "MCC-57733-004"
 	And I select link "Version1"
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
