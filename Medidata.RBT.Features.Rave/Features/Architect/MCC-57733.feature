@@ -164,7 +164,7 @@ Scenario: MCC-57733-002 As a Rave Study Administor, when I associate a field wit
 	And I publish CRF Version "Version1"
 	And I navigate to "Forms"
 	And I select Fields for Form "ETE2"
-	And I edit Field "CoderField"
+	And I edit Field "CoderField2"
 	And I choose "CODER- WHODRUGB2" from "Coding Dictionary:"
 	And I select link "Save"
 	And I click button "Coder Configuration"
