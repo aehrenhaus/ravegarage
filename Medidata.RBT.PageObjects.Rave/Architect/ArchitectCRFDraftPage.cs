@@ -200,7 +200,7 @@ namespace Medidata.RBT.PageObjects.Rave
             }
             else
             {
-                throw new NoSuchElementException("Cannot find the publish section for to overwrite crfVersion");
+                throw new NoSuchElementException("Cannot find the publish section to overwrite crfVersion");
             }
         }
     }
