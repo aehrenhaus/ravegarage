@@ -1,4 +1,5 @@
-﻿using TechTalk.SpecFlow;
+﻿using System;
+using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -305,5 +306,16 @@ namespace Medidata.RBT.Features.Rave
         {
             CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().ClickPreview();
         }
+
+        [StepDefinition(@"I force navigate to Global Library \(Not a Real Project\)")]
+        public void WhenIForceNavigateToGlobalLibraryNotARealProject()
+        {
+            var targetPage=CurrentPage.Browser.Url.Replace("/Modules/Architect/Architect.aspx",
+                                    "/Modules/Architect/LibraryPage.aspx?ProjectID=-1");
+            Browser.Url = targetPage;
+            var uri = new Uri(Browser.Url);
+            CurrentPage = WebTestContext.POFactory.GetPageByUrl(uri);
+        }
+
 	}
 }
