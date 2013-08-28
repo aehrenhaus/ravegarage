@@ -164,6 +164,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-47487.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Architect\MCC-57733.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-57733.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Architect\MCC-59886.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -737,6 +742,10 @@
     <None Include="Features\EDC\MCC-52852.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-52852.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Architect\MCC-57733.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-57733.feature.cs</LastGenOutput>
     </None>
     <None Include="Parallel.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
