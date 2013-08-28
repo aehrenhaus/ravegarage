@@ -266,6 +266,7 @@
     <Compile Include="SiteAdministration\SiteAdministrationNewSiteGroupPage.cs" />
     <Compile Include="TableModels\AnalyteRangeAuditModel.cs" />
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
+    <Compile Include="TableModels\ArchitectFormModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
     <Compile Include="TableModels\ArchitectCoderConfigurationModel.cs" />

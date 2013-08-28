@@ -363,17 +363,6 @@ namespace Medidata.RBT.PageObjects.Rave
         }
 
         /// <summary>
-        /// Helper method to find the tr corresponding the architect field variable based on field setting name
-        /// </summary>
-        /// <param name="settingName">Name of the architect field setting</param>
-        /// <returns></returns>
-        private IWebElement TryFindTrByFieldSettingName(string settingName)
-        {
-            IWebElement elem = Browser.TryFindElementsBy(By.XPath("//tr")).FirstOrDefault(e => e.Text.StartsWith(settingName));
-            return elem;
-        }
-
-        /// <summary>
         /// Method to fill the Architect field setting related data points
         /// </summary>
         /// <param name="fieldModels"></param>
