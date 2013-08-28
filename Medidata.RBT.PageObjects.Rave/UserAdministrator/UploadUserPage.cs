@@ -11,7 +11,7 @@ using System.Threading;
 using TechTalk.SpecFlow;
 namespace Medidata.RBT.PageObjects.Rave.UserAdministrator
 {
-	public class UploadUserPage : RavePageBase
+    public class UploadUserPage : RavePageBase, IVerifyObjectExistence
 	{
         /// <summary>
         /// Upload a user
@@ -50,5 +50,27 @@ namespace Medidata.RBT.PageObjects.Rave.UserAdministrator
                 return "Modules/UserAdmin/UploadUsers.aspx";
 			}
 		}
+
+        public bool VerifyObjectExistence(string areaIdentifier, string type, string identifier, bool exactMatch = false,
+                                          int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null,
+                                          bool shouldExist = true)
+        {
+            areaIdentifier = areaIdentifier ?? string.Empty;
+
+            if (areaIdentifier.Equals("log", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var txt = Browser.TextareaById("LogCtl");
+                return txt.Value.Contains(identifier);
+            }
+
+            return false;
+        }
+
+        public bool VerifyObjectExistence(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false,
+                                          int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null,
+                                          bool shouldExist = true)
+        {
+            throw new NotImplementedException();
+        }
 	}
 }
