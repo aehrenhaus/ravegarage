@@ -1,5 +1,5 @@
 @FT_MCC-57733
-
+@ignore
 
 Feature: MCC-57733 When configuring Coder settings, the settings are preserved even after I overwrite my existing eCRF version to save my changes.
 
@@ -223,8 +223,8 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 	And I select link "Add Form"
 	And I choose "Bottom" from "Add Form"
 	And I enter data in Architect Form and save
-		| Form Name | OID       | Active  |
-		| MCC577333 | MCC577333 | checked |
+		| Form Name | OID       | Active |
+		| MCC577333 | MCC577333 | true   |
 	And I select Fields for Form "MCC577333"
 	And I select link "Add New"
 	And I enter data in Architect Field and save
@@ -265,10 +265,10 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 		| IsAutoApproval     | False |
 	And I add the coder "Supplemental" terms
 		| Name |
-		| Supp |
+		| SUPP |
 	And I add the coder "Component" terms
 		| Name | Component Name   |
-		| Comp | DRUGRECORDNUMBER |
+		| COMP | DRUGRECORDNUMBER |
 	And I take a screenshot
 	And I select link "Draft 1"
 	And I overwrite CRF Version "Version1"
@@ -281,16 +281,16 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 		| FormOID   | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
 		| ETE1      | CODERTERM1  | SOC         | 1        | eng    | False              | True           |
 		| ETE1      | JDT         | ATC         | 1        | eng    | False              | True           |
+		| MCC577333 | CODE        | PRODUCT     | 3        | eng    | True               | False          |
 		| TESTFORM  | VARCHECKBX3 | ATC         | 1        | eng    | False              | False          |
-		| MCC577333 | Code        | PRODUCT     | 3        | eng    | True               | False          |
 	And I take a screenshot				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
 		| FormOID   | FieldOID    | SupplementalTerm |
-		| MCC577333 | Code        | Supp             |
+		| MCC577333 | CODE        | SUPP             |
 	And I take a screenshot	
 	And I verify "CoderComponentTerms" spreadsheet data
-		| FormOID | FieldOID | ComponentTerm | ComponentName |
-		| MCC577333 | Code        | Comp          | DRUGRECORDNUMBER |
+		| FormOID   | FieldOID | ComponentTerm | ComponentName |
+		| MCC577333 | CODE     | COMP          | DRUGRECORDNUMBER |
 	And I take a screenshot
 
 
