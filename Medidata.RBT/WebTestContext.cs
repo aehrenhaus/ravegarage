@@ -364,22 +364,32 @@ namespace Medidata.RBT
 
 		public Image TrySaveScreenShot()
 		{
-
+            Image image = null;
 			if (Browser is ITakesScreenshot)
 			{
+                MemoryStream stream = null;
                 try
                 {
-                    using (MemoryStream stream = new MemoryStream())
-                    {
-                        Browser.WaitForDocumentLoad();
-                        var bytes = ((ITakesScreenshot)Browser).GetScreenshot().AsByteArray;
-                        stream.Write(bytes, 0, bytes.Length);
-                        return Image.FromStream(stream);
-                    }
+                    stream = new MemoryStream();
+                    Browser.WaitForDocumentLoad();
+                    var bytes = ((ITakesScreenshot)Browser).GetScreenshot().AsByteArray;
+                    stream.Write(bytes, 0, bytes.Length);
+                    image = Image.FromStream(stream);
+                    
                 }
-                catch (InvalidOperationException) { }
+                catch (InvalidOperationException ex) 
+                {
+                    Console.WriteLine(
+                        string.Format("Invalid operation exception happened possibly due to presence of a modal window. Exception Message: [{0}]",
+                        ex.Message));
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Close();
+                }
 			}
-			return null;
+			return image;
 		}
 
 
