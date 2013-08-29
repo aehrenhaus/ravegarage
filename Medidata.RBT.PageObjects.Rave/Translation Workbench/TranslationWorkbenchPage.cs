@@ -12,8 +12,15 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
         public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
         {
             Dropdown dropdown = null;
-            if (identifier == "Source locale") dropdown = Browser.DropdownById("_OriginalLocale");
-            if (identifier == "Target locale") dropdown = Browser.DropdownById("_TargetLocale");
+            switch (identifier)
+            {
+                case "Source locale":
+                    dropdown = Browser.DropdownById("_OriginalLocale");
+                    break;
+                case "Target locale":
+                    dropdown = Browser.DropdownById("_TargetLocale");
+                    break;
+            }
 
             if (dropdown != null)
             {
@@ -26,9 +33,18 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
         public override IPage ChooseFromRadiobuttons(string areaIdentifier, string identifier)
         {
             RadioButton radioButton = null;
-            if (identifier == "Standard") radioButton = Browser.RadioButton("_StringCategory_0");
-            if (identifier == "User/Global") radioButton = Browser.RadioButton("_StringCategory_1");
-            if (identifier == "User/Clinical") radioButton = Browser.RadioButton("_StringCategory_2");
+            switch (identifier)
+            {
+                case "Standard":
+                    radioButton = Browser.RadioButton("_StringCategory_0");
+                    break;
+                case "User/Global":
+                    radioButton = Browser.RadioButton("_StringCategory_1");
+                    break;
+                case "User/Clinical":
+                    radioButton = Browser.RadioButton("_StringCategory_2");
+                    break;
+            }
 
             if (radioButton != null)
             {

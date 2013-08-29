@@ -20,6 +20,11 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
             return base.ClickButton(identifier);
         }
 
+        /// <summary>
+        /// Method to click the uses link in a given row
+        /// </summary>
+        /// <param name="position">The row</param>
+        /// <returns>The page that is navigated to as a result of clicking the uses link</returns>
         public IPage SelectTheUsesLinkInRow(int position)
         {
             List<IWebElement> rows = Browser.FindElementById("_ctl0_Content_TranslationGridForm_Results").EnhanceAs<HtmlTable>().Rows().ToList();
@@ -57,18 +62,20 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 
         public bool VerifyObjectExistence(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null, bool shouldExist = true)
         {
-            if (identifier == "Generating results...")
-                return Browser.FindElementById("_ctl0_Content_TranslationGridForm_GeneratingResults").GetCssValue("display") == "block";
-
-            if (identifier == "SearchButtonImage")
-                return Browser.FindElementById("_ctl0_Content_TranslationGridForm_Search").GetCssValue("display") == "inline";
+            switch (identifier)
+            {
+                case "Generating results...":
+                    return Browser.FindElementById("_ctl0_Content_TranslationGridForm_GeneratingResults").GetCssValue("display") == "block";
+                case "SearchButtonImage":
+                    return Browser.FindElementById("_ctl0_Content_TranslationGridForm_Search").GetCssValue("display") == "inline";
+            }
 
             return false;
         }
 
         public bool VerifyObjectExistence(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null, bool shouldExist = true)
         {
-            throw new NotImplementedException();
+            return identifiers.All(identifier => VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold));
         }
 
         #endregion
