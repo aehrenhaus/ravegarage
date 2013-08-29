@@ -195,7 +195,21 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 IWebElement extVersionTr = publishTable.TryFindElementBy(By.XPath(string.Format(".//td[contains(text(),'{0} ')]", crfVersion))).Parent();
                 extVersionTr.TryFindElementByPartialID("_LnkBtnReplace").Click();
-                Browser.GetAlertWindow().Accept();
+
+                IAlert alertWin = Misc.SafeCall<IAlert>(() =>
+                    {
+                        IAlert retVal = null;
+                        try
+                        {
+                            retVal = Browser.GetAlertWindow();
+                        }
+                        catch (NoAlertPresentException) { }
+                        return retVal;
+                    }
+                    , (elem) => elem != null, 5);
+
+                alertWin.Accept();
+
                 WaitForPageLoads();
             }
             else

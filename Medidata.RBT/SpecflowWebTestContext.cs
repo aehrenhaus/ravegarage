@@ -125,20 +125,23 @@ namespace Medidata.RBT
 		{
 			Image img = WebTestContext.TrySaveScreenShot();
 
-			ScreenshotIndex++;
+            if (img != null)
+            {
+                ScreenshotIndex++;
 
-			string resultPath = RBTConfiguration.Default.TestResultPath;
+                string resultPath = RBTConfiguration.Default.TestResultPath;
 
-			var fileName = ScreenshotIndex.ToString();
-			fileName = CurrentScenarioName + "_" + fileName + ".jpg";
+                var fileName = ScreenshotIndex.ToString();
+                fileName = CurrentScenarioName + "_" + fileName + ".jpg";
 
-			Console.WriteLine("img->" + fileName);
-            Console.WriteLine("->" + WebTestContext.Browser.Url);
-			//file path
-			string screenshotPath = Path.Combine(resultPath, fileName);
+                Console.WriteLine("img->" + fileName);
+                Console.WriteLine("->" + WebTestContext.Browser.Url);
+                //file path
+                string screenshotPath = Path.Combine(resultPath, fileName);
 
-			Directory.CreateDirectory(new FileInfo(screenshotPath).DirectoryName);
-            img.Save(screenshotPath, ImageFormat.Jpeg);
+                Directory.CreateDirectory(new FileInfo(screenshotPath).DirectoryName);
+                img.Save(screenshotPath, ImageFormat.Jpeg);
+            }
 		}
 
 		private void GernerateReport()
