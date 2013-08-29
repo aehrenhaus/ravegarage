@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using Medidata.RBT.PageObjects.Rave.TableModels;
+using Medidata.RBT.SharedObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
@@ -232,45 +234,32 @@ declare
 		
 		#endregion
 
-        public IPage OverrideSubject(Table overrideTable)
+        /// <summary>
+        /// Method to move subjects from one tier to another tier
+        /// </summary>
+        /// <param name="overrideSubjects">List of subjects to override</param>
+        /// <returns>The refreshed page</returns>
+        public IPage OverrideSubject(IEnumerable<TSDVSubjectOverrideModel> overrideSubjects)
         {
-            foreach (var overrideRow in overrideTable.Rows)
+            foreach (var overrideSubject in overrideSubjects)
             {
-                var subjectName = SpecialStringHelper.Replace(overrideRow[0]);
-                var newTierName = overrideRow[1];
-                var overrideReason = overrideRow[2];
+                IWebElement subjectTable = Browser.FindElementById("SubjectOverrideDiv");
+                IWebElement subjectRow = subjectTable.TryFindElementByXPath(String.Format(".//table[contains(@id,'_SubjectOverrideItemsTable')]/tbody/tr/td/span[contains(@id,'_SubjectNameLabel')][text()='{0}']/../../..", overrideSubject.Subject));
+                if (subjectRow == null) throw new ApplicationException(String.Format("Subject {0} not found", overrideSubject.Subject));
 
-                int tableIndex;
-                var table = GetSubjectTable(subjectName, out tableIndex);
-                if (table == null) throw new ApplicationException(string.Format("Subject {0} not found", subjectName));
+                IWebElement dropdown = subjectRow.TryFindElementByXPath(String.Format(".//td/select[contains(@id,'_NewSubjectTierDDL')]/option[text()='{0}']/..", overrideSubject.NewTier));
+                if (dropdown == null) throw new ApplicationException(String.Format("Requested Tier {0} not found", overrideSubject.NewTier));
+                dropdown.SendKeys(overrideSubject.NewTier);
 
-                var dropdown = table.TryFindElementByPartialID(String.Format("__ctl{0}_NewSubjectTierDDL", tableIndex)).EnhanceAs<Option>();
-                var option = dropdown.Children().SingleOrDefault(c => c.Text == newTierName);
-                if (option == null) throw new ApplicationException(string.Format("Requested Tier {0} not found", newTierName));
-                dropdown.SendKeys(newTierName);
-
-                IWebElement reason = table.TryFindElementByPartialID(String.Format("__ctl{0}_OverrideReasonText", tableIndex)).EnhanceAs<Textbox>();
-                reason.SendKeys(overrideReason);
+                IWebElement reason = subjectRow.TryFindElementByXPath(".//td/input[contains(@id,'_OverrideReasonText')]");
+                reason.SendKeys(overrideSubject.OverrideReason);
             }
 
             var overrideButton = Browser.FindElementById("_ctl0_Content_ProcessSubjectOverrideDiv");
             overrideButton.Click();
             Browser.GetAlertWindow().Accept();
-            return this;
-        }
 
-        private HtmlTable GetSubjectTable(string subjectName, out int tableIndex)
-        {
-            IWebElement subjectsDiv = Browser.TryFindElementBy(By.Id("SubjectOverrideDiv"));
-            IEnumerable<HtmlTable> tables = subjectsDiv.Tables().Where(t => t.Id.Contains("_SubjectOverrideItemsTable"));
-            tableIndex = 1;
-            foreach (var table in tables)
-            {
-                var name = table.TryFindElementByPartialID(String.Format("__ctl{0}_SubjectNameLabel", tableIndex)).Text;
-                if (name == subjectName) return table;
-                tableIndex++;
-            }
-            return null;
+            return WaitForPageLoads();
         }
     }
 }

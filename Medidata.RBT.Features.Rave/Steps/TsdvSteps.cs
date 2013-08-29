@@ -261,7 +261,9 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I Override Subject")]
         public void ThenIOverrideSubject(Table table)
         {
-            CurrentPage = CurrentPage.As<SubjectOverridePage>().OverrideSubject(table);
+            SpecialStringHelper.ReplaceTableColumn(table, "Subject");
+            IEnumerable<TSDVSubjectOverrideModel> overrideSubjects = table.CreateSet<TSDVSubjectOverrideModel>();
+            CurrentPage = CurrentPage.As<SubjectOverridePage>().OverrideSubject(overrideSubjects);
         }
 	}
 }
