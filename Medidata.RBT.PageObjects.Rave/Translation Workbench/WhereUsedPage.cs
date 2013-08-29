@@ -8,13 +8,15 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 {
     public class WhereUsedPage : RavePageBase
     {
-        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null,
-                                                     string listItem = null)
+        public override IPage ClickButton(string identifier)
         {
             if (identifier == "Go Back")
-                return Browser.FindElementById("ImageButton1");
-
-            return base.GetElementByName(identifier, areaIdentifier, listItem);
+            {
+                IWebElement image = Browser.FindElementById("ImageButton1");
+                image.Click();
+                return WaitForPageLoads();
+            }
+            return base.ClickButton(identifier);
         }
 
         #region implement members for RavePageBase

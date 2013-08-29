@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Medidata.RBT.PageObjects.Rave.Translation_Workbench;
+﻿using Medidata.RBT.PageObjects.Rave.Translation_Workbench;
 using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.Features.Rave.Steps
@@ -14,13 +10,13 @@ namespace Medidata.RBT.Features.Rave.Steps
     public class TranslationGridPageSteps : BrowserStepsBase
     {
         /// <summary>
-        /// Click the first available # of Uses link
+        /// Click the # of Uses link at a given row
         /// </summary>
-        [StepDefinition(@"I select the first \# of Uses link")]
-        public void ISelectTheFirstOfUsesLink()
+        /// <param name="position">The row number</param>
+        [StepDefinition(@"I select the \# of Uses link in row (.*)")]
+        public void SelectTheUsesLinkInRow(int position)
         {
-            CurrentPage = CurrentPage.As<TranslationGridPage>().SelectTheFirstOfUsesLink();
+            CurrentPage = CurrentPage.As<TranslationGridPage>().SelectTheUsesLinkInRow(position);
         }
-
     }
 }

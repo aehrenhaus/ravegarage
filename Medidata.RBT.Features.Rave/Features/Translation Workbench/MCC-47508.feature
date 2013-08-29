@@ -1,6 +1,6 @@
 ﻿@ignore
 #There are a number of issues with Selenium and Back Navigation
-#However with future releases; hopefully this is resolved and scenarios using GoBack can be enabled 
+#However with future releases; hopefully this is resolved and scenarios using "I go back to the previous page via the browser back button" can be enabled 
 #https://code.google.com/p/selenium/issues/detail?id=3611
 @FT_MCC-47508
 
@@ -25,9 +25,9 @@ Scenario: PBMCC-47508-001 As an Rave User, when I search for a User/Clinical str
 	And I pick "User/Clinical"
 	And I click button "Search"
 	And I click button "SearchButtonImage"
-	And I select the first # of Uses link
+	And I select the # of Uses link in row 1
 	And I take a screenshot 
-	And GoBack
+	And I go back to the previous page via the browser back button
 	And I enter value "drug" in "Search" "textbox"
 	When I click button "SearchButtonImage"
 	Then I verify text "String not found in paging session." does not exist
@@ -42,9 +42,9 @@ Scenario: PBMCC-47508-002 As an Rave User, when I search for a User/Global strin
 	And I pick "User/Global"
 	And I click button "Search"
 	And I click button "SearchButtonImage"
-	And I select the first # of Uses link
+	And I select the # of Uses link in row 1
 	And I take a screenshot 
-	And GoBack
+	And I go back to the previous page via the browser back button
 	And I enter value "Entry Error" in "Search" "textbox"
 	When I click button "SearchButtonImage"
 	Then I verify text "String not found in paging session." does not exist

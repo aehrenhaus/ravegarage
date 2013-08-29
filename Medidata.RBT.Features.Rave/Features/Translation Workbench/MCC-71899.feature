@@ -1,6 +1,6 @@
 ﻿@ignore
 #There are a number of issues with Selenium and Back Navigation
-#However with future releases; hopefully this is resolved and scenarios using GoBack can be enabled 
+#However with future releases; hopefully this is resolved and scenarios using "I go back to the previous page via the browser back button" can be enabled 
 #https://code.google.com/p/selenium/issues/detail?id=3611
 @FT_MCC-71899
 
@@ -25,9 +25,9 @@ Scenario: PBMCC-71899-001 As an Rave User, when I select browser back button aft
 	And I enter value "drug" in "Search" "textbox"
 	And I click button "SearchButtonImage"
 	And I take a screenshot 	
-	And I select the first # of Uses link
-	And GoBack
-	Then I verify results are present
+	And I select the # of Uses link in row 1
+	And I go back to the previous page via the browser back button
+	Then I verify rows exist in "results" table
 	And I take a screenshot 		
 	
 @Release_2013.4.0
@@ -39,8 +39,8 @@ Scenario: PBMCC-71899-002 As an Rave User, when I select browser back button aft
 	And I click button "Search"
 	And I click button "SearchButtonImage"
 	And I take a screenshot 	
-	And I select the first # of Uses link
+	And I select the # of Uses link in row 1
 	And I take a screenshot 
-	And GoBack
-	Then I verify results are present
+	And I go back to the previous page via the browser back button
+	Then I verify rows exist in "results" table
 	And I take a screenshot 	

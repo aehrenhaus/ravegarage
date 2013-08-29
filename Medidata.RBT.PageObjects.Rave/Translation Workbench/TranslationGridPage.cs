@@ -9,17 +9,22 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 {
     public class TranslationGridPage : RavePageBase, IEnterValues, IVerifyObjectExistence
     {
-        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
+        public override IPage ClickButton(string identifier)
         {
             if (identifier == "SearchButtonImage")
-                return Browser.FindElementById("_ctl0_Content_TranslationGridForm_Search");
-
-            return base.GetElementByName(identifier, areaIdentifier, listItem);
+            {
+                IWebElement image = Browser.FindElementById("_ctl0_Content_TranslationGridForm_Search");
+                image.Click();
+                return WaitForPageLoads();
+            }
+            return base.ClickButton(identifier);
         }
 
-        public IPage SelectTheFirstOfUsesLink()
+        public IPage SelectTheUsesLinkInRow(int position)
         {
-            var element = GetTheFirstOfUsesLink();
+            List<IWebElement> rows = Browser.FindElementById("_ctl0_Content_TranslationGridForm_Results").EnhanceAs<HtmlTable>().Rows().ToList();
+            IWebElement row = rows[position];
+            IWebElement element = row.TryFindElementByPartialID("WhereUsedDiv");
             element.Click();
             return WaitForPageLoads();
         }
@@ -40,7 +45,7 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
             if (identifier == "Search")
             {
                 var textbox = Browser.FindElementById("_ctl0_Content_TranslationGridForm_StrFilter").EnhanceAs<Textbox>();
-                if (textbox == null) throw new Exception("Textbox not found");
+                if (textbox == null) throw new NoSuchElementException("Textbox not found");
                 textbox.Clear();
                 textbox.SendKeys(valueToEnter);
             }
@@ -52,38 +57,6 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 
         public bool VerifyObjectExistence(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null, bool shouldExist = true)
         {
-            return String.IsNullOrEmpty(identifier) ? VerifyObjectExistenceByType(type) : VerifyObjectExistenceByIdentifier(identifier);
-        }
-
-        public bool VerifyObjectExistence(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null, bool shouldExist = true)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
-
-        #region Helpers
-
-        private IWebElement GetTheFirstOfUsesLink()
-        {
-            List<IWebElement> rows = Browser.FindElementById("_ctl0_Content_TranslationGridForm_Results").EnhanceAs<HtmlTable>().Rows().ToList();
-            IWebElement row = rows[1];
-            IWebElement element = row.TryFindElementByPartialID("WhereUsedDiv");
-            return element;
-        }
-
-        private bool VerifyObjectExistenceByType(string type)
-        {
-            if (type == "table")
-            {
-                var element = GetTheFirstOfUsesLink();
-                return element != null;
-            }
-            return false;
-        }
-
-        private bool VerifyObjectExistenceByIdentifier(string identifier)
-        {
             if (identifier == "Generating results...")
                 return Browser.FindElementById("_ctl0_Content_TranslationGridForm_GeneratingResults").GetCssValue("display") == "block";
 
@@ -91,6 +64,11 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
                 return Browser.FindElementById("_ctl0_Content_TranslationGridForm_Search").GetCssValue("display") == "inline";
 
             return false;
+        }
+
+        public bool VerifyObjectExistence(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null, bool shouldExist = true)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

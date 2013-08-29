@@ -63,20 +63,12 @@ namespace Medidata.RBT.Common.Steps
 		/// </summary>
 		/// <param name="textOrIdentifier"></param>
 		[StepDefinition(@"I click button ""([^""]*)""")]
+        [StepDefinition(@"I select image ""(.*)""")]
 		public void IClickButton____(string textOrIdentifier)
 		{
 			CurrentPage = CurrentPage.ClickButton(textOrIdentifier);
 
 		}
-
-        /// <summary>
-        /// Click an image hyperlink
-        /// </summary>
-        [When(@"I select image ""(.*)""")]
-        public void WhenISelectImage(string textOrIdentifier)
-        {
-            CurrentPage = CurrentPage.ClickImageLink(textOrIdentifier);
-        }
 
 		/// <summary>
 		/// Click a hyperlink
@@ -207,8 +199,8 @@ namespace Medidata.RBT.Common.Steps
         /// <summary>
         /// Simulates the browser back button
         /// </summary>
-        [StepDefinition(@"GoBack")]
-        public void GoBack()
+        [StepDefinition(@"I go back to the previous page via the browser back button")]
+        public void GivenIGoBackToThePreviousPageViaTheBrowserBackButton()
         {
             // Using version 2.33.0.0 of Selenium on .NET 4.0
             // There are a number of issues with Selenium and Back Navigation

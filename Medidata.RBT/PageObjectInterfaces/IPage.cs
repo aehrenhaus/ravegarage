@@ -88,11 +88,6 @@ namespace Medidata.RBT
 		IPage ClickButton(string identifier);
 
         /// <summary>
-        /// Click on a clickable image
-        /// </summary>
-        IPage ClickImageLink(string identifier);
-
-        /// <summary>
         /// Press a key on the keyboard
         /// </summary>
         void PressKey(string key);

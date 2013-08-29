@@ -1,6 +1,6 @@
 ﻿@ignore
 #There are a number of issues with Selenium and Back Navigation
-#However with future releases; hopefully this is resolved and scenarios using GoBack can be enabled 
+#However with future releases; hopefully this is resolved and scenarios using "I go back to the previous page via the browser back button" can be enabled 
 #https://code.google.com/p/selenium/issues/detail?id=3611
 #https://code.google.com/p/selenium/issues/detail?id=2181
 #http://stackoverflow.com/questions/17958595/selenium-using-the-old-page-after-browser-back-button-action-and-not-showing-alt?noredirect=1#comment26296287_17958595
@@ -27,7 +27,7 @@ Scenario: PBDT_11710_001 As an Rave User, when I select browser "Back" button af
 	And I click button "Search"
 	And I click button "SearchButtonImage"
 	And I take a screenshot 	
-	And GoBack
+	And I go back to the previous page via the browser back button
 	Then I verify text "Generating results..." does not exist
 	And I verify button "SearchButtonImage" exists
 	And I take a screenshot 		
@@ -41,7 +41,7 @@ Scenario: PBDT_11710_002 As an Rave User, when I select browser "Back" button af
 	And I click button "Search"
 	And I click button "SearchButtonImage"
 	And I take a screenshot 	
-	And GoBack
+	And I go back to the previous page via the browser back button
 	Then I verify text "Generating results..." does not exist
 	And I verify button "SearchButtonImage" exists
 	And I take a screenshot

@@ -9,25 +9,33 @@ namespace Medidata.RBT.PageObjects.Rave.Translation_Workbench
 {
     public class TranslationWorkbenchPage : RavePageBase
     {
-        public override IWebElement GetElementByName(string identifier, string areaIdentifier = null,
-                                                     string listItem = null)
+        public override IPage ChooseFromDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null)
         {
-            if (identifier == "Source locale")
-                return Browser.DropdownById("_OriginalLocale");
+            Dropdown dropdown = null;
+            if (identifier == "Source locale") dropdown = Browser.DropdownById("_OriginalLocale");
+            if (identifier == "Target locale") dropdown = Browser.DropdownById("_TargetLocale");
 
-            if (identifier == "Target locale")
-                return Browser.DropdownById("_TargetLocale");
+            if (dropdown != null)
+            {
+                dropdown.SelectByText(text);
+                return this;  
+            }
+            return base.ChooseFromDropdown(identifier, text, objectType, areaIdentifier);
+        }
 
-            if (identifier == "Standard")
-                return Browser.RadioButton("_StringCategory_0");
+        public override IPage ChooseFromRadiobuttons(string areaIdentifier, string identifier)
+        {
+            RadioButton radioButton = null;
+            if (identifier == "Standard") radioButton = Browser.RadioButton("_StringCategory_0");
+            if (identifier == "User/Global") radioButton = Browser.RadioButton("_StringCategory_1");
+            if (identifier == "User/Clinical") radioButton = Browser.RadioButton("_StringCategory_2");
 
-            if (identifier == "User/Global")
-                return Browser.RadioButton("_StringCategory_1");
-
-            if (identifier == "User/Clinical")
-                return Browser.RadioButton("_StringCategory_2");
-
-            return base.GetElementByName(identifier, areaIdentifier, listItem);
+            if (radioButton != null)
+            {
+                radioButton.Set();
+                return this;
+            }
+            return base.ChooseFromRadiobuttons(areaIdentifier, identifier);
         }
 
         #region implement members for RavePageBase

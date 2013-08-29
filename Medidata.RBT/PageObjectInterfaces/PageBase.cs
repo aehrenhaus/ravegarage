@@ -147,20 +147,7 @@ namespace Medidata.RBT
 			return this.WaitForPageLoads();
         }
 
-	    public IPage ClickImageLink(string identifier)
-	    {
-	        try
-	        {
-	            return ClickButton(identifier);
-	        }
-	        catch
-	        {
-	            throw new Exception("Can't find image:" + identifier);
-	        }
-	    }
-
-	    public
-            IPage WaitForPageLoads()
+	    public IPage WaitForPageLoads()
 		{
 			IPage result = null;
 			IAlert alertWindow = null;

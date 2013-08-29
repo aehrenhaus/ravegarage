@@ -322,17 +322,6 @@ namespace Medidata.RBT.Common.Steps
 			Assert.IsFalse(exists, string.Format("Does exist :[{0}] image", fileName));
 		}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        [StepDefinition(@"I verify results are present")]
-        public void ThenIVerifyResultsArePresent()
-        {
-            bool present = CurrentPage.As<IVerifyObjectExistence>().VerifyObjectExistence(null, "table", (string) null);
-            Assert.IsTrue(present, String.Format("Results are not present on {0}", CurrentPage.URL));
-        }
-
-
         #region Helper methods
 
         /// <summary>

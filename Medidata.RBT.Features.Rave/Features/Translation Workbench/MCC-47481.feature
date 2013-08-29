@@ -26,24 +26,24 @@ Scenario: PBMCC_47481_001 As an Rave User, when I select "Go Back" link after se
 	And I enter value "drug" in "Search" "textbox"
 	And I click button "SearchButtonImage"
 	And I take a screenshot 	
-	And I select the first # of Uses link
+	And I select the # of Uses link in row 1
 	When I select link "Go Back"
-	Then I verify results are present
+	Then I verify rows exist in "results" table
 	And I take a screenshot 		
 	
 @Release_2013.4.0
 @PBMCC_47481_002
 @Draft
-Scenario: PBMCC_47481_002 As an Rave User, when I select "Go Back" link after searching for a User/Global string in Translation Workbench, then I verify preivous results are present.
+Scenario: PBMCC_47481_002 As an Rave User, when I select "Go Back" link after searching for a User/Global string in Translation Workbench, then I verify previous results are present.
 	
 	And I pick "User/Global"
 	And I click button "Search"
 	And I click button "SearchButtonImage"
 	And I take a screenshot 	
-	And I select the first # of Uses link
+	And I select the # of Uses link in row 1
 	And I take a screenshot 
 	When I select link "Go Back"
-	Then I verify results are present
+	Then I verify rows exist in "results" table
 	And I take a screenshot 
 	
 @Release_2013.4.0
@@ -56,9 +56,9 @@ Scenario: PBMCC_47481_003 As an Rave User, when I select "Go Back" image after s
 	And I enter value "drug" in "Search" "textbox"
 	And I click button "SearchButtonImage"
 	And I take a screenshot 	
-	And I select the first # of Uses link
+	And I select the # of Uses link in row 1
 	When I select image "Go Back"
-	Then I verify results are present
+	Then I verify rows exist in "results" table
 	And I take a screenshot 		
 	
 @Release_2013.4.0
@@ -70,8 +70,8 @@ Scenario: PBMCC_47481_004 As an Rave User, when I select "Go Back" image after s
 	And I click button "Search"
 	And I click button "SearchButtonImage"
 	And I take a screenshot 	
-	And I select the first # of Uses link
+	And I select the # of Uses link in row 1
 	And I take a screenshot 
 	When I select image "Go Back"
-	Then I verify results are present
+	Then I verify rows exist in "results" table
 	And I take a screenshot 	
