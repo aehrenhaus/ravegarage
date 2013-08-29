@@ -785,6 +785,1292 @@ Scenario: As an iMedidata study and site owner, and linked to a Rave study and s
 	And I should not see Forms and Folders "locked"
     And I take a screenshot
 
+@Rave 2013.2.0.1
+@MCC-73976-01
+@Validation
+Scenario: If a User's Modules App invitation is changed at Study Group level, then that should be reflected appropriately in Rave, based on the Module Role settings.
+ 
+    Given I am an iMedidata User
+    And I am owner of the Study Group named "<Study Group>"
+    And I am logged in
+    And my iMedidata Username is "<iMedidata User 1 ID>"
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>" and "<Study B>" within the Study Group named "<Study Group>"
+    And I have assignments to the iMedidata Studies named "<Study A>" and "<Study B>" for the App named "<Modules App>"  Role "<Modules Role 1>" for app "<EDC App>" with Role "<EDC Role 1>"
+    And I follow "<Modules App>" for Study Group named "<Study Group>"
+    And I am on Rave Home page
+	And I see the 2 Studies "<Study A>" and "<Study B>"
+    And I should see all installed modules
+    And I take a screenshot 1 of 8
+    And I navigate to User Details page for "<iMedidata User 1 ID>"
+    And I should see User Group "<Modules 1>" assigned to "<iMedidata User 1 ID>"
+    And I take a screenshot 2 of 8
+    And I follow iMedidata link
+    And I am on iMedidata Home page
+    And I change my assignment at Study Group level, for the App named "<Modules App>" from "<Modules Role 1>" to "<Modules Role 6>" "User Administration"
+    And I take a screenshot 3 of 8
+    When I follow "<Modules App>" for the Study Group named "<Study Group>"
+    And I am on Rave Home page
+    And I should see only "User Administration" Module listed in left hand pane
+    And I should not see other modules (based on the Role "<User Admin>" settings)
+    And I take a screenshot 4 of 8
+	And I select User Administration Module link
+	And I search for "<iMedidata User 1 ID>"
+	When I navigate to User Details page for "<iMedidata User 1 ID>"
+    Then I should see User Group "<Modules Role 6>" assigned to "<iMedidata User 1 ID>" 
+	And I should not see User Group "<Modules Role 1>" assigned to "<iMedidata User 1 ID>"
+	And I should see the 2 Studies "<Study A>" and "<Study B>" in "Studies" pane
+    And I take a screenshot 5 of 8
+	And I navigate back to iMedidata
+	And I am on iMedidata Home page
+    And I change my assignment at Study Group level, for the App named "<Modules App>" from "<Modules Role 6>" to "<Modules Role 1>"
+    And I take a screenshot 6 of 8
+	And I follow "<Modules App>" for the Study Group
+    And I am on Rave Home page
+	And I see the 2 Studies "<Study A>" and "<Study B>"
+    And I see All Modules listed in left hand pane
+    And I take a screenshot 7 of 8
+	And I select User Administration Module link
+	And I search for "<iMedidata User 1 ID>"
+	When I navigate to User Details page for "<iMedidata User 1 ID>"
+    And I should see User Group "<Modules Role 1>" assigned to "<iMedidata User 1 ID>"
+	And I should not see User Group "<Modules Role 6>" assigned to "<iMedidata User 1 ID>" 
+    And I take a screenshot 8 of 8
+
+@Rave 2013.2.0.1
+@MCC-73976-02
+@Validation
+Scenario: If a Rave EDC Role invitation is changed at Study Group level, then that should be reflected appropriately in Rave.
+ 
+    Given I am an iMedidata User
+    And I am owner of the Study Group named "<Study Group>"
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>" and "<Study B>" within the Study Group.
+    And I have assignments to iMedidata Studies named "<Study A>" and "<Study B>" for the App named "<Modules App>" Role "<Modules Role 1>" for app "<EDC App>" with Role "<EDC Role 1>"
+    And I take a screenshot 1 of 8
+	And I follow "<Modules App>" for Study Group named "<Study Group>"
+    And I am on Rave Home page
+	And I see all installed modules
+	And I see Studies named "<Study A>" and "<Study B>" listed
+    When I navigate to User Details page for "<iMedidata User 1 ID>"
+    Then I should see Role "<EDC Role 1>" assigned to Studies named "<Study A>" and "<Study B>" in Studies pane
+    And I take a screenshot 2 of 8
+    And I follow iMedidata link
+    And I am on iMedidata Home page
+    And I change my assignment Role EDC at Study Group level, for the app "<EDC App>" from Role "<EDC Role 1>" to Role "<EDC Role 2>"
+    And I take a screenshot 3 of 8
+    And I follow "<EDC App>" for the Study Group
+    And I am on Rave Home page
+	And I see the 2 Studies "<Study A>" and "<Study B>" listed
+    And I take a screenshot 4 of 8
+	And I select User Administration Module link
+	And I search for "<iMedidata User 1 ID>"
+	When I navigate to User Details page for "<iMedidata User 1 ID>"
+    Then I should see Role "<EDC Role 2>" assigned to Study "<Study A>" 
+	And I should see Role "<EDC Role 2>" assigned to Study "<Study B>" 
+    And I take a screenshot 5 of 8
+	And I navigate back to iMedidata
+	And I am on iMedidata Home page
+    And I change my assigned EDC Role at Study Group level, for the app "<EDC App>" from Role "<EDC Role 2>" to Role "<EDC Role 1>"
+    And I take a screenshot 6 of 8
+	And I follow "<EDC App>" for the Study Group
+    And I am on Rave Home page
+	And I see the 2 Studies "<Study A>" and "<Study B>" listed 
+    And I take a screenshot 7 of 8
+	And I select User Administration Module link
+	And I search for "<iMedidata User 1 ID>"
+	When I navigate to User Details page for "<iMedidata User 1 ID>"
+    Then I should see Role "<EDC Role 1>" assigned to Study "<Study A>" 
+	And I should see Role "<EDC Role 1>" assigned to Study "<Study B>" 
+    And I take a screenshot 8 of 8
+
+@Rave 2013.2.0.1
+@MCC-73976-03A
+@Validation	 
+Scenario: If a 3 module roles assignment has been updated to 2 module roles assignment, then the invitation message is updated correctly. If the first assignment is updated to a new assignment on Study A, then the user will see the new assignment in Rave.
+
+    Given I am an iMedidata User
+    And I am logged in
+    And my iMedidata Username is "<iMedidata User 1 ID>"
+	And there exists an iMedidata user "<iMedidata User 2 ID>" (Admin User)
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>", "<Study B>" and "<Study C>" in Study Group named "<Study Group>"
+    And I have assignments to iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 1> (All Modules)" and for app "<EDC App>" with Role "<EDC Role 1>"
+    And I take a screenshot 1 of 13
+    And I have assignments to iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)" and for app "<EDC App>" with Role "<EDC Role 1>"
+    And I take a screenshot 2 of 13
+    And I have assignments to iMedidata Study named "<Study C>" for the App named "<Modules App>" Role "<Modules Role 3> (No Sites)" and for app "<EDC App>" with Role "<EDC Role 1>"
+    And I take a screenshot 3 of 13
+    And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 4 of 13
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 5 of 13
+	And I returned to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 6 of 13
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 7 of 13
+    And I returned to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 8 of 13
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 9 of 13
+    And I returned to iMedidata home page
+	And I logout of iMedidata
+	And I login to iMedidata as "<iMedidata User 2 ID>"
+    And I changed the assignment for User "<iMedidata User 1 ID>" to Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 1>" to "<Modules Role 3> (No Sites)"
+	And I take a screenshot 10 of 13
+	And I logout of iMedidata
+	And I login into iMedidata as "<iMedidata User 1 ID>" user
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I see the User Group Role "<Modules Role 3>"
+	And I take a screenshot 11 of 13
+    And I navigate to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3>"
+	And I take a screenshot 12 of 13
+    And I navigate to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3>"
+	And I take a screenshot 13 of 13
+
+@Rave 2013.2.0.1
+@MCC-73976-03B
+@Validation
+Scenario: On 3 module roles assignment when one of the module role assignment has been updated to new module role, then the invitation message is updated correctly. If the first assignment is updated to a new assignment on Study A, then the user will see the new assignment in Rave.
+
+    Given I am an iMedidata User
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>", "<Study B>" and "<Study C>" in the Study Group named "<Study Group>"
+    And I have assignments to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 1> (All Modules)" and for app "<EDC App>" with Role "<EDC Role 1>"
+    And I take a screenshot 1 of 13
+    And I have assignments to the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)" and for app "<EDC App>" with Role "<EDC Role 1>"
+    And I take a screenshot 2 of 13
+    And I have assignments to the iMedidata Study named "<Study C>" for the App named "<Modules App>" Role "<Modules Role 3> (No Sites)" and for app "<EDC App>" with Role "<EDC Role 1>"
+    And I take a screenshot 3 of 13
+    And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 4 of 13
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 5 of 13
+	And I returned to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 6 of 13
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 7 of 13
+    And I returned to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 8 of 13
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 9 of 13
+    And I returned to iMedidata home page
+    And I change the assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 1>" to "<Modules Role 6> (User Admin)"
+	And I take a screenshot 10 of 13
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 6>
+	And I take a screenshot 11 of 13
+    And I navigate to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 6>
+	And I take a screenshot 12 of 13
+    And I navigate to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 6>
+	And I take a screenshot 13 of 13
+
+@Rave 2013.2.0.1
+@MCC-73976-04
+@Validation
+Scenario: If a 3 module roles assignment has been updated to 2 module roles assignment, then the invitation message is updated correctly. On 3 module roles assignment when one of the module role assignment has been updated to new module role, then the invitation message is updated correctly. The second or later assignment on Study B and Study C in iMedidata does not have an impact on the Module Roles in Rave.
+		  
+    Given I am an iMedidata User
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>", "<Study B>" and "<Study C>" in the Study Group named "<Study Group>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 1> (All Modules)" 
+    And I take a screenshot 1 of 23
+    And I have an assignment to the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)"
+    And I take a screenshot 2 of 23
+    And I have an assignment to the iMedidata Study named "<Study C>" for the App named "<Modules App>" Role "<Modules Role 3> (No Sites)"
+    And I take a screenshot 3 of 23
+    And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 4 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 5 of 23
+	And I returned to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 6 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 7 of 23
+    And I returned to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 8 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 9 of 23
+    And I returned to iMedidata home page
+    And I change the assignment for the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role from "<Modules Role 2>" to "<Modules Role 3> (No Sites)"
+	And I take a screenshot 10 of 23
+	And I am on iMedidata Home page
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 11 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1>" 
+	And I take a screenshot 12 of 23
+    And I navigate back to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 13 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1>" 
+	And I take a screenshot 14 of 23
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 15 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1>" 
+	And I take a screenshot 16 of 23
+	And I am back to iMedidata home page
+	And I change the assignment to the iMedidata Study named "<Study C>" for the App named "<Modules App>" Role from "<Modules Role 3>" to "<Modules Role 6> (user admin)"
+	And I take a screenshot 17 of 23
+	And I am on iMedidata Home page
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 18 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 19 of 23
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 20 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 21 of 23
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 22 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1>"
+	And I take a screenshot 23 of 23	
+	
+@Rave 2013.2.0.1
+@MCC-73976-05
+@Validation
+Scenario: An iMedidata is assigned to a Study with only an EDC role and to another study with only a modules role (Modules role 1).  When a modules role is added to the first study, the message is displayed when the user accesses Rave.
+
+    Given I am an iMedidata User
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+	And there exists "<iMedidata User 2 ID>" (Admin User)
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>", "<Study B>" in the Study Group named "<Study Group>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the app "<EDC App>" with Role "<EDC Role 1>"
+	And I do not have "<Modules App>" assignmed to the iMedidata Study named "<Study A>" 
+    And I take a screenshot 1 of 17
+    And I have an assignment to the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 1> (All Modules)"
+    And I take a screenshot 2 of 17
+	And I am on iMedidata Home page
+    And I follow "<EDC App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I do not see the warning message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 3 of 17
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 4 of 17
+	And I returned to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I do not see the warning message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 5 of 17
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 6 of 17
+    And I returned to iMedidata home page
+	And I logout
+	And I login as iMedidata user "<iMedidata User 2 ID>" (Admin User)
+	And I invite "<iMedidata User 1 ID>" with assignment to iMedidata "<Study A>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)"
+	And I take a screenshot 7 of 17
+	And I Logout from iMedidata
+	And I login into iMedidata as "<iMedidata User 1 ID>" user
+	And I eccept the invitation
+	And I take a screenshot 8 of 17
+	And I follow "<Modules App>" for Study "<Study A>"
+	And I am on Rave Home page
+	And I see the warning message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 9 of 17
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 10 of 17
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the warning message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 11 of 17
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 12 of 17
+	And I am back to iMedidata home page
+    And I update assignment to the iMedidata "<Study B>" for the App named "<Modules App>" Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 13 of 17
+	And I follow "<Modules App>" for Study "<Study A>"
+	And I am on Rave Home page
+	And I see the warning message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 14 of 17
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 15 of 17
+    And I navigate back to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the warning message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 16 of 17
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 17 of 17
+	
+@Rave 2013.2.0.1
+@MCC-73976-06
+@Validation
+Scenario: If an iMedidata user is assigned to two studies with different module roles, the message is displayed when the user enters Rave.  Also the modules role that was assigned to the first study is applied to the second study. 
+
+    Given I am an iMedidata User
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+	Amd there exists "<iMedidata User 2 ID>" (Admin User)
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>", "<Study B>" in the Study Group named "<Study Group>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 5> (iMedidata EDC)" 
+    And I take a screenshot 1 of 11
+    And I have an assignment to the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)"
+    And I take a screenshot 2 of 11
+    And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 3 of 11
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 5>" assigned to <Study A>
+	And I take a screenshot 4 of 11
+	And I navigate back to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 5 of 11
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 5>" assigned to <Study B>
+	And I take a screenshot 6 of 11
+    And I navigate back to iMedidata home page
+	And I logout
+	And I login as User "<iMedidata User 2 ID>" (Admin User)
+	And I change the assignment for the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role from "<Modules Role 5>" to "<Modules Role 1> (All Modules)"
+	And I take a screenshot 7 of 11
+	And I Logout from iMedidata
+	And I login into iMedidata as "<iMedidata User 1 ID>" user
+	And I am on iMedidata Home page
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 8 of 11
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 9 of 11
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 10 of 11
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 11 of 11
+
+@Rave 2013.2.0.1
+@MCC-73976-07
+@Validation
+Scenario: At the study Group level, rave will detect occurences when more that one Modules app is used.  it will also demonstrate assignment of modules apps at the Study Group level.
+
+    Given I am an iMedidata User
+	And there is an iMedidata Study Group named "<Study Group>"
+	And I am the Study Group Owner
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+    And I create the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 1> (All Modules)" and for app "<EDC App>" with Role "<EDC Role 1>"
+    And I take a screenshot 1 of 20
+    And I create the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)" and for app "<EDC App>" with Role "<EDC Role 1>"
+	And I take a screenshot 2 of 20
+    And I create the iMedidata Study named "<Study C>" for the App named "<Modules App>" Role "<Modules Role 3> (No Sites)" and for app "<EDC App>" with Role "<EDC Role 1>"
+    And I take a screenshot 3 of 20
+	And I am on iMedidata Home page
+    And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 4 of 20
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)" assigned to <Study A>
+	And I should see the Role "<EDC Role 1>" assigned to Studies <Study A> <Study B> and <Study C>
+	And I return to iMedidata home page
+	And I take a screenshot 5 of 20
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 6 of 20
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)" assigned to <Study B>
+	And I should see the Role "<EDC Role 1>" assigned to Studies <Study A> <Study B> and <Study C>
+	And I take a screenshot 7 of 20
+    And I return to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 8 of 20
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)" assigned to <Study C>
+	And I should see the Role "<EDC Role 1>" assigned to Studies <Study A> <Study B> and <Study C>
+	And I take a screenshot 9 of 20
+    And I return to iMedidata home page
+    And I change the assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 1>" to "<Modules Role 5> (User Admin)"
+	And I take a screenshot 10 of 20
+	And I return to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I should see the Role "<EDC Role 1>" assigned to Studies <Study A> <Study B> and <Study C>
+	And I take a screenshot 11 of 20
+    And I return to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I should see the Role "<EDC Role 1>" assigned to Studies <Study A> <Study B> and <Study C>
+	And I take a screenshot 12 of 20
+    And I return to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1>"
+	And I should see the Role "<EDC Role 1>" assigned to Studies <Study A> <Study B> and <Study C>
+	And I take a screenshot 13 of 20
+	And I navigate Back to iMedidata
+	When I change my assignment on Study Group level, for the App named "<Modules App>" from "<Modules Role 1>" to "<Modules Role 6>"
+	And I take a screenshot 14 of 20
+	And I return to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	Then I do not see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 15 of 20
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 6>"
+	And I should see the Role "<EDC Role 1>" assigned to Studies <Study A> <Study B> and <Study C>
+	And I take a screenshot 16 of 20
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I do not see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 17 of 20
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 6>"
+	And I should see the Role "<EDC Role 1>" assigned to Studies <Study A> <Study B> and <Study C>
+	And I take a screenshot 18 of 20
+    And I return to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I do not see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 19 of 20
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 6>"
+	And I should see the Role "<EDC Role 1>" assigned to Studies <Study A> <Study B> and <Study C>
+	And I take a screenshot 20 of 20
+	
+@Rave 2013.2.0.1
+@MCC-73976-08
+@Validation
+Scenario: As an iMedidata user, the message that alerts the user that 2 Rave Modules exist, will not be displayed when one of the studies is removed.
+
+    Given I am an iMedidata User
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+	And there exists "<iMedidata User 2 ID>" (Admin User) in iMedidata
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>", "<Study B>" in the Study Group named "<Study Group>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)"
+    And I take a screenshot 1 of 14
+    And I have an assignment to the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 3> (No Sites)"
+    And I take a screenshot 2 of 14
+    And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 3 of 14
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 2>" 
+	And I take a screenshot 4 of 14
+	And I returned back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 5 of 14
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 2>" 
+	And I take a screenshot 6 of 14
+    And I return to iMedidata home page
+	And I logout
+
+	And I login as "<iMedidata User 2 ID>" (Admin User) 
+	And I remove the assignment to the iMedidata Study named "<Study A>"
+	And I take a screenshot 7 of 14
+	And I Logout from iMedidata as ADMIN user
+
+	And I login as iMedidata user "<iMedidata User 1 ID>"
+	And I am on iMedidadata Home page
+	And I see only one assignment to Study B
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I do not see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 8 of 14
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 9 of 14
+    And I navigate back to iMedidata
+	And I logout
+
+	And I login as iMedidata user "<iMedidata User 1 ID>"
+	And I invite User "<iMedidata User 1 ID>" to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 10 of 14
+	And I Logout from iMedidata as ADMIN user
+
+	And I login as iMedidata user "<iMedidata User 1 ID>"
+	And I am on iMedidadata Home page
+	And I see assignments to Study <Study B> and Study "<Study A>" 
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 11 of 14
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 12 of 14
+	And I returned back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 13 of 14 
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	When I navigate to User Details page
+	Then I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 14 of 14
+
+@Rave 2013.2.0.1
+@MCC-73976-09
+@Validation
+Scenario: If a user has been assigned four different Module Role assignments for four different studies, they will only see the first assignment for all 4 studies in Rave.
+          If the first assignment is removed, they will see the second assignment taking over for the remaining 3 studies in Rave.
+		  If then the second assignment is removed, they will see the third assignment taking over for the remaining 2 studies in Rave.
+		  The user will only be assigned to one user group in Rave
+
+    Given I am an iMedidata User
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+	And there exists "<iMedidata User 2 ID>" (Admin User)
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>", "<Study B>" "<Study C>" and "<Study D>"in the Study Group named "<Study Group>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)"
+    And I take a screenshot 1 of 24
+    And I have an assignment to the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 3> (No Sites)"
+    And I take a screenshot 2 of 24
+	And I have an assignment to the iMedidata Study named "<Study C>" for the App named "<Modules App>" Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 3 of 24
+	And I have an assignment to the iMedidata Study named "<Study D>" for the App named "<Modules App>" Role "<Modules Role 4> (EDC)"
+	And I take a screenshot 4 of 24
+	And I am on iMedidata Home page
+    And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 5 of 24
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 2>" assigned to <Study A>
+	And I take a screenshot 6 of 24
+	And I return to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 7 of 24
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 2>" assigned to <Study B>
+	And I take a screenshot 8 of 24
+	And I return to iMedidata Home page
+    And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 9 of 24
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 2>" assigned to <Study C>
+	And I take a screenshot 10 of 24
+	And I am on iMedidata Home page
+    And I follow "<Modules App>" for Study "<Study D>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 11 of 24
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 2>" assigned to <Study D>
+	And I take a screenshot 12 of 14
+	And I returned to iMedidata
+	And I logout
+
+	And I login as "<iMedidata User 2 ID>" (Admin User)
+	When I remove the assignment to the iMedidata Study named "<Study A>"
+	And I take a screenshot 13 of 24
+	And I Logout from iMedidata as ADMIN user
+
+	And I login as iMedidata user "<iMedidata User 1 ID>"
+	And I am on iMedidadata Home page
+	Then I see assignments to "<Study B>","<Study C>" and "<Study D>" 
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 14 of 24
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 15 of 24
+    And I navigate back to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 16 of 24
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 17 of 24
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study D>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 18 of 24
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 19 of 24
+    And I navigate back to iMedidata
+	And I logout
+
+	And I login as "<iMedidata User 2 ID>" (Admin User)
+	And I remove the assignment to the iMedidata Study named "<Study B>"
+	And I take a screenshot 20 of 24
+	And I Logout from iMedidata as ADMIN user
+
+	And I login as iMedidata user "<iMedidata User 1 ID>"
+	And I am on iMedidadata Home page
+	And I see assignments to Study <Study C> and Study "<Study D>" 
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 21 of 24
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 22 of 24
+	And I returned back to iMedidata
+	And I follow "<Modules App>" for Study "<Study D>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 23 of 24 
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 24 of 24
+
+@Rave 2013.2.0.1
+@MCC-73976-010
+@Validation
+Scenario: If a user has been assigned three different Module Roles assignments for three different studies, they will only see the first assignment for all 3 studies in Rave.
+          If the first assignment is then updated to the second assignment, they will see the second assignment for all 3 studies in Rave.
+		  If the second or later assignment is updated, it will not have an impact on the Module Roles in Rave.
+		  The user will only be assigned to one user group in Rave
+
+    Given I am an iMedidata User
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>", "<Study B>" and  "<Study C>" in the Study Group named "<Study Group>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 1> (All Modules)" 
+    And I take a screenshot 1 of 23
+    And I have an assignment to the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)"
+    And I take a screenshot 2 of 23
+	And I have an assignment to the iMedidata Study named "<Study C>" for the App named "<Modules App>" Role "<Modules Role 3> (No Sites)"
+    And I take a screenshot 3 of 23
+	And I am on iMedidata Home page
+    And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 4 of 23 
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)" assigned to <Study A>
+	And I take a screenshot 5 of 23 
+	And I return to iMedidata home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 6 of 23 
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)" assigned to <Study B>
+	And I take a screenshot 7 of 23
+    And I returned back to iMedidata
+	And I am on iMedidata Home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 8 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)" assigned to <Study C>
+	And I take a screenshot 9 of 23
+	And I change the assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role from "<Modules Role 1>" to "<Modules Role 2>"
+	And I take a screenshot 10 of 23
+	And  I am on iMedidata Home Page
+	
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 11 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 2> (No Reports)"
+	And I take a screenshot 12 of 23
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 13 of 23 
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 2> (No Reports)"
+	And I take a screenshot 14 of 23
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 15 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 2> (No Reports)"
+	And I take a screenshot 16 of 23
+    And I navigate back to iMedidata
+
+	When I change the assignment to the iMedidata Study named "<Study C>" for the App named "<Modules App>" Role from "<Modules Role 3>" to "<Modules Role 2>"
+	And I take a screenshot 17 of 23
+	Then I am on iMedidata Home Page
+	
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I do not see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 18 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 2> (No Reports)"
+	And I take a screenshot 19 of 23
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I do not see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 20 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I  should see the User Group Role "<Modules Role 2> (No Reports)"
+	And I take a screenshot 21 of 23
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I do not see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 22 of 23
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 2> (No Reports)"
+	And I take a screenshot 23 of 23
+    And I navigate back to iMedidata
+
+@Rave 2013.2.0.1
+@MCC-73976-011
+@Validation
+Scenario: If a user has been assigned to three different Module Roles assignments for three different studies, they will only see the first assignment in Rave.
+          If the first assignment is then updated to a new assignment, they will see the new assignment for all 3 studies in Rave.
+		  If the second or later assignment is updated to the new assignment, it will not have an impact on the Module Roles in Rave.
+		  The user will only be assigned to one user group in Rave
+
+    Given I am an iMedidata User
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there are iMedidata Studies named "<Study A>", "<Study B>" and  "<Study C>" in the Study Group named "<Study Group>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 1> (All Modules)" 
+    And I take a screenshot 1 of 30
+    And I have an assignment to the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)"
+    And I take a screenshot 2 of 30
+	And I have an assignment to the iMedidata Study named "<Study C>" for the App named "<Modules App>" Role "<Modules Role 3> (No Sites)"
+    And I take a screenshot 3 of 30
+	And I am on iMedidata Home page
+    And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 4 of 30 
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)" assigned to <Study A>
+	And I take a screenshot 5 of 30 
+	And I navigate back to iMedidata home page
+	And I am on iMedidata Home page
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 6 of 30 
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)" assigned to <Study B>
+	And I take a screenshot 7 of 30
+    And I returned back to iMedidata
+	And I am on iMedidata Home page
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 8 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)" assigned to <Study C>
+	And I take a screenshot 9 of 30
+	When I change the assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role from "<Modules Role 1>" to "<Modules Role 5>"
+	And I take a screenshot 10 of 30
+	Then I am on iMedidata Home Page
+	
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 11 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 5>"
+	And I take a screenshot 12 of 30
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 13 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 5>"
+	And I take a screenshot 14 of 30
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 15 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 5>"
+	And I take a screenshot 16 of 30
+    And I navigate back to iMedidata
+
+	And I change the assignment to the iMedidata Study named "<Study C>" for the App named "<Modules App>" Role from "<Modules Role 3>" to "<Modules Role 5>"
+	And I take a screenshot 17 of 30
+	And I am on iMedidata Home Page
+	
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 18 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 5>"
+	And I take a screenshot 19 of 30
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 20 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 5>"
+	And I take a screenshot 21 of 30
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 22 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 5>"
+	And I take a screenshot 23 of 30
+    And I navigate back to iMedidata
+
+	And I change the assignment to the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role from "<Modules Role 2>" to "<Modules Role 5>"
+	And I take a screenshot 24 of 30
+	And I am on iMedidata Home Page
+
+
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I do not see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 25 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 5>"
+	And I take a screenshot 26 of 30
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I do not see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 27 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 5>"
+	And I take a screenshot 28 of 30
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I do not see the message "You have 2 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 29 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 5>"
+	And I take a screenshot 30 of 30
+    And I navigate back to iMedidata
+
+@Rave 2013.2.0.1
+@MCC-73976-012
+@Validation
+Scenario: If a user has been assigned iMedidata EDC as his first study module assignment, and has three different Module Roles assignments for three different studies, they will only see the first Module Role assignment in Rave.
+          If a Module Role assignment is then added to the first study, they will continue to see the assignment of the second study in Rave.
+		  If the assignment of the second study is removed, they will see the assignment of the third study in Rave.
+		  The user will only be assigned to one user group in Rave
+   
+   Given I am an iMedidata User
+    And I am logged in
+    And my Username is "<iMedidata User 1 ID>" in iMedidata
+    And there is an iMedidata Study Group named "<Study Group>"
+    And there is an iMedidata Studies named "<Study A>", "<Study B>", "<Study C>" and "<Study D>" in the Study Group named "<Study Group>"
+    And I do not have an assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>“
+	And I have an assignment to the iMedidata Study named "<Study A>" for app "<EDC App>" with Role "<EDC Role 1>" only
+    And I take a screenshot 1 of 30
+    And I have an assignment to the iMedidata Study named "<Study B>" for the App named "<Modules App>" Role "<Modules Role 3> (No Sites)"
+    And I take a screenshot 2 of 30
+	And I have an assignment to the iMedidata Study named "<Study C>" for the App named "<Modules App>" Role "<Modules Role 1> (All Modules)"
+    And I take a screenshot 3 of 30
+    And I have an assignment to the iMedidata Study named "<Study D>" for the App named "<Modules App>" Role "<Modules Role 2> (No Reports)"
+    And I take a screenshot 4 of 30
+	And I am on iMedidata Home page
+    And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 5 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)" assigned to <Study A>
+	And I take a screenshot 6 of 30
+	And I returned back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 7 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)" assigned to <Study B>
+	And I take a screenshot 8 of 30
+    And I returned back to iMedidata
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 9 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)" assigned to <Study C>
+	And I take a screenshot 10 of 30
+    And I returned back to iMedidata
+	And I follow "<Modules App>" for Study "<Study D>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 11 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)" assigned to <Study D>
+	And I take a screenshot 12 of 30
+    And I returned back to iMedidata
+	And I logout
+
+	And I login as iMedidata ADMIN user
+	And I invite the "<iMedidata User 1 ID>" user to the iMedidata Study named "<Study A>"
+	And "<iMedidata User 1 ID>" user has assignment to the iMedidata Study named "<Study A>" for the App named "<Modules App>" Role "<Modules Role 5>"
+	And I take a screenshot 13 of 30
+	And I Logout from iMedidata as ADMIN user
+
+	And I login as iMedidata user "<iMedidata User 1 ID>"
+	And I accept the invitation
+	And I am on iMedidadata Home page
+	And I take a screenshot 14 of 30
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 15 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 16 of 30
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study B>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 17 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 18 of 30
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 19 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 20 of 30
+    And I navigate back to iMedidata
+	And I follow "<Modules App>" for Study "<Study D>" 
+	And I am on Rave Home page
+	And I see the message "You have 4 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 21 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 3> (No Sites)"
+	And I take a screenshot 22 of 30
+    And I navigate back to iMedidata
+	And I Logout 
+	
+	And I login as iMedidata ADMIN user
+	When I delete User assginment to "<Study B>"
+	And I take a screenshot 23 of 30
+	And I Logout from iMedidata as ADMIN user
+
+	And I login as iMedidata user "<iMedidata User 1 ID>"
+	Then I am on iMedidadata Home page
+	And I do not see assignments to Study <Study B>
+	And I take a screenshot 24 of 30
+	And I follow "<Modules App>" for Study "<Study A>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 25 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 26 of 30
+	And I returned back to iMedidata
+	And I follow "<Modules App>" for Study "<Study C>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 27 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 28 of 30
+	And I follow "<Modules App>" for Study "<Study D>" 
+	And I am on Rave Home page
+	And I see the message "You have 3 "Rave Modules" invitations in iMedidata."
+	And I take a screenshot 29 of 30
+	And I navigate to User Administration Module
+	And I search for the iMedidata user "<iMedidata User 1 ID>"
+	And I navigate to User Details page
+	And I should see the User Group Role "<Modules Role 1> (All Modules)"
+	And I take a screenshot 30 of 30
+
 @release2012.2.0
 @PB2.5.8.28-07 
 @Draft
