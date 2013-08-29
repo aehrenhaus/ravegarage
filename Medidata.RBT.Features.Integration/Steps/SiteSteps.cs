@@ -14,16 +14,22 @@ namespace Medidata.RBT.Features.Integration.Steps
     [Binding]
     public class SiteSteps : BaseClassSteps
     {
-        [Given(@"the Site with site number ""(.*)"" exists in the Rave database")]
+        [Given(@"the Site with site number ""([^""]*)"" exists in the Rave database")]
         public void TheSiteWithSiteNumber____ExistsInTheRaveDatabase(string siteNumber)
         {
             SiteHelper.CreateRaveSite(siteNumber);
         }
 
-        [Given(@"the Site with Name ""(.*)"" and site number ""(.*)"" exists in the Rave database")]
+        [Given(@"the Site with Name ""([^""]*)"" and site number ""([^""]*)"" exists in the Rave database")]
         public void TheSiteWithName____AndSiteNumber____ExistsInTheRaveDatabase(string siteName, string siteNumber)
         {
             SiteHelper.CreateRaveSite(siteNumber, siteName);
+        }
+
+        [Given(@"the Site with Name ""([^""]*)"" and site number ""([^""]*)"" and UUID ""([^""]*)"" exists in the Rave database")]
+        public void TheSiteWithName____AndSiteNumber____AndUUID____ExistsInTheRaveDatabase(string siteName, string siteNumber, string uuid)
+        {
+            SiteHelper.CreateRaveSite(siteNumber, siteName, uuid);
         }
 
         [Then(@"I should see the site in the Rave database")]
@@ -33,11 +39,11 @@ namespace Medidata.RBT.Features.Integration.Steps
                            ScenarioContext.Current.Get<String>("siteUuid") : //site was created via post message
                            ScenarioContext.Current.Get<Site>("site").Uuid;  //site was seeded in Rave
 
-            var site = Site.FindByUuid(siteUuid, 1, SystemInteraction.Use());
+            var loadedSite = Site.FindByUuid(siteUuid, 1, SystemInteraction.Use());
 
-            Assert.IsNotNull(site);
+            Assert.IsNotNull(loadedSite);
 
-            ScenarioContext.Current.Set(site, "site");
+            ScenarioContext.Current.Set(loadedSite, "site");
         }
 
         [Then(@"the site should have Address1 ""(.*)""")]

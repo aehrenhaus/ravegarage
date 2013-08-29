@@ -28,18 +28,21 @@ Scenario: When a Site PUT message gets put onto the queue, and the site already 
 
 
 @PB2.5.9.27-01
-Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is not linked to the iMedidata site),
+Scenario Outline: If I create a site in iMedidata, and an unlinked site in Rave (that is not linked to the iMedidata site),
            when Rave receives the site it will link it to the iMedidata site, matching it based on UUID first.
-	Given the Site with site number "4a" exists in the Rave database
+	#make this a table, so I can send as many parameters as I like
+	Given the Site with Name "Site 4a" and site number "<RaveSiteNumber>" and UUID "<Uuid>" exists in the Rave database
 	And I send the following Site message to SQS
-	| EventType | Address1    | City       | State | PostalCode | Country | Telephone | Name      | Number | Id | Timestamp           |
-	| POST      | 111 5th Ave | New Jersey | NJ    | 10004      | USB     | 1234567   | TestSite4 | 4      | 4  | 2013-02-02 12:00:00 |
+	| EventType | Address1    | City       | State | PostalCode | Country | Telephone | Name      | Number				  | Id | Uuid | Timestamp |
+	| POST      | 111 5th Ave | New Jersey | NJ    | 10004      | USB     | 1234567   | TestSite4 | <iMedidataSiteNumber> | 4  | <Uuid> | 2013-02-02 12:00:00 |
 	When the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should exist with the following properties
-	| ExternalID | Source    | LastExternalUpdateDate |
-	| 4          | iMedidata | "2013-02-02 12:00:00"  |
-
+	| Uuid	 | ExternalID | Source    | LastExternalUpdateDate |
+	| <Uuid> | 4          | iMedidata | "2013-02-02 12:00:00"  |
+Examples: 
+	| Uuid                                 | RaveSiteNumber | iMedidataSiteNumber |
+	| f879a85f-2030-4c93-879f-2cc72bbebbc3 | 4a             | 4					  |
 
 @PB2.5.9.27-02
 Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is not linked to the iMedidata site), when Rave receives

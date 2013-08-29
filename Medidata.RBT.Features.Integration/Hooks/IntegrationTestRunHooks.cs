@@ -21,7 +21,6 @@ namespace Medidata.RBT.Features.Integration.Hooks
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            //TODO: re-enable this
             DbHelper.RestoreDatabase();
 
             IntegrationTestContext.TestFailed = false;

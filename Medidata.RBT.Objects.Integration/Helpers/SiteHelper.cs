@@ -53,7 +53,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
         }
 
-        public static void CreateRaveSite(string siteNumber, string siteName = "SiteName")
+        public static void CreateRaveSite(string siteNumber, string siteName = "SiteName", string uuid = null)
         {
             var site = new Site(SystemInteraction.Use())
                            {
@@ -61,7 +61,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                                Number = siteNumber,
                                Name = siteName,
                                ExternalSystem = ExternalSystem.GetByID(1),
-                               Uuid = Guid.NewGuid().ToString()
+                               Uuid = uuid ?? Guid.NewGuid().ToString()
                            };
             site.Save();
             ScenarioContext.Current.Add("site", site);
