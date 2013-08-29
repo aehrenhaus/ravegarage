@@ -307,6 +307,7 @@
     <Compile Include="TableModels\ReportAssignmentModel.cs" />
     <Compile Include="TableModels\ReportListModel.cs" />
     <Compile Include="TableModels\TaskSummaryItemModel.cs" />
+    <Compile Include="TableModels\TSDVSubjectOverrideModel.cs" />
     <Compile Include="TableModels\TSDV\Permutations.cs" />
     <Compile Include="TableModels\UnitConversionModel.cs" />
     <Compile Include="Translation Workbench\TranslationGridPage.cs" />

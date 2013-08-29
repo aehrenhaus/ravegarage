@@ -32,8 +32,6 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(isSubjectRandomized, "Subjects enrolled to wrong tiers");
         }
 
-
-
         /// <summary>
         /// Verify that there is not a repeating pattern in every rowsTotal rows in a list of rowsTotal amount of rows
         /// </summary>
@@ -256,5 +254,16 @@ namespace Medidata.RBT.Features.Rave
            CurrentPage.As<BlockPlansPageBase>().AddBlocks(table.CreateSet<TSDVBlockModel>());
         }
 
-    }
+        /// <summary>
+        /// Move a Subject to another Tier
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I Override Subject")]
+        public void ThenIOverrideSubject(Table table)
+        {
+            SpecialStringHelper.ReplaceTableColumn(table, "Subject");
+            IEnumerable<TSDVSubjectOverrideModel> overrideSubjects = table.CreateSet<TSDVSubjectOverrideModel>();
+            CurrentPage = CurrentPage.As<SubjectOverridePage>().OverrideSubject(overrideSubjects);
+        }
+	}
 }
