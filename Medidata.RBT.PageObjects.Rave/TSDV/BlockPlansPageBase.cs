@@ -140,7 +140,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// </summary>
         /// <param name="blockName">Block to modify</param>
         /// <param name="subjectCount">Number of subject to assign to block</param>
-        public void ModifyBlock(string blockName, int subjectCount = -1)
+        public void ModifyBlock(string blockName, int subjectCount)
         {
             var container = Browser.TryFindElementByXPath(String.Format("//table[contains(@id,'_BlocksTable')]//span[contains(@id,'_BlockNameLabel')][text()='{0}']/../../..", blockName));
             var blockEditImage = container.TryFindElementByXPath(".//span[contains(@id,'_BlockEditDiv')]/img[contains(@id,'_BlockEdit')]");
@@ -158,7 +158,7 @@ namespace Medidata.RBT.PageObjects.Rave
         /// <param name="blockName">Block that tier belongs to</param>
         /// <param name="tierName">Tier to modify</param>
         /// <param name="subjectCount">Number of subject to assign to tier</param>
-        public void ModifyTier(string blockName, string tierName, int subjectCount = -1)
+        public void ModifyTier(string blockName, string tierName, int subjectCount)
         {
             var blockContainer = Browser.TryFindElementByXPath(String.Format("//table[contains(@id,'_BlocksTable')]//span[contains(@id,'_BlockNameLabel')][text()='{0}']/../../..", blockName));
             var tierContainer = blockContainer.TryFindElementByXPath(String.Format(".//table[contains(@id,'_BlockTiersTable')]//span[contains(@id,'_TierName')][contains(text(),'{0}')]/../..", tierName));
