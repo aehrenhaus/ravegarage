@@ -102,6 +102,11 @@ namespace Medidata.RBT
 		/// </summary>
 		IPage ChooseFromDropdown(string identifier,string text, string objectType = null, string areaIdentifier = null);
 
+        /// <summary>
+        /// Choose by text from a dropdown like UI control with partial text
+        /// </summary>
+        IPage ChooseFromPartialDropdown(string identifier, string text, string objectType = null, string areaIdentifier = null);
+
 		/// <summary>
 		/// Choose by text from checkbox
 		/// Example scenario: Check 'male' in 'Gender group of checkboxes' 

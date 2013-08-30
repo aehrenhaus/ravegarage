@@ -25,6 +25,18 @@ namespace Medidata.RBT.Common.Steps
 		}
 
         /// <summary>
+        /// Select text from a dropdown. 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="identifier"></param>
+        [StepDefinition(@"I choose ""([^""]*)"" from ""([^""]*)"" with partial text")]
+        public void IChoose____From____WithPartialText(string text, string identifier)
+        {
+            text = SpecialStringHelper.Replace(text);
+            CurrentPage = CurrentPage.ChooseFromPartialDropdown(identifier, text);
+        }
+
+        /// <summary>
         /// Unused step
         /// </summary>
         /// <param name="objectType"></param>
