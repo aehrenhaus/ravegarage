@@ -84,8 +84,8 @@ Scenario: MCC-70487-001 When Subject Counts for multiple block plans are updated
 	And I edit Blocks 
 		| Name              | Subject Count            |
 		| Architect Defined | 2                        |
-	And I edit Tiers 
-		| Blocks            | Tiers                    | Subject Count |
+	And I edit Tiers	 
+		| Block             | Tier					   | Subject Count |
 		| Architect Defined | No Forms (Default Tier)  | 1             |
 		| Architect Defined | All Forms (Default Tier) | 1             |
 	And I create a new block and save
@@ -242,7 +242,7 @@ Scenario: MCC-70487-003 When Subject Counts for multiple block plans are updated
 		| Name              | Subject Count |
 		| Architect Defined | 2             |
 	And I edit Tiers 
-		| Blocks            | Tiers                    | Subject Count |
+		| Block				| Tier					   | Subject Count |
 		| Architect Defined | No Forms (Default Tier)  | 1             |
 		| Architect Defined | All Forms (Default Tier) | 1             |
 	And I create a new block and save

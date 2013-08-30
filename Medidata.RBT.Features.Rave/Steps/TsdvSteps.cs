@@ -113,7 +113,8 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I edit Tiers")]
         public void GivenIEditTiers(Table table)
         {
-            CurrentPage = CurrentPage.As<BlockPlansPageBase>().TiersEdit(table);
+            IEnumerable<TSDVTierModel> tiers = table.CreateSet<TSDVTierModel>();
+            CurrentPage = CurrentPage.As<BlockPlansPageBase>().TiersEdit(tiers);
         }
         
         /// <summary>

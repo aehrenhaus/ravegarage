@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using Medidata.RBT.PageObjects.Rave.TableModels;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
@@ -92,14 +94,16 @@ namespace Medidata.RBT.PageObjects.Rave
             return this;
         }
 
-        public IPage TiersEdit(Table table)
+        /// <summary>
+        /// Method to process modifications to tiers
+        /// </summary>
+        /// <param name="tiers">List of tiers to modify</param>
+        /// <returns>Current page after all modifications</returns>
+        public IPage TiersEdit(IEnumerable<TSDVTierModel> tiers)
         {
-            foreach (var row in table.Rows)
+            foreach (var tier in tiers)
             {
-                string block = row[0];
-                string tier = row[1];
-                string count = row[2];
-                ModifyTier(block, tier, count);
+                ModifyTier(tier.Block, tier.Tier, tier.SubjectCount);
             }
             return this;
         }
@@ -131,35 +135,43 @@ namespace Medidata.RBT.PageObjects.Rave
             if (repeated) Browser.TryFindElementByPartialID("_BlockPlanDetailCtrl_NewBlockIsRepeatedCheckbox").EnhanceAs<Checkbox>().Check();
         }
 
+        /// <summary>
+        /// Method to modify a block
+        /// </summary>
+        /// <param name="blockName">Block to modify</param>
+        /// <param name="subjectCount">Number of subject to assign to block</param>
         public void ModifyBlock(string blockName, int subjectCount = -1)
         {
-            var container = Browser.TryFindElementByLinkText(blockName).Parent().Parent();
-			container.Images()[0].Click();
-            container.TryFindElementByPartialID("EditBlockSizeTextBox").EnhanceAs<Textbox>().SetText(subjectCount.ToString());
-            container.TryFindElementByPartialID("EditBlockSizeTextBox").Parent().Parent().Parent().Images()[2].Click();
+            var container = Browser.TryFindElementByXPath(String.Format("//table[contains(@id,'_BlocksTable')]//span[contains(@id,'_BlockNameLabel')][text()='{0}']/../../..", blockName));
+            var blockEditImage = container.TryFindElementByXPath(".//span[contains(@id,'_BlockEditDiv')]/img[contains(@id,'_BlockEdit')]");
+            blockEditImage.Click();
+            var blockSizeEditTextbox = container.TryFindElementByXPath(".//span[contains(@id,'_BlockSizeEditDiv')]/input[contains(@id,'_EditBlockSizeTextBox')]");
+            blockSizeEditTextbox.EnhanceAs<Textbox>().SetText(subjectCount.ToString(CultureInfo.InvariantCulture));
+            var blockEditEndSaveImage = container.TryFindElementByXPath(".//span[contains(@id,'_BlockEditEndSaveDiv')]/img[contains(@id,'_BlockEditSave')]");
+            blockEditEndSaveImage.Click();
+            WaitForPageLoads();
         }
 
-        public void ModifyTier(string blockName, string tierName, string subjectCount)
+        /// <summary>
+        /// Method to modify a tier
+        /// </summary>
+        /// <param name="blockName">Block that tier belongs to</param>
+        /// <param name="tierName">Tier to modify</param>
+        /// <param name="subjectCount">Number of subject to assign to tier</param>
+        public void ModifyTier(string blockName, string tierName, int subjectCount = -1)
         {
-            var tierList = Browser.FindElementsByPartialId("_TierName");
-            foreach (var tier in tierList)
-            {
-                if (tier.Text.Contains(tierName))
-                {
-                    var outerContainer = tier.Parent().Parent().Parent().Parent().Parent().Parent();
-                    if (outerContainer.TryFindElementByPartialID("BlockNameLabel").EnhanceAs<Textbox>().Text == blockName)
-                    {
-                        var container = tier.Parent().Parent();
-                        container.Images()[0].Click();
-                        container.TryFindElementByPartialID("EditTierSizeTextBox").EnhanceAs<Textbox>().SetText(subjectCount);
-                        container.TryFindElementByPartialID("EditTierSizeTextBox").Parent().Parent().Parent().Images()[2].Click();
-                        break;
-                    }
-                }
-            }
+            var blockContainer = Browser.TryFindElementByXPath(String.Format("//table[contains(@id,'_BlocksTable')]//span[contains(@id,'_BlockNameLabel')][text()='{0}']/../../..", blockName));
+            var tierContainer = blockContainer.TryFindElementByXPath(String.Format(".//table[contains(@id,'_BlockTiersTable')]//span[contains(@id,'_TierName')][contains(text(),'{0}')]/../..", tierName));
+            var tierEditImage = tierContainer.TryFindElementByXPath(".//span[contains(@id,'_TierEditDiv')]/img[contains(@id,'_TierEdit')]");
+            tierEditImage.Click();
+            var tierSizeEditTextbox = tierContainer.TryFindElementByXPath(".//div[contains(@id,'_TierSizeEditDiv')]/input[contains(@id,'_EditTierSizeTextBox')]");
+            tierSizeEditTextbox.EnhanceAs<Textbox>().SetText(subjectCount.ToString(CultureInfo.InvariantCulture));
+            var tierEditEndSaveImage = tierContainer.TryFindElementByXPath(".//span[contains(@id,'_TierEditEndSaveDiv')]/img[contains(@id,'_TierEditSave')]");
+            tierEditEndSaveImage.Click();
+            WaitForPageLoads();
         }
 
-		/// <summary>
+        /// <summary>
 		/// To delete a tier passed by tier name
 		/// Note: no need to pass content in parenthesis ex: if tier name is 
 		/// "No Forms (Default Tier)" then only pass "No Forms" as tier name 
