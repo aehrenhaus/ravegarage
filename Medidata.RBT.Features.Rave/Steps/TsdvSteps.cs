@@ -103,9 +103,20 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I edit Blocks")]
         public void GivenIEditBlocks(Table table)
         {
-            CurrentPage.As<BlockPlansPageBase>().BlocksEdit(table.CreateSet<TSDVObjectModel>());
+            CurrentPage = CurrentPage.As<BlockPlansPageBase>().BlocksEdit(table.CreateSet<TSDVObjectModel>());
         }
 
+        /// <summary>
+        /// Method used to edit tiers, with the supplied information
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I edit Tiers")]
+        public void GivenIEditTiers(Table table)
+        {
+            IEnumerable<TSDVTierModel> tiers = table.CreateSet<TSDVTierModel>();
+            CurrentPage = CurrentPage.As<BlockPlansPageBase>().TiersEdit(tiers);
+        }
+        
         /// <summary>
         /// TSDV step to delete tier from block plan
         /// Tier can only be deleted from study not in prod environment
