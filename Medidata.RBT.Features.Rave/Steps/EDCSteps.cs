@@ -31,6 +31,17 @@ namespace Medidata.RBT.Features.Rave
 		}
 
         /// <summary>
+        /// Select a study with a particular environment (working)
+        /// </summary>
+        /// <param name="studyName">Study to select</param>
+        /// <param name="environment">Environment to select</param>
+        [StepDefinition(@"I select Study ""([^""]*)"" with environment ""([^""]*)""")]
+        public void ISelectStudyWithEnv____(string studyName, string environment)
+        {
+            ISelectStudy____AndSite____Env____(studyName, environment);
+        }
+
+        /// <summary>
         /// Select study on Home page
         /// </summary>
         /// <param name="studyName">Study to select</param>

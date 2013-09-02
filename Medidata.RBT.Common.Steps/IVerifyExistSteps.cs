@@ -322,6 +322,14 @@ namespace Medidata.RBT.Common.Steps
 			Assert.IsFalse(exists, string.Format("Does exist :[{0}] image", fileName));
 		}
 
+        [StepDefinition(@"I verify lab ""(.*)"" is selected for the page")]
+        public void IVerifyLabIsSelectedForThePage(string lab)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            Assert.IsTrue(page.Browser.DropdownById("LOC_DropDown").SelectedText == lab);
+        }
+
+
         #region Helper methods
 
         /// <summary>

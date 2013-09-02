@@ -11,6 +11,7 @@ Given study "MCC-67716" is assigned to Site "Site 2" with study environment "Aux
 Given I publish and push eCRF "MCC-67716.xml" to "Version 1"
 Given I publish and push eCRF "MCC-67716.xml" to "Version 2"
 Given Site "Site 1" is Units-Only-enabled
+Given Site "Site 2" is Units-Only-enabled
 Given role "SUPER ROLE 1" exists
 Given following Project assignments exist
 	| User         | Project   | Environment | Role         | Site   | SecurityRole          |
@@ -55,6 +56,7 @@ Given I select Unit
 	| Weight      | LbsMCC-67716      | 
 	| Height      | ftMCC-67716       | 
 Given I save the CRF page
+Given I take a screenshot
 
 @Release_2013.4.0
 @PB_MCC67716-001
@@ -75,4 +77,12 @@ And I click button "Execute"
 And I accept alert window
 And I select "Live Update" checkbox
 And I wait for 10 seconds
+And I take a screenshot
+When I switch to "Reports" window
+And I navigate to "Home"
+And I select Study "MCC-67716" with environment "Dev"
+And I select a Subject "SUB{Var(num1)}"
+And I select link "Default Lab Folder"
+And I select link "Default Lab Form"
+Then I verify lab "Units Only" is selected for the page
 And I take a screenshot
