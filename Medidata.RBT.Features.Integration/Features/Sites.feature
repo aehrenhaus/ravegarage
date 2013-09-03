@@ -30,7 +30,6 @@ Scenario: When a Site PUT message gets put onto the queue, and the site already 
 @PB2.5.9.27-01
 Scenario Outline: If I create a site in iMedidata, and an unlinked site in Rave (that is not linked to the iMedidata site),
            when Rave receives the site it will link it to the iMedidata site, matching it based on UUID first.
-	#make this a table, so I can send as many parameters as I like
 	Given the Site with Name "Site 4a" and site number "<RaveSiteNumber>" and UUID "<Uuid>" exists in the Rave database
 	And I send the following Site message to SQS
 	| EventType | Address1    | City       | State | PostalCode | Country | Telephone | Name      | Number				  | Id | Uuid | Timestamp |
