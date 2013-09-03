@@ -214,7 +214,12 @@ namespace Medidata.RBT.Features.Rave
             foreach (FieldModel field in fields)
             {
                 IEDCFieldControl fieldControl = page.FindField(field.Field, record: field.Record);
-                if (field.Data != null && field.Data.Length > 0)
+                if (field.Data == "") //test blank values
+                {
+                    bool dataExists = fieldControl.HasDataEntered(field.Data);
+                    Assert.IsTrue(dataExists, "Data exists for field(s)");
+                }
+                if (!string.IsNullOrEmpty(field.Data))
                 {
                     bool dataExists = fieldControl.HasDataEntered(field.Data);
                     Assert.IsTrue(dataExists, "Data doesn't exist for field(s)");
@@ -739,6 +744,23 @@ namespace Medidata.RBT.Features.Rave
             LandscapeLogField fieldControl = page.FindLandscapeLogField(fieldName, lineNum, controlType);
             fieldControl.Click();
         }
+
+        /// <summary>
+        /// Clear dynamicsearchlist
+        /// </summary>
+        /// <param name="fieldName"></param>
+        /// <param name="lineNum"></param>
+        [StepDefinition(@"I clear dynamic search list ""(.*)""")]
+        public void IClearDynamicSearchList(string dslfieldname)
+        {
+            var controlType = ControlType.DynamicSearchList;
+            CRFPage page = CurrentPage.As<CRFPage>();
+            IEDCFieldControl fieldControl = page.FindField(dslfieldname);
+            //since the control behaves differently in selenium, need to enter a single key first, then blank for normal behavior
+            fieldControl.EnterData("a", controlType); 
+            fieldControl.EnterData(String.Empty, controlType);
+        }
+
 
         /// <summary>
         /// Click drop button on a standard field on CRF page

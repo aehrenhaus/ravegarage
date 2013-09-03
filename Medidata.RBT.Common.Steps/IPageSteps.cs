@@ -214,5 +214,18 @@ namespace Medidata.RBT.Common.Steps
             Browser.ExecuteScript("javascript: setTimeout(\"history.go(-1)\", 2000)");
             */
         }
+
+        /// <summary>
+        /// Opens page for editing
+        /// </summary>
+        [StepDefinition(@"I start editing page")]
+        public void WhenIStartEditingPage()
+        {
+            var editButtons = Browser.TryFindElementsBy(
+                By.Id("_ctl0_Content_R_header_SG_PencilButton"),
+                isWait: true);
+            editButtons[0].Click();
+        }
+
 	}
 }

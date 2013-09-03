@@ -227,7 +227,10 @@ namespace Medidata.RBT.PageObjects.Rave
         protected void EnterDynamicSearchListValue(string val)
         {
             CompositeDropdown dsl = new CompositeDropdown(this.Page, "DSL", FieldDataSpecific);
-            dsl.TypeAndSelect(val);
+            if (val == "")
+                dsl.Type("");
+            else
+                dsl.TypeAndSelect(val);
         }
 
         protected void EnterRadiobuttonValue(string val)
