@@ -1,5 +1,4 @@
 @FT_MCC-57733
-@ignore
 
 Feature: MCC-57733 When configuring Coder settings, the settings are preserved even after I overwrite my existing eCRF version to save my changes.
 
@@ -97,7 +96,7 @@ Background:
 @Release_2013.4.0
 @PB_MCC-57733-001
 @VY15.AUG.2013
-@DRAFT
+@Validation
 
 Scenario: MCC-57733-001 As a Rave Study Administor, when I update the Coder Configuration settings for a field associated with Coder, and I overwrite my existing eCRF version to save my changes, when I download the Architect Loader Specification for that version, I am able to see the Coder Configuration settings in the specification.
 
@@ -106,11 +105,14 @@ Scenario: MCC-57733-001 As a Rave Study Administor, when I update the Coder Conf
 	And I select "Project" link "MCC-57733-001" in "Active Projects"
 	And I select Draft "Draft 1"
 	And I publish CRF Version "Version1"
+	And I take a screenshot
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC57733"
 	And I edit Field "varcheckbx3"
+	And I take a screenshot
 	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
+	And I take a screenshot
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
 		| Configuration Name | Data    | Control Type |
@@ -133,27 +135,25 @@ Scenario: MCC-57733-001 As a Rave Study Administor, when I update the Coder Conf
 	And I take a screenshot
 	And I select "Study" link "MCC-57733-001" in "Header"
 	And I select link(partial) "Version1 "
+	And I take a screenshot
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
 		| FormOID  | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
 		| ETE1     | CODERTERM1  | SOC         | 1        | eng    | False              | True           |
 		| ETE1     | JDT         | ATC         | 1        | eng    | False              | True           |
-		| TESTFORM | VARCHECKBX3 | PRODUCT     | 2        | eng    | True               | True           |
-	And I take a screenshot				 
+		| TESTFORM | VARCHECKBX3 | PRODUCT     | 2        | eng    | True               | True           |				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
 		| FormOID  | FieldOID    | SupplementalTerm |
-		| TESTFORM | VARCHECKBX3 | TEST1            |
-	And I take a screenshot	
+		| TESTFORM | VARCHECKBX3 | TEST1            |	
 	And I verify "CoderComponentTerms" spreadsheet data
 		| FormOID  | FieldOID    | ComponentTerm | ComponentName    |
 		| TESTFORM | VARCHECKBX3 | VARCHECKBX    | DRUGRECORDNUMBER |
-	And I take a screenshot
 
 
 @Release_2013.4.0
 @PB_MCC-57733-002
 @VY15.AUG.2013
-@DRAFT
+@Validation
 
 Scenario: MCC-57733-002 As a Rave Study Administor, when I associate a field with Coder, and I add Coder Configuration settings for that field, and I overwrite my existing eCRF version to save my changes, when I download the Architect Loader Specification for that version, I am able to see the Coder Configuration settings in the specification.
 
@@ -162,11 +162,14 @@ Scenario: MCC-57733-002 As a Rave Study Administor, when I associate a field wit
 	And I select "Project" link "MCC-57733-002" in "Active Projects"
 	And I select Draft "Draft 1"
 	And I publish CRF Version "Version1"
+	And I take a screenshot
 	And I navigate to "Forms"
 	And I select Fields for Form "ETE2"
 	And I edit Field "CoderField2"
+	And I take a screenshot
 	And I choose "CODER- WHODRUGB2" from "Coding Dictionary:"
 	And I select link "Save"
+	And I take a screenshot
 	And I click button "Coder Configuration"
 	And I enter data in architect coder configuration and save
 		| Configuration Name | Data | Control Type |
@@ -189,28 +192,26 @@ Scenario: MCC-57733-002 As a Rave Study Administor, when I associate a field wit
 	And I take a screenshot
 	And I select "Study" link "MCC-57733-002" in "Header"
 	And I select link(partial) "Version1 "
+	And I take a screenshot
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
 		| FormOID  | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
 		| ETE1     | CODERTERM1  | SOC         | 1        | eng    | False              | True           |
 		| ETE1     | JDT         | ATC         | 1        | eng    | False              | True           |
 		| ETE2     | CODERFIELD2 | ATC         | 4        | eng    | True               | True           |
-		| TESTFORM | VARCHECKBX3 | ATC         | 1        | eng    | False              | False          |
-	And I take a screenshot				 
+		| TESTFORM | VARCHECKBX3 | ATC         | 1        | eng    | False              | False          |				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
 		| FormOID | FieldOID    | SupplementalTerm |
-		| ETE2    | CODERFIELD2 | LOGSUPPFIELD2    |
-	And I take a screenshot	
+		| ETE2    | CODERFIELD2 | LOGSUPPFIELD2    |	
 	And I verify "CoderComponentTerms" spreadsheet data
 		| FormOID | FieldOID    | ComponentTerm | ComponentName | 
 		| ETE2    | CODERFIELD2 | LOGCOMPFIELD1 | SOURCE        |
-	And I take a screenshot
 
 
 @Release_2013.4.0
 @PB_MCC-57733-003
 @VY15.AUG.2013
-@DRAFT
+@Validation
 
 Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to the draft, and I associate that field with Coder, and I add Coder Configuration settings for that field, and I overwrite my existing eCRF version to save my changes, when I download the Architect Loader Specification for that version, I am able to see the Coder Configuration settings in the specification.
 
@@ -219,13 +220,16 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 	And I select "Project" link "MCC-57733-003" in "Active Projects"
 	And I select Draft "Draft 1"
 	And I publish CRF Version "Version1"
+	And I take a screenshot
 	And I navigate to "Forms"
 	And I select link "Add Form"
 	And I choose "Bottom" from "Add Form"
 	And I enter data in Architect Form and save
 		| Form Name | OID       | Active |
 		| MCC577333 | MCC577333 | true   |
+	And I take a screenshot
 	And I select Fields for Form "MCC577333"
+	And I take a screenshot
 	And I select link "Add New"
 	And I enter data in Architect Field and save
 		| Field       | Data | ControlType |
@@ -234,6 +238,7 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 		| Field Name  | Code | textbox     |
 		| Field OID   | Code | textbox     |
 		| Field Label | Code | textarea    |
+	And I take a screenshot
 	And I select link "Add New"
 	And I enter data in Architect Field and save
 		| Field       | Data | ControlType |
@@ -242,6 +247,7 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 		| Field Name  | Supp | textbox     |
 		| Field OID   | Supp | textbox     |
 		| Field Label | Supp | textarea    |
+	And I take a screenshot
 	And I select link "Add New"
 	And I enter data in Architect Field and save
 		| Field       | Data | ControlType |
@@ -250,6 +256,7 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 		| Field Name  | Comp | textbox     |
 		| Field OID   | Comp | textbox     |
 		| Field Label | Comp | textarea    |
+	And I take a screenshot
 	And I edit Field "Code"
 	And I choose "CODER- AZDD" from "Coding Dictionary:"
 	And I select link "Save"
@@ -276,28 +283,26 @@ Scenario: MCC-57733-003 As a Rave Study Administor, when I add a new field to th
 	And I take a screenshot
 	And I select "Study" link "MCC-57733-003" in "Header"
 	And I select link(partial) "Version1 "
+	And I take a screenshot
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
 		| FormOID   | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
 		| ETE1      | CODERTERM1  | SOC         | 1        | eng    | False              | True           |
 		| ETE1      | JDT         | ATC         | 1        | eng    | False              | True           |
 		| MCC577333 | CODE        | PRODUCT     | 3        | eng    | True               | False          |
-		| TESTFORM  | VARCHECKBX3 | ATC         | 1        | eng    | False              | False          |
-	And I take a screenshot				 
+		| TESTFORM  | VARCHECKBX3 | ATC         | 1        | eng    | False              | False          |				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
 		| FormOID   | FieldOID    | SupplementalTerm |
 		| MCC577333 | CODE        | SUPP             |
-	And I take a screenshot	
 	And I verify "CoderComponentTerms" spreadsheet data
 		| FormOID   | FieldOID | ComponentTerm | ComponentName |
 		| MCC577333 | CODE     | COMP          | DRUGRECORDNUMBER |
-	And I take a screenshot
 
 
 @Release_2013.4.0
 @PB_MCC-57733-004
 @VY15.AUG.2013
-@DRAFT
+@Validation
 
 Scenario: MCC-57733-004 As a Rave Study Administor, when I delete the Coder Configuration settings for a field associated with Coder, and I overwrite my existing eCRF version to save my changes, when I download the Architect Loader Specification for that version, I do not see the Coder Configuration settings for that field in the specification.
 
@@ -306,9 +311,11 @@ Scenario: MCC-57733-004 As a Rave Study Administor, when I delete the Coder Conf
 	And I select "Project" link "MCC-57733-004" in "Active Projects"
 	And I select Draft "Draft 1"
 	And I publish CRF Version "Version1"
+	And I take a screenshot
 	And I navigate to "Forms"
 	And I select Fields for Form "MCC57733"
 	And I edit Field "varcheckbx3"
+	And I take a screenshot
 	And I choose "..." from "Coding Dictionary:"
 	And I select link "Save"
 	And I take a screenshot
@@ -318,17 +325,15 @@ Scenario: MCC-57733-004 As a Rave Study Administor, when I delete the Coder Conf
 	And I take a screenshot
 	And I select "Study" link "MCC-57733-004" in "Header"
 	And I select link(partial) "Version1 "
+	And I take a screenshot
 	And I click the "Download" button to download
 	Then I verify "CoderConfiguration" spreadsheet data
 		| FormOID  | FieldOID    | CodingLevel | Priority | Locale | IsApprovalRequired | IsAutoApproval |
 		| ETE1     | CODERTERM1  | SOC         | 1        | eng    | False              | True           |
-		| ETE1     | JDT         | ATC         | 1        | eng    | False              | True           |
-	And I take a screenshot				 
+		| ETE1     | JDT         | ATC         | 1        | eng    | False              | True           |				 
 	And I verify "CoderSupplementalTerms" spreadsheet data
 		| FormOID | FieldOID | SupplementalTerm |
-		|         |          |                  |
-	And I take a screenshot	
+		|         |          |                  |	
 	And I verify "CoderComponentTerms" spreadsheet data
 		| FormOID | FieldOID | ComponentTerm | ComponentName |
 		|         |          |               |               |
-	And I take a screenshot
