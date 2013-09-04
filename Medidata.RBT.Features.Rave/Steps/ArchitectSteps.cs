@@ -1,4 +1,6 @@
-﻿using TechTalk.SpecFlow;
+﻿using System;
+using System.Collections.Specialized;
+using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -314,6 +316,19 @@ namespace Medidata.RBT.Features.Rave
         public void ISelectPreview____()
         {
             CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().ClickPreview();
+        }
+
+        [StepDefinition(@"I force navigate to the Library Page for study ""(.*)""")]
+        public void IForceNavigateToTheLibraryPageForStudy(string studyName)
+        {
+            if (studyName == "Global Library (Not a Real Project)")
+                CurrentPage = new ArchitectLibraryPage().NavigateToSelf(new NameValueCollection(){{"ProjectID", "-1"}});
+            else
+            {
+                Project project = SeedingContext.TryGetExistingFeatureObject<Project>(studyName);
+                CurrentPage = new ArchitectLibraryPage().NavigateToSelf(new NameValueCollection(){{"ProjectID", project.Number}});
+            }
+        
         }
 
         /// <summary>
