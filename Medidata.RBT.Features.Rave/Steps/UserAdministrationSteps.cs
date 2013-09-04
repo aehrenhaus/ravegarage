@@ -1,4 +1,11 @@
-﻿using TechTalk.SpecFlow;
+﻿using System;
+using Medidata.RBT.ConfigurationHandlers;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
+using Medidata.RBT.PageObjects.Rave.UserAdministrator;
+using Medidata.RBT.SeleniumExtension;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow.Assist;
@@ -43,5 +50,28 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<UserAdministrationPage>()
 				.SearchUser(model);
 		}
+
+        /// <summary>
+        /// Search for a user in user administation with seeded context
+        /// </summary>
+        /// <param name="table">Parameters to search for the user by</param>
+        [StepDefinition(@"I search User by seeded login")]
+        public void ISearchUserBySeededLogin(Table table)
+        {
+            var model = table.CreateInstance<UserAdministrationPage.SearchByModel>();
+
+            CurrentPage.As<UserAdministrationPage>().SearchUserBySeededLogin(model);
+        }
+
+        /// <summary>
+        /// Upload the user file back that was downloaded with user loader
+        /// </summary>
+        [StepDefinition(@"I upload the file that I last downloaded")]
+        public void IUploadTheFileThatILastDownloaded()
+        {
+            string filename=WebTestContext.LastDownloadedFile.FullName;
+            CurrentPage.As<UploadUserPage>().UploadFile(filename);
+        }
+
 	}
 }

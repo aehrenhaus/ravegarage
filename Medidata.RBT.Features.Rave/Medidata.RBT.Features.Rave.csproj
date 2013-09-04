@@ -705,6 +705,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US18812.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\UserAdministration\MCC-63904.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-63904.feature</DependentUpon>
+    </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
     <Compile Include="Steps\AuditPageSteps.cs" />
@@ -797,6 +802,10 @@
     <None Include="Features\EDC\MCC-52852.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-52852.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\UserAdministration\MCC-63904.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-63904.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\Architect\MCC-57733.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -1286,7 +1295,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\ReportAdmin\" />
-    <Folder Include="Features\UserAdministration\" />
     <Folder Include="TableModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
