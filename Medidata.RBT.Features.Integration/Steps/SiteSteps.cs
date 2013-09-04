@@ -14,23 +14,12 @@ namespace Medidata.RBT.Features.Integration.Steps
     [Binding]
     public class SiteSteps : BaseClassSteps
     {
-        [Given(@"the Site with site number ""([^""]*)"" exists in the Rave database")]
-        public void TheSiteWithSiteNumber____ExistsInTheRaveDatabase(string siteNumber)
+        [Given(@"the following sites? exists? in the rave database:")]
+        public void GivenTheFollowingSitesExistInTheRaveDatabase(Table table)
         {
-            SiteHelper.CreateRaveSite(siteNumber);
+            SiteHelper.CreateRaveSites(table);
         }
 
-        [Given(@"the Site with Name ""([^""]*)"" and site number ""([^""]*)"" exists in the Rave database")]
-        public void TheSiteWithName____AndSiteNumber____ExistsInTheRaveDatabase(string siteName, string siteNumber)
-        {
-            SiteHelper.CreateRaveSite(siteNumber, siteName);
-        }
-
-        [Given(@"the Site with Name ""([^""]*)"" and site number ""([^""]*)"" and UUID ""([^""]*)"" exists in the Rave database")]
-        public void TheSiteWithName____AndSiteNumber____AndUUID____ExistsInTheRaveDatabase(string siteName, string siteNumber, string uuid)
-        {
-            SiteHelper.CreateRaveSite(siteNumber, siteName, uuid);
-        }
 
         [Then(@"I should see the site in the Rave database")]
         public void ThenIShouldSeeTheSiteInTheRaveDatabase()

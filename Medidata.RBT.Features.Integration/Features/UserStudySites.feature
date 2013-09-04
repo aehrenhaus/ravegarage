@@ -8,7 +8,9 @@ Scenario: When a UserStudySite message gets put onto the queue, and the user alr
 	And the study with name "testStudy1" and environment "prod" with ExternalId "1" exists in the Rave database
 	And an EDC Role with Name "roleName1" exists in the Rave database
 	And the current User is assigned to the current Study with current Role
-	And the Site with site number "1" exists in the Rave database
+	And the following site exists in the rave database:
+	| Number | Name			|
+	| 1      | SiteName		|
 	And the StudySite with ExternalId "1" exists in the Rave database
 	And I send the following UserStudySite message to SQS	
 	| EventType | Timestamp           |
@@ -22,7 +24,9 @@ Scenario: When a UserStudySite delete message gets put onto the queue, and the a
 	And the study with name "testStudy2" and environment "prod" with ExternalId "2" exists in the Rave database
 	And an EDC Role with Name "roleName2" exists in the Rave database
 	And the current User is assigned to the current Study with current Role
-	And the Site with site number "2" exists in the Rave database
+	And the following site exists in the rave database:
+	| Number | Name			|
+	| 2      | SiteName		|
 	And the StudySite with ExternalId "2" exists in the Rave database
 	And I send the following UserStudySite messages to SQS	
 	| EventType | Timestamp           |

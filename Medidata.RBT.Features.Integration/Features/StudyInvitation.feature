@@ -626,7 +626,9 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
 Scenario: If the user has access to a Study Site in Rave that is linked with iMedidata and the users EDC Role is changed, 
         the Study Site will be accessible to the User on Rave.
 	Given the study with name "Study 2904 B" and environment "Prod" with UUID "4DCFC098-13CA-46D3-8148-2EEA10923872" exists in the Rave database
-	And the Site with Name "Site 2904 B1" and site number "2592904B1" exists in the Rave database
+	And the following site exists in the rave database:
+	| Number	| Name			|
+	| 2592904B1 | Site 2904 B1	|
     And the StudySite with ExternalId "2904" exists in the Rave database
     And I have an EDC app assignment with the following roles
     | RoleName             |

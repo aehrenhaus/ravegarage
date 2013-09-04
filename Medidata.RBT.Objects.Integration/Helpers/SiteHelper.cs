@@ -53,18 +53,43 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
         }
 
-        public static void CreateRaveSite(string siteNumber, string siteName = "SiteName", string uuid = null)
+        public static void CreateRaveSites(Table table)
         {
-            var site = new Site(SystemInteraction.Use())
-                           {
-                               Active = true,
-                               Number = siteNumber,
-                               Name = siteName,
-                               ExternalSystem = ExternalSystem.GetByID(1),
-                               Uuid = uuid ?? Guid.NewGuid().ToString()
-                           };
-            site.Save();
-            ScenarioContext.Current.Add("site", site);
+            //NOTE: putting table processing logic here to be consistent with MessageHandler
+            var interaction = SystemInteraction.Use();
+
+            var siteModels = table.CreateSet<SiteModel>();
+
+            //name and number should are required.
+            if (siteModels.Any(sm => sm.Name == null || sm.Number == null))
+            {
+                throw new ArgumentException("Both site name and number must be specified for all sites in scenario definition.");
+            }
+
+            siteModels.ToList().ForEach(sm =>
+                {
+                    var site = new Site(interaction)
+                    {
+                        Active = true,
+                        ExternalSystem = ExternalSystem.GetByID(1),
+
+                        Uuid = sm.Uuid ?? Guid.NewGuid().ToString(),
+                        Name = sm.Name,
+                        Number = sm.Number,
+
+                        AddressLine1 = sm.AddressLine1,
+                        City = sm.City,
+                        State = sm.State,
+                        PostalCode = sm.PostalCode,
+                        Country = sm.Country,
+                        Telephone = sm.Telephone,                        
+                    };
+
+                    site.Save();
+
+                    //TODO: discuss this architecture, this shouldn't be here...specify UUIDs explicitly in scenario definition.
+                    ScenarioContext.Current.Add("site", site);
+                });
         }
     }
 }

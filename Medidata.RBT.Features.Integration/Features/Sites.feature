@@ -16,9 +16,11 @@ Scenario: When a Site POST message gets put onto the queue, and the site does no
 
 @site_put_message_scenario_2
 Scenario: When a Site PUT message gets put onto the queue, and the site already exists in Rave, the site is updated.
-	Given I send the following Site messages to SQS
+	Given the following site exists in the rave database:
+	| Name      | Number | Address1   | City     | State | PostalCode | Country | Telephone  |
+	| TestSite2 | 2      | 79 5th Ave | New York | NY    | 10003      | USA     | 1234567890 |
+	And I send the following Site messages to SQS
 	| EventType | Address1    | City       | State | PostalCode | Country | Telephone      | Name      | Number | Timestamp           |
-	| POST      | 79 5th Ave  | New York   | NY    | 10003      | USA     | 1234567890 | TestSite2 | 2      | 2013-02-02 12:00:00 |
 	| PUT       | 111 5th Ave | New Jersey | NJ    | 10004      | USB     | 1234567    | TestSite3 | 3      | 2013-02-02 13:00:00 |
 	When the message is successfully processed
 	Then I should see the site in the Rave database
@@ -30,7 +32,9 @@ Scenario: When a Site PUT message gets put onto the queue, and the site already 
 @PB2.5.9.27-01
 Scenario Outline: If I create a site in iMedidata, and an unlinked site in Rave (that is not linked to the iMedidata site),
            when Rave receives the site it will link it to the iMedidata site, matching it based on UUID first.
-	Given the Site with Name "Site 4a" and site number "<RaveSiteNumber>" and UUID "<Uuid>" exists in the Rave database
+	Given the following site exists in the rave database:
+	| Name    | Number           | Uuid   |
+	| Site 4a | <RaveSiteNumber> | <Uuid> |
 	And I send the following Site message to SQS
 	| EventType | Address1    | City       | State | PostalCode | Country | Telephone | Name      | Number				  | Id | Uuid | Timestamp |
 	| POST      | 111 5th Ave | New Jersey | NJ    | 10004      | USB     | 1234567   | TestSite4 | <iMedidataSiteNumber> | 4  | <Uuid> | 2013-02-02 12:00:00 |
@@ -46,7 +50,9 @@ Examples:
 @PB2.5.9.27-02
 Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is not linked to the iMedidata site), when Rave receives
           the site it will link it to the iMedidata site, matching it based on UUID first, and failing that site number.
-	Given the Site with site number "5" exists in the Rave database
+	Given the following site exists in the rave database:
+	| Number | Name          |
+	| 5      | TestSite5Rave |
 	And I send the following Site message to SQS
 	| EventType | Name      | Number | Id | Uuid                                 | Timestamp           |
 	| POST      | TestSite5 | 5      | 6  | 2fc5e4a8-f117-11e1-b0ce-12313940032d | 2013-02-02 12:00:00 |
@@ -60,10 +66,11 @@ Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is
 @PB2.5.9.43-01
 Scenario: If I have a linked site in iMedidata, and I change the site number in iMedidata, when Rave receives the updated site,
           Rave will update the site number to match with the iMedidata site number.
-	Given the Site with site number "6" exists in the Rave database
+	Given the following site exists in the rave database:
+	| Number | Name      |
+	| 6      | TestSite6 |
 	And I send the following Site messages to SQS
 	| EventType | Name      | Number | Timestamp           |
-	| POST      | TestSite6 | 6      | 2013-02-02 12:00:00 |
 	| PUT       | TestSite6 | 7      | 2013-02-02 13:00:00 |
 	When the message is successfully processed
 	Then I should see the site in the Rave database
@@ -75,10 +82,11 @@ Scenario: If I have a linked site in iMedidata, and I change the site number in 
 @PB2.5.9.46-01
 Scenario: If I have a linked site in iMedidata, and I change the site name in iMedidata, when Rave receives the updated site,
              Rave will update the site name to match with the iMedidata site name.	
-	Given the Site with site number "8" exists in the Rave database
-	Given I send the following Site messages to SQS
+	Given the following site exists in the rave database:
+	| Number | Name      |
+	| 8      | TestSite8 |
+	Given I send the following Site message to SQS
 	| EventType | Name      | Number | Timestamp           |
-	| POST      | TestSite8 | 8      | 2013-02-02 12:00:00 |
 	| PUT       | TestSite9 | 8      | 2013-02-02 13:00:00 |
 	When the message is successfully processed
 	Then I should see the site in the Rave database
