@@ -57,7 +57,7 @@ namespace Medidata.RBT.PageObjects.Rave.UserAdministrator
         {
             areaIdentifier = areaIdentifier ?? string.Empty;
 
-            if (areaIdentifier.Equals("log", StringComparison.InvariantCultureIgnoreCase))
+            if (!string.IsNullOrEmpty(areaIdentifier) && areaIdentifier.Equals("log", StringComparison.InvariantCultureIgnoreCase))
             {
                 var txt = Browser.TextareaById("LogCtl");
                 return txt.Value.Contains(identifier);

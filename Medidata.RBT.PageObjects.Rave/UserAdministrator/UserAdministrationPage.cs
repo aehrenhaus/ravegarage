@@ -81,6 +81,17 @@ namespace Medidata.RBT.PageObjects.Rave
 			return this;
 		}
 
+        public UserAdministrationPage SearchUserBySeededLogin(SearchByModel by)
+        {
+            if (by.Login != null)
+            {
+                User u = SeedingContext.TryGetExistingFeatureObject<User>(by.Login);
+                by.Login = u.UniqueName;
+            }
+
+            return SearchUser(by);
+        }
+
 		#region Pagination
 
 		public ICanPaginate GetPaginationControl(string areaIdentifier)

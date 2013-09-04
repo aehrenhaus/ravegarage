@@ -60,47 +60,18 @@ namespace Medidata.RBT.Features.Rave
         {
             var model = table.CreateInstance<UserAdministrationPage.SearchByModel>();
 
-            if (model.Login != null)
-            {
-                User u = SeedingContext.GetExistingFeatureObjectOrMakeNew(model.Login, () => new User(model.Login));
-                model.Login = u.UniqueName;
-            }
-
-            CurrentPage.As<UserAdministrationPage>()
-                .SearchUser(model);
+            CurrentPage.As<UserAdministrationPage>().SearchUserBySeededLogin(model);
         }
 
         /// <summary>
         /// Upload the user file back that was downloaded with user loader
         /// </summary>
-        [StepDefinition(@"I upload the User file that I last downloaded")]
-        public void WhenIUploadTheUserFileThatILastDownloaded()
+        [StepDefinition(@"I upload the file that I last downloaded")]
+        public void IUploadTheFileThatILastDownloaded()
         {
             string filename=WebTestContext.LastDownloadedFile.FullName;
-            WebTestContext.Browser.FindElementById("_ctl0_Content_FileUpload").SendKeys(filename);
-            CurrentPage.ClickButton("Upload");
-            WaitForUploadToComplete();
+            CurrentPage.As<UploadUserPage>().UploadFile(filename);
         }
 
-        /// <summary>
-        /// Wait for the userfile to finish uploading
-        /// </summary>
-        private void WaitForUploadToComplete()
-        {
-            int waitTime = RBTConfiguration.Default.UploadTimeout;
-            var ele = Browser.TryFindElementBy(b =>
-            {
-                IWebElement currentStatus = Browser.FindElementByXPath("//span[@id = 'CurrentStatus']");
-                if (currentStatus.Text.Contains("Upload successful") || currentStatus.Text.Contains("Transaction rolled back."))
-                    return currentStatus;
-                else
-                    return null;
-            }
-                , true, waitTime);
-
-            if (ele == null)
-                throw new Exception(
-                "Did not complete in time(" + waitTime + "s)");
-        }
 	}
 }

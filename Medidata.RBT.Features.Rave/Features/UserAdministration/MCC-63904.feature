@@ -22,7 +22,7 @@ And I search User by seeded login
 And I take a screenshot
 And I click the "Download" button to download
 When I select link "Upload Users"
-And I upload the User file that I last downloaded
+And I upload the file that I last downloaded
 Then I verify text "Upload successful." exists in "log"
 And I take a screenshot
 
@@ -46,7 +46,7 @@ And I search User by seeded login
 And I take a screenshot
 And I click the "Download" button to download
 When I select link "Upload Users"
-And I upload the User file that I last downloaded
+And I upload the file that I last downloaded
 Then I verify text "Upload successful." exists in "log"
 And I take a screenshot
 
@@ -68,7 +68,7 @@ And I search User by seeded login
 And I take a screenshot
 And I click the "Download" button to download
 When I select link "Upload Users"
-And I upload the User file that I last downloaded
+And I upload the file that I last downloaded
 Then I verify text "Upload successful." exists in "log"
 And I take a screenshot
 
@@ -90,7 +90,7 @@ And I search User by seeded login
 And I take a screenshot
 And I click the "Download" button to download
 When I select link "Upload Users"
-And I upload the User file that I last downloaded
+And I upload the file that I last downloaded
 Then I verify text "Upload successful." exists in "log"
 And I take a screenshot
 
@@ -112,7 +112,7 @@ And I search User by seeded login
 And I take a screenshot
 And I click the "Download" button to download
 When I select link "Upload Users"
-And I upload the User file that I last downloaded
+And I upload the file that I last downloaded
 Then I verify text "Upload successful." exists in "log"
 And I take a screenshot
 
