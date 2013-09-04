@@ -32,8 +32,6 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(isSubjectRandomized, "Subjects enrolled to wrong tiers");
         }
 
-
-
         /// <summary>
         /// Verify that there is not a repeating pattern in every rowsTotal rows in a list of rowsTotal amount of rows
         /// </summary>
@@ -105,9 +103,20 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I edit Blocks")]
         public void GivenIEditBlocks(Table table)
         {
-            CurrentPage.As<BlockPlansPageBase>().BlocksEdit(table.CreateSet<TSDVObjectModel>());
+            CurrentPage = CurrentPage.As<BlockPlansPageBase>().BlocksEdit(table.CreateSet<TSDVObjectModel>());
         }
 
+        /// <summary>
+        /// Method used to edit tiers, with the supplied information
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I edit Tiers")]
+        public void GivenIEditTiers(Table table)
+        {
+            IEnumerable<TSDVTierModel> tiers = table.CreateSet<TSDVTierModel>();
+            CurrentPage = CurrentPage.As<BlockPlansPageBase>().TiersEdit(tiers);
+        }
+        
         /// <summary>
         /// TSDV step to delete tier from block plan
         /// Tier can only be deleted from study not in prod environment
@@ -256,5 +265,16 @@ namespace Medidata.RBT.Features.Rave
            CurrentPage.As<BlockPlansPageBase>().AddBlocks(table.CreateSet<TSDVBlockModel>());
         }
 
-    }
+        /// <summary>
+        /// Move a Subject to another Tier
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I Override Subject")]
+        public void ThenIOverrideSubject(Table table)
+        {
+            SpecialStringHelper.ReplaceTableColumn(table, "Subject");
+            IEnumerable<TSDVSubjectOverrideModel> overrideSubjects = table.CreateSet<TSDVSubjectOverrideModel>();
+            CurrentPage = CurrentPage.As<SubjectOverridePage>().OverrideSubject(overrideSubjects);
+        }
+	}
 }

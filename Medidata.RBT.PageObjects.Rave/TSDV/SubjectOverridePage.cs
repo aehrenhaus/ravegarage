@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using Medidata.RBT.PageObjects.Rave.TableModels;
+using Medidata.RBT.SharedObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
@@ -232,6 +234,32 @@ declare
 		
 		#endregion
 
-	
-	}
+        /// <summary>
+        /// Method to move subjects from one tier to another tier
+        /// </summary>
+        /// <param name="overrideSubjects">List of subjects to override</param>
+        /// <returns>The refreshed page</returns>
+        public IPage OverrideSubject(IEnumerable<TSDVSubjectOverrideModel> overrideSubjects)
+        {
+            foreach (var overrideSubject in overrideSubjects)
+            {
+                IWebElement subjectTable = Browser.FindElementById("SubjectOverrideDiv");
+                IWebElement subjectRow = subjectTable.TryFindElementByXPath(String.Format(".//table[contains(@id,'_SubjectOverrideItemsTable')]/tbody/tr/td/span[contains(@id,'_SubjectNameLabel')][text()='{0}']/../../..", overrideSubject.Subject));
+                if (subjectRow == null) throw new ApplicationException(String.Format("Subject {0} not found", overrideSubject.Subject));
+
+                IWebElement dropdown = subjectRow.TryFindElementByXPath(String.Format(".//td/select[contains(@id,'_NewSubjectTierDDL')]/option[text()='{0}']/..", overrideSubject.NewTier));
+                if (dropdown == null) throw new ApplicationException(String.Format("Requested Tier {0} not found", overrideSubject.NewTier));
+                dropdown.SendKeys(overrideSubject.NewTier);
+
+                IWebElement reason = subjectRow.TryFindElementByXPath(".//td/input[contains(@id,'_OverrideReasonText')]");
+                reason.SendKeys(overrideSubject.OverrideReason);
+            }
+
+            var overrideButton = Browser.FindElementById("_ctl0_Content_ProcessSubjectOverrideDiv");
+            overrideButton.Click();
+            Browser.GetAlertWindow().Accept();
+
+            return WaitForPageLoads();
+        }
+    }
 }

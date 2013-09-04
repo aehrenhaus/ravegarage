@@ -232,6 +232,16 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Step to enter enter data for new architect form and save
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I enter data in Architect Form and save")]
+        public void IEnterDataInArchitectFormAndSave(Table table)
+        {
+            CurrentPage.As<ArchitectFormsPage>().FillFormProperties(table.CreateInstance<ArchitectFormModel>());
+        }
+
+        /// <summary>
         /// Step to let deleted the coder configuration supplemental or component terms
         /// </summary>
         /// <param name="termName"></param>
@@ -305,5 +315,17 @@ namespace Medidata.RBT.Features.Rave
         {
             CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().ClickPreview();
         }
+
+        /// <summary>
+        /// Step to allow overwrite of an existing crf version with an updated version
+        /// </summary>
+        /// <param name="crfVersion"></param>
+        [StepDefinition(@"I overwrite CRF Version ""([^""]*)""")]
+        public void IOverwriteCRFVersion(string crfVersion)
+        {
+            crfVersion = SpecialStringHelper.Replace(crfVersion);
+            CurrentPage.As<ArchitectCRFDraftPage>().OverwriteCRF(crfVersion);
+        }
+
 	}
 }

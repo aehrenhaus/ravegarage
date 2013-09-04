@@ -147,7 +147,7 @@ namespace Medidata.RBT
 			return this.WaitForPageLoads();
         }
 
-		public IPage WaitForPageLoads()
+	    public IPage WaitForPageLoads()
 		{
 			IPage result = null;
 			IAlert alertWindow = null;
