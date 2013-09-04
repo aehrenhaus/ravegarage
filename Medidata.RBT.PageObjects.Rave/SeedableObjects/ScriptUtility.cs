@@ -8,9 +8,9 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
     public class ScriptUtility : BaseRaveSeedableObject
     {
                /// <summary>
-        /// Create a Draft if it is not already in the dictionary of projects in FeatureObject
+        /// Create a script utility entry if it is not already in the dictionary of FeatureObject
         /// </summary>
-        /// <param name="draftName">Feature defined name of the draft</param>
+        /// <param name="scriptName">Name of the script utility XML file (ie. gotten from MyMedidata or custom packaged </param>
 		public ScriptUtility(string scriptName)
         {
 	        UniqueName = scriptName;
