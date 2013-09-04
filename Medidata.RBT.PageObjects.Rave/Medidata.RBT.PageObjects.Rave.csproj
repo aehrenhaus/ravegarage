@@ -201,9 +201,12 @@
     <Compile Include="ReportAdmin\ReportManagerPage.cs" />
     <Compile Include="ReportAdmin\ReportAssignmentPage.cs" />
     <Compile Include="Reports\CrystalReportPageBase.cs" />
+    <Compile Include="Reports\ScriptUtilityManagerPage.cs" />
+    <Compile Include="Reports\ScriptUtilityPage.cs" />
     <Compile Include="SeedableObjects\RWSSeededGetObject.cs" />
     <Compile Include="SeedableObjects\RWSSeededPostObject.cs" />
     <Compile Include="SeedableObjects\RWSSeededObject.cs" />
+    <Compile Include="SeedableObjects\ScriptUtility.cs" />
     <Compile Include="SeedableObjects\UniquedSeedableObject.cs" />
     <Compile Include="SeedableObjects\UISeededObject.cs" />
     <Compile Include="SharedControls\DivPaginationControl.cs" />

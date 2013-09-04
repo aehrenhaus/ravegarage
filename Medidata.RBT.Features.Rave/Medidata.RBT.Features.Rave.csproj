@@ -800,6 +800,7 @@
     <None Include="Features\TSDV\MCC-70487.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-70487.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\Labs\MCC-67716.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-67716.feature.cs</LastGenOutput>

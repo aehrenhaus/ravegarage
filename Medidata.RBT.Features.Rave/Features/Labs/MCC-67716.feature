@@ -21,12 +21,7 @@ Given following Report assignments exist
 	| User         | Report                                          |
 	| SUPER USER 1 | Script Utility - Script Utility (9)             |
 	| SUPER USER 1 | Script Utility Manager - Script Utility Manager |
-Given I navigate to "Reporter" module
-Given I select link "Script Utility Manager"
-Given I switch to "Manage Scripts" window
-Given I select link "Upload Script"
 Given I install script utility script "SubjectCopyV56X.xml"
-Given I switch to "Reports" window
 Given I login to Rave with user "SUPER USER 1"
 Given I select Study "MCC-67716" and Site "Site 1"
 Given I create a Subject
@@ -64,21 +59,16 @@ Given I take a screenshot
 @Draft
 Scenario: PB_MCC67716-001 As a study builder, when I copy a subject that has units only labs to my dev studysite, I should see that the units only labs for the subject have been copied.
 Given I login to Rave with user "SUPER USER 1"
-And I navigate to "Reporter" module
-And I select link "Script Utility"
-And I set report parameter "Project" with "MCC-67716"
-And I click button "Submit Report"
-And I switch to "Script Utility" window
+And I open Script Utility for study "MCC-67716"
 And I select link "Subject Copy"
-And I choose "Site 1" from "Source" with partial text
-And I choose "Site 2" from "Destination" with partial text
-And I select "SUB" to copy
+And I choose "Site 1" from "Source"
+And I choose "Site 2" from "Destination"
+And I select option "SUB"
 And I click button "Execute"
 And I accept alert window
 And I select "Live Update" checkbox
 And I wait for 10 seconds
 And I take a screenshot
-When I switch to "Reports" window
 And I navigate to "Home"
 And I select Study "MCC-67716" with environment "Dev"
 And I select a Subject "SUB{Var(num1)}"

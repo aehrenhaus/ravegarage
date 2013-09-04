@@ -55,6 +55,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
 		protected override void CreateObject()
         {
             WebTestContext.CurrentPage.As<UploadDraftPage>().UploadFile(UniqueFileLocation);
+            Project.SetProjectID(Project.UniqueName);
             Factory.FeatureObjectsForDeletion.Add(this);
         }
 
