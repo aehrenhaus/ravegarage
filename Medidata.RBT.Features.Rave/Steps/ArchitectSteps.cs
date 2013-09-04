@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
@@ -307,14 +308,17 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().ClickPreview();
         }
 
-        [StepDefinition(@"I force navigate to Global Library \(Not a Real Project\)")]
-        public void WhenIForceNavigateToGlobalLibraryNotARealProject()
+        [StepDefinition(@"I force navigate to the Library Page for study ""(.*)""")]
+        public void IForceNavigateToTheLibraryPageForStudy(string studyName)
         {
-            var targetPage=CurrentPage.Browser.Url.Replace("/Modules/Architect/Architect.aspx",
-                                    "/Modules/Architect/LibraryPage.aspx?ProjectID=-1");
-            Browser.Url = targetPage;
-            var uri = new Uri(Browser.Url);
-            CurrentPage = WebTestContext.POFactory.GetPageByUrl(uri);
+            if (studyName == "Global Library (Not a Real Project)")
+                CurrentPage = new ArchitectLibraryPage().NavigateToSelf(new NameValueCollection(){{"ProjectID", "-1"}});
+            else
+            {
+                Project project = SeedingContext.TryGetExistingFeatureObject<Project>(studyName);
+                CurrentPage = new ArchitectLibraryPage().NavigateToSelf(new NameValueCollection(){{"ProjectID", project.Number}});
+            }
+
         }
 
 	}

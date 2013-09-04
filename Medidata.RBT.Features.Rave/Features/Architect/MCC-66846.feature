@@ -27,7 +27,7 @@ Scenario: PB_MCC66846-002 As a Study Builder, if I have permission to see all Ra
 Given I login to Rave with user "SUPER USER 1"
 When I navigate to "Architect" module
 And I take a screenshot
-And I force navigate to Global Library (Not a Real Project)
+And I force navigate to the Library Page for study "Global Library (Not a Real Project)"
 Then I verify link "Click here to show Error details" exists
 And I select link "Click here to show Error details"
 And I take a screenshot

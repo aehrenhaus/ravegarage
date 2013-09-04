@@ -71,8 +71,7 @@ namespace Medidata.RBT.PageObjects.Rave
             bool retVal = false;
             if ("text".Equals(type, StringComparison.InvariantCultureIgnoreCase))
             {
-                if (!exactMatch && Browser.FindElementByTagName("body").Text.Contains(identifier))
-                    retVal = true;
+                retVal = Browser.FindElementByTagName("body").Text.Contains(identifier);
             }
             else if ("image".Equals(type, StringComparison.InvariantCultureIgnoreCase))
             {
