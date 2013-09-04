@@ -842,6 +842,15 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Opens page for editing
+        /// </summary>
+        [StepDefinition(@"I start editing page")]
+        public void WhenIStartEditingPage()
+        {
+            CurrentPage.As<CRFPage>().ClickModify();
+        }
+
+        /// <summary>
         /// Enter data to dynamic search list on a standard field
         /// </summary>
         /// <param name="data">The data.</param>
