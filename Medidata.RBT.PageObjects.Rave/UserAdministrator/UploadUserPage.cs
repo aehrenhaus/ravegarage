@@ -55,8 +55,6 @@ namespace Medidata.RBT.PageObjects.Rave.UserAdministrator
                                           int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null,
                                           bool shouldExist = true)
         {
-            areaIdentifier = areaIdentifier ?? string.Empty;
-
             if (!string.IsNullOrEmpty(areaIdentifier) && areaIdentifier.Equals("log", StringComparison.InvariantCultureIgnoreCase))
             {
                 var txt = Browser.TextareaById("LogCtl");
