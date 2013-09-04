@@ -18,57 +18,57 @@ namespace Medidata.RBT.Features.Integration.Hooks
     {
         // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
 
+        //if we're in SQS mode, we'll need a reference to the RIS.
+        private static ServiceController RaveIntegrationServiceController { get; set; }
+
+        static IntegrationTestRunHooks()
+        {
+            RaveIntegrationServiceController = null;
+        }
+
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            DbHelper.RestoreDatabase();
-
             IntegrationTestContext.TestFailed = false;
 
-            if (!ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
-                     .Equals(MessageDeliveryTypes.SQS))
+            //are we in SQS mode? If so, we'll need to do some additional setup
+            //of the rave service and message queues
+            var isSqsMode = ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
+                .Equals(MessageDeliveryTypes.SQS);
+
+            if (isSqsMode)
             {
-                return;
+                //get a reference to the rave service, since SQS mode uses the real service.
+                RaveIntegrationServiceController = new ServiceController(string.Format("Medidata Rave Integration Service - \"{0}\"",
+                    ConfigurationManager.AppSettings["ServiceName"]));
+
+                //stop the service, before dropping and restoring the database
+                //this avoids a bunch of errors being logged by the RIS while
+                //the database is down.
+                stopRaveServiceIfStarted();
             }
 
-            var accessKey = ConfigurationManager.AppSettings["AwsAccessKey"];
-            var secretKey = ConfigurationManager.AppSettings["AwsSecretKey"];
-            var region = ConfigurationManager.AppSettings["AwsRegion"];
+            //for either mode, we drop and restore the database
+            DbHelper.RestoreDatabase();
 
-            IntegrationTestContext.SqsWrapper = new SimpleQueueWrapper(accessKey, secretKey, region);
-
-            var edcQueueName = Guid.NewGuid();
-            var modulesQueueName = Guid.NewGuid();
-            var securityQueueName = Guid.NewGuid();
-
-            IntegrationTestContext.SqsQueueUrl = IntegrationTestContext.SqsWrapper.CreateQueue(edcQueueName.ToString(), 1209600);
-            Console.WriteLine("EDC Queue URL: {0}", IntegrationTestContext.SqsQueueUrl);
-
-            Console.WriteLine("Modules Queue URL: {0}",
-                IntegrationTestContext.SqsWrapper.CreateQueue(modulesQueueName.ToString(), 1209600));
-            Console.WriteLine("Security Queue URL: {0}",
-                IntegrationTestContext.SqsWrapper.CreateQueue(securityQueueName.ToString(), 1209600));
-
-            SQSHelper.UpdateQueueUuid(SQSHelper.EDC_APP_NAME, edcQueueName);
-            SQSHelper.UpdateQueueUuid(SQSHelper.MODULES_APP_NAME, modulesQueueName);
-            SQSHelper.UpdateQueueUuid(SQSHelper.SECURITY_APP_NAME, securityQueueName);
-
-            var service = new ServiceController(string.Format("Medidata Rave Integration Service - \"{0}\"", 
-                ConfigurationManager.AppSettings["ServiceName"]));
-
-            if(service.CanStop)
+            if (isSqsMode)
             {
-                service.Stop();
-                service.WaitForStatus(ServiceControllerStatus.Stopped);
-            }
+                //create the real queues and update the app configurations in the database
+                createQueues();
 
-            service.Start();
-            service.WaitForStatus(ServiceControllerStatus.Running);
+                //start the real rave service, which will read our updated configurations.
+                startRaveService();    
+            }
         }
 
         [AfterTestRun]
         public static void AfterTestRun()
         {
+            //If the RIS service was started, this function will stop it.
+            //If we don't stop it, a bunch of errors will be logged in the service
+            //due to the deleted message queues.
+            stopRaveServiceIfStarted();
+
             if (ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
                      .Equals(MessageDeliveryTypes.SQS))
             {
@@ -136,6 +136,49 @@ namespace Medidata.RBT.Features.Integration.Hooks
                 //p.WaitForExit();
 #endif
             }
+        }
+
+        private static void stopRaveServiceIfStarted()
+        {
+            if (RaveIntegrationServiceController != null && RaveIntegrationServiceController.CanStop)
+            {
+                RaveIntegrationServiceController.Stop();
+                RaveIntegrationServiceController.WaitForStatus(ServiceControllerStatus.Stopped);
+            }
+        }
+
+        private static void startRaveService()
+        {
+            if (RaveIntegrationServiceController != null)
+            {
+                RaveIntegrationServiceController.Start();
+                RaveIntegrationServiceController.WaitForStatus(ServiceControllerStatus.Running);
+            }
+        }
+
+        private static void createQueues()
+        {
+            var accessKey = ConfigurationManager.AppSettings["AwsAccessKey"];
+            var secretKey = ConfigurationManager.AppSettings["AwsSecretKey"];
+            var region = ConfigurationManager.AppSettings["AwsRegion"];
+
+            IntegrationTestContext.SqsWrapper = new SimpleQueueWrapper(accessKey, secretKey, region);
+
+            var edcQueueName = Guid.NewGuid();
+            var modulesQueueName = Guid.NewGuid();
+            var securityQueueName = Guid.NewGuid();
+
+            IntegrationTestContext.SqsQueueUrl = IntegrationTestContext.SqsWrapper.CreateQueue(edcQueueName.ToString(), 1209600);
+            Console.WriteLine("EDC Queue URL: {0}", IntegrationTestContext.SqsQueueUrl);
+
+            Console.WriteLine("Modules Queue URL: {0}",
+                IntegrationTestContext.SqsWrapper.CreateQueue(modulesQueueName.ToString(), 1209600));
+            Console.WriteLine("Security Queue URL: {0}",
+                IntegrationTestContext.SqsWrapper.CreateQueue(securityQueueName.ToString(), 1209600));
+
+            SQSHelper.UpdateQueueUuid(SQSHelper.EDC_APP_NAME, edcQueueName);
+            SQSHelper.UpdateQueueUuid(SQSHelper.MODULES_APP_NAME, modulesQueueName);
+            SQSHelper.UpdateQueueUuid(SQSHelper.SECURITY_APP_NAME, securityQueueName);
         }
     }
 }
