@@ -91,6 +91,34 @@ namespace Medidata.RBT.SeleniumExtension
 			return context.FindElements(By.XPath(xpath)).CastReadOnlyCollection<Textbox>();
 		}
 
+       /// <summary>
+       /// Try finding an input element based on type and partial id
+       /// </summary>
+       /// <typeparam name="T"></typeparam>
+       /// <param name="context"></param>
+       /// <param name="elemType"></param>
+       /// <param name="partialID"></param>
+       /// <returns>returns enhanced input element based on specified type T ex: Textbox, Checkbox etc</returns>
+        public static T TryFindInputElementByPartialID<T>(this ISearchContext context,string typeAttr, string partialID) 
+            where T : EnhancedElement, new()
+        {
+            T textElem = null;
+
+            IWebElement elem = context.TryFindElementBy(
+                By.XPath(string.Format(".//input[@type = '{0}' and contains(@id, '{1}')]", typeAttr, partialID)));
+
+            if (elem != null)
+            {
+                try
+                {
+                    textElem = elem.EnhanceAs<T>();
+                }
+                catch { }
+            }
+
+            return textElem;
+        }
+
 		#endregion
 
 		#region Checkbox

@@ -182,6 +182,40 @@ namespace Medidata.RBT.PageObjects.Rave
             return true;
         }
         #endregion
-	
-	}
+
+        /// <summary>
+        /// Method to allow overwrite of crf version with form an updated crf draft
+        /// </summary>
+        /// <param name="crfVersion"></param>
+        public void OverwriteCRF(string crfVersion)
+        {
+            IWebElement publishTable = Browser.TryFindElementById("_ctl0_Content_TblPublish");
+
+            if (publishTable != null)
+            {
+                IWebElement extVersionTr = publishTable.TryFindElementBy(By.XPath(string.Format(".//td[contains(text(),'{0} ')]", crfVersion))).Parent();
+                extVersionTr.TryFindElementByPartialID("_LnkBtnReplace").Click();
+
+                IAlert alertWin = Misc.SafeCall<IAlert>(() =>
+                    {
+                        IAlert retVal = null;
+                        try
+                        {
+                            retVal = Browser.GetAlertWindow();
+                        }
+                        catch (NoAlertPresentException) { }
+                        return retVal;
+                    }
+                    , (elem) => elem != null, 5);
+
+                alertWin.Accept();
+
+                WaitForPageLoads();
+            }
+            else
+            {
+                throw new NoSuchElementException("Cannot find the publish section to overwrite crfVersion");
+            }
+        }
+    }
 }

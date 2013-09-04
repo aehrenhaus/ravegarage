@@ -266,6 +266,7 @@
     <Compile Include="SiteAdministration\SiteAdministrationNewSiteGroupPage.cs" />
     <Compile Include="TableModels\AnalyteRangeAuditModel.cs" />
     <Compile Include="TableModels\AnalyteRangeModel.cs" />
+    <Compile Include="TableModels\ArchitectFormModel.cs" />
     <Compile Include="TableModels\ArchitectObjectModel.cs" />
     <Compile Include="TableModels\AuditModel.cs" />
     <Compile Include="TableModels\ArchitectCoderConfigurationModel.cs" />
@@ -306,8 +307,13 @@
     <Compile Include="TableModels\ReportAssignmentModel.cs" />
     <Compile Include="TableModels\ReportListModel.cs" />
     <Compile Include="TableModels\TaskSummaryItemModel.cs" />
+    <Compile Include="TableModels\TSDVSubjectOverrideModel.cs" />
+    <Compile Include="TableModels\TSDVTierModel.cs" />
     <Compile Include="TableModels\TSDV\Permutations.cs" />
     <Compile Include="TableModels\UnitConversionModel.cs" />
+    <Compile Include="Translation Workbench\TranslationGridPage.cs" />
+    <Compile Include="Translation Workbench\TranslationWorkbenchPage.cs" />
+    <Compile Include="Translation Workbench\WhereUsedPage.cs" />
     <Compile Include="TSDV\BlockPlansPageBase.cs" />
     <Compile Include="TSDV\CustomTierPage.cs" />
     <Compile Include="TSDV\TiersPage.cs" />
