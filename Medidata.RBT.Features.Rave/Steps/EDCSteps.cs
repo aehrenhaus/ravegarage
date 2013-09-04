@@ -225,7 +225,12 @@ namespace Medidata.RBT.Features.Rave
             foreach (FieldModel field in fields)
             {
                 IEDCFieldControl fieldControl = page.FindField(field.Field, record: field.Record);
-                if (field.Data != null && field.Data.Length > 0)
+                if (field.Data == "") //test blank values
+                {
+                    bool dataExists = fieldControl.HasDataEntered(field.Data);
+                    Assert.IsTrue(dataExists, "Data exists for field(s)");
+                }
+                else if (!string.IsNullOrEmpty(field.Data))
                 {
                     bool dataExists = fieldControl.HasDataEntered(field.Data);
                     Assert.IsTrue(dataExists, "Data doesn't exist for field(s)");
@@ -752,6 +757,18 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Clear dynamicsearchlist
+        /// </summary>
+        /// <param name="dslfieldname"></param>
+        [StepDefinition(@"I clear dynamic search list ""(.*)""")]
+        public void IClearDynamicSearchList(string dslfieldname)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            page.ClearDSL(dslfieldname);
+        }
+
+
+        /// <summary>
         /// Click drop button on a standard field on CRF page
         /// </summary>
         /// <param name="fieldName"></param>
@@ -833,6 +850,15 @@ namespace Medidata.RBT.Features.Rave
             var controlType = ControlType.DynamicSearchList;
             IEDCFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
             fieldControl.EnterData(data, controlType);
+        }
+
+        /// <summary>
+        /// Opens page for editing
+        /// </summary>
+        [StepDefinition(@"I start editing page")]
+        public void WhenIStartEditingPage()
+        {
+            CurrentPage.As<CRFPage>().ClickModify();
         }
 
         /// <summary>
