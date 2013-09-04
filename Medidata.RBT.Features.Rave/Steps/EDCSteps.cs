@@ -31,6 +31,17 @@ namespace Medidata.RBT.Features.Rave
 		}
 
         /// <summary>
+        /// Select a study with a particular environment (working)
+        /// </summary>
+        /// <param name="studyName">Study to select</param>
+        /// <param name="environment">Environment to select</param>
+        [StepDefinition(@"I select Study ""([^""]*)"" with environment ""([^""]*)""")]
+        public void ISelectStudyWithEnv____(string studyName, string environment)
+        {
+            ISelectStudy____AndSite____Env____(studyName, environment);
+        }
+
+        /// <summary>
         /// Select study on Home page
         /// </summary>
         /// <param name="studyName">Study to select</param>
@@ -927,6 +938,15 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(allEnabled);
         }
 
+        /// <summary>
+        /// Verifies the lab selected for the particular page
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify lab ""(.*)"" is selected for the page")]
+        public void IVerifyLabIsSelectedForThePage(string lab)
+        {
+            Assert.IsTrue(CurrentPage.As<CRFPage>().VerifySelectedLab(lab));
+        }
 
         private IWebElement FilterOutDisabledControls(IWebElement element)
         {

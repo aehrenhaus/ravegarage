@@ -61,6 +61,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
             {
                 WebTestContext.Browser.TryFindElementByPartialID("NewProjectName").EnhanceAs<Textbox>().SetText(UniqueName);
                 WebTestContext.CurrentPage.ClickLink("Add Project");
+                SetProjectID(UniqueName);
             }
         }
 
@@ -92,6 +93,12 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
             }
         }
 
+        public void SetProjectID(string projectName)
+        {
+            string sql = string.Format(Project.GET_PROJECT_ID, UniqueName);
+            this.Number =((int)DbHelper.ExecuteDataSet(sql).GetFirstRow()["projectid"]).ToString();
+        }
+
         #region sqlStrings
         private const string ASSIGN_EXTERNAL_SYSTEM_PROJECT_SQL =
             @"
@@ -103,6 +110,10 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         private const string ASSIGN_EXTERNAL_SYSTEM_STUDY_SQL =
             @"
                 update Studies set ExternalID = {0} where ProjectID = {1};
+            ";
+        private const string GET_PROJECT_ID =
+            @"
+                select projectid from projects where dbo.fnlocaldefault(projectname) = '{0}';
             ";
         #endregion
     }

@@ -1,4 +1,5 @@
-﻿using TechTalk.SpecFlow;
+﻿using System.Collections.Specialized;
+using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using System.Collections.Generic;
@@ -23,6 +24,19 @@ namespace Medidata.RBT.Features.Rave
 		{
 			CurrentPage = CurrentPage.As<ReportsPage>().SelectReport(reportName);
 		}
+
+        /// <summary>
+        /// shortcut to go to script utility for seeded project
+        /// </summary>
+        /// <param name="studyName"></param>
+        [StepDefinition(@"I open Script Utility for study ""([^""]*)""")]
+        public void IOpenScriptUtilityForStudy(string studyName)
+        {
+            Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
+            WebTestContext.CurrentPage = new ScriptUtilityPage().NavigateToSelf(new NameValueCollection(){{"Projectid", project.Number}});
+            CurrentPage = CurrentPage.As<ScriptUtilityPage>();
+        }
+
 
 		/// <summary>
 		/// Set report parameter.

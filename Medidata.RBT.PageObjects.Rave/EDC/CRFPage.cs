@@ -401,5 +401,14 @@ namespace Medidata.RBT.PageObjects.Rave
 
             return isExists;
         }
+
+        /// <summary>
+        /// Verifies the lab selected for the page
+        /// </summary>
+        /// <param name="lab">labname</param>
+        public bool VerifySelectedLab(string lab)
+        {
+            return Browser.DropdownById("LOC_DropDown").SelectedText == lab;
+        }
     }
 }

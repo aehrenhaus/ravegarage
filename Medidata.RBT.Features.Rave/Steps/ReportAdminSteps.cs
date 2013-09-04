@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Medidata.RBT.ConfigurationHandlers;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.PageObjects.Rave;
@@ -102,5 +104,42 @@ namespace Medidata.RBT.Features.Rave
 
             WebTestContext.CurrentPage = new HomePage().NavigateToSelf();
         }
+
+        /// <summary>
+        /// Install script utility script into window
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I install script utility script ""(.*)""")]
+        public void IInstallScriptUtilityScript(string scriptfile)
+        {
+            WebTestContext.CurrentPage = new ScriptUtilityManagerPage().NavigateToSelf();
+            CurrentPage.ClickLink("Upload Script");
+            CurrentPage.As<ScriptUtilityManagerPage>().InstallUtilityScript(scriptfile);
+        }
+
+        /// <summary>
+        /// Select subject to copy from list
+        /// </summary>
+        /// <param name="subject"></param>
+        [StepDefinition(@"I select option ""(.*)""")]
+        public void ISelectOption(string subject)
+        {
+            subject=SpecialStringHelper.Replace(subject);
+            IWebElement selectedSubject = Browser.TryFindElementByOptionText(subject, true);
+            selectedSubject.Click();
+        }
+
+        /// <summary>
+        /// checkbox selector
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I select ""(.*)"" checkbox")]
+        public void GivenISelectCheckbox(string checkbox)
+        {
+            this.CurrentPage.ChooseFromCheckboxes(checkbox, true);
+        }
+
+
+
 	}
 }
