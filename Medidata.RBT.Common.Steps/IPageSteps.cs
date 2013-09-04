@@ -221,10 +221,10 @@ namespace Medidata.RBT.Common.Steps
         [StepDefinition(@"I start editing page")]
         public void WhenIStartEditingPage()
         {
-            var editButtons = Browser.TryFindElementsBy(
-                By.Id("_ctl0_Content_R_header_SG_PencilButton"),
-                isWait: true);
-            editButtons[0].Click();
+            IWebElement editButton = Browser.TryFindElementByPartialID("header_SG_PencilButton");
+            if (editButton == null)
+                throw new Exception("Can not find the modify button");
+            editButton.Click();
         }
 
 	}

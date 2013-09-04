@@ -219,7 +219,7 @@ namespace Medidata.RBT.Features.Rave
                     bool dataExists = fieldControl.HasDataEntered(field.Data);
                     Assert.IsTrue(dataExists, "Data exists for field(s)");
                 }
-                if (!string.IsNullOrEmpty(field.Data))
+                else if (!string.IsNullOrEmpty(field.Data))
                 {
                     bool dataExists = fieldControl.HasDataEntered(field.Data);
                     Assert.IsTrue(dataExists, "Data doesn't exist for field(s)");
@@ -748,17 +748,12 @@ namespace Medidata.RBT.Features.Rave
         /// <summary>
         /// Clear dynamicsearchlist
         /// </summary>
-        /// <param name="fieldName"></param>
-        /// <param name="lineNum"></param>
+        /// <param name="dslfieldname"></param>
         [StepDefinition(@"I clear dynamic search list ""(.*)""")]
         public void IClearDynamicSearchList(string dslfieldname)
         {
-            var controlType = ControlType.DynamicSearchList;
             CRFPage page = CurrentPage.As<CRFPage>();
-            IEDCFieldControl fieldControl = page.FindField(dslfieldname);
-            //since the control behaves differently in selenium, need to enter a single key first, then blank for normal behavior
-            fieldControl.EnterData("a", controlType); 
-            fieldControl.EnterData(String.Empty, controlType);
+            page.ClearDSL(dslfieldname);
         }
 
 
