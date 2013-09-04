@@ -28,9 +28,9 @@ Scenario: When a UserStudySite delete message gets put onto the queue, and the a
 	| Number | Name			|
 	| 2      | SiteName		|
 	And the StudySite with ExternalId "2" exists in the Rave database
+	And the current User is assigned to the the current StudySite with external update date "2012-10-11 13:00:00"
 	And I send the following UserStudySite messages to SQS	
 	| EventType | Timestamp           |
-	| POST      | 2012-10-12 12:00:00 |
 	| DELETE    | 2012-10-12 13:00:00 |
 	When the message is successfully processed
 	Then The user should not have a UserStudySite assignment in the Rave database

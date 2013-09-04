@@ -45,11 +45,16 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
         }
 
-        public static void CreateUserStudySiteAssignment()
+        public static void CreateUserStudySiteAssignment(DateTime? lastExternalUpdateDate = null)
         {
             var user = ScenarioContext.Current.Get<User>("user");
             var studySite = ScenarioContext.Current.Get<StudySite>("studySite");
-            user.AddUserToStudySite(studySite, null, false, DateTime.Now);
+
+            var lastExternalUpdateDateToUse = lastExternalUpdateDate.HasValue
+                                                  ? lastExternalUpdateDate.Value
+                                                  : DateTime.Now;
+
+            user.AddUserToStudySite(studySite, null, false, lastExternalUpdateDateToUse);
         }
     }
 }
