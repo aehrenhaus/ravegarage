@@ -39,7 +39,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             }
         }
 
-        [When(@"the messages? (?:is|are) successfully processed")]
+        [StepDefinition(@"the messages? (?:is|are) successfully processed")]
         public void WhenTheMessageIsSuccessfullyProcessed()
         {
             if (!ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]

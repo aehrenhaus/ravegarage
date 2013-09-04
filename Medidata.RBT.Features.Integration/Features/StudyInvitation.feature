@@ -86,11 +86,14 @@ Scenario: When a StudyInvitation DELETE message gets put onto the queue, the stu
 	And I have a Modules app assignment with the following roles
 	| RoleName               |
 	| Delete1 Modules Role 1 |
-	And I send the following StudyInvitation messages to SQS
+	And I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | Email            | Login                         | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | testUser@test.cx | testDELETEstudyInvitationUser | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
+	And the message is successfully processed
+	When I send the following StudyInvitation message to SQS
+	| EventType | InvitationType  | Email            | Login                         | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| DELETE    | StudyInvitation |                  |                               |           |            |          |               |          |       |            |         |            |        |           | 2013-01-01 13:00PM |
-	When the message is successfully processed
+	And the message is successfully processed
 	Then the user should not be assigned to the study with the following EDC roles
 	| RoleName           |
 	| Delete1 EDC Role 1 |
