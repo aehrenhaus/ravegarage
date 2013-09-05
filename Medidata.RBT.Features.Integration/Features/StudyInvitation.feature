@@ -119,12 +119,19 @@ Scenario: If an iMedidata user has a study assignment removed in iMedidata, that
 	And I have a Modules app assignment with the following roles
 	| RoleName                 |
 	| PB2582810 Modules Role 1 |
-	And I send the following StudyInvitation messages to SQS
+	#TODO: hacky, testing sending one message at a time
+	When I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | A0D8B069-7961-4FA3-A4CE-6ABB5D62E210 | pb2582810user@test.cx | pb2582810user | 2810   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
+	And the message is successfully processed
+	And I send the following StudyInvitation message to SQS
+	| EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | 8081E2F5-548F-43AD-A4CB-F90963AB28A4 | pb2582810user@test.cx | pb2582810user | 2810   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
+	And the message is successfully processed
+	And I send the following StudyInvitation message to SQS
+	| EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | 62849DCE-6EB8-4BE1-8CE7-CB3CB0F67E9D | pb2582810user@test.cx | pb2582810user | 2810   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-	When the message is successfully processed
+	And the message is successfully processed
 	Then I should see the user in the Rave database
 	And user's ExternalSystem value corresponds to iMedidata
 	And the user with EDC Role "PB2582810 EDC Role 1" should be assigned to the following studies
@@ -206,11 +213,15 @@ Scenario: If an iMedidata user has a  new study assignment added in iMedidata, t
 	And I have a Modules app assignment with the following roles
 	| RoleName                 |
 	| PB2582811 Modules Role 1 |
-	And I send the following StudyInvitation messages to SQS
+	#TODO: hacky, testing sending one message at a time
+	And I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | 835ECE8A-41B0-4A14-9E51-E4DDC5FB7952 | pb2582811user@test.cx | pb2582811user | 2811   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
+	And the message is successfully processed
+	And I send the following StudyInvitation message to SQS
+	| EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | AEF0133F-7BA3-4789-8099-5D99AEEB3DA2 | pb2582811user@test.cx | pb2582811user | 2811   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-	When the message is successfully processed
+	And the message is successfully processed
 	Then I should see the user in the Rave database
 	And user's ExternalSystem value corresponds to iMedidata
 	And the user with EDC Role "PB2582811 EDC Role 1" should be assigned to the following studies
@@ -413,11 +424,15 @@ Scenario: When iMedidata is used to assign specific access to a study, If user i
     And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2582701 Modules Role 1 |
-    And I send the following StudyInvitation messages to SQS
+	#TODO: hacky, testing sending one message at a time
+    And I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 74D2BE66-439C-44D9-B7C9-54DA11DFE25E | pb2582701user@test.cx | pb2582701 | 2701   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
+    And the message is successfully processed
+	And I send the following StudyInvitation message to SQS
+    | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 9A7720C0-D5A6-476A-BBF0-5DB1F2B1D94B | pb2582701user@test.cx | pb2582701 | 2701   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the message is successfully processed
+    And the message is successfully processed
     Then I should see the user in the Rave database 
     And the user with EDC Role "PB2582701 EDC Role 1" should be assigned to the following studies
     | StudyName    | Uuid                                 |
