@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class ArchitectChecksPage : ArchitectBasePage, IActivatePage
+	public class ArchitectChecksPage : ArchitectBasePage, IActivatePage, IVerifyDropdownState
 	{
 		#region IActivatePage
 

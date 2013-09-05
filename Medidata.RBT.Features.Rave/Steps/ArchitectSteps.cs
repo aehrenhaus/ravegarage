@@ -290,7 +290,7 @@ namespace Medidata.RBT.Features.Rave
         }
 
 		/// <summary>
-		/// 
+		/// Step to click edit on check action
 		/// </summary>
 		/// <param name="checkActionOrdinal"></param>
 		[StepDefinition(@"I edit ""(\d+)(?:st|nd|rd|th)"" Check Action")]
@@ -299,24 +299,6 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage.As<ArchitectChecksPage>()
 				.EditCheckActionAtIndex(checkActionIndex);
 		}
-
-		[StepDefinition(@"I verify option ""(.*?)"" is selected in ""(.*?)"" dropdown")]
-		public void IVerifyOption____IsSelectedIn____Dropdown(string optionText, string dropdown)
-		{
-			var result = CurrentPage.As<ArchitectChecksPage>()
-				.IsOptionSelected(optionText, dropdown);
-
-			Assert.IsTrue(result);
-		}
-
-		[StepDefinition(@"I position cursor at message ""(.*?)"" in Quick Edit")]
-		public void IPositionCursorAtMessage____InQuickEdit(string message)
-		{
-			CurrentPage.As<CheckQuickEditPage>()
-				.PositionCursorAtIndexOf(message);
-		}
-
-
 
         /// <summary>
         /// Step to verify tab name for Edit Check

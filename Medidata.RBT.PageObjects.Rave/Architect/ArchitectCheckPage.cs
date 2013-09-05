@@ -8,7 +8,7 @@ using OpenQA.Selenium;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class ArchitectCheckPage : ArchitectBasePage
+    public class ArchitectCheckPage : ArchitectBasePage, IVerifyObjectExistence
     {
         /// <summary>
         /// Method to verify tab name for Edit Check
@@ -63,6 +63,27 @@ namespace Medidata.RBT.PageObjects.Rave
             }
 
             return isExists;
+        }
+
+        public bool VerifyObjectExistence(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null, bool shouldExist = true)
+        {
+            var result = false;
+
+            if (!string.IsNullOrEmpty(areaIdentifier))
+            {
+                if (areaIdentifier.Equals("Check Actions", StringComparison.InvariantCultureIgnoreCase) && type.Equals("text"))
+                {
+                    IWebElement checkActionsElem = Browser.TryFindElementById("_ctl0_Content_ActionGrid");
+                    result = checkActionsElem.TryFindElementBy(By.XPath(string.Format(".//*[text()='{0}']", identifier))) != null;
+                }
+            }
+
+            return result;
+        }
+
+        public bool VerifyObjectExistence(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null, bool shouldExist = true)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -9,7 +9,8 @@ namespace Medidata.RBT.PageObjects.Rave
 {
     public class CheckQuickEditPage : 
 		ArchitectBasePage, 
-		IVerifyObjectExistence
+		IVerifyObjectExistence,
+        IPositionCursor
     {
         /// <summary>
         /// Method to enter text into Quick Edit
@@ -24,28 +25,6 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			return Browser
 				.TryFindElementById("_ctl0_Content_TxtQuickEdit");
-		}
-
-		public void PositionCursorAtIndexOf(string message)
-		{
-			var id = this.GetQuickEditTextArea()
-				.GetAttribute("ID");
-			
-			var script =
-				@"
-				var qeTextArea = $('#{0}');
-				var index = qeTextArea.text().indexOf('{1}');
-				
-				qeTextArea[0].focus();
-				qeTextArea[0].selectionStart = index;
-				qeTextArea[0].selectionEnd = index;
-				qeTextArea.trigger('keyup');
-				";
-			
-			script = string.Format(script, id, message);
-
-			this.Browser
-				.ExecuteScript(script);
 		}
 
         public override string URL
@@ -71,5 +50,21 @@ namespace Medidata.RBT.PageObjects.Rave
 		{
 			throw new NotImplementedException();
 		}
-	}
+
+        public void PositionCursorAtStart(string matchText, string areaIdentifier)
+        {
+            if (areaIdentifier.Equals("quick edit", StringComparison.InvariantCultureIgnoreCase))
+            {
+                GetQuickEditTextArea().EnhanceAs<TextArea>().PostionCursorBefore(matchText);
+            }
+        }
+
+        public void PositionCursorAtEnd(string matchText, string areaIdentifier)
+        {
+            if (areaIdentifier.Equals("quick edit", StringComparison.InvariantCultureIgnoreCase))
+            {
+                GetQuickEditTextArea().EnhanceAs<TextArea>().PositionCursorAfter(matchText);
+            }
+        }
+    }
 }
