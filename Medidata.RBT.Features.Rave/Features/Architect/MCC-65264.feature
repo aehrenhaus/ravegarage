@@ -30,7 +30,7 @@ And I navigate to "Edit Checks"
 And I click on icon "Check Steps" for Edit Check "Edit Check1"
 And I edit "1st" Check Action
 And I verify option "Open Query" is selected in "Action Type" dropdown
-And I verify text "Message" exists in "Action"
+And I verify text "Message" exists in "Check Actions"
 And I take a screenshot
 And I select link "Edit Check1"
 And I select link "Quick Edit"
@@ -61,7 +61,7 @@ And I navigate to "Edit Checks"
 And I click on icon "Check Steps" for Edit Check "Edit Check1"
 And I edit "1st" Check Action
 And I verify option "Open Query" is selected in "Action Type" dropdown
-And I verify text "Message" exists in "Action"
+And I verify text "Message" exists in "Check Actions"
 And I take a screenshot
 And I select link "Edit Check1"
 And I select link "Quick Edit"
@@ -95,7 +95,7 @@ And I navigate to "Edit Checks"
 And I click on icon "Check Steps" for Edit Check "SetSubjectName"
 And I edit "1st" Check Action
 And I verify option "Set Subject Name" is selected in "Action Type" dropdown
-And I verify text "Message" does not exists in "Actions"
+And I verify text "Message" does not exists in "Check Actions"
 And I take a screenshot
 And I select link "SetSubjectName"
 And I select link "Quick Edit"
@@ -129,7 +129,7 @@ And I navigate to "Edit Checks"
 And I click on icon "Check Steps" for Edit Check "Edit Check2"
 And I edit "1st" Check Action
 And I verify option "Set DataPoint" is selected in "Action Type" dropdown
-And I verify text "Value" exists in "Actions"
+And I verify text "Value" exists in "Check Actions"
 And I take a screenshot
 And I select link "Edit Check2"
 And I select link "Quick Edit"
@@ -140,7 +140,7 @@ And I select link "Edit Checks"
 And I click on icon "Check Steps" for Edit Check "Edit Check3"
 And I edit "1st" Check Action
 And I verify option "Update Folder Name" is selected in "Action Type" dropdown
-And I verify text "Name String" exists in "Actions"
+And I verify text "Name String" exists in "Check Actions"
 And I take a screenshot
 And I select link "Edit Check3"
 And I select link "Quick Edit"
@@ -151,7 +151,7 @@ And I select link "Edit Checks"
 And I click on icon "Check Steps" for Edit Check "Edit Check4"
 And I edit "1st" Check Action
 And I verify option "Update Form Name" is selected in "Action Type" dropdown
-And I verify text "Name String" exists in "Actions"
+And I verify text "Name String" exists in "Check Actions"
 And I take a screenshot
 And I select link "Edit Check4"
 And I select link "Quick Edit"
