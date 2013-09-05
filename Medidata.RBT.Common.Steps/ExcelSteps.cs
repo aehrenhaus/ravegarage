@@ -117,7 +117,11 @@ namespace Medidata.RBT.Common.Steps
 
 			using (var excel = new ExcelWorkbook(fileName))
 			{
-				var sheet = excel.OpenTableForEdit(name);
+                ExcelTable sheet;
+                if (table.Rows.Count == 1 && table.Rows[0].All(row => row.Value == "")) //A check for tables will single row of all empty data for verification against empty worksheet
+                    sheet = excel.OpenTableForEdit(name, table.Header.Count.ToString()); //table column count is passed as range to get only 2 rows from worksheet using table column count
+                else
+                    sheet = excel.OpenTableForEdit(name);
 
 				foreach (var column in table.Header)
 				{
