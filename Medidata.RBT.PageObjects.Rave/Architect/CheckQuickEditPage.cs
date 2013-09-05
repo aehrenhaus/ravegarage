@@ -55,7 +55,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             if (areaIdentifier.Equals("quick edit", StringComparison.InvariantCultureIgnoreCase))
             {
-                GetQuickEditTextArea().EnhanceAs<TextArea>().PostionCursorBefore(matchText);
+                GetQuickEditTextArea().EnhanceAs<TextArea>().PositionCursorAt(matchText);
             }
         }
 
@@ -63,7 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave
         {
             if (areaIdentifier.Equals("quick edit", StringComparison.InvariantCultureIgnoreCase))
             {
-                GetQuickEditTextArea().EnhanceAs<TextArea>().PositionCursorAfter(matchText);
+                GetQuickEditTextArea().EnhanceAs<TextArea>().PositionCursorAt(matchText, matchText.Length);
             }
         }
     }
