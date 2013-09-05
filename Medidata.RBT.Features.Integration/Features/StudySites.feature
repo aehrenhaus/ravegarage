@@ -22,11 +22,14 @@ Scenario: When a StudySite POST message gets put onto the queue, the studysite i
 @put_scenario_1
 Scenario: When a StudySite PUT message gets put onto the queue, the studysite is updated in Rave.
 	Given the study with name "TestPut Study" and environment "Prod" with ExternalId "2" exists in the Rave database
-	And I send the following StudySite messages to SQS
+	And I send the following StudySite message to SQS
 	| EventType | StudySiteId | StudySiteName               | StudySiteNumber | StudyId | SiteId | SiteName               | SiteNumber    | Timestamp           |
 	| POST      | 22          | TestPutStudySiteName        | put001          | 2       | 20     | TestPutSiteName        | put001        | 2012-10-12 12:00:00 |
+	And the message is successfully processed
+	When I send the following StudySite message to SQS
+	| EventType | StudySiteId | StudySiteName               | StudySiteNumber | StudyId | SiteId | SiteName               | SiteNumber    | Timestamp           |
 	| PUT       | 22          | TestPutStudySiteNameUpdated | put001updated   | 2       | 20     | TestPutSiteNameUpdated | put001updated | 2012-10-12 13:00:00 |
-	When the messages are successfully processed
+	And the messages is successfully processed
 	Then I should see the site in the Rave database
 	And I should see the studysite in the Rave database
 	And the site should exist with the following properties
@@ -76,11 +79,14 @@ Scenario: When I update a Study site in iMedidata, the linked study site is upda
 @PB2.5.9.38-01
 Scenario:  When a Site is added back to a Study in iMedidata, the studysite in Rave should be added back to the Site.
 	Given the study with name "Study 3801 A" and environment "Prod" with ExternalId "3801" exists in the Rave database
-	And I send the following StudySite messages to SQS
+	And I send the following StudySite message to SQS
 	| EventType | StudySiteId | StudySiteName       | StudySiteNumber | StudyId | SiteId | SiteName       | SiteNumber | Timestamp           |
 	| POST      | 55          | PB2593801 StudySite | PB2593801       | 3801    | 50     | PB2593801 Site | PB2593801  | 2012-10-12 12:00:00 |
+	And the message is successfully processed
+	When I send the following StudySite message to SQS
+	| EventType | StudySiteId | StudySiteName       | StudySiteNumber | StudyId | SiteId | SiteName       | SiteNumber | Timestamp           |
 	| DELETE    |             |                     |                 |         |        |                | PB2593801  | 2012-10-12 13:00:00 |
-	When the messages are successfully processed
+	And the message is successfully processed
 	Then I should see the site in the Rave database
 	And I should see the studysite in the Rave database
 	And the studysite should be inactive
