@@ -1,4 +1,5 @@
 @MCC-65264
+@ignore
 Feature: MCC-65264 ARC Rename ActionString column in CheckActions tab of AL spreadsheet
 
 Background:
@@ -95,7 +96,7 @@ And I navigate to "Edit Checks"
 And I click on icon "Check Steps" for Edit Check "SetSubjectName"
 And I edit "1st" Check Action
 And I verify option "Set Subject Name" is selected in "Action Type" dropdown
-And I verify text "Message" does not exists in "Check Actions"
+And I verify text "Message" does not exist in "Check Actions"
 And I take a screenshot
 And I select link "SetSubjectName"
 And I select link "Quick Edit"
