@@ -289,6 +289,17 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<ArchitectChecksPage>().EditEditCheck(iconName, editCheckName);
         }
 
+		/// <summary>
+		/// Step to click edit on check action
+		/// </summary>
+		/// <param name="checkActionOrdinal"></param>
+		[StepDefinition(@"I edit ""(\d+)(?:st|nd|rd|th)"" Check Action")]
+		public void IEdit____CheckAction(int checkActionIndex)
+		{
+			CurrentPage.As<ArchitectChecksPage>()
+				.EditCheckActionAtIndex(checkActionIndex);
+		}
+
         /// <summary>
         /// Step to verify tab name for Edit Check
         /// </summary>
