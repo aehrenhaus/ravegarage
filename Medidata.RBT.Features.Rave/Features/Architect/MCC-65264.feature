@@ -15,6 +15,7 @@ Given following Project assignments exist
 | User          | Project       | Environment | Role         | Site   | SecurityRole          |
 | SUPER USER 1  | MCC-65264-001 | Live: Prod  | SUPER ROLE 1 | Site_A | Project Admin Default |
 | SUPER USER 1  | MCC-65264-003 | Live: Prod  | SUPER ROLE 1 | Site_A | Project Admin Default |
+Given I login to Rave with user "SUPER USER 1"
 
 @Release_2013.4.0
 @PB_MCC-65264-01
