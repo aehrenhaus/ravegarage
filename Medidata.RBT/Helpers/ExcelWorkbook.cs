@@ -199,8 +199,11 @@ namespace Medidata.RBT
 		/// </summary>
 		/// <param name="sheetName"></param>
 		/// <param name="range">
-		/// Examlpe:  A1:B3
+		/// Examlpe1:  A1:B3
 		/// Is left empty, will return used range
+        /// 
+        /// Example2: 15
+        /// than the string based number be used as final cell column count
 		/// </param>
 		/// <returns></returns>
 		private object[,] GetWorksheetValueRange(string sheetName, string range = null)
@@ -212,11 +215,27 @@ namespace Medidata.RBT
 			// of the cells in the sheet (their values). You can do things with those
 			// values. See notes about compatibility.
 			//
-            _range = string.IsNullOrEmpty(range) ? _workSheet.UsedRange : _workSheet.Range[range];
+            if (string.IsNullOrEmpty(range))
+                _range = _workSheet.UsedRange;
+            else
+            {
+                int intRange;
+                if (int.TryParse(range, out intRange)) //if range is an integer than use it as end column count
+                    _range = GetRangeFromCellIndex(1, 1, 2, intRange);
+                else
+                    _range = _workSheet.Range[range];
+            }
+           
             object[,] valueArray = (object[,])_range.get_Value(XlRangeValueDataType.xlRangeValueDefault);
 
 			return valueArray;
 		}
+
+
+        private Range GetRangeFromCellIndex(int startRow, int startColumn, int endRow, int endColumn)
+        {
+            return _workSheet.Range[_workSheet.Cells[startRow, startColumn], _workSheet.Cells[endRow, endColumn]];
+        }
 
 		public void Dispose()
 		{
