@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.ServiceProcess;
 using Medidata.AmazonSimpleServices;
@@ -164,9 +166,14 @@ namespace Medidata.RBT.Features.Integration.Hooks
 
             IntegrationTestContext.SqsWrapper = new SimpleQueueWrapper(accessKey, secretKey, region);
 
-            var edcQueueName = Guid.NewGuid();
-            var modulesQueueName = Guid.NewGuid();
-            var securityQueueName = Guid.NewGuid();
+            var queueNames = getQueueNames(
+                new[] { SQSHelper.EDC_APP_NAME, 
+                    SQSHelper.MODULES_APP_NAME, 
+                    SQSHelper.SECURITY_APP_NAME });
+
+            var edcQueueName = queueNames[SQSHelper.EDC_APP_NAME];
+            var modulesQueueName = queueNames[SQSHelper.MODULES_APP_NAME];
+            var securityQueueName = queueNames[SQSHelper.SECURITY_APP_NAME];
 
             IntegrationTestContext.SqsQueueUrl = IntegrationTestContext.SqsWrapper.CreateQueue(edcQueueName.ToString(), 1209600);
             Console.WriteLine("EDC Queue URL: {0}", IntegrationTestContext.SqsQueueUrl);
@@ -179,6 +186,38 @@ namespace Medidata.RBT.Features.Integration.Hooks
             SQSHelper.UpdateQueueUuid(SQSHelper.EDC_APP_NAME, edcQueueName);
             SQSHelper.UpdateQueueUuid(SQSHelper.MODULES_APP_NAME, modulesQueueName);
             SQSHelper.UpdateQueueUuid(SQSHelper.SECURITY_APP_NAME, securityQueueName);
+        }
+
+        /// <summary>
+        /// Creates a Dictionary containing Guids for each application name provided. Each guid is based on a combination 
+        /// of the application name, the current windows username and the machine name on which the tests are being run.
+        /// </summary>
+        /// <param name="appNames"></param>
+        /// <returns></returns>
+        private static Dictionary<string, Guid> getQueueNames(IEnumerable<string> appNames)
+        {
+            //just a random guid to make sure all generated guids are in a custom namespace
+            const string mdsolNamespaceQuid = "359d6391-ae61-48e9-a0bf-1997c8e70a7f";
+            var nsGuid = Guid.Parse(mdsolNamespaceQuid);
+
+            var machineName = Environment.MachineName;
+
+            // ReSharper disable PossibleNullReferenceException
+            var username = System.Security.Principal.WindowsIdentity.GetCurrent().Name.Split('\\').Last();
+            // ReSharper restore PossibleNullReferenceException
+
+            var uniqueString = string.Format("{0}.{1}.mdsol.com", username, machineName);
+
+            var result = new Dictionary<string, Guid>();
+
+            appNames.ToList().ForEach(appName =>
+            {
+                var uniqueAppName = string.Format("{0}.{1}", appName, uniqueString);
+
+                result.Add(appName, GuidUtility.Create(nsGuid, uniqueAppName));
+            });
+
+            return result;
         }
     }
 }

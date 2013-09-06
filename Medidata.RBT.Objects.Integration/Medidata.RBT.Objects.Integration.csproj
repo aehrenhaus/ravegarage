@@ -81,6 +81,7 @@
     <Compile Include="Configuration\Templates\UserStudySiteTemplates.cs" />
     <Compile Include="Configuration\Templates\UserTemplates.cs" />
     <Compile Include="Helpers\eLearningHelper.cs" />
+    <Compile Include="Helpers\GuidUtility.cs" />
     <Compile Include="Helpers\RoleHelper.cs" />
     <Compile Include="Helpers\StudyInvitationHelper.cs" />
     <Compile Include="Helpers\DbHelper.cs" />
