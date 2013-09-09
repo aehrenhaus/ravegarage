@@ -3,7 +3,10 @@
 )
 
 "Waiting for test to finish"
-sleep 1
+#If any finalizers have yet to run, the trx won't be generated when this script starts. 
+#The finalizer queue can only run for two seconds, so we should be safe if we wait for 3
+sleep 3 
+
 $scriptpath = [System.IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Definition)
 $scriptpath 
 

@@ -131,12 +131,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
 
                 p.Start();
 
-                //TODO: gerrard debug code
-                string output = p.StandardOutput.ReadToEnd();
-
-#if DEBUG
-                //p.WaitForExit();
-#endif
+                //don't wait for the script to finish
             }
         }
 
