@@ -21,8 +21,9 @@ Given following Report assignments exist
 	| User         | Report                                          |
 	| SUPER USER 1 | Script Utility - Script Utility (9)             |
 	| SUPER USER 1 | Script Utility Manager - Script Utility Manager |
-Given I install script utility script "SubjectCopyV56X.xml"
 Given I login to Rave with user "SUPER USER 1"
+Given I install script utility script "SubjectCopyV56X.xml"
+Given I navigate to "Home"
 Given I select Study "MCC-67716" and Site "Site 1"
 Given I create a Subject
 	| Field            | Data              |
