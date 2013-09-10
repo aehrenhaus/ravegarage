@@ -47,7 +47,7 @@ And I switch to tab "1"
 And I choose "Unscheduled Visit" from "Add Event"
 And I take a screenshot
 When I click button "Add"
-Then I should see folders added under subject "SUB {Var(num1)}"
+Then I should see folder added under subject "SUB {Var(num1)}"
  |Folders               |
  |Unscheduled Visit (1) |
 And I take a screenshot 
@@ -98,7 +98,7 @@ And I switch to tab "1"
 And I choose "Unscheduled Visit" from "Add Event"
 And I take a screenshot
 When I click button "Add"
-Then I should see folders added under subject "SUB {Var(num1)}"
+Then I should see folder added under subject "SUB {Var(num1)}"
  |Folders               |
  |Unscheduled Visit (1) |
 And I take a screenshot 
@@ -114,4 +114,124 @@ And I switch to tab "3"
 And I select link "SUB {Var(num1)}" 
 When I click drop button on "Add Event"
 Then I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I take a screenshot
+
+@Release_2013.4.0
+@PB_MCC-52154-03B
+@RR09.SEP.2013
+@Draft
+Scenario: MCC-52154-03B As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1 on tab1, then the matrix should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should be available for selection in the list on tab2 and tab3 when try to add matrix on tab2 and tab3 then the matrix should not be added on tab2 and tab3.
+ 
+
+Given I login to Rave with user "SUPER USER 1"
+And I select Study "MCC-52154" and Site "Site_A"
+And I create a Subject
+ |Field              |Data              |Control Type |
+ |Subject Initials   |SUB               |textbox      |
+ |Subject Number     |{RndNum<num1>(3)} |textbox      |
+ |Subject ID 	     |SUB {Var(num1)}   |textbox      |
+And I take a screenshot 
+And I open link "SUB {Var(num1)}" in new tab
+And I open link "SUB {Var(num1)}" in new tab
+And I take a screenshot
+And I switch to tab "1" 
+And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I take a screenshot
+And I switch to tab "2" 
+And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I take a screenshot
+And I switch to tab "3"
+And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I take a screenshot
+And I switch to tab "1" 
+And I choose "Unscheduled Visit" from "Add Event"
+And I take a screenshot
+When I click button "Add"
+Then I should see folder added under subject "SUB {Var(num1)}"
+ |Folders               |
+ |Unscheduled Visit (1) |
+And I take a screenshot 
+And I click drop button on "Add Event"
+And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I take a screenshot
+And I switch to tab "2"
+And I click drop button on "Add Event"
+And I verify option "Unscheduled Visit" exist in "Add Event" dropdown
+And I take a screenshot
+And I choose "Unscheduled Visit" from "Add Event"
+When I click button "Add"
+Then I should not see folder added under subject "SUB {Var(num1)}"
+ |Folders               |
+ |Unscheduled Visit (2) |
+And I take a screenshot
+And I switch to tab "3"
+And I click drop button on "Add Event"
+And I verify option "Unscheduled Visit" exist in "Add Event" dropdown
+And I take a screenshot
+And I choose "Unscheduled Visit" from "Add Event"
+When I click button "Add"
+Then I should not see folder added under subject "SUB {Var(num1)}"
+ |Folders               |
+ |Unscheduled Visit (3) |
+And I take a screenshot
+
+@Release_2013.4.0
+@PB_MCC-52154-04B
+@RR09.SEP.2013
+@Draft
+Scenario: MCC-52154-04B As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1 on tab1, then the matrix should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should be available for selection in the list on tab2 and tab3 when try to add matrix on tab2 and tab3 then the matrix should not be added on tab2 and tab3. 
+
+Given I login to Rave with user "SUPER USER 1"
+And I select Study "MCC-52154" and Site "Site_A"
+And I create a Subject
+ |Field              |Data              |Control Type |
+ |Subject Initials   |SUB               |textbox      |
+ |Subject Number     |{RndNum<num1>(3)} |textbox      |
+ |Subject ID 	     |SUB {Var(num1)}   |textbox      |
+And I take a screenshot
+And I open link "SUB {Var(num1)}" in new tab
+And I open link "SUB {Var(num1)}" in new tab
+And I take a screenshot
+And I switch to tab "1" 
+And I select link "Grid View"
+And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I take a screenshot
+And I switch to tab "2"
+And I select link "Grid View" 
+And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I take a screenshot
+And I switch to tab "3"
+And I select link "Grid View" 
+And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I take a screenshot
+And I switch to tab "1" 
+And I choose "Unscheduled Visit" from "Add Event"
+And I take a screenshot
+When I click button "Add"
+Then I should see folders added under subject "SUB {Var(num1)}"
+ |Folders               |
+ |Unscheduled Visit (1) |
+And I take a screenshot 
+And I click drop button on "Add Event"
+And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I take a screenshot
+And I switch to tab "2"
+And I click drop button on "Add Event"
+And I verify option "Unscheduled Visit" exist in "Add Event" dropdown
+And I take a screenshot
+And I choose "Unscheduled Visit" from "Add Event"
+When I click button "Add"
+Then I should not see folder added under subject "SUB {Var(num1)}"
+ |Folders               |
+ |Unscheduled Visit (2) |
+And I take a screenshot
+And I switch to tab "3"
+And I click drop button on "Add Event"
+And I verify option "Unscheduled Visit" exist in "Add Event" dropdown
+And I take a screenshot
+And I choose "Unscheduled Visit" from "Add Event"
+When I click button "Add"
+Then I should not see folder added under subject "SUB {Var(num1)}"
+ |Folders               |
+ |Unscheduled Visit (3) |
 And I take a screenshot

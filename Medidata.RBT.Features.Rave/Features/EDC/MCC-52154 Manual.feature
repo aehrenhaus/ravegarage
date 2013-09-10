@@ -13,6 +13,8 @@ Given following Project assignments exist
 | User          | Project   | Environment | Role         | Site   | SecurityRole          |
 | SUPER USER 1  | MCC-52154 | Live: Prod  | SUPER ROLE 1 | Site_A | Project Admin Default |
 
+#NOTE: This Feature file need to be executed only on browsers google chrome or IE. This Feature file should not be executed on browser firefox as the issue doesn't exist on Firefox.
+
 #Note: 1) Unscheduled Visit Matrix Max value is set to 1, unassigned to multiple folders on subject level.
 #Note: 2) Base Matrix Max value is set to 1, assigned to multiple folders on subject level.
 #Note: 3) Second Visit Matrix Max value is set to 2, unassigned to multiple folders on subject level.
@@ -52,7 +54,7 @@ And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(
 And I take a screenshot
 And I choose "Unscheduled Visit" from "Add Event"
 And I take a screenshot
-When I quickly click button "Add" few times
+When I quickly click button "Add" 10 times
 Then I should see folders added under subject "SUB {Var(num1)}"
  |Folders               |
  |Unscheduled Visit (1) |
@@ -92,7 +94,7 @@ And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(
 And I take a screenshot
 And I choose "Unscheduled Visit" from "Add Event"
 And I take a screenshot
-When I quickly click button "Add" few times
+When I quickly click button "Add" 10 times
 Then I should see folders added under subject "SUB {Var(num1)}"
  |Folders               |
  |Unscheduled Visit (1) |
@@ -154,7 +156,7 @@ And I should see folders added under subject "SUB {Var(num1)}"
  |Unscheduled Visit (1) |
 And I take a screenshot
 And I choose "Second" from "Add Event"
-When I quickly click button "Add" few times
+When I quickly click button "Add" 10 times
 Then I should see folders added under subject "SUB {Var(num1)}"
  |Folders               |
  |Unscheduled Visit (1) |
@@ -200,7 +202,7 @@ And I should see folders added under subject "SUB {Var(num1)}"
  |Unscheduled Visit (1) |
 And I take a screenshot 
 And I choose "Second" from "Add Event"
-When I quickly click button "Add" few times
+When I quickly click button "Add" 10 times
 Then I should see folders added under subject "SUB {Var(num1)}"
  |Folders               |
  |Unscheduled Visit (1) |
@@ -258,7 +260,7 @@ And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
 And I take a screenshot
 And I choose "Base" from "Add Event"
 And I take a screenshot
-When I quickly click button "Add" few times
+When I quickly click button "Add" 10 times
 Then I should see folders added under subject "SUB {Var(num1)}"
  |Folders                |
  |Unscheduled Visit (1)  |
@@ -320,7 +322,7 @@ And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
 And I take a screenshot
 And I choose "Base" from "Add Event"
 And I take a screenshot
-When I quickly click button "Add" few times
+When I quickly click button "Add" 10 times
 Then I should see folders added under subject "SUB {Var(num1)}"
  |Folders                |
  |Unscheduled Visit (1)  |
