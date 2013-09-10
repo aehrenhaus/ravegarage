@@ -4,21 +4,24 @@
 
 @mytag
 Scenario: When a Study POST message gets put onto the queue, the study is created in Rave.
-	Given I send the following Study message to SQS
+	When I send the following Study message to SQS
 	| EventType | Name           | IsProd | Description     | ID   | Timestamp           |
 	| POST      | TestSqsStudy29 | true   | TestDescription | 1252 | 2012-10-12 12:00:00 |
-	When the message is successfully processed
+	And the message is successfully processed
 	Then I should see the study in the Rave database
 	And the study should exist with the following properties
 	| Name           | Environment | Description     | LastExternalUpdateDate | TestStudy | ExternalID | 
 	| TestSqsStudy29 | Prod        | TestDescription | 2012-10-12 12:00:00    | False     | 1252       |
 	
 Scenario: When a Study PUT message gets put onto the queue, the study is updated in Rave.
-	Given I send the following Study messages to SQS
+	Given I send the following Study message to SQS
 	| EventType | Name                  | IsProd | Description            | ID   | EnrollmentTarget | Timestamp           |
 	| POST      | TestSqsStudy30        | true   | TestDescription        | 1253 | 1                | 2012-10-12 12:00:00 |
+	And the messages is successfully processed
+	When I send the following Study messages to SQS
+	| EventType | Name                  | IsProd | Description            | ID   | EnrollmentTarget | Timestamp           |
 	| PUT       | TestSqsStudy30Updated | true   | TestDescriptionUpdated | 1253 | 2                | 2012-10-12 14:00:00 |
-	When the messages are successfully processed
+	And the message is successfully processed
 	Then I should see the study in the Rave database
 	And the study should exist with the following properties
 	| Name                  | Environment | Description            | LastExternalUpdateDate | TestStudy | ExternalID | EnrollmentTarget |
@@ -28,10 +31,10 @@ Scenario: When a Study PUT message gets put onto the queue, the study is updated
 Scenario: If I have a project + environment in Rave that is not linked to a study in iMedidata . When the study is created in iMedidata, Rave should link that Project and Environment.
 	
 	Given the study with name "TestSqsStudy31" and environment "TestEnvironment" with ExternalId "0" exists in the Rave database
-	And I send the following Study message to SQS
+	When I send the following Study message to SQS
 	| EventType | Name                             | IsProd | Description     | ID   | EnrollmentTarget | Timestamp           |
 	| POST      | TestSqsStudy31 (TestEnvironment) | false  | TestDescription | 1254 | 3                | 2012-10-12 12:00:00 |
-	When the message is successfully processed
+	And the message is successfully processed
 	Then I should see the study in the Rave database
 	And the study with ExternalId "0" should not be in the Rave database
 	And the study should exist with the following properties
@@ -45,10 +48,10 @@ Scenario: If I have an unlinked study in iMedidata, when the study is created in
 			link the found project and create the new environment that maps to that study.
 
 	Given the study with name "TestSqsStudy32" and environment "TestEnvironment1" with ExternalId "117" exists in the Rave database
-	And I send the following Study message to SQS
+	When I send the following Study message to SQS
 	| EventType | Name                              | IsProd | Description     | ID   | EnrollmentTarget | Timestamp           |
 	| POST      | TestSqsStudy32 (TestEnvironment2) | false  | TestDescription | 1255 | 4                | 2012-10-12 12:00:00 |
-	When the message is successfully processed
+	And the message is successfully processed
 	Then I should see the study in the Rave database
 	And the study should exist with the following properties
 	| Name           | Environment      | Description     | LastExternalUpdateDate | ExternalID | EnrollmentTarget |
