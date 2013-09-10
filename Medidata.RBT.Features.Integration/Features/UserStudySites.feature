@@ -10,7 +10,7 @@ Scenario: When a UserStudySite message gets put onto the queue, and the user alr
 	And the current User is assigned to the current Study with current Role
 	And the following site exists in the rave database:
 	| Number | Name			|
-	| 1      | SiteName		|
+	| UserStudySite1      | SiteName		|
 	And the StudySite with ExternalId "1" exists in the Rave database
 	And I send the following UserStudySite message to SQS	
 	| EventType | Timestamp           |
@@ -26,7 +26,7 @@ Scenario: When a UserStudySite delete message gets put onto the queue, and the a
 	And the current User is assigned to the current Study with current Role
 	And the following site exists in the rave database:
 	| Number | Name			|
-	| 2      | SiteName		|
+	| UserStudySite2      | SiteName		|
 	And the StudySite with ExternalId "2" exists in the Rave database
 	And the current User is assigned to the the current StudySite with external update date "2012-10-11 13:00:00"
 	And I send the following UserStudySite messages to SQS	
