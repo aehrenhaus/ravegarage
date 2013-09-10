@@ -1,5 +1,4 @@
 @MCC-65264
-@ignore
 Feature: MCC-65264 ARC Rename ActionString column in CheckActions tab of AL spreadsheet
 
 Background:
