@@ -25,6 +25,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
 
         static IntegrationTestRunHooks()
         {
+            //will be set to an instance (if needed) by BeforeTestRun
             RaveIntegrationServiceController = null;
         }
 
@@ -38,11 +39,16 @@ namespace Medidata.RBT.Features.Integration.Hooks
             var isSqsMode = ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
                 .Equals(MessageDeliveryTypes.SQS);
 
-            if (isSqsMode)
+            //See if a service name was specified. This won't be the case if we're running against
+            //a remote RISS instance.
+            var serviceName = ConfigurationManager.AppSettings["ServiceName"];
+
+            //if we're in sqs mode and we have a service name.
+            if (isSqsMode && serviceName != null)
             {
                 //get a reference to the rave service, since SQS mode uses the real service.
                 RaveIntegrationServiceController = new ServiceController(string.Format("Medidata Rave Integration Service - \"{0}\"",
-                    ConfigurationManager.AppSettings["ServiceName"]));
+                    serviceName));
 
                 //stop the service, before dropping and restoring the database
                 //this avoids a bunch of errors being logged by the RIS while
@@ -58,8 +64,9 @@ namespace Medidata.RBT.Features.Integration.Hooks
                 //create the real queues and update the app configurations in the database
                 createQueues();
 
-                //start the real rave service, which will read our updated configurations.
-                startRaveService();    
+                //if the service name wasn't null, start the real rave service. 
+                //It will read our updated configurations.
+                if (serviceName != null) startRaveService();
             }
         }
 
@@ -77,9 +84,9 @@ namespace Medidata.RBT.Features.Integration.Hooks
                 IntegrationTestContext.SqsWrapper.DeleteQueue(IntegrationTestContext.SqsQueueUrl);
             }
 
-            if(IntegrationTestContext.TestFailed)
+            if (IntegrationTestContext.TestFailed)
             {
-                
+
             }
 
             //TODO: replace this temporary copy of report generation with a shared class
@@ -95,7 +102,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
         [AfterScenario]
         public void AfterScenario()
         {
-            if(ScenarioContext.Current.TestError != null)
+            if (ScenarioContext.Current.TestError != null)
             {
                 IntegrationTestContext.TestFailed = true;
             }
@@ -125,7 +132,6 @@ namespace Medidata.RBT.Features.Integration.Hooks
                    @"powershell.exe",
                    arguments);
 
-                //TODO: gerrard debug code
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;
 

@@ -17,6 +17,7 @@
     <add key="AwsSecretKey" value="%%%AwsSecretKey%%%"/>
     <add key="AwsRegion" value="%%%AwsRegion%%%"/>
     <add key="RunCleaningEngineInProcess" value="True" />
+	<!--comment out this key if running against a remote RISS instance-->
     <add key="ServiceName" value="%%%ServiceName%%%"/>
     <add key="AwsConfigXmlFilePath" value="%%%AwsConfgiXmlFilePath%%%"/>
     <add key="RaveBackupLocation" value="%%%RaveBackupLocation%%%"/>

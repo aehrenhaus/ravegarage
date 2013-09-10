@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medidata.RBT.SeleniumExtens
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{66B536D7-0359-4A66-B87B-FF4FFF73165B}"
 	ProjectSection(SolutionItems) = preProject
-		Default.testsettings = Default.testsettings
+		Medidata.RBT.Features.Integration.testsettings = Medidata.RBT.Features.Integration.testsettings
 		Medidata.RBT.Integration.vsmdi = Medidata.RBT.Integration.vsmdi
 	EndProjectSection
 EndProject
