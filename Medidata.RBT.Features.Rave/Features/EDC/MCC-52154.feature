@@ -137,7 +137,7 @@ And I take a screenshot
 @PB_MCC-52154-03B
 @RR09.SEP.2013
 @Draft
-Scenario: MCC-52154-03B As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1 on tab1, then the matrix should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should be available for selection in the list on tab2 and tab3 when try to add matrix on tab2 and tab3 then the matrix should not be added on tab2 and tab3.
+Scenario: MCC-52154-03B As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1 on tab1, then the matrix folders should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should be available for selection in the list on tab2 and tab3 when try to add matrix on tab2 and tab3 then the matrix should not be added on tab2 and tab3.
  
 
 Given I login to Rave with user "SUPER USER 1"
@@ -228,7 +228,7 @@ And I take a screenshot
 @PB_MCC-52154-04B
 @RR09.SEP.2013
 @Draft
-Scenario: MCC-52154-04B As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1 on tab1, then the matrix should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should be available for selection in the list on tab2 and tab3 when try to add matrix on tab2 and tab3 then the matrix should not be added on tab2 and tab3. 
+Scenario: MCC-52154-04B As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1 on tab1, then the matrix folders should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should be available for selection in the list on tab2 and tab3 when try to add matrix on tab2 and tab3 then the matrix should not be added on tab2 and tab3. 
 
 Given I login to Rave with user "SUPER USER 1"
 And I select Study "MCC-52154" and Site "Site_A"
