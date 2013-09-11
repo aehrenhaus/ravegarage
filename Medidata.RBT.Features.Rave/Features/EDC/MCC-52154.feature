@@ -164,6 +164,9 @@ Then I should not see folder added under subject "SUB {Var(num1)}"
  |Folders               |
  |Unscheduled Visit (2) |
 And I take a screenshot
+And I click drop button on "Add Event"
+And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I take a screenshot
 And I switch to tab "3"
 And I click drop button on "Add Event"
 And I verify option "Unscheduled Visit" exist in "Add Event" dropdown
@@ -173,6 +176,9 @@ When I click button "Add"
 Then I should not see folder added under subject "SUB {Var(num1)}"
  |Folders               |
  |Unscheduled Visit (3) |
+And I take a screenshot
+And I click drop button on "Add Event"
+And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot
 
 @Release_2013.4.0
@@ -225,6 +231,9 @@ Then I should not see folder added under subject "SUB {Var(num1)}"
  |Folders               |
  |Unscheduled Visit (2) |
 And I take a screenshot
+And I click drop button on "Add Event"
+And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I take a screenshot
 And I switch to tab "3"
 And I click drop button on "Add Event"
 And I verify option "Unscheduled Visit" exist in "Add Event" dropdown
@@ -234,4 +243,7 @@ When I click button "Add"
 Then I should not see folder added under subject "SUB {Var(num1)}"
  |Folders               |
  |Unscheduled Visit (3) |
+And I take a screenshot
+And I click drop button on "Add Event"
+And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot
