@@ -14,14 +14,12 @@ Given following Project assignments exist
 
 #Note: 1) Unscheduled Visit Matrix Max value is set to 1, unassigned to multiple folders on subject level.
 #Note: 2) Base Matrix Max value is set to 1, assigned to multiple folders on subject level.
-#Note: 3) Second Visit Matrix Max value is set to 2, unassigned to multiple folders on subject level.
 
 @Release_2013.4.0
 @PB_MCC-52154-01B
 @RR09.SEP.2013
 @Draft
 Scenario: MCC-52154-01B As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1 on tab1, then the matrix should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should not be available for selection in the list on tab2 and tab3 when page is refreshed.
- 
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -123,12 +121,14 @@ And I click drop button on "Add Event"
 And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "2"
-And I select link "SUB {Var(num1)}" 
+And I select link "SUB {Var(num1)}"
+And I select link "Grid View"  
 When I click drop button on "Add Event"
 Then I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "3"
-And I select link "SUB {Var(num1)}" 
+And I select link "SUB {Var(num1)}"
+And I select link "Grid View"  
 When I click drop button on "Add Event"
 Then I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot
