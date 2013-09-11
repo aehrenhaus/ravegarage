@@ -24,6 +24,23 @@ Scenario: MCC-52154-01B As a EDC user, On subject calendar view page, when I add
  
 
 Given I login to Rave with user "SUPER USER 1"
+And I navigate to "Architect"
+And I select "Project" link "MCC-52154" in "Active Projects"
+And I select Draft "Draft 1"
+And I navigate to "Matrices"
+And I verify data on Matrices
+ |Name             |OID     |Allow Add  |Max |
+ |Unscheduled Visit|UNSCHVS |checked    |1   |
+And I take a screenshot
+And I click on icon "Folder Forms" for Matrices "Unscheduled Visit"
+And I verify data on Matrices details page
+ |Forms        |Subject |Unscheduled Visit |Screening |Baseline |
+ |Primary form |uncheck |uncheck           |uncheck   |uncheck  |
+ |Form1        |uncheck |check             |uncheck   |uncheck  |
+ |Form2        |uncheck |uncheck           |uncheck   |uncheck  |
+ |Form3        |uncheck |uncheck           |uncheck   |uncheck  |
+And I take a screenshot
+And I navigate to "Home"
 And I select Study "MCC-52154" and Site "Site_A"
 And I create a Subject
  |Field              |Data              |Control Type |
@@ -124,6 +141,23 @@ Scenario: MCC-52154-03B As a EDC user, On subject calendar view page, when I add
  
 
 Given I login to Rave with user "SUPER USER 1"
+And I navigate to "Architect"
+And I select "Project" link "MCC-52154" in "Active Projects"
+And I select Draft "Draft 1"
+And I navigate to "Matrices"
+And I verify data on Matrices
+ |Name |OID  |Allow Add  |Max |
+ |Base |BASE |checked    |1   |
+And I take a screenshot 
+And I click on icon "Folder Forms" for Matrices "Base"
+And I verify data on Matrices details page
+ |Forms        |Subject   |Unscheduled Visit |Screening |Baseline |
+ |Primary form |uncheck   |uncheck           |uncheck   |uncheck  |
+ |Form1        |uncheck   |check             |check     |check    |
+ |Form2        |uncheck   |uncheck           |uncheck   |uncheck  |
+ |Form3        |uncheck   |uncheck           |uncheck   |uncheck  |
+And I take a screenshot 
+And I navigate to "Home"
 And I select Study "MCC-52154" and Site "Site_A"
 And I create a Subject
  |Field              |Data              |Control Type |
@@ -144,41 +178,50 @@ And I switch to tab "3"
 And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
 And I take a screenshot
 And I switch to tab "1" 
-And I choose "Unscheduled Visit" from "Add Event"
+And I choose "Base" from "Add Event"
 And I take a screenshot
 When I click button "Add"
 Then I should see folder added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (1) |
+ |Folders                |
+ |Folders                |
+ |Unscheduled Visit (1)  |
+ |Screening (1)          |
+ |Baseline (1)           |
 And I take a screenshot 
 And I click drop button on "Add Event"
-And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "2"
 And I click drop button on "Add Event"
-And I verify option "Unscheduled Visit" exist in "Add Event" dropdown
+And I verify option "Base" exist in "Add Event" dropdown
 And I take a screenshot
-And I choose "Unscheduled Visit" from "Add Event"
+And I choose "Base" from "Add Event"
 When I click button "Add"
 Then I should not see folder added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (2) |
+ |Folders                |
+ |Folders                |
+ |Unscheduled Visit (2)  |
+ |Screening (2)          |
+ |Baseline (2)           |
 And I take a screenshot
 And I click drop button on "Add Event"
-And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "3"
 And I click drop button on "Add Event"
-And I verify option "Unscheduled Visit" exist in "Add Event" dropdown
+And I verify option "Base" exist in "Add Event" dropdown
 And I take a screenshot
-And I choose "Unscheduled Visit" from "Add Event"
+And I choose "Base" from "Add Event"
 When I click button "Add"
 Then I should not see folder added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (3) |
+ |Folders                |
+  |Folders               |
+ |Unscheduled Visit (3)  |
+ |Screening (3)          |
+ |Baseline (3)           |
 And I take a screenshot
 And I click drop button on "Add Event"
-And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 
 @Release_2013.4.0
@@ -211,39 +254,48 @@ And I select link "Grid View"
 And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
 And I take a screenshot
 And I switch to tab "1" 
-And I choose "Unscheduled Visit" from "Add Event"
+And I choose "Base" from "Add Event"
 And I take a screenshot
 When I click button "Add"
-Then I should see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (1) |
+Then I should see folder added under subject "SUB {Var(num1)}"
+ |Folders                |
+ |Folders                |
+ |Unscheduled Visit (1)  |
+ |Screening (1)          |
+ |Baseline (1)           |
 And I take a screenshot 
 And I click drop button on "Add Event"
-And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "2"
 And I click drop button on "Add Event"
-And I verify option "Unscheduled Visit" exist in "Add Event" dropdown
+And I verify option "Base" exist in "Add Event" dropdown
 And I take a screenshot
-And I choose "Unscheduled Visit" from "Add Event"
+And I choose "Base" from "Add Event"
 When I click button "Add"
 Then I should not see folder added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (2) |
+ |Folders                |
+ |Folders                |
+ |Unscheduled Visit (2)  |
+ |Screening (2)          |
+ |Baseline (2)           |
 And I take a screenshot
 And I click drop button on "Add Event"
-And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "3"
 And I click drop button on "Add Event"
-And I verify option "Unscheduled Visit" exist in "Add Event" dropdown
+And I verify option "Base" exist in "Add Event" dropdown
 And I take a screenshot
-And I choose "Unscheduled Visit" from "Add Event"
+And I choose "Base" from "Add Event"
 When I click button "Add"
 Then I should not see folder added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (3) |
+ |Folders                |
+ |Folders                |
+ |Unscheduled Visit (3)  |
+ |Screening (3)          |
+ |Baseline (3)           |
 And I take a screenshot
 And I click drop button on "Add Event"
-And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
