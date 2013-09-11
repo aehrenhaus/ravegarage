@@ -50,26 +50,22 @@ And I create a Subject
  |Subject Initials   |SUB               |textbox      |
  |Subject Number     |{RndNum<num1>(3)} |textbox      |
  |Subject ID 	     |SUB {Var(num1)}   |textbox      |
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I choose "Unscheduled Visit" from "Add Event"
 And I take a screenshot
 When I quickly click button "Add" 10 times
-Then I should see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (1) |
+Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I take a screenshot
-And I should not see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (2) |
- |Unscheduled Visit (3) |
- |Unscheduled Visit (4) |
- |Unscheduled Visit (5) |
- |Unscheduled Visit (6) |
- |Unscheduled Visit (7) |
- |Unscheduled Visit (8) |
- |Unscheduled Visit (9) |
- |Unscheduled Visit (10)|
+And I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I click drop button on "Add Event"
 And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
@@ -90,26 +86,22 @@ And I create a Subject
  |Subject Number     |{RndNum<num2>(3)} |textbox      |
  |Subject ID 	     |SUB {Var(num2)}   |textbox      |
 And I select link "Grid View"
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I choose "Unscheduled Visit" from "Add Event"
 And I take a screenshot
 When I quickly click button "Add" 10 times
-Then I should see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (1) |
+Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I take a screenshot 
-And I should not see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (2) |
- |Unscheduled Visit (3) |
- |Unscheduled Visit (4) |
- |Unscheduled Visit (5) |
- |Unscheduled Visit (6) |
- |Unscheduled Visit (7) |
- |Unscheduled Visit (8) |
- |Unscheduled Visit (9) |
- |Unscheduled Visit (10)|
+And I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
@@ -146,32 +138,26 @@ And I create a Subject
  |Subject Initials   |SUB               |textbox      |
  |Subject Number     |{RndNum<num3>(3)} |textbox      |
  |Subject ID 	     |SUB {Var(num3)}   |textbox      |
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I choose "Second" from "Add Event"
 And I take a screenshot
 And I click button "Add"
-And I should see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (1) |
+And I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I take a screenshot
 And I choose "Second" from "Add Event"
 When I quickly click button "Add" 10 times
-Then I should see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (1) |
- |Unscheduled Visit (2) |
+Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
+And I verify text "Unscheduled Visit (2)" exists in "Left Navigation List"
 And I take a screenshot 
-And I should not see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (3) |
- |Unscheduled Visit (4) |
- |Unscheduled Visit (5) |
- |Unscheduled Visit (6) |
- |Unscheduled Visit (7) |
- |Unscheduled Visit (8) |
- |Unscheduled Visit (9) |
- |Unscheduled Visit (10)|
+And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Second" does not exist in "Add Event" dropdown
@@ -192,32 +178,26 @@ And I create a Subject
  |Subject Number     |{RndNum<num4>(3)} |textbox      |
  |Subject ID 	     |SUB {Var(num4)}   |textbox      |
 And I select link "Grid View"
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I choose "Second" from "Add Event"
 And I take a screenshot
 And I click button "Add"
-And I should see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (1) |
+And I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I take a screenshot 
 And I choose "Second" from "Add Event"
 When I quickly click button "Add" 10 times
-Then I should see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (1) |
- |Unscheduled Visit (2) |
+Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
+And I verify text "Unscheduled Visit (2)" exists in "Left Navigation List"
 And I take a screenshot 
-And I should not see folders added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (3) |
- |Unscheduled Visit (4) |
- |Unscheduled Visit (5) |
- |Unscheduled Visit (6) |
- |Unscheduled Visit (7) |
- |Unscheduled Visit (8) |
- |Unscheduled Visit (9) |
- |Unscheduled Visit (10)|
+And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Second" does not exist in "Add Event" dropdown
@@ -254,48 +234,44 @@ And I create a Subject
  |Subject Initials   |SUB               |textbox      |
  |Subject Number     |{RndNum<num5>(3)} |textbox      |
  |Subject ID 	     |SUB {Var(num5)}   |textbox      |
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
+And I verify text "Screening (1)" does not exist in "Left Navigation List"
+And I verify text "Baseline (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I choose "Base" from "Add Event"
 And I take a screenshot
 When I quickly click button "Add" 10 times
-Then I should see folders added under subject "SUB {Var(num1)}"
- |Folders                |
- |Unscheduled Visit (1)  |
- |Screening (1)          |
- |Baseline (1)           |
+Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
+And I verify text "Screening (1)" exists in "Left Navigation List"
+And I verify text "Baseline (1)" exists in "Left Navigation List"
 And I take a screenshot 
-And I should not see folders added under subject "SUB {Var(num1)}"
- |Folders                |
- |Unscheduled Visit (2)  |
- |Screening (2)          |
- |Baseline (2)           |
- |Unscheduled Visit (3)  |
- |Screening (3)          |
- |Baseline (3)           |
- |Unscheduled Visit (4)  |
- |Screening (4)          |
- |Baseline (4)           |
- |Unscheduled Visit (5)  |
- |Screening (5)          |
- |Baseline (5)           |
- |Unscheduled Visit (6)  |
- |Screening (6)          |
- |Baseline (6)           |
- |Unscheduled Visit (7)  |
- |Screening (7)          |
- |Baseline (7)           |
- |Unscheduled Visit (8)  |
- |Screening (8)          |
- |Baseline (8)           |
- |Unscheduled Visit (9)  |
- |Screening (9)          |
- |Baseline (9)           |
- |Unscheduled Visit (10) |
- |Screening (10)         |
- |Baseline (10)          |
+And I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
+And I verify text "Screening (2)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (2)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
+And I verify text "Screening (3)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (3)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
+And I verify text "Screening (4)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (4)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
+And I verify text "Screening (5)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (5)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
+And I verify text "Screening (6)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (6)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
+And I verify text "Screening (7)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (7)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
+And I verify text "Screening (8)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (8)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
+And I verify text "Screening (9)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (9)" does not exist in "Left Navigation List"  
+And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
+And I verify text "Screening (10)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (10)" does not exist in "Left Navigation List" 
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
@@ -316,48 +292,44 @@ And I create a Subject
  |Subject Number     |{RndNum<num6>(3)} |textbox      |
  |Subject ID 	     |SUB {Var(num6)}   |textbox      |
 And I select link "Grid View"
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
+And I verify text "Screening (1)" does not exist in "Left Navigation List"
+And I verify text "Baseline (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I choose "Base" from "Add Event"
 And I take a screenshot
 When I quickly click button "Add" 10 times
-Then I should see folders added under subject "SUB {Var(num1)}"
- |Folders                |
- |Unscheduled Visit (1)  |
- |Screening (1)          |
- |Baseline (1)           |
+Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
+And I verify text "Screening (1)" exists in "Left Navigation List"
+And I verify text "Baseline (1)" exists in "Left Navigation List"
 And I take a screenshot 
-And I should not see folders added under subject "SUB {Var(num1)}"
- |Folders                |
- |Unscheduled Visit (2)  |
- |Screening (2)          |
- |Baseline (2)           |
- |Unscheduled Visit (3)  |
- |Screening (3)          |
- |Baseline (3)           |
- |Unscheduled Visit (4)  |
- |Screening (4)          |
- |Baseline (4)           |
- |Unscheduled Visit (5)  |
- |Screening (5)          |
- |Baseline (5)           |
- |Unscheduled Visit (6)  |
- |Screening (6)          |
- |Baseline (6)           |
- |Unscheduled Visit (7)  |
- |Screening (7)          |
- |Baseline (7)           |
- |Unscheduled Visit (8)  |
- |Screening (8)          |
- |Baseline (8)           |
- |Unscheduled Visit (9)  |
- |Screening (9)          |
- |Baseline (9)           |
- |Unscheduled Visit (10) |
- |Screening (10)         |
- |Baseline (10)          |
+And I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
+And I verify text "Screening (2)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (2)" does not exist in "Left Navigation List"
+And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
+And I verify text "Screening (3)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (3)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
+And I verify text "Screening (4)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (4)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
+And I verify text "Screening (5)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (5)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
+And I verify text "Screening (6)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (6)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
+And I verify text "Screening (7)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (7)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
+And I verify text "Screening (8)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (8)" does not exist in "Left Navigation List" 
+And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
+And I verify text "Screening (9)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (9)" does not exist in "Left Navigation List"  
+And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
+And I verify text "Screening (10)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (10)" does not exist in "Left Navigation List" 
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown

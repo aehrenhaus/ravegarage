@@ -50,34 +50,34 @@ And I open link "SUB {Var(num1)}" in new tab
 And I open link "SUB {Var(num1)}" in new tab
 And I take a screenshot
 And I switch to tab "1" 
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "2" 
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "3"
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "1" 
 And I choose "Unscheduled Visit" from "Add Event"
 And I take a screenshot
 When I click button "Add"
-Then I should see folder added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (1) |
+Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "2"
-And I select link "SUB {Var(num1)}"
+And I refresh the current browser window
 When I click drop button on "Add Event"
 Then I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "3"
-And I select link "SUB {Var(num1)}" 
+And I refresh the current browser window 
 When I click drop button on "Add Event"
 Then I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
 And I take a screenshot
 
 @Release_2013.4.0
@@ -99,38 +99,38 @@ And I open link "SUB {Var(num1)}" in new tab
 And I take a screenshot
 And I switch to tab "1" 
 And I select link "Grid View"
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "2"
 And I select link "Grid View" 
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "3"
 And I select link "Grid View" 
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "1" 
 And I choose "Unscheduled Visit" from "Add Event"
 And I take a screenshot
 When I click button "Add"
-Then I should see folder added under subject "SUB {Var(num1)}"
- |Folders               |
- |Unscheduled Visit (1) |
+Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "2"
-And I select link "SUB {Var(num1)}"
+And I refresh the current browser window
 And I select link "Grid View"  
 When I click drop button on "Add Event"
 Then I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "3"
-And I select link "SUB {Var(num1)}"
+And I refresh the current browser window
 And I select link "Grid View"  
 When I click drop button on "Add Event"
 Then I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
+And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
 And I take a screenshot
 
 @Release_2013.4.0
@@ -169,30 +169,27 @@ And I open link "SUB {Var(num1)}" in new tab
 And I open link "SUB {Var(num1)}" in new tab
 And I take a screenshot
 And I switch to tab "1" 
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
+And I verify text "Screening (1)" does not exist in "Left Navigation List"
+And I verify text "Baseline (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "2" 
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
+And I verify text "Screening (1)" does not exist in "Left Navigation List"
+And I verify text "Baseline (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "3"
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
+And I verify text "Screening (1)" does not exist in "Left Navigation List"
+And I verify text "Baseline (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "1" 
 And I choose "Base" from "Add Event"
 And I take a screenshot
 When I click button "Add"
-Then I should see folder added under subject "SUB {Var(num1)}"
- |Folders                |
- |Folders                |
- |Unscheduled Visit (1)  |
- |Screening (1)          |
- |Baseline (1)           |
+Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
+And I verify text "Screening (1)" exists in "Left Navigation List"
+And I verify text "Baseline (1)" exists in "Left Navigation List"
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
@@ -203,12 +200,9 @@ And I verify option "Base" exist in "Add Event" dropdown
 And I take a screenshot
 And I choose "Base" from "Add Event"
 When I click button "Add"
-Then I should not see folder added under subject "SUB {Var(num1)}"
- |Folders                |
- |Folders                |
- |Unscheduled Visit (2)  |
- |Screening (2)          |
- |Baseline (2)           |
+Then I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
+And I verify text "Screening (2)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (2)" does not exist in "Left Navigation List" 
 And I take a screenshot
 And I click drop button on "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
@@ -219,12 +213,9 @@ And I verify option "Base" exist in "Add Event" dropdown
 And I take a screenshot
 And I choose "Base" from "Add Event"
 When I click button "Add"
-Then I should not see folder added under subject "SUB {Var(num1)}"
- |Folders                |
-  |Folders               |
- |Unscheduled Visit (3)  |
- |Screening (3)          |
- |Baseline (3)           |
+Then I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
+And I verify text "Screening (3)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (3)" does not exist in "Left Navigation List" 
 And I take a screenshot
 And I click drop button on "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
@@ -249,32 +240,29 @@ And I open link "SUB {Var(num1)}" in new tab
 And I take a screenshot
 And I switch to tab "1" 
 And I select link "Grid View"
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
+And I verify text "Screening (1)" does not exist in "Left Navigation List"
+And I verify text "Baseline (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "2"
 And I select link "Grid View" 
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
+And I verify text "Screening (1)" does not exist in "Left Navigation List"
+And I verify text "Baseline (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "3"
 And I select link "Grid View" 
-And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
-And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
+And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
+And I verify text "Screening (1)" does not exist in "Left Navigation List"
+And I verify text "Baseline (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I switch to tab "1" 
 And I choose "Base" from "Add Event"
 And I take a screenshot
 When I click button "Add"
-Then I should see folder added under subject "SUB {Var(num1)}"
- |Folders                |
- |Folders                |
- |Unscheduled Visit (1)  |
- |Screening (1)          |
- |Baseline (1)           |
+Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
+And I verify text "Screening (1)" exists in "Left Navigation List"
+And I verify text "Baseline (1)" exists in "Left Navigation List"
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
@@ -285,12 +273,9 @@ And I verify option "Base" exist in "Add Event" dropdown
 And I take a screenshot
 And I choose "Base" from "Add Event"
 When I click button "Add"
-Then I should not see folder added under subject "SUB {Var(num1)}"
- |Folders                |
- |Folders                |
- |Unscheduled Visit (2)  |
- |Screening (2)          |
- |Baseline (2)           |
+Then I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
+And I verify text "Screening (2)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (2)" does not exist in "Left Navigation List" 
 And I take a screenshot
 And I click drop button on "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
@@ -301,12 +286,9 @@ And I verify option "Base" exist in "Add Event" dropdown
 And I take a screenshot
 And I choose "Base" from "Add Event"
 When I click button "Add"
-Then I should not see folder added under subject "SUB {Var(num1)}"
- |Folders                |
- |Folders                |
- |Unscheduled Visit (3)  |
- |Screening (3)          |
- |Baseline (3)           |
+Then I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
+And I verify text "Screening (3)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (3)" does not exist in "Left Navigation List" 
 And I take a screenshot
 And I click drop button on "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
