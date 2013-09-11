@@ -20,6 +20,9 @@ namespace Medidata.RBT.Features.Integration.Hooks
     {
         // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
 
+        private static bool IsSqsMode { get; set; }
+        private static bool ShouldManageService { get; set;}
+
         //if we're in SQS mode, we'll need a reference to the RIS.
         private static ServiceController RaveIntegrationServiceController { get; set; }
 
@@ -36,37 +39,39 @@ namespace Medidata.RBT.Features.Integration.Hooks
 
             //are we in SQS mode? If so, we'll need to do some additional setup
             //of the rave service and message queues
-            var isSqsMode = ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
+            IsSqsMode = ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryTypeKey]
                 .Equals(MessageDeliveryTypes.SQS);
 
-            //See if a service name was specified. This won't be the case if we're running against
-            //a remote RISS instance.
-            var serviceName = ConfigurationManager.AppSettings["ServiceName"];
-
-            //if we're in sqs mode and we have a service name.
-            if (isSqsMode && serviceName != null)
+            //we won't manager the service in Broker mode, regardless of the service config settings.
+            ShouldManageService = IsSqsMode && GetAppSettingsBooleanValueOrThrow(AppSettingsTags.ManageServiceKey);
+            
+            if (ShouldManageService)
             {
+                //get service details from appsettings
+                var serviceName = ConfigurationManager.AppSettings[AppSettingsTags.ServiceNameKey];
+                var serviceMachineName = ConfigurationManager.AppSettings["ServiceMachineName"] ?? ".";
+
                 //get a reference to the rave service, since SQS mode uses the real service.
                 RaveIntegrationServiceController = new ServiceController(string.Format("Medidata Rave Integration Service - \"{0}\"",
-                    serviceName));
+                    serviceName), serviceMachineName);
 
-                //stop the service, before dropping and restoring the database
-                //this avoids a bunch of errors being logged by the RIS while
-                //the database is down.
+                //stop the service, so it's not running while we update (possibly) restore the database 
+                //and/or update the queue urls in application configs.
                 stopRaveServiceIfStarted();
             }
+                
+            //in either mode, restore the db
+            DbHelper.RestoreDatabase();    
 
-            //for either mode, we drop and restore the database
-            DbHelper.RestoreDatabase();
-
-            if (isSqsMode)
+            if (IsSqsMode)
             {
                 //create the real queues and update the app configurations in the database
                 createQueues();
+            }
 
-                //if the service name wasn't null, start the real rave service. 
-                //It will read our updated configurations.
-                if (serviceName != null) startRaveService();
+            if (ShouldManageService)
+            {
+                startRaveService();
             }
         }
 
@@ -76,10 +81,12 @@ namespace Medidata.RBT.Features.Integration.Hooks
             //If the RIS service was started, this function will stop it.
             //If we don't stop it, a bunch of errors will be logged in the service
             //due to the deleted message queues.
-            stopRaveServiceIfStarted();
+            if (ShouldManageService)
+            {
+                stopRaveServiceIfStarted();
+            }
 
-            if (ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
-                     .Equals(MessageDeliveryTypes.SQS))
+            if (IsSqsMode)
             {
                 IntegrationTestContext.SqsWrapper.DeleteQueue(IntegrationTestContext.SqsQueueUrl);
             }
@@ -126,7 +133,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
 
                 var arguments = string.Format("-executionpolicy unrestricted -file \"{0}\" \"{1}\"", scriptPath, projectPath);
 
-                System.Diagnostics.Process p = new System.Diagnostics.Process();
+                var p = new System.Diagnostics.Process();
 
                 p.StartInfo = new System.Diagnostics.ProcessStartInfo(
                    @"powershell.exe",
@@ -217,6 +224,19 @@ namespace Medidata.RBT.Features.Integration.Hooks
 
                 result.Add(appName, GuidUtility.Create(nsGuid, uniqueAppName));
             });
+
+            return result;
+        }
+
+        public static bool GetAppSettingsBooleanValueOrThrow(string key)
+        {
+            bool result;
+
+            if (!bool.TryParse(ConfigurationManager.AppSettings[key], out result))
+            {
+                throw new ConfigurationErrorsException(
+                    string.Format("Couldn't parse {0} value as a boolean.", key));
+            }
 
             return result;
         }

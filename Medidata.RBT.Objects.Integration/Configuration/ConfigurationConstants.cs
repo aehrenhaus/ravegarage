@@ -13,10 +13,13 @@ namespace Medidata.RBT.Objects.Integration.Configuration
 
     public struct AppSettingsTags
     {
-        public const string MessageDeliveryType = "MessageDeliveryType";
+        public const string MessageDeliveryTypeKey = "MessageDeliveryType";
         public const string AwsAccessKey = "AwsAccessKey";
         public const string AwsSecretKey = "AwsSecretKey";
-        public const string AwsRegion = "AwsRegion";
-        public const string ServiceName = "ServiceName";
+        public const string AwsRegionKey = "AwsRegion";
+
+        public const string ManageServiceKey = "ManageService";
+        public const string ServiceNameKey = "ServiceName";
+        public const string ServiceMachineNameKey = "ServiceMachineName";
     }
 }

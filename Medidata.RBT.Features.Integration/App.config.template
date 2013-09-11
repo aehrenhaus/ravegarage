@@ -17,8 +17,16 @@
     <add key="AwsSecretKey" value="%%%AwsSecretKey%%%"/>
     <add key="AwsRegion" value="%%%AwsRegion%%%"/>
     <add key="RunCleaningEngineInProcess" value="True" />
-	<!--comment out this key if running against a remote RISS instance-->
-    <add key="ServiceName" value="%%%ServiceName%%%"/>
+
+    <!--set to true to stop and start RISS service before and after every test run.-->
+    <!--only applies when running in SQS mode-->
+    <add key="ManageService" value="true"/>
+    <add key="ServiceName" value="Rave57Dev"/>
+    <add key="ServiceMachineName" value="."/>
+    
+    <!--set to drop and restore DB before every test run-->
+    <add key="RestoreDatabase" value="true" />
+    
     <add key="AwsConfigXmlFilePath" value="%%%AwsConfgiXmlFilePath%%%"/>
     <add key="RaveBackupLocation" value="%%%RaveBackupLocation%%%"/>
     <add key="RavePath" value="%%%PathToRaveRepo%%%"/>

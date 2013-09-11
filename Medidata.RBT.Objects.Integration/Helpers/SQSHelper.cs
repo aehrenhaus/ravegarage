@@ -19,7 +19,15 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 
         public static void UpdateQueueUuid(string queueName, Guid queueUuid)
         {
-            Agent.ExecuteNonQuery(Agent.DefaultHint, "spRISS_UpdateIntegratedApplicationUUID", new object[]{ queueUuid, queueName});
+            try
+            {
+                Agent.ExecuteNonQuery(Agent.DefaultHint, "spRISS_UpdateIntegratedApplicationUUID",
+                                      new object[] {queueUuid, queueName});
+            }
+            catch (System.Data.DataException dex)
+            {
+                throw new Exception("Database error while trying to update queue uuid.", dex);
+            }
         }
 
         public static void SendMessage(string message)
@@ -29,13 +37,13 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                 return;
             }
 
-            if (ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
+            if (ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryTypeKey]
                 .Equals(MessageDeliveryTypes.SQS))
             {
                 if (!string.IsNullOrWhiteSpace(message))
                     IntegrationTestContext.SqsWrapper.SendMessage(IntegrationTestContext.SqsQueueUrl, message);
             }
-            else if (ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
+            else if (ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryTypeKey]
                 .Equals(MessageDeliveryTypes.Broker))
             {
                 ILogWrapper logWrapper = new LogWrapper();
