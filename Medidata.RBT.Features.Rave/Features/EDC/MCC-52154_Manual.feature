@@ -54,18 +54,13 @@ And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation Lis
 And I take a screenshot
 And I choose "Unscheduled Visit" from "Add Event"
 And I take a screenshot
-When I quickly click button "Add" 10 times
+When I quickly click button "Add" few times
 Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I take a screenshot
 And I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I click drop button on "Add Event"
 And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
@@ -90,18 +85,13 @@ And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation Lis
 And I take a screenshot
 And I choose "Unscheduled Visit" from "Add Event"
 And I take a screenshot
-When I quickly click button "Add" 10 times
+When I quickly click button "Add" few times
 Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I take a screenshot 
 And I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
@@ -146,18 +136,13 @@ And I click button "Add"
 And I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I take a screenshot
 And I choose "Second" from "Add Event"
-When I quickly click button "Add" 10 times
+When I quickly click button "Add" few times
 Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I verify text "Unscheduled Visit (2)" exists in "Left Navigation List"
 And I take a screenshot 
 And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Second" does not exist in "Add Event" dropdown
@@ -186,18 +171,13 @@ And I click button "Add"
 And I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I take a screenshot 
 And I choose "Second" from "Add Event"
-When I quickly click button "Add" 10 times
+When I quickly click button "Add" few times
 Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I verify text "Unscheduled Visit (2)" exists in "Left Navigation List"
 And I take a screenshot 
 And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
-And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Second" does not exist in "Add Event" dropdown
@@ -240,7 +220,7 @@ And I verify text "Baseline (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I choose "Base" from "Add Event"
 And I take a screenshot
-When I quickly click button "Add" 10 times
+When I quickly click button "Add" few times
 Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I verify text "Screening (1)" exists in "Left Navigation List"
 And I verify text "Baseline (1)" exists in "Left Navigation List"
@@ -256,22 +236,7 @@ And I verify text "Screening (4)" does not exist in "Left Navigation List"
 And I verify text "Baseline (4)" does not exist in "Left Navigation List" 
 And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
 And I verify text "Screening (5)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (5)" does not exist in "Left Navigation List" 
-And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
-And I verify text "Screening (6)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (6)" does not exist in "Left Navigation List" 
-And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
-And I verify text "Screening (7)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (7)" does not exist in "Left Navigation List" 
-And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
-And I verify text "Screening (8)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (8)" does not exist in "Left Navigation List" 
-And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
-And I verify text "Screening (9)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (9)" does not exist in "Left Navigation List"  
-And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
-And I verify text "Screening (10)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (10)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (5)" does not exist in "Left Navigation List"  
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
@@ -298,7 +263,7 @@ And I verify text "Baseline (1)" does not exist in "Left Navigation List"
 And I take a screenshot
 And I choose "Base" from "Add Event"
 And I take a screenshot
-When I quickly click button "Add" 10 times
+When I quickly click button "Add" few times
 Then I verify text "Unscheduled Visit (1)" exists in "Left Navigation List"
 And I verify text "Screening (1)" exists in "Left Navigation List"
 And I verify text "Baseline (1)" exists in "Left Navigation List"
@@ -314,22 +279,7 @@ And I verify text "Screening (4)" does not exist in "Left Navigation List"
 And I verify text "Baseline (4)" does not exist in "Left Navigation List" 
 And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
 And I verify text "Screening (5)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (5)" does not exist in "Left Navigation List" 
-And I verify text "Unscheduled Visit (6)" does not exist in "Left Navigation List"
-And I verify text "Screening (6)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (6)" does not exist in "Left Navigation List" 
-And I verify text "Unscheduled Visit (7)" does not exist in "Left Navigation List"
-And I verify text "Screening (7)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (7)" does not exist in "Left Navigation List" 
-And I verify text "Unscheduled Visit (8)" does not exist in "Left Navigation List"
-And I verify text "Screening (8)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (8)" does not exist in "Left Navigation List" 
-And I verify text "Unscheduled Visit (9)" does not exist in "Left Navigation List"
-And I verify text "Screening (9)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (9)" does not exist in "Left Navigation List"  
-And I verify text "Unscheduled Visit (10)" does not exist in "Left Navigation List"
-And I verify text "Screening (10)" does not exist in "Left Navigation List" 
-And I verify text "Baseline (10)" does not exist in "Left Navigation List" 
+And I verify text "Baseline (5)" does not exist in "Left Navigation List"  
 And I take a screenshot 
 And I click drop button on "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
