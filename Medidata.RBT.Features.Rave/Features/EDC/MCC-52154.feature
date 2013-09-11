@@ -170,12 +170,18 @@ And I open link "SUB {Var(num1)}" in new tab
 And I take a screenshot
 And I switch to tab "1" 
 And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
 And I take a screenshot
 And I switch to tab "2" 
 And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
 And I take a screenshot
 And I switch to tab "3"
 And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
 And I take a screenshot
 And I switch to tab "1" 
 And I choose "Base" from "Add Event"
@@ -244,14 +250,20 @@ And I take a screenshot
 And I switch to tab "1" 
 And I select link "Grid View"
 And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
 And I take a screenshot
 And I switch to tab "2"
 And I select link "Grid View" 
 And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
 And I take a screenshot
 And I switch to tab "3"
 And I select link "Grid View" 
 And I verify folder "Unscheduled Visit" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Screening" does not exists under subject "SUB {Var(num1)}"
+And I verify folder "Baseline" does not exists under subject "SUB {Var(num1)}"
 And I take a screenshot
 And I switch to tab "1" 
 And I choose "Base" from "Add Event"
