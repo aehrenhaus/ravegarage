@@ -35,7 +35,7 @@ And I verify data on Matrices
  |Name             |OID     |Allow Add  |Max |
  |Unscheduled Visit|UNSCHVS |checked    |1   |
 And I take a screenshot
-And I click on icon "Folder Forms" for Matrices "Unscheduled Visit"
+And I select link "Folder Forms" in "Unscheduled Visit"
 And I verify data on Matrices details page
  |Forms        |Subject |Unscheduled Visit |Screening |Baseline |
  |Primary form |uncheck |uncheck           |uncheck   |uncheck  |
@@ -113,7 +113,7 @@ And I verify data on Matrices
  |Name     |OID     |Allow Add  |Max |
  |Second   |SECOND  |checked    |2   |
 And I take a screenshot 
-And I click on icon "Folder Forms" for Matrices "Second"
+And I select link "Folder Forms" in "Second"
 And I verify data on Matrices details page
  |Forms        |Subject   |Unscheduled Visit |Screening |Baseline |
  |Primary form |uncheck   |uncheck           |uncheck   |uncheck  |
@@ -199,7 +199,7 @@ And I verify data on Matrices
  |Name |OID  |Allow Add  |Max |
  |Base |BASE |checked    |1   |
 And I take a screenshot 
-And I click on icon "Folder Forms" for Matrices "Base"
+And I select link "Folder Forms" in "Base"
 And I verify data on Matrices details page
  |Forms        |Subject   |Unscheduled Visit |Screening |Baseline |
  |Primary form |uncheck   |uncheck           |uncheck   |uncheck  |
