@@ -62,7 +62,7 @@ And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation Lis
 And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
 And I take a screenshot
-And I click drop button on "Add Event"
+And I expand "dropdown" in area "Add Event"
 And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot 
 
@@ -93,7 +93,7 @@ And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation Lis
 And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
 And I take a screenshot 
-And I click drop button on "Add Event"
+And I expand "dropdown" in area "Add Event"
 And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot
 
@@ -144,7 +144,7 @@ And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation Lis
 And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
 And I take a screenshot 
-And I click drop button on "Add Event"
+And I expand "dropdown" in area "Add Event"
 And I verify option "Second" does not exist in "Add Event" dropdown
 And I take a screenshot
 
@@ -179,7 +179,7 @@ And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation Lis
 And I verify text "Unscheduled Visit (4)" does not exist in "Left Navigation List"
 And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation List"
 And I take a screenshot 
-And I click drop button on "Add Event"
+And I expand "dropdown" in area "Add Event"
 And I verify option "Second" does not exist in "Add Event" dropdown
 And I take a screenshot
 
@@ -238,7 +238,7 @@ And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation Lis
 And I verify text "Screening (5)" does not exist in "Left Navigation List" 
 And I verify text "Baseline (5)" does not exist in "Left Navigation List"  
 And I take a screenshot 
-And I click drop button on "Add Event"
+And I expand "dropdown" in area "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 
@@ -281,6 +281,6 @@ And I verify text "Unscheduled Visit (5)" does not exist in "Left Navigation Lis
 And I verify text "Screening (5)" does not exist in "Left Navigation List" 
 And I verify text "Baseline (5)" does not exist in "Left Navigation List"  
 And I take a screenshot 
-And I click drop button on "Add Event"
+And I expand "dropdown" in area "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
