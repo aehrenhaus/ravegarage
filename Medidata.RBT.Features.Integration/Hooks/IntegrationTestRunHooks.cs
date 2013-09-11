@@ -59,10 +59,9 @@ namespace Medidata.RBT.Features.Integration.Hooks
                 //and/or update the queue urls in application configs.
                 stopRaveServiceIfStarted();
             }
-                
-            //in either mode, restore the db
-            DbHelper.RestoreDatabase();    
 
+            //for either mode, we create a snapshot
+            DbHelper.CreateSnapshot();
             if (IsSqsMode)
             {
                 //create the real queues and update the app configurations in the database
@@ -97,6 +96,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
             }
 
             //TODO: replace this temporary copy of report generation with a shared class
+            DbHelper.RestoreSnapshot();
             GenerateReport();
         }
 

@@ -88,6 +88,110 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             UpdateConfigurationTable_iMedidataBaseUrl();
         }
 
+
+
+        /// <summary>
+        /// Creates snapshot for a database
+        /// </summary>
+        /// <param name="snapshotName">snapshot name</param>
+        public static void CreateSnapshot(string snapshotName = null)
+        {
+            DeleteSnapshotIfExists(snapshotName);
+
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+
+            string fileName = null;
+            using (SqlCommand cmdGetFileName = new SqlCommand(string.Format("select name from {0}..sysfiles", builder.InitialCatalog), new SqlConnection(builder.ToString())))
+            {
+                cmdGetFileName.Connection.Open();
+                fileName = cmdGetFileName.ExecuteScalar() as string;
+                cmdGetFileName.Connection.Close();
+            }
+
+            if (snapshotName == null)
+                snapshotName = builder.InitialCatalog + "_snap";
+
+            const string path = "c:\\";
+            var restoreQuery = String.Format(
+                                                @"
+
+                                                CREATE DATABASE {0}
+                                                ON ( NAME = N'{1}',  
+                                                FILENAME = N'{2}{0}.snap' )
+                                                AS SNAPSHOT OF [{3}];
+                                                ",
+                                snapshotName, /*Snapshot name*/
+                                fileName,/*file name that create snapshot on*/
+                                path,/*path to store the snapshot file*/
+                                builder.InitialCatalog/*original database name*/);
+
+            using (SqlCommand cmdCreateSS = new SqlCommand(restoreQuery, new SqlConnection(builder.ToString())))
+            {
+                cmdCreateSS.Connection.Open();
+                cmdCreateSS.ExecuteNonQuery();
+                cmdCreateSS.Connection.Close();
+            }
+
+        }
+
+        /// <summary>
+        /// Deletes a snapshot for a given name, or default name
+        /// </summary>
+        /// <param name="snapshotName">Name of the snapshot</param>
+        public static void DeleteSnapshotIfExists(string snapshotName = null)
+        {
+
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+
+            if (snapshotName == null)
+                snapshotName = builder.InitialCatalog + "_snap";
+
+            var deleteSnapshotQuery = String.Format(
+                @"
+                                                if exists (select null from sys.databases where source_database_id IS NOT NULL and name = '{0}')
+                                                    DROP DATABASE [{0}] 
+                                                ",
+                                snapshotName); /*Snapshot name*/
+
+            using (SqlCommand cmdDropSS = new SqlCommand(deleteSnapshotQuery, new SqlConnection(builder.ToString())))
+            {
+                cmdDropSS.Connection.Open();
+                cmdDropSS.ExecuteNonQuery();
+                cmdDropSS.Connection.Close();
+            }
+
+        }
+
+        /// <summary>
+        /// Restores Database from a snapshot
+        /// </summary>
+        /// <param name="snapshotName">snapshot name</param>
+        public static void RestoreSnapshot(string snapshotName = null)
+        {
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+            string catalog = builder.InitialCatalog;
+            if (snapshotName == null)
+                snapshotName = builder.InitialCatalog + "_snap";
+
+            var restoreQuery = String.Format(
+            @"
+                                                alter database {0} set single_user with rollback immediate 
+                                                RESTORE DATABASE {0} from DATABASE_SNAPSHOT = '{1}' 
+                                                alter database {0} set multi_user with rollback immediate",
+                                                                     catalog, snapshotName);
+
+            builder.InitialCatalog = "master";
+            SqlCommand cmd = new SqlCommand(restoreQuery, new SqlConnection(builder.ToString()));
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+
+        }
+
+
         public static void RunDbMigration()
         {
             var ravePath = ConfigurationManager.AppSettings["RavePath"];
