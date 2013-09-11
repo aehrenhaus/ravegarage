@@ -1,6 +1,6 @@
-﻿@MCC-52154 Manual
+﻿@MCC-52154_Manual
 @ignore
-Feature: MCC-52154 Matrices can be added multiple times through Add Event even when Max add value is set to 1
+Feature: MCC-52154_Manual Matrices can be added multiple times through Add Event even when Max add value is set to 1
 
 Background:
 
