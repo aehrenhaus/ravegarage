@@ -102,6 +102,8 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
 
             string fileName = null;
+            string path = null;
+
             using (SqlCommand cmdGetFileName = new SqlCommand(string.Format("select name from {0}..sysfiles", builder.InitialCatalog), new SqlConnection(builder.ToString())))
             {
                 cmdGetFileName.Connection.Open();
@@ -109,10 +111,16 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                 cmdGetFileName.Connection.Close();
             }
 
+            using (SqlCommand cmdGetFileName = new SqlCommand("SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1) FROM master.sys.master_files WHERE database_id = 1 AND file_id = 1", new SqlConnection(builder.ToString())))
+            {
+                cmdGetFileName.Connection.Open();
+                path = cmdGetFileName.ExecuteScalar() as string;
+                cmdGetFileName.Connection.Close();
+            }
+
             if (snapshotName == null)
                 snapshotName = builder.InitialCatalog + "_snap";
 
-            const string path = "c:\\";
             var restoreQuery = String.Format(
                                                 @"
 
