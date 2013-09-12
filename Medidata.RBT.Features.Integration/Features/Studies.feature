@@ -62,10 +62,10 @@ Scenario: If I have an unlinked study in iMedidata, when the study is created in
 Scenario: Operations on studies, sites, studysites, users, study assignments, studysite assignments must be audited in the 'name' 
           of the system user.
 
-	Given I send the following Study message to SQS
+	When I send the following Study message to SQS
 	| EventType | Name           | IsProd | Description     | ID   | EnrollmentTarget | Timestamp           |
 	| POST      | TestSqsStudy33 | true   | TestDescription | 1256 | 5                | 2012-10-12 12:00:00 |
-	When the message is successfully processed
+	And the message is successfully processed
 	Then I should see the study in the Rave database
 	And I should see the study has audits in the Rave database
 	And I should see the audits were performed by user "System"
