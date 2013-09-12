@@ -195,10 +195,8 @@ And I expand "dropdown" in area "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "2"
-And I expand "dropdown" in area "Add Event"
-And I verify option "Base" exists in "Add Event" dropdown
-And I take a screenshot
 And I choose "Base" from "Add Event"
+And I take a screenshot
 When I click button "Add"
 Then I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
 And I verify text "Screening (2)" does not exist in "Left Navigation List" 
@@ -208,10 +206,8 @@ And I expand "dropdown" in area "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "3"
-And I expand "dropdown" in area "Add Event"
-And I verify option "Base" exists in "Add Event" dropdown
-And I take a screenshot
 And I choose "Base" from "Add Event"
+And I take a screenshot
 When I click button "Add"
 Then I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
 And I verify text "Screening (3)" does not exist in "Left Navigation List" 
@@ -268,10 +264,8 @@ And I expand "dropdown" in area "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "2"
-And I expand "dropdown" in area "Add Event"
-And I verify option "Base" exists in "Add Event" dropdown
-And I take a screenshot
 And I choose "Base" from "Add Event"
+And I take a screenshot
 When I click button "Add"
 Then I verify text "Unscheduled Visit (2)" does not exist in "Left Navigation List"
 And I verify text "Screening (2)" does not exist in "Left Navigation List" 
@@ -281,10 +275,8 @@ And I expand "dropdown" in area "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "3"
-And I expand "dropdown" in area "Add Event"
-And I verify option "Base" exists in "Add Event" dropdown
-And I take a screenshot
 And I choose "Base" from "Add Event"
+And I take a screenshot
 When I click button "Add"
 Then I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation List"
 And I verify text "Screening (3)" does not exist in "Left Navigation List" 
