@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Medidata.Core.Common.Exceptions;
 using Medidata.Core.Common.Utilities;
 using Medidata.Core.Objects;
 using Medidata.Data;
@@ -159,11 +160,32 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                 @"DROP DATABASE [{0}]",
                                 snapshotName); /*Snapshot name*/
 
+
             using (SqlCommand cmdDropSS = new SqlCommand(deleteSnapshotQuery, new SqlConnection(builder.ToString())))
             {
                 cmdDropSS.Connection.Open();
                 cmdDropSS.ExecuteNonQuery();
                 cmdDropSS.Connection.Close();
+            }
+
+            var remainingSnapshotsQuery = String.Format(
+                @"
+                                                select count(*) 
+                                                from sys.databases snap
+	                                                join sys.databases db
+		                                                on snap.source_database_id = db.database_id
+                                                where db.name = '{0}'
+                                                ",
+                                builder.InitialCatalog); /*Database name*/
+
+            // check if there are other snapshots for the database.
+            using (SqlCommand cmdOtherSnapshots = new SqlCommand(remainingSnapshotsQuery, new SqlConnection(builder.ToString())))
+            {
+                cmdOtherSnapshots.Connection.Open();
+                var numSnapshots = Convert.ToInt32(cmdOtherSnapshots.ExecuteScalar().ToString());
+                cmdOtherSnapshots.Connection.Close();
+                if (numSnapshots > 0)
+                    throw new NotSupportedException("Unable to proceed.  Please remove existing Database Snapshots.");
             }
 
         }
