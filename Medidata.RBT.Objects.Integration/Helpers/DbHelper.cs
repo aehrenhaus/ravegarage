@@ -15,9 +15,8 @@ using Medidata.Data.Configuration;
 
 namespace Medidata.RBT.Objects.Integration.Helpers
 {
-    //TODO: convert connection usage to using statements.
-    //TODO: store one builder, create in constructor
     //TODO: make an instance class?
+    //TODO: could create a default builder instance for methods that don't modify the builder initialcatalog. Probably overkill.
     public static class DbHelper
     {
         private static string m_SnapshotName = null;
@@ -35,15 +34,15 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 
             var builder = CreateBuilder();
             builder.InitialCatalog = "master";
-            var cmd = new SqlCommand(query, new SqlConnection(builder.ToString()));
-            try
+
+            using (var conn = new SqlConnection(builder.ToString()))
             {
-                cmd.Connection.Open();
-                return Convert.ToBoolean((int)cmd.ExecuteScalar());
-            }
-            finally
-            {
-                cmd.Connection.Close();
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    return Convert.ToBoolean((int)cmd.ExecuteScalar());    
+                }
             }
         }
 
@@ -85,10 +84,15 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                                                           catalog, snapshot, dataPath, logPath);
 
             builder.InitialCatalog = "master";
-            var cmd = new SqlCommand(restoreQuery.ToString(), new SqlConnection(builder.ToString()));
-            cmd.Connection.Open();
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
+
+            using (var conn = new SqlConnection(builder.ToString()))
+            {
+                using (var cmd = new SqlCommand(restoreQuery.ToString(), conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();    
+                }
+            }
 
             RunDbMigration();
             UpdateConfigurationTable_AwsCredentials();
@@ -109,6 +113,8 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
         /// </summary>
         public static void CreateSnapshot()
         {
+            //TODO: ask Dimitry, do we really need separate to open/close for each step? This seems like one unit of work.
+
             //before creating a new snapshot for our tests, make sure no other snapshots exist.
             EnsureNoUnrelatedSnapshotsExist();
 
@@ -117,19 +123,31 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             string fileName = null;
             string path = null;
 
-            using (SqlCommand cmdGetFileName = new SqlCommand(string.Format("select name from {0}..sysfiles", builder.InitialCatalog), new SqlConnection(builder.ToString())))
+            using (var conn1 = new SqlConnection(builder.ToString()))
             {
-                cmdGetFileName.Connection.Open();
-                fileName = cmdGetFileName.ExecuteScalar() as string;
-                cmdGetFileName.Connection.Close();
+                using (
+                    var cmdGetFileName =
+                        new SqlCommand(string.Format("select name from {0}..sysfiles", builder.InitialCatalog), conn1))
+                {
+                    conn1.Open();
+
+                    fileName = cmdGetFileName.ExecuteScalar() as string;
+                }
             }
 
-            using (SqlCommand cmdGetFileName = new SqlCommand("SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1) FROM master.sys.master_files WHERE database_id = 1 AND file_id = 1", new SqlConnection(builder.ToString())))
+            const string pathCommand =
+                    "SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1) " +
+                    "FROM master.sys.master_files WHERE database_id = 1 AND file_id = 1";
+
+            using (var conn2 = new SqlConnection(builder.ToString()))
             {
-                cmdGetFileName.Connection.Open();
-                path = cmdGetFileName.ExecuteScalar() as string;
-                cmdGetFileName.Connection.Close();
+                using (var cmdGetFileName = new SqlCommand(pathCommand, conn2))
+                {
+                    conn2.Open();
+                    path = cmdGetFileName.ExecuteScalar() as string;
+                }    
             }
+            
 
             var createQuery = String.Format(
                                                 @"
@@ -144,13 +162,14 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                                 path,/*path to store the snapshot file*/
                                 builder.InitialCatalog/*original database name*/);
 
-            using (SqlCommand cmdCreateSS = new SqlCommand(createQuery, new SqlConnection(builder.ToString())))
+            using (var conn3 = new SqlConnection(builder.ToString()))
             {
-                cmdCreateSS.Connection.Open();
-                cmdCreateSS.ExecuteNonQuery();
-                cmdCreateSS.Connection.Close();
+                using (var cmdCreateSS = new SqlCommand(createQuery, conn3))
+                {
+                    conn3.Open();
+                    cmdCreateSS.ExecuteNonQuery();
+                }
             }
-
         }
 
         /// <summary>
@@ -164,12 +183,13 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                 @"DROP DATABASE [{0}]",
                                 DbHelper.SnapshotName); /*Snapshot name*/
 
-
-            using (SqlCommand cmdDropSS = new SqlCommand(deleteSnapshotQuery, new SqlConnection(builder.ToString())))
+            using (var conn = new SqlConnection(builder.ToString()))
             {
-                cmdDropSS.Connection.Open();
-                cmdDropSS.ExecuteNonQuery();
-                cmdDropSS.Connection.Close();
+                using (var cmdDropSS = new SqlCommand(deleteSnapshotQuery, conn))
+                {
+                    conn.Open();
+                    cmdDropSS.ExecuteNonQuery();
+                }    
             }
         }
 
@@ -186,17 +206,19 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                         AND name = '{0}'",
                 DbHelper.SnapshotName); /*Snapshot name*/
 
-            using (var cmdDropSS = new SqlCommand(selectSnapshotQuery, new SqlConnection(builder.ToString())))
+            using (var conn = new SqlConnection(builder.ToString()))
             {
-                cmdDropSS.Connection.Open();
-                var databaseId = cmdDropSS.ExecuteScalar();
+                using (var cmdDropSS = new SqlCommand(selectSnapshotQuery, conn))
+                {
+                    conn.Open();
 
-                //if we got nothing back, the snapshot doesn't exist
-                result = (databaseId != null);
+                    var databaseId = cmdDropSS.ExecuteScalar();
 
-                cmdDropSS.Connection.Close();
+                    //if we got nothing back, the snapshot doesn't exist
+                    result = (databaseId != null);
+                }    
             }
-
+            
             return result;
         }
         
@@ -222,13 +244,17 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                                 ); 
 
             // check if there are other snapshots for the database.
-            using (SqlCommand cmdOtherSnapshots = new SqlCommand(remainingSnapshotsQuery, new SqlConnection(builder.ToString())))
+            using (var conn = new SqlConnection(builder.ToString()))
             {
-                cmdOtherSnapshots.Connection.Open();
-                var numSnapshots = Convert.ToInt32(cmdOtherSnapshots.ExecuteScalar().ToString());
-                cmdOtherSnapshots.Connection.Close();
-                if (numSnapshots > 0)
-                    throw new NotSupportedException("Unable to proceed.  Please remove existing Database Snapshots.");
+                using (var cmdOtherSnapshots = new SqlCommand(remainingSnapshotsQuery, conn))
+                {
+                    conn.Open();
+
+                    var numSnapshots = Convert.ToInt32(cmdOtherSnapshots.ExecuteScalar().ToString());
+                    
+                    if (numSnapshots > 0)
+                        throw new NotSupportedException("Unable to proceed.  Please remove existing Database Snapshots.");
+                }
             }
         }
 
@@ -248,11 +274,17 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                                                                      catalog, DbHelper.SnapshotName);
 
             builder.InitialCatalog = "master";
-            SqlCommand cmd = new SqlCommand(restoreQuery, new SqlConnection(builder.ToString()));
-            cmd.Connection.Open();
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
 
+            using (var conn = new SqlConnection(builder.ToString()))
+            {
+                using (var cmd = new SqlCommand(restoreQuery, conn))
+                {
+                    conn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+                
+            }
         }
 
 
@@ -261,7 +293,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             var ravePath = ConfigurationManager.AppSettings["RavePath"];
             var dbScriptsPath = Path.Combine(new[] { ravePath, "Medidata 5 RAVE Database Project", "Rave_Viper_Lucy_Merged_DB_Scripts", "Developer Helper scripts" });
 
-            var builder = new SqlConnectionStringBuilder(DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString);
+            var builder = CreateBuilder();
 
             var dailyChangeRunner = new Process
                                         {
@@ -287,10 +319,14 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             exec spConfigurationUpsert '{0}', '{1}', -1, 0",
                                                          ConfigTags.AWSConfigXmlFilePath, ConfigurationManager.AppSettings["AwsConfigXmlFilePath"]);
 
-            var cmd = new SqlCommand(updateConfigQuery, new SqlConnection(builder.ToString()));
-            cmd.Connection.Open();
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
+            using (var conn = new SqlConnection(builder.ToString()))
+            {
+                using (var cmd = new SqlCommand(updateConfigQuery, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();    
+                }
+            }
         }
 
         public static void UpdateConfigurationTable_ProjectCreatorDefaultRole()
@@ -301,10 +337,14 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             exec spConfigurationUpsert '{0}', '{1}', -1, 0",
                                                          ConfigTags.ProjectCreatorDefaultRole, 2);
 
-            var cmd = new SqlCommand(updateConfigQuery, new SqlConnection(builder.ToString()));
-            cmd.Connection.Open();
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
+            using (var conn = new SqlConnection(builder.ToString()))
+            {
+                using (var cmd = new SqlCommand(updateConfigQuery, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();    
+                }
+            }
         }
 
         public static void UpdateConfigurationTable_iMedidataBaseUrl()
@@ -314,11 +354,14 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             @"
             exec spConfigurationUpsert '{0}', '{1}', -1, 0",
                                                          ConfigTags.iMedidataBaseUrl, "http://localhost:3000");
-
-            var cmd = new SqlCommand(updateConfigQuery, new SqlConnection(builder.ToString()));
-            cmd.Connection.Open();
-            cmd.ExecuteNonQuery();
-            cmd.Connection.Close();
+            using (var conn = new SqlConnection(builder.ToString()))
+            {
+                using (var cmd = new SqlCommand(updateConfigQuery, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         private static SqlConnectionStringBuilder CreateBuilder()
@@ -328,6 +371,8 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                     ConnectionString =
                         DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString
                 };
+
+            return builder;
         }
     }
 }
