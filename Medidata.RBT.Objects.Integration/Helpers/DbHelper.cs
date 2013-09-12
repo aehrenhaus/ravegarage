@@ -111,43 +111,46 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
         /// </summary>
         public static void CreateSnapshot()
         {
-            //TODO: ask Dimitry, do we really need separate to open/close for each step? This seems like one unit of work.
-
             //before creating a new snapshot for our tests, make sure no other snapshots exist.
             EnsureNoUnrelatedSnapshotsExist();
 
             var builder = CreateBuilder();
-
-            string fileName = null;
-            string path = null;
-
-            using (var conn1 = new SqlConnection(builder.ToString()))
+            using (var conn = new SqlConnection(builder.ToString()))
             {
+
+                string fileName = null;
+                string path = null;
+
+                // 1. open connection.
+                conn.Open();
+
+                // 2. execute 3 commands  
+
+
+                //      (a) sysfile db name
                 using (
                     var cmdGetFileName =
-                        new SqlCommand(string.Format("select name from {0}..sysfiles", builder.InitialCatalog), conn1))
+                        new SqlCommand(string.Format("select name from {0}..sysfiles", builder.InitialCatalog), conn))
                 {
-                    conn1.Open();
-
                     fileName = cmdGetFileName.ExecuteScalar() as string;
+     
                 }
-            }
 
-            const string pathCommand =
+
+                //      (b) path 
+                const string pathCommand =
                     "SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1) " +
                     "FROM master.sys.master_files WHERE database_id = 1 AND file_id = 1";
 
-            using (var conn2 = new SqlConnection(builder.ToString()))
-            {
-                using (var cmdGetFileName = new SqlCommand(pathCommand, conn2))
-                {
-                    conn2.Open();
-                    path = cmdGetFileName.ExecuteScalar() as string;
-                }    
-            }
-            
 
-            var createQuery = String.Format(
+                using (var cmdGetpathName = new SqlCommand(pathCommand, conn))
+                {
+                    path = cmdGetpathName.ExecuteScalar() as string;
+                } 
+
+
+                //      (c) create snapshot
+                var createQuery = String.Format(
                                                 @"
 
                                                 CREATE DATABASE {0}
@@ -160,37 +163,44 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                                 path,/*path to store the snapshot file*/
                                 builder.InitialCatalog/*original database name*/);
 
-            using (var conn3 = new SqlConnection(builder.ToString()))
-            {
-                using (var cmdCreateSS = new SqlCommand(createQuery, conn3))
+                using (var cmdCreateSs = new SqlCommand(createQuery, conn))
                 {
-                    conn3.Open();
-                    cmdCreateSS.ExecuteNonQuery();
+                    cmdCreateSs.ExecuteNonQuery();
                 }
+
             }
+
         }
 
         /// <summary>
-        /// Deletes a snapshot for a given name, or default name
+        /// Deletes a snapshot for default name
         /// </summary>
         public static void DeleteSnapshot()
         {
             var builder = CreateBuilder();
 
             var deleteSnapshotQuery = String.Format(
-                @"DROP DATABASE [{0}]",
+                @"
+                                                if exists (select null from sys.databases where source_database_id IS NOT NULL and name = '{0}')
+                                                    DROP DATABASE [{0}] 
+                                                ",
                                 DbHelper.SnapshotName); /*Snapshot name*/
 
             using (var conn = new SqlConnection(builder.ToString()))
             {
-                using (var cmdDropSS = new SqlCommand(deleteSnapshotQuery, conn))
+                using (var cmdDropSs = new SqlCommand(deleteSnapshotQuery, conn))
                 {
                     conn.Open();
-                    cmdDropSS.ExecuteNonQuery();
+                    cmdDropSs.ExecuteNonQuery();
                 }    
             }
         }
 
+
+        /// <summary>
+        /// Returns whether snapshot exists for our database
+        /// </summary>
+        /// <returns>True/False</returns>
         public static bool DoesSnapshotExist()
         {
             bool result = false;
@@ -198,7 +208,8 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             var builder = CreateBuilder();
 
             var selectSnapshotQuery = String.Format(
-                @"SELECT database_id 
+                @"  
+                    SELECT database_id 
                     FROM sys.databases 
                     WHERE source_database_id IS NOT NULL 
                         AND name = '{0}'",
@@ -206,11 +217,11 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
 
             using (var conn = new SqlConnection(builder.ToString()))
             {
-                using (var cmdDropSS = new SqlCommand(selectSnapshotQuery, conn))
+                using (var cmdDropSs = new SqlCommand(selectSnapshotQuery, conn))
                 {
                     conn.Open();
 
-                    var databaseId = cmdDropSS.ExecuteScalar();
+                    var databaseId = cmdDropSs.ExecuteScalar();
 
                     //if we got nothing back, the snapshot doesn't exist
                     result = (databaseId != null);
