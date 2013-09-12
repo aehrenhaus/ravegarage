@@ -195,6 +195,7 @@ And I expand "dropdown" in area "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "2"
+And I verify option "Base" exists in "Add Event" dropdown
 And I choose "Base" from "Add Event"
 And I take a screenshot
 When I click button "Add"
@@ -206,6 +207,7 @@ And I expand "dropdown" in area "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "3"
+And I verify option "Base" exists in "Add Event" dropdown
 And I choose "Base" from "Add Event"
 And I take a screenshot
 When I click button "Add"
@@ -264,6 +266,7 @@ And I expand "dropdown" in area "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "2"
+And I verify option "Base" exists in "Add Event" dropdown
 And I choose "Base" from "Add Event"
 And I take a screenshot
 When I click button "Add"
@@ -275,6 +278,7 @@ And I expand "dropdown" in area "Add Event"
 And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 And I switch to tab "3"
+And I verify option "Base" exists in "Add Event" dropdown
 And I choose "Base" from "Add Event"
 And I take a screenshot
 When I click button "Add"
