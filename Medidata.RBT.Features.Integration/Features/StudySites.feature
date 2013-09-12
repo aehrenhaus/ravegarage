@@ -5,10 +5,10 @@
 @post_scenario_1
 Scenario: When a StudySite POST message gets put onto the queue, the studysite is created in Rave.
 	Given the study with name "TestPost Study" and environment "Prod" with ExternalId "1" exists in the Rave database
-	And I send the following StudySite message to SQS
+	When I send the following StudySite message to SQS
 	| EventType | StudySiteId | StudySiteName         | StudySiteNumber | StudyId | SiteId | SiteName         | SiteNumber | Timestamp           |
 	| POST      | 11          | TestPostStudySiteName | post001         | 1       | 10     | TestPostSiteName | post001    | 2012-10-12 12:00:00 |
-	When the message is successfully processed
+	And the message is successfully processed
 	Then I should see the site in the Rave database
 	And I should see the studysite in the Rave database
 	And the site should exist with the following properties
