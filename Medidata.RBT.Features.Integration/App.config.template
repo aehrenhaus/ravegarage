@@ -24,9 +24,6 @@
     <add key="ServiceName" value="Rave57Dev"/>
     <add key="ServiceMachineName" value="."/>
     
-    <!--set to drop and restore DB before every test run-->
-    <add key="RestoreDatabase" value="true" />
-    
     <add key="AwsConfigXmlFilePath" value="%%%AwsConfgiXmlFilePath%%%"/>
     <add key="RaveBackupLocation" value="%%%RaveBackupLocation%%%"/>
     <add key="RavePath" value="%%%PathToRaveRepo%%%"/>

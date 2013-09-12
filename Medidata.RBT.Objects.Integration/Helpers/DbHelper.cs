@@ -14,6 +14,7 @@ using Medidata.Data.Configuration;
 
 namespace Medidata.RBT.Objects.Integration.Helpers
 {
+    //TODO: instead of having multiple methods take optional snapshot name and then load using builder, expose method to get snapshot name and make snapshot name mandatory for all methods.
     public static class DbHelper
     {
         public static bool DoesDatabaseExist(string dbName)
@@ -96,8 +97,6 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
         /// <param name="snapshotName">snapshot name</param>
         public static void CreateSnapshot(string snapshotName = null)
         {
-            DeleteSnapshotIfExists(snapshotName);
-
             var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
             builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
 
@@ -147,7 +146,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
         /// Deletes a snapshot for a given name, or default name
         /// </summary>
         /// <param name="snapshotName">Name of the snapshot</param>
-        public static void DeleteSnapshotIfExists(string snapshotName = null)
+        public static void DeleteSnapshot(string snapshotName = null)
         {
 
             var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
@@ -157,10 +156,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                 snapshotName = builder.InitialCatalog + "_snap";
 
             var deleteSnapshotQuery = String.Format(
-                @"
-                                                if exists (select null from sys.databases where source_database_id IS NOT NULL and name = '{0}')
-                                                    DROP DATABASE [{0}] 
-                                                ",
+                @"DROP DATABASE [{0}]",
                                 snapshotName); /*Snapshot name*/
 
             using (SqlCommand cmdDropSS = new SqlCommand(deleteSnapshotQuery, new SqlConnection(builder.ToString())))
@@ -170,6 +166,37 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                 cmdDropSS.Connection.Close();
             }
 
+        }
+
+        public static bool DoesSnapshotExist(string snapshotName = null)
+        {
+            bool result = false;
+
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+
+            if (snapshotName == null)
+                snapshotName = builder.InitialCatalog + "_snap";
+
+            var selectSnapshotQuery = String.Format(
+                @"SELECT database_id 
+                    FROM sys.databases 
+                    WHERE source_database_id IS NOT NULL 
+                        AND name = '{0}'",
+                snapshotName); /*Snapshot name*/
+
+            using (var cmdDropSS = new SqlCommand(selectSnapshotQuery, new SqlConnection(builder.ToString())))
+            {
+                cmdDropSS.Connection.Open();
+                var databaseId = cmdDropSS.ExecuteScalar();
+
+                //if we got nothing back, the snapshot doesn't exist
+                result = (databaseId != null);
+
+                cmdDropSS.Connection.Close();
+            }
+
+            return result;
         }
 
         /// <summary>
