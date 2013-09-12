@@ -17,7 +17,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 {
     //TODO: convert connection usage to using statements.
     //TODO: store one builder, create in constructor
-    //TODO: make an instance class
+    //TODO: make an instance class?
     public static class DbHelper
     {
         private static string m_SnapshotName = null;
@@ -32,8 +32,8 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         public static bool DoesDatabaseExist(string dbName)
         {
              var query = string.Format("IF db_id('{0}') IS NOT NULL BEGIN SELECT 1 END ELSE BEGIN SELECT 0 END", dbName);
-            
-            var builder = new SqlConnectionStringBuilder(DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString);
+
+            var builder = CreateBuilder();
             builder.InitialCatalog = "master";
             var cmd = new SqlCommand(query, new SqlConnection(builder.ToString()));
             try
@@ -51,7 +51,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         {
             var snapshot = ConfigurationManager.AppSettings["RaveBackupLocation"];
 
-            var builder = new SqlConnectionStringBuilder(DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString);
+            var builder = CreateBuilder();
             var catalog = builder.InitialCatalog;
             var restoreQuery = new StringBuilder();
             if(DoesDatabaseExist(builder.InitialCatalog))
@@ -99,8 +99,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
 
         public static string GetDefaultSnapshotName()
         {
-            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
-            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+            var builder = CreateBuilder();
 
             return builder.InitialCatalog + "_snap";
         }
@@ -113,8 +112,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             //before creating a new snapshot for our tests, make sure no other snapshots exist.
             EnsureNoUnrelatedSnapshotsExist();
 
-            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
-            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+            var builder = CreateBuilder();
 
             string fileName = null;
             string path = null;
@@ -160,9 +158,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
         /// </summary>
         public static void DeleteSnapshot()
         {
-
-            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
-            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+            var builder = CreateBuilder();
 
             var deleteSnapshotQuery = String.Format(
                 @"DROP DATABASE [{0}]",
@@ -181,8 +177,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
         {
             bool result = false;
 
-            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
-            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+            var builder = CreateBuilder();
 
             var selectSnapshotQuery = String.Format(
                 @"SELECT database_id 
@@ -211,8 +206,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
         /// <exception cref="NotSupportedException">Thrown if any unrelated snapshots exist.</exception>
         public static void EnsureNoUnrelatedSnapshotsExist()
         {
-            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
-            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+            var builder = CreateBuilder();
 
             var remainingSnapshotsQuery = String.Format(
                 @"
@@ -243,8 +237,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
         /// </summary>
         public static void RestoreSnapshot()
         {
-            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
-            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+            var builder = CreateBuilder();
             string catalog = builder.InitialCatalog;
             
             var restoreQuery = String.Format(
@@ -288,7 +281,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
 
         public static void UpdateConfigurationTable_AwsCredentials()
         {
-            var builder = new SqlConnectionStringBuilder(DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString);
+            var builder = CreateBuilder();
             var updateConfigQuery = String.Format(
             @"
             exec spConfigurationUpsert '{0}', '{1}', -1, 0",
@@ -302,7 +295,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
 
         public static void UpdateConfigurationTable_ProjectCreatorDefaultRole()
         {
-            var builder = new SqlConnectionStringBuilder(DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString);
+            var builder = CreateBuilder();
             var updateConfigQuery = String.Format(
             @"
             exec spConfigurationUpsert '{0}', '{1}', -1, 0",
@@ -316,7 +309,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
 
         public static void UpdateConfigurationTable_iMedidataBaseUrl()
         {
-            var builder = new SqlConnectionStringBuilder(DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString);
+            var builder = CreateBuilder();
             var updateConfigQuery = String.Format(
             @"
             exec spConfigurationUpsert '{0}', '{1}', -1, 0",
@@ -326,6 +319,15 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
             cmd.Connection.Open();
             cmd.ExecuteNonQuery();
             cmd.Connection.Close();
+        }
+
+        private static SqlConnectionStringBuilder CreateBuilder()
+        {
+            var builder = new SqlConnectionStringBuilder
+                {
+                    ConnectionString =
+                        DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString
+                };
         }
     }
 }
