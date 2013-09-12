@@ -26,7 +26,7 @@ And I navigate to "Architect"
 And I select "Project" link "MCC-52154" in "Active Projects"
 And I select Draft "Draft 1"
 And I navigate to "Matrices"
-And I verify data on Matrices
+And I verify rows exist in "Matrices" table
  |Name             |OID     |Allow Add  |Max |
  |Unscheduled Visit|UNSCHVS |checked    |1   |
 And I take a screenshot
@@ -145,7 +145,7 @@ And I navigate to "Architect"
 And I select "Project" link "MCC-52154" in "Active Projects"
 And I select Draft "Draft 1"
 And I navigate to "Matrices"
-And I verify data on Matrices
+And I verify rows exist in "Matrices" table
  |Name |OID  |Allow Add  |Max |
  |Base |BASE |checked    |1   |
 And I take a screenshot 
