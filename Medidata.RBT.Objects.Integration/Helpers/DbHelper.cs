@@ -19,8 +19,6 @@ namespace Medidata.RBT.Objects.Integration.Helpers
     //TODO: could create a default builder instance for methods that don't modify the builder initialcatalog. Probably overkill.
     public static class DbHelper
     {
-        private static string m_SnapshotName = null;
-
         static DbHelper()
         {
             SnapshotName = GetDefaultSnapshotName();
