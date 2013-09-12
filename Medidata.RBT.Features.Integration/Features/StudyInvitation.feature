@@ -478,7 +478,7 @@ Scenario: If an existing iMedidata user is invited to a new Study Group without 
     When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | E8CA5368-62C6-40AC-8465-22668BD89291 | pb2517612user@test.cx | pb2517612 | 7612   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    Andd the message is successfully processed
+    And the message is successfully processed
     Then I should see the user in the Rave database
     And user's ExternalSystem value corresponds to iMedidata
     And there should be 1 active internal user for the external user
