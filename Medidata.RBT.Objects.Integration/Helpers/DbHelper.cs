@@ -15,9 +15,20 @@ using Medidata.Data.Configuration;
 
 namespace Medidata.RBT.Objects.Integration.Helpers
 {
-    //TODO: instead of having multiple methods take optional snapshot name and then load using builder, expose method to get snapshot name and make snapshot name mandatory for all methods.
+    //TODO: convert connection usage to using statements.
+    //TODO: store one builder, create in constructor
+    //TODO: make an instance class
     public static class DbHelper
     {
+        private static string m_SnapshotName = null;
+
+        static DbHelper()
+        {
+            SnapshotName = GetDefaultSnapshotName();
+        }
+
+        public static string SnapshotName { get; private set; }
+        
         public static bool DoesDatabaseExist(string dbName)
         {
              var query = string.Format("IF db_id('{0}') IS NOT NULL BEGIN SELECT 1 END ELSE BEGIN SELECT 0 END", dbName);
@@ -34,11 +45,6 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             {
                 cmd.Connection.Close();
             }
-        }
-
-        public static void DropDatabase(string dbName)
-        {
-            
         }
 
         public static void RestoreDatabase()
@@ -91,13 +97,22 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
         }
 
 
+        public static string GetDefaultSnapshotName()
+        {
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+
+            return builder.InitialCatalog + "_snap";
+        }
 
         /// <summary>
         /// Creates snapshot for a database
         /// </summary>
-        /// <param name="snapshotName">snapshot name</param>
-        public static void CreateSnapshot(string snapshotName = null)
+        public static void CreateSnapshot()
         {
+            //before creating a new snapshot for our tests, make sure no other snapshots exist.
+            EnsureNoUnrelatedSnapshotsExist();
+
             var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
             builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
 
@@ -118,10 +133,7 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                 cmdGetFileName.Connection.Close();
             }
 
-            if (snapshotName == null)
-                snapshotName = builder.InitialCatalog + "_snap";
-
-            var restoreQuery = String.Format(
+            var createQuery = String.Format(
                                                 @"
 
                                                 CREATE DATABASE {0}
@@ -129,12 +141,12 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                                                 FILENAME = N'{2}{0}.snap' )
                                                 AS SNAPSHOT OF [{3}];
                                                 ",
-                                snapshotName, /*Snapshot name*/
+                                DbHelper.SnapshotName, /*Snapshot name*/
                                 fileName,/*file name that create snapshot on*/
                                 path,/*path to store the snapshot file*/
                                 builder.InitialCatalog/*original database name*/);
 
-            using (SqlCommand cmdCreateSS = new SqlCommand(restoreQuery, new SqlConnection(builder.ToString())))
+            using (SqlCommand cmdCreateSS = new SqlCommand(createQuery, new SqlConnection(builder.ToString())))
             {
                 cmdCreateSS.Connection.Open();
                 cmdCreateSS.ExecuteNonQuery();
@@ -146,19 +158,15 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
         /// <summary>
         /// Deletes a snapshot for a given name, or default name
         /// </summary>
-        /// <param name="snapshotName">Name of the snapshot</param>
-        public static void DeleteSnapshot(string snapshotName = null)
+        public static void DeleteSnapshot()
         {
 
             var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
             builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
 
-            if (snapshotName == null)
-                snapshotName = builder.InitialCatalog + "_snap";
-
             var deleteSnapshotQuery = String.Format(
                 @"DROP DATABASE [{0}]",
-                                snapshotName); /*Snapshot name*/
+                                DbHelper.SnapshotName); /*Snapshot name*/
 
 
             using (SqlCommand cmdDropSS = new SqlCommand(deleteSnapshotQuery, new SqlConnection(builder.ToString())))
@@ -167,45 +175,21 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
                 cmdDropSS.ExecuteNonQuery();
                 cmdDropSS.Connection.Close();
             }
-
-            var remainingSnapshotsQuery = String.Format(
-                @"
-                                                select count(*) 
-                                                from sys.databases snap
-	                                                join sys.databases db
-		                                                on snap.source_database_id = db.database_id
-                                                where db.name = '{0}'
-                                                ",
-                                builder.InitialCatalog); /*Database name*/
-
-            // check if there are other snapshots for the database.
-            using (SqlCommand cmdOtherSnapshots = new SqlCommand(remainingSnapshotsQuery, new SqlConnection(builder.ToString())))
-            {
-                cmdOtherSnapshots.Connection.Open();
-                var numSnapshots = Convert.ToInt32(cmdOtherSnapshots.ExecuteScalar().ToString());
-                cmdOtherSnapshots.Connection.Close();
-                if (numSnapshots > 0)
-                    throw new NotSupportedException("Unable to proceed.  Please remove existing Database Snapshots.");
-            }
-
         }
 
-        public static bool DoesSnapshotExist(string snapshotName = null)
+        public static bool DoesSnapshotExist()
         {
             bool result = false;
 
             var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
             builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
 
-            if (snapshotName == null)
-                snapshotName = builder.InitialCatalog + "_snap";
-
             var selectSnapshotQuery = String.Format(
                 @"SELECT database_id 
                     FROM sys.databases 
                     WHERE source_database_id IS NOT NULL 
                         AND name = '{0}'",
-                snapshotName); /*Snapshot name*/
+                DbHelper.SnapshotName); /*Snapshot name*/
 
             using (var cmdDropSS = new SqlCommand(selectSnapshotQuery, new SqlConnection(builder.ToString())))
             {
@@ -220,25 +204,55 @@ ALTER DATABASE {0} SET MULTI_USER WITH ROLLBACK IMMEDIATE",
 
             return result;
         }
+        
+        /// <summary>
+        /// SQL can only restore snapshots if only a single snapshot exists. Ensure that no unrelated snapshots are present.
+        /// </summary>
+        /// <exception cref="NotSupportedException">Thrown if any unrelated snapshots exist.</exception>
+        public static void EnsureNoUnrelatedSnapshotsExist()
+        {
+            var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
+
+            var remainingSnapshotsQuery = String.Format(
+                @"
+                                                select count(*) 
+                                                from sys.databases snap
+	                                                join sys.databases db
+		                                                on snap.source_database_id = db.database_id
+                                                where db.name = '{0}'
+                                                    AND snap.name <> '{1}'
+                                                ",
+                                builder.InitialCatalog, /*Database name*/
+                                DbHelper.SnapshotName /*Our snapshot name...ignore it*/
+                                ); 
+
+            // check if there are other snapshots for the database.
+            using (SqlCommand cmdOtherSnapshots = new SqlCommand(remainingSnapshotsQuery, new SqlConnection(builder.ToString())))
+            {
+                cmdOtherSnapshots.Connection.Open();
+                var numSnapshots = Convert.ToInt32(cmdOtherSnapshots.ExecuteScalar().ToString());
+                cmdOtherSnapshots.Connection.Close();
+                if (numSnapshots > 0)
+                    throw new NotSupportedException("Unable to proceed.  Please remove existing Database Snapshots.");
+            }
+        }
 
         /// <summary>
         /// Restores Database from a snapshot
         /// </summary>
-        /// <param name="snapshotName">snapshot name</param>
-        public static void RestoreSnapshot(string snapshotName = null)
+        public static void RestoreSnapshot()
         {
             var builder = new System.Data.SqlClient.SqlConnectionStringBuilder();
             builder.ConnectionString = DataSettings.Settings.ConnectionSettings.ResolveDataSourceHint(Agent.DefaultHint).ConnectionString;
             string catalog = builder.InitialCatalog;
-            if (snapshotName == null)
-                snapshotName = builder.InitialCatalog + "_snap";
-
+            
             var restoreQuery = String.Format(
             @"
                                                 alter database {0} set single_user with rollback immediate 
                                                 RESTORE DATABASE {0} from DATABASE_SNAPSHOT = '{1}' 
                                                 alter database {0} set multi_user with rollback immediate",
-                                                                     catalog, snapshotName);
+                                                                     catalog, DbHelper.SnapshotName);
 
             builder.InitialCatalog = "master";
             SqlCommand cmd = new SqlCommand(restoreQuery, new SqlConnection(builder.ToString()));
