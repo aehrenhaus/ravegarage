@@ -31,12 +31,12 @@ And I verify rows exist in "Matrices" table
  |Unscheduled Visit|UNSCHVS |checked    |1   |
 And I take a screenshot
 And I select link "Folder Forms" in "Unscheduled Visit"
-And I verify data on Matrices details page
- |Forms        |Subject |Unscheduled Visit |Screening |Baseline |
- |Primary form |uncheck |uncheck           |uncheck   |uncheck  |
- |Form1        |uncheck |check             |uncheck   |uncheck  |
- |Form2        |uncheck |uncheck           |uncheck   |uncheck  |
- |Form3        |uncheck |uncheck           |uncheck   |uncheck  |
+And I verify rows exist in "FolderForms" table
+ |Forms        |Subject   |Unscheduled Visit |Screening |Baseline  |
+ |Primary form |unchecked |unchecked         |unchecked |unchecked |
+ |Form1        |unchecked |checked           |unchecked |unchecked |
+ |Form2        |unchecked |unchecked         |unchecked |unchecked |
+ |Form3        |unchecked |unchecked         |unchecked |unchecked |
 And I take a screenshot
 And I navigate to "Home"
 And I select Study "MCC-52154" and Site "Site_A"
@@ -150,12 +150,12 @@ And I verify rows exist in "Matrices" table
  |Base |BASE |checked    |1   |
 And I take a screenshot 
 And I select link "Folder Forms" in "Base"
-And I verify data on Matrices details page
- |Forms        |Subject   |Unscheduled Visit |Screening |Baseline |
- |Primary form |uncheck   |uncheck           |uncheck   |uncheck  |
- |Form1        |uncheck   |check             |check     |check    |
- |Form2        |uncheck   |uncheck           |uncheck   |uncheck  |
- |Form3        |uncheck   |uncheck           |uncheck   |uncheck  |
+And I verify rows exist in "FolderForms" table
+ |Forms        |Subject   |Unscheduled Visit |Screening |Baseline  |
+ |Primary form |unchecked |unchecked         |unchecked |unchecked |
+ |Form1        |unchecked |checked           |checked   |checked   |
+ |Form2        |unchecked |unchecked         |unchecked |unchecked |
+ |Form3        |unchecked |unchecked         |unchecked |unchecked |
 And I take a screenshot 
 And I navigate to "Home"
 And I select Study "MCC-52154" and Site "Site_A"
