@@ -1,4 +1,5 @@
 ﻿@MCC-52154
+@ignore
 Feature: MCC-52154 Matrices can be added multiple times through Add Event even when Max add value is set to 1
 
 Background:
