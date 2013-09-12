@@ -29,14 +29,12 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         public string UniqueName { get; set; } 
 
 		protected string FileLocation { get; set; } //The location of the original file upload
-		protected string UniqueFileLocation { get; set; } //A unique location of the duplicate of the seedable object, that has been made unique\
-        protected bool RedirectAfterSeed { get; set; }
+        public string UniqueFileLocation { get; set; } //A unique location of the duplicate of the seedable object, that has been made unique\
+        
         public string TID = TemporalID.GetNewTID(); //This is a unique temporal ID for uniqueness purposes and ease of debugging
 
 		public BaseRaveSeedableObject()
 		{
-			//set global suppress seeding option, it can be overwrite later
-            RedirectAfterSeed = true;
 		}
 
 		public virtual void Seed()

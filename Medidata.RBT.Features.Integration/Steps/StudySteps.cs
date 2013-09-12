@@ -76,7 +76,6 @@ namespace Medidata.RBT.Features.Integration.Steps
         public void ThenTheStudyShouldHaveProjectName____(string projectName)
         {
             var study = ScenarioContext.Current.Get<Study>("study");
-
             Assert.AreEqual(projectName, study.Project.Name);
         }
 

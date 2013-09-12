@@ -31,6 +31,16 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(draftName,project,version);
 		}
 
+        /// <summary>
+        /// Upload a draft on the UploadDraftPage. It will make the contents of that draft unique
+        /// </summary>
+        /// <param name="draftName">The name of the draft to create</param>
+        [StepDefinition(@"I upload draft ""([^""]*)""")]
+        public void WhenIUploadDraft(string draftName)
+        {
+            CurrentPage.As<UploadDraftPage>().UploadFile(
+                SeedingContext.GetExistingFeatureObjectOrMakeNew<UploadedDraft>(draftName, () => new UploadedDraft(draftName, uploadAfterMakingUnique: false)));
+        }
 
         /// <summary>
         /// Verify that a field has a specific coding dictionary

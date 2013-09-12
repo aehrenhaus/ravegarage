@@ -18,7 +18,7 @@ namespace Medidata.RBT.Features.Rave
 		[Given(@"study ""([^""]*)"" exists")]
 		public void GivenStudy____Exists(string studyName)
 		{
-			SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName, false));
+			SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
 		}
 
         /// <summary>
@@ -30,16 +30,6 @@ namespace Medidata.RBT.Features.Rave
         {
             SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName));
         }
-
-		/// <summary>
-		/// XML draft is uploaded for seeding purposes.
-		/// </summary>
-		/// <param name="draftName">The name of the draft to be seeded</param>
-		[StepDefinition(@"xml draft ""([^""]*)"" is Uploaded without redirecting")]
-		public void XmlDraft____IsUploadedWithoutRedirecting(string draftName)
-		{
-			SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName, false));
-		}
 
         /// <summary>
         /// XML draft is uploaded for seeding purposes.

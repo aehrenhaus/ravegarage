@@ -13,6 +13,7 @@ using Medidata.RBT.PageObjects.Rave.UserAdministrator;
 using Medidata.RBT.SharedObjects;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.ConfigurationHandlers;
+using System.Xml.Linq;
 
 namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
 {
@@ -20,7 +21,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
     ///This is a rave specific User. It is seedable. 
     ///These sit in Uploads/Users.
     ///</summary>
-    public class User : RaveUISeededObject, IRemoveableObject
+    public class User : RWSSeededPostObject, IRemoveableObject
     {
         private string FileName { get; set; }
         private string ActivationCode { get; set; }
@@ -31,6 +32,8 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         public List<ModuleAssignment> ModuleAssignments { get; set; }
         public List<ReportAssignment> ReportAssignments { get; set; }
         public string Password { get; private set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
         public int UserID
         {
             get
@@ -52,10 +55,30 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         /// </summary>
         /// <param name="userUploadName">The feature defined name of the user</param>
         /// <param name="seed">Bool determining whether you want to seed the object if it is not in the FeatureObjects dictionary</param>
-		public User(string userUploadName)
+        public User(string userUploadName, bool uploadAfterMakingUnique = true) 
+            : base(uploadAfterMakingUnique)
         {
+            PartialRaveWebServiceUrl = "private/users/" + RaveConfigurationGroup.Default.DefaultUser;
 	        UniqueName = userUploadName;
             Password = RaveConfigurationGroup.Default.DefaultUserPassword;
+            FirstName = "Default";
+            LastName = "User";
+        }
+
+        protected override void SetBodyData()
+        {
+            XElement userXElement = new XElement("user");
+            userXElement.Add(new XElement("login") { Value = UniqueName });
+            userXElement.Add(new XElement("password") { Value = Password });
+            userXElement.Add(new XElement("firstname") { Value = FirstName });
+            userXElement.Add(new XElement("lastname") { Value = LastName });
+
+            BodyData = Encoding.UTF8.GetBytes(userXElement.ToString());
+        }
+
+        protected override void TakeActionAsAResultOfRWSCall()
+        {
+            Factory.FeatureObjectsForDeletion.Add(this);
         }
 
 	    /// <summary>
@@ -76,57 +99,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
                                     ", linesPerPage, UniqueName);
 
             DbHelper.ExecuteDataSet(sql);
-        }
-
-        /// <summary>
-        /// Activate the user created by this object
-        /// </summary>
-        private void ActivateUser()
-        {
-    
-            //Activate the User
-            WebTestContext.CurrentPage = new UserAdministrationPage().NavigateToSelf();
-            WebTestContext.CurrentPage.As<UserAdministrationPage>().SearchUser(
-                new Medidata.RBT.PageObjects.Rave.UserAdministrationPage.SearchByModel() { Login = UniqueName }
-                );
-            WebTestContext.CurrentPage = WebTestContext.CurrentPage.As<UserAdministrationPage>().ClickActivated(UniqueName);
-            ActivationCode = WebTestContext.CurrentPage.As<UserActivationPage>().GetActivationCode().Text;
-            WebTestContext.CurrentPage.ClickLink("Logout");
-            WebTestContext.CurrentPage = new LoginPage().NavigateToSelf();
-            WebTestContext.CurrentPage.As<LoginPage>().ClickLink("Activate New Account");
-            WebTestContext.CurrentPage.As<ActivatePage>().Pin.EnhanceAs<Textbox>().SetText(UniquePin);
-            WebTestContext.CurrentPage.As<ActivatePage>().ActivationCode.EnhanceAs<Textbox>().SetText(ActivationCode);
-            WebTestContext.CurrentPage.As<ActivatePage>().ClickButton("ActivateButton");
-
-            //Set New Password
             this.Password = RaveConfigurationGroup.Default.DefaultUserPassword;
-            WebTestContext.CurrentPage.As<PasswordPage>().NewPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
-            WebTestContext.CurrentPage.As<PasswordPage>().ConfirmPasswordBox.EnhanceAs<Textbox>().SetText(this.Password);
-            WebTestContext.CurrentPage.As<PasswordPage>().ClickButton("Save Password and Continue");
-            WebTestContext.CurrentPage.As<PasswordChangedPage>().ClickLink("Click here to continue...");
-
-            //this is important because after continue, will login as the new user.
-            WebTestContext.CurrentUser = this.UniqueName;
-        }
-
-        /// <summary>
-        /// Navigate to the user upload page.
-        /// </summary>
-		protected override void NavigateToSeedPage()
-        {
-            WebTestContext.CurrentPage.ClickLink("User Administration");
-            WebTestContext.CurrentPage.ClickLink("Upload Users");
-        }
-
-        /// <summary>
-        /// Upload the unique version of the User. Mark it for deletion after scenario completion.
-        /// </summary>
-		protected override void CreateObject()
-        {
-            WebTestContext.CurrentPage.As<UploadUserPage>().UploadFile(UniqueFileLocation);
-            Factory.FeatureObjectsForDeletion.Add(this);
-
-            ActivateUser();
         }
 
         /// <summary>
@@ -198,12 +171,12 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         /// <returns></returns>
         public bool ModuleAssignmentExists(string projectName, string securityRoleName)
         {
-            if(ModuleAssignments != null)
+            if (ModuleAssignments != null)
             {
-            foreach (ModuleAssignment ma in ModuleAssignments)
-                if (ma.ProjectName.Equals(projectName) && ma.SecurityRole.Equals(securityRoleName))
-                    return true;
-                }
+                foreach (ModuleAssignment ma in ModuleAssignments)
+                    if (ma.ProjectName.Equals(projectName) && ma.SecurityRole.Equals(securityRoleName))
+                        return true;
+            }
             return false;
         }
 

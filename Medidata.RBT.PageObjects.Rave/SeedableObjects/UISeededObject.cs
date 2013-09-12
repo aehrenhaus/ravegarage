@@ -5,16 +5,34 @@ using System.Text;
 
 namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
 {
+    ///<summary>
+    ///All objects which seed using the UI must inherit from this class
+    ///</summary>
     public abstract class RaveUISeededObject : UniquedSeedableObject
     {
+        /// <summary>
+        /// Redirect to the original user after seed
+        /// </summary>
+        protected bool RedirectAfterSeed { get; set; }
+
+        protected RaveUISeededObject(bool uploadAfterMakingUnique = true)
+        {
+            UploadAfterMakingUnique = uploadAfterMakingUnique;
+            //set global suppress seeding option, it can be overwrite later
+            RedirectAfterSeed = true;
+        }
+
         public override void Seed()
         {
             base.Seed();
-            using (LoginSession session = new LoginSession(WebTestContext))
+            if (UploadAfterMakingUnique)
             {
-                NavigateToSeedPage();
-                CreateObject();
-                session.RestoreOriginalUser = RedirectAfterSeed;
+                using (LoginSession session = new LoginSession(WebTestContext))
+                {
+                    NavigateToSeedPage();
+                    CreateObject();
+                    session.RestoreOriginalUser = RedirectAfterSeed;
+                }
             }
         }
 

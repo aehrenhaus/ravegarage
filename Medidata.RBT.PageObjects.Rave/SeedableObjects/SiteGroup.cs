@@ -32,8 +32,8 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         /// The Site constructor
         /// </summary>
         /// <param name="siteGroupName">The feature defined name of the Site Group</param>
-        public SiteGroup(string siteGroupName)
-            : base()
+        public SiteGroup(string siteGroupName, bool uploadAfterMakingUnique = true)
+            : base(uploadAfterMakingUnique)
         {
             UniqueName = siteGroupName;
             Number = Guid.NewGuid().ToString();
@@ -45,7 +45,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
             siteGroupXElement.Add(new XElement("siteGroupName") { Value = UniqueName });
             siteGroupXElement.Add(new XElement("siteGroupNumber") { Value = Number });
 
-            BodyData = siteGroupXElement.ToString();
+            BodyData = Encoding.UTF8.GetBytes(siteGroupXElement.ToString());
         }
 
         protected override void SetRaveWebServicesURL()
