@@ -112,6 +112,7 @@
     <Compile Include="Architect\CheckQuickEditPage.cs" />
     <Compile Include="Architect\EditChecksItem.cs" />
     <Compile Include="Architect\LibraryWizardPage.cs" />
+    <Compile Include="TableModels\ArchitectMatrixModel.cs" />
     <Compile Include="Architect\Models\ProjectCodingDictionaryModel.cs" />
     <Compile Include="Architect\PublishChecksEditChecksControl.cs" />
     <Compile Include="Architect\UploadDraftPage.cs" />

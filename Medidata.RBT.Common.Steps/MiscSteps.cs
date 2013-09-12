@@ -243,6 +243,39 @@ namespace Medidata.RBT.Common.Steps
 			CurrentPage.SearchContext = Browser;
 		}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="linkName"></param>
+        [StepDefinition(@"I open link ""([^""]*)"" in new tab")]
+        public void IOpenLink____InNewTab(string linkName)
+        {
+            linkName = SpecialStringHelper.Replace(linkName);
+            Browser.OpenLinkInNewTab(Browser.TryFindElementByLinkText(linkName));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tabNumber"></param>
+        [StepDefinition(@"I switch to tab ""(.*)""")]
+        public void ISwitchToTab____(int tabNumber)
+        {
+            Browser.SwitchToTabNumber(tabNumber);
+            CurrentPage = WebTestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [StepDefinition(@"I refresh the current browser window")]
+        public void IRefreshTheCurrentBrowserWindow()
+        {
+            Browser.Navigate().Refresh();
+            Browser.WaitForDocumentLoad();
+            CurrentPage = WebTestContext.POFactory.GetPageByUrl(new Uri(Browser.Url));
+        }
+
 
 	}
 }

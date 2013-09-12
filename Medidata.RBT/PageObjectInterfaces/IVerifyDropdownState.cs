@@ -14,5 +14,13 @@ namespace Medidata.RBT
         /// <param name="dropdown"></param>
         /// <returns></returns>
         bool IsOptionSelected(string optionText, string dropdown);
+
+        /// <summary>
+        /// Check if the specified option exist in selection list for the dropdown
+        /// </summary>
+        /// <param name="optionText"></param>
+        /// <param name="dropdown"></param>
+        /// <returns></returns>
+        bool OptionExist(string optionText, string dropdown);
     }
 }

@@ -29,7 +29,7 @@ namespace Medidata.RBT.Features.Rave.Steps
         /// </summary>
         /// <param name="objectType">The type of the object (e.g. Project, Version, etc.)</param>
         /// <param name="identifier">The identifier (feature name) of the object</param>
-        [StepDefinition(@"I expand ""(.*)"" ""(.*)""")]
+        [StepDefinition(@"I expand ""([^""]*)"" ""([^""]*)""")]
         public void WhenIExpand(string objectType, string identifier)
         {
             IExpand____(RavePageBase.ReplaceSeedableObjectName(objectType, identifier));
