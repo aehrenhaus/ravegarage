@@ -91,11 +91,11 @@ And I select Study "MCC-52154" and Site "Site_A"
 And I create a Subject
  |Field              |Data              |Control Type |
  |Subject Initials   |SUB               |textbox      |
- |Subject Number     |{RndNum<num1>(3)} |textbox      |
- |Subject ID 	     |SUB {Var(num1)}   |textbox      |
+ |Subject Number     |{RndNum<num2>(3)} |textbox      |
+ |Subject ID 	     |SUB {Var(num2)}   |textbox      |
 And I take a screenshot
-And I open link "SUB {Var(num1)}" in new tab
-And I open link "SUB {Var(num1)}" in new tab
+And I open link "SUB {Var(num2)}" in new tab
+And I open link "SUB {Var(num2)}" in new tab
 And I take a screenshot
 And I switch to tab "1" 
 And I select link "Grid View"
@@ -162,11 +162,11 @@ And I select Study "MCC-52154" and Site "Site_A"
 And I create a Subject
  |Field              |Data              |Control Type |
  |Subject Initials   |SUB               |textbox      |
- |Subject Number     |{RndNum<num1>(3)} |textbox      |
- |Subject ID 	     |SUB {Var(num1)}   |textbox      |
+ |Subject Number     |{RndNum<num3>(3)} |textbox      |
+ |Subject ID 	     |SUB {Var(num3)}   |textbox      |
 And I take a screenshot 
-And I open link "SUB {Var(num1)}" in new tab
-And I open link "SUB {Var(num1)}" in new tab
+And I open link "SUB {Var(num3)}" in new tab
+And I open link "SUB {Var(num3)}" in new tab
 And I take a screenshot
 And I switch to tab "1" 
 And I verify text "Unscheduled Visit (1)" does not exist in "Left Navigation List"
@@ -230,11 +230,11 @@ And I select Study "MCC-52154" and Site "Site_A"
 And I create a Subject
  |Field              |Data              |Control Type |
  |Subject Initials   |SUB               |textbox      |
- |Subject Number     |{RndNum<num1>(3)} |textbox      |
- |Subject ID 	     |SUB {Var(num1)}   |textbox      |
+ |Subject Number     |{RndNum<num4>(3)} |textbox      |
+ |Subject ID 	     |SUB {Var(num4)}   |textbox      |
 And I take a screenshot
-And I open link "SUB {Var(num1)}" in new tab
-And I open link "SUB {Var(num1)}" in new tab
+And I open link "SUB {Var(num4)}" in new tab
+And I open link "SUB {Var(num4)}" in new tab
 And I take a screenshot
 And I switch to tab "1" 
 And I select link "Grid View"
