@@ -249,6 +249,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-47502.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\MCC-52154.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-52154.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\MCC-52154_Manual.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-52154_Manual.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\MCC-52165.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -811,6 +821,14 @@
     <None Include="Features\EDC\MCC-47502.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-47502.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-52154_Manual.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-52154_Manual.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-52154.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-52154.feature.cs</LastGenOutput>
     </None>
     <None Include="Features\EDC\MCC-52852.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
