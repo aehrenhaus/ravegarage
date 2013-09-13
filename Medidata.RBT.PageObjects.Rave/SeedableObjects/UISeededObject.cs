@@ -27,12 +27,8 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
             base.Seed();
             if (UploadAfterMakingUnique)
             {
-                using (LoginSession session = new LoginSession(WebTestContext))
-                {
-                    NavigateToSeedPage();
-                    CreateObject();
-                    session.RestoreOriginalUser = RedirectAfterSeed;
-                }
+                NavigateToSeedPage();
+                CreateObject();
             }
         }
 

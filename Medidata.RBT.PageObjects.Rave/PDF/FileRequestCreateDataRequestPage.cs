@@ -65,7 +65,7 @@ namespace Medidata.RBT.PageObjects.Rave
                 foreach (string siteGroup in siteGroups)
                 {
                     IWebElement div = Browser.TryFindElementById("SitesSitegroups");
-                    IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteGroup));
+                    IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == SeedingContext.TryGetExistingFeatureObject<SiteGroup>(siteGroup).UniqueName));
 
                     span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
                 }
@@ -82,16 +82,16 @@ namespace Medidata.RBT.PageObjects.Rave
             {
                 foreach (string site in sites)
                 {
-                    IWebElement expandSite = Browser.FindElementById("ISitesSitegroups_SG_1");
+                    Site siteSeedingObject = SeedingContext.TryGetExistingFeatureObject<Site>(site);
+
+                    int siteGroupID = siteSeedingObject.SiteGroup.ID;
+                    IWebElement expandSite = Browser.FindElementById("ISitesSitegroups_SG_" + siteGroupID);
                     if (expandSite.GetAttribute("src").Contains("plus"))
                         expandSite.Click();
 
-                    IWebElement div = Browser.TryFindElementById("DSitesSitegroups_SG_1");
+                    IWebElement div = Browser.FindElementById("DSitesSitegroups_SG_" + siteGroupID);
 
-                    string siteName = SeedingContext.GetExistingFeatureObjectOrMakeNew
-                        (site, () => new Site(site)).UniqueName;
-
-                    IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteName));
+                    IWebElement span = Browser.TryFindElementBy(b => div.Spans().FirstOrDefault(x => x.Text == siteSeedingObject.UniqueName));
                     span.Checkboxes()[0].EnhanceAs<Checkbox>().Check();
                 }
             }

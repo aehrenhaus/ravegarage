@@ -8,7 +8,6 @@ Background:
 @ignore
 Scenario: Architect and EDC setup for Converting R55_PDF_Global1_V4
 #Step 1
-Given I login to Rave with user "SUPER USER 1"
 Given study "Mediflex" exists
 Given coding dictionary "WhoDrug" version "20044" exists with following coding columns
 | Coding Column Name |
@@ -70,6 +69,7 @@ Given following Global Configurations exist
 | Name                      |
 | R55_GLOBAL1_Configuration |
 Then I perform cache flush of "Medidata.Core.Objects.Configuration"
+Given I login to Rave with user "SUPER USER 1"
 Then I navigate to "Architect" module
 And I select "Project" link "Mediflex" in "Active Projects"
 And I select Draft "PDF Primary Draft"

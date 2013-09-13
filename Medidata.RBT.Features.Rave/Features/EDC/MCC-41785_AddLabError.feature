@@ -9,7 +9,6 @@ Feature: (DT13823) Error message appears when adding a new lab from within a lab
 
 Background:
 	Given xml User Group Configuration "MCC41785_UserGroup.xml" is uploaded
-	And I login to Rave with user "MCC41785_User"
 	And Site "MCC41785_Site" exists
 	And study "MCC41785" is assigned to Site "MCC41785_Site"
 	And xml Lab Configuration "MCC41785_Lab.xml" is uploaded
@@ -18,6 +17,7 @@ Background:
 	| User          | Project  | Environment | Role          | Site          | SecurityRole          |
 	| MCC41785_User | MCC41785 | Live: Prod  | MCC41785_Role | MCC41785_Site | Project Admin Default |
 	And I publish and push eCRF "MCC41785_Version1.xml" to "SourceVersion1"
+	And I login to Rave with user "MCC41785_User"
 
 @release_2013.2.0 
 @PB_MCC41785_01

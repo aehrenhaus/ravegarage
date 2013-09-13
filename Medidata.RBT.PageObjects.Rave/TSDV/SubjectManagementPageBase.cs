@@ -49,7 +49,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				var container = Browser.TryFindElementById("_ctl0_Content_HeaderControl_slSiteGroup").Parent();
 				CompositeDropdown d = new CompositeDropdown(this, "DSL", container);
-				d.TypeAndSelect(text);
+				d.TypeAndSelect(SeedingContext.TryGetExistingFeatureObject<SiteGroup>(text).UniqueName);
 				return this;
 			}
 		

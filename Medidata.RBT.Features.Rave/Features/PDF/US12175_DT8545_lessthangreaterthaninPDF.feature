@@ -42,7 +42,6 @@ Feature: US12175_DT8545 When an EDC form contains special characters such as "<"
 #the special characters as outlined above in at least one field pre-text, the data dictionaries, unit dictionaries, lab units, lab ranges
 Background:
 
-Given I login to Rave with user "SUPER USER 1"
 Given following PDF Configuration Profile Settings exist
 	| Profile Name |
 	| US12175PDF1  |
@@ -64,6 +63,7 @@ Given following Global Configurations exist
 | Name                         |
 | US12175_DT8545_Configuration |
 Given I publish and push eCRF "PDF_Font_Study_Draft_1.xml" to "Version 1"
+Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Home"
 
 #*******************************************************************************************************
