@@ -29,7 +29,7 @@ Scenario: When a StudySite PUT message gets put onto the queue, the studysite is
 	When I send the following StudySite message to SQS
 	| EventType | StudySiteId | StudySiteName               | StudySiteNumber | StudyId | SiteId | SiteName               | SiteNumber    | Timestamp           |
 	| PUT       | 22          | TestPutStudySiteNameUpdated | put001updated   | 2       | 20     | TestPutSiteNameUpdated | put001updated | 2012-10-12 13:00:00 |
-	And the messages is successfully processed
+	And the message is successfully processed
 	Then I should see the site in the Rave database
 	And I should see the studysite in the Rave database
 	And the site should exist with the following properties
