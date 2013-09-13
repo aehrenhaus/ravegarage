@@ -13,7 +13,6 @@ Feature: US15417_DT13905 NeedsCVRefresh is not set to On for all datapoints rela
 
 Background:
 
-	Given I login to Rave with user "SUPER USER 1"
 	And Site "Site 01" exists
 	And study "US15417_DT13905" is assigned to Site "Site 01"
 	And xml Lab Configuration "Lab_US15417_DT13905.xml" is uploaded
@@ -30,6 +29,7 @@ Background:
 	And following Configuration Settings Exist
 	|Checkbox|Parameter               |Value       |
 	|True    |Normalized Lab View Name|Lab         |
+	Given I login to Rave with user "SUPER USER 1"
 
 @release_2012.1.0 
 @PB_US15417_DT13905_01
