@@ -136,5 +136,11 @@ namespace Medidata.RBT.PageObjects.Rave
 				return "Modules/Architect/Checks.aspx";
 			}
 		}
-	}
+
+
+        public bool OptionExist(string optionText, string dropdown)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

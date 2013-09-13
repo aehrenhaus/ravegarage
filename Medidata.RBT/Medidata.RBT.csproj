@@ -102,7 +102,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IVerifyDropdownState.cs" />
+    <Compile Include="PageObjectInterfaces\IVerifyDropdownState.cs" />
     <Compile Include="PageObjectInterfaces\IPositionCursor.cs" />
     <Compile Include="WebBrowsers\AbstractBrowser.cs" />
     <Compile Include="WebBrowsers\BrowserFactory.cs" />

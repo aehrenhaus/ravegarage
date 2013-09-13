@@ -113,7 +113,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region IVerifySomethingExists
 
-        public bool VerifyObjectExistence(
+        public virtual bool VerifyObjectExistence(
             string areaIdentifier,
             string type,
             string identifier,
@@ -173,7 +173,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return result != null;
 		}
 
-        public bool VerifyObjectExistence(
+        public virtual bool VerifyObjectExistence(
             string areaIdentifier,
             string type,
             List<string> identifiers,

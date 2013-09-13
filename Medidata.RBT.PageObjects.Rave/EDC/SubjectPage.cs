@@ -11,7 +11,7 @@ using TechTalk.SpecFlow;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
-    public class SubjectPage : BaseEDCPage, ICanVerifyInOrder, IVerifyObjectExistence, ITaskSummaryContainer
+    public class SubjectPage : BaseEDCPage, ICanVerifyInOrder, ITaskSummaryContainer, IVerifyDropdownState, IExpand
 	{
 
 		public SubjectPage ExpandTask(string header)
@@ -183,65 +183,71 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#endregion
 
-        /// <summary>
-        /// New method to be used to verify if a control exist
-        /// for ex: I can see control xyz
-        /// </summary>
-        /// <param name="areaIdentifier"></param>
-        /// <param name="type"></param>
-        /// <param name="identifier"></param>
-        /// <param name="exactMatch"></param>
-        /// <returns></returns>
-		public new bool VerifySomethingExist(string areaIdentifier,string type, string identifier, bool exactMatch = false)
-		{
-			if (identifier == "Add Event lock icon")
-				return Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_DisableMatrixImage") != null;
-
-			bool result = false;
-			IWebElement element;
-			switch (identifier)
-			{
-				case "Add Event is currently disabled for this subject.":
-				case "LAdd Event is currently disabled for this subject.":
-				case "Select 'Disabled' to not allow others to add events.":
-				case "Select 'Enabled' to allow others to add events.":
-					{
-						element = Browser.TryFindElementBy(
-						By.XPath("//span[text()=\"" + identifier + "\"]"));
-						result = element != null;
-						
-					}
-					break;
-				default:
-					{
-						if (string.IsNullOrEmpty(identifier))
-						{
-							//We have to wait for this element in the situation where the text appears after 
-							//eSign window phases out.
-							var ele = Browser.TryFindElementByXPath(string.Format("//*[text()='{0}']", identifier));
-							result = ele == null;
-						}
-                        else if(base.VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch))
-                        {
-                            result = true;
-                        }
-						else if (!string.IsNullOrEmpty(areaIdentifier))
-						{
-                            //TODO: This needs to be refactored by moving this functionality into TaskSummary control
-                            var TR = GetTaskSummaryArea(areaIdentifier);
-							result = TR != null && TR.Text.Contains(identifier);
-						}
-					}
-					break;
-			
-			}
-			return result; 
-		}
-
         #region ITaskSummaryContainer
 
         public TaskSummary GetTaskSummary() { return new TaskSummary(this); }
         
         #endregion
+
+        #region IVerifyDropdownState
+        public bool IsOptionSelected(string optionText, string dropdown)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool OptionExist(string optionText, string dropdown)
+        {
+            IWebElement dropdownElem = null;
+            bool result = false;
+
+            if (dropdown.Equals("Add Event", StringComparison.InvariantCultureIgnoreCase))
+            {
+                dropdownElem = Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_MatrixList");
+            }
+
+            if (dropdownElem != null)
+                result = dropdownElem.EnhanceAs<Dropdown>().VerifyByText(optionText);
+            else
+                throw new NoSuchElementException(
+                    string.Format("Specified dropdown [{0}] does not exist.", dropdown));
+
+            return result;
+        }
+        #endregion
+
+        public override bool VerifyObjectExistence(string areaIdentifier, string type, string identifier, bool exactMatch = false, int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null, bool shouldExist = true)
+        {
+            bool result = false;
+            if (!string.IsNullOrEmpty(areaIdentifier) && areaIdentifier.Equals("Left Navigation List", StringComparison.InvariantCultureIgnoreCase))
+            {
+                IWebElement lefNavTable = Browser.TryFindElementById("_ctl0_LeftNav_EDCTaskList_TblTaskItems");
+                if (lefNavTable != null)
+                {
+                    if (type.Equals("text"))
+                        return lefNavTable.TryFindElementBy(By.XPath(string.Format("//*[text()='{0}']", identifier))) != null;
+                }
+                else
+                    throw new NoSuchElementException(string.Format("The specified area identifier [{0}] does not exist.", areaIdentifier));
+            }
+            else
+                result = base.VerifyObjectExistence(areaIdentifier, type, identifier, exactMatch, amountOfTimes, pdf, bold, shouldExist);
+
+            return result;
+        }
+
+        public void Expand(string objectToExpand, string areaIdentifier = null)
+        {
+
+            if (!string.IsNullOrEmpty(areaIdentifier))
+            {
+                if (areaIdentifier.Equals("Add Event", StringComparison.InvariantCultureIgnoreCase) &&
+                    objectToExpand.Equals("dropdown", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    IWebElement addEventDropdown = Browser.TryFindElementById("_ctl0_Content_SubjectAddEvent_MatrixList");
+                    addEventDropdown.Click();
+                }
+
+            }
+        }
     }
 }
