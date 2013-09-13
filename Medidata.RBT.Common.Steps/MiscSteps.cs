@@ -244,7 +244,7 @@ namespace Medidata.RBT.Common.Steps
 		}
 
         /// <summary>
-        /// 
+        /// This step will let you open a specified link by link name in a new tab
         /// </summary>
         /// <param name="linkName"></param>
         [StepDefinition(@"I open link ""([^""]*)"" in new tab")]
@@ -255,7 +255,7 @@ namespace Medidata.RBT.Common.Steps
         }
 
         /// <summary>
-        /// 
+        /// This step will let user switch between tabs using the tab number
         /// </summary>
         /// <param name="tabNumber"></param>
         [StepDefinition(@"I switch to tab ""(.*)""")]
@@ -266,7 +266,7 @@ namespace Medidata.RBT.Common.Steps
         }
 
         /// <summary>
-        /// 
+        /// This step will let the user refresh a window or the current tab in focus if multiple windows are open
         /// </summary>
         [StepDefinition(@"I refresh the current browser window")]
         public void IRefreshTheCurrentBrowserWindow()

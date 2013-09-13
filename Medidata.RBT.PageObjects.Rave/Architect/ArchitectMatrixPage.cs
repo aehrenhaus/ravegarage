@@ -49,6 +49,12 @@ namespace Medidata.RBT.PageObjects.Rave
             return result;
         }
 
+        /// <summary>
+        /// This helper method encapsulates functinality to verify the matrix grid on matrices page
+        /// should be invoked by an appropriate public method
+        /// </summary>
+        /// <param name="matrices"></param>
+        /// <returns></returns>
         private bool VerifyMatrixGrid(IEnumerable<ArchitectMatrixModel> matrices)
         {
             bool result = false;
