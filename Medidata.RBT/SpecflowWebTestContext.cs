@@ -214,19 +214,10 @@ namespace Medidata.RBT
                 arguments
             );
 
-            //TODO: gerrard debug code
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
 
             p.Start();
-
-#if DEBUG
-			
-			//p.WaitForExit();
-#endif
-
-
-
 		}
 
         private void CreateScenarioFailureFile()
