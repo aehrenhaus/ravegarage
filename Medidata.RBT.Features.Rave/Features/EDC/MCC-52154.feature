@@ -1,5 +1,4 @@
 ﻿@MCC-52154
-@ignore
 Feature: MCC-52154 Matrices can be added multiple times through Add Event even when Max add value is set to 1
 
 Background:
@@ -17,10 +16,10 @@ Given following Project assignments exist
 #Note: 2) Base Matrix Max value is set to 1, assigned to multiple folders on subject level.
 
 @Release_2013.4.0
-@PB_MCC-52154-01B
+@PB_MCC-52154-07
 @RR09.SEP.2013
-@Draft
-Scenario: MCC-52154-01B As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1 on tab1, then the matrix should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should not be available for selection in the list on tab2 and tab3 when page is refreshed.
+@Validation
+Scenario: MCC-52154-07 As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1 on tab1, then the matrix should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should not be available for selection in the list on tab2 and tab3 when page is refreshed.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -84,10 +83,10 @@ And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation Lis
 And I take a screenshot
 
 @Release_2013.4.0
-@PB_MCC-52154-02B
+@PB_MCC-52154-08
 @RR09.SEP.2013
-@Draft
-Scenario: MCC-52154-02B As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1 on tab1, then the matrix should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should not be available for selection in the list on tab2 and tab3 when page is refreshed.
+@Validation
+Scenario: MCC-52154-08 As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1 on tab1, then the matrix should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should not be available for selection in the list on tab2 and tab3 when page is refreshed.
 
 Given I login to Rave with user "SUPER USER 1"
 And I select Study "MCC-52154" and Site "Site_A"
@@ -137,10 +136,10 @@ And I verify text "Unscheduled Visit (3)" does not exist in "Left Navigation Lis
 And I take a screenshot
 
 @Release_2013.4.0
-@PB_MCC-52154-03B
+@PB_MCC-52154-09
 @RR09.SEP.2013
-@Draft
-Scenario: MCC-52154-03B As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1 on tab1, then the matrix folders should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should be available for selection in the list on tab2 and tab3 when try to add matrix on tab2 and tab3 then the matrix should not be added on tab2 and tab3.
+@Validation
+Scenario: MCC-52154-09 As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1 on tab1, then the matrix folders should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should be available for selection in the list on tab2 and tab3 when try to add matrix on tab2 and tab3 then the matrix should not be added on tab2 and tab3.
  
 
 Given I login to Rave with user "SUPER USER 1"
@@ -229,10 +228,10 @@ And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 
 @Release_2013.4.0
-@PB_MCC-52154-04B
+@PB_MCC-52154-010
 @RR09.SEP.2013
-@Draft
-Scenario: MCC-52154-04B As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1 on tab1, then the matrix folders should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should be available for selection in the list on tab2 and tab3 when try to add matrix on tab2 and tab3 then the matrix should not be added on tab2 and tab3. 
+@Validation
+Scenario: MCC-52154-010 As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1 on tab1, then the matrix folders should be added only once on tab1, and matrix should not be available for selection in the list on tab1, and the matrix should be available for selection in the list on tab2 and tab3 when try to add matrix on tab2 and tab3 then the matrix should not be added on tab2 and tab3. 
 
 Given I login to Rave with user "SUPER USER 1"
 And I select Study "MCC-52154" and Site "Site_A"
