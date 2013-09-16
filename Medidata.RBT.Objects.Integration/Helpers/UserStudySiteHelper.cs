@@ -16,33 +16,36 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         public static void MessageHandler(Table table)
         {
             var messageConfigs = table.CreateSet<UserStudySiteMessageModel>().ToList();
-            ScenarioContext.Current.Set(messageConfigs.Count, "messageCount");
 
-            foreach (var config in messageConfigs)
-            {
-                var message = string.Empty;
-
-                config.MessageId = Guid.NewGuid();
-
-                switch (config.EventType.ToLowerInvariant())
+            var messagesToSend = messageConfigs.Select(config =>
                 {
-                    case "post":
-                        config.SiteUUID = new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);
-                        config.StudyUUID = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid);
-                        config.UserUUID = new Guid(ScenarioContext.Current.Get<String>("externalUserUUID"));
+                    string message = null;
 
-                        message = Render.StringToString(UserStudySiteTemplates.USERSTUDYSITE_POST_TEMPLATE, new { config });
-                        break;
-                    case "delete":
-                        config.SiteUUID = new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);
-                        config.StudyUUID = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid);
-                        config.UserUUID = new Guid(ScenarioContext.Current.Get<String>("externalUserUUID"));
-                        message = Render.StringToString(UserStudySiteTemplates.USERSTUDYSITE_DELETE_TEMPLATE, new { config });
-                        break;
-                }
+                    config.MessageId = Guid.NewGuid();
 
-                SQSHelper.SendMessage(message);
-            }
+                    switch (config.EventType.ToLowerInvariant())
+                    {
+                        case "post":
+                            config.SiteUUID = new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);
+                            config.StudyUUID = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid);
+                            config.UserUUID = new Guid(ScenarioContext.Current.Get<String>("externalUserUUID"));
+
+                            message = Render.StringToString(UserStudySiteTemplates.USERSTUDYSITE_POST_TEMPLATE,
+                                                            new {config});
+                            break;
+                        case "delete":
+                            config.SiteUUID = new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);
+                            config.StudyUUID = new Guid(ScenarioContext.Current.Get<Study>("study").Uuid);
+                            config.UserUUID = new Guid(ScenarioContext.Current.Get<String>("externalUserUUID"));
+                            message = Render.StringToString(UserStudySiteTemplates.USERSTUDYSITE_DELETE_TEMPLATE,
+                                                            new {config});
+                            break;
+                    }
+
+                    return message;
+                });
+
+            SQSHelper.SendMessages(messagesToSend);
         }
 
         public static void CreateUserStudySiteAssignment(DateTime? lastExternalUpdateDate = null)

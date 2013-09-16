@@ -8,7 +8,6 @@ Scenario: When a Site POST message gets put onto the queue, and the site does no
 	When I send the following Site message to SQS
 	| EventType | Name      | Number |
 	| POST      | TestSite1 | 1a     |
-	And the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should exist with the following properties
 	| Name      | Number |
@@ -23,7 +22,6 @@ Scenario: When a Site PUT message gets put onto the queue, and the site already 
 	When I send the following Site message to SQS
 	| EventType | Address1    | City       | State | PostalCode | Country | Telephone      | Name      | Number | Timestamp           |
 	| PUT       | 111 5th Ave | New Jersey | NJ    | 10004      | USB     | 1234567    | TestSite3 | 3      | 2013-02-02 13:00:00 |
-	And the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should exist with the following properties
 	| Name      | Number | Address1    | City       | State | PostalCode | Country | Telephone |
@@ -39,7 +37,6 @@ Scenario Outline: If I create a site in iMedidata, and an unlinked site in Rave 
 	When I send the following Site message to SQS
 	| EventType | Address1    | City       | State | PostalCode | Country | Telephone | Name      | Number				  | Id | Uuid | Timestamp |
 	| POST      | 111 5th Ave | New Jersey | NJ    | 10004      | USB     | 1234567   | TestSite4 | <iMedidataSiteNumber> | 4  | <Uuid> | 2013-02-02 12:00:00 |
-	And the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should exist with the following properties
 	| Uuid	 | ExternalID | Source    | LastExternalUpdateDate |
@@ -57,7 +54,6 @@ Scenario: If I create a site in iMedidata, and an unlinked site in Rave (that is
 	When I send the following Site message to SQS
 	| EventType | Name      | Number | Id | Uuid                                 | Timestamp           |
 	| POST      | TestSite5 | 5      | 6  | 2fc5e4a8-f117-11e1-b0ce-12313940032d | 2013-02-02 12:00:00 |
-	And the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should exist with the following properties
 	| Uuid                                 | ExternalID | Source   | LastExternalUpdateDate |
@@ -73,7 +69,6 @@ Scenario: If I have a linked site in iMedidata, and I change the site number in 
 	When I send the following Site messages to SQS
 	| EventType | Name      | Number | Timestamp           |
 	| PUT       | TestSite6 | 7      | 2013-02-02 13:00:00 |
-	And the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should exist with the following properties
 	| Number | Source    | LastExternalUpdateDate |
@@ -89,7 +84,6 @@ Scenario: If I have a linked site in iMedidata, and I change the site name in iM
 	When I send the following Site message to SQS
 	| EventType | Name      | Number | Timestamp           |
 	| PUT       | TestSite9 | 8      | 2013-02-02 13:00:00 |
-	And the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should exist with the following properties
 	| Name      | Source    | LastExternalUpdateDate |
@@ -105,7 +99,6 @@ Scenario: If I update a site in iMedidata, when Rave receives the site it will c
 	When I send the following Site messages to SQS
 	| EventType | Address1    | City       | PostalCode | Country | Name       | Number | Timestamp           |
 	| PUT       | 111 5th Ave | New Jersey | 10004      | USB     | TestSite10 | 10     | 2013-02-02 13:00:00 |
-	And the message is successfully processed
 	Then I should see the site in the Rave database
 	And the site should exist with the following properties
 	| Address1    | City       | PostalCode | Country | Source    |
@@ -117,7 +110,6 @@ Scenario: Operations on studies, sites, studysites, users, study assignments, st
 	Given I send the following Site message to SQS
 	| EventType | Name       | Number | Timestamp           |
 	| POST      | TestSite11 | 11     | 2013-02-02 12:00:00 |
-	When the message is successfully processed
 	Then I should see the site in the Rave database
 	And I should see the site has audits in the Rave database
 	And I should see the audits were performed by user "System"

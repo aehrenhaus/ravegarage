@@ -8,7 +8,6 @@ Scenario: When a User message gets put onto the queue, and the user already exis
 	When I send the following User message to SQS
 	| Email            | Login    | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Title | Address2     | Address3 | Institution        | Telephone  | Fax          | Timestamp           |
 	| testUser@test.cx | testUser | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | Lord  | New York, NY | 10003    | Beekman University | 1234567890 | 444-555-6666 | 2012-10-12 12:00:00 |
-	And the message is successfully processed
 	Then I should see the user in the Rave database
 	And the user should exist with the following properties
 	| Email            | Login    | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Title | Institution        | Address2     | Address3 | Fax          | LastExternalUpdateDate |
@@ -22,7 +21,6 @@ Scenario Outline: Operations on studies, sites, studysites, users, study assignm
 	When I send the following User message to SQS
 	| Email   | Login   | FirstName    | LastName    | Address1   | City   | State   | PostalCode    | Country   | Telephone   | Locale   | TimeZone    | Timestamp   |
 	| <email> | <login> | <first_name> | <last_name> | <address1> | <city> | <state> | <postal_code> | <country> | <Telephone> | <locale> | <time_zone> | <timestamp> |
-	And the message is successfully processed
 	Then I should see the user in the Rave database
 	And I should see the user has audits in the Rave database
 	And I should see the audits were performed by user "System"

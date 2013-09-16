@@ -17,19 +17,18 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         public static void MessageHandler(Table table)
         {
             var messageConfigs = table.CreateSet<UserMessageModel>().ToList();
-            ScenarioContext.Current.Set(messageConfigs.Count, "messageCount");
 
-            foreach (var config in messageConfigs)
-            {
-                var message = string.Empty;
+            var messagesToSend = messageConfigs.Select(config =>
+                {
+                    config.MessageId = Guid.NewGuid();
+                    config.UUID = new Guid(ScenarioContext.Current.Get<string>("externalUserUUID"));
 
-                config.MessageId = Guid.NewGuid();
-                config.UUID = new Guid(ScenarioContext.Current.Get<string>("externalUserUUID"));
+                    var message = Render.StringToString(UserTemplates.USER_PUT_TEMPLATE, new {config});
 
-                message = Render.StringToString(UserTemplates.USER_PUT_TEMPLATE, new {config});
+                    return message;
+                });
 
-                SQSHelper.SendMessage(message);
-            }
+            SQSHelper.SendMessages(messagesToSend);
         }
 
         public static void CreateRaveUser(string login, Role edcRole = null)

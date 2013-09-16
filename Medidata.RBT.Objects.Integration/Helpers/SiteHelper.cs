@@ -18,39 +18,44 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         public static void MessageHandler(Table table)
         {
             var messageConfigs = table.CreateSet<SiteMessageModel>().ToList();
-            ScenarioContext.Current.Set(messageConfigs.Count, "messageCount");
 
-            foreach (var config in messageConfigs)
-            {
-                var message = string.Empty;
-
-                config.MessageId = Guid.NewGuid();
-
-                switch (config.EventType.ToLowerInvariant())
+            var messagesToSend = messageConfigs.Select(config =>
                 {
-                    case "post":
-                        config.Uuid = config.Uuid.ToString() == "00000000-0000-0000-0000-000000000000" ? Guid.NewGuid() : config.Uuid;                    
-                        ScenarioContext.Current.Add("siteUuid", config.Uuid.ToString());
-                        message = Render.StringToString(SiteTemplates.POST_TEMPLATE, new { config });
-                        break;
-                    case "put":
-                        if (config.Uuid.ToString() == "00000000-0000-0000-0000-000000000000")
-                        {
-                            config.Uuid = ScenarioContext.Current.Keys.Contains("siteUuid") ?
-                                      new Guid(ScenarioContext.Current.Get<String>("siteUuid")) : //site was created via post message
-                                      new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);  //site was seeded in Rave
-                        }
-                        else
-                        {
-                            ScenarioContext.Current.Set(config.Uuid.ToString(), "siteUuid");
-                        }
-                        
-                        message = Render.StringToString(SiteTemplates.PUT_TEMPLATE, new { config });
-                        break;
-                }
+                    string message = null;
 
-                SQSHelper.SendMessage(message);
-            }
+                    config.MessageId = Guid.NewGuid();
+
+                    switch (config.EventType.ToLowerInvariant())
+                    {
+                        case "post":
+                            config.Uuid = config.Uuid.ToString() == "00000000-0000-0000-0000-000000000000"
+                                              ? Guid.NewGuid()
+                                              : config.Uuid;
+                            ScenarioContext.Current.Add("siteUuid", config.Uuid.ToString());
+                            message = Render.StringToString(SiteTemplates.POST_TEMPLATE, new { config });
+                            break;
+                        case "put":
+                            if (config.Uuid.ToString() == "00000000-0000-0000-0000-000000000000")
+                            {
+                                config.Uuid = ScenarioContext.Current.Keys.Contains("siteUuid")
+                                                  ? new Guid(ScenarioContext.Current.Get<String>("siteUuid"))
+                                                  : //site was created via post message
+                                                  new Guid(ScenarioContext.Current.Get<Site>("site").Uuid);
+                                //site was seeded in Rave
+                            }
+                            else
+                            {
+                                ScenarioContext.Current.Set(config.Uuid.ToString(), "siteUuid");
+                            }
+
+                            message = Render.StringToString(SiteTemplates.PUT_TEMPLATE, new { config });
+                            break;
+                    }
+
+                    return message;
+                });
+
+            SQSHelper.SendMessages(messagesToSend);
         }
 
         public static void CreateRaveSites(Table table)
@@ -82,7 +87,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                         State = sm.State,
                         PostalCode = sm.PostalCode,
                         Country = sm.Country,
-                        Telephone = sm.Telephone,                        
+                        Telephone = sm.Telephone,
                     };
 
                     site.Save();

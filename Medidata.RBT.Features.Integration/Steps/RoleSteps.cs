@@ -272,7 +272,8 @@ namespace Medidata.RBT.Features.Integration.Steps
             foreach (var studyModel in studies)
             {
                 var study = Study.FindByUuid(studyModel.Uuid, SystemInteraction.Use(), 1);
-                Assert.IsTrue(user.IsUserAssociatedWithStudy(study));
+                Assert.IsTrue(user.IsUserAssociatedWithStudy(study),
+                    string.Format("User with Id {0} is not associated with study with Uuid {1}", user.ID, study.Uuid));
             }
         }
 
