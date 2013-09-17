@@ -20,11 +20,11 @@ Given following Project assignments exist
 #Note: 3) Second Visit Matrix Max value is set to 2, unassigned to multiple folders on subject level.
 
 @Release_2013.4.0
-@PB_MCC-52154-01A
+@PB_MCC-52154-01
 @RR09.SEP.2013
 @Manual
-@Draft
-Scenario: MCC-52154-01A As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1, then the matrix should be added only once, and matrix should not be available for selection in the list.
+@Validation
+Scenario: MCC-52154-01 As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1, then the matrix should be added only once, and matrix should not be available for selection in the list.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -67,11 +67,11 @@ And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot 
 
 @Release_2013.4.0
-@PB_MCC-52154-02A
+@PB_MCC-52154-02
 @RR09.SEP.2013
 @Manual
-@Draft
-Scenario: MCC-52154-02A As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1, then the matrix should be added only once, and matrix should not be available for selection in the list.
+@Validation
+Scenario: MCC-52154-02 As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1, then the matrix should be added only once, and matrix should not be available for selection in the list.
 
 Given I login to Rave with user "SUPER USER 1"
 And I select Study "MCC-52154" and Site "Site_A"
@@ -98,11 +98,11 @@ And I verify option "Unscheduled Visit" does not exist in "Add Event" dropdown
 And I take a screenshot
 
 @Release_2013.4.0
-@PB_MCC-52154-03A
+@PB_MCC-52154-03
 @RR09.SEP.2013
 @Manual
-@Draft
-Scenario: MCC-52154-03A As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 2, then the matrix should be added only twice, and matrix should not be available for selection in the list.
+@Validation
+Scenario: MCC-52154-03 As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 2, then the matrix should be added only twice, and matrix should not be available for selection in the list.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -149,11 +149,11 @@ And I verify option "Second" does not exist in "Add Event" dropdown
 And I take a screenshot
 
 @Release_2013.4.0
-@PB_MCC-52154-04A
+@PB_MCC-52154-04
 @RR09.SEP.2013
 @Manual
-@Draft
-Scenario: MCC-52154-04A As a EDC user, On subject grid view page, when I add Matrix with Max value set to 2, then the matrix should be added only twice, and matrix should not be available for selection in the list.
+@Validation
+Scenario: MCC-52154-04 As a EDC user, On subject grid view page, when I add Matrix with Max value set to 2, then the matrix should be added only twice, and matrix should not be available for selection in the list.
 
 Given I login to Rave with user "SUPER USER 1"
 And I select Study "MCC-52154" and Site "Site_A"
@@ -184,11 +184,11 @@ And I verify option "Second" does not exist in "Add Event" dropdown
 And I take a screenshot
 
 @Release_2013.4.0
-@PB_MCC-52154-05A
+@PB_MCC-52154-05
 @RR09.SEP.2013
 @Manual
-@Draft
-Scenario: MCC-52154-05A As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1, and matrix is assigned to multiple folders, then the matrix folders should be added only once, and matrix should not be available for selection in the list.
+@Validation
+Scenario: MCC-52154-05 As a EDC user, On subject calendar view page, when I add Matrix with Max value set to 1, and matrix is assigned to multiple folders, then the matrix folders should be added only once, and matrix should not be available for selection in the list.
 
 Given I login to Rave with user "SUPER USER 1"
 And I navigate to "Architect"
@@ -243,11 +243,11 @@ And I verify option "Base" does not exist in "Add Event" dropdown
 And I take a screenshot
 
 @Release_2013.4.0
-@PB_MCC-52154-06A
+@PB_MCC-52154-06
 @RR09.SEP.2013
 @Manual
-@Draft
-Scenario: MCC-52154-06A As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1, and matrix is assigned to multiple folders, then the matrix folders should be added only once, and matrix should not be available for selection in the list.
+@Validation
+Scenario: MCC-52154-06 As a EDC user, On subject grid view page, when I add Matrix with Max value set to 1, and matrix is assigned to multiple folders, then the matrix folders should be added only once, and matrix should not be available for selection in the list.
 
 Given I login to Rave with user "SUPER USER 1"
 And I select Study "MCC-52154" and Site "Site_A"
