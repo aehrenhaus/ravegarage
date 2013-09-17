@@ -1,5 +1,5 @@
 @MCC-65264
-Feature: MCC-65264 ARC Rename ActionString column in CheckActions tab of AL spreadsheet
+Feature: MCC-65264 Rename ActionMessage column to ActionString on Quick Edit page in Architect.
 
 Background:
 
