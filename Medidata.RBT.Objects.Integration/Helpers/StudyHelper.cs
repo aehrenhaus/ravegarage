@@ -15,7 +15,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
     {
         public static void StudyMessageHandler(Table table)
         {
-            var messageConfigs = table.CreateSet<StudyMessageModel>().ToList();
+            var messageConfigs = table.CustomCreateSet<StudyMessageModel>().ToList();
 
             var messagesToSend = messageConfigs.Select(config =>
                 {
@@ -23,10 +23,14 @@ namespace Medidata.RBT.Objects.Integration.Helpers
 
                     config.MessageId = Guid.NewGuid();
 
+                    //make sure the study name is correct.
+                    AddEnvironmentToNameIfNeeded(config);
+
                     switch (config.EventType.ToLowerInvariant())
                     {
                         case "post":
-                            config.UUID = Guid.NewGuid();
+                            //if no uuid was provided, set the value to a new guid
+                            if(config.UUID == Guid.Empty) config.UUID = Guid.NewGuid();
                             ScenarioContext.Current.Set(config.UUID.ToString(), "studyUuid");
                             Console.WriteLine("Study UUID: {0}", config.UUID);
                             message = Render.StringToString(StudyTemplates.STUDY_POST_TEMPLATE, new { config });
@@ -38,9 +42,48 @@ namespace Medidata.RBT.Objects.Integration.Helpers
                     }
 
                     return message;
-                });
+                }).ToList();
 
             SQSHelper.SendMessages(messagesToSend);
+        }
+
+        /// <summary>
+        /// For non-prod environments, the Study name must end with "(Environment Name)". 
+        /// Ensure that the Name property of the provided <see cref="StudyMessageModel"/> 
+        /// follows that rule. If StudyMessageModel instance does not have it's Environment
+        /// property set, we assume that the environment is in the name already.
+        /// </summary>
+        /// <param name="config"></param>
+        private static void AddEnvironmentToNameIfNeeded(StudyMessageModel config)
+        {
+            //convert the IsProd property to an actual boolean
+            var isProd = (string.IsNullOrEmpty(config.IsProd)) || bool.Parse(config.IsProd);
+
+            //if the environment is prod, do nothing
+            if (isProd)
+            {
+                return;
+            }
+
+            var environment = config.Environment;
+
+            //if the environment isn't set, we can't do anything
+            if (string.IsNullOrEmpty(environment))
+            {
+                return;
+            }
+
+            //calculate the expected suffix
+            var environmentSuffix = string.Format("({0})", environment);
+
+            //if the name already ends with the suffix, do nothing
+            if (config.Name.EndsWith(environmentSuffix))
+            {
+                return;                
+            }
+
+            //if we got here, we need to add the environment suffix to the name
+            config.Name += environmentSuffix;
         }
 
         public static void CreateStudy(string name, string environment, int externalId, string uuid=null, bool internalStudy=false)

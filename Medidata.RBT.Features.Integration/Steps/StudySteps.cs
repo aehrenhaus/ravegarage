@@ -17,12 +17,18 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Given(@"the study with name ""(.*)"" and environment ""(.*)"" with ExternalId ""(.*)"" exists in the Rave database")]
         public void GivenTheStudyWithName____AndEnvironment____AndExternalId____ExistsInTheRaveDatabase(string name, string environment, int externalStudyId)
         {
+            name = SpecFlowHelper.PrepareString(name);
+            environment = SpecFlowHelper.PrepareString(environment);
+
             StudyHelper.CreateStudy(name, environment, externalStudyId);
         }
 
         [Given(@"the study with name ""(.*)"" and environment ""(.*)"" with UUID ""(.*)"" exists in the Rave database")]
         public void GivenTheStudyWithNameAndEnvironmentWithUUIDExistsInTheRaveDatabase(string name, string environment, string uuid)
         {
+            name = SpecFlowHelper.PrepareString(name);
+            environment = SpecFlowHelper.PrepareString(environment);
+
             StudyHelper.CreateStudy(name, environment, new Random().Next(int.MaxValue), uuid);
         }
 
@@ -35,6 +41,9 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Given(@"the internal study with name ""(.*)"" and environment ""(.*)"" exists")]
         public void GivenTheInternalStudyWithNameExists(string name, string environment)
         {
+            name = SpecFlowHelper.PrepareString(name);
+            environment = SpecFlowHelper.PrepareString(environment);
+
             StudyHelper.CreateStudy(name, environment, new Random().Next(int.MaxValue), Guid.NewGuid().ToString(), true);
         }
 
@@ -47,6 +56,24 @@ namespace Medidata.RBT.Features.Integration.Steps
             Assert.IsNotNull(study);
             ScenarioContext.Current.Set(study, "study");
         }
+
+        [Then(@"I should see the study with UUID ""(.*)"" in the Rave database")]
+        public void ThenIShouldSeeTheStudyInTheRaveDatabase(string uuid)
+        {
+            var study = Study.FindByUuid(uuid, SystemInteraction.Use(), 1);
+
+            Assert.IsNotNull(study);
+            ScenarioContext.Current.Set(study, "study");
+        }
+
+        [Then(@"I should not see the study with UUID ""(.*)"" in the Rave database")]
+        public void ThenIShouldNotSeeTheStudyWithUUIDInTheRaveDatabase(string uuid)
+        {
+            var study = Study.FindByUuid(uuid, SystemInteraction.Use(), 1);
+
+            Assert.IsNull(study, string.Format("The study with UUID {0} exists.", uuid));
+        }
+
 
         [Then(@"the study with ExternalId ""(.*)"" should not be in the Rave database")]
         public void ThenTheStudyWithExternalId____ShouldNotBeInTheRaveDatabase(int externalId)
@@ -75,6 +102,8 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Then(@"the study should have Project Name ""(.*)""")]
         public void ThenTheStudyShouldHaveProjectName____(string projectName)
         {
+            projectName = SpecFlowHelper.PrepareString(projectName);
+
             var study = ScenarioContext.Current.Get<Study>("study");
 
             Assert.AreEqual(projectName, study.Project.Name);
@@ -132,7 +161,7 @@ namespace Medidata.RBT.Features.Integration.Steps
         [Then(@"the study should exist with the following properties")]
         public void ThenTheStudyShouldExistWithTheFollowingProperties(Table table)
         {
-            var messageConfigs = table.CreateSet<StudyMessageModel>().ToList();
+            var messageConfigs = table.CustomCreateSet<StudyMessageModel>().ToList();
 
             foreach (var config in messageConfigs)
             {
