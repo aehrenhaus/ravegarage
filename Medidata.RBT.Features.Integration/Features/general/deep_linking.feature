@@ -387,3 +387,258 @@ Scenario : An iMedidata user will see an error message if the user attemps to na
 	When I enter in the URL Address Text Field "https://<Rave URL 1>/MedidataRAVE/HandleLink.aspx?page=Sites.aspx"
 	Then I see an error message
 	And I take a screenshot		
+
+
+
+
+		
+	
+@Release_2013.3.0
+@PB2.5.1.74-92
+@IZ18.SEP.2013
+@Validation 
+Scenario : 2.5.1.74-92 If an iMedidata user, with single role and invited to the URL, subsequently accesses Rave by deeplinking SelectRole URL, then the user will be taken to the Rave
+           (Deep linking support)
+				  		  
+
+	
+	Given I am an iMedidata User
+    And I am not logged in in iMedidata
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<iMedidata User 1 ID>"
+    And my Email is "<iMedidata User 1 Email>"
+	And there is an iMedidata Study named "<Study A>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the App link named "<Edc App>" with Role "<EDC Role 1>"
+	And I have an assignment to the iMedidata Study named "<Study A>" for the App link named "<Modules App>" with Role "<Modules Role 1>"
+	And I have access to the "Rave Modules" App through iMedidata
+    When I pass the  URL <https://<Rave URL> /MedidataRAVE/SelectRole.aspx>
+	And I take a screenshot 1 of 3
+	And I press Enter 
+	Then I am not on Role Selection page
+	And I am on iMedidata Login page
+	And I take a screenshot 2 of 3
+	And I enter iMedidata user's correct credantials
+	And I login 
+	And I am on Rave Study Home page
+	And I take a screenshot 3 of 3
+
+
+@Release_2013.3.0
+@PB2.5.1.74-93
+@IZ18.SEP.2013
+@Validation 
+Scenario : 2.5.1.74-93 If an iMedidata user, with multiple roles and invited to the URL, subsequently accesses Rave by deeplinking SelectRole URL, then the user will be taken to the Selection Role
+           (Deep linking support)
+				  		  
+
+	
+	Given I am an iMedidata User
+    And I am not logged in in iMedidata
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<iMedidata User 1 ID>"
+    And my Email is "<iMedidata User 1 Email>"
+	And there is an iMedidata Study named "<Study A>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the App link named "<Edc App>" with Role "<EDC Role 1>" and "<EDC Role 2>"
+	And I have an assignment to the iMedidata Study named "<Study A>" for the App link named "<Modules App>" with Role "<Modules Role 1>"
+	And I have access to the "Rave Modules" App through iMedidata
+    When I pass the  URL <https://<Rave URL> /MedidataRAVE/SelectRole.aspx>
+	And I take a screenshot 1 of 3
+	And I press Enter 
+	And I am on iMedidata Login page
+	And I take a screenshot 2 of 3
+	And I enter iMedidata user's correct credantials
+	And I select login button
+	Then I am on Role Selection page
+	And I take a screenshot 3 of 3
+
+
+
+
+	
+@Release_2013.3.0
+@PB2.5.1.74-94
+@IZ18.SEP.2013
+@Validation 
+Scenario :2.5.1.74-94 If an iMedidata user, with multiple roles and invited to the multiple URL, subsequently accesses Rave by deeplinking SelectRole URL,
+            then the user will be taken to the Selection Role page and then to Rave Home page (Deep linking support)
+				  		  
+
+	
+	Given I am an iMedidata User
+    And I am not logged in in iMedidata
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<iMedidata User 1 ID>"
+    And my Email is "<iMedidata User 1 Email>"
+	And there is an iMedidata Studies named "<Study A>" and "<Study B>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the App link named "<Edc App>" with Role "<EDC Role 1>" and "<EDC Role 2>"
+	And I have an assignment to the iMedidata Study named "<Study A>" for the App link named "<Modules App>" with Role "<Modules Role 1>"
+	And I have access to the "Rave Modules" App through iMedidata
+	And I have an assignment to the iMedidata Study named "<Study B>" for the App link named "<Edc App>" with Role "<EDC Role 1>"
+	And I have an assignment to the iMedidata Study named "<Study B>" for the App link named "<Modules App>" with Role "<Modules Role 1>"
+	And I have access to the "Rave Modules" App through iMedidata
+    When I pass the  URL <https://<Rave URL> /MedidataRAVE/SelectRole.aspx>
+	And I take a screenshot 1 of 9
+	And I press Enter 
+	And I am on iMedidata Login page
+	And I take a screenshot 2 of 9
+	And I enter iMedidata user's correct credantials
+	And I select login button
+	Then I am on Role Selection page
+	And I take a screenshot 3 of 9
+	And I select Role  "<EDC Role 1>" 
+	And press button Continue
+	And I am on Rave Home page
+	And I should see the two assigned studies  "<Study A>" and "<Study B>" listed
+	And I take a screenshot 4 of 9
+	And I navigate back to iMedidata
+	and I logout
+	And I take a screenshot 5 of 9
+	And I pass the  URL <https://<Rave URL> /MedidataRAVE/SelectRole.aspx>
+	And I take a screenshot 6 of 9
+	And I press Enter 
+	And I am on iMedidata Login page
+	And I take a screenshot 7 of 9
+	And I enter iMedidata user's correct credantials
+	And I select login button
+	And I am on Role Selection page
+	And I take a screenshot 8 of 9
+	And I select Role  "<EDC Role 2>" 
+	And press button Continue
+	And I am on Rave "<Study B>" Home page
+	And I take a screenshot 9 of 9
+
+
+@Release_2013.3.0
+@PB2.5.1.74-95
+@IZ18.SEP.2013
+@Validation 
+Scenario :2.5.1.74-95 If an iMedidata user, with multiple roles and invited to the URL but not accepted the invitation and subsequently accesses Rave
+           by deeplinking SelectRole URL, then the user will be taken to the iMedidata Home page
+           (Deep linking support)
+				  		  
+
+	
+	Given I am an iMedidata User
+	And there is an iMedidata Study Group
+	And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<iMedidata User 1 ID>"
+    And my Email is "<iMedidata User 1 Email>"
+	And I have an assignment to the iMedidata Study Group for the App link named "<Edc App>" with Role "<EDC Role 1>" and "<EDC Role 2>"
+	And I have an assignment to the iMedidata Study Group for the App link named "<Modules App>" with Role "<Modules Role 1>"
+	And I have access to the "Rave Modules" App through iMedidata
+	And I have not accepted the invitation
+	And I take a screenshot 1 of 5
+	And I am not logged in in iMedidata
+    When I pass the  URL <https://<Rave URL> /MedidataRAVE/SelectRole.aspx>
+	And I take a screenshot 2 of 5
+	And I press Enter 
+	And I am on iMedidata Login page
+	And I take a screenshot 3 of 5
+	And I enter iMedidata user's correct credantials
+	And I select login button
+	Then I am on iMedidata Home page
+	And I see the Study Group invitation on invitation section
+	And I take a screenshot 4 of 5
+	And I accept the invitation
+	And I am on am on iMedidata Home page
+	And I take a screenshot 5 of 5
+
+
+
+
+@Release_2013.3.0
+@PB2.5.1.74-96
+@IZ18.SEP.2013
+@Validation 
+Scenario : 2.5.1.74-96 If an iMedidata user with multiple role in EDC study subsequently accesses Rave,
+             then the user will be asking to select a role and then will be taken to the page in Rave as specified in the URL(Deep linking support)
+
+	Given I am an iMedidata User
+    And I am logged in
+    And my Name is "<First Name 1>" "<Last Name 1>"
+	And my username is "<iMedidata User 1 ID>"
+    And my Email is "<iMedidata User 1 Email>"
+    And I am connected to Rave
+    And there is an iMedidata Study named "<Study A>"
+    And there is a Rave Study named "<Study A>"
+	And there exists subject <Subject 1> with eCRF page <eCRF Page>" in Site <Site>
+    And the iMedidata Study named "<Study A>" is linked to the Rave Study named "<Study A>"
+    And I have an assignment to the iMedidata Study named "<Study A>" for the App link named "<Edc App>" with Role "<EDC Role 1>" and "<EDC Role 2>"
+	And I have an assignment to the iMedidata Study named "<Study A>" for the App link named "<Modules App>" with Role "<Modules Role 1>"
+	And I have access to the "Rave Modules" App through iMedidata
+	And I am assigned to the Audit Trail Report
+	And I have StudySite ID recorded
+	And I have Subject ID recorded
+	And I have  CRF DP recorded
+	And I pass the  URL <https://<Rave URL> /MedidataRAVE/SelectRole.aspx?page=SitePage.aspx&ID=(Previously recorded StudySite ID)>
+	When I press Enter
+	And I am on Role Selection page
+	And I take a screenshot 1 of 10
+	And I select the role "<EDC Role 1>"
+	Then I am on the Rave specified <StudySite> page
+	And I take a screenshot 2 of 10
+	And I navigate back to iMedidata
+	And I pass the  URL <https://<Rave URL> /MedidataRAVE/SelectRole.aspx?page=SubjectPage.aspx&ID=(previously recorded Subject ID)> 
+	And I press Enter
+	And I am on Role Selection page
+	And I take a screenshot 3 of 10
+	And I select the role "<EDC Role 1>"
+	And I am on the Rave specified <Subject> page
+	And I take a screenshot 4 of 10
+	And I navigate back to iMedidata
+	And I pass the  URL < https://<Rave URL> /MedidataRAVE/SelectRole.aspx?page=CRFPage.aspx&DP=(Previously recorded CRF DP)>
+	And I press Enter
+	And I am on Role Selection page
+	And I take a screenshot 5 of 10
+	And I select the role "<EDC Role 1>"
+	And I am on the Rave specified Subject eCRF page
+	And I take a screenshot  6 of 10
+	And I navigate back to iMedidata
+	And I pass the  URL  <https://<Rave URL> /MedidataRAVE/SelectRole.aspx?page=ReportsPage.aspx>
+	And I press Enter
+	And I am on Role Selection page
+	And I take a screenshot 7 of 10
+	And I select the role "<EDC Role 1>"
+	And I am on the Rave specified Reports page
+	And I take a screenshot 8 of 10
+	And I navigate back to iMedidata
+	And I pass the  URL   <https://<Rave URL> /MedidataRAVE/SelectRole.aspx?page=Sites.aspx>
+	And I press Enter
+	And I am on Role Selection page
+	And I take a screenshot 9 of 10
+	And I select the role "<EDC Role 1>"
+	And I am on the Rave specified Site Administration page
+	And I take a screenshot  10 of 10
+
+
+@Release_2013.3.0
+@PB2.5.1.74-97
+@IZ18.SEP.2013
+@Validation 
+Scenario : 2.5.1.74-97 An error message will be displayed if an iMedidata user with multple roles attempts to navigate to subject that has been
+                  inactivated via deep linking (Deep linking support)
+
+	Given I am an iMedidata user with username "<iMedidata User 1 ID>"
+	And I am  assigned only study "<Study A>" with site "<Site A1>" that has subject "<Subject 1>" with ecrf page "<eCRF Page 1>"
+	And study "<Study A>"has app link "<EDC App>" with roles "<EDC Role 1>" and "<EDC Role 2>" to Rave Url "<Rave URL 1>"
+	And study "<Study A>"has app link "<Modules App>" with role "<Modules Role 1>" to Rave Url "<Rave URL 1>"
+	And I follow the app link "<EDC App>" 
+	And I am on the StudySite home page for study "<Study A>" and site "<Site A1>".
+	And I select subject "<Subject 1>"
+	And I note value "<Subject Number>"
+	And I follow link "iMedidata"
+	And I log out of iMedidata
+	And I login in Rave as Rave defuser
+	And I select link "Home"
+	And I select link "Site Administration
+	And I select site "<Site 1A>"
+	And I inactivate subject "<Subject 1>"
+	And I take a screenshot
+	And  I logout as Rave user
+	When I enter in the URL Address Text Field "https://"<Rave URL 1>"/MedidataRAVE/HandleLink.aspx?page=SubjectPage.aspx&ID="<Subject Number>""
+	And I press Enter
+	Then I am on Role Selection page
+	And I take a screenshot 9 of 10
+	And I select the role "<EDC Role 1>"
+	And I see an "error Message"
+	And I take a screenshot
