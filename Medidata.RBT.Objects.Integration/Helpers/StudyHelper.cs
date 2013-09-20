@@ -56,8 +56,13 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         /// <param name="config"></param>
         private static void AddEnvironmentToNameIfNeeded(StudyMessageModel config)
         {
+            //If we don't have IsProd set, there's no way for us to be usre
+            //what to do. So, do nothing.
+            if (string.IsNullOrEmpty(config.IsProd))
+                return;
+
             //convert the IsProd property to an actual boolean
-            var isProd = (string.IsNullOrEmpty(config.IsProd)) || bool.Parse(config.IsProd);
+            var isProd = bool.Parse(config.IsProd);
 
             //if the environment is prod, do nothing
             if (isProd)
@@ -83,7 +88,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
             }
 
             //if we got here, we need to add the environment suffix to the name
-            config.Name += environmentSuffix;
+            config.Name += " " + environmentSuffix;
         }
 
         public static void CreateStudy(string name, string environment, int externalId, string uuid=null, bool internalStudy=false)

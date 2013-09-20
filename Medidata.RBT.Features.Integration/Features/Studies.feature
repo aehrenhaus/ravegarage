@@ -70,19 +70,19 @@ Scenario: Operations on studies, sites, studysites, users, study assignments, st
 
 @PB2.5.8.7-06
 Scenario Outline: If I have a project in Rave that is not linked to study in iMedidata,  when the study is created in iMedidata with spaces after the study name, Rave will link to the matching study name ( with no spaces) in Rave.
-	Given the study with name "<RaveSiteName>" and environment "<Environment>" with UUID "<RaveUuid>" exists in the Rave database
+	Given the study with name "<RaveStudyName>" and environment "<Environment>" with UUID "<RaveUuid>" exists in the Rave database
 	When I send the following Study message to SQS
-	| EventType | Name                | IsProd   | Environment   | Description                 | ID                 | Timestamp            | UUID            |
-	| POST      | <iMedidataSiteName> | <IsProd> | <Environment> | <iMedidataStudyDescription> | <iMedidataStudyId> | <LastExternalUpdate> | <iMedidataUuid> |
+	| EventType | Name                 | IsProd   | Environment   | Description                 | ID                 | Timestamp            | UUID            |
+	| POST      | <iMedidataStudyName> | <IsProd> | <Environment> | <iMedidataStudyDescription> | <iMedidataStudyId> | <LastExternalUpdate> | <iMedidataUuid> |
 	#the study uuid should be updated to the value provided by iMedidata
 	Then I should not see the study with UUID "<RaveUuid>" in the Rave database
 	And I should see the study with UUID "<iMedidataUuid>" in the Rave database
 	#test study properties
 	And the study should exist with the following properties
-	| Name                | IsProd   | Description                 | ExternalID         | LastExternalUpdateDate | UUID            | TestStudy   | EnvironmentName   |
-	| <iMedidataSiteName> | <IsProd> | <iMedidataStudyDescription> | <iMedidataStudyId> | <LastExternalUpdate>   | <iMedidataUuid> | <TestStudy> | <Environment> |
-	And the study should have Project Name "<iMedidataSiteName>"
+	| Name                 | IsProd   | Description                 | ExternalID         | LastExternalUpdateDate | UUID            | TestStudy   | EnvironmentName |
+	| <iMedidataStudyName> | <IsProd> | <iMedidataStudyDescription> | <iMedidataStudyId> | <LastExternalUpdate>   | <iMedidataUuid> | <TestStudy> | <Environment>   |
+	And the study should have Project Name "<iMedidataStudyName>"
 Examples: 
-	| RaveSiteName             | iMedidataSiteName               | Environment     | iMedidataStudyDescription        | iMedidataStudyId | IsProd | TestStudy | LastExternalUpdate  | RaveUuid                             | iMedidataUuid                        |
+	| RaveStudyName            | iMedidataStudyName              | Environment     | iMedidataStudyDescription        | iMedidataStudyId | IsProd | TestStudy | LastExternalUpdate  | RaveUuid                             | iMedidataUuid                        |
 	| TestSqsStudy 2.5.8.7-06A | "TestSqsStudy 2.5.8.7-06A     " | Prod            | TestDescriptioniMedidata 258706A | 258706A          | true   | false     | 2012-10-12 12:00:00 | d0f0330a-fcd4-4cf8-bfc8-cecb44769faa | 7e0db3ef-2d41-4534-96d2-51a362267c0a |
 	| TestSqsStudy 2.5.8.7-06B | "TestSqsStudy 2.5.8.7-06B     " | SomeEnvironment | TestDescriptioniMedidata 258706B | 258706B          | false  | true      | 2012-10-13 12:00:00 | b81e3342-685b-46fa-a96b-cfd8a117cc39 | cecb73b6-867b-4f72-9021-cf958d005f21 |
