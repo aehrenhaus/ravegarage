@@ -261,7 +261,7 @@ Scenario Outline: If an iMedidata user with single role and with restrictions to
 @Release_2013.3.0
 @PB2.5.1.74-85
 @IZ18.SEP.2013
-@Validation 
+@BUG_MCC-79931
 Scenario : 2.5.1.74-85 An error message will be displayed if an iMedidata user attempts to navigate to an eCRF page that
                   has been restricted via deep linking (Deep linking support)
 
