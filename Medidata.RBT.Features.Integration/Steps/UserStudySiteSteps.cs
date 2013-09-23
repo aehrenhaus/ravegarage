@@ -19,6 +19,13 @@ namespace Medidata.RBT.Features.Integration.Steps
             UserStudySiteHelper.CreateUserStudySiteAssignment();
         }
 
+        [Given(@"the current User is assigned to the the current StudySite with external update date ""(.*)""")]
+        public void GivenTheCurrentUserIsAssignedToTheTheCurrentStudySiteWithExternalUpdateDate(string lastExernalUpdateDateString)
+        {
+            var dateToUse = DateTime.Parse(lastExernalUpdateDateString);
+
+            UserStudySiteHelper.CreateUserStudySiteAssignment(dateToUse);
+        }
 
         [Then(@"I should see the UserStudySite assignment in the Rave database")]
         public void ThenIShouldSeeTheUserStudySiteAssignmentInTheRaveDatabase()

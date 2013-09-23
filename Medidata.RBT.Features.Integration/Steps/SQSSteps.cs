@@ -38,30 +38,5 @@ namespace Medidata.RBT.Features.Integration.Steps
                     break;
             }
         }
-
-        [When(@"the messages? (?:is|are) successfully processed")]
-        public void WhenTheMessageIsSuccessfullyProcessed()
-        {
-            if (!ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
-                     .Equals(MessageDeliveryTypes.SQS))
-            {
-                return;
-            }
-
-            var numVisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, true);
-            var numInvisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, false);
-            
-            var threadSleepOffset = 5000 * ScenarioContext.Current.Get<int>("messageCount");
-            Thread.Sleep(15000 + threadSleepOffset);
-            var endTime = DateTime.Now.AddSeconds(100);
-
-            while(numVisibleMessages > 0 || numInvisibleMessages > 0)
-            {
-                if(DateTime.Now.Ticks > endTime.Ticks) throw new TimeoutException("Message was not processed");
-
-                numVisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, true);
-                numInvisibleMessages = IntegrationTestContext.SqsWrapper.GetApproxNumberOfMessages(IntegrationTestContext.SqsQueueUrl, false);
-            }
-        }
     }
 }

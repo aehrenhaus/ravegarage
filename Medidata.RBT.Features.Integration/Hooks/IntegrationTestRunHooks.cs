@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.ServiceProcess;
 using Medidata.AmazonSimpleServices;
@@ -9,6 +11,7 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using TechTalk.SpecFlow;
 using Medidata.RBT.Objects.Integration.Configuration;
+using TechTalk.SpecFlow.Configuration;
 
 namespace Medidata.RBT.Features.Integration.Hooks
 {
@@ -17,19 +20,160 @@ namespace Medidata.RBT.Features.Integration.Hooks
     {
         // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
 
+        private static bool IsSqsMode { get; set; }
+        private static bool ShouldManageService { get; set;}
+
+        //if we're in SQS mode, we'll need a reference to the RIS.
+        private static ServiceController RaveIntegrationServiceController { get; set; }
+
+        static IntegrationTestRunHooks()
+        {
+            //will be set to an instance (if needed) by BeforeTestRun
+            RaveIntegrationServiceController = null;
+        }
+
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            DbHelper.RestoreDatabase();
-
             IntegrationTestContext.TestFailed = false;
 
-            if (!ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
-                     .Equals(MessageDeliveryTypes.SQS))
+            //are we in SQS mode? If so, we'll need to do some additional setup
+            //of the rave service and message queues
+            IsSqsMode = ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryTypeKey]
+                .Equals(MessageDeliveryTypes.SQS);
+
+            //we won't manage the service in Broker mode, regardless of the service config settings.
+            ShouldManageService = IsSqsMode && GetAppSettingsBooleanValueOrThrow(AppSettingsTags.ManageServiceKey);
+            
+            if (ShouldManageService)
             {
-                return;
+                //get service details from appsettings
+                var serviceName = ConfigurationManager.AppSettings[AppSettingsTags.ServiceNameKey];
+                var serviceMachineName = ConfigurationManager.AppSettings["ServiceMachineName"] ?? ".";
+
+                //get a reference to the rave service, since SQS mode uses the real service.
+                RaveIntegrationServiceController = new ServiceController(string.Format("Medidata Rave Integration Service - \"{0}\"",
+                    serviceName), serviceMachineName);
+
+                //stop the service, so it's not running while we update (possibly) restore the database 
+                //and/or update the queue urls in application configs.
+                StopRaveServiceIfStarted();
             }
 
+            //for either mode, we need to prepare the database
+            PrepareDatabase();
+
+            if (IsSqsMode)
+            {
+                //create the real queues and update the app configurations in the database
+                CreateQueues();
+            }
+
+            if (ShouldManageService)
+            {
+                StartRaveService();
+            }
+        }
+
+        [AfterTestRun]
+        public static void AfterTestRun()
+        {
+            //If the RIS service was started, this function will stop it.
+            //If we don't stop it, a bunch of errors will be logged in the service
+            //due to the deleted message queues.
+            if (ShouldManageService)
+            {
+                StopRaveServiceIfStarted();
+            }
+
+            if (IsSqsMode)
+            {
+                IntegrationTestContext.SqsWrapper.DeleteQueue(IntegrationTestContext.SqsQueueUrl);
+            }
+
+            if (IntegrationTestContext.TestFailed)
+            {
+
+            }
+            
+            //restore our state to before the test runs
+            DbHelper.RestoreSnapshot();
+
+            //delete the snapshot, it's no longer needed.
+            DbHelper.DeleteSnapshot();
+
+            //TODO: replace this temporary copy of report generation with a shared class
+            GenerateReport();
+        }
+
+        [BeforeScenario]
+        public void BeforeScenario()
+        {
+            //TODO: implement logic that has to run before executing each scenario
+        }
+
+        [AfterScenario]
+        public void AfterScenario()
+        {
+            if (ScenarioContext.Current.TestError != null)
+            {
+                IntegrationTestContext.TestFailed = true;
+            }
+        }
+
+        private static void GenerateReport()
+        {
+
+            //TODO: remove this duplicated logic from SpecflowWebTestContext for checking the UnitTestProvider 
+            var specflowSectionHandler = (ConfigurationSectionHandler)ConfigurationManager.GetSection("specFlow");
+
+            if (!specflowSectionHandler.UnitTestProvider.Name.Contains("SpecRun")
+                && specflowSectionHandler.UnitTestProvider.Name.Contains("MsTest"))
+            {
+
+                var ravePath = ConfigurationManager.AppSettings["RavePath"];
+
+                var scriptPath = Path.Combine(ravePath, @"ravegarage\reportGen.ps1");
+
+                var projectPath = Path.Combine(ravePath, @"ravegarage\Medidata.RBT.Features.Integration\Medidata.RBT.Features.Integration.csproj");
+
+                var arguments = string.Format("-executionpolicy unrestricted -file \"{0}\" \"{1}\"", scriptPath, projectPath);
+
+                var p = new System.Diagnostics.Process();
+
+                p.StartInfo = new System.Diagnostics.ProcessStartInfo(
+                   @"powershell.exe",
+                   arguments);
+
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.RedirectStandardOutput = true;
+
+                p.Start();
+
+                //don't wait for the script to finish
+            }
+        }
+
+        private static void StopRaveServiceIfStarted()
+        {
+            if (RaveIntegrationServiceController != null && RaveIntegrationServiceController.CanStop)
+            {
+                RaveIntegrationServiceController.Stop();
+                RaveIntegrationServiceController.WaitForStatus(ServiceControllerStatus.Stopped);
+            }
+        }
+
+        private static void StartRaveService()
+        {
+            if (RaveIntegrationServiceController != null)
+            {
+                RaveIntegrationServiceController.Start();
+                RaveIntegrationServiceController.WaitForStatus(ServiceControllerStatus.Running);
+            }
+        }
+
+        private static void CreateQueues()
+        {
             var accessKey = ConfigurationManager.AppSettings["AwsAccessKey"];
             var secretKey = ConfigurationManager.AppSettings["AwsSecretKey"];
             var region = ConfigurationManager.AppSettings["AwsRegion"];
@@ -51,47 +195,34 @@ namespace Medidata.RBT.Features.Integration.Hooks
             SQSHelper.UpdateQueueUuid(SQSHelper.EDC_APP_NAME, edcQueueName);
             SQSHelper.UpdateQueueUuid(SQSHelper.MODULES_APP_NAME, modulesQueueName);
             SQSHelper.UpdateQueueUuid(SQSHelper.SECURITY_APP_NAME, securityQueueName);
-
-            var service = new ServiceController(string.Format("Medidata Rave Integration Service - \"{0}\"", 
-                ConfigurationManager.AppSettings["ServiceName"]));
-
-            if(service.CanStop)
-            {
-                service.Stop();
-                service.WaitForStatus(ServiceControllerStatus.Stopped);
-            }
-
-            service.Start();
-            service.WaitForStatus(ServiceControllerStatus.Running);
         }
 
-        [AfterTestRun]
-        public static void AfterTestRun()
+        public static bool GetAppSettingsBooleanValueOrThrow(string key)
         {
-            if (ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryType]
-                     .Equals(MessageDeliveryTypes.SQS))
+            bool result;
+
+            if (!bool.TryParse(ConfigurationManager.AppSettings[key], out result))
             {
-                IntegrationTestContext.SqsWrapper.DeleteQueue(IntegrationTestContext.SqsQueueUrl);
+                throw new ConfigurationErrorsException(
+                    string.Format("Couldn't parse {0} value as a boolean.", key));
             }
 
-            if(IntegrationTestContext.TestFailed)
+            return result;
+        }
+
+        private static void PrepareDatabase()
+        {
+            //if a snapshot exists...
+            if (DbHelper.DoesSnapshotExist())
             {
-                
+                //the last run didn't get cleaned up, so the database
+                //needs to be restored to the snapshot state
+                DbHelper.RestoreSnapshot();
             }
-        }
-
-        [BeforeScenario]
-        public void BeforeScenario()
-        {
-            //TODO: implement logic that has to run before executing each scenario
-        }
-
-        [AfterScenario]
-        public void AfterScenario()
-        {
-            if(ScenarioContext.Current.TestError != null)
+            else
             {
-                IntegrationTestContext.TestFailed = true;
+                //create a new snapshot
+                DbHelper.CreateSnapshot();
             }
         }
     }

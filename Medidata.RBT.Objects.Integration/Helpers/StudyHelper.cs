@@ -16,30 +16,31 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         public static void StudyMessageHandler(Table table)
         {
             var messageConfigs = table.CreateSet<StudyMessageModel>().ToList();
-            ScenarioContext.Current.Set(messageConfigs.Count, "messageCount");
 
-            foreach (var config in messageConfigs)
-            {
-                var message = string.Empty;
-
-                config.MessageId = Guid.NewGuid();
-
-                switch (config.EventType.ToLowerInvariant())
+            var messagesToSend = messageConfigs.Select(config =>
                 {
-                    case "post":
-                        config.UUID = Guid.NewGuid();
-                        ScenarioContext.Current.Set(config.UUID.ToString(), "studyUuid");
-                        Console.WriteLine("Study UUID: {0}", config.UUID);
-                        message = Render.StringToString(StudyTemplates.STUDY_POST_TEMPLATE, new { config });
-                        break;
-                    case "put":
-                        config.UUID = new Guid(ScenarioContext.Current.Get<String>("studyUuid"));
-                        message = Render.StringToString(StudyTemplates.STUDY_PUT_TEMPLATE, new { config});
-                        break;
-                }
+                    string message = null;
 
-                SQSHelper.SendMessage(message);
-            }
+                    config.MessageId = Guid.NewGuid();
+
+                    switch (config.EventType.ToLowerInvariant())
+                    {
+                        case "post":
+                            config.UUID = Guid.NewGuid();
+                            ScenarioContext.Current.Set(config.UUID.ToString(), "studyUuid");
+                            Console.WriteLine("Study UUID: {0}", config.UUID);
+                            message = Render.StringToString(StudyTemplates.STUDY_POST_TEMPLATE, new { config });
+                            break;
+                        case "put":
+                            config.UUID = new Guid(ScenarioContext.Current.Get<String>("studyUuid"));
+                            message = Render.StringToString(StudyTemplates.STUDY_PUT_TEMPLATE, new { config });
+                            break;
+                    }
+
+                    return message;
+                });
+
+            SQSHelper.SendMessages(messagesToSend);
         }
 
         public static void CreateStudy(string name, string environment, int externalId, string uuid=null, bool internalStudy=false)
