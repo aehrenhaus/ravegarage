@@ -42,7 +42,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
             IsSqsMode = ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryTypeKey]
                 .Equals(MessageDeliveryTypes.SQS);
 
-            //we won't manager the service in Broker mode, regardless of the service config settings.
+            //we won't manage the service in Broker mode, regardless of the service config settings.
             ShouldManageService = IsSqsMode && GetAppSettingsBooleanValueOrThrow(AppSettingsTags.ManageServiceKey);
             
             if (ShouldManageService)
