@@ -17,13 +17,22 @@
     <add key="AwsSecretKey" value="%%%AwsSecretKey%%%"/>
     <add key="AwsRegion" value="%%%AwsRegion%%%"/>
     <add key="RunCleaningEngineInProcess" value="True" />
+
+    <!--set to true to stop and start RISS service before and after every test run.-->
+    <!--only applies when running in SQS mode-->
+    <add key="ManageService" value="%%%ManageService%%%"/>
+    <!--The name of the service instance, for example "Rave57Dev"-->
     <add key="ServiceName" value="%%%ServiceName%%%"/>
+    <!--The name of the machine which is running the service. Use "." for the local machine.-->
+    <add key="ServiceMachineName" value="%%%ServiceMachineName%%%"/>
+    
     <add key="AwsConfigXmlFilePath" value="%%%AwsConfgiXmlFilePath%%%"/>
     <add key="RaveBackupLocation" value="%%%RaveBackupLocation%%%"/>
     <add key="RavePath" value="%%%PathToRaveRepo%%%"/>
 
     <!-- MessageDeliveryType can be set to "Broker" or "SQS" -->
-    <add key="MessageDeliveryType" value="Broker"/>
+    <!-- "SQS" mode uses a RISS instance and the Amazon SQS service, but is slower. -->
+    <add key="MessageDeliveryType" value="%%%MessageDeliveryType%%%"/>
 
     <add key="log4net.Config" value="log4net.config" />
   </appSettings>

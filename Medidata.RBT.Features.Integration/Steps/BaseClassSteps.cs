@@ -43,9 +43,9 @@ namespace Medidata.RBT.Features.Integration.Steps
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                throw new Exception("Failed to initialize Plugin Framework!");
+                throw new Exception("Failed to initialize Plugin Framework!", ex);
             }
         }
 

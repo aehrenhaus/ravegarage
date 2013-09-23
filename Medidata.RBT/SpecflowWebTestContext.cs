@@ -30,7 +30,7 @@ namespace Medidata.RBT
 
             if (!SpecflowSectionHandler.UnitTestProvider.Name.Contains("SpecRun")
                 && SpecflowSectionHandler.UnitTestProvider.Name.Contains("MsTest"))
-                GernerateReport();
+                GenerateReport();
 		}
 
 		public override void BeforeTestRun()
@@ -144,26 +144,26 @@ namespace Medidata.RBT
             }
 		}
 
-		private void GernerateReport()
+		private void GenerateReport()
 		{
+
+            const string scriptPath = @"..\..\..\reportGen.ps1";
+
+		    const string projectPath = @"Medidata.RBT.Features.Rave\Medidata.RBT.Features.Rave.csproj";
+
+            var arguments = string.Format("-executionpolicy unrestricted -file \"{0}\" \"{1}\"", scriptPath, projectPath);
 
 			System.Diagnostics.Process p = new System.Diagnostics.Process();
 
-#if DEBUG
-			p.StartInfo = new System.Diagnostics.ProcessStartInfo(
-				@"powershell.exe",
-			" ../../../reportGen.ps1");
-			p.Start();
-			//p.WaitForExit();
-#else
-				p.StartInfo = new System.Diagnostics.ProcessStartInfo(
-				@"powershell.exe",
-			"../../../reportGen.ps1");
-			p.Start();
-#endif
+            p.StartInfo = new System.Diagnostics.ProcessStartInfo(
+                @"powershell.exe",
+                arguments
+            );
 
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
 
-
+            p.Start();
 		}
 
         private void CreateScenarioFailureFile()

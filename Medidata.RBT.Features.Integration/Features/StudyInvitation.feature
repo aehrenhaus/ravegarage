@@ -14,10 +14,9 @@ Scenario: When a StudyInvitation POST message gets put onto the queue, the study
 	And I have a Modules app assignment with the following roles
 	| RoleName          |
 	| Post1 All Modules |
-	And I send the following StudyInvitation message to SQS
+	When I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | Email            | Login                       | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | testUser@test.cx | testPOSTstudyInvitationUser | 101    | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-	When the message is successfully processed
 	Then I should see the user in the Rave database
 	And the user should be assigned to the study with the following EDC roles
 	| RoleName         |
@@ -49,10 +48,9 @@ Scenario: When a StudyInvitation PUT message gets put onto the queue, the study 
 	And I have a Modules app assignment with the following roles
 	| RoleName        |
 	| Put1 User Admin |
-	And I send the following StudyInvitation message to SQS
+	When I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | Email            | Login                      | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| PUT       | StudyInvitation | testUser@test.cx | testPUTstudyinvitationuser | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
-	When the message is successfully processed
 	Then the user should be assigned to the study with the following EDC roles
 	| RoleName        |
 	| Put1 EDC Role 2 |
@@ -86,11 +84,12 @@ Scenario: When a StudyInvitation DELETE message gets put onto the queue, the stu
 	And I have a Modules app assignment with the following roles
 	| RoleName               |
 	| Delete1 Modules Role 1 |
-	And I send the following StudyInvitation messages to SQS
+	And I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | Email            | Login                         | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | testUser@test.cx | testDELETEstudyInvitationUser | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
+	When I send the following StudyInvitation message to SQS
+	| EventType | InvitationType  | Email            | Login                         | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| DELETE    | StudyInvitation |                  |                               |           |            |          |               |          |       |            |         |            |        |           | 2013-01-01 13:00PM |
-	When the message is successfully processed
 	Then the user should not be assigned to the study with the following EDC roles
 	| RoleName           |
 	| Delete1 EDC Role 1 |
@@ -116,12 +115,16 @@ Scenario: If an iMedidata user has a study assignment removed in iMedidata, that
 	And I have a Modules app assignment with the following roles
 	| RoleName                 |
 	| PB2582810 Modules Role 1 |
-	And I send the following StudyInvitation messages to SQS
+	#TODO: hacky, testing sending one message at a time
+	When I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | A0D8B069-7961-4FA3-A4CE-6ABB5D62E210 | pb2582810user@test.cx | pb2582810user | 2810   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
+	And I send the following StudyInvitation message to SQS
+	| EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | 8081E2F5-548F-43AD-A4CB-F90963AB28A4 | pb2582810user@test.cx | pb2582810user | 2810   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
+	And I send the following StudyInvitation message to SQS
+	| EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | 62849DCE-6EB8-4BE1-8CE7-CB3CB0F67E9D | pb2582810user@test.cx | pb2582810user | 2810   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-	When the message is successfully processed
 	Then I should see the user in the Rave database
 	And user's ExternalSystem value corresponds to iMedidata
 	And the user with EDC Role "PB2582810 EDC Role 1" should be assigned to the following studies
@@ -160,7 +163,6 @@ Scenario: If an iMedidata user has a study assignment removed in iMedidata, that
 	When I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Timestamp          |
 	| DELETE    | StudyInvitation | A0D8B069-7961-4FA3-A4CE-6ABB5D62E210 | 2013-01-01 13:00PM |
-	And the message is successfully processed
 	Then the user with EDC Role "PB2582810 EDC Role 1" should not be assigned to the following studies
 	| StudyName    | Uuid                                 |
 	| Study 2810 A | A0D8B069-7961-4FA3-A4CE-6ABB5D62E210 |
@@ -203,11 +205,13 @@ Scenario: If an iMedidata user has a  new study assignment added in iMedidata, t
 	And I have a Modules app assignment with the following roles
 	| RoleName                 |
 	| PB2582811 Modules Role 1 |
-	And I send the following StudyInvitation messages to SQS
+	#TODO: hacky, testing sending one message at a time
+	When I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | 835ECE8A-41B0-4A14-9E51-E4DDC5FB7952 | pb2582811user@test.cx | pb2582811user | 2811   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
+	And I send the following StudyInvitation message to SQS
+	| EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | AEF0133F-7BA3-4789-8099-5D99AEEB3DA2 | pb2582811user@test.cx | pb2582811user | 2811   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-	When the message is successfully processed
 	Then I should see the user in the Rave database
 	And user's ExternalSystem value corresponds to iMedidata
 	And the user with EDC Role "PB2582811 EDC Role 1" should be assigned to the following studies
@@ -223,7 +227,6 @@ Scenario: If an iMedidata user has a  new study assignment added in iMedidata, t
 	When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login         | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | DACEC000-CD7B-4CD7-B51E-0BA924488FF6 | pb2582811user@test.cx | pb2582811user | 2811   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
-	And the message is successfully processed
 	Then the user with EDC Role "PB2582811 EDC Role 1" should be assigned to the following studies
 	| StudyName    | Uuid                                 |
 	| Study 2811 A | 835ECE8A-41B0-4A14-9E51-E4DDC5FB7952 |
@@ -236,10 +239,9 @@ Scenario: If a user is only assigned to ‘Rave EDC’ application on iMedidata, the
 	And I have an EDC app assignment with the following roles
 	| RoleName            |
 	| PB275501 EDC Role 1 |
-	And I send the following StudyInvitation message to SQS
+	When I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Email                | Login    | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | B942ED64-44FE-4C68-A47A-4CB77C2BE5B6 | pb275501user@test.cx | pb275501 | 275501 | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-	When the message is successfully processed
 	Then I should see the user in the Rave database
 	And the user should be assigned to the study with the following EDC roles
     | RoleName            |
@@ -252,21 +254,20 @@ Scenario: If a Users Modules App invitation is changed, then that should be refl
 	And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2752856 Modules Role 1 |
-	And I send the following StudyInvitation message to SQS
+	When I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| POST      | StudyInvitation | F04C5342-2005-42F6-BE60-21EF67BBAEF0 | pb2752856user@test.cx | pb2752856 | 2856   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-	When the message is successfully processed
     Then I should see the user in the Rave database
     And the user should be assigned to the following UserGroup on the study
     | RoleName                 |
     | PB2752856 Modules Role 1 |
+
     Given I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2752856 Modules Role 4 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
 	| EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
 	| PUT       | StudyInvitation | F04C5342-2005-42F6-BE60-21EF67BBAEF0 | pb2752856user@test.cx | pb2752586 | 2856   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
-    When the message is successfully processed
     Then the user should be assigned to the following UserGroup on the study
     | RoleName                 |
     | PB2752856 Modules Role 4 |
@@ -281,21 +282,20 @@ Scenario: If an iMedidata user with one EDC Role1 in a study linked to Rave and 
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2582802 EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 1D696B2F-947B-40B2-8052-A58E483F6611 | pb2582802user@test.cx | pb2582802 | 2802   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the message is successfully processed
     Then I should see the user in the Rave database
     And the user should be assigned to the study with the following EDC roles
     | RoleName             |
     | PB2582802 EDC Role 1 |
+
     Given I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2582802 EDC Role 2 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | PUT       | StudyInvitation | 1D696B2F-947B-40B2-8052-A58E483F6611 | pb2582802user@test.cx | pb2582802 | 2802   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
-    When the message is successfully processed
     Then I should see the user in the Rave database
     And the user should be assigned to the study with the following EDC roles
     | RoleName             |
@@ -316,10 +316,9 @@ Scenario: When an externally authenticated user accesses Rave for the first time
     And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2582301 Modules Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | D5815E4F-4746-4EE7-9D25-4FD71F3FE93C | pb2582301user@test.cx | pb2582301 | 2301   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the message is successfully processed
     Then I should see the user in the Rave database 
     And the user should be assigned to the study with the following EDC roles
     | RoleName             |
@@ -328,6 +327,70 @@ Scenario: When an externally authenticated user accesses Rave for the first time
     | RoleName                 |
     | PB2582301 Modules Role 1 |
     And the user should have the default architect security role assigned
+
+
+
+
+@PB2.5.8.23-02
+Scenario: When an externally authenticated user accesses Rave for the first time with access to the Architect module and EDC of multiple studies provided through iMedidata,  
+            Rave will assign that user the default Architect Security Role defined in Rave for all of the studies.  
+	Given the study with name "Study 2302 A" and environment "Prod" with UUID "92e958cf-1a25-4498-8829-3494e0ee7ed2" exists in the Rave database 
+    And a UserGroup Role with Name "PB2582302 Modules Role 1" and Architect permissions exists in the Rave database 
+    And I have an EDC app assignment with the following roles 
+    | RoleName             | 
+    | PB2582302 EDC Role 1 | 
+    And I have a Modules app assignment with the following roles 
+    | RoleName                 | 
+    | PB2582302 Modules Role 1 | 
+    When I send the following StudyInvitation message to SQS 
+    | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          | 
+    | POST      | StudyInvitation | 92e958cf-1a25-4498-8829-3494e0ee7ed2 | pb2582302user1@test.cx | pb2582302 | 2302   | Test1      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567891 | eng    | New Delhi | 2013-01-01 12:00PM | 
+    Then I should see the user in the Rave database  
+    And the user should be assigned to the study with the following EDC roles 
+    | RoleName             |
+    | PB2582302 EDC Role 1 | 
+    And the user should be assigned to the following UserGroup on the study 
+    | RoleName                 |
+    | PB2582302 Modules Role 1 | 
+    And the user should have the default architect security role assigned 
+	##########################
+	Given the study with name "Study 2302 B" and environment "Prod" with UUID "7c0946d9-43cd-44d9-9652-1530b28afcfc" exists in the Rave database 
+    And I have an EDC app assignment with the following roles 
+    | RoleName             | 
+	| PB2582302 EDC Role 2 | 
+    And I have a Modules app assignment with the following roles 
+    | RoleName                 | 
+	| PB2582302 Modules Role 2 | 
+    When I send the following StudyInvitation message to SQS 
+    | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          | 
+	| POST      | StudyInvitation | 7c0946d9-43cd-44d9-9652-1530b28afcfc | pb2582302user1@test.cx | pb2582302 | 2302   | Test1      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567891 | eng    | New Delhi | 2013-01-01 12:00PM | 
+    Then I should see the user in the Rave database  
+    And the user should be assigned to the study with the following EDC roles 
+    | RoleName             |
+    | PB2582302 EDC Role 2 | 
+    And the user should be assigned to the following UserGroup on the study 
+    | RoleName                 |
+    | PB2582302 Modules Role 2 | 
+    And the user should have the default architect security role assigned 
+	###########################
+	Given the study with name "Study 2302 C" and environment "Prod" with UUID "0f6ff990-a862-438b-88a9-c9b7f6757614" exists in the Rave database 
+    And I have an EDC app assignment with the following roles 
+    | RoleName             | 
+	| PB2582302 EDC Role 3 | 
+    And I have a Modules app assignment with the following roles 
+    | RoleName                 | 
+	| PB2582302 Modules Role 3 | 
+    When I send the following StudyInvitation message to SQS 
+    | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          | 
+	| POST      | StudyInvitation | 0f6ff990-a862-438b-88a9-c9b7f6757614 | pb2582302user1@test.cx | pb2582302 | 2302   | Test1      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567891 | eng    | New Delhi | 2013-01-01 12:00PM | 
+    Then I should see the user in the Rave database  
+    And the user should be assigned to the study with the following EDC roles 
+    | RoleName             |
+    | PB2582302 EDC Role 3 | 
+    And the user should be assigned to the following UserGroup on the study 
+    | RoleName                 |
+    | PB2582302 Modules Role 3 | 
+    And the user should have the default architect security role assigned 
 
 @PB2.5.8.27-01
 Scenario: When iMedidata is used to assign specific access to a study, If user is assigned to more than one EDC role, 
@@ -343,11 +406,13 @@ Scenario: When iMedidata is used to assign specific access to a study, If user i
     And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2582701 Modules Role 1 |
-    And I send the following StudyInvitation messages to SQS
+	#TODO: hacky, testing sending one message at a time
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 74D2BE66-439C-44D9-B7C9-54DA11DFE25E | pb2582701user@test.cx | pb2582701 | 2701   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
+	And I send the following StudyInvitation message to SQS
+    | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 9A7720C0-D5A6-476A-BBF0-5DB1F2B1D94B | pb2582701user@test.cx | pb2582701 | 2701   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the message is successfully processed
     Then I should see the user in the Rave database 
     And the user with EDC Role "PB2582701 EDC Role 1" should be assigned to the following studies
     | StudyName    | Uuid                                 |
@@ -359,16 +424,16 @@ Scenario: When iMedidata is used to assign specific access to a study, If user i
     And the user with EDC Role "PB2582701 EDC Role 1" should be assigned to the following UserGroup
     | RoleName                 |
     | PB2582701 Modules Role 1 |
+
     Given I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2582701 EDC Role 2 |
     And I have an Architect Security app assignment with the following roles
     | RoleName                   |
     | PB2582701 Security Group 2 |
-    Then I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | PUT       | StudyInvitation | 74D2BE66-439C-44D9-B7C9-54DA11DFE25E | pb2582701user@test.cx | pb2582701 | 2701   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
-    When the message is successfully processed
     Then the user with EDC Role "PB2582701 EDC Role 2" should be assigned to the following studies
     | StudyName    | Uuid                                 |
     | Study 2701 A | 74D2BE66-439C-44D9-B7C9-54DA11DFE25E |
@@ -387,20 +452,19 @@ Scenario: If an existing iMedidata user is invited to a new Study Group without 
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517612 EDC Role 2 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | E8CA5368-62C6-40AC-8465-22668BD89291 | pb2517612user@test.cx | pb2517612 | 7612   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the message is successfully processed
     Then I should see the user in the Rave database
     And user's ExternalSystem value corresponds to iMedidata
     And there should be 1 active internal user for the external user
+
     Given I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517612 EDC Role 2 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType       | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyGroupInvitation | D7797EED-6598-4FA5-AFE2-46A340F5BD12 | pb2517612user@test.cx | pb2517612 | 7612   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
-    When the message is successfully processed
     Then there should be 1 active internal user for the external user
 
 @PB2.7.5.13-20
@@ -417,10 +481,9 @@ Scenario: When a user is created in iMedidata with EDC roles, one and only one u
     And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2751320 Modules Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 45D66EC9-2EF3-44F2-B3B5-4BECAB61F8B7 | pb2751320user@test.cx | pb2751320 | 1320   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the message is successfully processed
     Then I should see the user in the Rave database
     And an internal user with role "PB2751320 EDC Role 1" exists
     And the user with EDC Role "PB2751320 EDC Role 1" should be assigned to the following studies
@@ -447,13 +510,12 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
     And I have a Modules app assignment with the following roles
     | RoleName                |
     | PB257503 Modules Role 1 |
-    And I send the following StudyInvitation messages to SQS
+    When I send the following StudyInvitation messages to SQS
     | EventType | InvitationType       | StudyUuid                            | Email                 | Login    | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyGroupInvitation | FF4C1246-857E-4A45-B312-8C6AF6BE30E1 | pb257503user@test.cx  | pb257503 | 503    | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     | POST      | StudyInvitation      | 72CF3768-402F-4EA7-8262-01D1AC323133 | pb257503user@test.cx  | pb257503 | 503    | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     | POST      | StudyInvitation      | D760A54B-0881-427A-8FE7-60E60F3DF1D3 | pb257503user@test.cx  | pb257503 | 503    | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
     | POST      | StudyInvitation      | 8763D802-29D6-4936-9DA9-BA8282D90FA8 | pb257503user@test.cx  | pb257503 | 503    | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the messages are successfully processed
     Then I should see the user in the Rave database
     And the user with EDC Role "PB257503 EDC Role 1" should be assigned to the following studies
     | StudyName   | Uuid                                 |
@@ -463,13 +525,12 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
     And the user with EDC Role "PB257503 EDC Role 1" should be assigned to the following UserGroup
     | RoleName                |
     | PB257503 Modules Role 1 |
-    Given I send the following StudyInvitation messages to SQS
+    When I send the following StudyInvitation messages to SQS
     | EventType | InvitationType       | StudyUuid                            | Timestamp          |
     | DELETE    | StudyGroupInvitation | FF4C1246-857E-4A45-B312-8C6AF6BE30E1 | 2013-01-01 13:00PM |
     | DELETE    | StudyInvitation      | 72CF3768-402F-4EA7-8262-01D1AC323133 | 2013-01-01 13:00PM |
     | DELETE    | StudyInvitation      | D760A54B-0881-427A-8FE7-60E60F3DF1D3 | 2013-01-01 13:00PM |
     | DELETE    | StudyInvitation      | 8763D802-29D6-4936-9DA9-BA8282D90FA8 | 2013-01-01 13:00PM |
-    When the messages are successfully processed
     Then the user with EDC Role "PB257503 EDC Role 1" should not be assigned to the following studies
     | StudyName   | Uuid                                 |
     | Study 503 A | 72CF3768-402F-4EA7-8262-01D1AC323133 |
@@ -479,10 +540,9 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
     Given I have an EDC app assignment only with the following role
     | RoleName            |
     | PB257503 EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType       | StudyUuid                            | Email                 | Login    | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation      | 72CF3768-402F-4EA7-8262-01D1AC323133 | pb257503user@test.cx  | pb257503 | 503    | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 14:00PM |
-    When the message is successfully processed
     Then the user with EDC Role "PB257503 EDC Role 1" should be assigned to the following studies
     | StudyName   | Uuid                                 |
     | Study 503 A | 72CF3768-402F-4EA7-8262-01D1AC323133 |
@@ -498,25 +558,24 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2593306 EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 9E26D64B-474D-4DD4-A368-F3EC82E505B3 | pb2593306user@test.cx | pb2593306 | 3306   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the message is successfully processed
     Then I should see the user in the Rave database
     And the user should be assigned to the study with the following EDC roles
     | RoleName             |
     | PB2593306 EDC Role 1 |
     And the user should be assigned to iMedidataEDC user group
+
     Given I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2593306 EDC Role 1 |
     And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2593306 Modules Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | PUT       | StudyInvitation | 9E26D64B-474D-4DD4-A368-F3EC82E505B3 | pb2593306user@test.cx | pb2593306 | 3306   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
-    When the message is successfully processed
     Then the user should be assigned to the following UserGroup on the study
     | RoleName                 |
     | PB2593306 Modules Role 1 |
@@ -531,22 +590,21 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2593307 EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 217B8DB6-CA4D-4839-837A-A78BB229D321 | pb2593307user@test.cx | pb2593307 | 3307   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the message is successfully processed
     Then I should see the user in the Rave database
     And the user should be assigned to the study with the following EDC roles
     | RoleName             |
     | PB2593307 EDC Role 1 |
     And the user should be assigned to iMedidataEDC user group
+
     Given I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2593307 EDC Role 2 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | PUT       | StudyInvitation | 217B8DB6-CA4D-4839-837A-A78BB229D321 | pb2593307user@test.cx | pb2593307 | 3307   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |
-    When the message is successfully processed
     Then the user should be assigned to the study with the following EDC roles
     | RoleName             |
     | PB2593307 EDC Role 2 |
@@ -559,7 +617,9 @@ Scenario: When a user is removed from a Study Group and re invited to a study wi
 Scenario: If the user has access to a Study Site in Rave that is linked with iMedidata and the users EDC Role is changed, 
         the Study Site will be accessible to the User on Rave.
 	Given the study with name "Study 2904 B" and environment "Prod" with UUID "4DCFC098-13CA-46D3-8148-2EEA10923872" exists in the Rave database
-	And the Site with Name "Site 2904 B1" and site number "2592904B1" exists in the Rave database
+	And the following site exists in the rave database:
+	| Number	| Name			|
+	| 2592904B1 | Site 2904 B1	|
     And the StudySite with ExternalId "2904" exists in the Rave database
     And I have an EDC app assignment with the following roles
     | RoleName             |
@@ -567,23 +627,22 @@ Scenario: If the user has access to a Study Site in Rave that is linked with iMe
     And I have a Modules app assignment with the following roles
     | RoleName                 |
     | PB2593307 Modules Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 4DCFC098-13CA-46D3-8148-2EEA10923872 | pb2592904user@test.cx | pb2592904 | 2904   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |   
-    When the message is successfully processed
     Then an internal user with role "PB2593307 EDC Role 1" exists
-    Given I send the following UserStudySite message to SQS
+
+    When I send the following UserStudySite message to SQS
     | EventType | Timestamp          |
     | POST      | 2013-01-01 13:00PM |
-    When the message is successfully processed
     Then I should see the UserStudySite assignment in the Rave database
+
     Given I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2593307 EDC Role 2 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 4DCFC098-13CA-46D3-8148-2EEA10923872 | pb2592904user@test.cx | pb2592904 | 2904   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 13:00PM |  
-    When the message is successfully processed
     Then an internal user with role "PB2593307 EDC Role 2" exists
     And I should see the UserStudySite assignment in the Rave database
 
@@ -673,10 +732,9 @@ Scenario: When merging iMedidata created and non-transitioned accounts, all Rave
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517402 EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                  | Login      | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 39CCB4A6-D154-43CB-A235-16CAAFC0E890 | pb2592904Buser@test.cx | pb2592904B | 2904   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the message is successfully processed
     And the iMedidata user links their account to the Rave User
     Then the iMedidata User should have the Audit Trail report assigned
 
@@ -694,10 +752,9 @@ Scenario: When merging iMedidata created and non-transitioned accounts, all Rave
 	And I have an EDC app assignment with the following roles
     | RoleName              |
     | PB2517402C EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                  | Login      | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 4F7E9F24-FB97-47EC-8D49-19953EED5E1A | pb2517402Cuser@test.cx | pb2517402C | 7402   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |
-    When the message is successfully processed
     And the iMedidata user links their account to the Rave User
     Then the iMedidata User should have the Audit Trail report assigned
     And the user with EDC Role "PB2517402C EDC Role 1" should not be assigned to the following internal studies
@@ -716,10 +773,9 @@ Scenario: As a Rave user I complete an eLearning course and my account is merged
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517692 EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | FF1DDBF2-7661-4471-B521-41C75A35283C | pb2517692user@test.cx | pb2517692 | 7692   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
-    When the message is successfully processed
     And the iMedidata user links their account to the Rave User
     Then the iMedidata user with EDC Role "PB2517692 EDC Role 1" should be assigned to the eLearning Course
     And the course should be marked as "Completed" for the iMedidata user
@@ -736,10 +792,9 @@ Scenario: If Internal Rave user has not completed an eLearning course and accoun
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517693 EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 6DC4FEA8-F783-44D0-9668-D806A25D23E2 | pb2517693user@test.cx | pb2517693 | 7693   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
-    When the message is successfully processed
     And the iMedidata user links their account to the Rave User
     Then the iMedidata user with EDC Role "PB2517693 EDC Role 1" should be assigned to the eLearning Course
 	
@@ -756,10 +811,9 @@ Scenario: If internal Rave user does not start an eLearning course and account i
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517694 EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 6FFCC5D7-D2D7-4602-AA97-865FAF48E42A | pb2517694user@test.cx | pb2517694 | 7694   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
-    When the message is successfully processed
     And the iMedidata user links their account to the Rave User
     Then the iMedidata user with EDC Role "PB2517694 EDC Role 1" should be assigned to the eLearning Course
     And the course should be marked as "Not Started" for the iMedidata user
@@ -780,10 +834,9 @@ Scenario: As Internal Rave user I am assigned to eLearning course for a particul
     | RoleName             |
     | PB2517695 EDC Role 1 |
     | PB2517695 EDC Role 2 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | 9DC317CE-3FE6-443A-A987-5C59B5BA5E48 | pb2517695user@test.cx | pb2517695 | 7695   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
-    When the message is successfully processed
     And the iMedidata user links their account to the Rave User
     Then the iMedidata user with EDC Role "PB2517695 EDC Role 1" should be assigned to the eLearning Course
     And the course should be marked as "Not Started" for the iMedidata user
@@ -803,10 +856,9 @@ Scenario: If internal Rave user has not started eLearning course and the course 
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517696 EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | A01A0BA9-2B88-430F-9FC8-1D9C9903F8F2 | pb2517696user@test.cx | pb2517696 | 7696   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
-    When the message is successfully processed
     And the iMedidata user links their account to the Rave User
     Then the iMedidata user with EDC Role "PB2517696 EDC Role 1" should be assigned to the eLearning Course
 	And the course should be marked as "Overridden" for the iMedidata user
@@ -825,10 +877,9 @@ Scenario: If Internal Rave user has not completed (Incomplete) an eLearning cour
     And I have an EDC app assignment with the following roles
     | RoleName             |
     | PB2517697 EDC Role 1 |
-    And I send the following StudyInvitation message to SQS
+    When I send the following StudyInvitation message to SQS
     | EventType | InvitationType  | StudyUuid                            | Email                 | Login     | UserId | FirstName | MiddleName | LastName | Address1      | City     | State | PostalCode | Country | Telephone  | Locale | TimeZone  | Timestamp          |
     | POST      | StudyInvitation | A0CC794C-9F02-4F5D-A0D7-85B2A8F12D08 | pb2517697user@test.cx | pb2517697 | 7697   | Test      | J          | User     | 79 5th Avenue | New York | NY    | 10003      | USA     | 1234567890 | eng    | New Delhi | 2013-01-01 12:00PM |  
-    When the message is successfully processed
     And the iMedidata user links their account to the Rave User
     Then the iMedidata user with EDC Role "PB2517697 EDC Role 1" should be assigned to the eLearning Course
     And the course should be marked as "Incomplete" for the iMedidata user
