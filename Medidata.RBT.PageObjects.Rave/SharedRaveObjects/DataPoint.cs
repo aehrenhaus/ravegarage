@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Medidata.RBT.SharedRaveObjects;
 using System.Data;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
 {
@@ -38,15 +38,17 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
         /// Code this datapoint just like coder does
         /// </summary>
         /// <param name="codedData">The data after coding</param>
-        /// <param name="codingDictionaryVersion">The version of the coding dictionary</param>
+        /// <param name="codingDictionary">The CodingDictionary object</param>
         /// <param name="currentUserID">The ID of the current user</param>
         /// <param name="userName">The name of the user that does the coding</param>
-        public void CodeDataPoint(string codedData, string codingDictionaryVersion, int currentUserID, string userName)
+        public void CodeDataPoint(string codedData, CodingDictionary codingDictionary, int currentUserID, string userName)
         {
+            //TODO: in the future, please use RWS to post a coderdecision back to Rave. Try to avoid using this method to code items.
             string sql = string.Format(DataPoint.CODE_DATAPOINT,
                 DataPointID,
                 codedData,
-                codingDictionaryVersion);
+                codingDictionary.DictionaryVersion,
+                codingDictionary.CodingDictionaryID);
 
             DbHelper.ExecuteDataSet(sql);
 
@@ -54,7 +56,7 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             StatusManagement.RefreshStatus(DataPageID, DataPage.ObjectTypeID);
             StatusManagement.RefreshStatus(RecordID, Record.ObjectTypeID);
 
-            CoderManagement.AddCoderCodedAudit(DataPointID, ObjectTypeID, currentUserID, userName, "DataPoint", codingDictionaryVersion);
+            CoderManagement.AddCoderCodedAudit(DataPointID, ObjectTypeID, currentUserID, userName, "DataPoint", codingDictionary.DictionaryVersion);
         }
 
         /// <summary>
@@ -139,12 +141,16 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             declare @codedData nvarchar(256);
             set @dataPointID = {0}
             set @codedData = '{1}'
-            update DataPoints set ReqCoderCoding = 0, Data = @codedData where DataPointID = @dataPointID and ReqCoderCoding = 1
+            update DataPoints set ReqCoderCoding = 0 where DataPointID = @dataPointID and ReqCoderCoding = 1
 
             DECLARE	@return_value int,
             		@CoderDecisionID int,
             		@created datetime,
-            		@updated datetime
+            		@updated datetime,
+                    @CodingDictionaryID int = {3},
+                    @CoderValueID int,
+                    @Term varchar(255) = (select data from DataPoints where DataPointID = @dataPointID),
+                    @CodingColumnID int
             
             EXEC	@return_value = [dbo].[spCoderDecisionInsert]
             		@CoderDecisionID = @CoderDecisionID OUTPUT,
@@ -153,6 +159,18 @@ namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects
             		@created = @created OUTPUT,
             		@updated = @updated OUTPUT
             
+            DECLARE coding_column_cursor CURSOR FOR SELECT CodingColumnID from CodingColumns WHERE CodingDictionaryID = @CodingDictionaryID
+            OPEN coding_column_cursor
+            FETCH NEXT FROM coding_column_cursor INTO @CodingColumnID
+            WHILE @@FETCH_STATUS = 0
+            BEGIN
+                FETCH NEXT FROM coding_column_cursor
+                EXEC spCoderValueInsert @CoderValueID, @CoderDecisionID, @CodingColumnID, @codedData, @Term, @created, @updated
+            END
+            
+            CLOSE coding_column_cursor
+            DEALLOCATE coding_column_cursor
+
             SELECT	@CoderDecisionID as N'@CoderDecisionID',
             		@created as N'@created',
             		@updated as N'@updated'

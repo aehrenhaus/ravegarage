@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnhancedControls\TextArea.cs" />
     <Compile Include="Exceptions\ControlDisabledException.cs" />
     <Compile Include="SearchContext_CurrentPage.cs" />
     <Compile Include="SearchContext_EnhancedControls.cs" />

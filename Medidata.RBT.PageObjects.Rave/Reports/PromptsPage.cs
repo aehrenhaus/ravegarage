@@ -9,7 +9,7 @@ using TechTalk.SpecFlow;
 using System.Collections.ObjectModel;
 using System.Threading;
 using Medidata.RBT.SeleniumExtension;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using System.IO;
 
 
@@ -131,7 +131,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		public PromptsPage SetParameter(string name, string value)
         {
-            if ("Study".Equals(name)) { value = SeedingContext.GetExistingFeatureObjectOrMakeNew(value, () => new Project(value)).UniqueName; }
+            if ("Study".Equals(name) || "Project".Equals(name)) { value = SeedingContext.GetExistingFeatureObjectOrMakeNew(value, () => new Project(value)).UniqueName; }
             else if ("Sites".Equals(name)) { value = SeedingContext.GetExistingFeatureObjectOrMakeNew(value, () => new Site(value)).UniqueName; }
 
             var paraTR = FindParameterTr(name);

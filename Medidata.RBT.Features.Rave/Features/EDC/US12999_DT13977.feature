@@ -10,7 +10,6 @@ Feature: US12999_DT13977 If Datapoint with Clinical Significance is edited again
 	Then I should not see the clinical significance information
 
 Background:
-Given I login to Rave with user "SUPER USER 1"
 And Site "Site_001" exists
 And  study "US12999_DT13977" is assigned to Site "Site_001"
 And the following Range Types exist
@@ -22,6 +21,7 @@ And following Project assignments exist
   | User              | Project         | Environment | Role              | Site     | SecurityRole          |
   | SUPER USER 1 | US12999_DT13977 | Live: Prod  | US12999_SUPERROLE | Site_001 | Project Admin Default |
 And I publish and push eCRF "US12999_DT13977.xml" to "Version 1" with study environment "Prod"
+Given I login to Rave with user "SUPER USER 1"
 
 
 @release_2012.1.0 		
@@ -29,7 +29,6 @@ And I publish and push eCRF "US12999_DT13977.xml" to "Version 1" with study envi
 @Validation
 Scenario: PB_US12999_DT13977_01 As an EDC user, when I change an out of range value to be a missing code, then I should still see the clinical significance information.
 	
-	When I login to Rave with user "SUPER USER 1"
 	And I create a Subject
 	  | Field            | Data               |
 	  | Subject Initials | SUB                |

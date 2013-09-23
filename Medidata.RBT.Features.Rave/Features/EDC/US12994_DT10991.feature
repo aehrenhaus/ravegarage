@@ -16,7 +16,6 @@ Feature: US12994_DT10991 Remove Subject Date from order by statement in searchin
 	So that I can use the Rave lab features of out of range flagging, clinical significance prompts, and lab clinical view
 
 Background:
-    Given I login to Rave with user "defuser" and password "password"
     And study "US12994_DT10991" is assigned to Site "EDS1"
     And study "US12994_DT10991" is assigned to Site "LDS1"
     And study "US12994_DT10991" is assigned to Site "CTLDS1"

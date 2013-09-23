@@ -24,7 +24,6 @@ namespace Medidata.RBT
 
 		public override void AfterTestRun()
 		{
-
 			//do clean up both before and after test run :)
 			WebTestContext.ClearTempFiles();
 			WebTestContext.ClearDownloads();
@@ -41,12 +40,6 @@ namespace Medidata.RBT
 			//do clean up both before and after test run :)
 			WebTestContext.ClearTempFiles();
 
-
-			SeedingContext.DefaultSeedingOption = new SeedingOptions(
-				RBTConfiguration.Default.EnableSeeding,
-				RBTConfiguration.Default.SeedFromBackendClasses,
-				 RBTConfiguration.Default.SuppressSeeding);
-
 			SpecialStringHelper.Replaced += new Action<string, string>((input, output) =>
 			{
 				Console.WriteLine("-> replace --> " + input + " --> " + output);
@@ -56,7 +49,6 @@ namespace Medidata.RBT
 		public override void BeforeFeature()
 		{
 			Storage.Clear();
-			HandleFeatureTags();
 			CurrentFeatureStartTime = DateTime.Now;
             WebTestContext.LastLoadedPDF = null;
 			DraftCounter.ResetCounter();
@@ -65,15 +57,8 @@ namespace Medidata.RBT
 
 		public override void AfterFeature()
 		{
-            try
-            {
-                SeedingContext.FeatureSeedingOption = null;
-            }
-            finally
-            {
-                Factory.DeleteObjectsMarkedForFeatureDeletion();
-                SeedingContext.SeedableObjects.Clear();
-            }
+            Factory.DeleteObjectsMarkedForFeatureDeletion();
+            SeedingContext.SeedableObjects.Clear();
 		}
 
 		public override void BeforeScenario()
@@ -134,68 +119,29 @@ namespace Medidata.RBT
 			{
 				TrySaveScreenShot();
 			}
-
 		}
-
-
-		private void HandleFeatureTags()
-		{
-			string backend = null;
-			string suppress = null;
-			bool enable = true;
-			bool hasSettings = false;
-
-			foreach (var featureTag in FeatureContext.Current.FeatureInfo.Tags)
-			{
-				string[] parts = featureTag.Split('=');
-				if (parts.Length != 2)
-					continue;
-
-                parts[1] = parts[1].Trim(' ', '\"');
-				if (parts[0] == "SeedFromBackendClasses")
-				{
-					backend = parts[1];
-					hasSettings = true;
-				}
-				else if (parts[0] == "SuppressSeeding")
-				{
-					suppress = parts[1];
-					hasSettings = true;
-				}
-				else if (parts[0] == "EnableSeeding")
-				{
-					bool.TryParse(parts[1], out enable);
-					hasSettings = true;
-				}
-			}
-
-			//Feature will use either all default settings from config , or all settings from feature tag.
-			//there is no cascading here.
-			//If there are any seeding settings on the feature, then feature will use feature level setting instead of global settings
-
-			if (hasSettings)
-				SeedingContext.FeatureSeedingOption = new SeedingOptions(enable, backend, suppress);
-		}
-
 
 		public override void TrySaveScreenShot()
 		{
 			Image img = WebTestContext.TrySaveScreenShot();
 
-			ScreenshotIndex++;
+            if (img != null)
+            {
+                ScreenshotIndex++;
 
-			string resultPath = RBTConfiguration.Default.TestResultPath;
+                string resultPath = RBTConfiguration.Default.TestResultPath;
 
-			var fileName = ScreenshotIndex.ToString();
-			fileName = CurrentScenarioName + "_" + fileName + ".jpg";
+                var fileName = ScreenshotIndex.ToString();
+                fileName = CurrentScenarioName + "_" + fileName + ".jpg";
 
-			Console.WriteLine("img->" + fileName);
-			Console.WriteLine("->" + WebTestContext.Browser.Url);
-			//file path
-			string screenshotPath = Path.Combine(resultPath, fileName);
+                Console.WriteLine("img->" + fileName);
+                Console.WriteLine("->" + WebTestContext.Browser.Url);
+                //file path
+                string screenshotPath = Path.Combine(resultPath, fileName);
 
-			Directory.CreateDirectory(new FileInfo(screenshotPath).DirectoryName);
-			img.Save(screenshotPath, ImageFormat.Jpeg);
+                Directory.CreateDirectory(new FileInfo(screenshotPath).DirectoryName);
+                img.Save(screenshotPath, ImageFormat.Jpeg);
+            }
 		}
 
 		private void GenerateReport()

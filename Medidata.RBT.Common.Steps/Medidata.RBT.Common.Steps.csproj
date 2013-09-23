@@ -71,12 +71,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DropdownSteps.cs" />
     <Compile Include="EnableDisableSteps.cs" />
     <Compile Include="CheckboxSteps.cs" />
     <Compile Include="DataEntrySteps.cs" />
     <Compile Include="DownloadSteps.cs" />
     <Compile Include="ExcelSteps.cs" />
     <Compile Include="IActivateSteps.cs" />
+    <Compile Include="IPositionCursorSteps.cs" />
     <Compile Include="IVerifyInOrderSteps.cs" />
     <Compile Include="IVerifyExistSteps.cs" />
     <Compile Include="IPageSteps.cs" />

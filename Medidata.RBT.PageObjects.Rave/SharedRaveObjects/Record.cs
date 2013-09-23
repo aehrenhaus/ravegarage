@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Medidata.RBT.SharedRaveObjects;
 using System.Data;
 
 namespace Medidata.RBT.PageObjects.Rave.SharedRaveObjects

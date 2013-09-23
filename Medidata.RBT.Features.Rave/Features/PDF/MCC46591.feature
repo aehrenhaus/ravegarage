@@ -5,7 +5,6 @@ Feature: MCC-46591 Log Lines in Blank/Blank Annotated PDFs are not displayed.
 
 Background:
 
-Given I login to Rave with user "SUPER USER 1"
 Given xml draft "BlankPDF Study.xml" is Uploaded
 Given study "BlankPDF Study" is assigned to Site "SiteA"
 Given following PDF Configuration Profile Settings exist
@@ -17,6 +16,7 @@ Given following Project assignments exist
 | User             | Project        | Environment | Role            | Site  | SecurityRole          |
 | SUPER USER 1     | BlankPDF Study | Live: Prod  | SUPER ROLE 1    | SiteA | Project Admin Default |
 Given I publish and push eCRF "BlankPDF Study.xml" to "Version 1"
+Given I login to Rave with user "SUPER USER 1"
 
 #Note: 1) Adverse Events1 - log form without default values in Landscape direction 
 #Note: 2) Adverse Events2 - log form without default values in Portrait direction 

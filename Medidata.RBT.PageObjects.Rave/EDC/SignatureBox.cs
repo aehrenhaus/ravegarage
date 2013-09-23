@@ -4,7 +4,7 @@ using Medidata.RBT.SeleniumExtension;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class SignatureBox : RavePageBase

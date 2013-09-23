@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 namespace Medidata.RBT.PageObjects.Rave
 {
-	public class ArchitectPage : ArchitectBasePage
+	public class ArchitectPage : ArchitectBasePage, IVerifyObjectExistence
 	{
 	
 		public override IWebElement GetElementByName(string identifier, string areaIdentifier = null, string listItem = null)
@@ -63,5 +63,30 @@ namespace Medidata.RBT.PageObjects.Rave
             else
                 return base.ClickLink(linkText, objectType, areaIdentifier, partial);
         }
+
+	    public bool VerifyObjectExistence(string areaIdentifier, string type, string identifier, bool exactMatch = false,
+	                                      int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null,
+	                                      bool shouldExist = true)
+	    {
+            bool retVal = false;
+            if ("text".Equals(type, StringComparison.InvariantCultureIgnoreCase))
+            {
+                retVal = Browser.FindElementByTagName("body").Text.Contains(identifier);
+            }
+            else if ("image".Equals(type, StringComparison.InvariantCultureIgnoreCase))
+            {
+                var image = Browser.TryFindElementBy(By.XPath(string.Format("//img[contains(@src, '{0}')]", identifier)));
+                retVal = image != null;
+            }
+
+            return retVal;
+	    }
+
+	    public bool VerifyObjectExistence(string areaIdentifier, string type, List<string> identifiers, bool exactMatch = false,
+	                                      int? amountOfTimes = null, BaseEnhancedPDF pdf = null, bool? bold = null,
+	                                      bool shouldExist = true)
+	    {
+	        throw new NotImplementedException();
+	    }
 	}
 }

@@ -105,7 +105,6 @@ namespace Medidata.RBT.Features.Integration.Steps
             projectName = SpecFlowHelper.PrepareString(projectName);
 
             var study = ScenarioContext.Current.Get<Study>("study");
-
             Assert.AreEqual(projectName, study.Project.Name);
         }
 

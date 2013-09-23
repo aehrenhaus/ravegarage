@@ -7,7 +7,6 @@ namespace Medidata.RBT.SharedObjects
 {
 	public interface ISeedableObject 
 	{
-		bool SuppressSeeding { get; set; }
 		string UniqueName{ get; set; }
 		void Seed();
 	}

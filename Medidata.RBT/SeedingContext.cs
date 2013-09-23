@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using Medidata.RBT.SharedObjects;
 using System.Collections;
+using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT
 {
 	public class SeedingContext
 	{
-		public static SeedingOptions DefaultSeedingOption { get; set; }
-
-		public static SeedingOptions FeatureSeedingOption { get; set; }
-
 		static SeedingContext()
 		{
 			SeedableObjects = new Dictionary<string, ISeedableObject>();
@@ -44,8 +41,8 @@ namespace Medidata.RBT
 			if (seedable == null)
 				return default(T);
 
-
-			seedable.Seed();
+            if (RBTConfiguration.Default.EnableSeeding)
+			    seedable.Seed();
 
 			//add to dictionary using both original name and unique name.
 			SeedableObjects[originalName] = seedable;

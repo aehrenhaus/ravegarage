@@ -1,7 +1,7 @@
 ﻿using TechTalk.SpecFlow;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -18,7 +18,7 @@ namespace Medidata.RBT.Features.Rave
 		[Given(@"study ""([^""]*)"" exists")]
 		public void GivenStudy____Exists(string studyName)
 		{
-			SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName, false));
+			SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
 		}
 
         /// <summary>
@@ -31,16 +31,6 @@ namespace Medidata.RBT.Features.Rave
             SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName));
         }
 
-		/// <summary>
-		/// XML draft is uploaded for seeding purposes.
-		/// </summary>
-		/// <param name="draftName">The name of the draft to be seeded</param>
-		[StepDefinition(@"xml draft ""([^""]*)"" is Uploaded without redirecting")]
-		public void XmlDraft____IsUploadedWithoutRedirecting(string draftName)
-		{
-			SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName, () => new UploadedDraft(draftName, false));
-		}
-
         /// <summary>
         /// XML draft is uploaded for seeding purposes.
         /// </summary>
@@ -49,7 +39,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environment name ""([^""]*)""")]
         public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName,string envName)
         {
-			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
+			using (var session = new LoginSession(WebTestContext))
 			{
 				UploadedDraft uploadedDraft = SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName,
 				                                                                            () => new UploadedDraft(draftName));
@@ -73,7 +63,7 @@ namespace Medidata.RBT.Features.Rave
 		[StepDefinition(@"xml draft ""([^""]*)"" is Uploaded with Environments")]
 		public void XmlDraft____IsUploadedWithEnvironmentName____(string draftName, Table tableEnvs)
 		{
-			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
+			using (var session = new LoginSession(WebTestContext))
 			{
 				UploadedDraft uploadedDraft = SeedingContext.GetExistingFeatureObjectOrMakeNew(draftName,
 																							() => new UploadedDraft(draftName));
@@ -130,7 +120,7 @@ namespace Medidata.RBT.Features.Rave
         [StepDefinition(@"I publish and push eCRF ""([^""]*)"" to ""([^""]*)"" with study environment ""([^""]*)"" for site ""([^""]*)""")]
         public void IPublishAndPushECRF____To____WithStudyEnvironment____ForSite____(string uploadName, string crfVersionName, string studyEnvName, string siteSelection)
         {
-			using (var session = new LoginSession(WebTestContext, restoreOriginalUser: false))
+			using (var session = new LoginSession(WebTestContext))
             {
                 UploadedDraft uploadedDraft = SeedingContext.GetExistingFeatureObjectOrMakeNew
                         (uploadName, () => new UploadedDraft(uploadName));

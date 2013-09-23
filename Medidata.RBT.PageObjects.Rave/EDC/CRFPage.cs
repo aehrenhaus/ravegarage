@@ -28,6 +28,15 @@ namespace Medidata.RBT.PageObjects.Rave
             return true;    
         }
 
+        public void ClearDSL(string dslfieldname)
+        {
+            var controlType = ControlType.DynamicSearchList;
+            IEDCFieldControl fieldControl = FindField(dslfieldname);
+            //since the control behaves differently in selenium, need to enter a single key first, then blank for normal behavior
+            fieldControl.EnterData("a", controlType);
+            fieldControl.EnterData(String.Empty, controlType);
+        }
+
         public CRFPage AddLogLine()
         {
             IWebElement saveButton = Browser.TryFindElementById("_ctl0_Content_R_log_log_AddLine");
@@ -400,6 +409,15 @@ namespace Medidata.RBT.PageObjects.Rave
             }
 
             return isExists;
+        }
+
+        /// <summary>
+        /// Verifies the lab selected for the page
+        /// </summary>
+        /// <param name="lab">labname</param>
+        public bool VerifySelectedLab(string lab)
+        {
+            return Browser.DropdownById("LOC_DropDown").SelectedText == lab;
         }
     }
 }

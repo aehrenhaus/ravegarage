@@ -1,10 +1,12 @@
-﻿using TechTalk.SpecFlow;
+﻿using System;
+using System.Collections.Specialized;
+using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using TechTalk.SpecFlow.Assist;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Medidata.RBT.PageObjects.Rave.AmendmentManager;
 using System.Collections.Generic;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 namespace Medidata.RBT.Features.Rave
 {
@@ -29,6 +31,16 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<ArchitectLibraryPage>().CreateDraftFromProject(draftName,project,version);
 		}
 
+        /// <summary>
+        /// Upload a draft on the UploadDraftPage. It will make the contents of that draft unique
+        /// </summary>
+        /// <param name="draftName">The name of the draft to create</param>
+        [StepDefinition(@"I upload draft ""([^""]*)""")]
+        public void WhenIUploadDraft(string draftName)
+        {
+            CurrentPage.As<UploadDraftPage>().UploadFile(
+                SeedingContext.GetExistingFeatureObjectOrMakeNew<UploadedDraft>(draftName, () => new UploadedDraft(draftName, uploadAfterMakingUnique: false)));
+        }
 
         /// <summary>
         /// Verify that a field has a specific coding dictionary
@@ -232,6 +244,16 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Step to enter enter data for new architect form and save
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I enter data in Architect Form and save")]
+        public void IEnterDataInArchitectFormAndSave(Table table)
+        {
+            CurrentPage.As<ArchitectFormsPage>().FillFormProperties(table.CreateInstance<ArchitectFormModel>());
+        }
+
+        /// <summary>
         /// Step to let deleted the coder configuration supplemental or component terms
         /// </summary>
         /// <param name="termName"></param>
@@ -277,6 +299,17 @@ namespace Medidata.RBT.Features.Rave
             CurrentPage.As<ArchitectChecksPage>().EditEditCheck(iconName, editCheckName);
         }
 
+		/// <summary>
+		/// Step to click edit on check action
+		/// </summary>
+		/// <param name="checkActionOrdinal"></param>
+		[StepDefinition(@"I edit ""(\d+)(?:st|nd|rd|th)"" Check Action")]
+		public void IEdit____CheckAction(int checkActionIndex)
+		{
+			CurrentPage.As<ArchitectChecksPage>()
+				.EditCheckActionAtIndex(checkActionIndex);
+		}
+
         /// <summary>
         /// Step to verify tab name for Edit Check
         /// </summary>
@@ -305,5 +338,30 @@ namespace Medidata.RBT.Features.Rave
         {
             CurrentPage = CurrentPage.As<ArchitectFormDesignerPage>().ClickPreview();
         }
+
+        [StepDefinition(@"I force navigate to the Library Page for study ""(.*)""")]
+        public void IForceNavigateToTheLibraryPageForStudy(string studyName)
+        {
+            if (studyName == "Global Library (Not a Real Project)")
+                CurrentPage = new ArchitectLibraryPage().NavigateToSelf(new NameValueCollection(){{"ProjectID", "-1"}});
+            else
+            {
+                Project project = SeedingContext.TryGetExistingFeatureObject<Project>(studyName);
+                CurrentPage = new ArchitectLibraryPage().NavigateToSelf(new NameValueCollection(){{"ProjectID", project.Number}});
+            }
+        
+        }
+
+        /// <summary>
+        /// Step to allow overwrite of an existing crf version with an updated version
+        /// </summary>
+        /// <param name="crfVersion"></param>
+        [StepDefinition(@"I overwrite CRF Version ""([^""]*)""")]
+        public void IOverwriteCRFVersion(string crfVersion)
+        {
+            crfVersion = SpecialStringHelper.Replace(crfVersion);
+            CurrentPage.As<ArchitectCRFDraftPage>().OverwriteCRF(crfVersion);
+        }
+
 	}
 }

@@ -5,7 +5,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow.Assist;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using System.Linq;
 using OpenQA.Selenium;
 using Medidata.RBT.PageObjects.Rave.TableModels;
@@ -29,6 +29,17 @@ namespace Medidata.RBT.Features.Rave
 			CurrentPage = CurrentPage.As<HomePage>()
 				.SelectStudy(SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName)).UniqueName,environment);
 		}
+
+        /// <summary>
+        /// Select a study with a particular environment (working)
+        /// </summary>
+        /// <param name="studyName">Study to select</param>
+        /// <param name="environment">Environment to select</param>
+        [StepDefinition(@"I select Study ""([^""]*)"" with environment ""([^""]*)""")]
+        public void ISelectStudyWithEnv____(string studyName, string environment)
+        {
+            ISelectStudy____AndSite____Env____(studyName, environment);
+        }
 
         /// <summary>
         /// Select study on Home page
@@ -214,7 +225,12 @@ namespace Medidata.RBT.Features.Rave
             foreach (FieldModel field in fields)
             {
                 IEDCFieldControl fieldControl = page.FindField(field.Field, record: field.Record);
-                if (field.Data != null && field.Data.Length > 0)
+                if (field.Data == "") //test blank values
+                {
+                    bool dataExists = fieldControl.HasDataEntered(field.Data);
+                    Assert.IsTrue(dataExists, "Data exists for field(s)");
+                }
+                else if (!string.IsNullOrEmpty(field.Data))
                 {
                     bool dataExists = fieldControl.HasDataEntered(field.Data);
                     Assert.IsTrue(dataExists, "Data doesn't exist for field(s)");
@@ -741,6 +757,18 @@ namespace Medidata.RBT.Features.Rave
         }
 
         /// <summary>
+        /// Clear dynamicsearchlist
+        /// </summary>
+        /// <param name="dslfieldname"></param>
+        [StepDefinition(@"I clear dynamic search list ""(.*)""")]
+        public void IClearDynamicSearchList(string dslfieldname)
+        {
+            CRFPage page = CurrentPage.As<CRFPage>();
+            page.ClearDSL(dslfieldname);
+        }
+
+
+        /// <summary>
         /// Click drop button on a standard field on CRF page
         /// </summary>
         /// <param name="fieldName"></param>
@@ -822,6 +850,15 @@ namespace Medidata.RBT.Features.Rave
             var controlType = ControlType.DynamicSearchList;
             IEDCFieldControl fieldControl = CurrentPage.As<CRFPage>().FindLandscapeLogField(fieldName, lineNum, controlType);
             fieldControl.EnterData(data, controlType);
+        }
+
+        /// <summary>
+        /// Opens page for editing
+        /// </summary>
+        [StepDefinition(@"I start editing page")]
+        public void WhenIStartEditingPage()
+        {
+            CurrentPage.As<CRFPage>().ClickModify();
         }
 
         /// <summary>
@@ -927,6 +964,15 @@ namespace Medidata.RBT.Features.Rave
             Assert.IsTrue(allEnabled);
         }
 
+        /// <summary>
+        /// Verifies the lab selected for the particular page
+        /// </summary>
+        /// <param name="table"></param>
+        [StepDefinition(@"I verify lab ""(.*)"" is selected for the page")]
+        public void IVerifyLabIsSelectedForThePage(string lab)
+        {
+            Assert.IsTrue(CurrentPage.As<CRFPage>().VerifySelectedLab(lab));
+        }
 
         private IWebElement FilterOutDisabledControls(IWebElement element)
         {

@@ -8,7 +8,7 @@ using Medidata.RBT.PageObjects;
 using Medidata.RBT.PageObjects.Rave;
 using System.IO;
 using System.Data;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using Medidata.RBT.PageObjects.Rave.AmendmentManager;
 using TechTalk.SpecFlow.Assist;
 using Medidata.RBT.SeleniumExtension;

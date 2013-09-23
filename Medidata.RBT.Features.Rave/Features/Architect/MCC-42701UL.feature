@@ -99,8 +99,9 @@ Scenario: PBMCC-42701-001 When uploading an architect spreadsheet that contains 
 @Validation
 Scenario: PBMCC-42701-002 When uploading an architect spreadsheet that does not contain Coder settings including coder in field level and the URL has Coder registered, the upload will be successfull
 	
-
-	When xml draft "MCC-42701-002.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-002.xml"
 	Then I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Architect"
@@ -120,7 +121,9 @@ Scenario: PBMCC-42701-002 When uploading an architect spreadsheet that does not 
 @Validation
 Scenario: PBMCC-42701-003 When uploading an architect spreadsheet that contain same Field OID and same name for Supplemental Terms and Component Terms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
- 	When xml draft "MCC-42701-003.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-003.xml"
 	Then I verify text "Transaction rolled back." exists
 	And I verify text "Component term Field OID 'VARCHECKBX' is already configured as Supplemental term" exists
 	And I take a screenshot
@@ -132,8 +135,9 @@ Scenario: PBMCC-42701-003 When uploading an architect spreadsheet that contain s
 @Validation
 Scenario: PBMCC-42701-004 When uploading an architect spreadsheet that contain name and component name for Component Terms and the URL has Coder registered, the upload will be successfull
 
-	
-	When xml draft "MCC-42701-004.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-004.xml"
 	And I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Architect"
@@ -162,8 +166,9 @@ Scenario: PBMCC-42701-004 When uploading an architect spreadsheet that contain n
 @Validation
 Scenario: PBMCC-42701-005 When uploading an architect spreadsheet that contain name and no component name in Component Terms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 	
-
-	When xml draft "MCC-42701-005.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-005.xml"
 	Then I verify text "Transaction rolled back." exists
 	And I verify text "Both Component Name and Component Term is required" exists
 	And I take a screenshot
@@ -176,8 +181,9 @@ Scenario: PBMCC-42701-005 When uploading an architect spreadsheet that contain n
 @Validation
 Scenario: PBMCC-42701-006 When uploading an architect spreadsheet after updating coding level in coder configuration and the URL has Coder registered, upload will be successfull and updated coding level will show on Coder configuration page with the intial coding level.
 
-	
-	When xml draft "MCC-42701-006A.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-006A.xml"
 	Then I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Architect"
@@ -194,7 +200,9 @@ Scenario: PBMCC-42701-006 When uploading an architect spreadsheet after updating
 		| IsApprovalRequired | False |
 		| IsAutoApproval     | False |
 	And I take a screenshot
-	And xml draft "MCC-42701-006B.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-006B.xml"
 	Then I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Architect"
@@ -219,8 +227,9 @@ Scenario: PBMCC-42701-006 When uploading an architect spreadsheet after updating
 @Validation
 Scenario: PBMCC-42701-007 When uploading an architect spreadsheet that assigned coder dictionary to a field and have no Coder settings for the URL which Coder registered, the upload will fail and user will be provided with appropriate message
 	
-	
-	When xml draft "MCC-42701-007.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-007.xml"
 	Then I verify text "Transaction rolled back." exists
 	And I verify text "Field with OID 'VARCHECKBX3' is configured to use coding dictionary but coder configuration for this field was not found." exists
 	And I take a screenshot
@@ -232,8 +241,9 @@ Scenario: PBMCC-42701-007 When uploading an architect spreadsheet that assigned 
 @Validation
 Scenario: PBMCC-42701-008 When uploading an architect spreadsheet that assigned coder dictionary to a field and does not contain Coder settings for CoderConfiguration tab and have Coder settings for the URL which Coder is registered, the upload will fail and user will be provided with appropriate message
 
-
-	When xml draft "MCC-42701-008.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-008.xml"
 	Then I verify text "Transaction rolled back." exists
 	And I verify text "Field with OID 'CODERTERM1' is configured to use coding dictionary but coder configuration for this field was not found." exists
 	And I verify text "CoderConfiguration not found for Field OID 'VARCHECKBX3'" exists
@@ -247,8 +257,9 @@ Scenario: PBMCC-42701-008 When uploading an architect spreadsheet that assigned 
 @Validation
 Scenario: PBMCC-42701-009 When uploading an architect spreadsheet which contains same field name for SupplementalTerms and ComponentTerms and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
-	
-	When xml draft "MCC-42701-009A.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-009A.xml"
 	Then I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Architect"
@@ -271,7 +282,9 @@ Scenario: PBMCC-42701-009 When uploading an architect spreadsheet which contains
 		| Name       | Component Name   |
 		| VARCHECKBX | DRUGRECORDNUMBER |
 	And I take a screenshot
-	When xml draft "MCC-42701-009B.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-009B.xml"
 	Then I verify text "Transaction rolled back." exists
 	And I verify text "Supplemental term Field OID 'VARCHECKBX' is already configured as Component term" exists
 	And I take a screenshot
@@ -283,8 +296,9 @@ Scenario: PBMCC-42701-009 When uploading an architect spreadsheet which contains
 @Validation
 Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Coding Level and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
-
-	When xml draft "MCC-42701-010A.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-010A.xml"
 	Then I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Architect"
@@ -307,7 +321,9 @@ Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Co
 		| Name       | Component Name   |
 		| VARCHECKBX | DRUGRECORDNUMBER |
 	And I take a screenshot
-	When xml draft "MCC-42701-010B.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-010B.xml"
 	Then I verify text "Transaction rolled back." exists
 	And I verify text "Please remove all supplemental and component linked fields before changing coding level to 'ATC'." exists
 	And I take a screenshot
@@ -319,8 +335,9 @@ Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Co
 @Validation
 	Scenario: PBMCC-42701-011 When uploading an architect spreadsheet where a field does not have VarOID and assigned to coding dictionary and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
-
-	When xml draft "MCC-42701-011.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-011.xml"
 	Then I verify text "Transaction rolled back." exists
 	And I verify text "Error while reading row 47. Field OID 'FIELDNOVAR' in form OID 'TESTFORM' : Label fields (those that do not reference a variable) must not reference a data dictionary, unit dictionary or coding dictionary, and must not define data format" exists
 	And I verify text "Field OID 'FIELDNOVAR' is invalid." exists
@@ -333,13 +350,12 @@ Scenario: PBMCC-42701-010 When uploading an architect spreadsheet by changing Co
 @Validation
 	Scenario: PBMCC-42701-012 When uploading an architect spreadsheet where a field does not have VarOID,format and field is not assign to coding dictionary and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
-
-	When xml draft "MCC-42701-012.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-012.xml"
 	Then I verify text "Transaction rolled back." exists
 	And I verify text "The Field OID 'VARCHECKBX3' has not been set up as coding dictionary field" exists
 	And I take a screenshot
-
-
 
 
 @Release_2013.1.0
@@ -405,7 +421,9 @@ Scenario: PBMCC-42701-014 When uploading an architect spreadsheet that does not 
 @Validation
 Scenario: PBMCC-42701-015 When uploading an architect spreadsheet that does not contain tabs for CoderConfiguration, CoderSupplementalTerms and CoderComponentTerms, the upload will be successfull and will not have any coder settings.
 
-	When xml draft "MCC-42701-015.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-015.xml"
 	And I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Architect"
@@ -423,8 +441,9 @@ Scenario: PBMCC-42701-015 When uploading an architect spreadsheet that does not 
 @Validation
 Scenario: PBMCC-42701-016 When uploading an architect spreadsheet that contains Coder settings and the URL does not have Coder registered, the upload will fail and user will be provided with appropriate message
 
-	
-	When xml draft "MCC-42701-016.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-016.xml"
 	Then I verify text "Transaction rolled back." exists
 	And  I verify text "Error while reading row 5. Field OID 'CODERTERM1' in form OID 'ETE1' : Coding dictionary 'MedDRA (Coder)' is not registered for this project." exists in "Coding Dictionary:MedDRA"
 	And  I verify text "Error while reading row 6. Field OID 'JDT' in form OID 'ETE1' : Coding dictionary 'JDrug (Coder)' is not registered for this project." exists in "Coding Dictionary:JDrug"
@@ -446,7 +465,9 @@ Scenario: PBMCC-42701-016 When uploading an architect spreadsheet that contains 
 
 Scenario: PBMCC-42701-017 When uploading an architect spreadsheet that contains classic Coder settings, coder configuration tabs do not exist and the URL has Coder registered, the upload will be successfull and  Coder configuration button will not exists
 
-	When xml draft "MCC-42701-017.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-017.xml"
 	And I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Architect"
@@ -468,7 +489,9 @@ Scenario: PBMCC-42701-017 When uploading an architect spreadsheet that contains 
 
 Scenario: PBMCC-42701-018 When uploading an architect spreadsheet that contains classic Coder settings without correct version and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
-	When xml draft "MCC-42701-018.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-018.xml"
 	Then I verify text "Transaction rolled back." exists
 	And I verify text "Error while reading row 5. Field OID 'FIELD1A' in form OID 'FORM1' : Coding dictionary 'WhoDrugClassic (20)' not found in the target database." exists in "Coding Dictionary:WhoDrugClassic"
 	And I take a screenshot
@@ -481,7 +504,9 @@ Scenario: PBMCC-42701-018 When uploading an architect spreadsheet that contains 
 
 Scenario: PBMCC-42701-019 When uploading an architect spreadsheet that contains classic Coder settings, no coder configuration settings and the URL has Coder registered, the upload will be successfull and  Coder configuration button will not exists
 
-	When xml draft "MCC-42701-019.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-019.xml"
 	And I verify text "Save successful" exists
 	And I take a screenshot
 	And I navigate to "Architect"
@@ -503,7 +528,9 @@ Scenario: PBMCC-42701-019 When uploading an architect spreadsheet that contains 
 
 Scenario: PBMCC-42701-020 When uploading an architect spreadsheet that contains classic Coder settings, Coder configuration settings exist and the URL has Coder registered, the upload will fail and user will be provided with appropriate message
 
-	When xml draft "MCC-42701-020.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-42701-020.xml"
 	Then I verify text "Transaction rolled back." exists
 	And I verify text "Error while reading row 6. Field OID 'FIELD2A' in form OID 'FORM1' : Coding dictionary 'WHODRUGB2 (Coder)' is not registered for this project." exists in "Coding Dictionary:WHODRUGB2"
 	And I verify text "Field OID 'FIELD2A' is invalid." exists

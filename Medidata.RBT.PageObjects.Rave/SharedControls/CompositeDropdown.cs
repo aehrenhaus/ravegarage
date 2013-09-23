@@ -28,12 +28,16 @@ namespace Medidata.RBT.PageObjects.Rave
 			//IWebElement dropdownButton = field.TryFindElementBy(By.XPath("./span/input[position()=2]"));
 			//dropdownButton.Click();
 
-			var option = Page.Browser.TryFindElementBy(
-				driver => wrapper.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => x.Text.Contains( text))
-				);
+		    if (!String.IsNullOrEmpty(text)) //added case for blank as it will throw an exception if the text is blank
+		    {
+		        var option = Page.Browser.TryFindElementBy(
+		            driver =>
+		            wrapper.FindElements(By.XPath("./div[position()=2]/div")).FirstOrDefault(x => x.Text.Contains(text))
+		            );
 
-            if(option != null)
-			    option.Click();
+		        if (option != null)
+		            option.Click();
+		    }
 		}
 
 		public void OpenWithinTime(int seconds)

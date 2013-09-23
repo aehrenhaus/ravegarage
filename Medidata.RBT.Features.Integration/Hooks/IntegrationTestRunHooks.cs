@@ -42,7 +42,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
             IsSqsMode = ConfigurationManager.AppSettings[AppSettingsTags.MessageDeliveryTypeKey]
                 .Equals(MessageDeliveryTypes.SQS);
 
-            //we won't manager the service in Broker mode, regardless of the service config settings.
+            //we won't manage the service in Broker mode, regardless of the service config settings.
             ShouldManageService = IsSqsMode && GetAppSettingsBooleanValueOrThrow(AppSettingsTags.ManageServiceKey);
             
             if (ShouldManageService)
@@ -57,21 +57,21 @@ namespace Medidata.RBT.Features.Integration.Hooks
 
                 //stop the service, so it's not running while we update (possibly) restore the database 
                 //and/or update the queue urls in application configs.
-                stopRaveServiceIfStarted();
+                StopRaveServiceIfStarted();
             }
 
             //for either mode, we need to prepare the database
-            prepareDatabase();
+            PrepareDatabase();
 
             if (IsSqsMode)
             {
                 //create the real queues and update the app configurations in the database
-                createQueues();
+                CreateQueues();
             }
 
             if (ShouldManageService)
             {
-                startRaveService();
+                StartRaveService();
             }
         }
 
@@ -83,7 +83,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
             //due to the deleted message queues.
             if (ShouldManageService)
             {
-                stopRaveServiceIfStarted();
+                StopRaveServiceIfStarted();
             }
 
             if (IsSqsMode)
@@ -154,7 +154,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
             }
         }
 
-        private static void stopRaveServiceIfStarted()
+        private static void StopRaveServiceIfStarted()
         {
             if (RaveIntegrationServiceController != null && RaveIntegrationServiceController.CanStop)
             {
@@ -163,7 +163,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
             }
         }
 
-        private static void startRaveService()
+        private static void StartRaveService()
         {
             if (RaveIntegrationServiceController != null)
             {
@@ -172,7 +172,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
             }
         }
 
-        private static void createQueues()
+        private static void CreateQueues()
         {
             var accessKey = ConfigurationManager.AppSettings["AwsAccessKey"];
             var secretKey = ConfigurationManager.AppSettings["AwsSecretKey"];
@@ -210,7 +210,7 @@ namespace Medidata.RBT.Features.Integration.Hooks
             return result;
         }
 
-        private static void prepareDatabase()
+        private static void PrepareDatabase()
         {
             //if a snapshot exists...
             if (DbHelper.DoesSnapshotExist())

@@ -164,10 +164,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-47487.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Architect\MCC-57733.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-57733.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\Architect\MCC-59886.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-59886.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Architect\MCC-65264.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-65264.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Architect\MCC-66846.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-66846.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Architect\US17446.feature.cs">
       <DependentUpon>US17446.feature</DependentUpon>
@@ -229,10 +244,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-42701UL.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\EDC\MCC-47502.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-47502.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\MCC-52154.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-52154.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\MCC-52154_Manual.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-52154_Manual.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\EDC\MCC-52165.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-52165.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\MCC-52852.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-52852.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\MCC-62856.feature.cs">
       <AutoGen>True</AutoGen>
@@ -278,6 +313,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-65923_manual.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EDC\MCC-69527.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-69527.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\EDC\MCC_55695.feature.cs">
       <AutoGen>True</AutoGen>
@@ -378,6 +418,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-50622.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Labs\MCC-67716.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-67716.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\Labs\US18087_DT14073.feature.cs">
       <AutoGen>True</AutoGen>
@@ -529,10 +574,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-52790_manual.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\Translation Workbench\DT_11710.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DT_11710.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Translation Workbench\MCC-47481.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-47481.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Translation Workbench\MCC-47508.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-47508.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Translation Workbench\MCC-71899.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-71899.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\TSDV\MCC-46640.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-46640.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\TSDV\MCC-56501.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-56501.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\TSDV\MCC-56524.feature.cs">
       <AutoGen>True</AutoGen>
@@ -563,6 +633,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MCC-46642.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\TSDV\MCC-70487.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-70487.feature</DependentUpon>
     </Compile>
     <Compile Include="Features\TSDV\US19017.feature.cs">
       <AutoGen>True</AutoGen>
@@ -649,6 +724,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>US18812.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\UserAdministration\MCC-63904.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MCC-63904.feature</DependentUpon>
+    </Compile>
     <Compile Include="ReferenceFix.cs" />
     <Compile Include="Steps\ArchitectSteps_DB.cs" />
     <Compile Include="Steps\AuditPageSteps.cs" />
@@ -662,6 +742,7 @@
     <Compile Include="Steps\ExpandCollapseSteps.cs" />
     <Compile Include="Steps\Seeding\CoderDictionarySteps.cs" />
     <Compile Include="Steps\SubjectAdminPageSteps.cs" />
+    <Compile Include="Steps\TranslationGridPageSteps.cs" />
     <Compile Include="Steps\UserGroupSteps.cs" />
     <Compile Include="Steps\ReportAdminSteps.cs" />
     <Compile Include="Steps\LabUnitConversionSteps.cs" />
@@ -728,6 +809,54 @@
     <None Include="Features\Architect\MCC-47487.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-47487.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Architect\MCC-65264.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-65264.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Architect\MCC-66846.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-66846.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-47502.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-47502.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-52154_Manual.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-52154_Manual.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-52154.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-52154.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-52852.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-52852.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\UserAdministration\MCC-63904.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-63904.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Architect\MCC-57733.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-57733.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\EDC\MCC-69527.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-69527.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TSDV\MCC-56501.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-56501.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\TSDV\MCC-70487.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-70487.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Labs\MCC-67716.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-67716.feature.cs</LastGenOutput>
     </None>
     <None Include="Parallel.srprofile">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1047,6 +1176,22 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-52790_manual.feature.cs</LastGenOutput>
     </None>
+    <None Include="Features\Translation Workbench\DT_11710.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DT_11710.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Translation Workbench\MCC-47481.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-47481.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Translation Workbench\MCC-47508.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-47508.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\Translation Workbench\MCC-71899.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>MCC-71899.feature.cs</LastGenOutput>
+    </None>
     <None Include="Features\TSDV\MCC-46640.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>MCC-46640.feature.cs</LastGenOutput>
@@ -1185,7 +1330,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\ReportAdmin\" />
-    <Folder Include="Features\UserAdministration\" />
     <Folder Include="TableModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

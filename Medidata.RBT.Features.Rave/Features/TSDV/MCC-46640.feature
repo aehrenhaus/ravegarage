@@ -48,8 +48,9 @@ Scenario: MCC46640-001 When a draft tier with a new field is added, the newely a
 	And I take a screenshot
 	And I switch to "Reports" window
 	And I navigate to "Home"
-	And I navigate to "Architect"
-	And xml draft "MCC-46640B.xml" is Uploaded without redirecting
+	When I navigate to "Architect"
+	When I select link "Upload Draft"
+	When I upload draft "MCC-46640B.xml"
 	And I verify text "Save successful" exists
 	And I take a screenshot
 	And I login to Rave with user "SUPER USER 1"

@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 
 namespace Medidata.RBT.PageObjects.Rave
 {
@@ -49,7 +49,7 @@ namespace Medidata.RBT.PageObjects.Rave
 			{
 				var container = Browser.TryFindElementById("_ctl0_Content_HeaderControl_slSiteGroup").Parent();
 				CompositeDropdown d = new CompositeDropdown(this, "DSL", container);
-				d.TypeAndSelect(text);
+				d.TypeAndSelect(SeedingContext.TryGetExistingFeatureObject<SiteGroup>(text).UniqueName);
 				return this;
 			}
 		

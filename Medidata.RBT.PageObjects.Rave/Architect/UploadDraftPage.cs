@@ -9,13 +9,25 @@ using Medidata.RBT.SeleniumExtension;
 using System.IO;
 using System.Threading;
 using TechTalk.SpecFlow;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
+
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class UploadDraftPage : 
 		ArchitectBasePage, 
 		IVerifyObjectExistence
 	{
+
+        /// <summary>
+        /// Upload a UploadDraft
+        /// </summary>
+        /// <param name="filepath">Path to the UploadDraft to upload</param>
+        public void UploadFile(UploadedDraft draft)
+        {
+            Browser.FindElementById("CtrlDraftFile").SendKeys(draft.UniqueFileLocation);
+            ClickUploadAndWaitForUploadToComplete();
+        }
+
         /// <summary>
         /// Upload a UploadDraft
         /// </summary>
@@ -23,15 +35,15 @@ namespace Medidata.RBT.PageObjects.Rave
         public void UploadFile(string filepath)
         {
             Browser.FindElementById("CtrlDraftFile").SendKeys(filepath);
-            ClickButton("Upload");
-            WaitForUploadToComplete();
+            ClickUploadAndWaitForUploadToComplete();
         }
 
         /// <summary>
         /// Wait for the UploadDraft to finish uploading
         /// </summary>
-        private void WaitForUploadToComplete()
+        private void ClickUploadAndWaitForUploadToComplete()
         {
+            ClickButton("Upload");
             int waitTime = 480;
 			Browser.TryFindElementBy(b =>
                 {

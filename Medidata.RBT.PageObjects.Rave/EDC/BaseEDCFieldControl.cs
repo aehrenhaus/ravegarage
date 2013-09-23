@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Medidata.RBT.ConfigurationHandlers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SeleniumExtension;
 using System.Text.RegularExpressions;
 using System.Collections.ObjectModel;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using Medidata.RBT.PageObjects.Rave.TableModels;
 using System.Reflection;
 
@@ -90,12 +91,20 @@ namespace Medidata.RBT.PageObjects.Rave
                 case ControlType.DropDown:
                     EnterDropdownValue(text);
                     break;
+                case ControlType.FileUpload:
+                    EnterFileUploadValue(RBTConfiguration.Default.UploadPath + @"\Misc\" + text);
+                    break;
                 default:
                     throw new Exception("Not supported control type:" + controlType);
             }
         }
 
-        public virtual void Check(string checkName)
+	    protected void EnterFileUploadValue(string text)
+	    {
+            FieldDataGeneric.FindElementsByPartialId("_CRFFileUpload")[0].SendKeys(text);
+	    }
+
+	    public virtual void Check(string checkName)
         {
             IWebElement actionArea = FieldDataSpecific;
             if (checkName == "Freeze")

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using System.Linq;
 
 namespace Medidata.RBT.PageObjects.Rave
@@ -113,7 +113,7 @@ namespace Medidata.RBT.PageObjects.Rave
 
 		#region IVerifySomethingExists
 
-        public bool VerifyObjectExistence(
+        public virtual bool VerifyObjectExistence(
             string areaIdentifier,
             string type,
             string identifier,
@@ -173,7 +173,7 @@ namespace Medidata.RBT.PageObjects.Rave
             return result != null;
 		}
 
-        public bool VerifyObjectExistence(
+        public virtual bool VerifyObjectExistence(
             string areaIdentifier,
             string type,
             List<string> identifiers,

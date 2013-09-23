@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Medidata.RBT.SeleniumExtension;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using System.Collections.ObjectModel;
 using OpenQA.Selenium.Support.UI;
 using Medidata.RBT.SharedObjects;
@@ -360,17 +360,6 @@ namespace Medidata.RBT.PageObjects.Rave
                 IWebElement textFieldElem = elem.TryFindElementByXPath(".//input");
                 textFieldElem.EnhanceAs<Textbox>().SetText(text);
             }
-        }
-
-        /// <summary>
-        /// Helper method to find the tr corresponding the architect field variable based on field setting name
-        /// </summary>
-        /// <param name="settingName">Name of the architect field setting</param>
-        /// <returns></returns>
-        private IWebElement TryFindTrByFieldSettingName(string settingName)
-        {
-            IWebElement elem = Browser.TryFindElementsBy(By.XPath("//tr")).FirstOrDefault(e => e.Text.StartsWith(settingName));
-            return elem;
         }
 
         /// <summary>

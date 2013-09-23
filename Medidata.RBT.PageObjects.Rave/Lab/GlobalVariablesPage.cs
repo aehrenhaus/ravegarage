@@ -7,8 +7,9 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using Medidata.RBT.SeleniumExtension;
-using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
+using Medidata.RBT.PageObjects.Rave.SeedableObjects;
 using System.Collections.ObjectModel;
+
 namespace Medidata.RBT.PageObjects.Rave
 {
 	public class GlobalVariablesPage : LabPageBase, IVerifyObjectExistence
