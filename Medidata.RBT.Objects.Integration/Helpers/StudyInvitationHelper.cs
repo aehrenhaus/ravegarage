@@ -17,7 +17,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
     {
         public static void MessageHandler(Table table)
         {
-            var messageConfigs = table.CreateSet<StudyInvitationMessageModel>().ToList();
+            var messageConfigs = table.CustomCreateSet<StudyInvitationMessageModel>().ToList();
            
             var messagesToSend = messageConfigs.Select(config =>
                 {

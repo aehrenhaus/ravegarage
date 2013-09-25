@@ -12,6 +12,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
+using Medidata.RBT.Objects.Integration.Helpers;
+
 namespace Medidata.RBT.Features.Integration.Steps
 {
     [Binding]
@@ -65,7 +67,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
-            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            var roleNames = table.CustomCreateSet<RoleNameModel>().ToList();
             var roles = Roles.GetAllRoles(); // get existing roles
 
             foreach (var roleNameObject in roleNames)
@@ -100,7 +102,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
-            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            var roleNames = table.CustomCreateSet<RoleNameModel>().ToList();
             var roles = Roles.GetAllRoles();
 
             foreach (var roleNameObject in roleNames)
@@ -120,7 +122,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
-            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            var roleNames = table.CustomCreateSet<RoleNameModel>().ToList();
             var roles = Roles.GetAllRoles();
 
             foreach (var roleNameObject in roleNames)
@@ -151,7 +153,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
-            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            var roleNames = table.CustomCreateSet<RoleNameModel>().ToList();
 
             var securityGroupIds = ExternalUserSecurityGroup.LoadSecurityGroupIDsByExternalUserIDandUUID(
                 externalUser.ID, study.Uuid, true);
@@ -172,7 +174,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
-            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            var roleNames = table.CustomCreateSet<RoleNameModel>().ToList();
             foreach (var roleNameObject in roleNames)
             {
                 var userGroup = UserGroup.FetchByName(roleNameObject.RoleName, locale);
@@ -203,7 +205,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             
             var study = ScenarioContext.Current.Get<Study>("study");
             
-            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            var roleNames = table.CustomCreateSet<RoleNameModel>().ToList();
             foreach (var roleNameObject in roleNames)
             {
                 ASecurityGroupRoleWithName____Exists(roleNameObject.RoleName);
@@ -230,7 +232,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
-            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            var roleNames = table.CustomCreateSet<RoleNameModel>().ToList();
 
             var securityGroupIds = ExternalUserSecurityGroup.LoadSecurityGroupIDsByExternalUserIDandUUID(
                 externalUser.ID, study.Uuid, true);
@@ -252,7 +254,7 @@ namespace Medidata.RBT.Features.Integration.Steps
 
             var study = ScenarioContext.Current.Get<Study>("study");
 
-            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            var roleNames = table.CustomCreateSet<RoleNameModel>().ToList();
             foreach (var roleNameObject in roleNames)
             {
                 var userGroup = UserGroup.FetchByName(roleNameObject.RoleName, locale);
@@ -268,7 +270,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             var role = Roles.GetAllRoles().FindByName(roleName);
             var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
 
-            var studies = table.CreateSet<StudyModel>().ToList();
+            var studies = table.CustomCreateSet<StudyModel>().ToList();
             foreach (var studyModel in studies)
             {
                 var study = Study.FindByUuid(studyModel.Uuid, SystemInteraction.Use(), 1);
@@ -285,7 +287,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             var users = Users.FindByExternalUserID(externalUser.ID, SystemInteraction.Use());
             var user = users.First(x => x.EdcRole == role && x.ID != externalUser.ConnectedRaveUserID);
 
-            var studies = table.CreateSet<StudyModel>().ToList();
+            var studies = table.CustomCreateSet<StudyModel>().ToList();
             foreach (var studyModel in studies)
             {
                 var study = Study.FindByUuid(studyModel.Uuid, SystemInteraction.Use(), 1);
@@ -302,7 +304,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             var user = users.First(x => x.EdcRole == role && x.ID != externalUser.ConnectedRaveUserID);
             //var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
 
-            var studies = table.CreateSet<StudyModel>().ToList();
+            var studies = table.CustomCreateSet<StudyModel>().ToList();
             foreach (var studyModel in studies)
             {
                 var studyId = Study.GetIDByNameAndEnvironment(studyModel.StudyName, studyModel.Environment, locale,
@@ -319,7 +321,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             var role = Roles.GetAllRoles().FindByName(roleName);
             var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
 
-            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            var roleNames = table.CustomCreateSet<RoleNameModel>().ToList();
 
             ///// only necessary for calling LoadSecurityGroupIDsByExternalUserID - not actually used.
             var externalUserSecurityGroupIDsBySecurityGroupID = new Dictionary<int, Int64>();
@@ -347,7 +349,7 @@ namespace Medidata.RBT.Features.Integration.Steps
             var role = Roles.GetAllRoles().FindByName(roleName);
             var user = User.FindByRoleAndExternalID(role, externalUser.ExternalID, 1, SystemInteraction.Use());
 
-            var roleNames = table.CreateSet<RoleNameModel>().ToList();
+            var roleNames = table.CustomCreateSet<RoleNameModel>().ToList();
             foreach (var roleNameObject in roleNames)
             {
                 var userGroup = UserGroup.FetchByName(roleNameObject.RoleName, locale);
