@@ -56,7 +56,7 @@ namespace Medidata.RBT.Objects.Integration.Helpers
         /// <param name="config"></param>
         private static void AddEnvironmentToNameIfNeeded(StudyMessageModel config)
         {
-            //If we don't have IsProd set, there's no way for us to be usre
+            //If we don't have IsProd set, there's no way for us to be sure
             //what to do. So, do nothing.
             if (string.IsNullOrEmpty(config.IsProd))
                 return;
