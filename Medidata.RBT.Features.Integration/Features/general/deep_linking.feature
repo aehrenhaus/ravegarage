@@ -472,8 +472,8 @@ Scenario: 2.5.1.74-91 An iMedidata user will see an error message if the user at
 @PB_MCC-79362
 @IZ18.SEP.2013
 @Validation 
-Scenario: MCC-79362 If an iMedidata user (Study Group owner), with single role and invited to the URL, subsequently accesses Rave by deeplinking SelectRole URL, then the user will be taken to the Rave
-           (Deep linking support)
+Scenario: MCC-79362 If an iMedidata user (Study Group owner), with single role and multiple studies, subsequently accesses Rave by deeplinking SelectRole URL,
+         then the user will be taken to the Rave Home page (Deep linking support)
 				  		  
 
 	
@@ -514,8 +514,8 @@ Scenario: MCC-79362 If an iMedidata user (Study Group owner), with single role a
 @PB_MCC-79362_1
 @IZ18.SEP.2013
 @Validation 
-Scenario: MCC-79362_1 If an iMedidata user, with multiple roles and invited to the URL, subsequently accesses Rave by deeplinking SelectRole URL, then the user will be taken to the Selection Role
-           (Deep linking support)
+Scenario: MCC-79362_1 If an iMedidata user, with multiple roles and invited to the study, subsequently accesses Rave by deeplinking SelectRole URL,
+          then the user will be taken to the Selection Role page (Deep linking support)
 				  		  
 
 	
@@ -560,7 +560,7 @@ Scenario: MCC-79362_1 If an iMedidata user, with multiple roles and invited to t
 @PB_MCC-79362_2
 @IZ18.SEP.2013
 @Validation 
-Scenario: MCC-79362_2 If an iMedidata user, with multiple roles and invited to the multiple URL, subsequently accesses Rave by deeplinking SelectRole URL,
+Scenario: MCC-79362_2 If an iMedidata user, with multiple roles and invited to the multiple studies, subsequently accesses Rave by deeplinking SelectRole URL,
             then the user will be taken to the Selection Role page and then to Rave Home page (Deep linking support)
 				  		  
 
@@ -613,8 +613,8 @@ Scenario: MCC-79362_2 If an iMedidata user, with multiple roles and invited to t
 @PB_MCC-79362_3
 @IZ18.SEP.2013
 @Validation 
-Scenario: MCC-79362_3 If an iMedidata user (not logged in iMedidata), with single role and invited to the URL and subsequently accesses Rave
-           by deeplinking SelectRole URL, then the user will be taken to the iMedidata Home page
+Scenario: MCC-79362_3 If an iMedidata user (not logged in iMedidata), with single role and invited to the multiple studies and subsequently accesses Rave
+           by deeplinking SelectRole URL, then the user will be taken to the Rave Home page
            (Deep linking support)
 				  		  
 
@@ -639,8 +639,8 @@ Scenario: MCC-79362_3 If an iMedidata user (not logged in iMedidata), with singl
 	When I enter iMedidata user's correct credentials
 	And I select login button
 	Then I am on Rave Home page
-	And I take a screenshot 4 of 6
 	And I see Studies named "<Study A>" "<Study B>""<Study C>"
+	And I take a screenshot 4 of 6
 	And I navigate back to iMedidata
 	And I log out
 	And I logged in iMedidata as "<iMedidata User 1 ID>"
@@ -648,8 +648,8 @@ Scenario: MCC-79362_3 If an iMedidata user (not logged in iMedidata), with singl
 	And I take a screenshot 5 of 6
 	And I press Enter 
 	Then I am on Rave Home page
-	And I take a screenshot 6 of 6
 	And I see Studies named "<Study A>" "<Study B>""<Study C>"
+	And I take a screenshot 6 of 6
 	And I navigate back to iMedidata
 
 
@@ -905,7 +905,7 @@ Scenario: MCC-79362_8 An error message will be displayed if an iMedidata user wi
 @PB_MCC-79362_9
 @IZ18.SEP.2013
 @Validation 
-Scenario: MCC-79362_9 If an iMedidata user, with multiple roles and invited to the multiple URL, subsequently accesses Rave by deeplinking SelectRole URL,
+Scenario: MCC-79362_9 If an iMedidata user, with multiple roles and invited to the multiple studies, subsequently accesses Rave by deeplinking SelectRole URL,
             then the user will be taken to the Selection Role page and then to Rave Home page (Deep linking support)
 				  		  
 
@@ -1028,8 +1028,8 @@ Scenario: MCC-79362_10 If an iMedidata user (logged in iMedidata) with multiple 
 @PB_MCC-79362_11
 @IZ18.SEP.2013
 @Validation 
-Scenario: MCC-79362_11 If an iMedidata user (Study Group owner), with multiple roles and invited to the URL and subsequently accesses Rave
-           by deeplinking SelectRole URL, then the user will be taken to the iMedidata Home page
+Scenario: MCC-79362_11 If an iMedidata user (Study Group owner), with multiple roles and invited to the studies and subsequently accesses Rave
+           by deeplinking SelectRole URL, then the user will be taken to the Role Selection page anf then to Rave Home page
            (Deep linking support)
 				  		  
 
