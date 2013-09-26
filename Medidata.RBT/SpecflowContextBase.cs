@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Collections;
 using TechTalk.SpecFlow.Configuration;
 using System.Configuration;
 
 namespace Medidata.RBT
 {
+#if DebugBindingDetails
+#else
+	[DebuggerStepThrough]
+#endif
 	public abstract class SpecflowContextBase
 	{
         ConfigurationSectionHandler m_specflowSectionHandler;

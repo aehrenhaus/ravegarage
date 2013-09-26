@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Medidata.RBT.SharedObjects;
@@ -13,6 +14,10 @@ using Medidata.RBT.ConfigurationHandlers;
 
 namespace Medidata.RBT
 {
+#if DebugBindingDetails
+#else
+	[DebuggerStepThrough]
+#endif
 	public class SpecflowWebTestContext : SpecflowContextBase
 	{
 
