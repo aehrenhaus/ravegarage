@@ -11,6 +11,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Medidata.RBT
 {
 	[Binding]
+#if DebugBindingDetails
+#else
+	[DebuggerStepThrough]
+#endif
 	public static class SpecflowStaticBindings
 	{
         private const string FEATURE_SETUP_TAG = "feature_setup";

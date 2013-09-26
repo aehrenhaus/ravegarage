@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.IO;
 
 namespace Medidata.RBT
 {
+
 	/// <summary>
 	/// create this class just to use as a filter to console output, so that steps are easy to see.
 	/// </summary>
+#if DebugBindingDetails
+#else
+	[DebuggerStepThrough]
+#endif
 	public class FilteredWriter:TextWriter
 	{
 		public override Encoding Encoding
