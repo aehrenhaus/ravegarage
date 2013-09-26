@@ -56,7 +56,6 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
 
         protected override void TakeActionAsAResultOfRWSCall()
         {
-            Project.SetProjectID(Project.UniqueName);
             Factory.FeatureObjectsForDeletion.Add(this);
             using (StreamReader sr = new StreamReader(WebResponse.GetResponseStream()))
             {
@@ -64,6 +63,7 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
                 if (!String.IsNullOrEmpty(error))
                     throw new InvalidDataException(String.Format("Error Uploading Architect Loader Spreadsheet:" + Environment.NewLine + "{0}", error));
             }
+            Project.SetProjectID(Project.UniqueName);   
         }
 
         /// <summary>
