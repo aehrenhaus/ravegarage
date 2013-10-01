@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 using Medidata.RBT.PageObjects.Rave.SiteAdministration;
 using Medidata.RBT.PageObjects.Rave.SharedRaveObjects;
 using Medidata.RBT.PageObjects.Rave.SeedableObjects;
+using Medidata.RBT.PageObjects.Rave;
 
 namespace Medidata.RBT.Features.Rave.Steps.Seeding
 {
@@ -93,21 +94,24 @@ namespace Medidata.RBT.Features.Rave.Steps.Seeding
         [StepDefinition(@"study ""([^""]*)"" is assigned to Site ""([^""]*)"" with study environment ""([^""]*)""")]
         public void Study____IsAssignedToSite____WithStudyEnvironment____(string studyName, string siteName, string studyEnvName)
         {
-            Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName));
-			Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
-
-			if (!site.StudySites.Any(x=>x.ProjectName == project.UniqueName && x.Environment == studyEnvName))
+            using (LoginSession loginSession = new LoginSession(WebTestContext))
             {
-				site.StudySites.Add(new StudySite( project.UniqueName,site.UniqueName,  studyEnvName));
+                Site site = SeedingContext.GetExistingFeatureObjectOrMakeNew(siteName, () => new Site(siteName));
+                Project project = SeedingContext.GetExistingFeatureObjectOrMakeNew(studyName, () => new Project(studyName));
 
-				
-				var page = new SiteAdministrationHomePage();
-				page.NavigateToSelf();
-				page.SearchForSite(site.UniqueName);
-				page.ClickSite(site.UniqueName);
-		
-                
-                CurrentPage.As<SiteAdministrationDetailsPage>().LinkStudyWithSite( project.UniqueName, studyEnvName);
+                if (!site.StudySites.Any(x => x.ProjectName == project.UniqueName && x.Environment == studyEnvName))
+                {
+                    site.StudySites.Add(new StudySite(project.UniqueName, site.UniqueName, studyEnvName));
+
+
+                    var page = new SiteAdministrationHomePage();
+                    page.NavigateToSelf();
+                    page.SearchForSite(site.UniqueName);
+                    page.ClickSite(site.UniqueName);
+
+
+                    CurrentPage.As<SiteAdministrationDetailsPage>().LinkStudyWithSite(project.UniqueName, studyEnvName);
+                }
             }
         }
 
