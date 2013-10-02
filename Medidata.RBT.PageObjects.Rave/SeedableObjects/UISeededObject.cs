@@ -14,21 +14,33 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         /// Redirect to the original user after seed
         /// </summary>
         protected bool RedirectAfterSeed { get; set; }
+        protected bool LoginAsDefaultUserBeforeUpload { get; set; }
 
-        protected RaveUISeededObject(bool uploadAfterMakingUnique = true)
+        protected RaveUISeededObject(bool uploadAfterMakingUnique = true, bool loginAsDefaultUserBeforeUpload = true)
         {
             UploadAfterMakingUnique = uploadAfterMakingUnique;
-            //set global suppress seeding option, it can be overwrite later
-            RedirectAfterSeed = true;
+            LoginAsDefaultUserBeforeUpload = loginAsDefaultUserBeforeUpload;
         }
 
         public override void Seed()
         {
             base.Seed();
+
             if (UploadAfterMakingUnique)
             {
-                NavigateToSeedPage();
-                CreateObject();
+                if (LoginAsDefaultUserBeforeUpload)
+                {
+                    using (LoginSession session = new LoginSession(WebTestContext))
+                    {
+                        NavigateToSeedPage();
+                        CreateObject();
+                    }
+                }
+                else
+                {
+                    NavigateToSeedPage();
+                    CreateObject();
+                }
             }
         }
 

@@ -35,7 +35,6 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
 
 		public BaseRaveSeedableObject()
 		{
-            LoginPage.LoginToHomePageIfNotAlready(WebTestContext);
 		}
 
 		public virtual void Seed()

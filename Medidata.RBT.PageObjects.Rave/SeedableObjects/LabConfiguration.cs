@@ -39,7 +39,6 @@ namespace Medidata.RBT.PageObjects.Rave.SeedableObjects
         {
             UniqueName = labConfigurationUploadName;
             MaintainStringLength = maintainStringLength;
-            RedirectAfterSeed = redirectAfterSeed;
         }
 
         /// <summary>
